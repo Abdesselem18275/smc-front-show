@@ -1,0 +1,21 @@
+main {
+    padding:  0 4em 0 4em;
+    display : flex;
+}
+
+.main__side-nav {
+    background-color: rgb(235,235,235);
+    width  : 35%;
+}
+.main__upper-content {
+    width  : 65%;
+
+}
+
+.main__upper-content img 
+{
+    max-width: 100%;
+}
+.main__lower-content{
+    padding:  0 4em 0 4em;
+}

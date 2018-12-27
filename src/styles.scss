@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/app-themes.scss";
+
+
+
+
+.mat-gutter--right--16 
+{
+ padding-right : 1em;
+}
+
+.mat-gutter--right--8
+{
+ padding-right : 0.5em;
+}
+
+.mat-gutter--right--4
+{
+ padding-right : 0.25em;
+}
+
+.mat-gutter--top--4
+{
+ padding-top : 0.25em;
+}
+
+
+.mat-gutter--top--8
+{
+ padding-top : 0.5em;
+}
+
+.mat-gutter--top--16
+{
+ padding-top : 1em;
+}
+
+float-left {
+    float : left;
+}
+
+float-right {
+    float : right;
+}
