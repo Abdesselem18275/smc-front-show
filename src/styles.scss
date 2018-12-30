@@ -35,10 +35,15 @@
  padding-top : 1em;
 }
 
-float-left {
+.float-left {
     float : left;
 }
 
-float-right {
+.float-right {
     float : right;
+}
+
+.h-center {
+    margin-left : auto ; 
+    margin-right  :auto ;
 }
