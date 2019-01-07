@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/app-themes.scss";
 
-
+* {
+    box-sizing: border-box;
+  }
 
 
 .mat-gutter--right--16 
@@ -47,3 +49,5 @@
     margin-left : auto ; 
     margin-right  :auto ;
 }
+
+
