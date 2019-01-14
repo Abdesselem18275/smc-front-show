@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-found.component';
 import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     MaterialModule,
     ProductModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
   providers: [],

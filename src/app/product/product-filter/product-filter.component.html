@@ -1,0 +1,22 @@
+<p class="mat-body-strong">
+FILTER BY
+</p>
+
+<form  class="mat-typography" [formGroup]="filterForm"  class="form-gutter">
+
+    <div *ngFor="let filterCategory of filterCategories" class="mat-typography form__group" [formGroupName]="filterCategory.category">
+            
+            <p class="form__group__title">{{filterCategory.category}}</p>
+            <mat-divider></mat-divider>
+            <mat-checkbox  *ngFor="let choice of filterCategory.choices" class="mat-body-2" color="primary" 
+                    [formControlName]="choice.key" [checked]="true">
+             {{choice.value}}
+            </mat-checkbox>
+    
+            
+
+    </div>
+    
+
+
+</form> 

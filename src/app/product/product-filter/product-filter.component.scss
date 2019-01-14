@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import '../../../app-themes.scss';
+
+:host {
+    padding : 0 0.5em 0 1em;
+
+}
+form * {
+    display: block;
+}
+
+.form__group__title
+{
+    color : mat-color($app-primary);
+    font-weight: bolder;
+}
+
+.form__group
+{
+    margin-bottom: 1em;
+}

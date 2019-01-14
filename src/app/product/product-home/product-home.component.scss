@@ -30,7 +30,6 @@
 }
 
 .lower-content {
-    border: solid;
     grid-area:lower-content;
 }
 
@@ -54,7 +53,7 @@
 
 .side-menu__content__icon mat-icon{
     min-height : 2em;     
-    width: 30%
+    width: 25%
 
 }
 
@@ -70,4 +69,19 @@
     
 }
 
+.side-menu *  {
+    color : rgb(102,102,102)
+}
+
+@media only screen and (max-width:840px) {
+
+    .home-page {
+        display : grid;
+        grid-template-columns: 2fr 4fr;
+        grid-template-areas: 
+        "upper-content upper-content"
+        "side-menu side-menu"
+        "lower-content lower-content";
+    }
+  }
 

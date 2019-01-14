@@ -1,5 +1,7 @@
+@import "src/styles.scss";
+
 .upper-menu {
-    background-color: rgb(235,235,235);
+    background-color: $color-grey;
     height: 1.5em;
     padding:  0 10em 0 10em;
     width : 100%;
@@ -33,5 +35,18 @@
     margin-bottom: auto;
     color: rgb(92,92,88)
 }
+.nav-bar__menu-icon
+{
+    display : none;
+}
 
+@media only screen and (max-width:960px) {
 
+    .nav-bar__logo--big, .nav-bar__nav-tab {
+      display: none;
+    }
+    .nav-bar__menu-icon 
+    {
+        display: inline;
+    }
+  }
