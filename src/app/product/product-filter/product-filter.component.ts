@@ -31,12 +31,9 @@ export class ProductFilterComponent implements OnInit {
       let subReq = cateogrieFilter.concat('=');
       Object.keys(filterState[cateogrieFilter]).filter(choice =>
         this.filterForm.get(cateogrieFilter.concat('.', choice)).value !== false).map(choice =>
-          {
-            subReq = subReq.concat(choice, ',');
-          }
-          );
-        subReq = subReq.concat('?');
-        req = req.concat(subReq);
+            subReq = subReq.concat(choice, ','));
+      subReq = subReq.concat('?');
+      req = req.concat(subReq);
       });
 
       return(req);

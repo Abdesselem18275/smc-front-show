@@ -5,58 +5,24 @@
 
 <section class="mat-typography mat-elevation-z1 content"> 
     <div class="mat-subheading-2 content__meta-bar"> 
-      <span>11 selected products</span>
+      <span>{{(productShorts$ | async)?.length}} selected products</span>
       <span class="content__meta-bar--spacer"></span>
       <mat-icon>list</mat-icon>
       <mat-icon>view_comfy</mat-icon>
       </div>
 
     <div class="content__image-container">
-      <article class="mat-elevation-z1 content__image-container__product-box">
-        <img src="../../../assets/pictures/03856_01.jpg">
-        <h5>Hamered stew pan</h5>
-        <div class="content__image-container__product-box__sub-text">
-            <h6>5 available variants</h6>
-            <mat-icon>add_circle</mat-icon>
+
+      <article class="mat-elevation-z1 content__image-container__product-box" *ngFor="let productShort of productShorts$ | async">
+            <img src="../../../assets/pictures/03856_01.jpg">
+            <h5>{{productShort.designation}}</h5>
+            <div class="content__image-container__product-box__sub-text">
+                <h6>{{productShort.variants.length}} available variants</h6>
+                <mat-icon>add_circle</mat-icon>
             </div> 
-      </article>
+        </article>
 
-      <article class="mat-elevation-z1 content__image-container__product-box">
-          <img src="../../../assets/pictures/03856_01.jpg">
-          <h5>Hamered stew pan</h5>
-          <div class="content__image-container__product-box__sub-text">
-              <h6>5 available variants</h6>
-              <mat-icon>add_circle</mat-icon>
-              </div> 
-      </article>
-
-      <article class="mat-elevation-z1 content__image-container__product-box">
-          <img src="../../../assets/pictures/03856_01.jpg">
-          <h5>Hamered stew pan</h5>
-          <div class="content__image-container__product-box__sub-text">
-              <h6>5 available variants</h6>
-              <mat-icon>add_circle</mat-icon>
-              </div> 
-      </article>
-
-      <article class="mat-elevation-z1 content__image-container__product-box">
-          <img src="../../../assets/pictures/03856_01.jpg">
-          <h5>Hamered stew pan</h5>
-          <div class="content__image-container__product-box__sub-text">
-              <h6>5 available variants</h6>
-              <mat-icon>add_circle</mat-icon>
-              </div> 
-      </article>
-
-      <article class="mat-elevation-z1 content__image-container__product-box">
-          <img src="../../../assets/pictures/03856_01.jpg">
-          <h5>Hamered stew pan</h5>
-          <div class="content__image-container__product-box__sub-text">
-          <h6>5 available variants</h6>
-          <mat-icon>add_circle</mat-icon>
-          </div> 
-      </article>
-      
+ 
 
     </div>
     
