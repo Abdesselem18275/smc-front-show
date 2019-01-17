@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-
 import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AwsObjectsService } from './common/aws-objects.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AwsObjectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

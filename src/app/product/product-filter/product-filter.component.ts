@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
+import { AwsObjectsService } from 'src/app/common/aws-objects.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ProductFilterComponent implements OnInit {
     this.filterForm.valueChanges.pipe().subscribe(
       val => console.warn(this.toUrlReq(val))
     );
+
   }
 
   toUrlReq(filterState: any) {

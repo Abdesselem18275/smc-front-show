@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AwsObjectsService } from './common/aws-objects.service';
 
 @Component({
   selector: 'app-root',
@@ -19,4 +20,5 @@ export class AppComponent {
                 .addSvgIcon('Home_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/home_ware.svg'))
                 .addSvgIcon('Table_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/table_ware.svg'));
   }
+
 }
