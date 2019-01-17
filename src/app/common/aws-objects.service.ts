@@ -20,8 +20,8 @@ export class AwsObjectsService {
 
     const s3 = new AWS.S3(
       {
-        accessKeyId: 'AKIAIWW6YCA2BL4RGEQQ',
-        secretAccessKey: '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',
+        accessKeyId: 'AKIAI5OFER7L56FNOBDA',
+        secretAccessKey: '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',
         region: 'eu-west-3',
         apiVersion: '2006-03-01'
       }
