@@ -20,8 +20,8 @@ export class AwsObjectsService {
 
     const s3 = new AWS.S3(
       {
-        accessKeyId: process.env.S3_KEY,
-        secretAccessKey: process.env.S3_SECRET,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         region: 'eu-west-3',
         apiVersion: '2006-03-01'
       }

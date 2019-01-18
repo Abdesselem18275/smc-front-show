@@ -18,11 +18,7 @@ export class ProductHomeComponent implements OnInit {
 
     this.aws.getS3Bucket('smc-static-media', 'main_pic.jpg').promise().
     then( data => {
-      const blob  = new Blob([data.Body]);
-      const url = window.URL.createObjectURL(blob);
-      console.warn(url);
-      this.image.nativeElement.src = url;
-      window.open(url);
+      this.image.nativeElement.src = window.URL.createObjectURL(new Blob([data.Body]));
     });
 
     }
