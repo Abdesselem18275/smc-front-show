@@ -15,6 +15,56 @@ export class ProductDataService {
 
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) { }
 
+  getCredential(): Observable<any> {
+
+    const query: string = [
+      this.apiUrl,
+      '/aws_credentials/'].join('');
+     return this.http.get(query);
+
+
+  }
+
+
+
+
+  get_elements(options: {
+    model?: string;
+    value?: string;
+    param_key?: string[] } = {}): Observable<any[]> {
+
+    const model = options.model || '';
+    const value = options.value || '';
+    const param_key = options.param_key || [];
+
+     const query: string = [
+    this.apiUrl,
+    '/',
+    model,
+    's/'].join('');
+   return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem => jsonItem)));
+
+  }
+
+
+  get_element(options: {
+    model?: string;
+    value?: string;
+    param_key?: string[] } = {}): Observable<any> {
+
+    const model = options.model || '';
+    const value = options.value || '';
+
+    const query: string = [
+    this.apiUrl,
+    '/',
+    model,
+    '/', value
+     ].join('');
+   return this.http.get(query);
+
+  }
+
   getCategories() {
     const filterCategories: FilterCategory[] = [
         new FilterCategory({
@@ -36,93 +86,6 @@ export class ProductDataService {
     ];
 
     return filterCategories;
-  }
-
-  getProducts() {
-    const components: Component[] = [
-      new Component({
-        designation : 'Handle ear',
-        measure_type : 'diameter',
-        measure : 25
-      }),
-      new Component({
-        designation : 'Small Handle',
-        measure_type : 'diameter',
-        measure : 15
-      }),
-      new Component({
-        designation : 'Long Handle',
-        measure_type : 'Length',
-        measure : 10
-      }),
-    ];
-
-  const variants: Variant[] = [
-      new Variant({
-        designation: 'Cachepot 1',
-        height: 12,
-        width: 13,
-        diameter: 25,
-        capacity: 50,
-        components : components
-      }),
-      new Variant({
-        designation: 'Cachepot 2',
-        height: 18,
-        width: 16,
-        diameter: 30,
-        capacity: 100,
-        components : components
-      }),
-      new Variant({
-        designation: 'Cachepot 3',
-        height: 24,
-        width: 16,
-        diameter: 30,
-        capacity: 150,
-        components : components
-      }),
-    ];
-
-  const productShorts: ProductShort[] = [
-    new ProductShort({
-      designation: 'Cachepot',
-      thumbNail : '',
-      variants : variants,
-    }),
-    new ProductShort({
-      designation: 'Fryin pan',
-      thumbNail : '',
-      variants : variants,
-    }),
-    new ProductShort({
-      designation: 'Sauteuse a poile',
-      thumbNail : '',
-      variants : variants,
-    }),
-  ];
-
-  return of(productShorts);
-  }
-
-
-
-  get_elements(options: {
-    model?: string;
-    value?: string;
-    param_key?: string[] } = {}): Observable<any[]> {
-
-    const model = options.model || '';
-    const value = options.value || '';
-    const param_key = options.param_key || [];
-
-     const query: string = [
-    this.apiUrl,
-    '/',
-    model,
-    's/'].join('');
-   return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem => jsonItem)));
-
   }
 
 }

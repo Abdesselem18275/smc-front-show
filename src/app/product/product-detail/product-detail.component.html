@@ -7,14 +7,14 @@
   <mat-icon>expand_more</mat-icon>
 </aside>
 <section class="image">
-<img src="../../../assets/pictures/big_pic.jpg">
+<img [src]="mainImageUrl">
 </section>
 <section class="description">
-  <p class="mat-h2">Steamer (Couscoussier)</p>
-  <p class="mat-small">Reference : 215546</p>
+  <p class="mat-h2">{{product.designation}}</p>
+  <p class="mat-body-strong">{{product.material.designation}} - {{product.material.color}}</p>
   <mat-divider></mat-divider>
   <p class="mat-body description__text">
-    Area of Use Our Hand-hammered Copper Couscoussier consists of two pots; a perforated top pot to steam couscous, rice or vegetable, while cooking meat or even boil pasta in the bottom pot. Materials: The Copper main core provides an excellent heat conduction and distribution around the entire surface of the cookware, while the tin hand-coated interior allows healthy cooking and non reactivity with acidic foods. Aesthetic: Its hand-hammered finish and shine-polished Brass casted Handle make it strikingly beautiful to serve in or to decorate the kitchen.
+    {{product.description}}
   </p>
   <mat-divider></mat-divider>
 </section>

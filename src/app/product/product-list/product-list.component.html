@@ -12,7 +12,7 @@
 
     <div class="content__image-container">
 
-        <article class="mat-elevation-z1 content__image-container__product-box" *ngFor="let productShort of productShorts$ | async">
+        <article  class="mat-elevation-z1 content__image-container__product-box" *ngFor="let productShort of productShorts$ | async">
             <app-product-list-composit [productShort]="productShort">
 
             </app-product-list-composit>
