@@ -10,9 +10,9 @@ export class FilterBuilderService {
   constructor() { }
 
   toFormGroup(filterCategories: FilterCategory[]) {
-    let group = {};
+    const group = {};
     filterCategories.forEach(filterCategorie => {
-      let subGroup = {};
+      const subGroup = {};
       filterCategorie.choices.forEach(choice => {
         subGroup[choice.key] = new FormControl(choice.value);
       });

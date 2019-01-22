@@ -11,6 +11,10 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterBuilderService } from './service/filter-builder.service';
 import { ProductDataService } from './service/product-data.service';
+import { DataInjectablesService } from './service/data-injectables.service';
+import { ProductListCompositComponent } from './product-list-composit/product-list-composit.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
 
 @NgModule({
   imports: [
@@ -19,7 +23,7 @@ import { ProductDataService } from './service/product-data.service';
     ReactiveFormsModule,
     ProductRoutingModule,
   ],
-  declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent],
-  providers:  [FilterBuilderService, ProductDataService]
+  declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent, ProductListCompositComponent, ProductDetailComponent, ProductBreadcrumbComponent],
+  providers:  [FilterBuilderService, DataInjectablesService]
 })
 export class ProductModule { }

@@ -1,0 +1,68 @@
+:host {
+    padding:  0 4em 0 4em;
+    display : grid ;
+    grid-template-columns : 1fr 5fr 5fr;
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
+    grid-template-areas : 
+    "breadcrumb_area breadcrumb_area breadcrumb_area"
+    "carousel_area image_area  description_area"
+    "technical-description_area technical-description_area technical-description_area"
+    "related-product_area related-product_area related-product_area";
+}
+
+.breadcrumb {
+    grid-area: breadcrumb_area;
+}
+.carousel {
+    grid-area: carousel_area;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width:100%;
+    }
+    mat-icon {
+    }
+}
+.image {
+    grid-area: image_area;
+}
+.image img {
+    width: 100%;
+}
+
+
+.technical-description {
+    grid-area: technical-description_area;
+    .technical-data-container {
+        display: flex;
+        justify-content:space-around;
+    }
+    .mat-h3 {
+        font-weight: 500;
+    }
+    mat-radio-group {
+        display: flex;
+        flex-direction: column;
+        mat-radio-button{
+            margin-bottom: 1em;
+        }
+    }
+    
+}
+
+.related-product {
+    grid-area: related-product_area;
+    border : solid;
+}
+
+.description {
+    grid-area: description_area;
+}
+.description__text {
+    overflow: hidden;
+    font-style:italic;
+}

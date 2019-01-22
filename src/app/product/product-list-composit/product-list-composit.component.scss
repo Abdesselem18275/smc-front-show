@@ -1,0 +1,37 @@
+.content__image-container__product-box__sub-text {
+    display: flex;
+}
+
+mat-icon {
+    font-size: 1em;
+    margin-top : 0.2em;
+    margin-left : 0.5em;
+}
+
+
+ h5 , h6  {
+    font-weight: bold;
+    padding-left : 0.5em;
+    margin-bottom: 0.25em;
+    padding-right : 0.5em;
+}
+
+img 
+{
+    max-width: 100%;
+    border-bottom: inset;
+    border-bottom-width: 0.15em;
+}
+.product-box__variant-row
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+mat-spinner
+{
+    position: relative;
+    left: 37%;
+
+}

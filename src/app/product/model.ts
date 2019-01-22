@@ -15,6 +15,22 @@ export class FilterCategory {
 
 }
 
+export class ProductLong {
+    designation: string;
+    thumbNail: string;
+    variants: Variant[];
+
+    constructor(options: {
+        designation?: string;
+        thumbNail?: string;
+        variants?: Variant[]
+                } = {}) {
+        this.designation = options.designation || '';
+        this.thumbNail = options.thumbNail || '';
+        this.variants = options.variants || [];
+    }
+}
+
 
 export class ProductShort {
     designation: string;

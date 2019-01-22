@@ -1,13 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { FilterCategory, Component, Variant, ProductShort } from '../model';
 import { Observable, from, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+
+
+
+export const API_URL = 'https://show-case-api.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductDataService {
 
-  constructor() { }
+  constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) { }
 
   getCategories() {
     const filterCategories: FilterCategory[] = [
@@ -97,6 +103,26 @@ export class ProductDataService {
   ];
 
   return of(productShorts);
+  }
+
+
+
+  get_elements(options: {
+    model?: string;
+    value?: string;
+    param_key?: string[] } = {}): Observable<any[]> {
+
+    const model = options.model || '';
+    const value = options.value || '';
+    const param_key = options.param_key || [];
+
+     const query: string = [
+    this.apiUrl,
+    '/',
+    model,
+    's/'].join('');
+   return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem => jsonItem)));
+
   }
 
 }

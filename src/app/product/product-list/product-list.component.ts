@@ -12,8 +12,9 @@ export class ProductListComponent implements OnInit {
   productShorts$: Observable<ProductShort[]>;
   constructor(private pds: ProductDataService) { }
   ngOnInit() {
-  this.productShorts$ = this.pds.getProducts();
-
-  }
+  this.pds.get_elements({model: 'product'}).pipe(
+    products => this.productShorts$ = products
+  );
+}
 
 }

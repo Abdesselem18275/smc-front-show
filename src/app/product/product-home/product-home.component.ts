@@ -12,15 +12,14 @@ export class ProductHomeComponent implements OnInit {
 
   @ViewChild('mainImage') image: ElementRef;
 
-  constructor(private aws: AwsObjectsService, private sanitizer: DomSanitizer) { }
+
+  constructor(private aws: AwsObjectsService) { }
 
   ngOnInit() {
-
     this.aws.getS3Bucket('smc-static-media', 'main_pic.jpg').promise().
     then( data => {
       this.image.nativeElement.src = window.URL.createObjectURL(new Blob([data.Body]));
     });
-
     }
 
 }

@@ -13,6 +13,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -24,11 +26,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   imports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
-            MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule],
+            MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
+            MatTableModule, MatRadioModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
-             MatDatepickerModule, MatProgressSpinnerModule],
+             MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule],
 })
 export class MaterialModule {}
