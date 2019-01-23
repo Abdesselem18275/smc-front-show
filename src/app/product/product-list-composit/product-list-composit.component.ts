@@ -19,8 +19,9 @@ displayedColumns: string[] = ['designation', 'height', 'width', 'capacity'];
     console.warn(this.productShort);
     this.isDetail = false;
     this.isReady = false;
-    this.pds.getSignedUrl(this.productShort.thumbNail).subscribe(signed => this.mainImageUrl = signed);
-  }
+    this.pds.getSignedUrl(this.productShort.thumbNail).subscribe(signed => {this.mainImageUrl = signed['signedRequest'];
+                                                                            console.warn('Hello'); });
+                                                                          }
   toggle() {
     this.isDetail = !this.isDetail;
   }
