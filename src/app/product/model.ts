@@ -42,18 +42,18 @@ export class ProductLong {
 
 
 export class ProductShort {
-    id: number;
+    pk: number;
     designation: string;
     thumbNail: string;
     variants: Variant[];
 
     constructor(options: {
-        id?: number,
+        pk?: number,
         designation?: string,
         thumbNail?: string,
         variants?: Variant[]
                 } = {}) {
-        this.id = options.id || -1;
+        this.pk = options.pk || -1;
         this.designation = options.designation || '';
         this.thumbNail = options.thumbNail || '';
         this.variants = options.variants || [];

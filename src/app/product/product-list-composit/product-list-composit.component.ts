@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ProductShort } from '../model';
-import { AwsObjectsService } from 'src/app/common/aws-objects.service';
+import { ProductDataService } from '../service/product-data.service';
 
 @Component({
   selector: 'app-product-list-composit',
@@ -9,30 +9,18 @@ import { AwsObjectsService } from 'src/app/common/aws-objects.service';
 })
 export class ProductListCompositComponent implements OnInit {
 @Input() productShort: ProductShort;
-@ViewChild('boxImage') image: ElementRef;
+mainImageUrl: string;
 isDetail: Boolean;
 isReady: Boolean;
 displayedColumns: string[] = ['designation', 'height', 'width', 'capacity'];
-  constructor(private aws: AwsObjectsService) { }
+  constructor(private pds: ProductDataService) { }
 
   ngOnInit() {
+    console.warn(this.productShort);
     this.isDetail = false;
     this.isReady = false;
-    this.aws.getS3Bucket('smc-static-media', this.get_image_name(this.productShort.thumbNail)).promise().
-    then( data => {
-      this.isReady = true;
-      this.image.nativeElement.src = window.URL.createObjectURL(new Blob([data.Body]));
-    });
+    this.pds.getSignedUrl(this.productShort.thumbNail).subscribe(signed => this.mainImageUrl = signed);
   }
-
-
-
-  private get_image_name(url: string) {
-
-   const res =  url === null ? '' : url.substring(url.lastIndexOf('/') + 1);
-   return('media/'.concat(res));
-  }
-
   toggle() {
     this.isDetail = !this.isDetail;
   }

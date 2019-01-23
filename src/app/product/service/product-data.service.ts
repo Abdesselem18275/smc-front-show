@@ -65,6 +65,14 @@ export class ProductDataService {
 
   }
 
+  getSignedUrl(url: string): Observable<any> {
+    const fileName = null ? '' : url.substring(url.lastIndexOf('/') + 1);
+    const query: string = [
+      this.apiUrl,
+      '/sign-s3/?file-name=', fileName].join('');
+     return this.http.get(query);
+  }
+
   getCategories() {
     const filterCategories: FilterCategory[] = [
         new FilterCategory({
