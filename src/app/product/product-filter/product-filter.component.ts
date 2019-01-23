@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
-import { AwsObjectsService } from 'src/app/common/aws-objects.service';
 
 
 @Component({

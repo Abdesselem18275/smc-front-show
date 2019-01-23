@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AwsObjectsService } from './common/aws-objects.service';
 
 @Component({
   selector: 'app-root',

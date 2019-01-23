@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AwsObjectsService } from 'src/app/common/aws-objects.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { encode } from 'punycode';
+import { ProductDataService } from '../service/product-data.service';
 
 @Component({
   selector: 'app-product-home',
@@ -10,16 +10,13 @@ import { encode } from 'punycode';
 })
 export class ProductHomeComponent implements OnInit {
 
-  @ViewChild('mainImage') image: ElementRef;
+  mainImageUrl: string;
 
 
-  constructor(private aws: AwsObjectsService) { }
+  constructor(private pds: ProductDataService) { }
 
   ngOnInit() {
-    this.aws.getS3Bucket('smc-static-media', 'main_pic.jpg').promise().
-    then( data => {
-      this.image.nativeElement.src = window.URL.createObjectURL(new Blob([data.Body]));
-    });
+      this.pds.getSignedUrl('main_pic.jpg').subscribe(data => this.mainImageUrl = data );
     }
 
 }

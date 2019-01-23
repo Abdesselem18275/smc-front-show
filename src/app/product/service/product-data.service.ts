@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory, Component, Variant, ProductShort } from '../model';
-import { Observable, from, of } from 'rxjs';
+import { FilterCategory } from '../model';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 
@@ -70,7 +70,7 @@ export class ProductDataService {
     const query: string = [
       this.apiUrl,
       '/sign-s3/?file-name=', fileName].join('');
-     return this.http.get(query);
+    return this.http.get(query);
   }
 
   getCategories() {

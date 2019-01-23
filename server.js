@@ -8,7 +8,6 @@ const app = express();
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
-    console.warn(process.env.S3_BUCKET)
   }
 
 aws.config.region = 'eu-west-3';
