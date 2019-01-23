@@ -31,6 +31,7 @@
     "@angular/router": "^7.2.1",
     "aws-sdk": "^2.389.0",
     "core-js": "^2.5.4",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.3.3",

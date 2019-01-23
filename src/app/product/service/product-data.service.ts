@@ -59,8 +59,8 @@ export class ProductDataService {
   getSignedUrl(url: string): Observable<any> {
     const fileName = null ? '' : url.substring(url.lastIndexOf('/') + 1);
     const query: string = [
-      'https://smc-show-case.herokuapp.com',
-      '/sign-s3?file-name=', fileName].join('');
+      'https://smc-show-case.herokuapp.com/sign-s3?file-name=', 
+      fileName].join('');
     return this.http.get(query);
   }
 

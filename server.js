@@ -3,6 +3,8 @@
 const express = require('express');
 const path = require('path');
 const aws = require('aws-sdk');
+var cors = require('cors')
+app.use(cors())
 
 const app = express();
 
