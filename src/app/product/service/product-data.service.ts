@@ -15,15 +15,6 @@ export class ProductDataService {
 
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) { }
 
-  getCredential(): Observable<any> {
-
-    const query: string = [
-      this.apiUrl,
-      '/aws_credentials/'].join('');
-     return this.http.get(query);
-
-
-  }
 
 
 
@@ -68,7 +59,7 @@ export class ProductDataService {
   getSignedUrl(url: string): Observable<any> {
     const fileName = null ? '' : url.substring(url.lastIndexOf('/') + 1);
     const query: string = [
-      this.apiUrl,
+      'https://smc-show-case.herokuapp.com',
       '/sign-s3/?file-name=', fileName].join('');
     return this.http.get(query);
   }
