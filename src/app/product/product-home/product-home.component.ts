@@ -16,7 +16,6 @@ export class ProductHomeComponent implements OnInit {
   constructor(private pds: ProductDataService) { }
 
   ngOnInit() {
-      this.pds.getSignedUrl('main_pic.jpg').subscribe(signed => this.mainImageUrl = signed['signedRequest'] );
     }
 
 }

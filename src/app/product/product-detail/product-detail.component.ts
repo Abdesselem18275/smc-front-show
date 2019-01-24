@@ -23,8 +23,6 @@ export class ProductDetailComponent implements OnInit {
       subscribe((jsonItem: ProductLong) => {
         console.warn(jsonItem);
         this.product = jsonItem;
-        this.pds.getSignedUrl(this.product.thumbNail).subscribe(signed => this.mainImageUrl = signed['signedRequest']);
-
       });
 
   }

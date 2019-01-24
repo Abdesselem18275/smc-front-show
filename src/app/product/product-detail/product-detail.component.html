@@ -1,13 +1,11 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
-<aside class="carousel">
+<aside *ngIf="product.images.length !== 0" class="carousel">
   <mat-icon>expand_less</mat-icon>
-  <img src="../../../assets/pictures/03857_01.jpg">
-  <img src="../../../assets/pictures/03856_01.jpg">
-  <img src="../../../assets/pictures/Product list_1.jpg">
+  <img  *ngFor="let image of product.images" [src]="image.content">
   <mat-icon>expand_more</mat-icon>
 </aside>
 <section class="image">
-<img [src]="mainImageUrl">
+<img [src]="product.thumbNail">
 </section>
 <section class="description">
   <p class="mat-h2">{{product.designation}}</p>

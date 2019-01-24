@@ -1,5 +1,4 @@
-<img [routerLink]="['../', productShort.pk]" [hidden]="!isReady" #boxImage>
-<mat-spinner [diameter]="50"  *ngIf="!isReady"></mat-spinner>
+<img [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail">
 <h5>{{productShort.designation}}</h5>
 <div *ngIf="productShort.variants.length !== 0" class="content__image-container__product-box__sub-text">
     <h6>{{productShort.variants.length}} available variants</h6>
