@@ -22,17 +22,17 @@ export class ProductDataService {
   get_elements(options: {
     model?: string;
     value?: string;
-    param_key?: string[] } = {}): Observable<any[]> {
+    param_key?: string } = {}): Observable<any[]> {
 
     const model = options.model || '';
     const value = options.value || '';
-    const param_key = options.param_key || [];
+    const param_key = options.param_key || '';
 
-     const query: string = [
+    const query: string = [
     this.apiUrl,
     '/',
     model,
-    's/'].join('');
+    's/', param_key].join('');
    return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem => jsonItem)));
 
   }
@@ -56,28 +56,13 @@ export class ProductDataService {
 
   }
 
+  getFilters() {
+    const query: string = [
+      this.apiUrl,
+      '/filters'].join('');
+     return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem =>
+             new FilterCategory(jsonItem)) ));
 
-  getCategories() {
-    const filterCategories: FilterCategory[] = [
-        new FilterCategory({
-           category : 'color' ,
-           choices : [
-             {key : 'gold' , value : 'Gold'},
-             {key : 'copper' , value : 'Copper'},
-             {key : 'silver' , value : 'Silver'},
-             {key : 'Iron' , value : 'iron'}
-           ]
-        }),
-        new FilterCategory({
-          category : 'equipments' ,
-          choices : [
-            {key : 'ear_handle' , value : 'Ear handle'},
-            {key : 'simple_handle' , value : 'Simple handle'}
-          ]
-       })
-    ];
-
-    return filterCategories;
   }
 
 }

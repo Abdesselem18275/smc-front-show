@@ -1,8 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
+import { MatCheckbox } from '@angular/material';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -13,31 +15,46 @@ import { FilterCategory } from '../model';
 export class ProductFilterComponent implements OnInit {
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
+  @Output() req = new EventEmitter<string>();
+  ready: boolean;
+
 
   constructor(private fbs: FilterBuilderService , private pds: ProductDataService) {
    }
 
   ngOnInit() {
-    this.filterCategories = this.pds.getCategories();
-    this.filterForm = this.fbs.toFormGroup(this.filterCategories);
-    this.filterForm.valueChanges.pipe().subscribe(
-      val => console.warn(this.toUrlReq(val))
-    );
-
+    this.ready = false;
+    this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
+        console.warn(this.filterCategories);
+        this.filterForm = this.fbs.toFormGroup(this.filterCategories);
+        this.ready = true;
+      }));
   }
 
-  toUrlReq(filterState: any) {
-    let req = '';
-    Object.keys(filterState).forEach(cateogrieFilter => {
-      let subReq = cateogrieFilter.concat('=');
-      Object.keys(filterState[cateogrieFilter]).filter(choice =>
-        this.filterForm.get(cateogrieFilter.concat('.', choice)).value !== false).map(choice =>
-            subReq = subReq.concat(choice, ','));
-      subReq = subReq.concat('?');
-      req = req.concat(subReq);
+  changed(event , filter: FilterCategory) {
+    if (event.source instanceof MatCheckbox) {
+        this.filterCategories.filter(x => x === filter)[0].
+              choices.filter(x => x.key === event.source.id)[0].checked = event.checked;
+    } else {
+      this.filterCategories.filter(x => x === filter)[0].inputValue = event.value;
+    }
+    let req = '?';
+    this.filterCategories.forEach(category => {
+      req = req + '&' + category.key + '=';
+        if (category.controlType === 'check-box') {
+          category.choices.filter(choice => choice.checked).map(choice => req = req + choice.value + ',');
+        } else {
+          req = req + category.inputValue;
+        }
       });
-
-      return(req);
+    this.req.emit(req);
   }
 
+  formatLabel(value: number | null) {
+    if (!value) {
+      return 0;
+    }
+
+    return value;
+  }
 }

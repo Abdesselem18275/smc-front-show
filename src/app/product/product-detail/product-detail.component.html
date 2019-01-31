@@ -1,58 +1,70 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
-<aside *ngIf="product.images.length !== 0" class="carousel">
-  <mat-icon>expand_less</mat-icon>
-  <img  *ngFor="let image of product.images" [src]="image.content">
-  <mat-icon>expand_more</mat-icon>
-</aside>
+<section class="carousel">
+  <mat-icon>arrow_drop_up</mat-icon>
+   <div>
+  <img (click)="updateImage(image?.content)" [src]="image?.content" *ngFor ="let image of product?.images">
+   </div>
+  <mat-icon>arrow_drop_down</mat-icon>
+</section>
 <section class="image">
-<img [src]="product.thumbNail">
+<img [src]="selectedImage">
 </section>
 <section class="description">
-  <p class="mat-h2">{{product.designation}}</p>
-  <p class="mat-body-strong">{{product.material.designation}} - {{product.material.color}}</p>
+  <p class="mat-h2">{{product?.designation}}</p>
+  <p class="mat-body-strong">{{product?.exteriorMaterial.designation}} - {{product?.exteriorMaterial.color}}</p>
   <mat-divider></mat-divider>
   <p class="mat-body description__text">
-    {{product.description}}
+    {{product?.description}}
   </p>
   <mat-divider></mat-divider>
 </section>
-<section class="technical-description">
+<section  class="technical-description">
   <p class="mat-h2">Technical description</p>
   <mat-divider></mat-divider>
   <div class="technical-data-container">
 
+  <div  class="technical-description__col">
+    <p class="mat-h3">Material</p>
+    <p class="mat-body">Exterior coating : {{product?.exteriorMaterial.designation}}</p>
+    <p class="mat-body">Interior coating : {{product?.interiorMaterial.designation}}</p>
+
+   
+  </div>
+
   <div class="technical-description__col">
    <p class="mat-h3">Available variants</p>
-   <mat-radio-group color="primary">
-      <mat-radio-button class="mat-body" [value]="'Variant 1'">
-        Variant 1
+
+  
+   <mat-radio-group *ngIf="isReady" (change)="updateVariant($event)"  color="primary">
+      <mat-radio-button [checked]="variant.id === selectedVariant.id" color="primary" *ngFor="let variant of product?.variants" class="mat-body" [value]="variant.id">
+        {{variant?.designation}}
+
       </mat-radio-button>
-      <mat-radio-button class="mat-body" [value]="'Variant 2'">
-          Variant 2
-        </mat-radio-button>
-        <mat-radio-button class="mat-body" [value]="'Variant 2'">
-            Variant 3
-          </mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div class="technical-description__col">
    <p class="mat-h3">Dimensions</p>
-   <p class="mat-body">Height : 15cm</p>
-   <p class="mat-body">Diameter : 12cm</p>
-   <p class="mat-body">Thickness : 2mm</p>
-   <p class="mat-body">Capacity : 20l</p>
+   <p class="mat-body">Height : {{selectedVariant?.height}}cm</p>
+   <p class="mat-body">Diameter : {{selectedVariant?.diameter}}cm</p>
+   <p class="mat-body">Thickness : {{selectedVariant?.thickness}}mm</p>
+   <p class="mat-body">Capacity : {{selectedVariant?.capacity}}l</p>
    
   </div>
 
 
   <div class="technical-description__col">
     <p class="mat-h3">Components</p>
+    <p *ngFor="let component of selectedVariant?.components" class="mat-body">
+      {{component?.designation}}    {{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}
+    </p>
   </div>
   <mat-divider></mat-divider>
 </div>
 
 </section>
 <section class="related-product">
-  related product
+  
+  <p class="mat-h2">related product</p>
+  <mat-divider></mat-divider>
 </section>

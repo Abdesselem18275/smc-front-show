@@ -11,11 +11,10 @@ export class ProductListCompositComponent implements OnInit {
 @Input() productShort: ProductShort;
 mainImageUrl: string;
 isDetail: Boolean;
-displayedColumns: string[] = ['designation', 'height', 'width', 'capacity'];
-  constructor(private pds: ProductDataService) { }
+displayedColumns: string[] = ['reference', 'height', 'width', 'capacity'];
+  constructor() { }
 
   ngOnInit() {
-    console.warn(this.productShort);
     this.isDetail = false;
   }
   toggle() {

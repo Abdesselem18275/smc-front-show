@@ -6,7 +6,10 @@ mat-icon {
     font-size: 1em;
     margin-top : 0.2em;
     margin-left : 0.5em;
+
 }
+mat-icon:hover {
+    cursor: pointer;}
 
 
  h5 , h6  {
@@ -21,6 +24,10 @@ img
     max-width: 100%;
     border-bottom: inset;
     border-bottom-width: 0.15em;
+}
+img:hover
+{
+ cursor: pointer;
 }
 .product-box__variant-row
 {

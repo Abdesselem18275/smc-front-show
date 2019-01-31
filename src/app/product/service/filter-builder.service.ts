@@ -13,10 +13,14 @@ export class FilterBuilderService {
     const group = {};
     filterCategories.forEach(filterCategorie => {
       const subGroup = {};
+      if (filterCategorie.controlType === 'check-box') {
       filterCategorie.choices.forEach(choice => {
         subGroup[choice.key] = new FormControl(choice.value);
       });
-      group[filterCategorie.category] = new FormGroup(subGroup);
+      group[filterCategorie.key] = new FormGroup(subGroup);
+      } else {
+      group[filterCategorie.key] = new FormControl(filterCategorie.key);
+      }
     });
     console.log(new FormGroup(group));
     return new FormGroup(group);
