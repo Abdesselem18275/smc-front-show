@@ -18,13 +18,32 @@ mat-icon:hover {
     margin-bottom: 0.25em;
     padding-right : 0.5em;
 }
-
-img 
+.box__img__box--grid
 {
-    max-width: 100%;
+max-width: 100%;
+border-bottom: inset;
+border-bottom-width: 0.15em;
+}
+
+.box__img--box--list {
+    
     border-bottom: inset;
     border-bottom-width: 0.15em;
+    width:5em;
 }
+    
+
+.box--grid 
+{
+
+}
+.box--list {
+display: flex;
+flex-direction: row; 
+justify-content: flex-start;
+}
+
+
 img:hover
 {
  cursor: pointer;

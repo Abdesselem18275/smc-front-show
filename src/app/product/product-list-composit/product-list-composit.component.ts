@@ -1,24 +1,42 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { ProductShort } from '../model';
-import { ProductDataService } from '../service/product-data.service';
 
 @Component({
   selector: 'app-product-list-composit',
   templateUrl: './product-list-composit.component.html',
   styleUrls: ['./product-list-composit.component.scss']
 })
-export class ProductListCompositComponent implements OnInit {
+export class ProductListCompositComponent implements OnChanges, OnInit {
 @Input() productShort: ProductShort;
+@Input() isGrid: boolean;
 mainImageUrl: string;
 isDetail: Boolean;
 displayedColumns: string[] = ['reference', 'height', 'width', 'capacity'];
+currentClasses: {};
+imgClasses: {};
   constructor() { }
 
+  ngOnChanges() {
+    this.setCurrentClasses();
+  }
+
   ngOnInit() {
+    this.setCurrentClasses();
     this.isDetail = false;
   }
   toggle() {
     this.isDetail = !this.isDetail;
+  }
+
+  setCurrentClasses() {
+    this.currentClasses =  {
+      'box--grid': this.isGrid,
+      'box--list': !this.isGrid,
+    };
+    this.imgClasses =  {
+      'box__img--box--grid': this.isGrid,
+      'box__img--box--list': !this.isGrid,
+    };
   }
 
 }

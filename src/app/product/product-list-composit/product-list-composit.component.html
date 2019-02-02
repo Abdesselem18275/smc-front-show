@@ -1,4 +1,5 @@
-<img [routerLink]="['../', productShort.pk]" [src]="productShort?.thumbNail">
+<div [ngClass]="currentClasses">
+<img  [class.box__img__box--grid]="isGrid" [class.box__img__box--list]="!isGrid"[routerLink]="['../', productShort.pk]" [src]="productShort?.thumbNail">
 <h5>{{productShort.designation}}</h5>
 <div *ngIf="productShort.variants.length !== 0" class="content__image-container__product-box__sub-text">
     <h6>{{productShort.variants.length}} available variants</h6>
@@ -10,7 +11,7 @@
 <div *ngIf="isDetail">
    <table>
        <tr>
-           <th *ngFor="let element of displayedColumns" ><h6>{{element}}</h6></th>
+           <th *ngFor="let element of displayedColumns" ><h5>{{element}}</h5></th>
        </tr>
        <tr *ngFor="let variant of productShort.variants; let i = index" >
             <td> 
@@ -27,4 +28,5 @@
             </td>
        </tr>
    </table>
+</div>
 </div>

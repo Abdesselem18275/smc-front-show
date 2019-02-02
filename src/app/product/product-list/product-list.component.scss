@@ -12,6 +12,11 @@
 }
 
 
+mat-icon--active {
+   background-color: black;
+   width : 1em;
+}
+
 app-product-breadcrumb {
     grid-area: breadcrumb;
 
@@ -46,12 +51,16 @@ app-product-breadcrumb {
     flex: 1 1 auto;
 }
 
-.content__image-container {
+.content__image-container--grid {
     display: flex;
     flex-wrap : wrap;
     padding-left : 1%;
 }
-
+.content__image-container--list {
+    display: flex;
+    flex-direction: column;
+    padding-left : 1%;
+}
 .content__image-container__product-box {
     margin-right : 1%;
     margin-bottom : 1%;

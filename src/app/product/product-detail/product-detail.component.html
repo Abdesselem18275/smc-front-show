@@ -55,9 +55,10 @@
 
   <div class="technical-description__col">
     <p class="mat-h3">Components</p>
-    <p *ngFor="let component of selectedVariant?.components" class="mat-body">
-      {{component?.designation}}    {{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}
-    </p>
+    <div *ngFor="let component of selectedVariant?.components" class="mat-body">
+      <p>{{component?.designation}}</p>
+      <p>{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
+    </div>
   </div>
   <mat-divider></mat-divider>
 </div>

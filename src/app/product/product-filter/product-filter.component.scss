@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import '../../../app-themes.scss';
+@import "src/styles.scss";
 
 :host {
     padding : 0 0.5em 0 1em;
@@ -13,9 +14,13 @@ form * {
 {
     color : mat-color($app-primary);
     font-weight: bolder;
+    border-bottom: thin solid $color-deep-grey;
 }
 
 .form__group
 {
     margin-bottom: 1em;
+}
+.caption {
+    font-weight: 500;
 }

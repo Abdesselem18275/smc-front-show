@@ -170,6 +170,28 @@ export class LargeImage {
 
 }
 
+export class Category {
+    designation: string;
+    parentCategory: Category;
+    isRoot: boolean;
+    isLeaf: boolean;
+    children: Category[];
+
+    constructor(options: {
+        designation?: string,
+        parentCategory?: Category,
+        isRoot?: boolean,
+        isLeaf?: boolean,
+        children?: Category[] } = {}) {
+        this.designation = options.designation || '';
+        this.parentCategory = options.parentCategory || new Category({});
+        this.isRoot = options.isRoot || false;
+        this.isLeaf = options.isLeaf || false;
+        this.children = options.children || [];
+    }
+
+}
+
 
 
 

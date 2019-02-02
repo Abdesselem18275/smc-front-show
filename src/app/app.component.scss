@@ -34,10 +34,8 @@
     margin-top: auto ; 
     margin-bottom: auto;
     color: rgb(92,92,88);
-    span:hover {
-        border-bottom: solid;
-        cursor: pointer;
-    }
+    display : flex;
+
 }
 
 
@@ -62,4 +60,17 @@
 .nav-bar__logo--text {
     font-family: 'Anton', sans-serif;  
     font-size: 2.5em;
+}
+
+.menu__sub-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    background-color: rgb(244,244,244);
+    width : 40%;
+}
+.menu__sub-menu__tab:hover {
+    border-bottom: solid thin $color-deep-grey;;
+    cursor : pointer;
 }

@@ -16,6 +16,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatRippleModule} from '@angular/material/core';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -28,12 +32,13 @@ import {MatSliderModule} from '@angular/material/slider';
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
-            MatTableModule, MatRadioModule, MatSliderModule],
+            MatTableModule, MatRadioModule, MatSliderModule, MatRippleModule,
+            MatExpansionModule, BrowserAnimationsModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule,
-             MatSliderModule],
+             MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule],
 })
 export class MaterialModule {}
