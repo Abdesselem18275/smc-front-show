@@ -6,13 +6,11 @@ import { Category } from '../model';
   templateUrl: './product-menu-item.component.html',
   styleUrls: ['./product-menu-item.component.scss']
 })
-export class ProductMenuItemComponent implements OnInit {
+export class ProductMenuItemComponent  {
   @Input() categories: Category[];
   @ViewChild('childMenu') public childMenu;
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

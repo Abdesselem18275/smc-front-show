@@ -4,7 +4,6 @@ import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
 import { MatCheckbox } from '@angular/material';
-import { ValueTransformer } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -25,7 +24,6 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit() {
     this.ready = false;
     this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
-        console.warn(this.filterCategories);
         this.filterForm = this.fbs.toFormGroup(this.filterCategories);
         this.ready = true;
       }));

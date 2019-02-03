@@ -10,16 +10,16 @@
    <!-- <div class="nav-bar__logo--big"><mat-icon class="float-left" inline ="True" svgIcon='Logo'></mat-icon></div> -->
    <div class="nav-bar__logo--text">SMC</div>
    <div class="mat-subheading-2 nav-bar__nav-tab">
-     <div><button mat-button (mouseover)="toggleMenu(true)" [routerLink]="['product/list']" class="mat-margin-gutter--right--16">PRODUCTS</button>
+     <div><button mat-button (mouseover)="toggleMenu(true)"  class="mat-margin-gutter--right--16">PRODUCTS</button>
       <div class="mat-elevation-z1 menu__sub-menu" (mouseleave)="toggleMenu(false)" (mouseenter)="toggleMenu(true)" *ngIf="isMenuActive">
         <div  *ngFor="let rootCat of rootCategories">
-          <p matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
-          <p matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
+          <p [routerLink]="['/product/list']" [queryParams]="{category: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
+          <p [routerLink]="['/product/list']" [queryParams]="{category: childCat.designation}" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
               {{childCat.designation | lowercase}}
           </p>
-          
+
         </div>
-        
+
       </div>
      </div>
      <button mat-button class="mat-margin-gutter--right--16">GIFTS</button>
@@ -28,7 +28,24 @@
      <button mat-button class="mat-margin-gutter--right--16">CONTACT US</button>
    </div>
    <div>
-   <mat-icon  class="nav-bar__menu-icon" [matMenuTriggerFor]="menu.childMenu">menu</mat-icon>
+   <mat-icon  class="nav-bar__menu-icon" [matMenuTriggerFor]="mainMenu">menu</mat-icon>
+   <mat-menu #mainMenu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item color="primary" [matMenuTriggerFor]="menu.childMenu">
+          <span>PRODUCTS</span>
+      </button>
+      <button mat-menu-item color="primary">
+          <span>GIFTS</span>
+      </button>
+      <button mat-menu-item color="primary">
+          <span>INSPIRATION</span>
+      </button>
+      <button mat-menu-item color="primary">
+          <span>ABOUT US</span>
+      </button>
+      <button mat-menu-item color="primary">
+          <span>CONTACT US</span>
+      </button>
+   </mat-menu>
    <app-product-menu-item #menu [categories]="rootCategories"> </app-product-menu-item>
   </div>
    <mat-icon class="nav-bar__search-icon" matRipple>search</mat-icon>

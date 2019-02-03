@@ -29,13 +29,11 @@ export class AppComponent implements OnInit {
     this.pds.get_elements({model: 'categorie'}).subscribe(
       (categories: Category[]) => {this.categories = categories;
                                    this.rootCategories = this.categories.filter(category => category.isRoot);
-                                    console.warn(this.rootCategories);
       }
     );
   }
   toggleMenu(sate) {
     this.isMenuActive = sate;
-    console.warn(sate);
   }
 
 }

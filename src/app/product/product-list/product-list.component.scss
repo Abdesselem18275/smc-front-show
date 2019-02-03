@@ -70,7 +70,7 @@ app-product-breadcrumb {
 @media only screen and (max-width:960px) {
 
     :host {
-        padding:  0 2em 0 2em;
+        padding:  0 1em 0 1em;
         display : grid ;
         grid-template-columns : 1fr 4fr;
         grid-row-gap: 1em;
@@ -88,7 +88,6 @@ app-product-breadcrumb {
         flex-direction: column;
         padding-left : 1%;
     }
-
     .content__image-container__product-box {
         margin-right : 1%;
         margin-bottom : 1%;
