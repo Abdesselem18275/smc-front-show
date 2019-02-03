@@ -14,6 +14,8 @@ import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductListCompositComponent } from './product-list-composit/product-list-composit.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
+import { ProductMenuItemComponent } from './product-menu-item/product-menu-item.component';
+
 
 @NgModule({
   imports: [
@@ -22,8 +24,9 @@ import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcr
     ReactiveFormsModule,
     ProductRoutingModule,
   ],
-  declarations: [ProductComponent , ProductHomeComponent,ProductListComponent, ProductFilterComponent, 
-                 ProductListCompositComponent, ProductDetailComponent, ProductBreadcrumbComponent],
-  providers:  [FilterBuilderService, DataInjectablesService]
+  declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
+                 ProductListCompositComponent, ProductDetailComponent, ProductBreadcrumbComponent, ProductMenuItemComponent],
+  providers:  [FilterBuilderService, DataInjectablesService],
+  exports : [ProductMenuItemComponent]
 })
 export class ProductModule { }

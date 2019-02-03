@@ -27,8 +27,19 @@
      <button mat-button class="mat-margin-gutter--right--16">ABOUT US</button>
      <button mat-button class="mat-margin-gutter--right--16">CONTACT US</button>
    </div>
-   <mat-icon class="nav-bar__menu-icon">menu</mat-icon>
-   <mat-icon matRipple>search</mat-icon>
+   <mat-icon  class="nav-bar__menu-icon" [matMenuTriggerFor]="menu.childMenu">menu</mat-icon>
+   <app-product-menu-item #menu [categories]="rootCategories"> </app-product-menu-item>
+    <!-- <mat-menu #menu="matMenu">
+      <button *ngFor="let rootCat of rootCategories"  mat-menu-item [matMenuTriggerFor]="rootCat">{{rootCat.designation}}</button>
+    </mat-menu>
+    <mat-menu *ngFor="let rootCat_1 of rootCategories" parentMenu="menu">
+      <button *ngFor="let child of rootCat_1.children"  mat-menu-item >{{child.designation}}</button>
+    </mat-menu> -->
+
+
+
+
+   <mat-icon class="nav-bar__search-icon" matRipple>search</mat-icon>
   </nav>
 </header>
 <router-outlet></router-outlet>
