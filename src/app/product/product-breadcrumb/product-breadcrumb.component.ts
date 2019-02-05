@@ -42,3 +42,5 @@ export class ProductBreadcrumbComponent implements OnInit {
     return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation ));
   }
 
+}
+
