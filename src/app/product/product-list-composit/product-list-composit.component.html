@@ -1,29 +1,30 @@
 <div [ngClass]="currentClasses">
-<img  [class.box__img__box--grid]="isGrid" [class.box__img__box--list]="!isGrid"[routerLink]="['../', productShort.pk]" [src]="productShort?.thumbNail">
-<h5>{{productShort.designation}}</h5>
+<img  [ngClass]="imgClasses" [routerLink]="['../', productShort.pk]" [src]="productShort?.thumbNail">
+<h4>{{productShort.designation}}</h4>
 <div *ngIf="productShort.variants.length !== 0" class="content__image-container__product-box__sub-text">
-    <h6>{{productShort.variants.length}} available variants</h6>
+    <h5>{{productShort.variants.length}} available variants</h5>
     <mat-icon *ngIf="!isDetail" (click)="toggle()">add_circle</mat-icon>
     <mat-icon *ngIf="isDetail" (click)="toggle()">remove_circle</mat-icon>
 
-</div> 
+</div>
 
 <div *ngIf="isDetail">
+  <mat-divider></mat-divider>
    <table>
        <tr>
            <th *ngFor="let element of displayedColumns" ><h5>{{element}}</h5></th>
        </tr>
        <tr *ngFor="let variant of productShort.variants; let i = index" >
-            <td> 
+            <td>
                <h6>{{variant.reference || 'AAA23BG85'}}</h6>
             </td>
-            <td> 
+            <td>
                 <h6>{{variant.height}}</h6>
             </td>
-            <td> 
+            <td>
                 <h6>{{variant.thickness}}</h6>
             </td>
-            <td> 
+            <td>
                 <h6>{{variant.capacity}}</h6>
             </td>
        </tr>

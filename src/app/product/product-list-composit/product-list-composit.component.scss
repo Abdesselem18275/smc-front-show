@@ -9,39 +9,40 @@ mat-icon {
 
 }
 mat-icon:hover {
-    cursor: pointer;}
+  cursor: pointer;}
 
 
- h5 , h6  {
-    font-weight: bold;
-    padding-left : 0.5em;
-    margin-bottom: 0.25em;
-    padding-right : 0.5em;
+ h5 , h6 ,h4  {
+  font-weight: bold;
+  padding-left : 0.5em;
+  margin-bottom: 0.25em;
+  padding-right : 0.5em;
 }
-.box__img__box--grid
+
+.box--grid {
+
+}
+.box--list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 20%;
+}
+
+.img-box--grid
 {
 max-width: 100%;
 border-bottom: inset;
 border-bottom-width: 0.15em;
 }
 
-.box__img--box--list {
-    
+.img-box--list {
+
     border-bottom: inset;
     border-bottom-width: 0.15em;
-    width:5em;
+    height: 10em;
 }
-    
 
-.box--grid 
-{
-
-}
-.box--list {
-display: flex;
-flex-direction: row; 
-justify-content: flex-start;
-}
 table {
     width : 100%;
 }

@@ -34,8 +34,8 @@ imgClasses: {};
       'box--list': !this.isGrid,
     };
     this.imgClasses =  {
-      'box__img--box--grid': this.isGrid,
-      'box__img--box--list': !this.isGrid,
+      'img-box--grid': this.isGrid,
+      'img-box--list': !this.isGrid,
     };
   }
 

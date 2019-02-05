@@ -2,23 +2,20 @@
 <app-product-filter (req)=getRequest($event) class="mat-elevation-z1 filter"></app-product-filter>
 
 
-<section class="mat-typography mat-elevation-z1 content"> 
-    <div class="mat-subheading-2 content__meta-bar"> 
+<section class="mat-typography mat-elevation-z1 content">
+    <div class="mat-subheading-2 content__meta-bar">
       <span>{{(productShorts$ | async)?.length}} selected products</span>
       <span class="content__meta-bar--spacer"></span>
-      <mat-icon  >list</mat-icon>
+      <mat-icon (click)="setCurrentClasses(false)" >list</mat-icon>
       <mat-icon matRipple (click)="setCurrentClasses(true)">view_comfy</mat-icon>
     </div>
     <div [ngClass]="currentClasses">
 
-        <article  class="mat-elevation-z1 content__image-container__product-box" *ngFor="let productShort of productShorts$ | async">
+        <article  [ngClass]="boxClasses" class="mat-elevation-z1" *ngFor="let productShort of productShorts$ | async">
             <app-product-list-composit [isGrid]="isGrid" [productShort]="productShort">
 
             </app-product-list-composit>
-        </article>       
-
- 
-
+        </article>
     </div>
-    
+
 </section>

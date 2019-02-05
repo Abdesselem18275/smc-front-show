@@ -1,7 +1,7 @@
 <section class="breadcrumb">
     <span [routerLink]="['/product/list']" >PRODUCTS |</span>
     <span [routerLink]="['/product/list']" [queryParams]="{category: item}" *ngFor="let item of items.reverse()">
-         {{item | uppercase}}&nbsp;|
+         {{item | uppercase}}&nbsp;
     </span>
 
 </section>

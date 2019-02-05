@@ -10,16 +10,14 @@
    <!-- <div class="nav-bar__logo--big"><mat-icon class="float-left" inline ="True" svgIcon='Logo'></mat-icon></div> -->
    <div class="nav-bar__logo--text">SMC</div>
    <div class="mat-subheading-2 nav-bar__nav-tab">
-     <div><button mat-button (mouseover)="toggleMenu(true)"  class="mat-margin-gutter--right--16">PRODUCTS</button>
+     <div (mouseenter)="toggleMenu(true)" ><button mat-button  class="mat-margin-gutter--right--16">PRODUCTS</button>
       <div class="mat-elevation-z1 menu__sub-menu" (mouseleave)="toggleMenu(false)" (mouseenter)="toggleMenu(true)" *ngIf="isMenuActive">
         <div  *ngFor="let rootCat of rootCategories">
           <p [routerLink]="['/product/list']" [queryParams]="{category: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
           <p [routerLink]="['/product/list']" [queryParams]="{category: childCat.designation}" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
               {{childCat.designation | lowercase}}
           </p>
-
         </div>
-
       </div>
      </div>
      <button mat-button class="mat-margin-gutter--right--16">GIFTS</button>

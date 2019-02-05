@@ -32,8 +32,9 @@ export class AppComponent implements OnInit {
       }
     );
   }
-  toggleMenu(sate) {
-    this.isMenuActive = sate;
+  toggleMenu(state) {
+    this.isMenuActive = state;
+    console.warn(this.isMenuActive);
   }
 
 }
