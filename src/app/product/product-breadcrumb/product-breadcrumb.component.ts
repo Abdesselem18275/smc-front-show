@@ -43,4 +43,3 @@ export class ProductBreadcrumbComponent implements OnInit {
   }
 
 }
-

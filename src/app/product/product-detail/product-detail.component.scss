@@ -1,10 +1,11 @@
 @import "src/styles.scss";
+@import "src/app-themes.scss";
 
 :host {
     padding:  0 4em 0 4em;
     display : grid ;
     grid-template-columns : 1fr 5fr 5fr;
-    grid-row-gap: 1em;
+    grid-row-gap: 2em;
     grid-column-gap: 1em;
     grid-template-areas :
     "breadcrumb_area breadcrumb_area breadcrumb_area"
@@ -64,8 +65,8 @@ img {
     .mat-h3 {
         font-weight: 500;
     }
-    .mat-body{
-        font-weight: 200;
+    .mat-body-2{
+        font-weight: 500;
     }
     mat-radio-group {
         display: flex;
@@ -73,6 +74,9 @@ img {
         mat-radio-button{
             margin-bottom: 1em;
         }
+    }
+    .technical-description__col__header {
+      text-decoration: underline;
     }
 
 }
@@ -83,11 +87,18 @@ img {
 
 .description {
     grid-area: description_area;
+
+    .description__text {
+      overflow: hidden;
+      font-style:italic;
+     }
+     .description__color--grey {
+      color: $color-text-grey;
+      font-weight: 500;
+
+     }
 }
-.description__text {
-    overflow: hidden;
-    font-style:italic;
-}
+
 
 @media only screen and (max-width:960px) {
 
@@ -103,6 +114,6 @@ img {
     "description_area description_area description_area"
     "technical-description_area technical-description_area technical-description_area"
     "related-product_area related-product_area related-product_area";
-}
+  }
 }
 

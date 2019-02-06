@@ -24,35 +24,33 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit() {
     this.ready = false;
     this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
+      this.filterCategories.map(filter => filter.choices.map(choice => choice.checked = true));
         this.filterForm = this.fbs.toFormGroup(this.filterCategories);
         this.ready = true;
       }));
   }
 
   changed(event , filter: FilterCategory) {
+
     if (event.source instanceof MatCheckbox) {
-        this.filterCategories.filter(x => x === filter)[0].
-              choices.filter(x => x.key === event.source.id)[0].checked = event.checked;
+      this.filterCategories.filter(x => x === filter)[0].
+      choices.filter(x => x.key === event.source.id)[0].checked = event.checked;
     } else {
       this.filterCategories.filter(x => x === filter)[0].inputValue = event.value;
     }
-    let req = '?';
+    let req = '';
     this.filterCategories.forEach(category => {
       req = req + '&' + category.key + '=';
-        if (category.controlType === 'check-box') {
-          category.choices.filter(choice => choice.checked).map(choice => req = req + choice.value + ',');
-        } else {
-          req = req + category.inputValue;
+      if (category.controlType === 'check-box') {
+        console.warn(category.choices);
+        category.choices.filter(choice => choice.checked).map(choice => {
+          req = req + choice.value + ',';
+        });
+        }  else {
+            req = req + category.inputValue;
         }
       });
     this.req.emit(req);
   }
 
-  formatLabel(value: number | null) {
-    if (!value) {
-      return 0;
-    }
-
-    return value;
-  }
 }

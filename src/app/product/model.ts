@@ -40,7 +40,7 @@ export class Choice {
         checked?: boolean; } = {}) {
         this.key = options.key || '';
         this.value = options.value || '';
-        this.checked = options.checked || true;
+        this.checked = true;
     }
 
 }

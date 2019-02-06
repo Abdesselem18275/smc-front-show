@@ -33,11 +33,11 @@ export class ProductListComponent implements OnInit {
       });
 }
 
-getRequest(event) {
-
-  event = event.concat(this.CurrentParam);
-  this.pds.get_elements({model: 'product', param_key: event}).pipe(
-    products => this.productShorts$ = products);
+getRequest(event: string) {
+  event = '?'.concat(event);
+  event = event.concat(this.CurrentParam.replace('?', '&'));
+  this.pds.get_elements({model: 'product', param_key: event})
+                       .pipe(products => this.productShorts$ = products);
 }
 gridToggle() {
   this.isGrid = true;

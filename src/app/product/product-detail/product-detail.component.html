@@ -11,7 +11,7 @@
 </section>
 <section class="description">
   <p class="mat-h2">{{product?.designation}}</p>
-  <p class="mat-body-strong">{{product?.exteriorMaterial.designation}} - {{product?.exteriorMaterial.color}}</p>
+  <p class="mat-body-strong description__color--grey">{{product?.exteriorMaterial.designation}} - {{product?.exteriorMaterial.color}}</p>
   <mat-divider></mat-divider>
   <p class="mat-body description__text">
     {{product?.description}}
@@ -22,50 +22,50 @@
   <p class="mat-h2">Technical description</p>
   <mat-divider></mat-divider>
   <div class="technical-data-container">
+  <div  class="technical-description__col ">
+    <p class="mat-h3 technical-description__col__header">Material</p>
+    <p class="mat-body-2">Exterior coating : {{product?.exteriorMaterial.designation}}</p>
+    <p class="mat-body-2">Interior coating : {{product?.interiorMaterial.designation}}</p>
 
-  <div  class="technical-description__col">
-    <p class="mat-h3">Material</p>
-    <p class="mat-body">Exterior coating : {{product?.exteriorMaterial.designation}}</p>
-    <p class="mat-body">Interior coating : {{product?.interiorMaterial.designation}}</p>
 
-   
   </div>
 
   <div class="technical-description__col">
-   <p class="mat-h3">Available variants</p>
+   <p class="mat-h3 technical-description__col__header">Available variants</p>
 
-  
+
    <mat-radio-group *ngIf="isReady" (change)="updateVariant($event)"  color="primary">
-      <mat-radio-button [checked]="variant.id === selectedVariant.id" color="primary" *ngFor="let variant of product?.variants" class="mat-body" [value]="variant.id">
-        {{variant?.designation}}
+      <mat-radio-button  [checked]="variant.id === selectedVariant.id" color="primary" *ngFor="let variant of product?.variants" class="mat-body" [value]="variant.id">
+        <span class="mat-body-2">{{variant?.designation}}</span>
 
       </mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div class="technical-description__col">
-   <p class="mat-h3">Dimensions</p>
-   <p class="mat-body">Height : {{selectedVariant?.height}}cm</p>
-   <p class="mat-body">Diameter : {{selectedVariant?.diameter}}cm</p>
-   <p class="mat-body">Thickness : {{selectedVariant?.thickness}}mm</p>
-   <p class="mat-body">Capacity : {{selectedVariant?.capacity}}l</p>
-   
+   <p class="mat-h3 technical-description__col__header">Dimensions</p>
+   <p class="mat-body-2">Height : {{selectedVariant?.height}}cm</p>
+   <p class="mat-body-2">Diameter : {{selectedVariant?.diameter}}cm</p>
+   <p class="mat-body-2">Thickness : {{selectedVariant?.thickness}}mm</p>
+   <p class="mat-body-2">Capacity : {{selectedVariant?.capacity}}l</p>
+
   </div>
 
 
   <div class="technical-description__col">
-    <p class="mat-h3">Components</p>
+    <p class="mat-h3 technical-description__col__header">Components</p>
     <div *ngFor="let component of selectedVariant?.components" class="mat-body">
-      <p>{{component?.designation}}</p>
-      <p>{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
+      <p class="mat-body-2">{{component?.designation}}</p>
+      <p class="mat-caption">{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
     </div>
+
   </div>
-  <mat-divider></mat-divider>
+
 </div>
 
 </section>
 <section class="related-product">
-  
+
   <p class="mat-h2">related product</p>
   <mat-divider></mat-divider>
 </section>
