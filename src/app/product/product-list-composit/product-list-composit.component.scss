@@ -1,27 +1,22 @@
+@import "src/app-themes.scss";
+@import "src/styles.scss";
+
+
 .content__image-container__product-box__sub-text {
     display: flex;
 }
 
-mat-icon {
-    font-size: 1em;
-    margin-top : 0.2em;
-    margin-left : 0.5em;
-
-}
-mat-icon:hover {
-  cursor: pointer;}
-
-
- h5 , h6 ,h4  {
+ h4  {
   font-weight: bold;
   padding-left : 0.5em;
   margin-bottom: 0.25em;
   padding-right : 0.5em;
 }
-
-.box--grid {
-
+h5 {
+   color: $color-text-grey;
+   font-weight: 500;
 }
+
 .box--list {
   display: flex;
   flex-direction: row;
@@ -45,15 +40,55 @@ border-bottom-width: 0.15em;
 
 table {
     width : 100%;
+    border: 0;
+    border-collapse: collapse;
+
+    th {
+        background-color: black;
+        color : white;
+        text-align: center;
+
+
+        h6 {
+            font-weight: 500;
+            margin-bottom: 0em;
+
+        }
+        h5 {
+           font-weight: 700;
+           margin: 0;
+           padding: 0;
+        }
+    }
+    tr:nth-child(2n+1) {
+        background-color: $color-grey;
+    }
+    td {
+      text-align: center;
+      color: black;
+    }
+
+
 }
+.mat-expansion-panel-header
+{
+    padding :0 0.5em 0 0.5em;
+}
+
+
+  .mat-expansion-panel-body {
+    padding: 0;
+}
+
+
 
 img:hover
 {
  cursor: pointer;
 }
 .product-box__variant-row
-{
+   {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+   }

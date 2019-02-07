@@ -6,7 +6,7 @@
     <div class="mat-subheading-2 content__meta-bar">
       <span>{{(productShorts$ | async)?.length}} selected products</span>
       <span class="content__meta-bar--spacer"></span>
-      <mat-icon (click)="setCurrentClasses(false)" >list</mat-icon>
+      <mat-icon matRipple >list</mat-icon>
       <mat-icon matRipple (click)="setCurrentClasses(true)">view_comfy</mat-icon>
     </div>
     <div [ngClass]="currentClasses">

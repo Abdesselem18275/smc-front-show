@@ -4,13 +4,13 @@
 :host {
     padding:  0 4em 0 4em;
     display : grid ;
-    grid-template-columns : 1fr 5fr 5fr;
+    grid-template-columns : 1fr 6fr 5fr;
     grid-row-gap: 2em;
     grid-column-gap: 1em;
     grid-template-areas :
     "breadcrumb_area breadcrumb_area breadcrumb_area"
     "carousel_area image_area  description_area"
-    "technical-description_area technical-description_area technical-description_area"
+    "technical-description_area technical-description_area feature_area"
     "related-product_area related-product_area related-product_area";
 }
 
@@ -104,8 +104,17 @@ img {
 
   :host {
     padding:  0 1em 0 1em;
-    display : flex;
-    flex-direction: column;
+    display : grid ;
+    grid-template-columns : 1fr;
+    grid-row-gap: 2em;
+    grid-column-gap: 1em;
+    grid-template-areas :
+    "breadcrumb_area "
+    "image_area"
+    "description_area"
+    "feature_area"
+    "technical-description_area"
+    "related-product_area";
 }
 .carousel {
   display: none;
@@ -114,4 +123,51 @@ img {
   display: flex;
   flex-direction: column;
 }
+}
+
+
+table {
+
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+
+
+  th {
+      background-color: black;
+      color : white;
+      text-align: center;
+
+
+      h6 {
+          font-weight: 500;
+
+      }
+      h5 {
+        font-weight: 500;
+      }
+  }
+  tr:nth-child(2n+1) {
+      background-color: $color-grey;
+  }
+  td {
+    text-align: center;
+    color: black;
+  }
+
+
+}
+.features
+{
+  grid-area: feature_area;
+  display: flex;
+  justify-content: space-around;
+  mat-icon{
+    min-height : 2em;
+    width: 2.5em;
+
+   }
+  div  {
+    align-content: center;
+  }
 }
