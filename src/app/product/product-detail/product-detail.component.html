@@ -78,7 +78,7 @@
   </mat-table>
 
 
-  <mat-accordion>
+  <mat-accordion multi="true">
     <mat-expansion-panel class="mat-gutter--bottom--16" *ngFor="let variant of product?.variants">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -90,18 +90,25 @@
         </mat-expansion-panel-header>
         <mat-divider></mat-divider>
     <div class="exp-panel__content">
+      <div>
+        <h3>Dimensions</h3>
      <ul>
         <li class="mat-body-2">Height : {{variant?.height}}cm</li>
         <li class="mat-body-2">Diameter : {{variant?.diameter}}cm</li>
         <li class="mat-body-2">Thickness : {{variant?.thickness}}mm</li>
         <li class="mat-body-2">Capacity : {{variant?.capacity}}l</li>
      </ul>
+     <mat-divider class="components-detail__divider--hide"></mat-divider>
+    </div>
+    <div>
+        <h3>Components</h3>
      <ul>
         <li *ngFor="let component of variant?.components" class="mat-body">
             <p class="mat-body-2">{{component?.designation}}</p>
             <p class="mat-caption">{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
         </li>
       </ul>
+    </div>
     </div>
     </mat-expansion-panel>
 
