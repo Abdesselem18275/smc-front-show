@@ -62,13 +62,12 @@
     <ng-container matColumnDef="components">
       <mat-header-cell *matHeaderCellDef> <h3>Components</h3> </mat-header-cell>
       <mat-cell *matCellDef="let element">
-          <div class="mat-body">
-              <div *ngFor="let component of element.components">
-                <span class="mat-body-2">{{component.designation}}</span>
-                <span class="mat-gutter--bottom--8 mat-caption">{{component.measure_type}} : {{component.measure}} -- material : {{component.material.designation}}</span>
-
-              </div>
-          </div>
+          <ul>
+              <li *ngFor="let component of element.components" class="mat-body">
+                  <p class="mat-body-2">{{component?.designation}}</p>
+                  <p class="mat-caption">{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
+              </li>
+            </ul>
       </mat-cell>
     </ng-container>
 
@@ -77,6 +76,36 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row class="mat-body" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+
+  <mat-accordion>
+    <mat-expansion-panel class="mat-gutter--bottom--16" *ngFor="let variant of product?.variants">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{variant.designation}}
+          </mat-panel-title>
+          <mat-panel-description>
+              {{variant.reference}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+    <div class="exp-panel__content">
+     <ul>
+        <li class="mat-body-2">Height : {{variant?.height}}cm</li>
+        <li class="mat-body-2">Diameter : {{variant?.diameter}}cm</li>
+        <li class="mat-body-2">Thickness : {{variant?.thickness}}mm</li>
+        <li class="mat-body-2">Capacity : {{variant?.capacity}}l</li>
+     </ul>
+     <ul>
+        <li *ngFor="let component of variant?.components" class="mat-body">
+            <p class="mat-body-2">{{component?.designation}}</p>
+            <p class="mat-caption">{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
+        </li>
+      </ul>
+    </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
 
 
 </section>

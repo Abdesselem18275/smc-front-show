@@ -24,7 +24,7 @@
     flex-direction:row;
     justify-content: space-between;
     align-items: center;
-    padding : 0em 2em 0 2em ;
+    padding : 0em 1em 0 1em ;
         img {
             flex: 0 0 15%;
             max-width: 15%;
@@ -77,6 +77,15 @@ img {
         display: flex;
         flex-direction: column;
       }
+    }
+
+    mat-expansion-panel {
+     .exp-panel__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+     }
+
     }
 
 
@@ -133,7 +142,14 @@ img {
 
 }
 
+@media only screen and (min-width:840px)
+{
+  mat-accordion {
+    display: none;
 
+  }
+
+}
 
 @media only screen and (max-width:960px) {
 
@@ -157,4 +173,28 @@ img {
   display: flex;
   flex-direction: column;
 }
+}
+
+
+@media only screen and (max-width:840px) {
+
+
+  mat-table {
+    display: none;
+  }
+}
+
+  @media only screen and (max-width:600px) {
+
+    .features
+    {
+    mat-icon{
+      min-height : 1.5em;
+      width: 3em;
+    }
+    figcaption {
+      font-size: 0.75em;
+     }
+   }
+
 }
