@@ -5,12 +5,13 @@
     padding:  0 4em 0 4em;
     display : grid ;
     grid-template-columns : 1fr 6fr 5fr;
-    grid-row-gap: 2em;
+    grid-row-gap:3em;
     grid-column-gap: 1em;
     grid-template-areas :
     "breadcrumb_area breadcrumb_area breadcrumb_area"
-    "carousel_area image_area  description_area"
-    "technical-description_area technical-description_area feature_area"
+    "image_area image_area  description_area"
+    "carousel_area carousel_area  feature_area"
+    "technical-description_area technical-description_area technical-description_area"
     "related-product_area related-product_area related-product_area";
 }
 
@@ -20,12 +21,12 @@
 .carousel {
     grid-area: carousel_area;
     display: flex;
-    flex-direction:column;
+    flex-direction:row;
     justify-content: space-between;
     align-items: center;
     div {
         display: flex;
-        flex-direction:column;
+        flex-direction:row;
         justify-content: flex-start;
         flex-grow: 1;
         img {
@@ -58,31 +59,30 @@ img {
 
 .technical-description {
     grid-area: technical-description_area;
-    .technical-data-container {
-        display: flex;
-        justify-content:space-around;
-    }
-    .mat-h3 {
+
+    h3 {
         font-weight: 500;
     }
     .mat-body-2{
         font-weight: 500;
     }
-    mat-radio-group {
-        display: flex;
-        flex-direction: column;
-        mat-radio-button{
-            margin-bottom: 1em;
-        }
+
+    .technical-description__cell--small
+    {
+      width : 2em;
     }
-    .technical-description__col__header {
-      text-decoration: underline;
+    table {
+      width : 100%;
     }
+
 
 }
 
 .related-product {
     grid-area: related-product_area;
+      .mat-h3 {
+
+      }
 }
 
 .description {
@@ -92,12 +92,43 @@ img {
       overflow: hidden;
       font-style:italic;
      }
-     .description__color--grey {
-      color: $color-text-grey;
-      font-weight: 500;
 
-     }
 }
+.description__color--grey {
+  color: $color-text-grey;
+  font-weight: 500;
+
+ }
+
+
+.features
+{
+  grid-area: feature_area;
+  display: flex;
+  justify-content: space-around;
+
+  figure {
+    margin : 0;
+    display: flex;
+    flex-flow: column;
+  }
+
+  mat-icon{
+    min-height : 2em;
+    width: 4em;
+    align-self: center;
+    color: rgb(70,70,70)
+   }
+
+   figcaption {
+    color: rgb(70,70,70)
+   }
+
+
+
+
+}
+
 
 
 @media only screen and (max-width:960px) {
@@ -123,51 +154,4 @@ img {
   display: flex;
   flex-direction: column;
 }
-}
-
-
-table {
-
-  width: 100%;
-  border: 0;
-  border-collapse: collapse;
-
-
-  th {
-      background-color: black;
-      color : white;
-      text-align: center;
-
-
-      h6 {
-          font-weight: 500;
-
-      }
-      h5 {
-        font-weight: 500;
-      }
-  }
-  tr:nth-child(2n+1) {
-      background-color: $color-grey;
-  }
-  td {
-    text-align: center;
-    color: black;
-  }
-
-
-}
-.features
-{
-  grid-area: feature_area;
-  display: flex;
-  justify-content: space-around;
-  mat-icon{
-    min-height : 2em;
-    width: 2.5em;
-
-   }
-  div  {
-    align-content: center;
-  }
 }

@@ -14,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
   selectedVariant: Variant;
   selectedImage: string;
   isReady: boolean;
-  displayedColumns: string[] = ['Reference' , 'Designation', 'Height', 'Thickness', 'Capacity' , 'diameter'];
+  displayedColumns: string[] = ['reference' , 'designation', 'height', 'capacity', 'thickness', 'diameter'];
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
 
   ngOnInit() {

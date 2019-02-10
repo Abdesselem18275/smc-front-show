@@ -1,10 +1,10 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
 <section class="carousel">
-  <mat-icon>arrow_drop_up</mat-icon>
+  <mat-icon>chevron_left</mat-icon>
    <div>
   <img (click)="updateImage(image?.content)" [src]="image?.content" *ngFor ="let image of product?.images">
    </div>
-  <mat-icon>arrow_drop_down</mat-icon>
+  <mat-icon>chevron_right</mat-icon>
 </section>
 <section class="image">
 <img [src]="selectedImage">
@@ -21,54 +21,72 @@
 </section>
 
 <section  class="technical-description">
+    <p class="mat-h2">TECHNICAL DETAILS</p>
+    <mat-divider></mat-divider>
+  <mat-table [dataSource]="product?.variants" >
 
-  <table class="mat-typography m0">
-    <tr>
-        <th class="v-center" *ngFor="let element of displayedColumns" ><h5 class="v-center">{{element | uppercase}}</h5></th>
-    </tr>
-    <tr *ngFor="let variant of product.variants; let i = index" >
-         <td>
-            <h5>{{variant.reference || 'AAA23B'}}</h5>
-         </td>
-         <td>
-          <h5>{{variant.reference || 'AAA23B'}}</h5>
-       </td>
-         <td>
-             <h5>{{variant.height}}</h5>
-         </td>
-         <td>
-             <h5>{{variant.thickness}}</h5>
-         </td>
-         <td>
-             <h5>{{variant.capacity}}</h5>
-         </td>
-         <td>
-          <h5>{{variant.diameter}}</h5>
-      </td>
-    </tr>
-</table>
+    <!-- Reference Column -->
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef> <h3>Reference</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.reference}} </mat-cell>
+    </ng-container>
+    <!-- Designation Column -->
+    <ng-container matColumnDef="designation">
+      <mat-header-cell  *matHeaderCellDef> <h3>Designation</h3> </mat-header-cell>
+      <mat-cell  *matCellDef="let element"> {{element.designation}} </mat-cell>
+    </ng-container>
+
+    <!-- Capacity Column -->
+    <ng-container matColumnDef="capacity">
+      <mat-header-cell *matHeaderCellDef> <h3>Capacity</h3> </mat-header-cell>
+      <mat-cell class="technical-description__cell--small" *matCellDef="let element"> {{element.capacity}} </mat-cell>
+    </ng-container>
+
+    <!-- Height Column -->
+    <ng-container matColumnDef="height">
+      <mat-header-cell *matHeaderCellDef> <h3>Height</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.height}} </mat-cell>
+    </ng-container>
+
+    <!-- Height Column -->
+    <ng-container matColumnDef="thickness">
+      <mat-header-cell *matHeaderCellDef> <h3>Thickness</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.thickness}} </mat-cell>
+    </ng-container>
+
+    <!-- Height Column -->
+    <ng-container matColumnDef="diameter">
+      <mat-header-cell *matHeaderCellDef> <h3>Diameter</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.diameter}} </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row class="mat-body" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
 
 </section>
 
 <section class="features mat-typography">
-     <div>
+  <figure >
     <mat-icon  inline ="True" svgIcon='Table_ware'></mat-icon>
-    <h6>Feat for cooking</h6>
-  </div>
-  <div>
+    <figcaption>feat for cooking</figcaption>
+  </figure>
+  <figure>
     <mat-icon  inline ="True" svgIcon='Cook_ware'></mat-icon>
-    <h6>Feat for Exterior</h6>
-  </div>
-  <div>
+    <figcaption>feat for exterior</figcaption>
+  </figure>
+  <figure>
     <mat-icon  inline ="True" svgIcon='Serve_ware'></mat-icon>
-    <h6>Professional wear</h6>
-  </div>
+    <figcaption>professional wear</figcaption>
+  </figure>
 
 </section>
 
 <section class="related-product">
 
-  <p class="mat-h2">related product</p>
+  <p class="mat-h2">SIMILAR PRODUCTS</p>
   <mat-divider></mat-divider>
 </section>

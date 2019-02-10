@@ -18,8 +18,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -33,12 +33,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatRadioModule, MatSliderModule, MatRippleModule,
-            MatExpansionModule, BrowserAnimationsModule],
+            MatExpansionModule, BrowserAnimationsModule, MatTooltipModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule,
-             MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule],
+             MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule,
+             MatTooltipModule],
 })
 export class MaterialModule {}
