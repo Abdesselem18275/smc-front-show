@@ -24,28 +24,18 @@
     flex-direction:row;
     justify-content: space-between;
     align-items: center;
-    div {
-        display: flex;
-        flex-direction:row;
-        justify-content: flex-start;
-        flex-grow: 1;
+    padding : 0em 2em 0 2em ;
         img {
-            width:100%;
-            padding: 0.5em 0 0.5em 0
+            flex: 0 0 15%;
+            max-width: 15%;
           }
         img:hover {
             cursor: pointer;
         }
-    }
 
-
-    mat-icon {
-        transform: scale(3);
-    }
-    mat-icon:hover {
-        cursor: pointer;
-    }
 }
+
+
 .image {
     grid-area: image_area;
 
@@ -71,8 +61,22 @@ img {
     {
       width : 2em;
     }
-    table {
-      width : 100%;
+    .mat-column-capacity,.mat-column-height ,.mat-column-thickness ,.mat-column-diameter {
+      flex :  0 0 10%;
+    }
+    .mat-column-reference {
+      flex :  0 0 15%;
+    }
+    .mat-column-designation {
+      flex :  0 0 20%;
+
+    }
+    .mat-column-components {
+      flex-grow: 1 ;
+      div {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
 
@@ -142,14 +146,13 @@ img {
     grid-template-areas :
     "breadcrumb_area "
     "image_area"
+    "carousel_area"
     "description_area"
     "feature_area"
     "technical-description_area"
     "related-product_area";
 }
-.carousel {
-  display: none;
-}
+
 .technical-data-container {
   display: flex;
   flex-direction: column;

@@ -1,10 +1,6 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
 <section class="carousel">
-  <mat-icon>chevron_left</mat-icon>
-   <div>
   <img (click)="updateImage(image?.content)" [src]="image?.content" *ngFor ="let image of product?.images">
-   </div>
-  <mat-icon>chevron_right</mat-icon>
 </section>
 <section class="image">
 <img [src]="selectedImage">
@@ -25,21 +21,23 @@
     <mat-divider></mat-divider>
   <mat-table [dataSource]="product?.variants" >
 
-    <!-- Reference Column -->
-    <ng-container matColumnDef="reference">
-      <mat-header-cell *matHeaderCellDef> <h3>Reference</h3> </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.reference}} </mat-cell>
-    </ng-container>
     <!-- Designation Column -->
     <ng-container matColumnDef="designation">
       <mat-header-cell  *matHeaderCellDef> <h3>Designation</h3> </mat-header-cell>
       <mat-cell  *matCellDef="let element"> {{element.designation}} </mat-cell>
     </ng-container>
 
+    <!-- Reference Column -->
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef> <h3>Reference</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.reference}} </mat-cell>
+    </ng-container>
+
+
     <!-- Capacity Column -->
     <ng-container matColumnDef="capacity">
       <mat-header-cell *matHeaderCellDef> <h3>Capacity</h3> </mat-header-cell>
-      <mat-cell class="technical-description__cell--small" *matCellDef="let element"> {{element.capacity}} </mat-cell>
+      <mat-cell  *matCellDef="let element"> {{element.capacity}} </mat-cell>
     </ng-container>
 
     <!-- Height Column -->
@@ -58,6 +56,20 @@
     <ng-container matColumnDef="diameter">
       <mat-header-cell *matHeaderCellDef> <h3>Diameter</h3> </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.diameter}} </mat-cell>
+    </ng-container>
+
+    <!-- Components Column -->
+    <ng-container matColumnDef="components">
+      <mat-header-cell *matHeaderCellDef> <h3>Components</h3> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <div class="mat-body">
+              <div *ngFor="let component of element.components">
+                <span class="mat-body-2">{{component.designation}}</span>
+                <span class="mat-gutter--bottom--8 mat-caption">{{component.measure_type}} : {{component.measure}} -- material : {{component.material.designation}}</span>
+
+              </div>
+          </div>
+      </mat-cell>
     </ng-container>
 
 
