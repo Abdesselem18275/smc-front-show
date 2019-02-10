@@ -77,17 +77,23 @@ export class ProductLong {
 export class ProductShort {
     pk: number;
     designation: string;
+    interiorMaterial: Material;
+    exteriorMaterial: Material;
     thumbNail: string;
     variants: Variant[];
 
     constructor(options: {
         pk?: number,
         designation?: string,
+        interiorMaterial?: Material;
+        exteriorMaterial?: Material;
         thumbNail?: string,
         variants?: Variant[]
                 } = {}) {
         this.pk = options.pk || -1;
         this.designation = options.designation || '';
+        this.interiorMaterial = options.interiorMaterial || new Material({});
+        this.exteriorMaterial = options.exteriorMaterial || new Material({});
         this.thumbNail = options.thumbNail || '';
         this.variants = options.variants || [];
     }

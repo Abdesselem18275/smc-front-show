@@ -9,8 +9,8 @@
     </span>
     <!-- Handle leaf node menu items -->
     <span *ngIf="!child.children || child.children.length === 0">
-      <button mat-menu-item [routerLink]="['/product/list']" [queryParams]="{category: child.designation}">
-          
+      <button mat-menu-item [routerLink]="['/product/list']" queryParamsHandling="merge" [queryParams]="{category: child.designation}">
+
         <span>{{child.designation | uppercase}}</span>
       </button>
     </span>

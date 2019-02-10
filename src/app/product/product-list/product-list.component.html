@@ -6,13 +6,12 @@
     <div class="mat-subheading-2 content__meta-bar">
       <span>{{(productShorts$ | async)?.length}} selected products</span>
       <span class="content__meta-bar--spacer"></span>
-      <mat-icon matRipple >list</mat-icon>
-      <mat-icon matRipple (click)="setCurrentClasses(true)">view_comfy</mat-icon>
+      <mat-icon matRipple >filter_list</mat-icon>
     </div>
     <div [ngClass]="currentClasses">
 
         <article  [ngClass]="boxClasses" class="mat-elevation-z1" *ngFor="let productShort of productShorts$ | async">
-            <app-product-list-composit [isGrid]="isGrid" [productShort]="productShort">
+            <app-product-list-composit  [productShort]="productShort">
 
             </app-product-list-composit>
         </article>

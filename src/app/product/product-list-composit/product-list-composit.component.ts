@@ -8,35 +8,13 @@ import { ProductShort } from '../model';
 })
 export class ProductListCompositComponent implements OnChanges, OnInit {
 @Input() productShort: ProductShort;
-@Input() isGrid: boolean;
 mainImageUrl: string;
-isDetail: Boolean;
-displayedColumns: string[] = ['reference', 'height', 'width', 'capacity'];
-currentClasses: {};
-imgClasses: {};
   constructor() { }
 
   ngOnChanges() {
-    this.setCurrentClasses();
   }
 
   ngOnInit() {
-    this.setCurrentClasses();
-    this.isDetail = false;
-  }
-  toggle() {
-    this.isDetail = !this.isDetail;
-  }
-
-  setCurrentClasses() {
-    this.currentClasses =  {
-      'box--grid': this.isGrid,
-      'box--list': !this.isGrid,
-    };
-    this.imgClasses =  {
-      'img-box--grid': this.isGrid,
-      'img-box--list': !this.isGrid,
-    };
   }
 
 }

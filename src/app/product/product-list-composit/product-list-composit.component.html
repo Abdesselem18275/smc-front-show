@@ -1,36 +1,11 @@
-<div [ngClass]="currentClasses">
-<img  [ngClass]="imgClasses" [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail">
-<h4>{{productShort.designation}}</h4>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
+<mat-card>
+  <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail">
+  <mat-card-header>
+    <mat-card-title>{{productShort.designation}}</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <div>
 
-      <mat-panel-title>
-        <h5>{{productShort.variants.length}} available variants</h5>
-      </mat-panel-title>
-
-    </mat-expansion-panel-header>
-
-    <mat-divider></mat-divider>
-    <table>
-        <tr>
-            <th *ngFor="let element of displayedColumns" ><h6>{{element}}</h6></th>
-        </tr>
-        <tr *ngFor="let variant of productShort.variants; let i = index" >
-             <td>
-                <h6>{{variant.reference || 'AAA23B'}}</h6>
-             </td>
-             <td>
-                 <h6>{{variant.height}}</h6>
-             </td>
-             <td>
-                 <h6>{{variant.thickness}}</h6>
-             </td>
-             <td>
-                 <h6>{{variant.capacity}}</h6>
-             </td>
-        </tr>
-    </table>
-  </mat-expansion-panel>
-
-</div>
+  </div>
+</mat-card>

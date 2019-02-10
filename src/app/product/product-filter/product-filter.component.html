@@ -14,10 +14,6 @@ FILTER BY
                     {{choice.value | lowercase}}
                 </mat-checkbox>
             </div>
-            <div *ngIf="filterCategory.controlType === 'slider'">
-                <p class="form__group__title">{{filterCategory.value}} greater than {{filterCategory.inputValue}}cm</p>
-                <mat-slider [id]="filterCategory?.key" (change)="changed($event,filterCategory)"  color="primary"   thumbLabel  [displayWith]="formatLabel" tickInterval="1" min="filterCategory.min" max="filterCategory.max"></mat-slider>
-            </div>
 
 
     </div>

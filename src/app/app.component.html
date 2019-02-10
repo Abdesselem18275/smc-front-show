@@ -13,8 +13,8 @@
      <div (mouseenter)="toggleMenu(true)" ><button mat-button  class="mat-margin-gutter--right--16">PRODUCTS</button>
       <div class="mat-elevation-z1 menu__sub-menu" (mouseleave)="toggleMenu(false)" (mouseenter)="toggleMenu(true)" *ngIf="isMenuActive">
         <div  *ngFor="let rootCat of rootCategories">
-          <p [routerLink]="['/product/list']" [queryParams]="{category: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
-          <p [routerLink]="['/product/list']" [queryParams]="{category: childCat.designation}" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
+          <p [routerLink]="['/product/list']" [queryParams]="{category: rootCat.designation}" queryParamsHandling="merge" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
+          <p [routerLink]="['/product/list']" [queryParams]="{category: childCat.designation}" queryParamsHandling="merge"  matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
               {{childCat.designation | lowercase}}
           </p>
         </div>

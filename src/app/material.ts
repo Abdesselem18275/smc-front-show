@@ -20,7 +20,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -33,13 +33,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatRadioModule, MatSliderModule, MatRippleModule,
-            MatExpansionModule, BrowserAnimationsModule, MatTooltipModule],
+            MatExpansionModule, BrowserAnimationsModule, MatTooltipModule, MatCardModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
             MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule,
              MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule,
-             MatTooltipModule],
+             MatTooltipModule, MatCardModule],
 })
 export class MaterialModule {}
