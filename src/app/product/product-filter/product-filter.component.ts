@@ -25,6 +25,7 @@ export class ProductFilterComponent implements OnInit {
     this.ready = false;
     this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
       this.filterCategories.map(filter => filter.choices.map(choice => choice.checked = true));
+        console.warn(this.filterCategories);
         this.filterForm = this.fbs.toFormGroup(this.filterCategories);
         this.ready = true;
       }));

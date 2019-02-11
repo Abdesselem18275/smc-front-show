@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
         console.warn( this.product);
         this.selectedVariant = this.product.variants[0];
         console.warn(this.selectedVariant);
-        this.selectedImage = this.product.images[0] === undefined ? this.product.thumbNail : this.product.images[0].content;
+        this.selectedImage = this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
       });
 

@@ -37,25 +37,25 @@
     <!-- Capacity Column -->
     <ng-container matColumnDef="capacity">
       <mat-header-cell *matHeaderCellDef> <h3>Capacity</h3> </mat-header-cell>
-      <mat-cell  *matCellDef="let element"> {{element.capacity}} </mat-cell>
+      <mat-cell  *matCellDef="let element"> {{element.capacity.value}} </mat-cell>
     </ng-container>
 
     <!-- Height Column -->
     <ng-container matColumnDef="height">
       <mat-header-cell *matHeaderCellDef> <h3>Height</h3> </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.height}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.height.value}} </mat-cell>
     </ng-container>
 
     <!-- Height Column -->
     <ng-container matColumnDef="thickness">
       <mat-header-cell *matHeaderCellDef> <h3>Thickness</h3> </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.thickness}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.thickness.value}} </mat-cell>
     </ng-container>
 
     <!-- Height Column -->
     <ng-container matColumnDef="diameter">
       <mat-header-cell *matHeaderCellDef> <h3>Diameter</h3> </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.diameter}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.diameter.value}} </mat-cell>
     </ng-container>
 
     <!-- Components Column -->
@@ -65,7 +65,7 @@
           <ul>
               <li *ngFor="let component of element.components" class="mat-body">
                   <p class="mat-body-2">{{component?.designation}}</p>
-                  <p class="mat-caption">{{component?.measure_type}} : {{component?.measure}} -- material : {{component?.material.designation}}</p>
+                  <p class="mat-caption">{{component?.measure_type}} : {{component?.measure.value}} -- material : {{component?.material.designation}}</p>
               </li>
             </ul>
       </mat-cell>
@@ -93,10 +93,10 @@
       <div>
         <h3>Dimensions</h3>
      <ul>
-        <li class="mat-body-2">Height : {{variant?.height}}cm</li>
-        <li class="mat-body-2">Diameter : {{variant?.diameter}}cm</li>
-        <li class="mat-body-2">Thickness : {{variant?.thickness}}mm</li>
-        <li class="mat-body-2">Capacity : {{variant?.capacity}}l</li>
+        <li class="mat-body-2">Height : {{variant?.height.value}}cm</li>
+        <li class="mat-body-2">Diameter : {{variant?.diameter.value}}cm</li>
+        <li class="mat-body-2">Thickness : {{variant?.thickness.value}}mm</li>
+        <li class="mat-body-2">Capacity : {{variant?.capacity.value}}l</li>
      </ul>
      <mat-divider class="components-detail__divider--hide"></mat-divider>
     </div>
