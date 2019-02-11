@@ -26,7 +26,7 @@ export class ProductBreadcrumbComponent implements OnInit {
             this.categories = categories;
             this.items = [];
             this.setItems(param);
-            console.warn(param);
+            console.warn(this.items);
           });
           });
         }
