@@ -3,12 +3,15 @@ FILTER BY
 </p>
 
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography form-gutter">
+<mat-accordion [hideToggle]="true"[multi]="true" [displayMode]="'flat'">
+    <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography form__group">
+      <mat-expansion-panel-header [collapsedHeight]="'3em'">
+        <mat-panel-title>
+          <p class="form__group__title">{{filterCategory.value | uppercase}} </p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+            <div [formGroupName]="filterCategory.key">
 
-    <div *ngFor="let filterCategory of filterCategories" class="mat-typography form__group">
-
-
-            <div [formGroupName]="filterCategory.key" *ngIf="filterCategory.controlType === 'check-box'">
-                <p class="form__group__title">{{filterCategory.value | uppercase}} </p>
                 <mat-checkbox *ngFor="let choice of filterCategory.choices" class="caption" color="primary"
                     [formControlName]="choice.key" (change)="changed($event,filterCategory)"   [id]="choice.key " [checked]="true">
                     {{choice.value | lowercase}}
@@ -16,7 +19,8 @@ FILTER BY
             </div>
 
 
-    </div>
+    </mat-expansion-panel>
+</mat-accordion>
     <mat-divider class="mat-gutter--bottom--16"></mat-divider>
     <button  class="mat-gutter--bottom--16" (click)="clearFilter()" mat-raised-button color="primary">CLEAR ALL</button>
 </form>
