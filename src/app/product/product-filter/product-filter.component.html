@@ -3,7 +3,7 @@ FILTER BY
 </p>
 
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography form-gutter">
-<mat-accordion [hideToggle]="true"[multi]="true" [displayMode]="'flat'">
+<mat-accordion [hideToggle]="true" [multi]="true" displayMode="flat">
     <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography form__group">
       <mat-expansion-panel-header [collapsedHeight]="'3em'">
         <mat-panel-title>

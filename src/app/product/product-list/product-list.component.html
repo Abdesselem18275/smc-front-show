@@ -1,5 +1,5 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
-<app-product-filter (req)=getRequest($event) class="mat-elevation-z1 filter"></app-product-filter>
+<app-product-filter (req)=getRequest($event) class=" filter"></app-product-filter>
 
 
 <section class="mat-typography content">
@@ -11,7 +11,7 @@
     <div class="content__image-container--grid">
 
 <mat-card  class=" mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts$ | async">
-  <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail">
+  <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail.content">
   <mat-card-header>
     <mat-card-title>{{productShort.designation |uppercase}}</mat-card-title>
     <mat-card-subtitle>
