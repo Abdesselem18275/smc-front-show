@@ -55,7 +55,7 @@ export class ProductFilterComponent implements OnInit {
 
   clearFilter() {
     Object.keys(this.filterForm.controls).forEach( (key: string) => {
-      let tempForm = this.filterForm.get(key);
+      const tempForm = <FormGroup>this.filterForm.get(key);
        Object.keys(tempForm.controls).forEach(y => {
         console.warn(this.filterForm.get(key).get(y).setValue(false));
        });
