@@ -24,9 +24,8 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit() {
     this.ready = false;
     this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
-      this.filterCategories.map(filter => filter.choices.map(choice => choice.checked = true));
-        console.warn(this.filterCategories);
         this.filterForm = this.fbs.toFormGroup(this.filterCategories);
+        this.clearFilter();
         this.ready = true;
       }));
   }
@@ -52,6 +51,16 @@ export class ProductFilterComponent implements OnInit {
         }
       });
     this.req.emit(req);
+  }
+
+  clearFilter() {
+    Object.keys(this.filterForm.controls).forEach( (key: string) => {
+      let tempForm = this.filterForm.get(key);
+       Object.keys(tempForm.controls).forEach(y => {
+        console.warn(this.filterForm.get(key).get(y).setValue(false));
+       });
+
+    });
   }
 
 }

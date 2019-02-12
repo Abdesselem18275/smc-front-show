@@ -7,7 +7,15 @@
 </section>
 <section class="description">
   <p class="mat-h2">{{product?.designation}}</p>
+  <div class="description__sub-title">
   <p class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} - {{product?.exteriorMaterial.color}}</p>
+  <span class="content--spacer"></span>
+  <div>
+      <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
+      <mat-icon matTooltip="Exterior wear" inline ="True" svgIcon='Cook_ware'></mat-icon>
+      <mat-icon matTooltip="Professional wear" inline ="True" svgIcon='Serve_ware'></mat-icon>
+    </div>
+  </div>
   <mat-divider></mat-divider>
   <p class="mat-body description__text">
     {{product?.description}}
@@ -109,21 +117,6 @@
 
 </section>
 
-<section class="features mat-typography">
-  <figure>
-    <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
-    <figcaption>feat for cooking</figcaption>
-  </figure>
-  <figure>
-    <mat-icon matTooltip="Exterior wear" inline ="True" svgIcon='Cook_ware'></mat-icon>
-    <figcaption>feat for exterior</figcaption>
-  </figure>
-  <figure>
-    <mat-icon matTooltip="Professional wear" inline ="True" svgIcon='Serve_ware'></mat-icon>
-    <figcaption>professional wear</figcaption>
-  </figure>
-
-</section>
 
 <section class="related-product">
 

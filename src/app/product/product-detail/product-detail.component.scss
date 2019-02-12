@@ -10,7 +10,7 @@
     grid-template-areas :
     "breadcrumb_area breadcrumb_area breadcrumb_area"
     "image_area image_area  description_area"
-    "carousel_area carousel_area  feature_area"
+    "carousel_area carousel_area  description_area"
     "technical-description_area technical-description_area technical-description_area"
     "related-product_area related-product_area related-product_area";
 }
@@ -76,6 +76,18 @@ img {
       overflow: hidden;
       font-style:italic;
      }
+    .description__sub-title {
+      display: flex;
+      mat-icon {
+        width: 1.5em;
+        margin-left: 1em;
+       }
+       .content--spacer {
+         flex : 1 1 auto;
+       }
+
+
+     }
 
 }
 .description__color--grey {
@@ -85,33 +97,7 @@ img {
  }
 
 
-.features
-{
-  grid-area: feature_area;
-  display: flex;
-  justify-content: space-around;
 
-  figure {
-    margin : 0;
-    display: flex;
-    flex-flow: column;
-  }
-
-  mat-icon{
-    min-height : 2em;
-    width: 4em;
-    align-self: center;
-    color: rgb(70,70,70)
-   }
-
-   figcaption {
-    color: rgb(70,70,70)
-   }
-
-
-
-
-}
 
 @media only screen and (min-width:600px)
 {
@@ -135,7 +121,6 @@ img {
     "image_area"
     "carousel_area"
     "description_area"
-    "feature_area"
     "technical-description_area"
     "related-product_area";
 }
@@ -172,15 +157,5 @@ img {
     display: block;
     }
 
-    .features
-    {
-    mat-icon{
-      min-height : 1.5em;
-      width: 3em;
-    }
-    figcaption {
-      font-size: 0.75em;
-     }
-   }
 
 }

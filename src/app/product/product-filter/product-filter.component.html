@@ -7,10 +7,10 @@ FILTER BY
     <div *ngFor="let filterCategory of filterCategories" class="mat-typography form__group">
 
 
-            <div  *ngIf="filterCategory.controlType === 'check-box'">
+            <div [formGroupName]="filterCategory.key" *ngIf="filterCategory.controlType === 'check-box'">
                 <p class="form__group__title">{{filterCategory.value | uppercase}} </p>
                 <mat-checkbox *ngFor="let choice of filterCategory.choices" class="caption" color="primary"
-                    (change)="changed($event,filterCategory)"   [id]="choice.key " [checked]="true">
+                    [formControlName]="choice.key" (change)="changed($event,filterCategory)"   [id]="choice.key " [checked]="true">
                     {{choice.value | lowercase}}
                 </mat-checkbox>
             </div>
@@ -18,5 +18,5 @@ FILTER BY
 
     </div>
     <mat-divider class="mat-gutter--bottom--16"></mat-divider>
-    <button  matTooltip="Info about the action" mat-raised-button color="primary">CLEAR ALL</button>
+    <button  class="mat-gutter--bottom--16" (click)="clearFilter()" mat-raised-button color="primary">CLEAR ALL</button>
 </form>
