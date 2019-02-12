@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductDataService } from '../service/product-data.service';
 import { switchMap } from 'rxjs/operators';
 import { ProductLong, Variant } from '../model';
+import { type } from 'os';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
   selectedVariant: Variant;
   selectedImage: string;
   isReady: boolean;
-  displayedColumns: string[] = ['designation', 'reference' , 'height', 'capacity', 'thickness', 'diameter', 'components'];
+  displayedColumns: string[] = ['variants' , 'dimensions', 'components'];
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,15 +23,17 @@ export class ProductDetailComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => this.pds.get_element({value: params.get('id'), model: 'product'}))).
       subscribe((jsonItem: ProductLong) => {
-        this.product = jsonItem;
-        console.warn( this.product);
+        this.product = new ProductLong(jsonItem);
+        console.warn(this.product);
+        this.product.variants.map(x => console.warn('Capacity = ' + x.capacity.toString()) );
         this.selectedVariant = this.product.variants[0];
-        console.warn(this.selectedVariant);
         this.selectedImage = this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
       });
 
   }
+
+
   updateVariant(event) {
     this.selectedVariant = this.product.variants.filter(x => x.id === event.value)[0];
   }

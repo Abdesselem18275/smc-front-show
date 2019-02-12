@@ -2,19 +2,24 @@
 <app-product-filter (req)=getRequest($event) class="mat-elevation-z1 filter"></app-product-filter>
 
 
-<section class="mat-typography mat-elevation-z1 content">
+<section class="mat-typography content">
     <div class="mat-subheading-2 content__meta-bar">
       <span>{{(productShorts$ | async)?.length}} selected products</span>
       <span class="content__meta-bar--spacer"></span>
       <mat-icon matRipple >filter_list</mat-icon>
     </div>
-    <div [ngClass]="currentClasses">
+    <div class="content__image-container--grid">
 
-        <article  [ngClass]="boxClasses" class="mat-elevation-z1" *ngFor="let productShort of productShorts$ | async">
-            <app-product-list-composit  [productShort]="productShort">
+<mat-card  class=" mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts$ | async">
+  <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail">
+  <mat-card-header>
+    <mat-card-title>{{productShort.designation |uppercase}}</mat-card-title>
+    <mat-card-subtitle>
+      {{productShort.exteriorMaterial.designation |lowercase}}-{{productShort.interiorMaterial.designation |lowercase}}
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
 
-            </app-product-list-composit>
-        </article>
     </div>
 
 </section>

@@ -11,7 +11,6 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
-import { ProductListCompositComponent } from './product-list-composit/product-list-composit.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
 import { ProductMenuItemComponent } from './product-menu-item/product-menu-item.component';
@@ -25,7 +24,7 @@ import { ProductMenuItemComponent } from './product-menu-item/product-menu-item.
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                 ProductListCompositComponent, ProductDetailComponent, ProductBreadcrumbComponent, ProductMenuItemComponent],
+                  ProductDetailComponent, ProductBreadcrumbComponent, ProductMenuItemComponent],
   providers:  [FilterBuilderService, DataInjectablesService],
   exports : [ProductMenuItemComponent]
 })

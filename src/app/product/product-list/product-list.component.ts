@@ -12,14 +12,10 @@ import { map } from 'rxjs/operators';
 })
 export class ProductListComponent implements OnInit {
   productShorts$: Observable<ProductShort[]>;
-  isGrid: boolean;
-  currentClasses: {};
-  boxClasses: {};
   CurrentParam: String;
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
-    this.isGrid = true;
-    this.setCurrentClasses(true);
+
 
     this.route
       .queryParamMap
@@ -38,24 +34,6 @@ getRequest(event: string) {
   event = event.concat(this.CurrentParam.replace('?', '&'));
   this.pds.get_elements({model: 'product', param_key: event})
                        .pipe(products => this.productShorts$ = products);
-}
-gridToggle() {
-  this.isGrid = true;
-
-}
-listToggle() {
-  this.isGrid = false;
-}
-setCurrentClasses(state) {
-  this.isGrid = state;
-  this.currentClasses =  {
-    'content__image-container--grid': this.isGrid,
-    'content__image-container--list': !this.isGrid,
-  };
-  this.boxClasses =  {
-    'content__image-container__product-box--grid': this.isGrid,
-    'content__image-container__product-box--list': !this.isGrid,
-  };
 }
 
 }

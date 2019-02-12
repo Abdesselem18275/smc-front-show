@@ -70,7 +70,7 @@ export class ProductLong {
         this.interiorMaterial = options.interiorMaterial || new Material({});
         this.exteriorMaterial = options.exteriorMaterial || new Material({});
         this.images = options.images || [];
-        this.variants = options.variants || [];
+        this.variants = options.variants.map(x => new Variant(x)) || [];
     }
 }
 
@@ -123,11 +123,11 @@ export class Variant  {
         this.id = options.id || -1;
         this.reference = options.reference || 'AAA23BG85';
         this.designation = options.designation || '';
-        this.height = options.height || new Measure({});
-        this.thickness = options.thickness || new Measure({});
-        this.diameter = options.diameter || new Measure({});
-        this.capacity = options.capacity || new Measure({});
-        this.components = options.components || [];
+        this.height = new Measure(options.height) || new Measure({});
+        this.thickness = new Measure(options.thickness) || new Measure({});
+        this.diameter = new Measure(options.diameter) || new Measure({});
+        this.capacity = new Measure(options.capacity) || new Measure({});
+        this.components = options.components.map(x => new Component(x)) || [];
     }
 }
 
@@ -144,7 +144,7 @@ export class Component  {
         material?: Material  } = {}) {
         this.designation = options.designation || '';
         this.measure_type = options.measure_type || '';
-        this.measure = options.measure || new Measure({});
+        this.measure = new Measure(options.measure) || new Measure({});
         this.material = options.material || new Material({});
     }
 }
@@ -179,15 +179,19 @@ export class BaseImage {
 
 export class Measure {
   value: number;
-  measure_type: MeasureUnit;
+  measure_unit: MeasureUnit;
 
   constructor(options: {
     value?: number,
-    measure_type?: MeasureUnit
+    measure_unit?: MeasureUnit,
     } = {}) {
     this.value = options.value || -1;
-    this.measure_type = options.measure_type || new MeasureUnit({});
+    this.measure_unit = new MeasureUnit(options.measure_unit) || new MeasureUnit({});
     }
+  toString() {
+    return(this.value.toString() + ' ' + this.measure_unit.designation);
+}
+
 }
 
 
@@ -202,6 +206,7 @@ export class MeasureUnit {
     this.designation = options.designation || '';
     this.description = options.description || '';
     }
+
 }
 
 export class Category {
