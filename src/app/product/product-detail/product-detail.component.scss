@@ -56,6 +56,14 @@ img {
     .mat-body-2{
         font-weight: 500;
     }
+    .exp-panel__content {
+      display: flex;
+      flex-direction: column;
+      div {
+        align-self: center;
+      }
+
+    }
 
 
 
@@ -122,37 +130,13 @@ img {
     "related-product_area";
 }
 
-.technical-data-container {
-  display: flex;
-  flex-direction: column;
+
 }
-
-  .exp-panel__content {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
-   mat-divider {
-     margin-top : 5em;
-   }
-  }
-}
-
-
-
   @media only screen and (max-width:600px) {
 
-    .components-detail__divider--hide
-    {
-      display: none;
-    }
 
     mat-table {
       display: none;
     }
-    .components-detail__divider--hide
-    {
-    display: block;
-    }
-
 
 }

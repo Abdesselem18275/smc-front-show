@@ -1,11 +1,11 @@
-<p class="mat-body-strong">
-FILTER BY
+<p class="mat-gutter--left--16  mat-body-strong">
+<u>FILTER BY : </u>
 </p>
-
+<mat-divider></mat-divider>
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
 <mat-accordion  [multi]="true" >
     <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography">
-      <mat-expansion-panel-header [collapsedHeight]="'4em'">
+      <mat-expansion-panel-header [collapsedHeight]="'3em'">
         <mat-panel-title>
           <h5>{{filterCategory.value | uppercase}} </h5>
         </mat-panel-title>
@@ -22,5 +22,5 @@ FILTER BY
     </mat-expansion-panel>
 </mat-accordion>
     <mat-divider class="mat-gutter--bottom--16"></mat-divider>
-    <button  class="mat-gutter--bottom--16" (click)="clearFilter()" mat-raised-button color="primary">CLEAR ALL</button>
+    <button  class="mat-gutter--bottom--16 mat-gutter--left--16" (click)="clearFilter()" mat-raised-button color="primary">CLEAR ALL</button>
 </form>
