@@ -1,3 +1,4 @@
+<app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
 
 
 
@@ -7,7 +8,6 @@
           <app-product-filter (req)=getRequest($event)></app-product-filter>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
             <section class="mat-typography content">
                 <div class="mat-subheading-2 content__meta-bar">
                   <span>{{(productShorts$ | async)?.length}} selected products</span>
