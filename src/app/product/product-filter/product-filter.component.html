@@ -2,12 +2,12 @@
 FILTER BY
 </p>
 
-<form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography form-gutter">
-<mat-accordion [hideToggle]="true" [multi]="true" displayMode="flat">
-    <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography form__group">
-      <mat-expansion-panel-header [collapsedHeight]="'3em'">
+<form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
+<mat-accordion  [multi]="true" displayMode="flat">
+    <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography">
+      <mat-expansion-panel-header [collapsedHeight]="'4em'">
         <mat-panel-title>
-          <p class="form__group__title">{{filterCategory.value | uppercase}} </p>
+          <h5>{{filterCategory.value | uppercase}} </h5>
         </mat-panel-title>
       </mat-expansion-panel-header>
             <div [formGroupName]="filterCategory.key">

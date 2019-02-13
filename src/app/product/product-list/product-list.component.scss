@@ -88,7 +88,6 @@ app-product-breadcrumb {
     grid-column-gap: 1em;
     grid-template-areas :
     "breadcrumb breadcrumb"
-    "side-filter side-filter"
     "main-content main-content";
 }
 
@@ -98,7 +97,7 @@ app-product-breadcrumb {
     flex : 0 0 32%;
 }
 .filter {
-  grid-area: side-filter;
+  display : none;
 }
 
 
@@ -114,7 +113,6 @@ app-product-breadcrumb {
       grid-column-gap: 1em;
       grid-template-areas :
       "breadcrumb breadcrumb"
-      "side-filter side-filter"
       "main-content main-content";
   }
   .content__image-container--grid {

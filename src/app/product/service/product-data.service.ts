@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory } from '../model';
+import { FilterCategory, Category } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -64,5 +64,33 @@ export class ProductDataService {
              new FilterCategory(jsonItem)) ));
 
   }
+
+  getMenu() {
+    const treeMenu: any[] = [
+      {
+        designation: 'Products',
+        isLeaf: false,
+        isRoot: true,
+        children: []
+      },{
+        designation: 'Gifts',
+        isLeaf: true,
+        isRoot: true,
+        children: []
+      },{
+        designation: 'Inspirations',
+        isLeaf: true,
+        isRoot: true,
+        children: []
+      },{
+        designation: 'Contact us',
+        isLeaf: true,
+        isRoot: true,
+        children: []
+      }
+    ];
+    return treeMenu;
+  }
+
 
 }

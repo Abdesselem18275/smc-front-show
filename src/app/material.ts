@@ -2,7 +2,6 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -21,6 +20,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTreeModule} from '@angular/material/tree';
+
 
 
 
@@ -29,17 +31,17 @@ import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
-            MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
+             MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatRadioModule, MatSliderModule, MatRippleModule,
-            MatExpansionModule, BrowserAnimationsModule, MatTooltipModule, MatCardModule],
+            MatExpansionModule, BrowserAnimationsModule, MatTooltipModule, MatCardModule,MatSidenavModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
-            MatTabsModule, MatListModule, MatInputModule, MatAutocompleteModule,
+             MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule,
              MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule,
-             MatTooltipModule, MatCardModule],
+             MatTooltipModule, MatCardModule, MatSidenavModule],
 })
 export class MaterialModule {}
