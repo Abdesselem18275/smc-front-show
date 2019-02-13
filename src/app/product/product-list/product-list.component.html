@@ -1,5 +1,9 @@
 <app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
-
+<div class="mat-subheading-2 content__meta-bar">
+    <span>{{(productShorts$ | async)?.length}} selected products</span>
+    <span class="content__meta-bar--spacer"></span>
+    <mat-icon  (click)="sidenav.toggle()" matRipple >filter_list</mat-icon>
+  </div>
 
 
     <mat-sidenav-container class="nav-bar__side-menu">
@@ -9,11 +13,7 @@
         </mat-sidenav>
         <mat-sidenav-content>
             <section class="mat-typography content">
-                <div class="mat-subheading-2 content__meta-bar">
-                  <span>{{(productShorts$ | async)?.length}} selected products</span>
-                  <span class="content__meta-bar--spacer"></span>
-                  <mat-icon  (click)="sidenav.toggle()" matRipple >filter_list</mat-icon>
-                </div>
+
             <div class="content__image-container--grid">
                 <mat-card  class=" mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts$ | async">
                   <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail.content">
