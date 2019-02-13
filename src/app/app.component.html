@@ -37,16 +37,16 @@
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-        <li [routerLink]="['/product/list']" [queryParams]="{category: node.designation}" class="mat-tree-node">
+        <li (click)="sidenav.toggle()" [routerLink]="['/product/list']" [queryParams]="{category: node?.designation}" class="mat-tree-node">
           <!-- use a disabled button to provide padding for tree leaf -->
-          {{node.designation}}
+          {{node.designation | uppercase}}
         </li>
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
         <li>
           <div class="mat-tree-node">
-              {{node.designation}}
+              {{node.designation | uppercase}}
             <button mat-icon-button matTreeNodeToggle
                     [attr.aria-label]="'toggle ' + node.designation">
               <mat-icon class="mat-icon-rtl-mirror">

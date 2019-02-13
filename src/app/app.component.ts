@@ -27,13 +27,14 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('Table_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/table_ware.svg'));
   }
   ngOnInit() {
-    this.treeMenu = this.pds.getMenu()
+    this.treeMenu = this.pds.getMenu();
     this.isMenuActive = false;
     this.pds.get_elements({model: 'categorie'}).subscribe(
       (categories: Category[]) => {this.categories = categories;
-                                   this.treeMenu.filter(x => x.designation === 'Products')[0].children = this.categories;
-                                   console.table(this.treeMenu);
-                                   this.dataSource.data = this.treeMenu;
+                                   this.treeMenu.
+                                         filter(x => x.designation === 'Products')[0].children = this.categories.filter(x => x.isRoot);
+                                   console.log(this.treeMenu);
+                                   this.dataSource.data = this.treeMenu.filter(x => x.isRoot);
                                    this.rootCategories = this.categories.filter(category => category.isRoot);
       }
     );
