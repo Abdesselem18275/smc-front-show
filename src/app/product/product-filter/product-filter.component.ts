@@ -58,7 +58,7 @@ export class ProductFilterComponent implements OnInit {
       const tempForm = <FormGroup>this.filterForm.get(key);
       console.warn(tempForm);
        Object.keys(tempForm.controls).forEach(y => {console.warn(y); tempForm.get(y).setValue(false); });
-
+       this.req.emit('');
     });
   }
 
