@@ -3,14 +3,14 @@ FILTER BY
 </p>
 
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
-<mat-accordion  [multi]="true" displayMode="flat">
+<mat-accordion  [multi]="true" >
     <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography">
       <mat-expansion-panel-header [collapsedHeight]="'4em'">
         <mat-panel-title>
           <h5>{{filterCategory.value | uppercase}} </h5>
         </mat-panel-title>
       </mat-expansion-panel-header>
-            <div [formGroupName]="filterCategory.key">
+            <div class="form__group-content" [formGroupName]="filterCategory.key">
 
                 <mat-checkbox *ngFor="let choice of filterCategory.choices" class="caption" color="primary"
                     [formControlName]="choice.key" (change)="changed($event,filterCategory)"   [id]="choice.key " [checked]="true">

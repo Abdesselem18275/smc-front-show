@@ -6,8 +6,9 @@
     padding : 0 0.5em 0 0.5em;
 
 }
-form * {
-    display: block;
+.form__group-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .form__group__title

@@ -54,6 +54,7 @@
     position: absolute;
     background-color: rgb(244,244,244);
     width : 40%;
+    z-index: 1000;
 }
 .menu__sub-menu__tab:hover {
     border-bottom: solid thin $color-deep-grey;;
@@ -93,7 +94,11 @@
         }
       }
 
-      .example-tree-invisible {
+      mat-sidenav {
+        width: 200px;
+      }
+
+      .tree-invisible {
         display: none;
       }
 
