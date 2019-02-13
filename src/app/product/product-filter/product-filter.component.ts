@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup} from '@angular/forms';
+import { FormGroup, FormControl} from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
-import { MatCheckbox } from '@angular/material';
+
 
 
 @Component({
@@ -27,38 +27,29 @@ export class ProductFilterComponent implements OnInit {
         this.filterForm = this.fbs.toFormGroup(this.filterCategories);
         this.clearFilter();
         this.ready = true;
+        this.onChanges();
       }));
   }
 
-  changed(event , filter: FilterCategory) {
-
-    if (event.source instanceof MatCheckbox) {
-      this.filterCategories.filter(x => x === filter)[0].
-      choices.filter(x => x.key === event.source.id)[0].checked = event.checked;
-    } else {
-      this.filterCategories.filter(x => x === filter)[0].inputValue = event.value;
-    }
-    let req = '';
-    this.filterCategories.forEach(category => {
-      req = req + '&' + category.key + '=';
-      if (category.controlType === 'check-box') {
-        console.warn(category.choices);
-        category.choices.filter(choice => choice.checked).map(choice => {
-          req = req + choice.value + ',';
-        });
-        }  else {
-            req = req + category.inputValue;
-        }
-      });
-    this.req.emit(req);
-  }
+  onChanges(): void {
+    this.filterForm.valueChanges.subscribe(x => {
+      let req = '';
+      Object.keys(x).forEach(key => {
+        req = req + '&' + key + '=';
+        const tempForm = <FormGroup>this.filterForm.get(key);
+        Object.keys(tempForm.controls).filter(y =>  tempForm.get(y).value).
+               forEach( z => {
+                         req = req + z.substr(z.lastIndexOf('_') + 1) + ',';
+         });
+    });
+      this.req.emit(req);
+  });
+}
 
   clearFilter() {
     Object.keys(this.filterForm.controls).forEach( (key: string) => {
-      const tempForm = <FormGroup>this.filterForm.get(key);
-      console.warn(tempForm);
-       Object.keys(tempForm.controls).forEach(y => { tempForm.get(y).setValue(false); });
-       this.req.emit('');
+      const tempForm_ = <FormGroup>this.filterForm.get(key);
+       Object.keys(tempForm_.controls).filter(y =>  tempForm_.get(y).setValue(false) );
     });
   }
 

@@ -13,7 +13,7 @@
             <div class="form__group-content" [formGroupName]="filterCategory.key">
 
                 <mat-checkbox *ngFor="let choice of filterCategory.choices" class="caption" color="primary"
-                    [formControlName]="choice.key" (change)="changed($event,filterCategory)"   [id]="choice.key " [checked]="true">
+                    [formControlName]="choice.key" [id]="choice.key " [checked]="true">
                     {{choice.value | lowercase}}
                 </mat-checkbox>
             </div>
