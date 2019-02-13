@@ -70,6 +70,14 @@ app-product-breadcrumb {
     flex : 0 0 20%;
 }
 
+.sidenave-filter {
+  padding-left: 1em;
+}
+
+.content__meta-bar-mat-icon
+{
+   display: none;
+}
 
 @media only screen and (max-width:960px) {
 
@@ -99,6 +107,11 @@ app-product-breadcrumb {
 .filter {
   display : none;
 }
+.content__meta-bar-mat-icon {
+  display: inherit;
+  margin-right : 0.5em;
+  }
+
 
 
   }
