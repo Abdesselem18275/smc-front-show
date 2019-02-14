@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
+import { debounce, debounceTime } from 'rxjs/operators';
+import { timer } from 'rxjs';
 
 
 
@@ -32,7 +34,7 @@ export class ProductFilterComponent implements OnInit {
   }
 
   onChanges(): void {
-    this.filterForm.valueChanges.subscribe(x => {
+    this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(x => {
       let req = '';
       Object.keys(x).forEach(key => {
         req = req + '&' + key + '=';
