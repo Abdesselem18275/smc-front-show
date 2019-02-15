@@ -13,24 +13,25 @@
         </mat-sidenav>
         <mat-sidenav-content>
           <section class="mat-typography content">
-              <mat-paginator
-              [length]="objCount"
-              [pageSize]="10"
-              color = "primary"
-              (page)="pageEvent($event)">
-            </mat-paginator>
+
             <div class="content__image-container--grid">
-                <mat-card  class=" mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts">
+                <mat-card  class="mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts">
                   <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail.content">
                   <mat-card-header>
                     <mat-card-title>{{productShort.designation |uppercase}}</mat-card-title>
                     <mat-card-subtitle>
-                      {{productShort.exteriorMaterial.designation |lowercase}}-{{productShort.interiorMaterial.designation |lowercase}}
+                      {{productShort.exteriorMaterial.designation |lowercase}}<span *ngIf="productShort.interiorMaterial">-{{productShort.interiorMaterial.designation |lowercase}}</span>
                     </mat-card-subtitle>
                   </mat-card-header>
                 </mat-card>
             </div>
-
+            <mat-paginator *ngIf="isReady" mat-paginator
+            [pageIndex]="0"
+            [length]="objCount"
+            [pageSize]="10"
+            [pageSizeOptions]="[10]"
+            (page)="pageEvent($event)">
+          </mat-paginator>
           </section>
         </mat-sidenav-content>
       </mat-sidenav-container>

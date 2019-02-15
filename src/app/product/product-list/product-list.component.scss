@@ -16,17 +16,15 @@ mat-icon--active {
    width : 1em;
 }
 
-app-product-breadcrumb {
-    grid-area: breadcrumb;
-    }
 
-.filter {
-    grid-area: side-filter;
+
+.content {
+ display: flex;
+ flex-direction: column;
+ mat-paginator {
+  align-self: center;
 
 }
-.content {
-    grid-area: main-content;
-
 
 }
 .content__meta-bar {

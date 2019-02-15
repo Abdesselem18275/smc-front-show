@@ -39,7 +39,7 @@ export class ProductBreadcrumbComponent implements OnInit {
   setItems(param) {
     if ( param === '' ) { return ''; }
     this.items.push(param);
-    return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation ));
+    return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation));
   }
 
 }

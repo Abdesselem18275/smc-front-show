@@ -4,7 +4,7 @@ import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, mergeAll } from 'rxjs/operators';
 import { PageEvent } from '@angular/material';
-import { Observable, Subject, merge } from 'rxjs';
+import { Subject, merge } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -16,8 +16,10 @@ export class ProductListComponent implements OnInit {
   CurrentParam: String;
   objCount: number;
   paramRequest = new Subject<any>();
+  isReady: boolean;
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
+       this.isReady = false;
        merge(this.paramRequest,
         this.route
        .queryParamMap
@@ -26,27 +28,20 @@ export class ProductListComponent implements OnInit {
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];
-              this.objCount  = _products['count'];});
-      // merge(this.paramRequest,
-      //   this.route
-      //  .queryParamMap
-      //  .pipe(map(params => params.get('category') || ''),
-      //    map(category => '?categories__designation__in='.concat(category)))).
-      //   subscribe(_products => {
-      //         console.warn(_products);  });
+              this.objCount  = _products['count']; });
+              this.isReady = true;
 
 }
 
 getRequest(event: any) {
   this.paramRequest.next(event);
-
-  // event = '?'.concat(event);
-  // event = event.concat(this.CurrentParam.replace('?', '&'));
-  // this.pds.get_elements({model: 'product', param_key: event})
-  //             .subscribe(products => this.productShorts = products['results']);
                       }
 
 pageEvent(event: PageEvent) {
+  console.warn('page index ' + event.pageIndex);
+  console.warn('length  ' + event.length);
+  this.paramRequest.next(new Map().set('page', event.pageIndex));
+
 }
 
 }

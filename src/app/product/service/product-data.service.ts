@@ -26,21 +26,20 @@ export class ProductDataService  {
     param_key?: Map<string, string> } = {}): Observable<any[]> {
 
     const model = options.model || '';
-    const hyperLink = options.hyperLink || '';
     const param_key = options.param_key || new Map();
-    console.warn(param_key);
+    this.httpParams = this.httpParams.delete('page');
     param_key.forEach((key, value) => {
       this.httpParams = this.httpParams.set(value, key);
     });
 
     console.warn(this.httpParams);
 
-    const query: string = hyperLink === '' ?
+    const query: string =
     [
     this.apiUrl,
     '/',
     model,
-    's/'].join('') : hyperLink;
+    's/'].join('') ;
    return this.http.get(query, {params: this.httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
