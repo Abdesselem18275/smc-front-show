@@ -3,8 +3,7 @@ import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../service/filter-builder.service';
 import { ProductDataService } from '../service/product-data.service';
 import { FilterCategory } from '../model';
-import { debounce, debounceTime } from 'rxjs/operators';
-import { timer } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 
 
@@ -16,7 +15,7 @@ import { timer } from 'rxjs';
 export class ProductFilterComponent implements OnInit {
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
-  @Output() req = new EventEmitter<string>();
+  @Output() req = new EventEmitter<any>();
   ready: boolean;
 
 
@@ -35,16 +34,19 @@ export class ProductFilterComponent implements OnInit {
 
   onChanges(): void {
     this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(x => {
-      let req = '';
+      let map = new Map();
       Object.keys(x).forEach(key => {
-        req = req + '&' + key + '=';
+        let req = '';
         const tempForm = <FormGroup>this.filterForm.get(key);
         Object.keys(tempForm.controls).filter(y =>  tempForm.get(y).value).
                forEach( z => {
                          req = req + z.substr(z.lastIndexOf('_') + 1) + ',';
          });
+         map.set(key, req);
+
+
     });
-      this.req.emit(req);
+    this.req.emit(map);
   });
 }
 

@@ -13,7 +13,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
-import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -34,13 +34,13 @@ import {MatTreeModule} from '@angular/material/tree';
              MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
-            MatTableModule, MatRadioModule, MatSliderModule, MatRippleModule,
+            MatTableModule, MatPaginatorModule, MatSliderModule, MatRippleModule,
             MatExpansionModule, BrowserAnimationsModule, MatTooltipModule, MatCardModule,MatSidenavModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
              MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
-             MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatRadioModule,
+             MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule,
              MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule,
              MatTooltipModule, MatCardModule, MatSidenavModule],
 })
