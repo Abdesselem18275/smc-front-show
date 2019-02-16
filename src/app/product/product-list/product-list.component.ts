@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, mergeAll } from 'rxjs/operators';
+import { map, switchMap, mergeAll, tap } from 'rxjs/operators';
 import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
 
@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   objCount: number;
   pageIndex: number;
   paramRequest = new Subject<any>();
+  isReady: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
@@ -28,6 +29,7 @@ export class ProductListComponent implements OnInit {
        .queryParamMap
        .pipe(map(params => params.get('category') || ''),
          map(category =>  new Map([['categories__designation__in', category]])  ))).pipe(
+         tap(() => this.isReady = false),
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];
@@ -35,6 +37,7 @@ export class ProductListComponent implements OnInit {
                  this.paginator.firstPage();
               }
               this.objCount  = _products['count'];
+              this.isReady = true;
             });
 
 }

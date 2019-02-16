@@ -21,9 +21,14 @@ mat-icon--active {
 .content {
  display: flex;
  flex-direction: column;
+  mat-spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 500;
+  }
   mat-paginator {
   align-self: center;
-
 }
 
 }

@@ -12,8 +12,9 @@
           <app-product-filter (req)=getRequest($event)></app-product-filter>
         </mat-sidenav>
         <mat-sidenav-content>
-          <section class="mat-typography content">
 
+          <section [style.opacity]="isReady ? 1 : 0.5" class="mat-typography content">
+              <mat-spinner *ngIf="!isReady"></mat-spinner>
             <div class="content__image-container--grid">
                 <mat-card  class="mat-elevation-z1  content__image-container__product-box--grid" *ngFor="let productShort of productShorts">
                   <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail.content">
