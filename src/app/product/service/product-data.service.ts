@@ -32,7 +32,6 @@ export class ProductDataService  {
       this.httpParams = this.httpParams.set(value, key);
     });
 
-    console.warn(this.httpParams);
 
     const query: string =
     [

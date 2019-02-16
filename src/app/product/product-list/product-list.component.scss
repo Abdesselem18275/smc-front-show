@@ -21,7 +21,7 @@ mat-icon--active {
 .content {
  display: flex;
  flex-direction: column;
- mat-paginator {
+  mat-paginator {
   align-self: center;
 
 }
@@ -86,17 +86,21 @@ mat-icon--active {
   }
 
   @media only screen and (max-width:600px) {
+    :host {
+      padding:  0 1em 0 1em;
+    }
 
 
-  .content__image-container--grid {
-      display: block;
-  }
+  // .content__image-container--grid {
+  //     display: block;
+  // }
   .content__image-container__product-box--grid {
-      max-width: 100%;
-      margin-right : 1%;
-      margin-bottom : 1em;
+    flex : 1 1 45%;
+    max-width: 50%;
+    margin-right : 1%;
+    margin-bottom : 1em;
       img {
-        padding : 1em 1em 0 1em;
+        padding : 0.5em 0.5em 0 0.5em;
       }
 
   }

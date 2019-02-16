@@ -1,9 +1,9 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, mergeAll } from 'rxjs/operators';
-import { PageEvent } from '@angular/material';
+import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
 
 @Component({
@@ -15,11 +15,14 @@ export class ProductListComponent implements OnInit {
   productShorts: ProductShort[];
   CurrentParam: String;
   objCount: number;
+  pageIndex: number;
   paramRequest = new Subject<any>();
-  isReady: boolean;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
-       this.isReady = false;
        merge(this.paramRequest,
         this.route
        .queryParamMap
@@ -28,8 +31,11 @@ export class ProductListComponent implements OnInit {
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];
-              this.objCount  = _products['count']; });
-              this.isReady = true;
+              if (this.objCount  !== _products['count']) {
+                 this.paginator.firstPage();
+              }
+              this.objCount  = _products['count'];
+            });
 
 }
 
@@ -38,9 +44,9 @@ getRequest(event: any) {
                       }
 
 pageEvent(event: PageEvent) {
-  console.warn('page index ' + event.pageIndex);
-  console.warn('length  ' + event.length);
-  this.paramRequest.next(new Map().set('page', event.pageIndex));
+  this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
+
+  this.paramRequest.next(new Map().set('page', this.pageIndex));
 
 }
 

@@ -13,7 +13,7 @@ import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
-import { ProductMenuItemComponent } from './product-menu-item/product-menu-item.component';
+
 
 
 @NgModule({
@@ -24,8 +24,8 @@ import { ProductMenuItemComponent } from './product-menu-item/product-menu-item.
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                  ProductDetailComponent, ProductBreadcrumbComponent, ProductMenuItemComponent],
-  providers:  [FilterBuilderService, DataInjectablesService],
-  exports : [ProductMenuItemComponent]
+                  ProductDetailComponent, ProductBreadcrumbComponent],
+  providers:  [FilterBuilderService, DataInjectablesService ],
+  exports : []
 })
 export class ProductModule { }
