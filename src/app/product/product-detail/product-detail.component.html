@@ -8,7 +8,7 @@
 <section class="description">
   <p class="mat-h2">{{product?.designation}}</p>
   <div class="description__sub-title">
-  <p class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} - {{product?.exteriorMaterial.color}}</p>
+  <p class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} <span *ngIf="product?.interiorMaterial.color" >-</span> {{product?.interiorMaterial.color}}</p>
   <span class="content--spacer"></span>
   <div>
       <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
@@ -17,15 +17,15 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <p class="mat-body-2">Area of Use</p>
+  <p *ngIf="product?.areaOfUse" class="mat-body-2">Area of Use</p>
   <p class="mat-body description__text">
     {{product?.areaOfUse}}
   </p>
-  <p class="mat-body-2">Materials</p>
+  <p *ngIf="product?.materials" class="mat-body-2">Materials</p>
   <p class="mat-body description__text">
     {{product?.materials}}
   </p>
-  <p class="mat-body-2">Aesthetics</p>
+  <p *ngIf="product?.aesthetics" class="mat-body-2">Aesthetics</p>
   <p class="mat-body description__text">
     {{product?.aesthetics}}
   </p>
@@ -50,7 +50,7 @@
     </ng-container>
 
     <!-- Dimensions Column -->
-    <ng-container matColumnDef="dimensions">
+    <ng-container    matColumnDef="dimensions">
       <mat-header-cell *matHeaderCellDef> <h3>Dimensions</h3> </mat-header-cell>
       <mat-cell  *matCellDef="let element">
           <mat-list dense>
@@ -63,7 +63,7 @@
     </ng-container>
 
     <!-- Components Column -->
-    <ng-container matColumnDef="components">
+    <ng-container  matColumnDef="components">
       <mat-header-cell *matHeaderCellDef> <h3>Components</h3> </mat-header-cell>
       <mat-cell *matCellDef="let element">
           <mat-list dense>
@@ -107,8 +107,8 @@
 
     </div>
     <mat-divider></mat-divider>
-    <div>
-        <h3>Components</h3>
+    <div *ngIf="variant?.components.length > 0">
+        <h3 >Components</h3>
         <mat-list >
             <mat-list dense *ngFor="let component of variant.components; last as isLast ">
                     <mat-list-item class="mat-body-2">{{component.designation}}</mat-list-item>
