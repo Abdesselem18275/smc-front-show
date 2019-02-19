@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatIconRegistry, MatTreeNestedDataSource } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProductDataService } from './product/service/product-data.service';
@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
   isMenuActive: boolean;
   treeControl = new NestedTreeControl<Category>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
+  isSmall: boolean;
+  isSearch: boolean;
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isSmall = window.innerWidth < 960;}
   constructor(private pds: ProductDataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('Logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
                 .addSvgIcon('Bar_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/bar_ware.svg'))
@@ -33,7 +38,6 @@ export class AppComponent implements OnInit {
       (categories: Category[]) => {this.categories = categories;
                                    this.treeMenu.
                                          filter(x => x.designation === 'Products')[0].children = this.categories.filter(x => x.isRoot);
-                                   console.log(this.treeMenu);
                                    this.dataSource.data = this.treeMenu.filter(x => x.isRoot);
                                    this.rootCategories = this.categories.filter(category => category.isRoot);
       }
@@ -41,6 +45,9 @@ export class AppComponent implements OnInit {
   }
   toggleMenu(state) {
     this.isMenuActive = state;
+  }
+  toggleSearch(val) {
+    this.isSearch = val;
   }
 
   hasChild = (_: number, node: Category) => !node.isLeaf;

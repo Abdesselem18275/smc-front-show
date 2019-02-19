@@ -19,7 +19,7 @@ export class ProductBreadcrumbComponent implements OnInit {
     this.categories = [];
     this.route
       .queryParamMap
-      .pipe(map(params => params.get('category') || ''))
+      .pipe(map(params => params.get('categories__designation__in') || ''))
       .subscribe(param => {
         this.pds.get_elements({model: 'categorie'})
           .subscribe((categories: Category[]) => {

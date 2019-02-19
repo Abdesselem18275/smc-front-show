@@ -1,6 +1,6 @@
 <section class="breadcrumb">
-    <span [routerLink]="['/product/list']" [queryParams]="{category: ''}"queryParamsHandling="merge">PRODUCTS |</span>
-    <span [routerLink]="['/product/list']" [queryParams]="{category: item}" queryParamsHandling="merge" *ngFor="let item of items.reverse(); last as isLast">
+    <span [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}"queryParamsHandling="merge">PRODUCTS |</span>
+    <span [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item}" queryParamsHandling="merge" *ngFor="let item of items.reverse(); last as isLast">
          {{item | uppercase}}&nbsp;<span *ngIf="!isLast">| </span>
     </span>
 

@@ -27,11 +27,12 @@ export class ProductDataService  {
 
     const model = options.model || '';
     const param_key = options.param_key || new Map();
-    this.httpParams = this.httpParams.delete('page');
-    param_key.forEach((key, value) => {
-      this.httpParams = this.httpParams.set(value, key);
+    param_key.forEach((value, key) => {
+      console.warn(key);
+      console.warn('key: ' + key + ' value: ' + value);
+      this.httpParams = this.httpParams.set(key, value);
     });
-
+    console.warn(this.httpParams);
 
     const query: string =
     [

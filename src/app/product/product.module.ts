@@ -13,6 +13,7 @@ import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 
 
@@ -24,8 +25,8 @@ import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcr
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                  ProductDetailComponent, ProductBreadcrumbComponent],
+                  ProductDetailComponent, ProductBreadcrumbComponent, SearchBoxComponent],
   providers:  [FilterBuilderService, DataInjectablesService ],
-  exports : []
+  exports : [SearchBoxComponent]
 })
 export class ProductModule { }

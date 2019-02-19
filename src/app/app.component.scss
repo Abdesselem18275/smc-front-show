@@ -17,7 +17,7 @@
 
 
 .nav-bar{
-    padding:  1.5em 10em 1.5em 10em;
+    padding:  1.5em 5em 1.5em 5em;
     display : flex;
     justify-content : space-between;
     align-items : center;
@@ -27,18 +27,9 @@
 {
     margin-top: auto ;
     margin-bottom: auto;
-    color: rgb(92,92,88);
     display : flex;
 
 }
-
-
-
-.nav-bar__menu-icon
-{
-    display : none;
-}
-
 
 
 
@@ -81,7 +72,7 @@
         }
 
         .nav-bar{
-            padding:  1.5em 1em 1.5em 1em;
+            padding:  1.5em 2em 1.5em 2em;
             display : flex;
             justify-content : space-between;
             align-items : center;
