@@ -29,7 +29,6 @@ export class ProductListComponent implements OnInit {
        .queryParamMap
        .pipe(map(params => {
             let paramsMap = new Map();
-            console.warn(params.keys);
             params.keys.forEach(key => {
               paramsMap.set(key, params.get(key)); });
             return paramsMap;
@@ -39,6 +38,7 @@ export class ProductListComponent implements OnInit {
        .subscribe(_products => {
               this.productShorts = _products['results'];
               if (this.objCount  !== _products['count']) {
+                 console.warn(this.paginator.pageIndex);
                  this.paginator.firstPage();
               }
               this.objCount  = _products['count'];
@@ -52,7 +52,7 @@ getRequest(event: any) {
 
 pageEvent(event: PageEvent) {
   this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
-
+  console.warn('pageEvent');
   this.paramRequest.next(new Map().set('page', this.pageIndex));
 
 }

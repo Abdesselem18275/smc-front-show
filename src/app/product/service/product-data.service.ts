@@ -1,5 +1,5 @@
-import { Injectable, Inject, OnInit } from '@angular/core';
-import { FilterCategory, Category } from '../model';
+import { Injectable, Inject } from '@angular/core';
+import { FilterCategory } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -27,11 +27,12 @@ export class ProductDataService  {
 
     const model = options.model || '';
     const param_key = options.param_key || new Map();
+    this.httpParams = this.httpParams.delete('page');
+
     param_key.forEach((value, key) => {
-      console.warn(key);
-      console.warn('key: ' + key + ' value: ' + value);
       this.httpParams = this.httpParams.set(key, value);
     });
+
     console.warn(this.httpParams);
 
     const query: string =

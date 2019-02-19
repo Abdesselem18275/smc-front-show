@@ -30,7 +30,7 @@
 </header>
 
 <mat-sidenav-container class="nav-bar__side-menu">
-  <mat-sidenav #sidenav mode="side">
+  <mat-sidenav #sidenav mode="over">
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
