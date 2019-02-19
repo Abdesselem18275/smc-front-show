@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.treeMenu = this.pds.getMenu();
     this.isMenuActive = false;
-    this.pds.get_elements({model: 'categorie'}).subscribe(
+    this.pds.getCategories().subscribe(
       (categories: Category[]) => {this.categories = categories;
                                    this.treeMenu.
                                          filter(x => x.designation === 'Products')[0].children = this.categories.filter(x => x.isRoot);

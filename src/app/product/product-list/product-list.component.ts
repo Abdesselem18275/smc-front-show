@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, mergeAll, tap, flatMap } from 'rxjs/operators';
+import { map, switchMap, mergeAll, tap, flatMap, debounce, debounceTime } from 'rxjs/operators';
 import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
 
@@ -34,6 +34,7 @@ export class ProductListComponent implements OnInit {
             return paramsMap;
        }))).pipe(
          tap(() => this.isReady = false),
+         debounceTime(500),
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];

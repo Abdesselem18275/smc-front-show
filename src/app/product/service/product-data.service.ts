@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory } from '../model';
+import { FilterCategory,Category} from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -14,8 +14,10 @@ export const API_URL = 'https://show-case-api.herokuapp.com';
 export class ProductDataService  {
   test: string;
   httpParams: HttpParams;
+  categories$: Observable<Category[]>;
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
     this.httpParams = new HttpParams();
+    this.get_elements({model: 'categorie'}).pipe(catgories => this.categories$ = catgories);
   }
 
 
@@ -98,6 +100,10 @@ export class ProductDataService  {
       }
     ];
     return treeMenu;
+  }
+
+  getCategories() {
+    return this.categories$;
   }
 
 
