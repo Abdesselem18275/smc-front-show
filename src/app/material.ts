@@ -4,7 +4,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -22,6 +21,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -31,14 +31,14 @@ import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
-             MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
+             MatListModule, MatInputModule, MatTabsModule, MatTreeModule,
             MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatPaginatorModule, MatSliderModule, MatRippleModule,
             MatExpansionModule, BrowserAnimationsModule, MatTooltipModule, MatCardModule,MatSidenavModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule,
-             MatListModule, MatInputModule, MatAutocompleteModule,MatTreeModule,
+             MatListModule, MatInputModule, MatTabsModule, MatTreeModule,
              MatSelectModule, MatSnackBarModule, MatGridListModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule,
              MatSliderModule, MatRippleModule, MatExpansionModule, BrowserAnimationsModule,

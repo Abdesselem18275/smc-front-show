@@ -83,6 +83,8 @@ img {
      }
     .description__sub-title {
       display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.5em;
       mat-icon {
         width: 1.5em;
         margin-left: 1em;

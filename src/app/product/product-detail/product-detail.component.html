@@ -7,28 +7,30 @@
 </section>
 <section class="description">
   <p class="mat-h2">{{product?.designation}}</p>
+  <p style="margin-top : -1em" class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} <span *ngIf="product?.interiorMaterial.color" >-</span> {{product?.interiorMaterial.color}}</p>
   <div class="description__sub-title">
-  <p class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} <span *ngIf="product?.interiorMaterial.color" >-</span> {{product?.interiorMaterial.color}}</p>
-  <span class="content--spacer"></span>
-  <div>
-      <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
-      <mat-icon matTooltip="Exterior wear" inline ="True" svgIcon='Cook_ware'></mat-icon>
-      <mat-icon matTooltip="Professional wear" inline ="True" svgIcon='Serve_ware'></mat-icon>
-    </div>
+    <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
+    <mat-icon matTooltip="Exterior wear" inline ="True" svgIcon='Cook_ware'></mat-icon>
+    <mat-icon matTooltip="Professional wear" inline ="True" svgIcon='Serve_ware'></mat-icon>
   </div>
   <mat-divider></mat-divider>
-  <p *ngIf="product?.areaOfUse" class="mat-body-2">Area of Use</p>
-  <p class="mat-body description__text">
-    {{product?.areaOfUse}}
-  </p>
-  <p *ngIf="product?.materials" class="mat-body-2">Materials</p>
-  <p class="mat-body description__text">
-    {{product?.materials}}
-  </p>
-  <p *ngIf="product?.aesthetics" class="mat-body-2">Aesthetics</p>
-  <p class="mat-body description__text">
-    {{product?.aesthetics}}
-  </p>
+  <mat-tab-group>
+    <mat-tab label="Area of Use">
+      <p class="mat-body description__text">
+          {{product?.areaOfUse}}
+      </p>
+    </mat-tab>
+    <mat-tab label="Aesthetics">
+      <p class="mat-body description__text">
+        {{product?.materials}}
+      </p>
+    </mat-tab>
+    <mat-tab label="Area of Use">
+      <p class="mat-body description__text">
+        {{product?.aesthetics}}
+      </p>
+    </mat-tab>
+  </mat-tab-group>
   <mat-divider></mat-divider>
 
 </section>

@@ -4,7 +4,7 @@
 <mat-divider></mat-divider>
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
 <mat-accordion  [multi]="true" >
-    <mat-expansion-panel *ngFor="let filterCategory of filterCategories" class="mat-typography">
+    <mat-expansion-panel [expanded]="true" *ngFor="let filterCategory of filterCategories" class="mat-typography">
       <mat-expansion-panel-header [collapsedHeight]="'3em'">
         <mat-panel-title>
           <h5>{{filterCategory.value | uppercase}} </h5>
