@@ -29,7 +29,9 @@
                 </mat-card>
             </div>
             <mat-divider></mat-divider>
-            <mat-paginator mat-paginator
+            <mat-paginator
+            *ngIf="!isReady"
+             mat-paginator
             [pageIndex]="1"
             [length]="objCount"
             [pageSize]="10"

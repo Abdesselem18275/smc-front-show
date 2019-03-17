@@ -4,6 +4,9 @@
   </div>
   <nav class='nav-bar'>
     <mat-icon *ngIf="isSmall" (click)="sidenav.toggle()" class="nav-bar__menu-icon">menu</mat-icon>
+    <div *ngIf="!isSmall">
+
+    </div>
    <div *ngIf="(!isSearch && isSmall)" class="nav-bar__logo">
       <p id="header--big">SMC</p>
       <p id="sentence--small">sweat for you</p>
@@ -28,7 +31,6 @@
    <app-search-box  (open) = "toggleSearch($event)" class="nav-bar__search-icon"></app-search-box>
   </nav>
 </header>
-<router-outlet></router-outlet>
 
 <mat-sidenav-container class="nav-bar__side-menu">
   <mat-sidenav #sidenav mode="over">
@@ -62,6 +64,8 @@
     </mat-tree>
   </mat-sidenav>
   <mat-sidenav-content>
+      <router-outlet></router-outlet>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 
