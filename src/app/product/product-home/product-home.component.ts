@@ -10,7 +10,6 @@ import { ProductDataService } from '../service/product-data.service';
 })
 export class ProductHomeComponent implements OnInit {
 
-  mainImageUrl: string;
 
 
   constructor(private pds: ProductDataService) { }

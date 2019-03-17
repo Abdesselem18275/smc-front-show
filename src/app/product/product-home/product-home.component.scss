@@ -1,87 +1,32 @@
-.home-page {
-    padding:  0 4em 0 4em;
-    display : grid;
-    grid-template-columns: 2fr 4fr;
-    grid-template-areas: 
-    "side-menu upper-content"
-    "lower-content lower-content";
+
+.upper-text {
+  text-align:center;
+  background: rgba(0, 0, 0, 0.35);
+}
+#header--big {
+  font-family: 'Stardos Stencil', cursive;
+  font-weight: 200;
+  font-size: 4.5em;
+  color: white;
+}
+#sentence--small {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+  margin-top: -3em;
+  color: white;
 }
 
-.side-menu {
-    background-color: rgb(235,235,235);
-    padding :  2.5% 10% 0 10%;
-    display : flex;
-    flex-direction: column;
-    grid-area: side-menu;
-
-    
-}
-.side-menu > *  {
-    align-self: center;
-}
-
-
-.upper-content {
-    grid-area:upper-content;
-}
-
-.upper-content img {
-    max-width: 100%;
-}
-
-.lower-content {
-    grid-area:lower-content;
-}
-
-.side-menu__content {
-    display: flex;
-    flex-wrap: wrap;
+#footer {
+  bottom: 2em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
 }
-.side-menu__content__icon {
-    
-    border-bottom: solid;
-    border-bottom-width: 0.08em;
-    border-bottom-color: rgb(179,179,179);
-    display: flex;
-    flex-direction: column;
-    flex :0 0 50%;
-    padding-top : 2.5%
-
-    
+.footer-button {
+  font-size: 5em;
+  color: white;
+  margin-right: auto;
+  margin-left:auto;
 }
-
-.side-menu__content__icon mat-icon{
-    min-height : 2em;     
-    width: 25%
-
-}
-
-.side-menu__content__icon > * {
-    align-self: center;
-}
-
-
-.side-menu__content__icon:nth-child(even){
-    border-left: solid;
-    border-left-width: 0.08em;
-    border-left-color: rgb(179,179,179);
-    
-}
-
-.side-menu *  {
-    color : rgb(102,102,102)
-}
-
-@media only screen and (max-width:840px) {
-
-    .home-page {
-        display : grid;
-        grid-template-columns: 2fr 4fr;
-        grid-template-areas: 
-        "upper-content upper-content"
-        "side-menu side-menu"
-        "lower-content lower-content";
-    }
-  }
-

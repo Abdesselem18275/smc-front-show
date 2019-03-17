@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
   isSearch: boolean;
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isSmall = window.innerWidth < 960;}
+    this.isSmall = window.innerWidth < 960;
+  }
   constructor(private pds: ProductDataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('Logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
                 .addSvgIcon('Bar_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/bar_ware.svg'))

@@ -1,11 +1,17 @@
 @import "src/styles.scss";
-
 section
 {
-    background-color: $color-grey;
-    padding : 0.5em 0 0.5em 0.5em;
+
     span:hover{
      cursor: pointer;
+    }
+    mat-icon {
+      vertical-align:middle;
+    }
+    span {
+      color: white;
+      font-weight: 600;
+      font-family: 'Raleway';
     }
 }
 

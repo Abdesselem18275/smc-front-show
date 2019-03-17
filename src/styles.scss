@@ -1,5 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/app-themes.scss";
+@import url('https://fonts.googleapis.com/css?family=Raleway|Stardos+Stencil');
+
+body, html {
+  height: 100%;
+  margin : 0 0 0 0 ;
+}
+
+body {
+  background:url("/src/assets/images/Hero_image.jpg");
+  background-position: top;
+  background-repeat: repeat;
+  background-size: 100vw;
+  background-origin: content-box;
+  background-attachment: scroll;
+  filter: grayscale(50%);
+}
+
+
 
 * {
     box-sizing: border-box;
@@ -102,3 +120,5 @@ mat-icon:hover {
 $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgb(130,130,130);
+
+

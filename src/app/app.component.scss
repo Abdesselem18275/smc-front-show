@@ -1,55 +1,75 @@
 @import "src/styles.scss";
 
+
 .upper-menu {
-    background-color: $color-grey;
-    height: 1.5em;
-    padding:  0 10em 0 10em;
-}
-.upper-menu__content--float-right
-{
-    float: right;
-}
+    padding:  0 5em 0 5em;
 
-.upper-menu__content--float-right > *
-{
-    vertical-align: middle;
 }
-
 
 .nav-bar{
-    padding:  1.5em 5em 1.5em 5em;
+    padding:  1em 5em 1em 5em;
     display : flex;
     justify-content : space-between;
     align-items : center;
+    width: 100%;
 }
 
 .nav-bar__nav-tab
 {
-    margin-top: auto ;
-    margin-bottom: auto;
+
     display : flex;
 
 }
 
 
+.nav-bar__nav-tab button
+{
 
-.nav-bar__logo--text {
-    font-family: 'Anton', sans-serif;
-    font-size: 2.5em;
+    font-weight: bold;
+
 }
+
+mat-sidenav-content {
+}
+
+
 
 .menu__sub-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     position: absolute;
-    background-color: rgb(244,244,244);
+    background-color: white;
     width : 40%;
     z-index: 1000;
 }
 .menu__sub-menu__tab:hover {
     border-bottom: solid thin $color-deep-grey;;
     cursor : pointer;
+}
+
+.spacer {
+  flex :  1 1 auto;
+}
+
+
+mat-sidenav {
+  width: 200px;
+  padding-left: 1em;
+}
+.nav-bar__side-menu {
+  background: rgba(0,0,0,0.5);
+}
+
+.tree-invisible {
+  display: none;
+}
+
+.nav-bar__side-menu ul,
+.nav-bar__side-menu li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
 }
 
 
@@ -67,36 +87,21 @@
         {
             order : 3;
         }
-        .nav-bar__logo--text{
+        .spacer{
             order : 2;
         }
 
         .nav-bar{
-            padding:  1.5em 2em 1.5em 2em;
+            padding:  1em 1em 1em 1em;
             display : flex;
             justify-content : space-between;
             align-items : center;
+            background: rgba(0,0,0,0.5);
+            color : white;
         }
         .upper-menu {
-            background-color: $color-grey;
-            height: 1.5em;
             padding:  0 1em 0 1em;
             width : 100%;
         }
       }
 
-      mat-sidenav {
-        width: 200px;
-        padding-left: 1em;
-      }
-
-      .tree-invisible {
-        display: none;
-      }
-
-      .nav-bar__side-menu ul,
-      .nav-bar__side-menu li {
-        margin-top: 0;
-        margin-bottom: 0;
-        list-style-type: none;
-      }

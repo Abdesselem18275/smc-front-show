@@ -8,11 +8,6 @@
 <section class="description">
   <p class="mat-h2">{{product?.designation}}</p>
   <p style="margin-top : -1em" class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} <span *ngIf="product?.interiorMaterial.color" >-</span> {{product?.interiorMaterial.color}}</p>
-  <div class="description__sub-title">
-    <mat-icon matTooltip="Cook wear" inline ="True" svgIcon='Table_ware'></mat-icon>
-    <mat-icon matTooltip="Exterior wear" inline ="True" svgIcon='Cook_ware'></mat-icon>
-    <mat-icon matTooltip="Professional wear" inline ="True" svgIcon='Serve_ware'></mat-icon>
-  </div>
   <mat-divider></mat-divider>
   <mat-tab-group>
     <mat-tab label="Area of Use">

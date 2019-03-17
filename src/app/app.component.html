@@ -1,16 +1,14 @@
 <header class="mat-typography">
   <div class='upper-menu'>
-    <div class='mat-small upper-menu__content--float-right'>
-      <span class="mat-caption mat-gutter--right--4">English</span>
-      <i class='fas fa-angle-down mat-gutter--right--16'></i>
-      <i class='fab fa-facebook'></i>
-    </div>
+      <span class="mat-caption float-right">English | French</span>
   </div>
   <nav class='nav-bar'>
     <mat-icon *ngIf="isSmall" (click)="sidenav.toggle()" class="nav-bar__menu-icon">menu</mat-icon>
-   <div *ngIf="!(isSearch && isSmall)" class="nav-bar__logo--text">SMC</div>
-   <div   class="mat-subheading-2 nav-bar__nav-tab">
-     <div (mouseenter)="toggleMenu(true)"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">PRODUCTS</button>
+   <div *ngIf="!(isSearch && isSmall)">
+    </div>
+    <span *ngIf="isSmall" class="spacer"></span>
+   <div   class=" nav-bar__nav-tab">
+     <div (mouseenter)="toggleMenu(true)"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
       <div class="mat-elevation-z1 menu__sub-menu" (mouseleave)="toggleMenu(false)" (mouseenter)="toggleMenu(true)" *ngIf="isMenuActive">
         <div  *ngFor="let rootCat of rootCategories">
           <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
@@ -20,10 +18,10 @@
         </div>
       </div>
      </div>
-     <button mat-button class="mat-margin-gutter--right--16">GIFTS</button>
-     <button mat-button class="mat-margin-gutter--right--16">INSPIRATION</button>
-     <button mat-button class="mat-margin-gutter--right--16">ABOUT US</button>
-     <button mat-button class="mat-margin-gutter--right--16">CONTACT US</button>
+     <button mat-button class="mat-margin-gutter--right--16">Gifts</button>
+     <button mat-button class="mat-margin-gutter--right--16">Inspiration</button>
+     <button mat-button class="mat-margin-gutter--right--16">About us</button>
+     <button mat-button class="mat-margin-gutter--right--16">Contact us</button>
    </div>
    <app-search-box  (open) = "toggleSearch($event)" class="nav-bar__search-icon"></app-search-box>
   </nav>
@@ -61,9 +59,8 @@
     </mat-tree>
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
 
 
