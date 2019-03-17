@@ -29,9 +29,21 @@
 
 }
 
-mat-sidenav-content {
+.nav-bar__logo {
+  text-align:center;
+  #header--big {
+    font-family: 'Stardos Stencil', cursive;
+    font-weight: 200;
+    font-size: 2em;
+    color: white;
+  }
+  #sentence--small {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+    margin-top: -1em;
+    color: white;
+  }
 }
-
 
 
 .menu__sub-menu {
@@ -88,6 +100,9 @@ mat-sidenav {
             order : 3;
         }
         .spacer{
+            display: none;
+        }
+        .nav-bar__logo {
             order : 2;
         }
 
