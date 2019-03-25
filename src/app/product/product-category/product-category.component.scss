@@ -143,12 +143,39 @@ img {
 }
 
 @media only screen and (max-width:1024px)  {
-    .sentence--small {
-      width : 100%;
-    }
+
+  :host{
+    font-size: 12px;
+  }
+
+
 }
 
 @media only screen and (max-width:840px)  {
+  .right-box {
+    .box-text {
+      .sentence--small {
+        width : 95%
+      }
+
+    }
+  }
+
+
+}
+
+
+
+@media only screen and (max-width:720px)  {
+  .right-box {
+    .box-text {
+      .sentence--small {
+        width : 60%
+      }
+
+    }
+  }
+
   .category-box {
     margin : 5em 0 0 0;
 
