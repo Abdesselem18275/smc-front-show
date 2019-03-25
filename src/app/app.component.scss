@@ -54,10 +54,14 @@
     background-color: white;
     width : 40%;
     z-index: 1000;
+    background: rgb(226,200,166)
+
 }
+
 .menu__sub-menu__tab:hover {
     border-bottom: solid thin $color-deep-grey;;
     cursor : pointer;
+
 }
 
 .spacer {
@@ -70,7 +74,8 @@ mat-sidenav {
   padding-left: 1em;
 }
 .nav-bar__side-menu {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.01);
+  height: 300vh;
 }
 
 .tree-invisible {
@@ -108,11 +113,7 @@ mat-sidenav {
 
         .nav-bar{
             padding:  1em 0.25em 1em 0.25em;
-            display : flex;
-            justify-content : space-between;
-            align-items : center;
-            background: rgba(0,0,0,0.5);
-            color : white;
+
         }
         .upper-menu {
             padding:  0 1em 0 1em;

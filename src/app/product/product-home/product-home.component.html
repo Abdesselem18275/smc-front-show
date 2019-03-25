@@ -1,16 +1,20 @@
+<section class="landing-page">
+
+
+<span class="spacer"></span>
+
 <div class="upper-text">
-<p id="header--big">SMC</p>
-<p id="sentence--small">sweat for you</p>
-</div>
-<div id="footer">
-<mat-icon class="footer-button">
-  expand_more
-</mat-icon>
-<mat-icon class="footer-button">
-    expand_more
-  </mat-icon>
+<mat-icon class="main-logo--big" svgIcon="Logo"></mat-icon>
+<p class="header--big">SMC</p>
+<p class="sentence--small">sweat for you</p>
 </div>
 
 
-<P>hELLO</P>
+<mat-icon  svgIcon="Down_arrow" [routerLink]="['../home']" [fragment]="'categories'" class="footer footer-icon"></mat-icon>
+</section>
 
+<section class="category-page">
+
+<app-product-category></app-product-category>
+
+</section>

@@ -1,20 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/app-themes.scss";
-@import url('https://fonts.googleapis.com/css?family=Raleway|Stardos+Stencil');
+@import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script|Raleway|Stardos+Stencil|Roboto');
 
 body, html {
   height: 100%;
   margin : 0 0 0 0 ;
 }
 
+
 body {
-  background:url("/src/assets/images/Hero_image.jpg");
-  background-position: top;
+  background:url(/src/assets/images/Hero_image_2.png);
+  background-position: center;
   background-repeat: repeat;
-  background-size: 100vw;
+  background-size: cover;
   background-origin: content-box;
   background-attachment: scroll;
-  filter: grayscale(50%);
 }
 
 
@@ -122,3 +122,8 @@ $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgb(130,130,130);
 
 
+@media only screen and (max-width:480px)  {
+body {
+  font-size: 12px;
+}
+}

@@ -4,6 +4,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 const productRoutes: Routes = [
   { path : 'product',

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
   constructor(private pds: ProductDataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('Logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
-                .addSvgIcon('Bar_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/bar_ware.svg'))
+                .addSvgIcon('Down_arrow', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/down_arrow.svg'))
                 .addSvgIcon('Serve_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/serve_ware.svg'))
                 .addSvgIcon('Cook_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/cook_ware.svg'))
                 .addSvgIcon('Light_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/light_ware.svg'))

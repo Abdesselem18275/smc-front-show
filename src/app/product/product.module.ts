@@ -14,6 +14,7 @@ import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 
 
@@ -25,7 +26,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                  ProductDetailComponent, ProductBreadcrumbComponent, SearchBoxComponent],
+                  ProductDetailComponent, ProductBreadcrumbComponent, SearchBoxComponent, ProductCategoryComponent],
   providers:  [FilterBuilderService, DataInjectablesService ],
   exports : [SearchBoxComponent]
 })

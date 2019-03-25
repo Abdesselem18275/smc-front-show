@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { encode } from 'punycode';
 import { ProductDataService } from '../service/product-data.service';
+
 
 @Component({
   selector: 'app-product-home',
@@ -10,11 +9,8 @@ import { ProductDataService } from '../service/product-data.service';
 })
 export class ProductHomeComponent implements OnInit {
 
-
-
   constructor(private pds: ProductDataService) { }
-
   ngOnInit() {
-    }
+  }
 
 }

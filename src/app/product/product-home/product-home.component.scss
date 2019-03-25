@@ -1,32 +1,56 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vh;
+
+
+
+}
+.main-logo--big  {
+  width: 9em;
+  height: auto;
+}
 
 .upper-text {
   text-align:center;
-  background: rgba(0, 0, 0, 0.35);
 }
-#header--big {
+.header--big {
   font-family: 'Stardos Stencil', cursive;
   font-weight: 200;
-  font-size: 4.5em;
-  color: white;
+  font-size: 5.5em;
+  color: black;
+  margin-top : 0.05em;
 }
-#sentence--small {
+.sentence--small {
   font-family: 'Raleway', sans-serif;
-  font-size: 2em;
-  margin-top: -3em;
-  color: white;
+  font-size: 3em;
+  margin-top: -2.5em;
+  color: black;
 }
 
-#footer {
-  bottom: 2em;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 
+.footer-icon {
+  width : 6em;
+  color: black;
+  align-self: center;
+  -webkit-transition: transform  0.1s; /* For Safari 3.1 to 6.0 */
+  transition: transform 0.1s;
+  transition-timing-function: ease-in;
 }
-.footer-button {
-  font-size: 5em;
-  color: white;
-  margin-right: auto;
-  margin-left:auto;
+
+
+  .footer-icon:hover {
+    transform: scale(1.5,1.5);
+  }
+
+
+
+.category-page {
+
 }

@@ -40,14 +40,12 @@ mat-icon--active {
    border-bottom: solid;
    border-top: solid;
    border-width: 0.08em;
-   border-color: white;
+
    display: flex;
-   color :white;
 
    span {
     font-family: 'Raleway', sans-serif;
-    color :white;
-
+    font-weight: 600;
    }
   }
 
@@ -76,8 +74,8 @@ mat-icon--active {
 
 
 .nav-bar__side-menu {
-  height: 600px;
-  background:rgba(255, 255, 255, 0.8);
+  height: 840px;
+  background:rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 mat-sidenav-container {
@@ -85,9 +83,7 @@ mat-sidenav-container {
 }
 
 
-@media only screen and (max-width:960px) {
 
-}
 
 
 @media only screen and (max-width:840px) {

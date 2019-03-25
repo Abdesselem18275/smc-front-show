@@ -28,9 +28,8 @@
                   </mat-card-header>
                 </mat-card>
             </div>
-            <mat-divider></mat-divider>
             <mat-paginator
-            *ngIf="!isReady"
+            [style.display]="isReady ? 'block' : 'none'"
              mat-paginator
             [pageIndex]="1"
             [length]="objCount"
