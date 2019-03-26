@@ -15,11 +15,11 @@
   </div>
   <div class="triangle-right triangle"></div>
 
-  <img class="secondary-image" src="category.children[0].thumbnail.content">
+  <img class="secondary-image" [src]="category.children[0].thumbNail.content">
 </div>
 
 <div class="right-box">
-  <img class="secondary-image" src="category.children[1].thumbnail.content">
+  <img class="secondary-image" [src]="category.children[1].thumbNail.content">
 
   <div class="box-text">
     <p class="header--big"> {{category.children[1].designation | lowercase}} </p>
