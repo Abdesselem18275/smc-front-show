@@ -16,6 +16,7 @@ export class ProductCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.pds.categories$;
+    this.categories$.subscribe(x => console.warn(x));
   }
 
 }
