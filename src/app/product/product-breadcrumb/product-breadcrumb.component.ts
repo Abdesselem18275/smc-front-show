@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProductDataService } from '../service/product-data.service';
 import { Category } from '../model';
 import { ActivatedRoute } from '@angular/router';
@@ -29,6 +29,7 @@ export class ProductBreadcrumbComponent implements OnInit {
           });
           });
         }
+
 
 
   getItem(param): Category {

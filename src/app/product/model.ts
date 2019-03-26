@@ -222,18 +222,22 @@ export class Category {
     isRoot: boolean;
     isLeaf: boolean;
     children: Category[];
+    thumbNail: BaseImage;
 
     constructor(options: {
         designation?: string,
         parentCategory?: Category,
         isRoot?: boolean,
         isLeaf?: boolean,
-        children?: Category[] } = {}) {
+        children?: Category[],
+        thumbNail?: BaseImage } = {}) {
         this.designation = options.designation || '';
         this.parentCategory = options.parentCategory || new Category({});
         this.isRoot = options.isRoot || false;
         this.isLeaf = options.isLeaf || false;
         this.children = options.children || [];
+        this.thumbNail = options.thumbNail || new BaseImage({});
+
     }
 
 }
