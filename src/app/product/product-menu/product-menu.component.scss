@@ -63,6 +63,7 @@ header {
     color: white;
     margin-left: -0.7em;
   }
+  cursor: pointer;
 }
 
 
@@ -72,8 +73,13 @@ header {
     flex-direction: row;
     justify-content: space-around;
     position: absolute;
+    top : 73.5px;
     background-color: white;
     width : 40%;
+    color: black;
+    height: 0px;
+    overflow: hidden;
+    transition: ease  0.3s ;
 
 }
 

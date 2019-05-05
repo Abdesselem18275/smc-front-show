@@ -75,8 +75,8 @@
    </tr>
    <tr *ngFor="let variant of product?.variants" >
     <td class="variant-designation">
-      <p class="mat-body-2">{{ variant.designation | uppercase }}</p>
-      <p class="mat-caption variant-reference">{{variant.reference}}</p>
+      <p>{{ variant.designation | uppercase }}</p>
+      <p class="variant-reference">{{variant.reference}}</p>
     </td>
     <td>
       {{variant.height.toString()}}
@@ -102,20 +102,20 @@
           <td>
             <article>
               <div class="variant-component-upper-section">
-                <p>Handle</p>
+                <p class="variant-component-designation">Handle</p>
                 <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
               </div>
-              <p>Length : 25cm </p>
-              <p>material : Copper</p>
+              <p class="variant-component-spec">Length : 25cm </p>
+              <p class="variant-component-spec">material : Copper</p>
             </article>
             <article>
-                <div class="variant-component-upper-section">
-                  <p>Handle</p>
-                  <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
-                </div>
-                <p>Length : 25cm </p>
-                <p>material : Copper</p>
-              </article>
+              <div class="variant-component-upper-section">
+                <p class="variant-component-designation">Handle</p>
+                <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
+              </div>
+              <p class="variant-component-spec">Length : 25cm </p>
+              <p class="variant-component-spec">material : Copper</p>
+            </article>
           </td>
       </tr>
   </table>

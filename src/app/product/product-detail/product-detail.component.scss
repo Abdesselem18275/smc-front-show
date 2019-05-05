@@ -38,6 +38,7 @@
 
    }
    .feature-container {
+     margin : 1em 0 1em 0;
      display: flex;
      justify-content: center;
      mat-icon {
@@ -192,13 +193,28 @@
       align-items: center;
 
     }
+    article {
+      min-width: 80%;
+      margin: 1em;
+    }
     .variant-component-upper-section {
       display: flex;
       border-bottom: 1px solid #7F6A23; 
+      align-items: flex-end;
       
     }
     .feature-icon {
       margin-left: auto;
+    }
+    .variant-component-designation {
+      font-weight: 600;
+      margin-bottom: 0em;
+    }
+    .variant-component-spec {
+      font-weight: 400;
+      margin-bottom: 0em;
+      font-style: italic;
+
     }
     
   }
@@ -252,6 +268,9 @@
       
     }
     .component-detail {
+      article {
+        min-width: auto;
+      }
       width: 100%;
       td {
         flex-direction: row;
