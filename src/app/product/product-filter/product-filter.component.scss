@@ -2,29 +2,20 @@
 @import '../../../app-themes.scss';
 @import "src/styles.scss";
 
-:host {
-    padding : 0 1em 0 1em;
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding : 0 2em 0 2em;
+    flex-wrap: wrap;
 
 }
 .form__group-content {
     display: flex;
     flex-direction: column;
-}
-
-.form__group__title
-{
-    color : mat-color($app-primary);
-    font-weight: bolder;
-    border-bottom: thin solid $color-deep-grey;
-}
-
-.form__group
-{
     margin-bottom: 1em;
 }
-.caption {
-    font-weight: 500;
-}
-.mat-expansion-panel-header-title {
-  margin-top: 1em;
+.button-container {
+    align-self: flex-end;
 }

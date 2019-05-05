@@ -1,36 +1,17 @@
-<ng-container  *ngFor="let category of categories$ | async ;">
 
-<article *ngIf="category.isRoot" class="category-box">
-
-  <div class="left-box">
-<img [src]="category.thumbNail?.content">
-<p class="big-category-title">{{category.designation | uppercase}}</p>
+<div class="upper-text">
+    <p class="header--medium">OUR COLLECTION</p>
+    <p class="sentence--small">Inspired of millenium carthage history</p>
 </div>
+<section>
+  <article *ngFor="let collection of collections; let i = index">
+    <img [style.opacity]="i == hoveredIndex ? '1': '0.8'" (mouseenter)="toggleCollection(i)" (mouseleave)="toggleCollection(-1)" src="../../../assets/images/Pic_1.jpg">
+    <div class="collection-title" [style.opacity]="i == hoveredIndex ? 1 : 0">
+      {{collection.designation | uppercase}}
+    </div>
+  </article>
+</section>
 
-<div class="right-box">
-  <div class="box-text">
-    <p class="header--big"> {{category.children[0].designation | lowercase}} </p>
-    <p class="sentence--small">{{category.children[0].description | lowercase}} </p>
-    <p class="button--boxed"><button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in:category.children[0].designation}" mat-button>Discover more</button></p>
-  </div>
-  <div class="triangle-right triangle"></div>
-
-  <img class="secondary-image" [src]="category.children[0].thumbNail?.content">
+<div class="collection-description">
+  {{hoveredDescription}}
 </div>
-
-<div class="right-box">
-  <img class="secondary-image" [src]="category.children[1].thumbNail?.content">
-
-  <div class="box-text">
-    <p class="header--big"> {{category.children[1].designation | lowercase}} </p>
-     <p class="sentence--small">{{category.children[1].description | lowercase}} </p>
-     <p class="button--boxed"><button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in:category.children[1].designation}" mat-button>Discover more</button></p>
-  </div>
-  <div class="triangle-left triangle"></div>
-
-</div>
-
-
-</article>
-
-</ng-container>

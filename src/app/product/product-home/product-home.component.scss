@@ -1,53 +1,59 @@
-:host {
-  display: block;
-  height: 100%;
-}
 
 .landing-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 80vh;
-
-
+  background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)),url('../../../assets/images/Hero_image.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 136%;
 
 }
-.main-logo--big  {
-  width: 9em;
-  height: auto;
-}
-
-.upper-text {
+.upper-text,figure {
   text-align:center;
+  color: white;
+
+
+
 }
 .header--big {
   font-family: 'Stardos Stencil', cursive;
-  font-weight: 200;
-  font-size: 5.5em;
-  color: black;
-  margin-top : 0.05em;
+  font-size: 9em;
+  margin-top :0.4em;
+
 }
 .sentence--small {
   font-family: 'Raleway', sans-serif;
   font-size: 3em;
-  margin-top: -2.5em;
-  color: black;
+  margin-top: -3.5em;
 }
 
+.icons__wrap {
+  margin-top:3em;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  justify-content: space-evenly;
+  figure {
+    width: 20%;
+    margin-top: 2em;
 
-.footer-icon {
-  width : 6em;
-  color: black;
-  align-self: center;
-  -webkit-transition: transform  0.1s; /* For Safari 3.1 to 6.0 */
-  transition: transform 0.1s;
-  transition-timing-function: ease-in;
-}
+    mat-icon  {
+      transform: scale(2);
+  
+    }
+    figcaption {
+      margin-top : 1em;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+    }
 
+    mat-icon:hover {
+      transform: scale(2.5);
+      transition : ease 0.3s;
 
-  .footer-icon:hover {
-    transform: scale(1.5,1.5);
+    }
   }
 
 
+}
 

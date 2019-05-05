@@ -1,13 +1,39 @@
-<app-product-breadcrumb class="mat-elevation-z1 mat-body-strong breadcrumb"></app-product-breadcrumb>
+
+<app-product-menu class="menu__black"></app-product-menu>
+
+<section class="list-header">
+<div class="content__meta-bar">
+  <div>
+    <app-product-breadcrumb class="mat-body-strong breadcrumb"></app-product-breadcrumb>
+  </div>
+    <span class="content__meta-bar--spacer"></span>
+</div>
+</section>
+
+
+<div class="upper-section">
 <section class="carousel">
-  <img (click)="updateImage(image?.content)" [src]="image?.content" *ngFor ="let image of product?.images">
+  <section class="main-image">
+    <mat-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
+    <div>
+      <img [src]="selectedImage">
+    </div>
+    <mat-icon (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
+  </section>
+  <section class='images-selector'>
+      <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
+  </section>
 </section>
-<section class="image">
-<img [src]="selectedImage">
-</section>
+
 <section class="description">
-  <p class="mat-h2">{{product?.designation}}</p>
-  <p style="margin-top : -1em" class="mat-body description__color--grey">{{product?.exteriorMaterial.designation}} <span *ngIf="product?.interiorMaterial.color" >-</span> {{product?.interiorMaterial.color}}</p>
+  <header class="title-section">
+    <div style="float : left">
+      <p class="mat-h1">{{product?.designation  | uppercase}}</p>
+      <p style="margin-top : -1.5em" class="mat-body description__color--grey"> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+    </div>
+    <mat-icon id="collection-icon" svgIcon="Hanno"></mat-icon>
+  </header>
+  <section>
   <mat-divider></mat-divider>
   <mat-tab-group>
     <mat-tab label="Area of Use">
@@ -27,99 +53,75 @@
     </mat-tab>
   </mat-tab-group>
   <mat-divider></mat-divider>
+  </section>
+  <section class="feature-container">
+      <figure><mat-icon  svgIcon="Micro_wave"></mat-icon></figure>
+      <figure><mat-icon  svgIcon="Cooking_plate"></mat-icon></figure>
+  </section>
+
+  <button class="button">Ask About</button>
 
 </section>
-
+</div>
 <section  class="technical-description">
-    <p class="mat-h2">TECHNICAL DETAILS</p>
+    <p class="mat-h2">Technical details</p>
     <mat-divider></mat-divider>
-  <mat-table [dataSource]="product?.variants" >
+  <section class="technical-data-container">
+  <table class="variants-dimension-data mat-typography">
+   <tr>
+     <th  *ngFor="let header of displayedColumns">
+       {{header}}
+     </th>
+   </tr>
+   <tr *ngFor="let variant of product?.variants" >
+    <td class="variant-designation">
+      <p class="mat-body-2">{{ variant.designation | uppercase }}</p>
+      <p class="mat-caption variant-reference">{{variant.reference}}</p>
+    </td>
+    <td>
+      {{variant.height.toString()}}
+    </td>
+    <td>
+      {{variant.capacity.toString()}}
+    </td>
+    <td>
+      {{variant.thickness.toString()}}
+    </td>
+    <td>
+      {{variant.diameter.toString()}}
+    </td>
+   </tr>
+ </table>
+  <table class="component-detail mat-typography">
+      <tr>
+          <th>
+            Component
+          </th>
+        </tr>
+      <tr>
+          <td>
+            <article>
+              <div class="variant-component-upper-section">
+                <p>Handle</p>
+                <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
+              </div>
+              <p>Length : 25cm </p>
+              <p>material : Copper</p>
+            </article>
+            <article>
+                <div class="variant-component-upper-section">
+                  <p>Handle</p>
+                  <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
+                </div>
+                <p>Length : 25cm </p>
+                <p>material : Copper</p>
+              </article>
+          </td>
+      </tr>
+  </table>
 
-    <!-- Designation Column -->
-    <ng-container matColumnDef="variants">
-      <mat-header-cell  *matHeaderCellDef> <h3>Variants</h3> </mat-header-cell>
-      <mat-cell  *matCellDef="let element">
-          <mat-list dense>
-              <mat-list-item class="mat-body-2"><h3>{{element.designation}}</h3></mat-list-item>
-              <mat-list-item>{{element.reference}}</mat-list-item>
-          </mat-list>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Dimensions Column -->
-    <ng-container    matColumnDef="dimensions">
-      <mat-header-cell *matHeaderCellDef> <h3>Dimensions</h3> </mat-header-cell>
-      <mat-cell  *matCellDef="let element">
-          <mat-list dense>
-              <mat-list-item>Height : {{element.height.toString()}}</mat-list-item>
-              <mat-list-item>Diameter : {{element.diameter.toString()}}</mat-list-item>
-              <mat-list-item>Thickness : {{element.thickness.toString()}}</mat-list-item>
-              <mat-list-item>Capacity : {{element.capacity.toString()}}</mat-list-item>
-           </mat-list>
-         </mat-cell>
-    </ng-container>
-
-    <!-- Components Column -->
-    <ng-container  matColumnDef="components">
-      <mat-header-cell *matHeaderCellDef> <h3>Components</h3> </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-          <mat-list dense>
-              <mat-list dense *ngFor="let component of element.components; last as isLast ">
-                      <mat-list-item class="mat-body-2">{{component.designation}}</mat-list-item>
-                      <mat-list-item>{{component.measure_type}} : {{component.measure.toString()}} </mat-list-item>
-                      <mat-list-item>material : {{component.material.designation}}</mat-list-item>
-                      <mat-divider *ngIf="!isLast"></mat-divider>
-              </mat-list>
-            </mat-list>
-      </mat-cell>
-    </ng-container>
-
-
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row class="mat-body" *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-
-  <mat-accordion multi="true">
-    <mat-expansion-panel class="mat-gutter--bottom--16" *ngFor="let variant of product?.variants">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-              {{variant.designation}}
-          </mat-panel-title>
-          <mat-panel-description>
-              {{variant.reference}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-divider></mat-divider>
-    <div class="exp-panel__content">
-      <div>
-        <h3>Dimensions</h3>
-        <mat-list dense>
-            <mat-list-item>Height : {{variant.height.toString()}}</mat-list-item>
-            <mat-list-item>Diameter : {{variant.diameter.toString()}}</mat-list-item>
-            <mat-list-item>Thickness : {{variant.thickness.toString()}}</mat-list-item>
-            <mat-list-item>Capacity : {{variant.capacity.toString()}}</mat-list-item>
-         </mat-list>
-
-    </div>
-    <mat-divider></mat-divider>
-    <div *ngIf="variant?.components.length > 0">
-        <h3 >Components</h3>
-        <mat-list >
-            <mat-list dense *ngFor="let component of variant.components; last as isLast ">
-                    <mat-list-item class="mat-body-2">{{component.designation}}</mat-list-item>
-                    <mat-list-item>{{component.measure_type}} : {{component.measure.toString()}} </mat-list-item>
-                    <mat-list-item>material : {{component.material.designation}}</mat-list-item>
-                    <mat-divider *ngIf="!isLast"></mat-divider>
-            </mat-list>
-          </mat-list>
-    </div>
-    </div>
-    </mat-expansion-panel>
-
-  </mat-accordion>
-
+</section>
+  
 
 </section>
 

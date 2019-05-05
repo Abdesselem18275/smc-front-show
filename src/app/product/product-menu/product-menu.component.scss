@@ -1,22 +1,33 @@
 @import "src/styles.scss";
 
+:host-context(.menu__black) header {
+    background-color: black;
+    
+}
+
+:host-context(.menu__transparent) div.nav-bar__logo {
+    opacity: 0;
+    
+}
 
 
 
+header {
+    color: white;
+
+}
 .upper-menu {
-    padding:  0 5em 0 5em;
-
+    padding:  0 6rem 0 6rem;
 
 }
 
 
 .nav-bar{
-    padding:  1em 5em 1em 5em;
+    padding:  0rem 6rem 0rem 6rem;
     display : flex;
     justify-content : space-between;
     align-items : center;
     width: 100%;
-
 
 }
 
@@ -24,6 +35,7 @@
 {
 
     display : flex;
+    align-self: flex-start;
 
 }
 
@@ -31,7 +43,7 @@
 .nav-bar__nav-tab button
 {
 
-    font-weight: bold;
+    font-weight: 500;
 
 }
 
@@ -42,14 +54,17 @@
     font-weight: 200;
     font-size: 2em;
     color: white;
+    letter-spacing: 0.2em;
   }
   #sentence--small {
     font-family: 'Raleway', sans-serif;
-    font-size: 1em;
+    font-size: 0.75em;
     margin-top: -1em;
     color: white;
+    margin-left: -0.7em;
   }
 }
+
 
 
 .menu__sub-menu {
@@ -125,7 +140,7 @@
         }
 
         .nav-bar{
-            padding:  1em 0.25em 1em 0.25em;
+            padding:  0rem 6rem 0rem 6rem;
 
         }
         .upper-menu {
@@ -133,4 +148,9 @@
             width : 100%;
         }
       }
-
+      @media only screen and (max-width:840px) {
+        .nav-bar , .upper-menu {
+            padding:  0rem 2rem 0rem 2rem;
+        }
+        
+      }

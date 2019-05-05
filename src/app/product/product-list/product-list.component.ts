@@ -18,12 +18,14 @@ export class ProductListComponent implements OnInit {
   pageIndex: number;
   paramRequest = new Subject<any>();
   isReady: boolean;
+  isFilterActive: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
 
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
+       this.isFilterActive = false;
        merge(this.paramRequest,
         this.route
        .queryParamMap
@@ -56,6 +58,9 @@ pageEvent(event: PageEvent) {
   console.warn('pageEvent');
   this.paramRequest.next(new Map().set('page', this.pageIndex));
 
+}
+filterToggle() {
+  this.isFilterActive = !this.isFilterActive;
 }
 
 }

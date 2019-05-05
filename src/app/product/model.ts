@@ -242,6 +242,22 @@ export class Category {
 
 }
 
+export class ProductCollection {
+    designation: string;
+    description: string;
+    thumbNail: BaseImage;
+
+    constructor(options: {
+        designation?: string,
+        description?: string,
+        thumbNail?: BaseImage } = {}) {
+        this.designation = options.designation || '';
+        this.description = options.description || '';
+        this.thumbNail = options.thumbNail || new BaseImage({});
+    }
+
+}
+
 
 
 

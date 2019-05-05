@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory,Category} from '../model';
+import { FilterCategory,Category, ProductCollection} from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -92,7 +92,8 @@ export class ProductDataService  {
         isLeaf: true,
         isRoot: true,
         children: []
-      },{
+      },
+      {
         designation: 'Contact us',
         isLeaf: true,
         isRoot: true,
@@ -104,6 +105,23 @@ export class ProductDataService  {
 
   getCategories() {
     return this.categories$;
+  }
+  getCollections() {
+    const collections: any[] = [
+      {
+        designation: 'Hanno',
+        description: 'Hanno_Desc',
+      },
+      {
+        designation: 'Didon',
+        description: 'Didon_Desc',
+      },
+      {
+        designation: 'Magon',
+        description: 'Magon_Desc',
+      },
+    ];
+  return collections;
   }
 
 

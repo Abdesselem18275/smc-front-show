@@ -1,20 +1,47 @@
 <section class="landing-page">
-
-
-<span class="spacer"></span>
-
+<app-product-menu class=".menu__transparent"></app-product-menu>
 <div class="upper-text">
-<mat-icon class="main-logo--big" svgIcon="Logo"></mat-icon>
 <p class="header--big">SMC</p>
 <p class="sentence--small">sweat for you</p>
 </div>
+<div class="icons__wrap">
+   <figure>
+      <mat-icon svgIcon="Serve_ware"></mat-icon>
+      <figcaption>Serve ware</figcaption>
+   </figure>
 
+   <figure>  
+      <mat-icon svgIcon="Cook_ware"></mat-icon>
+      <figcaption>Serve ware</figcaption>
+   </figure>
 
-<mat-icon  svgIcon="Down_arrow" [routerLink]="['../home']" [fragment]="'categories'" class="footer footer-icon"></mat-icon>
+   <figure>
+      <mat-icon svgIcon="Home_ware"></mat-icon>
+      <figcaption>Serve ware</figcaption>
+   </figure>
+
+   <figure>
+      <mat-icon svgIcon="Light_ware"></mat-icon>
+      <figcaption>Serve ware</figcaption>
+   </figure>
+
+   <figure>
+   <mat-icon svgIcon="Table_ware"></mat-icon>
+   <figcaption >Serve ware</figcaption>
+   </figure>
+
+   <figure>
+      <mat-icon svgIcon="Bar_ware"></mat-icon>
+      <figcaption>Serve ware</figcaption>
+   </figure>
+
+</div>
+
+<span class="spacer"></span>
 </section>
 
 <section class="category-page">
 
-<app-product-category></app-product-category>
+<app-product-category></app-product-category> 
 
 </section>
