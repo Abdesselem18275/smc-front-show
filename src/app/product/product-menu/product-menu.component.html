@@ -1,4 +1,4 @@
-<header (mouseleave)="toggleMenu(false)"class="mat-typography">
+<header (mouseleave)="toggleMenu()"class="mat-typography">
     <div class='upper-menu'>
         <span class="mat-caption float-right">English | French</span>
     </div>
@@ -10,8 +10,8 @@
         <p id="sentence--small">sweat for you</p>
       </div>
      <div class="nav-bar__nav-tab">
-       <div (mouseenter)="toggleMenu(true)"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
-        <div class="mat-elevation-z1 menu__sub-menu"  (mouseenter)="toggleMenu(true)" [style.height]="isMenuActive ? '100px' : '0px'">
+       <div (mouseenter)="toggleMenu()"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
+        <div class="mat-elevation-z1 menu__sub-menu"  (mouseenter)="toggleMenu()" [style.height]="isMenuActive ? '100px' : '0px'">
           <div  *ngFor="let rootCat of rootCategories">
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
