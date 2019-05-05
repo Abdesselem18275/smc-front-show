@@ -132,6 +132,9 @@ mat-icon--active {
         padding : 0.5em 0.5em 0 0.5em;
       }
     }
+::ng-deep .mat-card-header-text {
+  font-size: 1.25em;
+}
 
   }
 
