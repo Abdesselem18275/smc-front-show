@@ -1,0 +1,26 @@
+input {
+    
+    color: white;
+    border-radius: 50px;
+    height: 3em;
+    width: 3em;
+    border-color: white;
+    background-image: url('../../../assets/pictures/search-icon.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 0.75em;
+    font-size: 12px;
+    padding-left: 1em;
+    border : none;
+    cursor: pointer;
+    color: white;
+    font-weight: 300;
+    font-size: 12px;
+    outline: none;
+
+}
+input::placeholder {
+    visibility: hidden;
+}
+
+

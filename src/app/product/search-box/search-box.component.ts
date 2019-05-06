@@ -2,21 +2,42 @@ import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/co
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
+  styleUrls: ['./search-box.component.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        width : '10em',
+        border : '1px solid white',
+        'background-position' : '7em',
+        'background-image': 'url("../../../assets/pictures/cross-icon.png")',
+      })),
+      state('closed', style({
+        outline: 'none'
+      })),
+      transition('open => closed', [
+        animate('0.2s')
+      ]),
+      transition('closed => open', [
+        animate('0.2s')
+      ]),
+    ]),
+  ],
 })
 export class SearchBoxComponent implements OnInit {
-  visible: boolean;
+  isOpen: boolean;
   @Output() open: EventEmitter<boolean> = new EventEmitter();
   searchBar = new FormControl('');
 
   constructor(private router: Router, private el: ElementRef) { }
   ngOnInit() {
 
-  this.visible = false;
+  this.isOpen = false;
 
 
   this.searchBar.valueChanges.pipe(
@@ -28,9 +49,9 @@ export class SearchBoxComponent implements OnInit {
 }
 
   toggle() {
-    this.visible = !this.visible;
-    this.open.emit(this.visible);
-    if (!this.visible) {
+    this.isOpen = !this.isOpen;
+    this.open.emit(this.isOpen);
+    if (!this.isOpen) {
       this.searchBar.setValue('');
     }
   }

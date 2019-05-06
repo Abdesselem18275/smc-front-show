@@ -3,7 +3,7 @@
   background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)),url('../../../assets/images/Hero_image.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: local;
+  background-position: center;
 
 }
 .upper-text,figure {
@@ -56,4 +56,21 @@
 
 
 }
+@media only screen and (max-width:600px) {
+
+  .icons__wrap { 
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width:1200px) {
+
+  .landing-page {
+    height: 136%;
+  
+  }
+
+}
+
 

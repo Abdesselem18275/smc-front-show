@@ -1,7 +1,1 @@
-
-<mat-form-field style="font-size: 0.75em; margin-bottom: -1.25em" placeholder="'SEARCH'"  appearance="outline"   [style.display]="visible? 'block' : 'none'">
-    <input [formControl]="searchBar" placeholder="SEARCH" matInput>
-    <mat-icon (click) ="toggle()" matSuffix>close</mat-icon>
-  </mat-form-field>
-
-  <mat-icon *ngIf="!visible" (click) ="toggle()" matSuffix> search</mat-icon>
+<input (click)="toggle()" [@openClose]="isOpen ? 'open' : 'closed'" class="mat-typography" [formControl]="searchBar" placeholder="search..." >

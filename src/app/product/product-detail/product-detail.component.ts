@@ -40,7 +40,7 @@ export class ProductDetailComponent implements OnInit {
   }
   updateImage(index) {
     this.selectedIndex = index;
-    // this.selectedImage = this.product.images[index].content;
+    this.selectedImage = this.product.images[this.selectedIndex].content;
   }
   stepUpdateImage(step) {
     this.selectedIndex = this.selectedIndex + step;
@@ -50,7 +50,7 @@ export class ProductDetailComponent implements OnInit {
     if ( this.selectedIndex < 0  ) {
       this.selectedIndex = this.imagesNumber - 1;
     }
-    // this.selectedImage = this.product.images[index].content;
+    this.selectedImage = this.product.images[this.selectedIndex].content;
   }
   counter() {
 
