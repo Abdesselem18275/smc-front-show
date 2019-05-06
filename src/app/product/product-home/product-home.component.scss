@@ -2,8 +2,8 @@
 .landing-page {
   background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)),url('../../../assets/images/Hero_image.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
-  height: 136%;
+  background-size: cover;
+  background-attachment: local;
 
 }
 .upper-text,figure {
