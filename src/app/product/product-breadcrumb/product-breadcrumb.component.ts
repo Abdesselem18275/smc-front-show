@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class ProductBreadcrumbComponent implements OnInit {
   categories: Category[];
   items: string[];
+  @Input() showName?: boolean;
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
 
   ngOnInit() {

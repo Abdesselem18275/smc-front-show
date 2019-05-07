@@ -13,7 +13,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       // ...
       state('open', style({
         width : '10em',
-        border : '1px solid white',
+        border : '1.5px solid white',
         'background-position' : '7em',
         'background-image': 'url("../../../assets/pictures/cross-icon.png")',
       })),
@@ -51,7 +51,7 @@ export class SearchBoxComponent implements OnInit {
   toggle() {
     this.isOpen = !this.isOpen;
     this.open.emit(this.isOpen);
-    if (!this.isOpen) {
+    if (!this.isOpen && this.searchBar.value !== '') {
       this.searchBar.setValue('');
     }
   }
