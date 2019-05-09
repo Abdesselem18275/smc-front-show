@@ -46,6 +46,7 @@ export class Choice {
 }
 
 export class ProductLong {
+    pk: number;
     designation: string;
     aesthetics: string;
     areaOfUse: string;
@@ -55,8 +56,10 @@ export class ProductLong {
     exteriorMaterial: Material;
     images: BaseImage[];
     variants: Variant[];
-    features: BaseImage[];
+    categories: Category[];
+    rootCategory: string;
     constructor(options: {
+        pk?: number;
         designation?: string;
         aesthetics?: string;
         areaOfUse?: string;
@@ -66,8 +69,11 @@ export class ProductLong {
         exteriorMaterial?: Material;
         images?: BaseImage[];
         variants?: Variant[];
-        features?: BaseImage[];
+        categories?: Category[];
+        rootCategory?: string;
+
                 } = {}) {
+        this.pk = options.pk || -1;
         this.designation = options.designation || '';
         this.aesthetics = options.aesthetics || '';
         this.areaOfUse = options.areaOfUse || '';
@@ -77,7 +83,9 @@ export class ProductLong {
         this.exteriorMaterial = options.exteriorMaterial || new Material({});
         this.images = options.images || [];
         this.variants = options.variants.map(x => new Variant(x)) || [];
-        this.features = options.features.map(x => new BaseImage(x)) || [];
+        this.categories = options.categories || [];
+        this.rootCategory = options.rootCategory || '';
+
     }
 }
 

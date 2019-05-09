@@ -24,12 +24,13 @@ export class ProductDetailComponent implements OnInit {
     this.isReady = false;
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => this.pds.get_element({value: params.get('id'), model: 'product'}))).
-      subscribe((jsonItem: ProductLong) => {
+      subscribe((jsonItem: any) => {
         this.product = new ProductLong(jsonItem);
         this.imagesNumber = this.product.images === undefined ? 1 : this.product.images.length;
         this.selectedImage =
-          this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
+        this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
+
       });
 
   }

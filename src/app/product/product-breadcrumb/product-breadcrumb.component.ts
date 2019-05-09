@@ -12,16 +12,19 @@ import { map } from 'rxjs/operators';
 export class ProductBreadcrumbComponent implements OnInit {
   categories: Category[];
   items: string[];
-  @Input() showName?: boolean;
+  @Input() currentProduct?: string;
+
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
 
   ngOnInit() {
     this.items = [];
     this.categories = [];
-    this.route
+    if (!this.currentProduct) {
+      this.route
       .queryParamMap
       .pipe(map(params => params.get('categories__designation__in') || ''))
       .subscribe(param => {
+        console.warn(param);
         this.pds.getCategories()
           .subscribe((categories: Category[]) => {
             this.categories = categories;
@@ -29,8 +32,11 @@ export class ProductBreadcrumbComponent implements OnInit {
             this.setItems(param);
           });
           });
-        }
 
+    } else {
+      this.setItems(this.currentProduct);
+    }
+  }
 
 
   getItem(param): Category {

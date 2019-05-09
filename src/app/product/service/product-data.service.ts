@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-
-
 export const API_URL = 'https://show-case-api.herokuapp.com';
 
 @Injectable({
@@ -35,7 +33,6 @@ export class ProductDataService  {
       this.httpParams = this.httpParams.set(key, value);
     });
 
-    console.warn(this.httpParams);
 
     const query: string =
     [

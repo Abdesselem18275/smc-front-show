@@ -4,7 +4,7 @@
 <section class="list-header">
 <div class="content__meta-bar">
   <div>
-    <app-product-breadcrumb class="mat-body-strong breadcrumb"></app-product-breadcrumb>
+    <app-product-breadcrumb  *ngIf="isReady" [currentProduct]="product.rootCategory" class="mat-body-strong breadcrumb"></app-product-breadcrumb>
   </div>
     <span class="content__meta-bar--spacer"></span>
 </div>
@@ -59,7 +59,7 @@
       <figure><mat-icon  svgIcon="Cooking_plate"></mat-icon></figure>
   </section>
 
-  <button class="button">Ask About</button>
+  <button class="button">More informations</button>
 
 </section>
 </div>
@@ -75,20 +75,20 @@
    </tr>
    <tr *ngFor="let variant of product?.variants" >
     <td class="variant-designation">
-      <p>{{ variant.designation | uppercase }}</p>
-      <p class="variant-reference">{{variant.reference}}</p>
+      <p>{{ variant?.designation | uppercase }}</p>
+      <p class="variant-reference">{{variant?.reference}}</p>
     </td>
     <td>
-      {{variant.height.toString()}}
+      {{variant?.height.toString()}}
     </td>
     <td>
-      {{variant.capacity.toString()}}
+      {{variant?.capacity.toString()}}
     </td>
     <td>
-      {{variant.thickness.toString()}}
+      {{variant?.thickness.toString()}}
     </td>
     <td>
-      {{variant.diameter.toString()}}
+      {{variant?.diameter.toString()}}
     </td>
    </tr>
  </table>
