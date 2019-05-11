@@ -21,7 +21,11 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('Micro_wave', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/microwave_icon.svg'))
                 .addSvgIcon('Cooking_plate', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/cooking_plate.svg'))
                 .addSvgIcon('Ear_feature', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/ear_icon.svg'))
-                .addSvgIcon('Handle_feature', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/handle_icon.svg'));
+                .addSvgIcon('Handle_feature', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/handle_icon.svg'))
+                .addSvgIcon('Telephone', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/telephone_icon.svg'))
+                .addSvgIcon('Team', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/team_icon.svg'))
+                .addSvgIcon('Gift', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/gift_icon.svg'))
+                .addSvgIcon('Bar_code', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/barcode_icon.svg'));
   }
   ngOnInit() {
 

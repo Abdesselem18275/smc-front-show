@@ -3,11 +3,11 @@
         <span class="mat-caption float-right">English | French</span>
     </div>
     <nav class='nav-bar'>
-      <mat-icon *ngIf="isSmall" (click)="toggleMenu()" class="nav-bar__menu-icon">menu</mat-icon>
+      <mat-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mat-icon>
 
-     <div [routerLink]="['/product/home']" class="nav-bar__logo">
-        <p id="header--big">SMC</p>
-        <p id="sentence--small">sweat for you</p>
+     <div [routerLink]="['/product/home']" class="nav-bar__logo--layout logo">
+        <p class="header--big">SMC</p>
+        <p class="sentence--small">sweat for you</p>
       </div>
      <div class="nav-bar__nav-tab">
        <div (mouseenter)="toggleMenu()"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
@@ -29,36 +29,22 @@
     </nav>
   </header>
   
-  <div [style.width]="isSideMenuActive ? '200px' : '0'" class="nav-bar__side-menu">
-      <mat-icon (click)="toggleMenu()"> minimize</mat-icon>
-  
-      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-          <!-- This is the tree node template for leaf nodes -->
-          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-            <li (click)="sidenav.toggle()" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: node?.designation}" class="mat-gutter--right--16 mat-tree-node">
-              <!-- use a disabled button to provide padding for tree leaf -->
-              <h5>{{node.designation | uppercase}}</h5>
-            </li>
-    
-          </mat-tree-node>
-          <!-- This is the tree node template for expandable nodes -->
-          <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-            <li>
-              <div class="mat-tree-node">
-                 <h5>{{node.designation | uppercase}}</h5>
-                <button mat-icon-button matTreeNodeToggle
-                        [attr.aria-label]="'toggle ' + node.designation">
-                  <mat-icon class="mat-icon-rtl-mirror">
-                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                  </mat-icon>
-                </button>
-    
-              </div>
-              <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
-                <ng-container matTreeNodeOutlet></ng-container>
-              </ul>
-            </li>
-          </mat-nested-tree-node>
-        </mat-tree>
+  <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
+      <mat-icon class="menu__close-icon"(click)="toggleSideMenu()">close</mat-icon>
+      <div  class="logo menu__logo--layout">
+        <p class="header--big">SMC</p>
+        <p class="sentence--small">sweat for you</p>
+      </div>
+      <div class="menu-content">
+        <ul>
+          <li> 
+            <mat-icon svgIcon="Bar_code"></mat-icon> 
+             <app-tree-menu *ngIf="isReady" [categories] = "rootCategories"></app-tree-menu>
+          </li>
+          <li> <mat-icon svgIcon="Gift"></mat-icon> Gift</li>
+          <li> <mat-icon svgIcon="Telephone"></mat-icon> Contact us</li>
+          <li> <mat-icon svgIcon="Team"></mat-icon> About us</li>
+        </ul>
+      </div>
   
   </div>

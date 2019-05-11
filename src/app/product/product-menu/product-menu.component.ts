@@ -1,14 +1,31 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Category } from '../model';
+import { Component, OnInit } from '@angular/core';
+import { Category, BaseImage } from '../model';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource, MatIconRegistry } from '@angular/material';
 import { ProductDataService } from '../service/product-data.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-product-menu',
   templateUrl: './product-menu.component.html',
-  styleUrls: ['./product-menu.component.scss']
+  styleUrls: ['./product-menu.component.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        width : '15em',
+      })),
+      state('closed', style({
+      })),
+      transition('open => closed', [
+        animate('0.15s')
+      ]),
+      transition('closed => open', [
+        animate('0.15s')
+      ]),
+    ]),
+  ],
 })
 export class ProductMenuComponent implements OnInit {
 
@@ -17,15 +34,12 @@ export class ProductMenuComponent implements OnInit {
   treeMenu: Category[];
   treeControl = new NestedTreeControl<Category>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
-  isSmall: boolean;
   isSearch: boolean;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
+  isReady: boolean;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.isSmall = window.innerWidth < 960;
-  }
+
   constructor(private pds: ProductDataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
 
 
@@ -33,12 +47,22 @@ export class ProductMenuComponent implements OnInit {
   ngOnInit() {
     this.treeMenu = this.pds.getMenu();
     this.isMenuActive = false;
+    this.isSideMenuActive = false;
+    this.isReady = false;
     this.pds.getCategories().subscribe(
-      (categories: Category[]) => {this.categories = categories;
-                                   this.treeMenu.
-                                         filter(x => x.designation === 'Products')[0].children = this.categories.filter(x => x.isRoot);
-                                   this.dataSource.data = this.treeMenu.filter(x => x.isRoot);
-                                   this.rootCategories = this.categories.filter(category => category.isRoot);
+      (categories: Category[]) => {
+                                   this.rootCategories  = [
+                                    {
+                                      designation: 'Products',
+                                      isLeaf: false,
+                                      isRoot: true,
+                                      children: categories.filter(category => category.isRoot),
+                                      parentCategory : null,
+                                      thumbNail : null
+                                    }];
+                                    this.isReady = true;
+                                    console.warn(this.rootCategories);
+
       }
     );
   }
@@ -52,6 +76,6 @@ export class ProductMenuComponent implements OnInit {
     this.isSearch = val;
   }
 
-  hasChild = (_: number, node: Category) => !node.isLeaf;
+
 
 }

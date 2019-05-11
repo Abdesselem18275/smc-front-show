@@ -24,7 +24,6 @@ export class ProductBreadcrumbComponent implements OnInit {
       .queryParamMap
       .pipe(map(params => params.get('categories__designation__in') || ''))
       .subscribe(param => {
-        console.warn(param);
         this.pds.getCategories()
           .subscribe((categories: Category[]) => {
             this.categories = categories;

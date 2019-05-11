@@ -107,7 +107,9 @@ mat-icon:hover {
 .hover:hover {
     cursor: pointer;
 }
-
+li {
+    list-style-type: none;
+}
 
 $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
