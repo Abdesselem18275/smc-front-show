@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, mergeAll, tap, flatMap, debounce, debounceTime } from 'rxjs/operators';
+import { map, switchMap, tap, debounceTime } from 'rxjs/operators';
 import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
 
@@ -19,12 +19,14 @@ export class ProductListComponent implements OnInit {
   paramRequest = new Subject<any>();
   isReady: boolean;
   isFilterActive: boolean;
+  reqNumber: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
 
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
+       this.reqNumber = 0;
        this.isFilterActive = false;
        merge(this.paramRequest,
         this.route
@@ -49,9 +51,15 @@ export class ProductListComponent implements OnInit {
             });
 }
 
-getRequest(event: any) {
+getRequest(event: Map<any, any>) {
   this.paramRequest.next(event);
-                      }
+  let i = 0;
+  for (let key of event.keys()) {
+    i = event.get(key) !== '' ? i + 1 : i;
+  }
+  this.reqNumber = i;
+
+}
 
 pageEvent(event: PageEvent) {
   this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;

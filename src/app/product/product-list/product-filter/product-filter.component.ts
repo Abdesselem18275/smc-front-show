@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup} from '@angular/forms';
-import { FilterBuilderService } from '../service/filter-builder.service';
-import { ProductDataService } from '../service/product-data.service';
-import { FilterCategory } from '../model';
+import { FilterBuilderService } from '../../service/filter-builder.service';
+import { ProductDataService } from '../../service/product-data.service';
+import { FilterCategory } from '../../model';
 import { debounceTime } from 'rxjs/operators';
 
 
@@ -15,7 +15,7 @@ import { debounceTime } from 'rxjs/operators';
 export class ProductFilterComponent implements OnInit {
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
-  @Output() req = new EventEmitter<any>();
+  @Output() req = new EventEmitter<Map<any, any>>();
   ready: boolean;
 
 

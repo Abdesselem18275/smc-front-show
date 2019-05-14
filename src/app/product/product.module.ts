@@ -7,16 +7,16 @@ import { ProductComponent } from './product/product.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { MaterialModule } from '../material';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductFilterComponent } from './product-list/product-filter/product-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { ProductCategoryComponent } from './product-category/product-category.component';
+import { ProductCategoryComponent } from './product-home/product-category/product-category.component';
 import { ProductMenuComponent } from './product-menu/product-menu.component';
-import { TreeMenuComponent } from './tree-menu/tree-menu.component';
+import { TreeMenuComponent } from './product-menu/tree-menu/tree-menu.component';
 
 
 

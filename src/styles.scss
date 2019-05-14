@@ -125,7 +125,7 @@ li {
 .dot:hover {
   transform: scale(1.25);
 }
-.dot:nth-child(n+1) {
+.dot:not(:first-child) {
   margin-left: 1em;
 }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductDataService } from '../service/product-data.service';
-import { ProductCollection } from '../model';
-import { Observable } from 'rxjs';
+import { ProductCollection } from '../../model';
+import { ProductDataService } from '../../service/product-data.service';
 
 @Component({
   selector: 'app-product-category',

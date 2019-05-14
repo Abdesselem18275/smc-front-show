@@ -7,7 +7,7 @@
     <span>{{objCount}} selected products</span>
   </div>
     <span class="content__meta-bar--spacer"></span>
-    <mat-icon  (click)="filterToggle()" matRipple >filter_list</mat-icon>
+    <mat-icon   (click)="filterToggle()" matBadgePosition="before" size="small" matBadge="reqNumber" [matBadgeHidden]="!(reqNumber > 0)" matRipple >filter_list</mat-icon>
 </div>
 <app-product-filter [style.display]="isFilterActive ? 'block' : 'none'" (req)=getRequest($event)></app-product-filter>
 </section>

@@ -18,6 +18,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -31,13 +32,13 @@ import {MatTabsModule} from '@angular/material/tabs';
             MatSelectModule, MatSnackBarModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatPaginatorModule, MatSliderModule, MatRippleModule,
-            BrowserAnimationsModule, MatTooltipModule, MatCardModule],
+            BrowserAnimationsModule, MatTooltipModule, MatCardModule, MatBadgeModule],
 
   exports: [MatButtonModule, MatCheckboxModule, MatIconModule,
              MatListModule, MatInputModule, MatTabsModule, MatTreeModule,
              MatSelectModule, MatSnackBarModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule,
              MatSliderModule, MatRippleModule, BrowserAnimationsModule,
-             MatTooltipModule, MatCardModule],
+             MatTooltipModule, MatCardModule, MatBadgeModule],
 })
 export class MaterialModule {}

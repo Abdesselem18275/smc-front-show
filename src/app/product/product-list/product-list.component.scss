@@ -52,6 +52,7 @@ mat-icon--active {
 
 .content__meta-bar > mat-icon {
    align-self: center;
+   z-index: 10000;
 }
 
 .content__meta-bar--spacer {
