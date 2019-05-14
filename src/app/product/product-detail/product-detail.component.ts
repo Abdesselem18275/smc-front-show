@@ -26,10 +26,12 @@ export class ProductDetailComponent implements OnInit {
       switchMap((params: ParamMap) => this.pds.get_element({value: params.get('id'), model: 'product'}))).
       subscribe((jsonItem: any) => {
         this.product = new ProductLong(jsonItem);
+        console.warn(jsonItem);
         this.imagesNumber = this.product.images === undefined ? 1 : this.product.images.length;
         this.selectedImage =
         this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
+        console.warn(this.product);
 
       });
 

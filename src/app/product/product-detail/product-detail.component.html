@@ -27,7 +27,7 @@
 
 <section class="description">
   <header class="title-section">
-    <div style="float : left">
+    <div>
       <p class="mat-h1">{{product?.designation  | uppercase}}</p>
       <p style="margin-top : -1.5em" class="mat-body description__color--grey"> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>

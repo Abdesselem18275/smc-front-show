@@ -12,7 +12,7 @@
      <div class="nav-bar__nav-tab">
        <div (mouseenter)="toggleMenu()"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
         <div class="mat-elevation-z1 menu__sub-menu"  (mouseenter)="toggleMenu()" [style.height]="isMenuActive ? '100px' : '0px'">
-          <div  *ngFor="let rootCat of rootCategories">
+          <div  *ngFor="let rootCat of rootCategories?.children">
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
                 {{childCat.designation | lowercase}}
@@ -35,15 +35,21 @@
         <p class="header--big">SMC</p>
         <p class="sentence--small">sweat for you</p>
       </div>
-      <div class="menu-content">
+      <div class="mat-typography menu-content">
         <ul>
           <li> 
             <mat-icon svgIcon="Bar_code"></mat-icon> 
              <app-tree-menu *ngIf="isReady" [categories] = "rootCategories"></app-tree-menu>
           </li>
-          <li> <mat-icon svgIcon="Gift"></mat-icon> Gift</li>
-          <li> <mat-icon svgIcon="Telephone"></mat-icon> Contact us</li>
-          <li> <mat-icon svgIcon="Team"></mat-icon> About us</li>
+          <li> <mat-icon svgIcon="Gift"></mat-icon> 
+               <span>Gift</span> 
+          </li>
+          <li> <mat-icon svgIcon="Telephone"></mat-icon> 
+            <span>Contact us</span>
+          </li>
+          <li> <mat-icon svgIcon="Team"></mat-icon> 
+            <span>About us</span>
+          </li>
         </ul>
       </div>
   

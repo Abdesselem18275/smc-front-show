@@ -79,22 +79,6 @@ export class ProductDataService  {
         isLeaf: false,
         isRoot: true,
         children: []
-      }, {
-        designation: 'Gifts',
-        isLeaf: true,
-        isRoot: true,
-        children: []
-      }, {
-        designation: 'Inspirations',
-        isLeaf: true,
-        isRoot: true,
-        children: []
-      },
-      {
-        designation: 'Contact us',
-        isLeaf: true,
-        isRoot: true,
-        children: []
       }
     ];
     return treeMenu;

@@ -63,7 +63,15 @@
   }
    .landing-page {
     height: 100vh;
+    figure {
+      width: 20%;
+      margin-top: 2em;
   
+      mat-icon  {
+        transform: scale(1.5);
+    
+      }
+    }
   }
 
 }

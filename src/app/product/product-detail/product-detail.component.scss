@@ -23,12 +23,19 @@
   flex-direction: column;
   justify-content: space-between;
 
-
+  .title-section {
+    margin-bottom: 2em;
+    div {
+      float: left;
+    }
     #collection-icon {
       float: right;
       transform : scale(2);
       margin-top: 1em;
     }
+
+  }
+
 
   .description__text {
     text-align: justify;
@@ -234,6 +241,21 @@
   .upper-section {
     display: flex;
     flex-direction: column;
+
+  }
+  .title-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      p {
+        text-align:center;
+      }
+    }
+    #collection-icon {
+      margin: 0;
+
+    }
 
   }
 }

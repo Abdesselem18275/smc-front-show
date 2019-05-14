@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, BaseImage } from '../model';
+import { Category } from '../model';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource, MatIconRegistry } from '@angular/material';
 import { ProductDataService } from '../service/product-data.service';
@@ -14,7 +14,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '15em',
+        width : '20em',
       })),
       state('closed', style({
       })),
@@ -31,12 +31,12 @@ export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
-  treeMenu: Category[];
   treeControl = new NestedTreeControl<Category>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
   isSearch: boolean;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
+  isRootActive: boolean;
   isReady: boolean;
 
 
@@ -45,23 +45,26 @@ export class ProductMenuComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.treeMenu = this.pds.getMenu();
     this.isMenuActive = false;
     this.isSideMenuActive = false;
+    this.isRootActive = false;
     this.isReady = false;
     this.pds.getCategories().subscribe(
       (categories: Category[]) => {
-                                   this.rootCategories  = [
-                                    {
-                                      designation: 'Products',
-                                      isLeaf: false,
-                                      isRoot: true,
-                                      children: categories.filter(category => category.isRoot),
-                                      parentCategory : null,
-                                      thumbNail : null
-                                    }];
+                                   this.rootCategories  = categories.filter(category => category.isRoot);
+                                    const treeMenu: Category[] = [
+                                      {
+                                        designation: 'Our products',
+                                        isLeaf: false,
+                                        isRoot: true,
+                                        children: this.rootCategories,
+                                        thumbNail : null,
+                                        parentCategory : null
+                                      }
+                                    ];
+                                    this.rootCategories = treeMenu;
                                     this.isReady = true;
-                                    console.warn(this.rootCategories);
+
 
       }
     );
@@ -75,7 +78,9 @@ export class ProductMenuComponent implements OnInit {
   toggleSearch(val) {
     this.isSearch = val;
   }
-
+  toggleRoot() {
+    this.isRootActive = !this.isRootActive;
+  }
 
 
 }

@@ -19,7 +19,6 @@ export class ProductBreadcrumbComponent implements OnInit {
   ngOnInit() {
     this.items = [];
     this.categories = [];
-    if (!this.currentProduct) {
       this.route
       .queryParamMap
       .pipe(map(params => params.get('categories__designation__in') || ''))
@@ -28,13 +27,14 @@ export class ProductBreadcrumbComponent implements OnInit {
           .subscribe((categories: Category[]) => {
             this.categories = categories;
             this.items = [];
-            this.setItems(param);
-          });
-          });
+            if (!this.currentProduct) {
+              this.setItems(param);
+            } else {
+              this.setItems(this.currentProduct);
 
-    } else {
-      this.setItems(this.currentProduct);
-    }
+            }
+          });
+          });
   }
 
 

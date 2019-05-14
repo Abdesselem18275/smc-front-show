@@ -1,6 +1,32 @@
-ul {
-    padding-left: 1em;
-}
+
+:host-context(.active)  > ul {
+    display: block;
+  }
+  
+:host-context(.active)  > li {
+    display: block;
+  }
+
+  
+  
 li {
     padding-left: 1em;
+    display: none;
+}
+ul {
+    padding-left: 0;
+}
+
+ul > app-tree-menu > ul {
+    padding-left: 1em;
+    display: none;
+
+}
+
+
+mat-icon {
+    transition: 0.3s ease;
+}
+ul .active__icon {
+    transform: rotate(-90deg)
 }
