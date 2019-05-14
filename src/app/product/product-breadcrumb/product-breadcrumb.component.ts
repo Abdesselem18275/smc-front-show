@@ -26,6 +26,7 @@ export class ProductBreadcrumbComponent implements OnInit {
         this.pds.getCategories()
           .subscribe((categories: Category[]) => {
             this.categories = categories;
+            console.warn(this.categories);
             this.items = [];
             if (!this.currentProduct) {
               this.setItems(param);

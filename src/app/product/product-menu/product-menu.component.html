@@ -1,19 +1,20 @@
-<header (mouseleave)="toggleMenu()"class="mat-typography">
+<header  *ngIf="isReady" (mouseleave)="toggleMenu()"class="mat-typography">
     <div class='upper-menu'>
         <span class="mat-caption float-right">English | French</span>
     </div>
     <nav class='nav-bar'>
       <mat-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mat-icon>
 
-     <div [routerLink]="['/product/home']" class="nav-bar__logo--layout logo">
+     <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
         <p class="sentence--small">sweat for you</p>
       </div>
      <div class="nav-bar__nav-tab">
-       <div (mouseenter)="toggleMenu()"><button mat-button [routerLink]="['/product/list']" class="mat-margin-gutter--right--16">Products</button>
+       <div (mouseenter)="toggleMenu()">
+         <button mat-button [routerLink]="['/product/list/']" [queryParams]="{categories__designation__in: ''}" [queryParamsHandling] = "'merge'" class="mat-margin-gutter--right--16">Products</button>
         <div class="mat-elevation-z1 menu__sub-menu"  (mouseenter)="toggleMenu()" [style.height]="isMenuActive ? '100px' : '0px'">
-          <div  *ngFor="let rootCat of rootCategories[0].children">
-            <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
+          <div  *ngFor="let rootCat of rootCategories[0]?.children">
+            <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
                 {{childCat.designation | lowercase}}
             </p>

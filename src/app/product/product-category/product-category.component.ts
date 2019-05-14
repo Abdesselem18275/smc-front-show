@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../service/product-data.service';
-import { Category, ProductCollection } from '../model';
+import { ProductCollection } from '../model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-category',
@@ -10,18 +11,36 @@ import { Category, ProductCollection } from '../model';
 })
 export class ProductCategoryComponent implements OnInit {
   collections: ProductCollection[];
-  hoveredIndex: number;
+  selectedIndex: number;
   hoveredDescription: string;
+  imagesNumber: number;
+  selectedImage: string;
+  isReady: boolean;
   constructor(private pds: ProductDataService) { }
 
   ngOnInit() {
-    this.hoveredIndex = -1;
+    this.selectedIndex = 0;
     this.hoveredDescription = '-';
     this.collections = this.pds.getCollections();
+    this.imagesNumber = this.collections.length;
   }
   toggleCollection(i) {
-    this.hoveredIndex = i ;
+    this.selectedIndex = i ;
     this.hoveredDescription = i === -1 ? '-' : this.collections[i].description;
 
+  }
+  stepUpdateImage(step) {
+    this.selectedIndex = this.selectedIndex + step;
+    if ( this.selectedIndex >= this.imagesNumber  ) {
+      this.selectedIndex = 0;
+    }
+    if ( this.selectedIndex < 0  ) {
+      this.selectedIndex = this.imagesNumber - 1;
+    }
+    this.toggleCollection(this.selectedIndex);
+  }
+  counter() {
+
+    return new Array(this.imagesNumber);
   }
 }

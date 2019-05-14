@@ -30,6 +30,7 @@ export class ProductListComponent implements OnInit {
         this.route
        .queryParamMap
        .pipe(map(params => {
+            // tslint:disable-next-line:prefer-const
             let paramsMap = new Map();
             params.keys.forEach(key => {
               paramsMap.set(key, params.get(key)); });

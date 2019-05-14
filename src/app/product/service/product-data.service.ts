@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { FilterCategory, Category, ProductCollection} from '../model';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -88,18 +88,21 @@ export class ProductDataService  {
     return this.categories$;
   }
   getCollections() {
-    const collections: any[] = [
+    const collections: ProductCollection[] = [
       {
         designation: 'Hanno',
         description: 'Hanno_Desc',
+        thumbNail : null
       },
       {
         designation: 'Didon',
         description: 'Didon_Desc',
+        thumbNail : null
       },
       {
         designation: 'Magon',
         description: 'Magon_Desc',
+        thumbNail : null
       },
     ];
   return collections;

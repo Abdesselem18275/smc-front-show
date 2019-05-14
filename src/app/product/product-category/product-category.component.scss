@@ -1,6 +1,8 @@
 :host {
   font-family: 'Raleway', sans-serif;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 .upper-text {
@@ -24,11 +26,12 @@
   padding: 1em 0 1em 0 ;
 }
 
-section {
+.image-list--large-screen {
   margin-top : 3em; 
   display: flex;
   justify-content: space-evenly;
   position: relative;
+  width: 100%;
 
 
 }
@@ -57,10 +60,55 @@ img {
   text-align: center;
   width: 50em;
   color: #1E1E1E;
-  margin : 5em auto 5em auto;
+  margin : 3em auto 3em auto;
   border-top:  solid thin rgba(30, 30, 30, 0.66);
   border-bottom:  solid thin rgba(30, 30, 30, 0.66);
   padding: 1em 5em 1em 5em ;
   transition: 0.3s ease;
+}
+.image-list--small-screen {
+  display: none;
+  .main-image {
+    display: flex;
+    justify-content: space-between;
+  }
+  mat-icon {
+    align-self:center;
+    transform: scale(2);  
+    color: rgba(0, 0, 0, 0.5);
+  }
+  div {
+    padding: 0 1em 0 1em;
+    img {
+       height: auto;
+       width: 100%;
+    }
+  }
+  .images-selector {
+    display: flex;
+    justify-content: center;
+    margin-top : 1em;
 
+
+  }
+
+}
+ #collection-icon {
+   margin-top : 3em;
+   transform: scale(2);
+ }
+  
+
+
+@media only screen and (max-width:960px)
+{
+  .image-list--small-screen {
+    display: block;
+  }
+  .image-list--large-screen {
+    display: none;
+  }
+  .collection-description {
+    padding: 1em 2em 1em 2em ;
+  }
 }

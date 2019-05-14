@@ -6,33 +6,33 @@
 </div>
 <div class="icons__wrap">
    <figure>
-      <mat-icon svgIcon="Serve_ware"></mat-icon>
+      <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'cookware'}"  svgIcon="Serve_ware"></mat-icon>
       <figcaption>Serve ware</figcaption>
    </figure>
 
    <figure>  
-      <mat-icon svgIcon="Cook_ware"></mat-icon>
+      <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Cookware'}" svgIcon="Cook_ware"></mat-icon>
       <figcaption>Cook ware</figcaption>
    </figure>
 
    <figure>
-      <mat-icon svgIcon="Home_ware"></mat-icon>
+      <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'HOME DECOR'}" svgIcon="Home_ware"></mat-icon>
       <figcaption>Home ware</figcaption>
    </figure>
 
    <figure>
-      <mat-icon svgIcon="Light_ware"></mat-icon>
+      <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'LIGHTWARE'}" svgIcon="Light_ware"></mat-icon>
       <figcaption>Llght ware</figcaption>
    </figure>
 
    <figure>
-   <mat-icon svgIcon="Table_ware"></mat-icon>
+   <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Tableware'}" svgIcon="Table_ware"></mat-icon>
    <figcaption >Table ware</figcaption>
    </figure>
 
    <figure>
-      <mat-icon svgIcon="Bar_ware"></mat-icon>
-      <figcaption>Serve ware</figcaption>
+      <mat-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Barware'}" svgIcon="Bar_ware"></mat-icon>
+      <figcaption>Bar ware</figcaption>
    </figure>
 
 </div>

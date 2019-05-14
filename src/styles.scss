@@ -111,6 +111,24 @@ li {
     list-style-type: none;
 }
 
+
+.dot {
+  height: 0.8em;
+  width: 0.8em;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  transition: 0.2s;
+  cursor: pointer;
+
+}
+.dot:hover {
+  transform: scale(1.25);
+}
+.dot:nth-child(n+1) {
+  margin-left: 1em;
+}
+
 $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgb(130,130,130);
