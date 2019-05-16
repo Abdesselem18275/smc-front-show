@@ -7,17 +7,15 @@ import { Category } from '../../model';
   styleUrls: ['./tree-menu.component.scss'],
 })
 export class TreeMenuComponent implements OnInit {
-  isActive: boolean;
-  currentIndex: number;
+  currentDesignation: string;
   @Input() categories: Category[];
   constructor() { }
   ngOnInit() {
-    this.isActive = false;
-    this.currentIndex = -1;
+    this.currentDesignation = '';
+    console.warn(this.currentDesignation);
   }
-  toggle(i: number) {
-    this.isActive = !this.isActive;
-    this.currentIndex = i;
+  toggle(catDesignation: string) {
+    this.currentDesignation = this.currentDesignation === catDesignation ? '' : catDesignation;
   }
 
 }

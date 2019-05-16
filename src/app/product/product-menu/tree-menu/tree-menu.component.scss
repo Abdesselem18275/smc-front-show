@@ -1,28 +1,20 @@
 
-:host-context(.active)  > ul {
-    display: block;
-  }
-  
-:host-context(.active)  > li {
-    display: block;
-  }
+  app-tree-menu > ul   {
+    padding-left: 1em;
+}
 
   
-  
-li {
+app-tree-menu > li {
     padding-left: 1em;
-    display: none;
 }
+
 ul {
     padding-left: 0;
 }
-
-ul > app-tree-menu > ul {
-    padding-left: 1em;
-    display: none;
-
+ul > div {
+    display: flex;
+    align-items: center;
 }
-
 
 mat-icon {
     transition: 0.3s ease;

@@ -1,13 +1,13 @@
-<ng-container *ngFor="let category of categories;let i = index">
+<ng-container *ngFor="let category of categories">
       <li  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [queryParamsHandling]= "'merge'"   *ngIf="category.isLeaf">
          {{category.designation}} 
       </li>
       <ul   *ngIf="!category.isLeaf">
-        <div  (click) = "toggle(i)">
+        <div  (click) = "toggle(category.designation)">
           <span> {{category.designation}} </span>
-          <mat-icon [class.active__icon]="isActive && i==currentIndex">keyboard_arrow_down</mat-icon>
+          <mat-icon [class.active__icon]="category.designation==currentDesignation">keyboard_arrow_down</mat-icon>
         </div>
-      <app-tree-menu  [class.active]="isActive && i==currentIndex"  [categories] = "category.children"></app-tree-menu>
+      <app-tree-menu  *ngIf="category.designation==currentDesignation" [categories] = "category.children"></app-tree-menu>
       </ul>
 </ng-container>
     
