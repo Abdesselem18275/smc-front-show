@@ -3,9 +3,9 @@
         <span class="mat-caption float-right">English | French</span>
     </div>
     <nav class='nav-bar'>
-      <mat-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mat-icon>
+      <mat-icon  [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mat-icon>
 
-     <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
+     <div [class.menu_icon--hidden]="isSearchActive" [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
         <p class="sentence--small">sweat for you</p>
       </div>

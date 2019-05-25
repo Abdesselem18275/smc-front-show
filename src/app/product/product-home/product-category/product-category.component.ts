@@ -36,6 +36,7 @@ export class ProductCategoryComponent implements OnInit {
   imagesNumber: number;
   selectedImage: string;
   isReady: boolean;
+  isImageReady: boolean;
   constructor(private pds: ProductDataService) { }
 
   ngOnInit() {

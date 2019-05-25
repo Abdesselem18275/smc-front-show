@@ -149,7 +149,10 @@ ul {
 .nav-bar__menu-icon {
     display: none;
 }
-    @media only screen and (max-width:960px) {
+    @media only screen and (max-width:1024px) {
+        .upper-menu {
+            display: none;
+        }
 
         .nav-bar__nav-tab {
           display: none;
@@ -172,10 +175,6 @@ ul {
             margin-top : 1.25em;
         }
 
-        .nav-bar{
-            padding:  0rem 6rem 0rem 6rem;
-
-        }
         .upper-menu {
             padding:  0 1em 0 1em;
             width : 100%;
@@ -184,10 +183,11 @@ ul {
       }
       @media only screen and (max-width:840px) {
         .nav-bar , .upper-menu {
-            padding:  0rem 1rem 0rem 1rem;
+            padding:  0rem 1.5rem 0rem 1.5rem;
         }
-        .upper-menu {
-            display: none;
+        .menu_icon--hidden {
+            visibility: hidden;
         }
+
         
       }

@@ -12,9 +12,23 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '15em',
-        'background-image': 'url("../../../assets/pictures/cross-icon.png")',
-        'background-position': '12.5em'
+        width : '15em'
+      })),
+      state('closed', style({
+        outline: 'none'
+      })),
+      transition('open => closed', [
+        animate('0.2s')
+      ]),
+      transition('closed => open', [
+        animate('0.2s')
+      ]),
+    ]),
+    trigger('openCloseSmall', [
+      // ...
+      state('open', style({
+        width : 'calc(100vw - 7em)',
+        visibility : 'visible'
       })),
       state('closed', style({
         outline: 'none'
@@ -32,12 +46,12 @@ export class SearchBoxComponent implements OnInit {
   isOpen: boolean;
   @Output() open: EventEmitter<boolean> = new EventEmitter();
   searchBar = new FormControl('');
+  iconName: string;
 
   constructor(private router: Router, private el: ElementRef) { }
   ngOnInit() {
-
   this.isOpen = false;
-
+  this.iconName = 'search';
 
   this.searchBar.valueChanges.pipe(
       debounceTime(500),
@@ -53,5 +67,6 @@ export class SearchBoxComponent implements OnInit {
     if (!this.isOpen && this.searchBar.value !== '') {
       this.searchBar.setValue('');
     }
+    this.iconName = this.isOpen ? 'close' : 'search';
   }
 }

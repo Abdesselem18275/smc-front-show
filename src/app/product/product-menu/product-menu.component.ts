@@ -33,7 +33,7 @@ export class ProductMenuComponent implements OnInit {
   rootCategories: Category[];
   treeControl = new NestedTreeControl<Category>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
-  isSearch: boolean;
+  isSearchActive: boolean;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;
@@ -77,7 +77,7 @@ export class ProductMenuComponent implements OnInit {
     this.isSideMenuActive = !this.isSideMenuActive;
   }
   toggleSearch(val) {
-    this.isSearch = val;
+    this.isSearchActive = val;
   }
   toggleRoot() {
     this.isRootActive = !this.isRootActive;

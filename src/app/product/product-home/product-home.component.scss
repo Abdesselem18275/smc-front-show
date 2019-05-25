@@ -4,6 +4,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
 }
 .upper-text,figure {
@@ -13,10 +16,13 @@
 
 
 }
+.upper-text {
+  margin-top : 4em;
+}
 .header--big {
   font-family: 'Stardos Stencil', cursive;
   font-size: 9em;
-  margin-top :0.4em;
+  margin-top :0em;
 
 }
 .sentence--small {
@@ -26,7 +32,7 @@
 }
 
 .icons__wrap {
-  margin-top:3em;
+  margin-top:2em;
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
