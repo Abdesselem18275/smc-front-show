@@ -41,6 +41,8 @@ img {
   max-height: 100%;
   filter: saturate(60%);
   transition: 0.3s ease;
+  min-width: 20em;
+
 
 }
 .collection-title {
@@ -82,7 +84,8 @@ img {
     padding: 0 1em 0 1em;
     img {
        height: auto;
-       width: 100%;
+       width : 40vw;
+
     }
   }
   .images-selector {
