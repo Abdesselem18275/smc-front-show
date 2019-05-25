@@ -59,7 +59,8 @@ export class ProductMenuComponent implements OnInit {
                                         isRoot: true,
                                         children: this.rootCategories,
                                         thumbNail : null,
-                                        parentCategory : null
+                                        parentCategory : null,
+                                        svgIcon : null
                                       }
                                     ];
                                     this.rootCategories = treeMenu;

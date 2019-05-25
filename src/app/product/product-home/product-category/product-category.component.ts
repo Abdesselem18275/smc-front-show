@@ -1,11 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCollection } from '../../model';
 import { ProductDataService } from '../../service/product-data.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
-  styleUrls: ['./product-category.component.scss']
+  styleUrls: ['./product-category.component.scss'],
+  animations: [
+    trigger('imageChangeTrigger', [
+      state('in', style({
+        opacity : '1'
+      })),
+      state('out', style({
+        opacity : '0'
+      })),
+      transition('in => out', [
+        animate('0.1s', style({
+          opacity : '0'
+        }))
+      ]),
+      transition('out => in', [
+        animate('0.1s', style({
+          opacity : '1'
+        }))
+      ]),
+    ]),
+  ],
 
 })
 export class ProductCategoryComponent implements OnInit {
@@ -26,7 +47,6 @@ export class ProductCategoryComponent implements OnInit {
   toggleCollection(i) {
     this.selectedIndex = i ;
     this.hoveredDescription = i === -1 ? '-' : this.collections[i].description;
-
   }
   stepUpdateImage(step) {
     this.selectedIndex = this.selectedIndex + step;

@@ -1,6 +1,6 @@
 <app-product-menu class="menu__black"></app-product-menu>
 
-<section class="list-header">
+<section *ngIf="isReady" class="list-header">
 <div class="content__meta-bar">
   <div>
     <app-product-breadcrumb class="mat-body-strong breadcrumb"></app-product-breadcrumb>

@@ -12,7 +12,6 @@ export class TreeMenuComponent implements OnInit {
   constructor() { }
   ngOnInit() {
     this.currentDesignation = '';
-    console.warn(this.currentDesignation);
   }
   toggle(catDesignation: string) {
     this.currentDesignation = this.currentDesignation === catDesignation ? '' : catDesignation;

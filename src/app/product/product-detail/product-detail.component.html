@@ -1,24 +1,24 @@
 
 <app-product-menu class="menu__black"></app-product-menu>
 
-<section class="list-header">
+<section *ngIf="isReady" class="list-header">
 <div class="content__meta-bar">
   <div>
-    <app-product-breadcrumb  *ngIf="isReady" [currentProduct]="product.rootCategory" class="mat-body-strong breadcrumb"></app-product-breadcrumb>
+    <app-product-breadcrumb [currentProduct]="product.rootCategory" class="mat-body-strong breadcrumb"></app-product-breadcrumb>
   </div>
     <span class="content__meta-bar--spacer"></span>
 </div>
 </section>
 
 
-<div class="upper-section">
+<div *ngIf="isReady" class="upper-section">
 <section class="carousel">
   <section class="main-image">
-    <mat-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
+    <mat-icon *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
     <div>
-      <img (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
+      <img [@imageChangeTrigger] ="isImageReady ? 'in' : 'out'" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
     </div>
-    <mat-icon (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
+    <mat-icon *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
   </section>
   <section class='images-selector'>
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
@@ -41,12 +41,12 @@
           {{product?.areaOfUse}}
       </p>
     </mat-tab>
-    <mat-tab label="Aesthetics">
+    <mat-tab label="Materials">
       <p class="mat-body description__text">
         {{product?.materials}}
       </p>
     </mat-tab>
-    <mat-tab label="Area of Use">
+    <mat-tab label="Aesthetics">
       <p class="mat-body description__text">
         {{product?.aesthetics}}
       </p>
@@ -79,16 +79,16 @@
       <p class="variant-reference">{{variant?.reference}}</p>
     </td>
     <td>
-      {{variant?.height.toString()}}
+      {{variant.height.to_string()}}
     </td>
     <td>
-      {{variant?.capacity.toString()}}
+      {{variant.capacity.to_string()}}
     </td>
     <td>
-      {{variant?.thickness.toString()}}
+      {{variant.thickness.to_string()}}
     </td>
     <td>
-      {{variant?.diameter.toString()}}
+      {{variant.diameter.to_string()}}  
     </td>
    </tr>
  </table>
@@ -100,21 +100,16 @@
         </tr>
       <tr>
           <td>
-            <article>
+            <article *ngFor="let component of product?.components">
               <div class="variant-component-upper-section">
-                <p class="variant-component-designation">Handle</p>
-                <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
+                <p class="variant-component-designation">{{component.designation}}</p>
+                <div><img [src]="component.svgIcon.content"></div>
               </div>
-              <p class="variant-component-spec">Length : 25cm </p>
-              <p class="variant-component-spec">material : Copper</p>
-            </article>
-            <article>
-              <div class="variant-component-upper-section">
-                <p class="variant-component-designation">Handle</p>
-                <mat-icon class="feature-icon" svgIcon="Ear_feature"></mat-icon>
-              </div>
-              <p class="variant-component-spec">Length : 25cm </p>
-              <p class="variant-component-spec">material : Copper</p>
+              <p class="variant-component-spec">
+                {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; --> &nbsp;&nbsp;{{component.measure_max.to_string()}}</span>
+
+              </p>
+              <p class="variant-component-spec">Material : {{component.material.to_string()}}</p>
             </article>
           </td>
       </tr>

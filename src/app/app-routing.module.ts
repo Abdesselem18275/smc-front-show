@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CommonModule, LocationStrategy,PathLocationStrategy } from '@angular/common';
 import {RouterModule , Routes} from '@angular/router';
 
 

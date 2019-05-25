@@ -92,17 +92,20 @@ export class ProductDataService  {
       {
         designation: 'Hanno',
         description: 'Hanno_Desc',
-        thumbNail : null
+        thumbNail : null,
+        svgIcon : null
       },
       {
         designation: 'Didon',
         description: 'Didon_Desc',
-        thumbNail : null
+        thumbNail : null,
+        svgIcon : null
       },
       {
         designation: 'Magon',
         description: 'Magon_Desc',
-        thumbNail : null
+        thumbNail : null,
+        svgIcon : null
       },
     ];
   return collections;

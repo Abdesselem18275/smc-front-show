@@ -16,7 +16,7 @@
   <section class="main-image">
     <mat-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
     <div>
-      <img src="../../../../assets/images/Pic_1.jpg">
+      <img [@imageChangeTrigger] ="isImageReady ? 'in' : 'out'" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)" src="../../../../assets/images/Pic_1.jpg">
     </div>
     <mat-icon (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
   </section>

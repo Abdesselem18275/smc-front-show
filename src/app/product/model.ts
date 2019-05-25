@@ -58,6 +58,7 @@ export class ProductLong {
     variants: Variant[];
     categories: Category[];
     rootCategory: string;
+    components: Component[];
     constructor(options: {
         pk?: number;
         designation?: string;
@@ -71,7 +72,7 @@ export class ProductLong {
         variants?: Variant[];
         categories?: Category[];
         rootCategory?: string;
-
+        components?: Component[]
                 } = {}) {
         this.pk = options.pk || -1;
         this.designation = options.designation || '';
@@ -85,6 +86,7 @@ export class ProductLong {
         this.variants = options.variants.map(x => new Variant(x)) || [];
         this.categories = options.categories || [];
         this.rootCategory = options.rootCategory || '';
+        this.components = options.components.map(x => new Component(x)) || [];
 
     }
 }
@@ -123,7 +125,6 @@ export class Variant  {
     thickness: Measure;
     diameter: Measure;
     capacity: Measure;
-    components: Component[];
 
     constructor(options: {
         id?: number,
@@ -133,34 +134,38 @@ export class Variant  {
         thickness?: Measure,
         diameter?: Measure,
         capacity?: Measure,
-        components?: Component[]
                 } = {}) {
         this.id = options.id || -1;
         this.reference = options.reference || 'AAA23BG85';
         this.designation = options.designation || '';
-        this.height = new Measure(options.height) || new Measure({});
-        this.thickness = new Measure(options.thickness) || new Measure({});
-        this.diameter = new Measure(options.diameter) || new Measure({});
-        this.capacity = new Measure(options.capacity) || new Measure({});
-        this.components = options.components.map(x => new Component(x)) || [];
+        this.height = options.height !== null ? new Measure(options.height) : new Measure({});
+        this.thickness = options.thickness !== null ? new Measure(options.thickness) : new Measure({});
+        this.diameter = options.diameter !== null ? new Measure(options.diameter) : new Measure({});
+        this.capacity = options.capacity !== null ? new Measure(options.capacity) : new Measure({});
     }
 }
 
 export class Component  {
     designation: string;
     measure_type: string;
-    measure: Measure;
+    svgIcon: BaseImage;
     material: Material;
+    measure_min: Measure;
+    measure_max: Measure;
 
     constructor(options: {
         designation?: string,
         measure_type?: string,
-        measure?: Measure,
-        material?: Material  } = {}) {
+        svgIcon?: BaseImage,
+        material?: Material,
+        measure_min?: Measure,
+        measure_max?: Measure} = {}) {
         this.designation = options.designation || '';
         this.measure_type = options.measure_type || '';
-        this.measure = new Measure(options.measure) || new Measure({});
-        this.material = options.material || new Material({});
+        this.svgIcon = options.svgIcon || new BaseImage({});
+        this.material = options.material !== null ? new Material(options.material) : null;
+        this.measure_min = options.measure_min !== null ? new Measure(options.measure_min) : null;
+        this.measure_max = options.measure_max !== null ? new Measure(options.measure_max) : null;
     }
 }
 
@@ -173,6 +178,9 @@ export class Material {
         color?: string } = {}) {
         this.designation = options.designation || '';
         this.color = options.color || '';
+    }
+    to_string() {
+        return this.designation;
     }
 
 }
@@ -194,21 +202,21 @@ export class BaseImage {
 
 export class Measure {
   value: number;
-  measure_unit: MeasureUnit;
+  measure_unit: string;
 
   constructor(options: {
     value?: number,
-    measure_unit?: MeasureUnit,
+    measure_unit?: string,
     } = {}) {
     this.value = options.value || -1;
-    this.measure_unit = new MeasureUnit(options.measure_unit) || new MeasureUnit({});
+    this.measure_unit = options.measure_unit || '';
     }
-  toString() {
-    return(this.value.toString() + ' ' + this.measure_unit.designation);
-}
 
-}
+   to_string() {
 
+       return this.value === -1 ? '-' : this.value.toString() + ' ' + this.measure_unit;
+   }
+}
 
 export class MeasureUnit {
   designation: string;
@@ -224,6 +232,7 @@ export class MeasureUnit {
 
 }
 
+
 export class Category {
     designation: string;
     parentCategory: Category;
@@ -231,20 +240,22 @@ export class Category {
     isLeaf: boolean;
     children: Category[];
     thumbNail: BaseImage;
-
+    svgIcon: BaseImage;
     constructor(options: {
         designation?: string,
         parentCategory?: Category,
         isRoot?: boolean,
         isLeaf?: boolean,
         children?: Category[],
-        thumbNail?: BaseImage } = {}) {
+        thumbNail?: BaseImage,
+        svgIcon?: BaseImage } = {}) {
         this.designation = options.designation || '';
         this.parentCategory = options.parentCategory || new Category({});
         this.isRoot = options.isRoot || false;
         this.isLeaf = options.isLeaf || false;
         this.children = options.children || [];
         this.thumbNail = options.thumbNail || new BaseImage({});
+        this.svgIcon = options.svgIcon || new BaseImage({});
 
     }
 
@@ -254,14 +265,17 @@ export class ProductCollection {
     designation: string;
     description: string;
     thumbNail: BaseImage;
-
+    svgIcon: BaseImage;
     constructor(options: {
         designation?: string,
         description?: string,
-        thumbNail?: BaseImage } = {}) {
+        thumbNail?: BaseImage,
+        svgIcon?: BaseImage;
+    } = {}) {
         this.designation = options.designation || '';
         this.description = options.description || '';
         this.thumbNail = options.thumbNail || new BaseImage({});
+        this.svgIcon = options.svgIcon || new BaseImage({});
     }
 
 }

@@ -12,10 +12,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '10em',
-        border : '1.5px solid white',
-        'background-position' : '7em',
+        width : '15em',
         'background-image': 'url("../../../assets/pictures/cross-icon.png")',
+        'background-position': '12.5em'
       })),
       state('closed', style({
         outline: 'none'
