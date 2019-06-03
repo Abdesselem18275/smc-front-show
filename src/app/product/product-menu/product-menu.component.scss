@@ -1,18 +1,8 @@
 @import "src/styles.scss";
 
-:host-context(.menu__black) header {
-    background-color: black;
-    
-}
-
-:host-context(.menu__transparent) div.nav-bar__logo {
-    opacity: 0;
-    
-}
-
-
 
 header {
+    background-color: black;
     color: white;
 
 }
@@ -43,8 +33,10 @@ header {
 
 .nav-bar__nav-tab button
 {
-
-    font-weight: 500;
+    @include mdc-button-filled-accessible($mdc-theme-black);
+    mdc-icon {
+        transition: 0.2s ease-out;
+    }
 
 }
 

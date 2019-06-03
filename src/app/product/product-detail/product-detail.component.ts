@@ -11,20 +11,30 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   styleUrls: ['./product-detail.component.scss'],
   animations: [
     trigger('imageChangeTrigger', [
+      state('outLeft', style({
+        opacity : '0'
+      })),
       state('in', style({
         opacity : '1'
       })),
-      state('out', style({
+      state('outRight', style({
         opacity : '0'
       })),
-      transition('in => out', [
-        animate('0.1s', style({
-          opacity : '0'
+      transition('* => outRight', [
+        animate('0.1s ease-out', style({
+          transform : 'translateX(150%)'
+
         }))
       ]),
-      transition('out => in', [
-        animate('0.1s', style({
-          opacity : '1'
+      transition('* => outLeft', [
+        animate('0.1s ease-out', style({
+          transform : 'translateX(-100%)'
+
+        }))
+      ]),
+      transition('* => in', [
+        animate('0.1s ease-out', style({
+          transform : 'translateX(50%)'
         }))
       ]),
     ]),
@@ -38,6 +48,7 @@ export class ProductDetailComponent implements OnInit {
   selectedIndex: number;
   isReady: boolean;
   isImageReady: boolean;
+  isRightChange: boolean;
   displayedColumns: string[] = ['Variant' , 'Height', 'Capacity', 'Thickness', 'Diameter'];
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
 
@@ -55,32 +66,43 @@ export class ProductDetailComponent implements OnInit {
         this.selectedImage =
         this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
-        console.warn(this.product);
       });
 
   }
 
-
-  updateVariant(event) {
-    this.selectedVariant = this.product.variants.filter(x => x.id === event.value)[0];
-  }
   updateImage(index) {
     this.isImageReady = false;
     this.selectedIndex = index;
     setTimeout(() => {
+      this.isImageReady = true;
       this.selectedImage = this.product.images[this.selectedIndex].content;
-      this.isImageReady = true; }, 150);
+       }, 150);
   }
   stepUpdateImage(step) {
-    this.selectedIndex = this.selectedIndex + step;
-    if ( this.selectedIndex >= this.imagesNumber  ) {
-      this.selectedIndex = 0;
+    this.isRightChange = step === -1 ? false : true;
+    let _index = this.selectedIndex + step;
+    if ( _index >= this.imagesNumber  ) {
+      _index = 0;
     }
-    if ( this.selectedIndex < 0  ) {
-      this.selectedIndex = this.imagesNumber - 1;
+    if ( _index < 0  ) {
+      _index = this.imagesNumber - 1;
     }
-    this.updateImage(this.selectedIndex);
+    this.updateImage(_index);
   }
+
+  getState() {
+    if (this.isImageReady) {
+
+          return 'in';
+    }  else {
+      if (this.isRightChange) {
+        return 'outRight';
+      } else {
+        return 'outLeft';
+      }
+    }
+  }
+
   counter() {
 
     return new Array(this.imagesNumber);

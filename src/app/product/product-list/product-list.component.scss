@@ -19,12 +19,6 @@ mat-icon--active {
  padding : 0.5em 4em 0.5em 4em;
  display: flex;
  flex-direction: column;
-  mat-spinner {
-    position: fixed;
-    left: 50vw;
-    top: 50vh;
-    z-index: 500;
-  }
   mat-paginator {
   align-self: center;
 }
@@ -39,9 +33,6 @@ mat-icon--active {
 
 }
 .content__meta-bar {
-
-
-
    display: flex;
 
    span {
@@ -59,6 +50,12 @@ mat-icon--active {
     flex: 1 1 auto;
 }
 
+app-product-filter {
+  padding-top: 1em;
+}
+
+
+
 .content__image-container--grid {
     display: flex;
     flex-wrap : wrap;
@@ -69,8 +66,8 @@ mat-icon--active {
 .content__image-container__product-box--grid {
     margin-right : 1%;
     margin-bottom : 1%;
-    max-width: 19%;
-    flex : 1 1 19%;
+    max-width: 24%;
+    flex : 1 1 24%;
 }
 
 
@@ -85,7 +82,7 @@ mat-icon--active {
     margin-right : 1%;
     margin-bottom : 1%;
     flex : 1 1 32%;
-    max-width: 40%;
+    max-width: 32%;
 } 
 .list-header , .content {
   padding : 0.5em 2em 0.5em 2em;

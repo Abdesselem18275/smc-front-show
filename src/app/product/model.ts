@@ -7,6 +7,7 @@ export class FilterCategory {
     min: number;
     max: number;
     inputValue: any;
+    description: string;
     constructor(options: {
         controlType?: string;
         key?: string;
@@ -15,6 +16,7 @@ export class FilterCategory {
         min?: number;
         max?: number;
         inputValue?: any;
+        description?: string;
                 } = {}) {
         this.controlType = options.controlType || '';
         this.key = options.key || '';
@@ -23,6 +25,7 @@ export class FilterCategory {
         this.min = options.min || -1;
         this.max = options.max || -1;
         this.inputValue = options.inputValue || this.min;
+        this.description = options.description || '';
     }
 
 

@@ -16,7 +16,7 @@
   <section class="main-image">
     <mat-icon *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
     <div>
-      <img [@imageChangeTrigger] ="isImageReady ? 'in' : 'out'" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
+      <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
     </div>
     <mat-icon *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
   </section>
@@ -58,9 +58,7 @@
       <figure><mat-icon  svgIcon="Micro_wave"></mat-icon></figure>
       <figure><mat-icon  svgIcon="Cooking_plate"></mat-icon></figure>
   </section>
-
-  <button class="button">More informations</button>
-
+  <button mdc-button outlined><span class="mdc-button__label">More informations</span></button>
 </section>
 </div>
 <section  class="technical-description">
@@ -123,6 +121,6 @@
 
 <section class="related-product">
 
-  <p class="mat-h2">SIMILAR PRODUCTS</p>
+  <p class="mat-h2">Similar products</p>
   <mat-divider></mat-divider>
 </section>

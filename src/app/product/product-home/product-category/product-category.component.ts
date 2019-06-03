@@ -9,37 +9,29 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./product-category.component.scss'],
   animations: [
     trigger('imageChangeTrigger', [
-      state('inLeft', style({
-        opacity : '1'
-      })),
       state('outLeft', style({
         opacity : '0'
       })),
-      state('inRight', style({
+      state('in', style({
         opacity : '1'
       })),
       state('outRight', style({
         opacity : '0'
       })),
       transition('* => outRight', [
-        animate('0.2s', style({
+        animate('0.1s ease-out', style({
           transform : 'translateX(100%)'
 
         }))
       ]),
       transition('* => outLeft', [
-        animate('0.2s', style({
+        animate('0.1s ease-out', style({
           transform : 'translateX(-150%)'
 
         }))
       ]),
-      transition('* => inRight', [
-        animate('0.2s', style({
-          transform : 'translateX(50%)'
-        }))
-      ]),
-      transition('* => inRight', [
-        animate('0.2s', style({
+      transition('* => in', [
+        animate('0.1s ease-out', style({
           transform : 'translateX(50%)'
         }))
       ]),
@@ -86,7 +78,7 @@ export class ProductCategoryComponent implements OnInit {
       this.hoveredDescription = index === -1 ? '-' : this.collections[index].description;
       this.selectedImage = index === -1 ? '' : this.collections[index].thumbNail.content;
       console.warn(this.getState(), this.isRightChange, this.isImageReady);
-    }, 300);
+    }, 110);
   }
 
   stepUpdateImage(step) {
@@ -107,7 +99,7 @@ export class ProductCategoryComponent implements OnInit {
   getState() {
     if (this.isImageReady) {
 
-          return 'inRight';
+          return 'in';
     }  else {
       if (this.isRightChange) {
         return 'outRight';

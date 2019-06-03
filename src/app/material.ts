@@ -1,9 +1,5 @@
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -16,9 +12,15 @@ import {MatRippleModule} from '@angular/material/core';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
-import {MatTreeModule} from '@angular/material/tree';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatDividerModule} from '@angular/material/divider';
+
+import { MdcFormFieldModule } from '@angular-mdc/web';
+import { MdcCheckboxModule } from '@angular-mdc/web';
+import { MdcButtonModule } from '@angular-mdc/web';
+import { MdcIconModule } from '@angular-mdc/web';
+import { MdcCardModule } from '@angular-mdc/web';
 
 
 
@@ -27,18 +29,17 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
-  imports: [MatButtonModule, MatCheckboxModule, MatIconModule,
-             MatListModule, MatInputModule, MatTabsModule, MatTreeModule,
-            MatSelectModule, MatSnackBarModule, MatMenuModule,
+  imports: [MdcCardModule, MatDividerModule, MdcButtonModule, MatIconModule, MdcIconModule,
+            MatTabsModule, MatSnackBarModule, MatMenuModule,
             MatDatepickerModule, MatNativeDateModule, MatProgressSpinnerModule,
             MatTableModule, MatPaginatorModule, MatSliderModule, MatRippleModule,
-            BrowserAnimationsModule, MatTooltipModule, MatCardModule, MatBadgeModule],
+            BrowserAnimationsModule, MatTooltipModule, MatCardModule, MatBadgeModule, MdcFormFieldModule, MdcCheckboxModule],
 
-  exports: [MatButtonModule, MatCheckboxModule, MatIconModule,
-             MatListModule, MatInputModule, MatTabsModule, MatTreeModule,
-             MatSelectModule, MatSnackBarModule, MatMenuModule,
+  exports: [MdcCardModule, MatDividerModule, MdcButtonModule, MatIconModule,
+             MatTabsModule, MdcIconModule,
+             MatSnackBarModule, MatMenuModule,
              MatDatepickerModule, MatProgressSpinnerModule, MatTableModule, MatPaginatorModule,
              MatSliderModule, MatRippleModule, BrowserAnimationsModule,
-             MatTooltipModule, MatCardModule, MatBadgeModule],
+             MatTooltipModule, MatCardModule, MatBadgeModule, MdcFormFieldModule, MdcCheckboxModule],
 })
 export class MaterialModule {}

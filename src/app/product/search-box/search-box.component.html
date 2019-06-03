@@ -3,6 +3,6 @@
     <input (click)="toggle()" [@openClose]="isOpen ? 'open' : 'closed'" class="mat-typography"  [formControl]="searchBar" placeholder="search..." >
 </div>
 <div class="search-box__small-screen">
-        <button (click)="toggle()"><mat-icon>{{iconName}}</mat-icon></button>
+        <button (click)="toggle()"><mat-icon [inline]="true">{{iconName}}</mat-icon></button>
         <input  [@openCloseSmall]="isOpen ? 'open' : 'closed'" class="mat-typography"  [formControl]="searchBar" placeholder="search..." >    
 </div> 

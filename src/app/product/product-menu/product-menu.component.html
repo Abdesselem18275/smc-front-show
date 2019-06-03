@@ -1,4 +1,4 @@
-<header  *ngIf="isReady" (mouseleave)="toggleMenu()"class="mat-typography">
+<header  *ngIf="isReady" class="mat-typography">
     <div class='upper-menu'>
         <span class="mat-caption float-right">English | French</span>
     </div>
@@ -10,9 +10,10 @@
         <p class="sentence--small">sweat for you</p>
       </div>
      <div class="nav-bar__nav-tab">
-       <div (mouseenter)="toggleMenu()">
-         <button mat-button [routerLink]="['/product/list/']" [queryParams]="{categories__designation__in: ''}" [queryParamsHandling] = "'merge'" class="mat-margin-gutter--right--16">Products</button>
-        <div class="mat-elevation-z1 menu__sub-menu"  (mouseenter)="toggleMenu()" [style.height]="isMenuActive ? '100px' : '0px'">
+       <div>
+         <button (click)="toggleMenu()" class="mdc-button__label" mdc-button>  <span class="mdc-button__label">Products</span> <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
+         
+        <div class="mat-elevation-z1 menu__sub-menu"  [style.height]="isMenuActive ? '100px' : '0px'">
           <div  *ngFor="let rootCat of rootCategories[0]?.children">
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-gutter--top--8 mat-body-2">{{rootCat.designation | uppercase}}</p>
             <p [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'" matRipple class="menu__sub-menu__tab  mat-caption" *ngFor="let childCat of rootCat?.children">
@@ -21,10 +22,9 @@
           </div>
         </div>
        </div>
-       <button mat-button class="mat-margin-gutter--right--16">Gifts</button>
-       <button mat-button class="mat-margin-gutter--right--16">Inspiration</button>
-       <button mat-button class="mat-margin-gutter--right--16">About us</button>
-       <button mat-button class="mat-margin-gutter--right--16">Contact us</button>
+       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">Inspiration</span></button>
+       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">About us</span></button>
+       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">Contact us</span></button>
      </div>
      <app-search-box  (open) = "toggleSearch($event)" class="nav-bar__search-icon"></app-search-box>
     </nav>

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { FilterCategory, Category, ProductCollection} from '../model';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -43,6 +43,20 @@ export class ProductDataService  {
    return this.http.get(query, {params: this.httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
+
+  // get_elements(options: {
+  //   model?: string;
+  //   hyperLink?: any;
+  //   param_key?: Map<string, string> } = {}): Observable<any[]> {
+
+  //  return Observable.create(function (observer) {
+  //   observer.next(1);
+  //   observer.next(2);
+  //   observer.next(3);
+  //   observer.complete();
+  // });
+
+  // }
 
 
   get_element(options: {

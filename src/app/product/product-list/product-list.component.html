@@ -1,30 +1,30 @@
 <app-product-menu class="menu__black"></app-product-menu>
 
-<section *ngIf="isReady" class="list-header">
+<section  class="list-header">
 <div class="content__meta-bar">
   <div>
     <app-product-breadcrumb class="mat-body-strong breadcrumb"></app-product-breadcrumb>
     <span>{{objCount}} selected products</span>
   </div>
-    <span class="content__meta-bar--spacer"></span>
-    <mat-icon   (click)="filterToggle()" matBadgePosition="before" size="small" matBadge="reqNumber" [matBadgeHidden]="!(reqNumber > 0)" matRipple >filter_list</mat-icon>
+    <!-- <span class="content__meta-bar--spacer"></span>
+    <mat-icon   (click)="filterToggle()" matBadgePosition="before" size="small" matBadge="reqNumber" [matBadgeHidden]="!(reqNumber > 0)" matRipple >filter_list</mat-icon> -->
 </div>
-<app-product-filter [style.display]="isFilterActive ? 'block' : 'none'" (req)=getRequest($event)></app-product-filter>
+<app-product-filter (req)=getRequest($event)></app-product-filter>
 </section>
 
 
 
           <section [style.opacity]="isReady ? 1 : 0.5" class="mat-typography content">
-              <mat-spinner *ngIf="!isReady"></mat-spinner>
             <div class="content__image-container--grid">
                 <mat-card  class="mat-elevation-z3  content__image-container__product-box--grid" *ngFor="let productShort of productShorts">
+                    <mat-card-header>
+                        <img mat-card-avatar>
+                        <mat-card-title>{{productShort.designation |uppercase}}</mat-card-title>
+                        <mat-card-subtitle>
+                          {{productShort.exteriorMaterial.designation |lowercase}}<span *ngIf="productShort.interiorMaterial">-{{productShort.interiorMaterial.designation |lowercase}}</span>
+                        </mat-card-subtitle>
+                      </mat-card-header>
                   <img mat-card-image  [routerLink]="['../', productShort.pk]" [src]="productShort.thumbNail.content">
-                  <mat-card-header>
-                    <mat-card-title>{{productShort.designation |uppercase}}</mat-card-title>
-                    <mat-card-subtitle>
-                      {{productShort.exteriorMaterial.designation |lowercase}}<span *ngIf="productShort.interiorMaterial">-{{productShort.interiorMaterial.designation |lowercase}}</span>
-                    </mat-card-subtitle>
-                  </mat-card-header>
                 </mat-card>
             </div>
             <mat-paginator

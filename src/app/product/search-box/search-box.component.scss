@@ -1,26 +1,32 @@
 input {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     border-left: none;
-    height: 2.75em;
-    width: 10em;
+    height: 2em;
+    width: 5em;
     font-size: 12px;
-    padding-left: 0.5em;
     cursor: pointer;
-    color: black;
+    color: white;
     font-weight: 300;
     font-size: 12px;
-    border: 1.5px solid #7F6A23;
-
+    border: none;
+    border-bottom: 1.5px solid white;
+    background-color: transparent;
+}
+input::placeholder {
+    color: white;
 }
 button {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: #7F6A23;
+    background-color: transparent;
+    height: 24px;
+    color: white;   
     border : none;
-    height: 2.5em;
-    color: white;
-
+    border-bottom: 1.5px solid white;
+    font-size: 18px;
+    padding-top : 3px;
+    width: 24px;
+    padding : 3px 0 3px 0 ;
+    mat-icon {
+        font-size: 18px;
+    }
 }
 button,input {
     outline: none;
@@ -37,7 +43,8 @@ button,input {
         visibility: hidden;
     }
     button {
-        background-color:transparent;
+        border:none;
+
     }
 }
 
