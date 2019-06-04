@@ -5,9 +5,13 @@
     justify-content: flex-start;
     align-self: flex-start;
     overflow: auto;
+    white-space: nowrap;
 }
 .filter__title {
     padding-bottom: 0.25em;
+    span {
+        font-weight: bold;
+    }
 }
 form {
     display: flex;
@@ -41,6 +45,8 @@ form {
 
 .filter-spacer {
     flex: 1 1 auto;
+    min-width: 3em;
 }
 .clear-button {
+    flex-shrink: 0;
 }
