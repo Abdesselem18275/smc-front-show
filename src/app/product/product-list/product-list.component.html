@@ -4,10 +4,11 @@
 <div class="content__meta-bar">
   <div>
     <app-product-breadcrumb class="mat-body-strong breadcrumb"></app-product-breadcrumb>
-    <span>{{objCount}} selected products</span>
+    <span class="mat-gutter--left--8">{{objCount}} selected products</span>
   </div>
-    <!-- <span class="content__meta-bar--spacer"></span>
-    <mat-icon   (click)="filterToggle()" matBadgePosition="before" size="small" matBadge="reqNumber" [matBadgeHidden]="!(reqNumber > 0)" matRipple >filter_list</mat-icon> -->
+    <span class="content__meta-bar--spacer"></span>
+    <mdc-icon>view_module</mdc-icon>
+    <mdc-icon>view_stream</mdc-icon>
 </div>
 <app-product-filter (req)=getRequest($event)></app-product-filter>
 </section>

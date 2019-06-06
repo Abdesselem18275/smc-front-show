@@ -1,6 +1,10 @@
 
 @import "src/styles.scss";
-:host {
+:host{
+    display: flex;
+    align-items: baseline;
+}
+section {
     display: flex;
     justify-content: flex-start;
     align-self: flex-start;
@@ -8,7 +12,9 @@
     white-space: nowrap;
 }
 .filter__title {
-    padding-bottom: 0.25em;
+    flex-shrink: 0;
+
+    padding-bottom: 0.15em;
     span {
         font-weight: bold;
     }
@@ -34,7 +40,6 @@ form {
         span {
             text-transform: lowercase;
             font-style: italic;
-            font-size: 0.8em;
         }
     }
 
@@ -50,3 +55,10 @@ form {
 .clear-button {
     flex-shrink: 0;
 }
+
+
+@media only screen and (max-width:480px)  {
+    .mdc-button__label {
+      font-size: 1em;
+    }
+    }

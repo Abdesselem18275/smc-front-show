@@ -1,6 +1,8 @@
+<section id="host">
+
 <button class="filter-category--button filter__title" mdc-button>
         <mdc-icon>filter_list</mdc-icon>
-        <span class="mdc-button__label">Filter : </span>
+        <span class="mdc-button__label">Filter by : </span>
 </button>
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
     <div  *ngFor="let filterCategory of filterCategories" class="mat-typography">
@@ -11,10 +13,7 @@
                         <label>{{choice.value | lowercase}}</label>
                 </mdc-form-field>
             </div>
-
-
     </div>
-
 </form>
 <span class="filter-spacer"></span>
 <button class="filter-category--button clear-button" mdc-button   (click)="clearFilter()">
@@ -23,3 +22,5 @@
 </button>
 
 <mat-divider></mat-divider>
+</section>
+<mdc-icon *ngIf="!isScrollOver && isScrollable">arrow_right</mdc-icon>
