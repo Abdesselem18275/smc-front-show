@@ -1,5 +1,5 @@
 <div class="search-box__large-screen">
-    <button (click)="toggle()" ><mat-icon>{{iconName}}</mat-icon></button>
+    <button mdcIconButton (click)="toggle()" ><mdc-icon>{{iconName}}</mdc-icon></button>
     <input (click)="toggle()" [@openClose]="isOpen ? 'open' : 'closed'" class="mat-typography"  [formControl]="searchBar" placeholder="search..." >
 </div>
 <div class="search-box__small-screen">
