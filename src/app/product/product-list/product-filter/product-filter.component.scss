@@ -13,10 +13,11 @@ section {
 }
 .filter__title {
     flex-shrink: 0;
-
+    
     padding-bottom: 0.15em;
     span {
-        font-weight: bold;
+        font-weight: 600;
+        font-size: 1rem;
     }
 }
 form {
@@ -27,14 +28,22 @@ form {
     padding-left: 1em;
 
 }
+form > * {
+    flex-wrap: nowrap;
+
+}
 .form__group-content {
     flex-direction: column;
     display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    padding-right: 2rem;
 }
 
 .filter-category--button {
     @include mdc-button-ink-color(black);
-    font-size: 1em;
+    font-size: 1rem;
     span {
         text-transform: capitalize;
         span {
@@ -49,16 +58,11 @@ form {
 }
 
 .filter-spacer {
-    flex: 1 1 auto;
-    min-width: 3em;
+    flex: 1 1 auto;    
 }
-.clear-button {
-    flex-shrink: 0;
-}
+
 
 
 @media only screen and (max-width:480px)  {
-    .mdc-button__label {
-      font-size: 1em;
-    }
+
     }

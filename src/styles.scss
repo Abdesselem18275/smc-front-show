@@ -12,7 +12,7 @@ body, html {
   height: 100%;
   margin : 0 0 0 0 ;
 }
-
+$mdc-typography-font-family: "'Raleway', sans-serif";
 
 
 
@@ -119,8 +119,8 @@ li {
 
 
 .dot {
-  height: 0.8em;
-  width: 0.8em;
+  height: 0.8rem;
+  width: 0.8rem;
   background-color: black;
   border-radius: 50%;
   display: inline-block;
@@ -135,13 +135,26 @@ li {
   margin-left: 1em;
 }
 
+
+
+
+h1,h2,h3,h4,h5,h6,p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+$mdc-typography-styles-button: (
+  font-size: 1rem,
+  text-transform: none
+);
+
 $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgb(130,130,130);
 
 
 @media only screen and (max-width:480px)  {
-body {
-  font-size: 12px;
-}
+  html {
+    font-size: 12px;
+  }
 }

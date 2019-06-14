@@ -1,25 +1,26 @@
 <section id="host">
 
 <button class="filter-category--button filter__title" mdc-button>
-        <mdc-icon>filter_list</mdc-icon>
         <span class="mdc-button__label">Filter by : </span>
 </button>
 <form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
     <div  *ngFor="let filterCategory of filterCategories" class="mat-typography">
             <button (click) = "toggleFilter(filterCategory.value)" class="filter-category--button" mdc-button>  <span class="mdc-button__label">{{filterCategory.value | lowercase}} <span>{{filterCategory.description}}</span> </span> <mdc-icon [style.transform]="selectedFilter == filterCategory.value ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
-            <div [@openClose]="selectedFilter == filterCategory.value ? 'open' : 'closed'" class="form__group-content" [formGroupName]="filterCategory.key" >
+            <div [mdcElevation]="4" [@openClose]="selectedFilter == filterCategory.value ? 'open' : 'closed'" class="form__group-content" [formGroupName]="filterCategory.key" >
                 <mdc-form-field class="caption" *ngFor="let choice of filterCategory.choices" >
                     <mdc-checkbox [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked ></mdc-checkbox>
                         <label>{{choice.value | lowercase}}</label>
                 </mdc-form-field>
             </div>
     </div>
+    <span class="filter-spacer"></span>
+
+    <button class="filter-category--button clear-button" mdc-button   (click)="clearFilter()">
+            <span class="mdc-button__label">clear filter</span>
+            <mdc-icon>clear</mdc-icon>
+    </button>
 </form>
-<span class="filter-spacer"></span>
-<button class="filter-category--button clear-button" mdc-button   (click)="clearFilter()">
-    <span class="mdc-button__label">clear filter</span>
-    <mdc-icon>clear</mdc-icon>
-</button>
+
 
 <mat-divider></mat-divider>
 </section>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MdcIconRegistry } from '@angular-mdc/web';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor( iconRegistry: MdcIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('Logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
                 .addSvgIcon('Down_arrow', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/down_arrow.svg'))
                 .addSvgIcon('Serve_ware', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/serve_ware.svg'))
@@ -25,7 +26,11 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('Telephone', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/telephone_icon.svg'))
                 .addSvgIcon('Team', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/team_icon.svg'))
                 .addSvgIcon('Gift', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/gift_icon.svg'))
-                .addSvgIcon('Bar_code', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/barcode_icon.svg'));
+                .addSvgIcon('Bar_code', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/barcode_icon.svg'))
+                .addSvgIcon('List_view_base', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/baseline-view_list-24px.svg'))
+                .addSvgIcon('Stream_view_base', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/baseline-view_stream-24px.svg'))
+                .addSvgIcon('List_view_outline', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/outline-view_list-24px.svg'))
+                .addSvgIcon('Stream_view_outline', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/outline-view_stream-24px.svg'));
   }
   ngOnInit() {
 

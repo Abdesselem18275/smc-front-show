@@ -43,20 +43,15 @@
      margin : 1em 0 1em 0;
      display: flex;
      justify-content: center;
-     mat-icon {
-      transform: scale(2);  
-    }
+     .feature-icon-button--large {
+       transform: scale(2);
+       @include mdc-icon-button-size(32px,32px,24px);
+     }
 
    }
-   .button {
-    cursor: pointer;
-
-   
-
-   }
-
-
 }
+
+
 
 ::ng-deep .mat-tab-labels{
   justify-content: space-evenly;
@@ -209,7 +204,7 @@
     flex-direction: column;
     .carousel {
       .main-image {
-        mat-icon {
+        mdc-icon {
           display: none;
         }
       }

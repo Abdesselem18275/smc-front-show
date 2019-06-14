@@ -1,5 +1,4 @@
 :host {
-  font-family: 'Raleway', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,28 +6,26 @@
 }
 .upper-text {
   text-align:center;
-  margin-bottom: 2em;
-
-
-
+  margin-bottom: 2rem;
+  margin-top: 2rem
 }
 .header--medium {
-  font-size: 3em;
+  font-size: 3rem;
 
 }
 .sentence--small {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   color: rgba(30, 30, 30, 0.66);
   border-top:  solid thin rgba(30, 30, 30, 0.66);
   border-bottom:  solid thin rgba(30, 30, 30, 0.66);
   width: 20em;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em 0 1em 0 ;
+  padding: 1rem 0 1rem 0 ;
 }
 
 .image-list--large-screen {
-  margin-top : 3em; 
+  margin-top : 3rem; 
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -37,7 +34,7 @@
 
 }
 img {
-  width : 20em;
+  width : 20rem;
   max-height: 100%;
   filter: saturate(60%);
   transition: 0.3s ease;
@@ -49,7 +46,7 @@ img {
 
   position: absolute;
   background-color: rgba(0,0,0,0.6);
-  width : 20em;
+  width : 20rem;
   color : white;
   bottom: 0.15em;
   text-align:center;

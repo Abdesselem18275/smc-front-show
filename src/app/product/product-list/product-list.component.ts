@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,8 +19,9 @@ export class ProductListComponent implements OnInit {
   paramRequest = new Subject<any>();
   isReady: boolean;
   isFilterActive: boolean;
+  isListActive: boolean;
   reqNumber: number;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
 
@@ -68,6 +69,14 @@ pageEvent(event: PageEvent) {
 }
 filterToggle() {
   this.isFilterActive = !this.isFilterActive;
+}
+
+counter() {
+  return new Array(10);
+
+}
+toggleView(event) {
+  this.isListActive = !event.value;
 }
 
 }

@@ -14,11 +14,13 @@
 <div *ngIf="isReady" class="upper-section">
 <section class="carousel">
   <section class="main-image">
-    <mat-icon *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
+    <button *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mdc-icon-button icon="keyboard_arrow_left"></button>
+
     <div>
       <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
     </div>
-    <mat-icon *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
+    <button *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mdc-icon-button icon="keyboard_arrow_right"></button>
+
   </section>
   <section class='images-selector'>
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
@@ -28,10 +30,12 @@
 <section class="description">
   <header class="title-section">
     <div>
-      <p class="mat-h1">{{product?.designation  | uppercase}}</p>
-      <p style="margin-top : -1.5em" class="mat-body description__color--grey"> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+      <p mdcHeadline6>{{product?.designation  | uppercase}}</p>
+      <p  mdcSubtitle2> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
-    <mat-icon id="collection-icon" svgIcon="Hanno"></mat-icon>
+    <button id="collection-icon"  mdcIconButton>
+      <mdc-icon svgIcon="Hanno"></mdc-icon>
+    </button>
   </header>
   <section>
   <mat-divider></mat-divider>
@@ -55,8 +59,13 @@
   <mat-divider></mat-divider>
   </section>
   <section class="feature-container">
-      <figure><mat-icon  svgIcon="Micro_wave"></mat-icon></figure>
-      <figure><mat-icon  svgIcon="Cooking_plate"></mat-icon></figure>
+    
+      <button class="feature-icon-button--large" mdcIconButton>
+        <mdc-icon svgIcon="Micro_wave"></mdc-icon>
+      </button>
+      <button class="feature-icon-button--large" mdcIconButton>
+        <mdc-icon svgIcon="Cooking_plate"></mdc-icon>
+      </button>        
   </section>
   <button mdc-button outlined><span class="mdc-button__label">More informations</span></button>
 </section>
