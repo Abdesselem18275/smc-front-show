@@ -37,6 +37,6 @@
   </header>
   
   <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
-<app-side-nav-menu (isClosed) = "toggleSideMenu(val)" [rootCategories] = "rootCategories"></app-side-nav-menu>
+<app-side-nav-menu (isClosed) = "toggleSideMenu($event)" [rootCategories] = "rootCategories"></app-side-nav-menu>
   
   </div>
