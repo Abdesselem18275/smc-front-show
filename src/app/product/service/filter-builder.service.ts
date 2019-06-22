@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
-import { FilterCategory } from '../model';
+import { FilterCategory, Category } from '../model';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CategoryCacheService } from './category-cache.service';
+import { ProductDataService } from './product-data.service';
+import { FilterCacheService } from './filter-cache.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterBuilderService {
+  _filterCategories: FilterCategory[];
+  constructor(private filterCache: FilterCacheService) { }
 
-  constructor() { }
+  get filterCategories() {
+    return this.filterCache.fetchCachedFilter();
+  }
 
-  toFormGroup(filterCategories: FilterCategory[]) {
+  toFormGroup() {
     const group = {};
-    filterCategories.forEach(filterCategorie => {
+    this.filterCategories.forEach(filterCategorie => {
       const subGroup = {};
       if (filterCategorie.controlType === 'check-box') {
       filterCategorie.choices.forEach(choice => {
@@ -22,7 +29,6 @@ export class FilterBuilderService {
       group[filterCategorie.key] = new FormControl(filterCategorie.key);
       }
     });
-    console.log(new FormGroup(group));
     return new FormGroup(group);
   }
 }

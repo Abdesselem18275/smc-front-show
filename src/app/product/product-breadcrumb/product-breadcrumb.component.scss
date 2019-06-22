@@ -2,18 +2,9 @@
 section
 {
     display: flex;
-    span:hover{
-     cursor: pointer;
-    }
+    flex-wrap: wrap;
 }
 .mdc-button__label {
   font-weight: 600;
   text-transform: capitalize;
-  font-size: 1rem;
 }
-
-
-
-@media only screen and (max-width:480px)  {
-  }
-  

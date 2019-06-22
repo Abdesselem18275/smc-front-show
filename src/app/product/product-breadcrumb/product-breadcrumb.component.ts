@@ -3,6 +3,7 @@ import { ProductDataService } from '../service/product-data.service';
 import { Category } from '../model';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { CategoryCacheService } from '../service/category-cache.service';
 
 @Component({
   selector: 'app-product-breadcrumb',
@@ -15,7 +16,7 @@ export class ProductBreadcrumbComponent implements OnInit {
   isNotEmpty: boolean;
   @Input() currentProduct?: string;
 
-  constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
+  constructor(private route: ActivatedRoute, private categoriesCache: CategoryCacheService) { }
 
   ngOnInit() {
     this.isNotEmpty = false;
@@ -26,9 +27,7 @@ export class ProductBreadcrumbComponent implements OnInit {
       .queryParamMap
       .pipe(map(params => params.get('categories__designation__in') || ''))
       .subscribe(param => {
-        this.pds.getCategories()
-          .subscribe((categories: Category[]) => {
-            this.categories = categories;
+            this.categories = this.categoriesCache.fetchCachedCategories();
             this.items = [];
             if (!this.currentProduct) {
               this.setItems(param);
@@ -38,7 +37,7 @@ export class ProductBreadcrumbComponent implements OnInit {
               this.isNotEmpty = true;
 
             }
-          });
+
           });
   }
 

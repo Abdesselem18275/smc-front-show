@@ -1,41 +1,54 @@
-input {
+@import "src/styles.scss";
+
+.input {
     border-left: none;
-    height: 2em;
-    width: 5em;
     font-size: 12px;
     cursor: pointer;
     color: white;
     font-weight: 300;
-    font-size: 12px;
     border: none;
+    width : 0;
     border-bottom: 1.5px solid white;
     background-color: transparent;
+    visibility: hidden;
+
+    
 }
+
+
+.search-text-field {
+    color: #444;
+    border: none;
+    border-radius: 100px;
+    background-color: #fff;
+    padding: 5px 16px;
+    margin-left: 8px;
+    width: 11rem;
+    max-width: 240px;
+    height: 50%;
+    -webkit-appearance: none;
+}
+.search-text-field::placeholder {
+    color: #444;
+}
+
+
 input::placeholder {
     color: white;
 }
 button {
     background-color: transparent;
-    height: 24px;
     color: white;   
     border : none;
-    border-bottom: 1.5px solid white;
-    font-size: 18px;
-    padding-top : 3px;
-    width: 24px;
-    padding : 3px 0 3px 0 ;
-    mat-icon {
-        font-size: 18px;
-    }
 }
 button,input {
     outline: none;
     float: right;
 
 }
-.search-box__large-screen {
-    width: 16em;
-}
+
+
+
 .search-box__small-screen {
 
     display: none;
@@ -49,12 +62,12 @@ button,input {
 }
 
 
-@media only screen and (max-width:840px) {
-    .search-box__large-screen {
-        display: none;
-    }
-    .search-box__small-screen {
-        display: block;
-    }
+// @media only screen and (max-width:840px) {
+//     .search-box__large-screen {
+//         display: none;
+//     }
+//     .search-box__small-screen {
+//         display: block;
+//     }
     
-  }
+//   }

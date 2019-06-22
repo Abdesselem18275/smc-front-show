@@ -5,6 +5,7 @@ import { MatTreeNestedDataSource, MatIconRegistry } from '@angular/material';
 import { ProductDataService } from '../service/product-data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CategoryCacheService } from '../service/category-cache.service';
 
 @Component({
   selector: 'app-product-menu',
@@ -40,7 +41,7 @@ export class ProductMenuComponent implements OnInit {
   isReady: boolean;
 
 
-  constructor(private pds: ProductDataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor( private categoriesCache: CategoryCacheService) {
 
 
   }
@@ -48,33 +49,25 @@ export class ProductMenuComponent implements OnInit {
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
-    this.isReady = false;
-    this.pds.getCategories().subscribe(
-      (categories: Category[]) => {
-                                   this.rootCategories  = categories.filter(category => category.isRoot);
-                                    const treeMenu: Category[] = [
-                                      {
-                                        designation: 'Our products',
-                                        isLeaf: false,
-                                        isRoot: true,
-                                        children: this.rootCategories,
-                                        thumbNail : null,
-                                        parentCategory : null,
-                                        svgIcon : null
-                                      }
-                                    ];
-                                    this.rootCategories = treeMenu;
-                                    this.isReady = true;
-
-
-      }
-    );
+    this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
+    const treeMenu: Category[] = [
+      {
+        designation: 'Our products',
+        isLeaf: false,
+        isRoot: true,
+        children: this.rootCategories,
+        thumbNail : null,
+        parentCategory : null,
+        svgIcon : null
+          }
+          ];
+    this.rootCategories = treeMenu;
   }
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;
   }
-  toggleSideMenu() {
-    this.isSideMenuActive = !this.isSideMenuActive;
+  toggleSideMenu(val) {
+    this.isSideMenuActive = !val;
   }
   toggleSearch(val) {
     this.isSearchActive = val;

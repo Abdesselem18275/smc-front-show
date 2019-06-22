@@ -3,7 +3,7 @@
 <button class="filter-category--button filter__title" mdc-button>
         <span class="mdc-button__label">Filter by : </span>
 </button>
-<form  *ngIf="ready" class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
+<form  class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
     <div  *ngFor="let filterCategory of filterCategories" class="mat-typography">
             <button (click) = "toggleFilter(filterCategory.value)" class="filter-category--button" mdc-button>  <span class="mdc-button__label">{{filterCategory.value | lowercase}} <span>{{filterCategory.description}}</span> </span> <mdc-icon [style.transform]="selectedFilter == filterCategory.value ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
             <div [mdcElevation]="4" [@openClose]="selectedFilter == filterCategory.value ? 'open' : 'closed'" class="form__group-content" [formGroupName]="filterCategory.key" >
@@ -22,6 +22,5 @@
 </form>
 
 
-<mat-divider></mat-divider>
 </section>
-<mdc-icon *ngIf="!isScrollOver && isScrollable">arrow_right</mdc-icon>
+<!-- <mdc-icon *ngIf="!isScrollOver && isScrollable">arrow_right</mdc-icon> -->

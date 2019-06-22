@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../../service/filter-builder.service';
-import { ProductDataService } from '../../service/product-data.service';
 import { FilterCategory } from '../../model';
 import { trigger, state, style, transition, animate, query } from '@angular/animations';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { FilterCacheService } from '../../service/filter-cache.service';
 
 
 
@@ -36,41 +36,19 @@ export class ProductFilterComponent implements OnInit {
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
   @Output() req = new EventEmitter<Map<any, any>>();
-  ready: boolean;
   selectedFilter = '';
   isScrollOver: boolean;
   isScrollable: boolean;
 
-  constructor(private fbs: FilterBuilderService , private pds: ProductDataService) {
+  constructor(private fbs: FilterBuilderService , private filterCache: FilterCacheService) {
    }
 
   ngOnInit() {
-    this.isScrollOver = false;
-    const hostEl = document.getElementById('host');
-    this.isScrollOver = hostEl.scrollWidth - hostEl.scrollLeft - hostEl.clientWidth === 0;
 
-    fromEvent(window, 'resize').pipe(debounceTime(100),
-    distinctUntilChanged()).subscribe(() => {
-      this.isScrollable = !(hostEl.clientWidth === hostEl.scrollWidth);
-    });
-
-    fromEvent(hostEl, 'scroll').pipe(debounceTime(100),
-    distinctUntilChanged()).subscribe(x => {
-      console.warn('scrollWidth  ' + hostEl.scrollWidth);
-      console.warn('scrollLeft  ' + hostEl.scrollLeft);
-      console.warn('clientWidth  ' + hostEl.clientWidth);
-      this.isScrollOver = hostEl.scrollWidth - hostEl.scrollLeft - hostEl.clientWidth === 0;
-      console.warn(hostEl.scrollWidth - hostEl.scrollLeft - hostEl.clientWidth);
-    });
-
-    this.ready = false;
-    this.pds.getFilters().subscribe((filterCategories => { this.filterCategories = filterCategories;
-        this.filterForm = this.fbs.toFormGroup(this.filterCategories);
+        this.filterForm = this.fbs.toFormGroup();
+        this.filterCategories = this.fbs.filterCategories;
         this.clearFilter();
-        this.ready = true;
         this.onChanges();
-        console.warn(this.filterCategories);
-      }));
   }
 
   onChanges(): void {

@@ -70,18 +70,18 @@
     display: flex;
     justify-content: space-between;
   }
-  .main-image:hover  mat-icon{
+  .main-image:hover  mdc-icon{
     opacity: 0.6;
 
   }
-  mat-icon {
+  mdc-icon {
     align-self:center;
     transform: scale(3);  
     color: rgba(0, 0, 0, 0.5);
     transition: 0.3s ease;
     opacity: 0;
   }
-  mat-icon:hover {
+  mdc-icon:hover {
     transform: scale(3.5); 
   }
   div {

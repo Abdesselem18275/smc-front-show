@@ -8,8 +8,8 @@
   </div>
     <span class="content__meta-bar--spacer"></span>
 
-      <button (change)="toggleView($event)" mdcIconButton>
-          <mdc-icon mdcIconOn> view_module</mdc-icon>
+      <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
+          <mdc-icon mdcIconOn>view_module</mdc-icon>
           <mdc-icon>view_list</mdc-icon>
       </button>
 </div>
@@ -18,40 +18,36 @@
 
 
 
-          <section [style.opacity]="isReady ? 1 : 0.5" class=" content">
+          <section *ngIf="isReady" [style.opacity]="isReady ? 1 : 0.5" class=" content">
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
-              <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of counter()">
+              <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
 
                   <div class="product-card__primary">
-                        <mdc-icon class="product-card__collection-icon" 	svgIcon="Hanno">
+                        <mdc-icon class="collection-icon primary__collection-icon" 	svgIcon="Hanno">
                           
                         </mdc-icon>
                         <span class="spacer"></span>
                     <div class="product-card__description">
-                      <p class="product-card__title" mdcHeadline6>PAN WITH HANDLE</p>
+                      <p class="product-card__title" mdcHeadline6>{{productShort?.designation}}</p>
                       <p class="product-card__subtitle" mdcSubtitle2>
-                          Copper<span>-Nickeled</span>
+                        {{productShort?.exteriorMaterial.designation}}<span>-{{productShort?.interiorMaterial.designation}}</span>
                       </p>
                     </div>
                   </div>
-                <mdc-card-primary-action>
-                  <mdc-card-media class="product-card__media--16-9" wide [style.background-image]="'url(../../../assets/pictures/list_pic.jpg)'">
+                <mdc-card-primary-action *ngIf="isReady">
+                  <mdc-card-media class="product-card__media" 
+                       square 
+                       [style.background-image]='productShort.thumbNail.content'>
+                    <mdc-card-media-content class="product-card__media-content--with-icon">
+                      <div>
+                          <mdc-icon class="collection-icon product-card__media-icon--absolute" 	svgIcon="Hanno">
+                            </mdc-icon>
+
+                      </div>
+                        
+                    </mdc-card-media-content>
                   </mdc-card-media>
                 </mdc-card-primary-action>
-
+               
               </mdc-card>
             </div>
-            
-            <mat-paginator
-            [style.display]="isReady ? 'block' : 'none'"
-             mat-paginator
-            [pageIndex]="1"
-            [length]="objCount"
-            [pageSize]="10"
-            [pageSizeOptions]="[10]"
-            (page)="pageEvent($event)">
-          </mat-paginator>
-          </section>
-
-
-

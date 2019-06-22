@@ -12,22 +12,23 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '15em'
+        width : '10em',
+        visibility : 'visible'
       })),
       state('closed', style({
         outline: 'none'
       })),
       transition('open => closed', [
-        animate('0.2s')
+        animate('0s')
       ]),
       transition('closed => open', [
-        animate('0.2s')
+        animate('0s')
       ]),
     ]),
     trigger('openCloseSmall', [
       // ...
       state('open', style({
-        width : 'calc(100vw - 7em)',
+        width : 'calc(100vw)',
         visibility : 'visible'
       })),
       state('closed', style({

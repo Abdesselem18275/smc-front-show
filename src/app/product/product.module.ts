@@ -17,6 +17,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProductCategoryComponent } from './product-home/product-category/product-category.component';
 import { ProductMenuComponent } from './product-menu/product-menu.component';
 import { TreeMenuComponent } from './product-menu/tree-menu/tree-menu.component';
+import { SideNavMenuComponent } from './product-menu/side-nav-menu/side-nav-menu.component';
 
 
 
@@ -28,7 +29,7 @@ import { TreeMenuComponent } from './product-menu/tree-menu/tree-menu.component'
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                  ProductDetailComponent, ProductBreadcrumbComponent, SearchBoxComponent, ProductCategoryComponent, ProductMenuComponent, TreeMenuComponent],
+                  ProductDetailComponent, ProductBreadcrumbComponent, SearchBoxComponent, ProductCategoryComponent, ProductMenuComponent, TreeMenuComponent, SideNavMenuComponent],
   providers:  [FilterBuilderService, DataInjectablesService ],
   exports : [SearchBoxComponent]
 })

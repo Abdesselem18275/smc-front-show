@@ -1,13 +1,16 @@
 <ng-container *ngFor="let category of categories">
-      <li  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [queryParamsHandling]= "'merge'"   *ngIf="category.isLeaf">
+      <mdc-list-item  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [queryParamsHandling]= "'merge'"   *ngIf="category.isLeaf">
+        <mdc-icon mdcListItemGraphic svgIcon="Gift"></mdc-icon> 
          {{category.designation}} 
-      </li>
-      <ul   *ngIf="!category.isLeaf">
-        <div  (click) = "toggle(category.designation)">
-          <span> {{category.designation}} </span>
-          <mat-icon [class.active__icon]="category.designation==currentDesignation">keyboard_arrow_down</mat-icon>
-        </div>
-      <app-tree-menu  *ngIf="category.designation==currentDesignation" [categories] = "category.children"></app-tree-menu>
-      </ul>
+      </mdc-list-item>
+      <mdc-list *ngIf="!category.isLeaf">
+        <mdc-list-item  (click) = "toggle(category.designation)">
+           <mdc-icon mdcListItemGraphic svgIcon="Gift"></mdc-icon> 
+           <span class="list-item__text--spacing">{{category.designation}}</span>
+          <mdc-icon  [class.active__icon]="category.designation==currentDesignation"  mdcListItemGraphic >keyboard_arrow_down</mdc-icon>
+        </mdc-list-item>
+        <app-tree-menu  *ngIf="category.designation==currentDesignation"   [categories] = "category.children"></app-tree-menu>
+
+      </mdc-list>
 </ng-container>
     

@@ -190,7 +190,7 @@ export class Material {
 
 export class BaseImage {
     designation: string;
-    content: string;
+    content: any;
     description: string;
     constructor(options: {
         designation?: string,

@@ -1,24 +1,24 @@
+@import "src/styles.scss";
 
-  app-tree-menu > ul   {
-    padding-left: 1em;
-}
 
+.mdc-list-item__graphic {
+    width: 1.5rem;
+    height: auto;
+  }
   
-app-tree-menu > li {
-    padding-left: 1em;
-}
+  .mdc-list-item {
+    @include mdc-list-item-graphic-ink-color(black);
+  }
 
-ul {
-    padding-left: 0;
-}
-ul > div {
-    display: flex;
-    align-items: center;
-}
-
-mat-icon {
+mdc-icon {
     transition: 0.3s ease;
 }
-ul .active__icon {
+mdc-list .active__icon {
     transform: rotate(-90deg)
+}
+app-tree-menu > .mdc-list , app-tree-menu > .mdc-list-item {
+     margin-left : 1rem;
+}
+.list-item__text--spacing {
+  margin-right: 1rem;
 }

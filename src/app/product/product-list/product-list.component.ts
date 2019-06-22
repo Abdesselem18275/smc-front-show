@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap, debounceTime } from 'rxjs/operators';
 import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list',
@@ -21,14 +22,15 @@ export class ProductListComponent implements OnInit {
   isFilterActive: boolean;
   isListActive: boolean;
   reqNumber: number;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
 
 
-  constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
+  constructor(private sanitizer: DomSanitizer , private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
        this.reqNumber = 0;
        this.isFilterActive = false;
+
        merge(this.paramRequest,
         this.route
        .queryParamMap
@@ -44,9 +46,12 @@ export class ProductListComponent implements OnInit {
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];
-              if (this.objCount  !== _products['count']) {
-                 this.paginator.firstPage();
-              }
+              this.productShorts.map(productShort =>
+                productShort.thumbNail.content = this.sanitizer.bypassSecurityTrustStyle('url("'  + productShort.thumbNail.content + '")'));
+              console.warn(this.productShorts);
+              // if (this.objCount  !== _products['count']) {
+              //    this.paginator.firstPage();
+              // }
               this.objCount  = _products['count'];
               this.isReady = true;
             });
@@ -63,9 +68,8 @@ getRequest(event: Map<any, any>) {
 }
 
 pageEvent(event: PageEvent) {
-  this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
-  this.paramRequest.next(new Map().set('page', this.pageIndex));
-
+  // this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
+  // this.paramRequest.next(new Map().set('page', this.pageIndex));
 }
 filterToggle() {
   this.isFilterActive = !this.isFilterActive;

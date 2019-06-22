@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "src/app-themes.scss";
 @import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script|Raleway|Stardos+Stencil|Roboto');
 $mdc-theme-primary: black; // primary color
 $mdc-theme-secondary: #7F6A23; // secondary color
@@ -13,6 +12,8 @@ body, html {
   margin : 0 0 0 0 ;
 }
 $mdc-typography-font-family: "'Raleway', sans-serif";
+
+
 
 
 
@@ -106,7 +107,7 @@ $mdc-typography-font-family: "'Raleway', sans-serif";
   margin-top : auto ;
   margin-bottom  :auto ;
 }
-mat-icon:hover {
+mdc-icon:hover {
     cursor: pointer;
 }
 

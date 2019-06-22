@@ -1,9 +1,6 @@
-<header  *ngIf="isReady" class="mat-typography">
-    <div class='upper-menu'>
-        <span class="mat-caption float-right">English | French</span>
-    </div>
+<header  mdc-typography>
     <nav class='nav-bar'>
-      <mat-icon  [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mat-icon>
+      <mdc-icon [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [class.menu_icon--hidden]="isSearchActive" [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
@@ -26,32 +23,20 @@
        <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">About us</span></button>
        <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">Contact us</span></button>
      </div>
-     <app-search-box  (open) = "toggleSearch($event)" class="nav-bar__search-icon"></app-search-box>
+     <span class="spacer"></span>
+     <div class="nav-bar__tools">
+     <app-search-box  class="search-icon" (open) = "toggleSearch($event)" ></app-search-box>
+     <button mdcIconButton><mdc-icon>person</mdc-icon></button>
+        <button class="language-panel" mdc-button >
+          <mdc-icon>language</mdc-icon>   
+          <span class="mdc-button__label">EN</span> 
+          <mdc-icon>keyboard_arrow_down</mdc-icon>
+        </button> 
+    </div>
     </nav>
   </header>
   
   <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
-      <mat-icon class="menu__close-icon"(click)="toggleSideMenu()">close</mat-icon>
-      <div  class="logo menu__logo--layout">
-        <p class="header--big">SMC</p>
-        <p class="sentence--small">sweat for you</p>
-      </div>
-      <div class="mat-typography menu-content">
-        <ul>
-          <li> 
-             <mat-icon svgIcon="Bar_code"></mat-icon> 
-             <app-tree-menu *ngIf="isReady" [categories] = "rootCategories"></app-tree-menu>
-          </li>
-          <li> <mat-icon svgIcon="Gift"></mat-icon> 
-               <span>Gift</span> 
-          </li>
-          <li> <mat-icon svgIcon="Telephone"></mat-icon> 
-            <span>Contact us</span>
-          </li>
-          <li> <mat-icon svgIcon="Team"></mat-icon> 
-            <span>About us</span>
-          </li>
-        </ul>
-      </div>
+<app-side-nav-menu (isClosed) = "toggleSideMenu(val)" [rootCategories] = "rootCategories"></app-side-nav-menu>
   
   </div>

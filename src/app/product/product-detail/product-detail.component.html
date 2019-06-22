@@ -38,25 +38,25 @@
     </button>
   </header>
   <section>
-  <mat-divider></mat-divider>
-  <mat-tab-group>
-    <mat-tab label="Area of Use">
+<mdc-tab-bar [activeTabIndex]="-1">
+  <mdc-tab-scroller>
+    <mdc-tab label="Area of Use">
       <p class="mat-body description__text">
           {{product?.areaOfUse}}
       </p>
-    </mat-tab>
-    <mat-tab label="Materials">
+    </mdc-tab>
+    <mdc-tab label="Materials">
       <p class="mat-body description__text">
         {{product?.materials}}
       </p>
-    </mat-tab>
-    <mat-tab label="Aesthetics">
+    </mdc-tab>
+    <mdc-tab label="Aesthetics">
       <p class="mat-body description__text">
         {{product?.aesthetics}}
       </p>
-    </mat-tab>
-  </mat-tab-group>
-  <mat-divider></mat-divider>
+    </mdc-tab>
+    </mdc-tab-scroller>
+  </mdc-tab-bar>
   </section>
   <section class="feature-container">
     
@@ -72,7 +72,6 @@
 </div>
 <section  class="technical-description">
     <p class="mat-h2">Technical details</p>
-    <mat-divider></mat-divider>
   <section class="technical-data-container">
   <table class="variants-dimension-data mat-typography">
    <tr>
@@ -131,5 +130,4 @@
 <section class="related-product">
 
   <p class="mat-h2">Similar products</p>
-  <mat-divider></mat-divider>
 </section>
