@@ -22,7 +22,7 @@
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
               <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
 
-                  <div class="product-card__primary">
+                  <div   class="product-card__primary">
                         <mdc-icon class="collection-icon primary__collection-icon" 	svgIcon="Hanno">
                           
                         </mdc-icon>
@@ -34,7 +34,7 @@
                       </p>
                     </div>
                   </div>
-                <mdc-card-primary-action *ngIf="isReady">
+                <mdc-card-primary-action [routerLink]="['../', productShort.pk]" *ngIf="isReady">
                   <mdc-card-media class="product-card__media" 
                        square 
                        [style.background-image]='productShort.thumbNail.content'>

@@ -26,13 +26,17 @@
    .content__meta-bar-breadcrumb {
       overflow: auto;
       white-space: nowrap;
+
     }
    span {
     font-size: 1rem;
+    margin-left : 0.5rem;
+    
    }
 
    .content__meta-bar--spacer {
     flex: 1 1 auto;
+    min-width: 1em;
 }
 
 
