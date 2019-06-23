@@ -1,11 +1,44 @@
 @import "src/styles.scss";
 
-.mdc-list-item__graphic {
-    width: 1.5rem;
-    height: auto;
-  }
-  
-  .mdc-list-item {
-    @include mdc-list-item-graphic-ink-color(black);
-  }
+:host {
+    display: flex;
+    flex-direction: column;
+}
+.menu__close-icon {
+    align-self: flex-end;
+    margin: 1rem 1rem 1rem 0 ;
+    
+}
+.menu__user-panel {
+    width: 100%;
+    border-top : solid 0.5px $color-text-grey;
+    border-bottom : solid 0.5px $color-text-grey;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    .user-panel__icon--big {
+        font-size: 6.5rem;
+        margin-left: 1rem;
 
+    }
+    .user-panel__information {
+        margin-top : 1rem;
+        display: block;
+        h1,p {
+          margin-left: 0.75rem;
+        }
+        p {
+            color: $color-text-grey;
+        }
+        .user-panel__action {
+            display: flex;
+            button {
+                @include mdc-button-ink-color(blue);
+            }
+            button span {
+                text-transform: capitalize;
+                font-size: 0.875rem;
+            } 
+        }
+    }
+}

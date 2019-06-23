@@ -15,7 +15,6 @@ export class SideNavMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.isClosed.emit(false);
   }
 
 

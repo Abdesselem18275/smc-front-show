@@ -4,6 +4,10 @@ $mdc-theme-primary: black; // primary color
 $mdc-theme-secondary: #7F6A23; // secondary color
 $mdc-theme-black: #000000; // secondary color
 
+$color-grey:rgb(235,235,235);
+$color-deep-grey:rgb(179,179,179);
+$color-text-grey:rgb(130,130,130);
+
 @import "~@angular-mdc/theme/material";
 
 
@@ -13,8 +17,18 @@ body, html {
 }
 $mdc-typography-font-family: "'Raleway', sans-serif";
 
+hr {
+  border : solid 0.5px $mdc-theme-primary;
+}
+.mdc-list-item__graphic {
+  width: 1.5rem;
+  height: auto;
+  margin-right: 2rem;
+}
 
-
+.mdc-list-item {
+  @include mdc-list-item-graphic-ink-color(black);
+}
 
 
 
@@ -22,91 +36,7 @@ $mdc-typography-font-family: "'Raleway', sans-serif";
     box-sizing: border-box;
   }
 
-  .mat-gutter--left--16
-  {
-   padding-left : 1em;
-  }
-
-  .mat-gutter--left--8
-  {
-   padding-left : 0.5em;
-  }
-
-  .mat-gutter--left--4
-  {
-   padding-left : 0.25em;
-  }
-
-
-.mat-gutter--right--16
-{
- padding-right : 1em;
-}
-
-.mat-gutter--right--8
-{
- padding-right : 0.5em;
-}
-
-.mat-gutter--right--4
-{
- padding-right : 0.25em;
-}
-
-.mat-gutter--top--4
-{
- padding-top : 0.25em;
-}
-
-
-.mat-gutter--top--8
-{
- padding-top : 0.5em;
-}
-
-.mat-gutter--top--16
-{
- padding-top : 1em;
-}
-
-.mat-gutter--bottom--4
-{
- margin-bottom : 0.25em;
-}
-
-
-.mat-gutter--bottom--8
-{
-  margin-bottom : 0.5em;
-}
-
-.mat-gutter--bottom--16
-{
-  margin-bottom : 1em;
-}
-
-
-
-.mat-margin-gutter--right--16 {
-    margin-right : 1em;
-}
-
-.float-left {
-    float : left;
-}
-
-.float-right {
-    float : right;
-}
-
-.h-center {
-    margin-left : auto ;
-    margin-right  :auto ;
-}
-.v-center {
-  margin-top : auto ;
-  margin-bottom  :auto ;
-}
+ 
 mdc-icon:hover {
     cursor: pointer;
 }
@@ -149,9 +79,7 @@ $mdc-typography-styles-button: (
   text-transform: none
 );
 
-$color-grey:rgb(235,235,235);
-$color-deep-grey:rgb(179,179,179);
-$color-text-grey:rgb(130,130,130);
+
 
 
 @media only screen and (max-width:480px)  {

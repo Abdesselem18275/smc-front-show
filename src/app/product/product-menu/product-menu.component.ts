@@ -15,7 +15,7 @@ import { CategoryCacheService } from '../service/category-cache.service';
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '20em',
+        width : '25em',
       })),
       state('closed', style({
       })),
