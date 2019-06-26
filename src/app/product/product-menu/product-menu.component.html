@@ -10,15 +10,18 @@
        <div>
          <button (click)="toggleMenu()" class="mdc-button__label" mdc-button>  <span class="mdc-button__label">Products</span> <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
          
-        <div class="menu__sub-menu"  [style.height]="isMenuActive ? '150px' : '0px'">
-          <div  *ngFor="let rootCat of rootCategories[0]?.children">
+        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.height]="isMenuActive ? '150px' : '0px'">
+          <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
+            <img [src]="rootCat.thumbNail.content">
+            <div>
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
-              <mdc-button-label >{{rootCat.designation | uppercase}}</mdc-button-label>
+              <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
               </button>
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
                 <mdc-icon class="sub-menu__category__icon" *ngIf="childCat.svgIcon != null" [svgIcon]="childCat.svgIcon.designation"></mdc-icon>
-                <mdc-button-label>{{childCat.designation | lowercase}}</mdc-button-label>
+                <mdc-button-label mdcCaption>{{childCat.designation | lowercase}}</mdc-button-label>
             </button>
+          </div>
           </div>
         </div>
        </div>

@@ -68,32 +68,46 @@ header {
 .menu__sub-menu {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     position: absolute;
     top : 80px;
+    left: 0;
     background-color: white;
-    width : 40%;
+    width : 100%;
     height: 0px;
     overflow: hidden;
     transition: ease  0.3s ;
     z-index: 1000;
-    div {
-      display:flex;
-      flex-direction: column;
-      align-items: flex-start;
+    padding : 1rem 1rem;
+    .sub-menu__column{
+      display: flex;
+      justify-content: flex-start;
+      img {
+        max-width: 100%;
+        width: 40%;
+        height: auto;
+      }
+      div {
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
     }
+
     .menu__sub-menu__tab {
       @include mdc-button-container-fill-color(white);
       @include mdc-button-ink-color(black);
       @include mdc-button-horizontal-padding(2rem);
+      font-weight: bold;
 
 
    }
     .menu__sub-menu__tab--small .mdc-button__label{
       text-transform: lowercase;
-      font-size: 0.75rem;
-      font-weight: 400;
       @include mdc-button-horizontal-padding(0.5rem);
+      @include mdc-button-ink-color($color-text-deep-grey);
+
 
     }
     .sub-menu__category__icon{

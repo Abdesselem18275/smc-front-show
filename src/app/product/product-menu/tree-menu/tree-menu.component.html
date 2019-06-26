@@ -1,15 +1,14 @@
 <ng-container *ngFor="let category of categories">
       <mdc-list-item  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [queryParamsHandling]= "'merge'"   *ngIf="category.isLeaf">
-        <mdc-icon  *ngIf="category.svgIcon != null" mdcListItemGraphic >       
-          {{category.svgIcon.content}}
+        <mdc-icon [svgIcon]="category.svgIcon.designation" *ngIf="category.svgIcon != null" mdcListItemGraphic>       
           </mdc-icon> 
-         {{category.designation}} 
+         {{category.designation | lowercase}} 
       </mdc-list-item>
       <mdc-list *ngIf="!category.isLeaf">
         <mdc-list-item  (click) = "toggle(category.designation)">
-           <mdc-icon mdcListItemGraphic >
+           <mdc-icon [svgIcon]="category.svgIcon.designation" *ngIf="category.svgIcon != null" mdcListItemGraphic>
            </mdc-icon> 
-           <span class="list-item__text--spacing">{{category.designation}}</span>
+           <span class="list-item__text--spacing">{{category.designation | lowercase}}</span>
           <mdc-icon  [class.active__icon]="category.designation==currentDesignation"  mdcListItemGraphic >keyboard_arrow_down</mdc-icon>
         </mdc-list-item>
         <app-tree-menu  *ngIf="category.designation==currentDesignation"   [categories] = "category.children"></app-tree-menu>
