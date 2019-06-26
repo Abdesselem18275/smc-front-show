@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ProductDataService } from '../service/product-data.service';
+import { Category } from '../model';
+import { CategoryCacheService } from '../service/category-cache.service';
 
 
 @Component({
@@ -8,9 +10,10 @@ import { ProductDataService } from '../service/product-data.service';
   styleUrls: ['./product-home.component.scss']
 })
 export class ProductHomeComponent implements OnInit {
-
-  constructor(private pds: ProductDataService) { }
+  categories: Category[];
+  constructor(private categoryCache: CategoryCacheService) { }
   ngOnInit() {
+    this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isLeaf);
   }
 
 }

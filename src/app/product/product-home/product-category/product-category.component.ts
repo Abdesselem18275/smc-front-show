@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductCollection } from '../../model';
 import { ProductDataService } from '../../service/product-data.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { DomSanitizer } from '@angular/platform-browser';
+import { CollectionCacheService } from '../../service/collection-cache.service';
+import { MdcIconRegistry } from '@angular-mdc/web';
 
 @Component({
   selector: 'app-product-category',
@@ -41,43 +44,37 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class ProductCategoryComponent implements OnInit {
   collections: ProductCollection[];
+  selectedCollection: ProductCollection;
   selectedIndex: number;
   hoveredDescription: string;
   imagesNumber: number;
   selectedImage: string;
-  isReady: boolean;
   isImageReady: boolean;
   isRightChange: boolean;
-  constructor(private pds: ProductDataService) { }
+  constructor(private collectionCache: CollectionCacheService) { }
 
   ngOnInit() {
-    this.isReady = false;
     this.selectedIndex = 0;
-    this.hoveredDescription = '-';
+    this.collections = this.collectionCache.fetchCachedCollections();
+    this.imagesNumber = this.collections.length;
+    this.toggleCollection(0);
+    this.updateImage(this.selectedIndex);
 
-    this.pds.get_elements({model: 'collection'}).subscribe(_collections => {
-      this.collections = _collections;
-      this.imagesNumber = this.collections.length;
-      this.isReady = true;
-      this.updateImage(this.selectedIndex);
-     });
   }
 
 
   toggleCollection(i) {
     this.selectedIndex = i ;
-    this.hoveredDescription = i === -1 ? '-' : this.collections[i].description;
+    this.selectedCollection = this.collections[i];
   }
 
   updateImage(index) {
     this.isImageReady = false;
-    console.warn(this.getState(), this.isRightChange, this.isImageReady);
     this.selectedIndex = index;
     setTimeout(() => {
       this.isImageReady = true;
       this.hoveredDescription = index === -1 ? '-' : this.collections[index].description;
       this.selectedImage = index === -1 ? '' : this.collections[index].thumbNail.content;
-      console.warn(this.getState(), this.isRightChange, this.isImageReady);
     }, 110);
   }
 
@@ -91,6 +88,7 @@ export class ProductCategoryComponent implements OnInit {
       _index = this.imagesNumber - 1;
     }
     this.updateImage(_index);
+    this.toggleCollection(_index);
   }
   counter() {
 

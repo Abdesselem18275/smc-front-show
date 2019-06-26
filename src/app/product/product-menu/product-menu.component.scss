@@ -70,21 +70,40 @@ header {
     flex-direction: row;
     justify-content: space-around;
     position: absolute;
-    top : 73.5px;
+    top : 80px;
     background-color: white;
     width : 40%;
-    color: black;
     height: 0px;
     overflow: hidden;
     transition: ease  0.3s ;
+    z-index: 1000;
+    div {
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .menu__sub-menu__tab {
+      @include mdc-button-container-fill-color(white);
+      @include mdc-button-ink-color(black);
+      @include mdc-button-horizontal-padding(2rem);
+
+
+   }
+    .menu__sub-menu__tab--small .mdc-button__label{
+      text-transform: lowercase;
+      font-size: 0.75rem;
+      font-weight: 400;
+      @include mdc-button-horizontal-padding(0.5rem);
+
+    }
+    .sub-menu__category__icon{
+      width : 1.5rem;
+    }
+
 
 }
 
-.menu__sub-menu__tab:hover {
-    border-bottom: solid thin $color-deep-grey;;
-    cursor : pointer;
 
-}
 
 .spacer {
   flex :  1 1 auto;

@@ -20,7 +20,7 @@
   flex : 1 1 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   .title-section {
     margin-bottom: 2em;
@@ -29,25 +29,37 @@
     }
     #collection-icon {
       float: right;
-      transform : scale(2);
-      margin-top: 1em;
+      width: 3rem;
+      margin-top: 1rem;
     }
   }
+  .description__content {
+    min-height: 8rem;
+    .description__text {
+      padding: 1rem 1rem;
+      p  {
+        text-align: justify;
+      }
 
-  .description__text {
-    text-align: justify;
-    margin: 1em 2em 1em 2em;
-    font-weight: normal;
-   }
+    }
+
+
+  }
+
    .feature-container {
-     margin : 1em 0 1em 0;
+     margin : 1rem 0 1rem 0;
      display: flex;
      justify-content: center;
      .feature-icon-button--large {
-       transform: scale(2);
-       @include mdc-icon-button-size(32px,32px,24px);
+       width : 3rem;
+       height: auto;
+       margin: 0 2rem;
+
      }
 
+   }
+   .description__spacer {
+     flex : 1 1 auto;
    }
 }
 
@@ -70,20 +82,12 @@
     display: flex;
     justify-content: space-between;
   }
-  .main-image:hover  mdc-icon{
-    opacity: 0.6;
-
-  }
-  mdc-icon {
+  .main-image__arrow {
     align-self:center;
-    transform: scale(3);  
-    color: rgba(0, 0, 0, 0.5);
     transition: 0.3s ease;
-    opacity: 0;
+    @include mdc-icon-button-size(2rem);
   }
-  mdc-icon:hover {
-    transform: scale(3.5); 
-  }
+
   div {
     flex: 1 1 auto;
     padding: 0 1em 0 1em;
@@ -123,7 +127,7 @@
       border-bottom: 1.5px solid rgba(30, 30, 30, 0.4);  
       padding:  0.5em 0 0.5em 0 ;
       font-weight: 600;
-      font-size: 1em;
+      font-size: 1rem;
     }     
   }
 
@@ -195,7 +199,10 @@
   margin : 0 6em 4em 6em;
 
 }
-
+.component-detail__icon{
+  width: 2rem;
+  height: auto;
+}
   @media only screen and (max-width:960px)
   {
   
@@ -272,15 +279,4 @@
 }
 }
 
-@media only screen and (max-width:480px) {
-  .variants-dimension-data , .component-detail  {
-    font-size: 0.8em;
-
-  }
-}
-@media only screen and (max-width:400px) {
-  .mat-tab-labels {
-    font-size: 1em;
-  }
-}
 

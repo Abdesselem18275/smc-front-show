@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../model';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource, MatIconRegistry } from '@angular/material';
-import { ProductDataService } from '../service/product-data.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { MatTreeNestedDataSource } from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 

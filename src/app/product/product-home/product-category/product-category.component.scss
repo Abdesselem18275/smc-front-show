@@ -60,10 +60,10 @@ img {
   text-align: center;
   width: 100%;
   color: #1E1E1E;
-  margin : 3em auto 3em auto;
+  margin : 3rem auto 3rem auto;
   border-top:  solid thin rgba(30, 30, 30, 0.66);
   border-bottom:  solid thin rgba(30, 30, 30, 0.66);
-  padding: 1em 5em 1em 5em ;
+  padding: 1rem 5rem 1rem 5rem ;
   transition: 0.3s ease;
 }
 .image-list--small-screen {
@@ -96,7 +96,8 @@ img {
 }
  #collection-icon {
    margin-top : 2.5em;
-   transform: scale(2);
+   width: 4rem;
+   height: auto;
  }
   
 

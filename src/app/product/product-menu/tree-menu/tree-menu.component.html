@@ -1,11 +1,14 @@
 <ng-container *ngFor="let category of categories">
       <mdc-list-item  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [queryParamsHandling]= "'merge'"   *ngIf="category.isLeaf">
-        <mdc-icon mdcListItemGraphic svgIcon="Gift"></mdc-icon> 
+        <mdc-icon  *ngIf="category.svgIcon != null" mdcListItemGraphic >       
+          {{category.svgIcon.content}}
+          </mdc-icon> 
          {{category.designation}} 
       </mdc-list-item>
       <mdc-list *ngIf="!category.isLeaf">
         <mdc-list-item  (click) = "toggle(category.designation)">
-           <mdc-icon mdcListItemGraphic svgIcon="Gift"></mdc-icon> 
+           <mdc-icon mdcListItemGraphic >
+           </mdc-icon> 
            <span class="list-item__text--spacing">{{category.designation}}</span>
           <mdc-icon  [class.active__icon]="category.designation==currentDesignation"  mdcListItemGraphic >keyboard_arrow_down</mdc-icon>
         </mdc-list-item>
@@ -13,4 +16,4 @@
 
       </mdc-list>
 </ng-container>
-    
+  

@@ -22,7 +22,6 @@ export class ProductBreadcrumbComponent implements OnInit {
     this.isNotEmpty = false;
     this.items = [];
     this.categories = [];
-    console.warn(this.items);
       this.route
       .queryParamMap
       .pipe(map(params => params.get('categories__designation__in') || ''))

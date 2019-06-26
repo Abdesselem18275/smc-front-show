@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ProductCollection } from '../model';
 import { ProductDataService } from './product-data.service';
+import { MdcIconRegistry } from '@angular-mdc/web';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,12 @@ export class CollectionCacheService {
       this.pds.get_elements({model: 'collection'}).subscribe(
         jsonItems => {
           this._collections = jsonItems;
+
         });
     }
+
+
+
     return this._collections;
   }
 

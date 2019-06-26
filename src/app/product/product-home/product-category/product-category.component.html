@@ -3,16 +3,16 @@
     <p class="header--medium">OUR COLLECTION</p>
     <p class="sentence--small">Inspired of millenium carthage history</p>
 </div>
-<section *ngIf="isReady" class="image-list--large-screen">
+<section class="image-list--large-screen">
   <article *ngFor="let collection of collections; let i = index">
-    <img  [style.opacity]="i == selectedIndex ? '1': '0.8'" (mouseenter)="toggleCollection(i)" (mouseleave)="toggleCollection(-1)" [src]="collection.thumbNail.content">
+    <img  [style.opacity]="i == selectedIndex ? '1': '0.8'" (mouseenter)="toggleCollection(i)" (mouseleave)="toggleCollection(0)" [src]="collection.thumbNail.content">
     <div class="collection-title" [style.opacity]="i == selectedIndex ? 1 : 0">
       {{collection.designation | uppercase}}
     </div>
   </article>
 </section>
 
-<section *ngIf="isReady" class="image-list--small-screen">
+<section class="image-list--small-screen">
   <section class="main-image">
     <mdc-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mdc-icon>
     <div>
@@ -24,8 +24,8 @@
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
   </section>
 </section>
-<mdc-icon id="collection-icon" svgIcon="Hanno"></mdc-icon>
+<mdc-icon id="collection-icon" [svgIcon]="selectedCollection.svgIcon.designation"></mdc-icon>
 
 <div class="collection-description">
-  <p>{{hoveredDescription}}</p>
+  <p>{{selectedCollection.description}}</p>
 </div>

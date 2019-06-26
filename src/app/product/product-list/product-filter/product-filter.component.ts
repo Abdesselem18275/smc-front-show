@@ -40,7 +40,7 @@ export class ProductFilterComponent implements OnInit {
   isScrollOver: boolean;
   isScrollable: boolean;
 
-  constructor(private fbs: FilterBuilderService , private filterCache: FilterCacheService) {
+  constructor(private fbs: FilterBuilderService) {
    }
 
   ngOnInit() {
@@ -64,11 +64,9 @@ export class ProductFilterComponent implements OnInit {
                          req = req + z.substr(z.lastIndexOf('_') + 1) + ',';
          });
          map.set(key, req);
-         console.warn(key);
 
          this.filterCategories.filter(category => category.key === key)[0].description =
               count === 0 ? '' : ['(', count.toString(), ' choices)'].join('');
-         console.warn(this.filterCategories.filter(category => category.key === key)[0].description);
 
     });
     this.req.emit(map);

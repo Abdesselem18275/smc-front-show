@@ -2,9 +2,9 @@
 
 
 
-
-<mdc-icon class="menu__close-icon"(click)="toggle()">close</mdc-icon>
-
+<button  (click)="toggle()" class="menu__close-icon" mdcIconButton>
+<mdc-icon>close</mdc-icon>
+</button>
 <div class="menu__user-panel">
 
 
@@ -26,7 +26,7 @@
 
 <div class="menu-content">
   <mdc-list>
-    <app-tree-menu [categories]="rootCategories"></app-tree-menu>
+    <app-tree-menu (isClosed) = "toggle()" [categories]="rootCategories"></app-tree-menu>
     <mdc-list-divider padded></mdc-list-divider>
 
     <mdc-list-item> 

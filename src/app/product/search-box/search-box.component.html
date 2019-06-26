@@ -1,4 +1,4 @@
 <div class="search-box__large-screen">
 
-        <input placeholder="Search" type="search" class="search-text-field"    [formControl]="searchBar" >
+        <input (click)="toggle()" [@openClose]="isOpen" placeholder="Search" type="search" class="search-text-field"    [formControl]="searchBar" >
 </div>

@@ -12,11 +12,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '10em',
-        visibility : 'visible'
+        width : '150%',
       })),
       state('closed', style({
-        outline: 'none'
       })),
       transition('open => closed', [
         animate('0s')
@@ -24,23 +22,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       transition('closed => open', [
         animate('0s')
       ]),
-    ]),
-    trigger('openCloseSmall', [
-      // ...
-      state('open', style({
-        width : 'calc(100vw)',
-        visibility : 'visible'
-      })),
-      state('closed', style({
-        outline: 'none'
-      })),
-      transition('open => closed', [
-        animate('0.2s')
-      ]),
-      transition('closed => open', [
-        animate('0.2s')
-      ]),
-    ]),
+    ])
   ],
 })
 export class SearchBoxComponent implements OnInit {
@@ -68,6 +50,5 @@ export class SearchBoxComponent implements OnInit {
     if (!this.isOpen && this.searchBar.value !== '') {
       this.searchBar.setValue('');
     }
-    this.iconName = this.isOpen ? 'close' : 'search';
   }
 }

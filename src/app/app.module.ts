@@ -20,6 +20,9 @@ export function loadFilters(configService: ConfigService) {
 export function loadCollections(configService: ConfigService) {
   return () => configService.getCollections();
 }
+export function loadIcons(configService: ConfigService) {
+  return () => configService.loadIconRegistry();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +52,12 @@ export function loadCollections(configService: ConfigService) {
     {
       provide: APP_INITIALIZER,
       useFactory: loadCollections,
+      deps: [ConfigService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadIcons,
       deps: [ConfigService],
       multi: true
     }],

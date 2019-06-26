@@ -20,8 +20,6 @@ export class FilterCacheService {
   }
 
   set filterCategories(filterCategory) {
-    console.warn('Filter');
-    console.warn(filterCategory);
     this._filterCategory = filterCategory;
   }
 

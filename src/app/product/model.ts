@@ -62,6 +62,8 @@ export class ProductLong {
     categories: Category[];
     rootCategory: string;
     components: Component[];
+    features: Feature[];
+    collection: ProductCollection;
     constructor(options: {
         pk?: number;
         designation?: string;
@@ -75,7 +77,9 @@ export class ProductLong {
         variants?: Variant[];
         categories?: Category[];
         rootCategory?: string;
-        components?: Component[]
+        components?: Component[];
+        features?: Feature[];
+        collection?: ProductCollection;
                 } = {}) {
         this.pk = options.pk || -1;
         this.designation = options.designation || '';
@@ -90,7 +94,8 @@ export class ProductLong {
         this.categories = options.categories || [];
         this.rootCategory = options.rootCategory || '';
         this.components = options.components.map(x => new Component(x)) || [];
-
+        this.features = options.features.map(x => new Feature(x)) || [];
+        this.collection = options.collection || new ProductCollection({});
     }
 }
 
@@ -260,6 +265,22 @@ export class Category {
         this.thumbNail = options.thumbNail || new BaseImage({});
         this.svgIcon = options.svgIcon || new BaseImage({});
 
+    }
+
+}
+
+export class Feature {
+    designation: string;
+    description: string;
+    svgIcon: BaseImage;
+    constructor(options: {
+        designation?: string,
+        description?: string,
+        svgIcon?: BaseImage;
+    } = {}) {
+        this.designation = options.designation || '';
+        this.description = options.description || '';
+        this.svgIcon = options.svgIcon || new BaseImage({});
     }
 
 }

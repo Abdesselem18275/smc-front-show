@@ -6,7 +6,7 @@ $mdc-theme-black: #000000; // secondary color
 
 $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
-$color-text-grey:rgb(130,130,130);
+$color-text-grey:rgba(0,0,0,0.54);
 
 @import "~@angular-mdc/theme/material";
 
@@ -28,6 +28,7 @@ hr {
 
 .mdc-list-item {
   @include mdc-list-item-graphic-ink-color(black);
+  
 }
 
 

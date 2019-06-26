@@ -48,7 +48,6 @@ export class ProductListComponent implements OnInit {
               this.productShorts = _products['results'];
               this.productShorts.map(productShort =>
                 productShort.thumbNail.content = this.sanitizer.bypassSecurityTrustStyle('url("'  + productShort.thumbNail.content + '")'));
-              console.warn(this.productShorts);
               // if (this.objCount  !== _products['count']) {
               //    this.paginator.firstPage();
               // }

@@ -4,52 +4,15 @@
 <p class="header--big">SMC</p>
 <p class="sentence--small">sweat for you</p>
 </div>
-<div class="icons__wrap">
-   <figure>
-      <button mdcIconButton>
-         <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'cookware'}"  svgIcon="Serve_ware"></mdc-icon>
+<div mdc-typography class="icons__wrap">
+
+   <figure *ngFor="let category of categories">
+      <button class='category-icon' mdcIconButton>
+         <mdc-icon  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [svgIcon]="category.svgIcon.designation"></mdc-icon>
       </button>
-      <figcaption>Serve ware</figcaption>
+      <figcaption mdcCaption>{{category.designation | titlecase}}</figcaption>
    </figure>
 
-   <figure>  
-      <button mdcIconButton>
-         <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Cookware'}" svgIcon="Cook_ware"></mdc-icon>
-      </button>
-
-      <figcaption>Cook ware</figcaption>
-   </figure>
-
-   <figure>
-      <button mdcIconButton>
-         <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'HOME DECOR'}" svgIcon="Home_ware"></mdc-icon>
-      </button>
-
-      <figcaption>Home ware</figcaption>
-   </figure>
-
-   <figure>
-      <button mdcIconButton>
-         <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'LIGHTWARE'}" svgIcon="Light_ware"></mdc-icon>
-      </button>
-
-      <figcaption>Llght ware</figcaption>
-   </figure>
-
-   <figure>
-         <button mdcIconButton>
-            <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Tableware'}" svgIcon="Table_ware"></mdc-icon>
-         </button>
-
-   <figcaption >Table ware</figcaption>
-   </figure>
-
-   <figure>
-      <button mdcIconButton>
-         <mdc-icon [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'Barware'}" svgIcon="Bar_ware"></mdc-icon>
-      </button>
-      <figcaption>Bar ware</figcaption>
-   </figure>
 
 </div>
 

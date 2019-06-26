@@ -58,6 +58,10 @@ app-product-filter {
   height : auto;
 }
 
+.product-card__subtitle {
+  color: $color-text-grey
+}
+
 .content__image-container--grid {
 
 
@@ -187,24 +191,9 @@ app-product-filter {
 
   @media only screen and (max-width:480px) {
 
-    .content__image-container--grid {
-      display: block;
-
-  }
-  .content__meta-bar {
-    padding : 1rem 0 0.5rem 0;
-  }
-  .content__image-container--grid {
-  .content__image-container__product-box {
-    max-width: 100%;
-    margin-right : 1%;
-    margin-bottom : 1em;
-      img {
-        padding : 0.5rem 0.5rem 0 0.5rem;
-      }
+    .product-card__title {
+      font-size: 1rem;
     }
-  }
-
 
 
   }

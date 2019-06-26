@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { constructor } from 'stream';
 import { Category } from '../../model';
 
 @Component({
@@ -9,14 +8,11 @@ import { Category } from '../../model';
 })
 export class SideNavMenuComponent implements OnInit {
 
-
   @Output() isClosed: EventEmitter<boolean> = new EventEmitter();
   @Input() rootCategories: Category[];
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   toggle() {
     this.isClosed.emit(true);
