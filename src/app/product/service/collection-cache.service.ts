@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductCollection } from '../model';
 import { ProductDataService } from './product-data.service';
-import { MdcIconRegistry } from '@angular-mdc/web';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'

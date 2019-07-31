@@ -1,0 +1,29 @@
+@import "src/styles.scss";
+
+.menu-tab-bar-container {
+margin : 2rem 4rem 0 4rem;
+}
+.menu-tab-bar {
+    border-top : solid 1px $color-border-grey;
+    border-bottom : solid 1px $color-border-grey;
+    padding : 0 4rem;
+}
+.menu-tab {
+    text-transform: capitalize;
+    font-weight: 500;
+
+}
+
+.mdc-tab--active  {
+    @include mdc-tab-text-label-color($mdc-theme-secondary);
+    @include mdc-tab-icon-color($mdc-theme-secondary);
+}
+
+.mdc-tab-indicator {
+    @include mdc-tab-indicator-underline-color($mdc-theme-secondary);
+}
+.menu-content {
+    padding : 2rem 4rem;
+    
+    
+}

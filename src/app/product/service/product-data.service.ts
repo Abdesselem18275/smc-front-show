@@ -96,29 +96,5 @@ export class ProductDataService  {
     return treeMenu;
   }
 
-  getCollections() {
-    const collections: ProductCollection[] = [
-      {
-        designation: 'Hanno',
-        description: 'Hanno_Desc',
-        thumbNail : null,
-        svgIcon : null
-      },
-      {
-        designation: 'Didon',
-        description: 'Didon_Desc',
-        thumbNail : null,
-        svgIcon : null
-      },
-      {
-        designation: 'Magon',
-        description: 'Magon_Desc',
-        thumbNail : null,
-        svgIcon : null
-      },
-    ];
-  return collections;
-  }
-
 
 }

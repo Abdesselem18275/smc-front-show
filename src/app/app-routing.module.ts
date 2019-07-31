@@ -5,11 +5,13 @@ import {RouterModule , Routes} from '@angular/router';
 
 import { PageNotFoundComponent} from './page-not-found/page-not-found/page-not-found.component';
 import { ProductComponent } from './product/product/product.component';
+import { AccountComponent } from './account/account/account.component';
 
 
 const appRoutes: Routes = [
 
   {path : '' , component : ProductComponent},
+  {path : 'account' , component : AccountComponent},
   {path : '**' , component : PageNotFoundComponent},
 
 ];

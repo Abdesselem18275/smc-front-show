@@ -3,7 +3,6 @@ import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap, debounceTime } from 'rxjs/operators';
-import { PageEvent, MatPaginator } from '@angular/material';
 import { Subject, merge } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -22,7 +21,6 @@ export class ProductListComponent implements OnInit {
   isFilterActive: boolean;
   isListActive: boolean;
   reqNumber: number;
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
 
 
@@ -66,7 +64,7 @@ getRequest(event: Map<any, any>) {
 
 }
 
-pageEvent(event: PageEvent) {
+pageEvent() {
   // this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
   // this.paramRequest.next(new Map().set('page', this.pageIndex));
 }

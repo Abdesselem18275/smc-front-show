@@ -1,0 +1,111 @@
+
+
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+  <section  class="form-sub-part">
+      <p class="form-group__header" mdcSubtitle2>Personal Informations</p>
+
+      <div class="form-group">
+    <div formGroupName="profile" class="form__field--inline">
+        <mdc-text-field [value]="accountForm.first_name" dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
+                <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
+        </mdc-text-field>
+        <mdc-text-field  dense formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
+        </mdc-text-field>
+    </div>
+
+    <mdc-form-field fluid class="form__field">
+        <mdc-text-field  dense formControlName="country"  
+        autocomplete="country-name"
+        outlined    
+        class="form__field__text-area"  
+        type="text" label="Country">
+        <mdc-icon mdcTextFieldIcon leading>flag</mdc-icon>
+
+        </mdc-text-field>
+        <ul *ngIf="display" [mdcElevation]="2"
+               class="field-autocomplete-list">
+               <li mdcSubtitle2 (click)="onClickCountry(item.val)" *ngFor="let item of countrySelections">
+                 {{item.val}}
+               </li>
+        </ul>
+    </mdc-form-field>
+
+  <mdc-text-field autocomplete="tel" dense formControlName="phoneNumber" outlined class="form__field__text-area" type="tel" label="Phone number" >
+    <mdc-icon mdcTextFieldIcon leading>phone</mdc-icon>
+   </mdc-text-field>
+  </div>
+    <p class="form-group__header" mdcSubtitle2>Password change</p>
+    <div formGroupName="profile" class="form-group">
+
+    <mdc-form-field fluid class="form__field">
+        <mdc-text-field  dense formControlName="password"  
+        autocomplete="new-password"   
+        outlined    
+        class="form__field__text-area"  
+        type="password" label="password">
+        </mdc-text-field>
+    </mdc-form-field>
+
+    <mdc-form-field fluid class="form__field">
+      <mdc-text-field  dense formControlName="confirmPassword" outlined  autocomplete="new-password"    class="form__field__text-area" type ="password"   label="confirm password">
+      </mdc-text-field>
+      <mdc-helper-text validation>
+          <span  *ngIf="accountForm.errors?.passwordNotConfirmed 
+                         && (accountForm.touched || accountForm.dirty)">
+              Passwords are not equals
+          </span>
+      </mdc-helper-text>
+    </mdc-form-field> 
+  </div>
+  </section>
+  <section class="form-sub-part">
+
+      <mdc-radio-group class="radio-group--gutter" formControlName="is_professional">
+          <span mdcSubtitle2>Who Are you :</span>
+          <span class="block-divider"></span>
+              <mdc-form-field>
+                <mdc-radio  value="true"></mdc-radio>
+                <label>Professional</label>
+              </mdc-form-field>
+              <mdc-form-field >
+                      <mdc-radio  checked="True"  value="false"></mdc-radio>
+                      <label>Private</label>
+              </mdc-form-field>
+      </mdc-radio-group>
+      <p class="form-group__header" mdcSubtitle2>Company informations</p>
+      <div class="form-group">
+      <mdc-form-field fluid class="form__field__with-helper">
+          <mdc-text-field  dense [value]="accountForm.company" formControlName="company" outlined  autocomplete="organization" class="form__field__text-area" type ="text"   label="Company">
+          </mdc-text-field>
+          <mdc-helper-text>
+              <span>
+                  Insert your position in the company
+              </span>
+          </mdc-helper-text>
+        </mdc-form-field>
+      <mdc-form-field fluid class="form__field__with-helper">
+          <mdc-text-field  dense formControlName="position" outlined autocomplete="organization-title" class="form__field__text-area" type ="text"   label="Position">
+          </mdc-text-field>
+          <mdc-helper-text>
+              <span>
+                  Insert your position in the company
+              </span>
+          </mdc-helper-text>
+        </mdc-form-field> 
+        <mdc-form-field fluid class="form__field__with-helper">
+            <mdc-text-field  dense formControlName="activity" outlined      class="form__field__text-area" type ="text"   label="Activity">
+            </mdc-text-field>
+            <mdc-helper-text>
+                <span>
+                    Whats your field of activity , eg: Tourism , Restoration
+
+                </span>
+            </mdc-helper-text>
+          </mdc-form-field> 
+          <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
+        </div>
+
+
+  </section>
+  </form>
+

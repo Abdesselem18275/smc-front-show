@@ -8,6 +8,8 @@ $color-grey:rgb(235,235,235);
 $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgba(0,0,0,0.54);
 $color-text-deep-grey:rgb(30,30,30);
+$color-light-grey:rgb(235,235,235);
+$color-border-grey: rgba(30, 30, 30, 0.45);
 
 @import "~@angular-mdc/theme/material";
 
@@ -82,6 +84,18 @@ $mdc-typography-styles-button: (
 );
 
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: $color-light-grey;
+
+}
 
 
 @media only screen and (max-width:480px)  {

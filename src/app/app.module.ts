@@ -8,6 +8,8 @@ import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfigService } from './product/service/config.service';
+import { AccountModule } from './account/account.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -33,10 +35,12 @@ export function loadIcons(configService: ConfigService) {
     HttpClientModule,
     MaterialModule,
     ProductModule,
+    AccountModule,
     ReactiveFormsModule,
     AppRoutingModule,
   ],
   providers: [
+    CookieService,
     {
       provide: APP_INITIALIZER,
       useFactory: loadCategories,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../model';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 
@@ -30,8 +29,6 @@ export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
-  treeControl = new NestedTreeControl<Category>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<Category>();
   isSearchActive: boolean;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
