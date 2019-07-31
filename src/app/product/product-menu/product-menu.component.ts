@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../model';
-import { NestedTreeControl } from '@angular/cdk/tree';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 
