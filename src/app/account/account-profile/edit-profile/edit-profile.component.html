@@ -6,7 +6,7 @@
 
       <div class="form-group">
     <div formGroupName="profile" class="form__field--inline">
-        <mdc-text-field [value]="accountForm.first_name" dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
+        <mdc-text-field [value]="accountForm.get(first_name)" dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
                 <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
         </mdc-text-field>
         <mdc-text-field  dense formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
