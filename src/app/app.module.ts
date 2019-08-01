@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfigService } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
-import { CookieService } from 'ngx-cookie-service';
+//import { CookieService } from 'ngx-cookie-service';
 
 
 
