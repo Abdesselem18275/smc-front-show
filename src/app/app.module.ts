@@ -6,10 +6,9 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-found.component';
 import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ConfigService } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
-//import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
