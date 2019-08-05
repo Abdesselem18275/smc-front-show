@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAccount } from '../model';
 import { AuthService } from '../service/auth.service';
+import { UserAccount } from '../model';
 
 @Component({
   selector: 'app-account-profile',
@@ -9,12 +9,13 @@ import { AuthService } from '../service/auth.service';
 })
 export class AccountProfileComponent implements OnInit {
 
-  myProfile: any;
+  myProfile: UserAccount;
   tabs: any[];
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.myProfile = this.authService.account;
+    console.warn(this.myProfile);
     this.tabs = [
       { label: 'Informations', icon: 'account_circle' },
       { label: 'Favorites', icon: 'favorite' },

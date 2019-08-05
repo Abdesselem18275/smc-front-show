@@ -3,6 +3,14 @@ import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../../service/account-form.service';
 import { AuthService } from '../../service/auth.service';
 import { tap } from 'rxjs/operators';
+import { MdcSnackbar } from '@angular-mdc/web';
+import { UserAccount } from '../../model';
+
+interface CustomClasses {
+  classes?: string | string[];
+  actionClasses?: string | string[];
+  dismissClasses?: string | string[];
+}
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,7 +22,7 @@ export class EditProfileComponent implements OnInit {
   countryNames: any[];
   display: boolean;
   countrySelections: string[];
-  constructor(private accountFormService: AccountFormService , private authService: AuthService) { }
+  constructor(private snackbar: MdcSnackbar , private accountFormService: AccountFormService , private authService: AuthService) { }
 
   ngOnInit() {
     this.display = false;
@@ -39,8 +47,24 @@ export class EditProfileComponent implements OnInit {
 
   }
   onSubmit() {
-    let formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
-    console.warn(formData);
+    const formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
+    this.authService.updateAccount(formData).subscribe(accountData => {
+      this.accountForm = this.accountFormService.createLoadFullAccountForm();
+      this.openCustom({classes: 'custom-snackbar--shape-radius'});
 
+
+    },
+    error => {
+           console.warn('Error');
+           console.warn(error);
+    });
+
+  }
+
+  openCustom(customClasses: CustomClasses) {
+    this.snackbar.open(`Changes successfully saved`, '', {
+      dismiss: true,
+      classes: customClasses.classes
+    });
   }
 }

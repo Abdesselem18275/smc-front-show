@@ -10,7 +10,7 @@
        <div>
          <button (click)="toggleMenu()" class="mdc-button__label" mdc-button>  <span class="mdc-button__label">Products</span> <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
          
-        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.height]="isMenuActive ? '150px' : '0px'">
+        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? '150px' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
             <img [src]="rootCat.thumbNail.content">
             <div>

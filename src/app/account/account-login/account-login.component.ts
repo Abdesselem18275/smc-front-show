@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+interface CustomClasses {
+  classes: string | string[];
+  actionClasses: string | string[];
+  dismissClasses: string | string[];
+}
+
 @Component({
   selector: 'app-account-login',
   templateUrl: './account-login.component.html',
@@ -51,7 +57,6 @@ export class AccountLoginComponent implements OnInit {
   }
 
   createProfile() {
-    console.warn(JSON.stringify(this.createForm.value));
     this.authService.createAccount(JSON.stringify(this.createForm.value)).subscribe(x => {
     },
     error => {

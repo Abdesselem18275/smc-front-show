@@ -6,7 +6,7 @@
 
       <div class="form-group">
     <div formGroupName="profile" class="form__field--inline">
-        <mdc-text-field [value]="accountForm.get(first_name)" dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
+        <mdc-text-field dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
                 <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
         </mdc-text-field>
         <mdc-text-field  dense formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
@@ -68,14 +68,14 @@
                 <label>Professional</label>
               </mdc-form-field>
               <mdc-form-field >
-                      <mdc-radio  checked="True"  value="false"></mdc-radio>
+                      <mdc-radio  value="false"></mdc-radio>
                       <label>Private</label>
               </mdc-form-field>
       </mdc-radio-group>
       <p class="form-group__header" mdcSubtitle2>Company informations</p>
       <div class="form-group">
       <mdc-form-field fluid class="form__field__with-helper">
-          <mdc-text-field  dense [value]="accountForm.company" formControlName="company" outlined  autocomplete="organization" class="form__field__text-area" type ="text"   label="Company">
+          <mdc-text-field  dense  formControlName="company_name" outlined  autocomplete="organization" class="form__field__text-area" type ="text"   label="Company">
           </mdc-text-field>
           <mdc-helper-text>
               <span>

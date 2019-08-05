@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { API_URL } from 'src/app/product/service/product-data.service';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { UserAccount } from '../model';
+import { HttpHeaders, HttpClient, HttpXsrfTokenExtractor } from '@angular/common/http';
+import { UserAccount, Profile } from '../model';
 import { CookieService } from 'ngx-cookie-service';
 import countryNames from '../../../assets/data/world-countries.json';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ const httpOptions = {
 })
 export class AuthService {
   _account: UserAccount;
+  _token: string;
   _countries: any[];
   redirectUrl: string;
 
@@ -47,33 +48,64 @@ login(credentials: any): Observable<any> {
   }));
 }
 
-logout(): void {
-  this.cookieService.deleteAll();
+updateAccount(jsonData): Observable<any> {
+
+  const query: string = [
+    this.apiUrl,
+    '/account/',
+    this.token,
+    '/'
+   ].join('');
+   console.warn('Query = ' + query);
+return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
+  this.loadCookie(jsonArray);
+  this.refreshAccount();
+})) ;
 }
 
-isLogged(): boolean {
-  return this.cookieService.check('token');
-}
+
 
 
 loadCookie(data) {
-  this.cookieService.set('token', data['token']);
-  Object.keys(data['account']).forEach(key => {
-    this.cookieService.set('key', data['account'][key]);
+  if (data['token']) {
+    this.cookieService.set('token', data['token']);
+  }
+  const account_data = data['account'] ? data['account'] : data;
+  Object.keys(account_data).forEach(key => {
+    this.cookieService.set(key, account_data[key]);
   });
-  Object.keys(data['account']['profile']).forEach( key => {
-    this.cookieService.set('key', data['account']['profile'][key]);
+  Object.keys(account_data['profile']).forEach( key => {
+    this.cookieService.set(key, account_data['profile'][key]);
   });
+}
+
+refreshAccount() {
+  this._account = new UserAccount(this.cookieService.getAll());
+  const profile = new Profile({
+    first_name : this.cookieService.get('first_name'),
+    last_name : this.cookieService.get('last_name'),
+    email : this.cookieService.get('email')
+  });
+  this._account.profile = profile;
 }
 
 
 get account() {
   if (!this._account) {
-    this._account = new UserAccount(this.cookieService.getAll());
+    this.refreshAccount();
+
   }
   return this._account;
 }
 
+get token() {
+  if (!this._token) {
+
+    this._token = this.cookieService.get('token');
+  }
+  return this.cookieService.get('token');
+
+}
 
 
 
@@ -88,15 +120,14 @@ get countries() {
       countryArray.push(item);
     });
     this._countries = countryArray.sort(function(a, b) {
-      const nameA = a.val.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.val.toUpperCase(); // ignore upper and lowercase
+      const nameA = a.val.toUpperCase();
+      const nameB = b.val.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
       if (nameA > nameB) {
         return 1;
       }
-      // names must be equal
       return 0;
     });
     this._countries.unshift({
@@ -109,4 +140,15 @@ get countries() {
   }
   return <any[]> this._countries;
 }
+
+
+logout(): void {
+  this.cookieService.deleteAll();
+}
+
+isLogged(): boolean {
+  return this.cookieService.check('token');
+}
+
+
 }

@@ -32,15 +32,23 @@ export class AccountFormService {
     return form;
   }
 
-  createLoadFullAccountForm(data?: any) {
+  createLoadFullAccountForm() {
     let myForm  = this.createAccountForm();
     const account = this.authService.account;
-    myForm.addControl('company', new FormControl(account.company));
+    myForm.addControl('company_name', new FormControl(account.company_name));
     myForm.addControl('position', new FormControl(account.position));
-    myForm.addControl('activity', new FormControl(''));
-    myForm.addControl('phoneNumber', new FormControl(''));
-    myForm.setControl('password', new FormControl(''));
-    myForm.setControl('confirmPassword', new FormControl(''));
+    myForm.addControl('activity', new FormControl(account.activity_field));
+    myForm.addControl('phoneNumber', new FormControl(account.phone_number));
+    myForm.setControl('country', new FormControl(account.country));
+    myForm.setControl('is_professional', new FormControl(account.is_professional));
+    const profile = this.fb.group({
+      password : [''],
+      confirmPassword : [''],
+      first_name : [account.profile.first_name, Validators.required],
+      last_name : [account.profile.last_name, Validators.required],
+    });
+    myForm.setControl('profile', profile);
+
     return myForm;
   }
 
@@ -55,6 +63,7 @@ export class AccountFormService {
     }
     return { 'passwordNotConfirmed': true } ;
   }
+
   editFormReplacer(key, value) {
     // Filtering out properties
     if ( key === 'email') {

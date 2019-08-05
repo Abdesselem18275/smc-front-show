@@ -51,7 +51,6 @@ export class ConfigService {
           const safeRessource = this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content);
           this.iconRegistry.addSvgIcon(jsonItem.designation, safeRessource);
         });
-        console.warn(this.iconRegistry);
 
 
       }))

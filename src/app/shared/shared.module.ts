@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
-                 SideNavMenuComponent, SearchBoxComponent],
+                 SideNavMenuComponent, SearchBoxComponent, PaginatorComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchBoxComponent,
     ReactiveFormsModule,
     MaterialModule,
+    PaginatorComponent,
     CommonModule
   ]
 })
