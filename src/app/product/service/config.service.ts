@@ -26,7 +26,13 @@ export class ConfigService {
       tap(jsonItems => {
         this._categoryCache.categories = jsonItems;
       }))
-      .toPromise();
+      .toPromise().then(
+        () => this.getCollections().then(
+          () => this.getFilters().then(
+            () => this.loadIconRegistry()
+          )
+
+      ));
   }
   getCollections(): Promise<object> {
     return    this.pds.get_elements({model: 'collection'}).pipe(

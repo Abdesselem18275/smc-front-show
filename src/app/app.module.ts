@@ -16,15 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 export function loadCategories(configService: ConfigService) {
   return () => configService.getCategories();
 }
-export function loadFilters(configService: ConfigService) {
-  return () => configService.getFilters();
-}
-export function loadCollections(configService: ConfigService) {
-  return () => configService.getCollections();
-}
-export function loadIcons(configService: ConfigService) {
-  return () => configService.loadIconRegistry();
-}
+// export function loadFilters(configService: ConfigService) {
+//   return () => configService.getFilters();
+// }
+// export function loadCollections(configService: ConfigService) {
+//   return () => configService.getCollections();
+// }
+// export function loadIcons(configService: ConfigService) {
+//   return () => configService.loadIconRegistry();
+//}
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,24 +47,25 @@ export function loadIcons(configService: ConfigService) {
       deps: [ConfigService],
       multi: true
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadFilters,
-      deps: [ConfigService],
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadCollections,
-      deps: [ConfigService],
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadIcons,
-      deps: [ConfigService],
-      multi: true
-    }],
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: loadFilters,
+    //   deps: [ConfigService],
+    //   multi: true
+    // },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: loadCollections,
+    //   deps: [ConfigService],
+    //   multi: true
+    // },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: loadIcons,
+    //   deps: [ConfigService],
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

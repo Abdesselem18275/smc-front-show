@@ -1,13 +1,18 @@
+@import "src/styles.scss";
+
 :host {
     width: 100%;
-    position : fixed;
-    bottom: 1rem;
+    color: $color-text-grey;
+
 
 }
 
 div {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto; 
+    background-color: white;
+    justify-content: center;
+    span:first-child {
+        margin-right: 2.5rem;
+    }
 }
