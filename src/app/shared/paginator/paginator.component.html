@@ -1,6 +1,6 @@
 <div>
     <span mdcCaption>Items per page : 10 </span>
-    <span mdcCaption >1-10 of 100</span>
-    <mdc-icon>keyboard_arrow_left</mdc-icon>
-    <mdc-icon>keyboard_arrow_right</mdc-icon>
+    <span mdcCaption >{{pageLowerIndex()}} - {{pageUpperIndex()}} of {{elementsCount}}</span>
+    <mdc-icon [style.color] = "checkInRange(-1) ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.54)'" (click) = "checkInRange(-1) ? updateIndex(-1) : ''">keyboard_arrow_left</mdc-icon>
+    <mdc-icon [style.color] = "checkInRange(1) ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.54)'" (click) = "checkInRange(1) ? updateIndex(1) : ''" >keyboard_arrow_right</mdc-icon>
 </div>

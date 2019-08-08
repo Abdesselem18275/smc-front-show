@@ -64,9 +64,9 @@ getRequest(event: Map<any, any>) {
 
 }
 
-pageEvent() {
-  // this.pageIndex = event.pageIndex === 0 ? 1 : event.previousPageIndex === 0 ? 2 : event.pageIndex;
-  // this.paramRequest.next(new Map().set('page', this.pageIndex));
+pageEvent(pageNumber) {
+  console.warn('pageNumber event ' + pageNumber);
+  this.paramRequest.next(new Map().set('page', pageNumber));
 }
 filterToggle() {
   this.isFilterActive = !this.isFilterActive;

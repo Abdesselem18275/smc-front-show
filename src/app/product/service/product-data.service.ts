@@ -25,8 +25,6 @@ export class ProductDataService  {
 
     const model = options.model || '';
     const param_key = options.param_key || new Map();
-    this.httpParams = this.httpParams.delete('page');
-
     param_key.forEach((value, key) => {
       this.httpParams = this.httpParams.set(key, value);
     });
@@ -38,24 +36,10 @@ export class ProductDataService  {
     '/',
     model,
     's/'].join('') ;
+    console.warn('req = ' + query);
    return this.http.get(query, {params: this.httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
-
-  // get_elements(options: {
-  //   model?: string;
-  //   hyperLink?: any;
-  //   param_key?: Map<string, string> } = {}): Observable<any[]> {
-
-  //  return Observable.create(function (observer) {
-  //   observer.next(1);
-  //   observer.next(2);
-  //   observer.next(3);
-  //   observer.complete();
-  // });
-
-  // }
-
 
   get_element(options: {
     model?: string;
