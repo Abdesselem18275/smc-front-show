@@ -8,7 +8,7 @@ $color-grey:rgba(0, 0, 0, 0.507);
 $color-deep-grey:rgb(179,179,179);
 $color-text-grey:rgba(0,0,0,0.54);
 $color-text-deep-grey:rgb(30,30,30);
-$color-light-grey:rgb(235,235,235);
+$color-light-grey:rgb(245,245,245);
 $color-border-grey: rgba(30, 30, 30, 0.45);
 
 @import "~@angular-mdc/theme/material";
@@ -17,6 +17,8 @@ $color-border-grey: rgba(30, 30, 30, 0.45);
 body, html {
   height: 100%;
   margin : 0 0 0 0 ;
+  font-size: 14px;
+
 }
 $mdc-typography-font-family: "'Raleway', sans-serif";
 

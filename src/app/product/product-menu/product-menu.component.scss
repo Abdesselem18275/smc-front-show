@@ -2,8 +2,8 @@
 
 
 header {
-    background-color: black;
-    color: white;
+    background-color: $color-light-grey;
+    color: black;
 
 }
 
@@ -24,12 +24,17 @@ header {
 }
 
 
-.nav-bar__nav-tab button
-{
-    @include mdc-button-filled-accessible($mdc-theme-black);
+.nav-bar__nav-tab > button
+{   
+    margin-right: 1rem;
+    @include mdc-button-filled-accessible($color-light-grey);
     mdc-icon {
         transition: 0.2s ease-out;
     }
+    .mdc-button__label {
+      font-weight: bold;
+    }
+
 
 }
 
@@ -39,8 +44,8 @@ header {
   cursor: pointer;
   .header--big {
     font-family: 'Stardos Stencil', cursive;
-    font-weight: 200;
-    font-size: 2rem;
+    font-weight: 500;
+    font-size: 3rem;
     letter-spacing: 0.5rem;
   }
 .sentence--small {
@@ -58,7 +63,7 @@ header {
     .language-panel {
         display: flex;
         align-items: center;
-        @include mdc-button-ink-color(white);
+        @include mdc-button-ink-color(black);
     }
 }
 
@@ -67,55 +72,75 @@ header {
 
 .menu__sub-menu {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     position: absolute;
-    top : 80px;
-    left: 0;
+    top:80px;
+    left:0;
     background-color: white;
-    width : 100%;
     height: 0px;
     overflow: hidden;
     transition: ease  0.3s ;
-    padding : 1rem 1rem;
+    min-width: 100%;
+    padding : 0 25rem;
     .sub-menu__column{
       display: flex;
-      justify-content: flex-start;
-      img {
-        max-width: 100%;
-        width: 40%;
-        height: auto;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: solid 1px black;
+
+      .menu__sub-menu__tab {
+        @include mdc-button-container-fill-color(white);
+        @include mdc-button-ink-color(black);
+        @include mdc-button-horizontal-padding(0);
+        @include mdc-button-shape-radius(0px);
+        width: 100%;
+        align-items : flex-start;
+        justify-content: flex-start;
+        border-bottom: solid 0.5px white;
+
+     }
+      .menu__sub-menu__tab--small .mdc-button__label{
+        text-transform: capitalize;
       }
-      div {
-        display:flex;
-        flex-direction: column;
-        align-items: flex-start;
+      .menu__sub-menu__tab:hover {
+        border-bottom: solid 0.5px black;
+
       }
 
     }
-
-    .menu__sub-menu__tab {
-      @include mdc-button-container-fill-color(white);
-      @include mdc-button-ink-color(black);
-      @include mdc-button-horizontal-padding(2rem);
-      font-weight: bold;
-
-
-   }
-    .menu__sub-menu__tab--small .mdc-button__label{
-      text-transform: lowercase;
-      @include mdc-button-horizontal-padding(0.5rem);
-      @include mdc-button-ink-color($color-text-deep-grey);
-
-
-    }
-    .sub-menu__category__icon{
-      width : 1.5rem;
-    }
-
 
 }
 
+.account-card {
+  position: absolute;
+  top:86px;
+  right:16px;
+  color: black;
+  z-index: 1000;
+  padding: 1rem;
+  background-color: white;
+  border: solid 0.5px $color-border-grey;
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid black;
+    p {
+      font-weight: bold;
+      
+    }
+    mdc-icon {
+      font-size: 1rem;
+    }
+  }
+
+
+}
 
 
 .spacer {

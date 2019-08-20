@@ -32,6 +32,7 @@ export class ProductMenuComponent implements OnInit {
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;
+  isAccountCardActive: boolean;
   isReady: boolean;
 
 
@@ -43,6 +44,7 @@ export class ProductMenuComponent implements OnInit {
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
+    this.isAccountCardActive = false;
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
       {
@@ -68,6 +70,9 @@ export class ProductMenuComponent implements OnInit {
   }
   toggleRoot() {
     this.isRootActive = !this.isRootActive;
+  }
+  toggleAccountCard() {
+    this.isAccountCardActive = !this.isAccountCardActive;
   }
 
 

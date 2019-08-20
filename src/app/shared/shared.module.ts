@@ -8,10 +8,11 @@ import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { AccountCardComponent } from './account-card/account-card.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
-                 SideNavMenuComponent, SearchBoxComponent, PaginatorComponent],
+                 SideNavMenuComponent, SearchBoxComponent, PaginatorComponent, AccountCardComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -26,6 +27,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
     ReactiveFormsModule,
     MaterialModule,
     PaginatorComponent,
+    AccountCardComponent,
     CommonModule
   ]
 })

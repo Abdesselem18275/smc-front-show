@@ -1,38 +1,49 @@
-<header  mdc-typography>
+<header  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
       <mdc-icon [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu(false)" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [class.menu_icon--hidden]="isSearchActive" [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
-        <p class="sentence--small">sweat for you</p>
       </div>
      <div class="nav-bar__nav-tab">
-       <div>
-         <button (click)="toggleMenu()" class="mdc-button__label" mdc-button>  <span class="mdc-button__label">Products</span> <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
+         <button (click)="toggleMenu()" class="nav-tab__button" mdc-button>  
+           <span class="mdc-button__label">Products</span> 
+           <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> 
+         </button>
          
-        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? '150px' : '0px'">
+        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? 'auto' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-            <img [src]="rootCat.thumbNail.content">
-            <div>
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
               <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
               </button>
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
-                <mdc-icon class="sub-menu__category__icon" *ngIf="childCat.svgIcon != null" [svgIcon]="childCat.svgIcon.designation"></mdc-icon>
-                <mdc-button-label mdcCaption>{{childCat.designation | lowercase}}</mdc-button-label>
+                <mdc-button-label mdcBody2>{{childCat.designation}}</mdc-button-label>
             </button>
           </div>
-          </div>
         </div>
-       </div>
-       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">Inspiration</span></button>
-       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">About us</span></button>
-       <button mdc-button raised class="mat-margin-gutter--right--16"><span class="mdc-button__label">Contact us</span></button>
+       <button mdc-button  class="nav-tab__button">
+         <span class="mdc-button__label">Inspiration</span>
+       </button>
+       <button mdc-button  class="nav-tab__button">
+         <span class="mdc-button__label">About us</span>
+       </button>
+       <button mdc-button  class="nav-tab__button">
+         <span class="mdc-button__label">Contact us</span>
+       </button>
      </div>
      <span class="spacer"></span>
      <div class="nav-bar__tools">
      <app-search-box  class="search-icon" (open) = "toggleSearch($event)" ></app-search-box>
-     <button mdcIconButton><mdc-icon>person</mdc-icon></button>
+     <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>
+     <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
+       <div>
+         <span class="space-divider"></span>
+        <p>Welcome dear customer</p>
+        <mdc-icon (click)="toggleAccountCard()">close</mdc-icon>
+       </div>
+       <app-account-card>
+       </app-account-card>
+     </div>
         <button class="language-panel" mdc-button >
           <mdc-icon>language</mdc-icon>   
           <span class="mdc-button__label">EN</span> 

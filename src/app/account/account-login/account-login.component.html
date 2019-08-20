@@ -2,13 +2,14 @@
 
 <section class="form-container">
     <header class="form__header">
-        <p mdcHeadline4> Login</p>
+        <p mdcHeadline5> Login</p>
         <p mdcSubtitle2 class="form__non-field-error">{{auth_non_field_error}}</p>
     </header>
 <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <mdc-form-field fluid class="form__field">
             <mdc-text-field   
                     autocomplete="username email" outlined  
+                    dense
                     class="form__field__text-area" 
                     type="email" 
                     formControlName="email"  
@@ -17,7 +18,9 @@
         </mdc-text-field>
     </mdc-form-field>
     <mdc-form-field fluid class="form__field">
-    <mdc-text-field    autocomplete="new-password"  
+    <mdc-text-field  
+                     autocomplete="new-password"  
+                     dense
                      outlined  required  
                      class="form__field__text-area" 
                      type ="password" formControlName="password"  
@@ -39,7 +42,7 @@
 </section>
 <section class="form-container">
     <header class="form__header">
-        <p mdcHeadline4> Create new account</p>
+        <p mdcHeadline5> Create new account</p>
         <p mdcSubtitle2 class="form__non-field-error">{{creation_non_field_error}}</p>
     </header>
   
@@ -47,6 +50,7 @@
       <div formGroupName="profile" class="form-group">
         <mdc-form-field fluid class="form__field__with-helper">
             <mdc-text-field autocomplete="username email" 
+                            dense
                             outlined  required   
                             class="form__field__text-area" 
                             type="email" 
@@ -64,8 +68,10 @@
         
         <mdc-form-field fluid class="form__field">
         
-              <mdc-text-field   formControlName="password"  
-              autocomplete="new-password"   
+              <mdc-text-field   
+              formControlName="password"  
+              autocomplete="new-password"  
+              dense 
               outlined    
               class="form__field__text-area"  
               type="password" label="password">
@@ -73,7 +79,7 @@
         </mdc-form-field>
 
         <mdc-form-field fluid class="form__field">
-            <mdc-text-field   formControlName="confirmPassword" outlined  autocomplete="new-password"    class="form__field__text-area" type ="password"   label="confirm password">
+            <mdc-text-field   dense formControlName="confirmPassword" outlined  autocomplete="new-password"    class="form__field__text-area" type ="password"   label="confirm password">
             </mdc-text-field>
             <mdc-helper-text validation>
                 <span  *ngIf="createForm.errors?.passwordNotConfirmed 
@@ -85,10 +91,10 @@
         </div>
         <div class="form-group">
                 <div formGroupName="profile" class="form__field--inline">
-                        <mdc-text-field   formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
+                        <mdc-text-field  dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
                                 <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
                         </mdc-text-field>
-                        <mdc-text-field   formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
+                        <mdc-text-field  dense  formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
                         </mdc-text-field>
                 </div>
                 <mdc-select outlined class="form__field__text-area" placeholder="Country"   formControlName="country">
@@ -100,14 +106,14 @@
                 <mdc-radio-group formControlName="is_professional">
                     <span mdcSubtitle1>Who Are you :</span>
                     <span class="block-divider"></span>
-                        <mdc-form-field>
-                          <mdc-radio  value="true"></mdc-radio>
-                          <label>Professional</label>
-                        </mdc-form-field>
-                        <mdc-form-field >
-                                <mdc-radio  checked="True"  value="false"></mdc-radio>
-                                <label>Private</label>
-                        </mdc-form-field>
+                    <mdc-form-field>
+                        <mdc-radio  value="true"></mdc-radio>
+                        <label>Professional</label>
+                    </mdc-form-field>
+                    <mdc-form-field >
+                        <mdc-radio  checked="True"  value="false"></mdc-radio>
+                        <label>Private</label>
+                    </mdc-form-field>
                 </mdc-radio-group>
 
         </div>

@@ -38,16 +38,24 @@
     <div formGroupName="profile" class="form-group">
 
     <mdc-form-field fluid class="form__field">
-        <mdc-text-field  dense formControlName="password"  
-        autocomplete="new-password"   
-        outlined    
-        class="form__field__text-area"  
-        type="password" label="password">
+        <mdc-text-field  
+          dense 
+          formControlName="password"  
+          autocomplete="new-password"   
+          outlined    
+          class="form__field__text-area"  
+          type="password" 
+          label="password">
         </mdc-text-field>
     </mdc-form-field>
 
     <mdc-form-field fluid class="form__field">
-      <mdc-text-field  dense formControlName="confirmPassword" outlined  autocomplete="new-password"    class="form__field__text-area" type ="password"   label="confirm password">
+      <mdc-text-field  
+        dense formControlName="confirmPassword" 
+        outlined  autocomplete="new-password"    
+        class="form__field__text-area" 
+        type ="password"   
+        label="confirm password">
       </mdc-text-field>
       <mdc-helper-text validation>
           <span  *ngIf="accountForm.errors?.passwordNotConfirmed 
@@ -74,8 +82,17 @@
       </mdc-radio-group>
       <p class="form-group__header" mdcSubtitle2>Company informations</p>
       <div class="form-group">
-      <mdc-form-field fluid class="form__field__with-helper">
-          <mdc-text-field  dense  formControlName="company_name" outlined  autocomplete="organization" class="form__field__text-area" type ="text"   label="Company">
+      <mdc-form-field 
+          fluid 
+          class="form__field__with-helper">
+          <mdc-text-field  
+            dense  
+            formControlName="company_name" 
+            outlined  
+            autocomplete="organization" 
+            class="form__field__text-area" 
+            type ="text"   
+            label="Company">
           </mdc-text-field>
           <mdc-helper-text>
               <span>
