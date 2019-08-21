@@ -5,24 +5,7 @@
 <button  (click)="toggle()" class="menu__close-icon" mdcIconButton>
 <mdc-icon>close</mdc-icon>
 </button>
-<div class="menu__user-panel">
 
-
-    <mdc-icon class="user-panel__icon--big">account_circle</mdc-icon>
-    <div class="user-panel__information">
-          <h1 mdcHeadline6>Nejib Kamoun</h1>
-          <p mdcSubtitle2>nejib.kamoun@gmail.com</p>
-      <div class="user-panel__action">
-          <button mdc-button>
-              <span mdcButtonLabel>My account</span>
-            </button>
-            <button mdc-button>
-                <span mdcButtonLabel>Log out</span>
-              </button>
-      </div>
-    </div>
-
-</div>
 
 <div class="menu-content">
   <mdc-list>
@@ -42,10 +25,16 @@
     <mdc-list-divider padded></mdc-list-divider>
 
     <mdc-list-item> 
-      <mdc-icon mdcListItemGraphic svgIcon="Team"></mdc-icon> 
       About us
     </mdc-list-item>
   </mdc-list>
 <mdc-list-divider ></mdc-list-divider>
 
 </div>
+<div class="menu__user-panel">
+
+
+    <app-account-card>
+      </app-account-card>
+
+</div>  

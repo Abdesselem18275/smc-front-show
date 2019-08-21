@@ -11,7 +11,7 @@
            <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> 
          </button>
          
-        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? 'auto' : '0px'">
+        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? '40vh' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
               <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
@@ -33,11 +33,14 @@
      </div>
      <span class="spacer"></span>
      <div class="nav-bar__tools">
-     <app-search-box  class="search-icon" (open) = "toggleSearch($event)" ></app-search-box>
-     <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>
-     <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
-       <div>
-         <span class="space-divider"></span>
+        <button (click)="toggleSearch()" mdcIconButton><mdc-icon>search</mdc-icon></button>
+        <div [mdcElevation]="3" *ngIf="isSearchActive" class="search-container">
+            <app-search-box   class="search-icon"></app-search-box>
+        </div>
+        <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>
+        <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
+          <div>
+            <span class="space-divider"></span>
         <p>Welcome dear customer</p>
         <mdc-icon (click)="toggleAccountCard()">close</mdc-icon>
        </div>

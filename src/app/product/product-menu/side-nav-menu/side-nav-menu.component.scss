@@ -9,35 +9,7 @@
     margin: 1rem 1rem 1rem 0 ;
     
 }
-.menu__user-panel {
-    width: 100%;
-    border-top : solid 0.5px $color-text-grey;
-    border-bottom : solid 0.5px $color-text-grey;
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
-    .user-panel__icon--big {
-        font-size: 6.5rem;
-        margin-left: 1rem;
-
-    }
-    .user-panel__information {
-        margin-top : 1rem;
-        display: block;
-        h1,p {
-          margin-left: 0.5rem;
-        }
-        p {
-            color: $color-text-grey;
-        }
-        .user-panel__action {
-            display: flex;
-            button {
-                @include mdc-button-ink-color(blue);
-            }
-            button span {
-                text-transform: capitalize;
-            } 
-        }
-    }
+.menu__user-panel  {
+    margin-left: auto;
+    margin-right: auto;
 }

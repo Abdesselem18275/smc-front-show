@@ -75,7 +75,7 @@
 </section>
 </div>
 <section  class="technical-description">
-    <p class="mat-h2">Technical details</p>
+    <p mdcHeadline3>Technical details</p>
   <section class="technical-data-container">
   <table class="variants-dimension-data mat-typography">
    <tr>
@@ -86,7 +86,7 @@
    <tr *ngFor="let variant of product?.variants" >
     <td class="variant-designation">
       <p>{{ variant?.designation | uppercase }}</p>
-      <p class="variant-reference">{{variant?.reference}}</p>
+      <p mdcCaption class="variant-reference">{{variant?.reference}}</p>
     </td>
     <td>
       {{variant.height.to_string()}}
@@ -133,6 +133,6 @@
 
 <section class="related-product">
 
-  <p class="mat-h2">Similar products</p>
+  <p mdcHeadline3>Similar products</p>
 </section>
 
