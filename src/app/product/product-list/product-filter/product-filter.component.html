@@ -1,8 +1,7 @@
+<header>
+    <p mdcBody1>FILTER</p>
+</header>
 <section id="host">
-
-<button class="filter-category--button filter__title" mdc-button>
-        <span class="mdc-button__label">Filter by : </span>
-</button>
 <form  class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
     <div  *ngFor="let filterCategory of filterCategories" class="mat-typography">
             <button (click) = "toggleFilter(filterCategory.value)" class="filter-category--button" mdc-button>  <span class="mdc-button__label">{{filterCategory.value | lowercase}} <span>{{filterCategory.description}}</span> </span> <mdc-icon [style.transform]="selectedFilter == filterCategory.value ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>

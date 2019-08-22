@@ -3,52 +3,32 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ProductDataService } from '../service/product-data.service';
+import { stringify } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
+import { ProductShort } from '../model';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss'],
-  animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        width : '150%',
-      })),
-      state('closed', style({
-      })),
-      transition('open => closed', [
-        animate('0s')
-      ]),
-      transition('closed => open', [
-        animate('0s')
-      ]),
-    ])
-  ],
 })
 export class SearchBoxComponent implements OnInit {
-  isOpen: boolean;
-  @Output() open: EventEmitter<boolean> = new EventEmitter();
   searchBar = new FormControl('');
-  iconName: string;
+  products: ProductShort[];
 
-  constructor(private router: Router, private el: ElementRef) { }
+  constructor(private pds: ProductDataService) { }
   ngOnInit() {
-  this.isOpen = false;
-  this.iconName = 'search';
 
   this.searchBar.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged()).
       subscribe(term => {
-
-        this.router.navigate(['product/list'], { queryParams: { 'search': term }, queryParamsHandling: 'merge'}); } );
+        const myMap = new Map<string, string>().set('search', term);
+        this.pds.get_elements({model: 'product', param_key: myMap}).subscribe(results => {
+          this.products = results['results'];
+          console.warn(this.products);
+        });
+      });
 }
-
-  toggle() {
-    this.isOpen = !this.isOpen;
-    this.open.emit(this.isOpen);
-    if (!this.isOpen && this.searchBar.value !== '') {
-      this.searchBar.setValue('');
-    }
-  }
 }

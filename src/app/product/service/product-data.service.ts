@@ -37,6 +37,7 @@ export class ProductDataService  {
     model,
     's/'].join('') ;
     console.warn('req = ' + query);
+    console.warn('httpParams = ' + this.httpParams);
    return this.http.get(query, {params: this.httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
