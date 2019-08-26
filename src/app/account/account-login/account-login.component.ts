@@ -31,7 +31,6 @@ export class AccountLoginComponent implements OnInit {
 
   constructor(public router: Router, private authService: AuthService,
               private accountFormService: AccountFormService) {
-
    }
 
    ngOnInit() {
@@ -43,17 +42,22 @@ export class AccountLoginComponent implements OnInit {
 
   onSubmit() {
     const credentials = this.loginForm.value;
-    this.authService.login(JSON.stringify(credentials)).subscribe(() => {
-      if (this.authService.isLogged()) {
-        const redirect = this.authService.redirectUrl ?
-        this.router.parseUrl(this.authService.redirectUrl) : '/account/profile';
-        this.router.navigateByUrl(redirect);
-      }
-    },
-    error => {
-      console.warn(error);
-      this.auth_non_field_error  = error.error['non_field_errors'] || '';
-    });
+    this.auth_non_field_error = '';
+    if (this.loginForm.valid) {
+      this.authService.login(JSON.stringify(credentials)).subscribe(() => {
+        if (this.authService.isLogged()) {
+          const redirect = this.authService.redirectUrl ?
+          this.router.parseUrl(this.authService.redirectUrl) : '/account/profile';
+          this.router.navigateByUrl(redirect);
+        }
+      },
+      error => {
+        console.warn(error);
+        this.auth_non_field_error  = error.error['non_field_errors'] || '';
+      });
+
+    }
+
   }
 
   createProfile() {

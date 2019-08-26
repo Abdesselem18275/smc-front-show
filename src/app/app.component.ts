@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('Telephone', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/telephone_icon.svg'))
                 .addSvgIcon('Team', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/team_icon.svg'))
                 .addSvgIcon('Bar_code', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/barcode_icon.svg'))
-                .addSvgIcon('google', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/google-icon.svg'));
+                .addSvgIcon('google', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/google-icon.svg'))
+                .addSvgIcon('rectangle', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/rectangle.svg'));
+
   }
   ngOnInit() {
 

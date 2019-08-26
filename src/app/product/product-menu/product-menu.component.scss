@@ -1,9 +1,14 @@
 @import "src/styles.scss";
 
+:host {
+  z-index: 100000;
+}
+
 
 header {
-    background-color: $color-light-grey;
     color: black;
+    background-color: $color-light-grey;
+
 
 }
 
@@ -18,7 +23,6 @@ header {
 
 .nav-bar__nav-tab
 {
-    margin-left : 2rem;
     display : flex;
 
 }
@@ -44,7 +48,7 @@ header {
   cursor: pointer;
   .header--big {
     font-family: 'Stardos Stencil', cursive;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 3rem;
     letter-spacing: 0.5rem;
   }
@@ -81,7 +85,7 @@ header {
     overflow: hidden;
     transition: ease  0.3s ;
     min-width: 100%;
-    padding : 0 25rem;
+    padding: 1.5rem 20%;
     .sub-menu__column{
       display: flex;
       flex-direction: column;
@@ -89,6 +93,10 @@ header {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       padding-bottom: solid 1px black;
+
+      .sub-menu__column__image {
+        max-width: 60%;
+      }
 
       .menu__sub-menu__tab {
         @include mdc-button-container-fill-color(white);
@@ -99,15 +107,21 @@ header {
         align-items : flex-start;
         justify-content: flex-start;
         border-bottom: solid 0.5px white;
+        mdc-button-label {
+          font-weight: bold;
+
+        }
 
      }
       .menu__sub-menu__tab--small .mdc-button__label{
         text-transform: capitalize;
-      }
-      .menu__sub-menu__tab:hover {
-        border-bottom: solid 0.5px black;
+        font-weight: 300;
 
       }
+      // .menu__sub-menu__tab:hover {
+      //   border-bottom: solid 0.5px black;
+
+      // }
 
     }
 
@@ -115,27 +129,27 @@ header {
 
 .account-card {
   position: absolute;
-  top:86px;
-  right:16px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   color: black;
   z-index: 1000;
-  padding: 2rem;
+  padding: 1rem;
   background-color: white;
   border: solid 0.5px $color-border-grey;
   display: flex;
   flex-direction: column;
-  div {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid black;
-    p {
-      font-weight: bold;
-      
-    }
     mdc-icon {
       font-size: 1rem;
+      align-self: flex-end;
+      font-size: 1.5rem;
+    }
+  app-account-login {
+    margin : 1.5rem 5rem;
+    @media only screen and (max-width:600px) {
+      margin : 1.5rem 2rem;
+
     }
   }
 
@@ -166,7 +180,7 @@ header {
 .nav-bar__side-menu {
   width:0;
   position: fixed;
-  top:0;
+  top:6rem;
   left:0;
   overflow-x: hidden;
   height: 100%;
@@ -210,7 +224,6 @@ header {
         .nav-bar__menu-icon
         {
             display: inline-block;
-            margin-right : 1rem;
         }
          .nav-bar__tools
          {

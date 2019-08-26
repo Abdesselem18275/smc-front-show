@@ -63,8 +63,8 @@ export class ProductMenuComponent implements OnInit {
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;
   }
-  toggleSideMenu(val) {
-    this.isSideMenuActive = !val;
+  toggleSideMenu() {
+    this.isSideMenuActive = !this.isSideMenuActive;
   }
   toggleSearch() {
     this.isSearchActive = !this.isSearchActive;

@@ -1,126 +1,61 @@
-
-
-<section class="form-container">
-    <header class="form__header">
-        <p mdcHeadline5> Login</p>
-        <p mdcSubtitle2 class="form__non-field-error">{{auth_non_field_error}}</p>
+<section class="login">
+<header>
+        <p mdcHeadline4>SIGN IN</p>
+        <p mdcCaption>Please enter the follwing informations to acces your account</p>
     </header>
-<form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
-    <mdc-form-field fluid class="form__field">
-            <mdc-text-field   
-                    autocomplete="username email" outlined  
-                    dense
-                    class="form__field__text-area" 
-                    type="email" 
-                    formControlName="email"  
-                    label="email">
-            <mdc-icon class="field-icon--secondary-color" mdcTextFieldIcon leading>email</mdc-icon>
-        </mdc-text-field>
-    </mdc-form-field>
-    <mdc-form-field fluid class="form__field">
-    <mdc-text-field  
-                     autocomplete="new-password"  
-                     dense
-                     outlined  required  
-                     class="form__field__text-area" 
-                     type ="password" formControlName="password"  
-                     label="password">
-    </mdc-text-field>
-    </mdc-form-field>
- 
-    <button class="form__submit-button" 
-            [disabled]="!loginForm.valid" 
-            type="submit"  
-            mdc-button 
-            primary>Login
-    </button>
-
-
-</form>
-<div id="my-signin2"></div>
+    <main>
+            <p mdcCaption class="alert">{{auth_non_field_error}}</p>
+            <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+                    <div class="form__field">
+                            <label mdcBody2 for="email">
+                                email
+                            </label>
+                            <input  required
+                                    autocomplete="username email"   
+                                    type="email" 
+                                    id="email"
+                                    formControlName="email">
+                                <div *ngIf="loginForm.get('email').invalid && (loginForm.dirty || loginForm.touched)" class="alert">
+                                
+                                  <p mdcCaption *ngIf="loginForm.get('email').errors.required">
+                                    email is required.
+                                  </p>
+                                  <p mdcCaption *ngIf="loginForm.get('email').errors.email">
+                                    Enter a valid email 
+                                  </p>   
+                        </div>                                 
+                    </div>
+                    <div  class="form__field">
+                            <label mdcBody2 for="password">
+                                    password
+                                </label>
+                    <input  
+                                     autocomplete="new-password"  
+                                     required  
+                                     id ="password"
+                                     type ="password" formControlName="password">
+                    <span mdcCaption class="field__note">Forget yous password ?</span>
+                    </div>
+                 
+                    <button class="form__submit-button" 
+                            type="submit"  
+                            mdc-button 
+                            primary>LOGIN
+                    </button>
+                
+                
+                </form>    
+</main>
+</section>
+<section class="register">
+        <header>
+                <p mdcHeadline4>REGISTER NOW</p>
+                <p mdcCaption>Create and account and join us </p>
+        </header>
+        <button class="form__submit-button inverted-theme" 
+        type="submit"  
+        mdc-button
+        outlined >REGISTER
+        </button>
 
 </section>
-<section class="form-container">
-    <header class="form__header">
-        <p mdcHeadline5> Create new account</p>
-        <p mdcSubtitle2 class="form__non-field-error">{{creation_non_field_error}}</p>
-    </header>
-  
-  <form [formGroup]="createForm" (ngSubmit)="createProfile()">
-      <div formGroupName="profile" class="form-group">
-        <mdc-form-field fluid class="form__field__with-helper">
-            <mdc-text-field autocomplete="username email" 
-                            dense
-                            outlined  required   
-                            class="form__field__text-area" 
-                            type="email" 
-                            formControlName="email"  
-                            label="email">
-                <mdc-icon class="field-icon--secondary-color" 
-                          mdcTextFieldIcon leading>email
-                </mdc-icon>
-            </mdc-text-field>
-            <mdc-helper-text validation>
-                    <!-- <span>{{fieldError?.profile?.email}}</span> -->
-            </mdc-helper-text>
-        
-        </mdc-form-field>
-        
-        <mdc-form-field fluid class="form__field">
-        
-              <mdc-text-field   
-              formControlName="password"  
-              autocomplete="new-password"  
-              dense 
-              outlined    
-              class="form__field__text-area"  
-              type="password" label="password">
-              </mdc-text-field>
-        </mdc-form-field>
-
-        <mdc-form-field fluid class="form__field">
-            <mdc-text-field   dense formControlName="confirmPassword" outlined  autocomplete="new-password"    class="form__field__text-area" type ="password"   label="confirm password">
-            </mdc-text-field>
-            <mdc-helper-text validation>
-                <span  *ngIf="createForm.errors?.passwordNotConfirmed 
-                               && (createForm.touched || createForm.dirty)">
-                    Passwords are not equals
-                </span>
-            </mdc-helper-text>
-        </mdc-form-field> 
-        </div>
-        <div class="form-group">
-                <div formGroupName="profile" class="form__field--inline">
-                        <mdc-text-field  dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
-                                <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
-                        </mdc-text-field>
-                        <mdc-text-field  dense  formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
-                        </mdc-text-field>
-                </div>
-                <mdc-select outlined class="form__field__text-area" placeholder="Country"   formControlName="country">
-                    <option   *ngFor="let country of countryNames" [value]="country.val" [disabled]="country.disabled">
-                      {{country.val}}
-                    </option>
-                  </mdc-select>
-
-                <mdc-radio-group formControlName="is_professional">
-                    <span mdcSubtitle1>Who Are you :</span>
-                    <span class="block-divider"></span>
-                    <mdc-form-field>
-                        <mdc-radio  value="true"></mdc-radio>
-                        <label>Professional</label>
-                    </mdc-form-field>
-                    <mdc-form-field >
-                        <mdc-radio  checked="True"  value="false"></mdc-radio>
-                        <label>Private</label>
-                    </mdc-form-field>
-                </mdc-radio-group>
-
-        </div>
-
-
-  <button class="form__submit-button" [disabled]="!createForm.valid" type="submit"  mdc-button primary>Create account</button>
-  
-  </form>
-  <section>
-

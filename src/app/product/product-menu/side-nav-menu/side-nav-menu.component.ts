@@ -8,14 +8,10 @@ import { Category } from '../../model';
 })
 export class SideNavMenuComponent implements OnInit {
 
-  @Output() isClosed: EventEmitter<boolean> = new EventEmitter();
   @Input() rootCategories: Category[];
   constructor() { }
 
   ngOnInit() {}
 
-  toggle() {
-    this.isClosed.emit(true);
-  }
 
 }

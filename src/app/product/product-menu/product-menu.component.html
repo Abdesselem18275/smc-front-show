@@ -1,37 +1,38 @@
 <header  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
-      <mdc-icon [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu(false)" class="nav-bar__menu-icon">menu</mdc-icon>
+      <mdc-icon [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
-     <div [class.menu_icon--hidden]="isSearchActive" [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
+     <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
          <button (click)="toggleMenu()" class="nav-tab__button" mdc-button>  
-           <span class="mdc-button__label">Products</span> 
+           <span class="mdc-button__label">PRDUCTS</span> 
            <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> 
          </button>
          
-        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? '40vh' : '0px'">
+        <div  *ngIf="isMenuActive" [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? 'auto' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
+              <mdc-icon svgIcon="rectangle"></mdc-icon>
               <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
               </button>
+            <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
             <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
                 <mdc-button-label mdcBody2>{{childCat.designation}}</mdc-button-label>
             </button>
           </div>
         </div>
        <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">Inspiration</span>
+         <span class="mdc-button__label">INSPIRATION</span>
        </button>
        <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">About us</span>
+         <span class="mdc-button__label">ABOUT US</span>
        </button>
        <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">Contact us</span>
+         <span class="mdc-button__label">CONTACT US</span>
        </button>
      </div>
-     <span class="spacer"></span>
      <div class="nav-bar__tools">
         <button (click)="toggleSearch()" mdcIconButton><mdc-icon>search</mdc-icon></button>
         <div [mdcElevation]="3" *ngIf="isSearchActive" class="search-container">
@@ -39,13 +40,9 @@
         </div>
         <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>
         <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
-          <div>
-            <span class="space-divider"></span>
-        <p>Welcome dear customer</p>
         <mdc-icon (click)="toggleAccountCard()">close</mdc-icon>
-       </div>
-       <app-account-card>
-       </app-account-card>
+       <app-account-login>
+       </app-account-login>
      </div>
         <button class="language-panel" mdc-button >
           <mdc-icon>language</mdc-icon>   
@@ -57,6 +54,6 @@
   </header>
   
   <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
-<app-side-nav-menu (isClosed) = "toggleSideMenu($event)" [rootCategories] = "rootCategories"></app-side-nav-menu>
+<app-side-nav-menu  [rootCategories] = "rootCategories"></app-side-nav-menu>
   
   </div>

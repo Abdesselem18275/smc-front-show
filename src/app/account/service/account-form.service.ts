@@ -12,7 +12,9 @@ export class AccountFormService {
   createAccountForm(): FormGroup {
     const  form = this.fb.group({
       profile : this.fb.group({
-        email : ['', Validators.email],
+        email : ['', [
+          Validators.email, Validators.required]
+        ],
         password : ['', Validators.required],
         confirmPassword : ['', Validators.required],
         first_name : ['', Validators.required],

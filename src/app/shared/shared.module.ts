@@ -8,11 +8,12 @@ import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { AccountCardComponent } from './account-card/account-card.component';
+import { AccountLoginComponent } from '../account/account-login/account-login.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
-                 SideNavMenuComponent, SearchBoxComponent, PaginatorComponent, AccountCardComponent],
+                 SideNavMenuComponent, SearchBoxComponent, 
+                 PaginatorComponent, AccountLoginComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -27,8 +28,8 @@ import { AccountCardComponent } from './account-card/account-card.component';
     ReactiveFormsModule,
     MaterialModule,
     PaginatorComponent,
-    AccountCardComponent,
-    CommonModule
+    AccountLoginComponent,
+    CommonModule,
   ]
 })
 export class SharedModule { }

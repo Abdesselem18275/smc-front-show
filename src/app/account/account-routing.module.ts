@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './account/account.component';
-import { AccountLoginComponent } from './account-login/account-login.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AuthGuard } from './auth.guard';
+import { LoginContainerComponent } from './login-container/login-container.component';
 
 const routes: Routes = [
   { path : 'account',
@@ -11,7 +11,7 @@ const routes: Routes = [
   children : [
     {
       path : 'login',
-      component : AccountLoginComponent
+      component : LoginContainerComponent
     },
      {
        path : '',
