@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category } from '../../model';
+import { CategoryCacheService } from '../../service/category-cache.service';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -8,10 +9,11 @@ import { Category } from '../../model';
 })
 export class SideNavMenuComponent implements OnInit {
 
-  @Input() rootCategories: Category[];
-  constructor() { }
+  rootCategories: Category[];
+  constructor(private ccs: CategoryCacheService) { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.rootCategories = this.ccs.categories;
+  }
 
 }
