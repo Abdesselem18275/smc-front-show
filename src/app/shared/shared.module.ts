@@ -9,11 +9,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { AccountLoginComponent } from '../account/account-login/account-login.component';
+import { ProductBoxComponent } from './product-box/product-box.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent, 
-                 PaginatorComponent, AccountLoginComponent],
+                 PaginatorComponent, AccountLoginComponent, ProductBoxComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -29,6 +30,7 @@ import { AccountLoginComponent } from '../account/account-login/account-login.co
     MaterialModule,
     PaginatorComponent,
     AccountLoginComponent,
+    ProductBoxComponent,
     CommonModule,
   ]
 })
