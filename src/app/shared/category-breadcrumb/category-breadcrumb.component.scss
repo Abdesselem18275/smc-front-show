@@ -1,0 +1,32 @@
+@import "src/styles.scss";
+section
+{
+    display: flex;
+    align-items: center;
+
+}
+p {
+  text-transform: capitalize;
+  
+}
+p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+:host(.body-style) {
+  p {
+    font-weight: 500;
+    font-size: 0.875em;
+  }
+
+}
+
+
+:host(.caption-style) {
+  p, mdc-icon {
+    color : $color-text-grey;
+    font-size: 0.75rem;
+  }
+  
+
+}

@@ -1,7 +1,9 @@
-<img [src] ="product.thumbNail.content">
+<img [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
 <section>
    <div>
-       <p mdcCaption>Category -> Category -> Category</p>
+       <p mdcCaption> 
+           <app-category-breadcrumb [currentProduct]="product.rootCategory" class="caption-style"></app-category-breadcrumb>
+       </p>
        <p mdcSubtitle1>{{product.designation}}</p>
        <p mdcCaption>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
        </p>

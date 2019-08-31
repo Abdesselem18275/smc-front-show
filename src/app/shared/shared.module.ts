@@ -10,11 +10,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { AccountLoginComponent } from '../account/account-login/account-login.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
+import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent, 
-                 PaginatorComponent, AccountLoginComponent, ProductBoxComponent],
+                 PaginatorComponent, AccountLoginComponent, ProductBoxComponent, CategoryBreadcrumbComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -31,7 +32,9 @@ import { ProductBoxComponent } from './product-box/product-box.component';
     PaginatorComponent,
     AccountLoginComponent,
     ProductBoxComponent,
+    CategoryBreadcrumbComponent,
     CommonModule,
+
   ]
 })
 export class SharedModule { }

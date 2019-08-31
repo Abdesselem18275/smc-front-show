@@ -9,7 +9,6 @@ import { ProductFilterComponent } from './product-list/product-filter/product-fi
 import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductBreadcrumbComponent } from './product-breadcrumb/product-breadcrumb.component';
 import { ProductCategoryComponent } from './product-home/product-category/product-category.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -21,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent, ProductFilterComponent,
-                  ProductDetailComponent, ProductBreadcrumbComponent, ProductCategoryComponent],
+                  ProductDetailComponent, ProductCategoryComponent],
   providers:  [FilterBuilderService, DataInjectablesService ]
 })
 export class ProductModule { }

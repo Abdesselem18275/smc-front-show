@@ -107,6 +107,8 @@ export class ProductShort {
     exteriorMaterial: Material;
     thumbNail: BaseImage;
     variants: Variant[];
+    rootCategory: string;
+
 
     constructor(options: {
         pk?: number,
@@ -114,7 +116,9 @@ export class ProductShort {
         interiorMaterial?: Material;
         exteriorMaterial?: Material;
         thumbNail?: BaseImage,
-        variants?: Variant[]
+        variants?: Variant[],
+        rootCategory?: string
+
                 } = {}) {
         this.pk = options.pk || -1;
         this.designation = options.designation || '';
@@ -122,6 +126,7 @@ export class ProductShort {
         this.exteriorMaterial = options.exteriorMaterial || new Material({});
         this.thumbNail = options.thumbNail || new BaseImage({});
         this.variants = options.variants || [];
+        this.rootCategory = options.rootCategory || '';
     }
 }
 

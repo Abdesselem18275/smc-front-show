@@ -1,16 +1,15 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ProductDataService } from '../service/product-data.service';
-import { Category } from '../model';
+import { Component, OnInit, Input } from '@angular/core';
+import { Category } from 'src/app/product/model';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 import { map } from 'rxjs/operators';
-import { CategoryCacheService } from '../service/category-cache.service';
 
 @Component({
-  selector: 'app-product-breadcrumb',
-  templateUrl: './product-breadcrumb.component.html',
-  styleUrls: ['./product-breadcrumb.component.scss']
+  selector: 'app-category-breadcrumb',
+  templateUrl: './category-breadcrumb.component.html',
+  styleUrls: ['./category-breadcrumb.component.scss']
 })
-export class ProductBreadcrumbComponent implements OnInit {
+export class CategoryBreadcrumbComponent implements OnInit {
   categories: Category[];
   items: string[];
   isNotEmpty: boolean;
