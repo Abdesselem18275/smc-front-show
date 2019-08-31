@@ -4,12 +4,21 @@
     display: flex;
     flex-direction: column;
 }
-.menu__close-icon {
-    align-self: flex-end;
-    margin: 1rem 1rem 1rem 0 ;
-    
-}
 .menu__user-panel  {
     margin-left: auto;
     margin-right: auto;
+}
+ul {
+    padding: 0.5rem 0;
+    li:first-child {
+        border-top: solid 0.5px $color-border-grey;
+    }
+    li {
+        border-bottom: solid 0.5px $color-border-grey;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 }
