@@ -1,1 +1,13 @@
-<p>product-box works!</p>
+<img [src] ="product.thumbNail.content">
+<section>
+   <div>
+       <p mdcCaption>Category -> Category -> Category</p>
+       <p mdcSubtitle1>{{product.designation}}</p>
+       <p mdcCaption>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
+       </p>
+   </div>
+
+<mdc-icon [svgIcon]="product.collection?.svgIcon.designation">
+</mdc-icon>
+
+</section>

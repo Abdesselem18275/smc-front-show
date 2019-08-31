@@ -158,15 +158,33 @@ header {
 
 .search-container {
   position: absolute;
-  top: 35%;
+  top: 10%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%,-35%);
+  transform: translate(-50%,-10%);
+  transition: 0.3s ease;
   background-color: white;
   width : 60%;
   z-index: 1000;
   padding : 2rem 4rem;
   min-height: 60%;
+  mdc-icon {
+    float: right;
+  }
+  @media only screen and (max-width:1024px) {
+    padding : 2rem 2rem;
+    width : 80%;
+
+
+  }
+  @media only screen and (max-width:640px) {
+    padding : 1rem 1rem;
+    width : 90%;
+  }
+  @media only screen and (max-width:480px) {
+    padding : 1rem 0.5rem;
+    width : 100%;
+  }
 
 
 }

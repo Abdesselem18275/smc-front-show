@@ -1,5 +1,11 @@
 <header>
-    <p mdcBody1>FILTER</p>
+    <button class="title" mdc-button>
+            <span mdcBody1 class="mdc-button__label">FILTER</span>
+    </button>
+    <button class="clear-button" mdc-button   (click)="clearFilter()">
+            <span mdcCaption class="mdc-button__label">clear all</span>
+            <mdc-icon>clear</mdc-icon>
+    </button>
 </header>
 <section id="host">
 <form  class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
@@ -14,10 +20,7 @@
     </div>
     <span class="filter-spacer"></span>
 
-    <button class="filter-category--button clear-button" mdc-button   (click)="clearFilter()">
-            <span class="mdc-button__label">clear filter</span>
-            <mdc-icon>clear</mdc-icon>
-    </button>
+
 </form>
 
 

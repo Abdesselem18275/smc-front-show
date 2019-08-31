@@ -1,0 +1,23 @@
+@import "src/styles.scss";
+
+
+:host {
+    display: flex;
+    padding : 1rem 1rem 1rem 0 ;
+    border-bottom: solid 0.5px $color-deep-grey;
+}
+img {
+    width: 25%;
+    max-width: 6rem;
+    margin-right: 1.5rem;
+}
+section {
+    display: flex;
+    justify-content: space-between;
+    flex : 1 1 auto;
+    mdc-icon {
+        width: 2rem;
+        align-self: flex-start;
+
+    }
+}

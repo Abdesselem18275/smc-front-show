@@ -36,6 +36,7 @@
      <div class="nav-bar__tools">
         <button (click)="toggleSearch()" mdcIconButton><mdc-icon>search</mdc-icon></button>
         <div [mdcElevation]="3" *ngIf="isSearchActive" class="search-container">
+            <mdc-icon (click)="toggleSearch()">close</mdc-icon>
             <app-search-box   class="search-icon"></app-search-box>
         </div>
         <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>

@@ -6,8 +6,12 @@
     align-items: center;
 }
 header {
-    p {
+    display: flex;
+    .title span  {
         font-weight: bold;
+    }
+    .clear-button span {
+        font-style: italic;
     }
 }
 section {

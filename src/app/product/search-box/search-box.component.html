@@ -1,8 +1,8 @@
-
+<header class="page-header" mdcHeadline5>SEARCH BOX</header>
 <input   placeholder="search" type="search" class="search-text-field"    [formControl]="searchBar" >
-<section class="result-container">
+<section *ngIf="products" class="result-container">
         <header mdcCaption>Search suggestion</header>
         <section>
-                <app-product-box></app-product-box>
+                <app-product-box [product]="product" *ngFor="let product of products"></app-product-box>
         </section>
 </section>
