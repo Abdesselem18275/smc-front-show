@@ -4,21 +4,34 @@
     display: flex;
     flex-direction: column;
 }
-.menu__user-panel  {
-    margin-left: auto;
-    margin-right: auto;
+section:first-child {
+    border-top: solid 0.5px $color-border-grey;
+
+}
+section {
+    border-bottom: solid 0.5px $color-border-grey;
+    button {
+        mdc-button-label {
+            font-weight: 600;
+    }
+
+    }
 }
 ul {
-    padding: 0.5rem 0;
-    li:first-child {
-        border-top: solid 0.5px $color-border-grey;
-    }
+    margin-top: 0.875rem;
+    margin-bottom:  0.875rem;
     li {
-        border-bottom: solid 0.5px $color-border-grey;
-        padding: 1rem;
+        padding: 0 0.875rem 1rem 0 ;
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+    li:hover {
+        background-color: $color-light-grey;
+
+    }
+    .menu-sub-1 {
+        font-size: 1.25rem;
     }
 
 }

@@ -184,6 +184,10 @@ header {
   @media only screen and (max-width:480px) {
     padding : 1rem 0.5rem;
     width : 100%;
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
+
   }
 
 
@@ -198,7 +202,7 @@ header {
 .nav-bar__side-menu {
   width:0;
   position: fixed;
-  top:6rem;
+  top:0;
   left:0;
   overflow-x: hidden;
   height: 100%;
@@ -207,24 +211,13 @@ header {
   display: flex;
   flex-direction: column;
   transition: 0.3s;
-}
-
-.menu__logo--layout {
-    border-top: 1px solid #7F6A23;
-    border-bottom: 1px solid #7F6A23;
-    padding: 0.5em 0 0.5em 0;
-
-
-    .header--big {
-        margin : 0.25em;
-      }
-
-}
-.menu__close-icon {
-    float: right;
+  .menu__close-icon {
     margin: 0.5em 0.5em;
     align-self: flex-end;
 }
+
+}
+
 
 
 #main {

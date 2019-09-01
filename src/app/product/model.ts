@@ -109,9 +109,6 @@ export class ProductShort {
     variants: Variant[];
     rootCategory: string;
     collection: ProductCollection;
-
-
-
     constructor(options: {
         pk?: number,
         designation?: string,
@@ -121,8 +118,6 @@ export class ProductShort {
         variants?: Variant[],
         rootCategory?: string,
         collection?: ProductCollection;
-
-
                 } = {}) {
         this.pk = options.pk || -1;
         this.designation = options.designation || '';
@@ -132,8 +127,6 @@ export class ProductShort {
         this.variants = options.variants || [];
         this.rootCategory = options.rootCategory || '';
         this.collection = options.collection || new ProductCollection({});
-
-        
     }
 }
 

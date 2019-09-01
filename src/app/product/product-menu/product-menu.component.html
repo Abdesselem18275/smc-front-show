@@ -1,6 +1,6 @@
 <header  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
-      <mdc-icon [class.menu_icon--hidden]="isSearchActive" (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
+      <mdc-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
@@ -55,6 +55,7 @@
   </header>
   
   <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
+  <mdc-icon (click)="toggleSideMenu()" class="menu__close-icon">close</mdc-icon>
 <app-side-nav-menu></app-side-nav-menu>
   
   </div>
