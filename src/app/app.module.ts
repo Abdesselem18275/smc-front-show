@@ -10,7 +10,7 @@ import { ConfigService } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
 import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SharedModule } from './shared/shared.module';
 
 
 export function loadCategories(configService: ConfigService) {
@@ -28,6 +28,7 @@ export function loadCategories(configService: ConfigService) {
     ProductModule,
     AccountModule,
     ReactiveFormsModule,
+    SharedModule,
     AppRoutingModule,
   ],
   providers: [

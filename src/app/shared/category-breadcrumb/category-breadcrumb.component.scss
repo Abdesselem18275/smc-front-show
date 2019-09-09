@@ -16,7 +16,7 @@ p:hover {
 :host(.body-style) {
   p {
     font-weight: 500;
-    font-size: 0.875em;
+    font-size: 1rem;
   }
 
 }
@@ -25,7 +25,7 @@ p:hover {
 :host(.caption-style) {
   p, mdc-icon {
     color : $color-text-grey;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
   
 

@@ -13,12 +13,12 @@
          
         <div  *ngIf="isMenuActive" [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? 'auto' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-            <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
+            <button (click)="toggleMenu()" mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
               <mdc-icon svgIcon="rectangle"></mdc-icon>
               <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
               </button>
             <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
-            <button mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
+            <button (click)="toggleMenu()" mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
                 <mdc-button-label mdcBody2>{{childCat.designation}}</mdc-button-label>
             </button>
           </div>
@@ -54,8 +54,8 @@
     </nav>
   </header>
   
-  <div  [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
+  <div [mdcElevation]="3" [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
   <mdc-icon (click)="toggleSideMenu()" class="menu__close-icon">close</mdc-icon>
-<app-side-nav-menu></app-side-nav-menu>
+<app-side-nav-menu ></app-side-nav-menu>
   
   </div>

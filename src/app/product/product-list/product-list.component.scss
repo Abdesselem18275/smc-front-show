@@ -2,7 +2,7 @@
 
 
 .content {
- padding : 0em 4em 0.5em 4em;
+ padding : 0rem 4rem 0.5rem 4rem;
  display: flex;
  flex-direction: column;
   mat-paginator {
@@ -11,8 +11,8 @@
 
 }
 .list-header {
-  margin-bottom: 1em;
-  margin-top: 4em;
+  margin-bottom: 1rem;
+  margin-top: 6rem;
 
 
 }
@@ -50,7 +50,7 @@
 
 
 app-product-filter {
-  padding : 0 0.5rem;
+  padding : 1rem 0.5rem;
   border-bottom: 1px solid rgba(30, 30, 30, 0.3);
   border-top: 1px solid rgba(30, 30, 30, 0.3);
 }

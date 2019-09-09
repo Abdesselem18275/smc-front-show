@@ -7,8 +7,9 @@
 }
 header {
     display: flex;
-    .title span  {
+    .title  {
         font-weight: bold;
+        margin-bottom: 1rem;
     }
     .clear-button span {
         font-style: italic;
@@ -25,8 +26,6 @@ form {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    padding-left: 1em;
-
 }
 form > * {
     flex-wrap: nowrap;
@@ -42,8 +41,11 @@ form > * {
 }
 
 .filter-category--button {
+    margin-right: 1rem;
     @include mdc-button-ink-color(black);
-    font-size: 1rem;
+    @include mdc-button-shape-radius(50%);
+    @include mdc-button-outline-color(black);
+    font-size: 0.875rem;
     span {
         text-transform: capitalize;
         span {
