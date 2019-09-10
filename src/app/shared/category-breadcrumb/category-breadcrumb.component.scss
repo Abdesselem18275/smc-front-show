@@ -7,6 +7,7 @@ section
 }
 p {
   text-transform: capitalize;
+
   
 }
 p:hover {
@@ -15,7 +16,7 @@ p:hover {
 }
 :host(.body-style) {
   p {
-    font-weight: 500;
+    font-weight: bold;
     font-size: 1rem;
   }
 

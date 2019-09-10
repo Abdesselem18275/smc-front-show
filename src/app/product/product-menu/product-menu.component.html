@@ -1,4 +1,4 @@
-<header  [mdcElevation]="2" mdc-typography>
+<header *ngIf="isScrollingUp" [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
       <mdc-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
@@ -34,12 +34,12 @@
        </button>
      </div>
      <div class="nav-bar__tools">
-        <button (click)="toggleSearch()" mdcIconButton><mdc-icon>search</mdc-icon></button>
+        <mdc-icon (click)="toggleSearch()" >search</mdc-icon>
         <div [mdcElevation]="3" *ngIf="isSearchActive" class="search-container">
             <mdc-icon (click)="toggleSearch()">close</mdc-icon>
             <app-search-box   class="search-icon"></app-search-box>
         </div>
-        <button (click)="toggleAccountCard()" mdcIconButton><mdc-icon>person</mdc-icon></button>
+        <mdc-icon (click)="toggleAccountCard()">person</mdc-icon>
         <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
         <mdc-icon (click)="toggleAccountCard()">close</mdc-icon>
        <app-account-login>

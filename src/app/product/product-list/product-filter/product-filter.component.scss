@@ -9,7 +9,7 @@ header {
     display: flex;
     .title  {
         font-weight: bold;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     .clear-button span {
         font-style: italic;
@@ -37,11 +37,19 @@ form > * {
     position: absolute;
     z-index: 1000;
     background-color: white;
-    padding-right: 2rem;
+    padding-right: 1.5rem;
+
+}
+.from-field__label {
+    font-size: 0.75rem;
+}
+.filter-category__badge {
+
 }
 
+
 .filter-category--button {
-    margin-right: 1rem;
+    margin: 0 0.5rem;
     @include mdc-button-ink-color(black);
     @include mdc-button-shape-radius(50%);
     @include mdc-button-outline-color(black);
@@ -57,6 +65,12 @@ form > * {
     mdc-icon {
         transition: 0.15s ease-out;
     }
+}
+
+.filter--inverted {
+    @include mdc-button-ink-color(white);
+    @include mdc-button-filled-accessible(black);
+
 }
 
 .filter-spacer {

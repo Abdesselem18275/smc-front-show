@@ -19,15 +19,18 @@
 
 .content__objects-count {
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 
 .content__meta-bar {
    display: flex;
    align-items: center;
-   margin : 0 4rem;
+   margin : 0  1rem 1rem 0;
    justify-content: space-between;
+   padding-bottom: 1.5rem;
+   border-bottom: solid 1px $color-border-grey;
 
    .content__meta-bar-breadcrumb {
       overflow: auto;
@@ -42,7 +45,7 @@
   }
   
   .meta-bar__view-button {
-    align-self: flex-end;
+    align-self: center;
     display: none;
   }
 

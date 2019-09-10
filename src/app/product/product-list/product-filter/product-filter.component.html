@@ -10,11 +10,20 @@
 <section id="host">
 <form  class="mat-typography" [formGroup]="filterForm"  class="mat-typography">
     <div  *ngFor="let filterCategory of filterCategories" class="mat-typography">
-            <button outlined (click) = "toggleFilter(filterCategory.value)" class="filter-category--button" mdc-button>  <span class="mdc-button__label">{{filterCategory.value | lowercase}} <span>{{filterCategory.description}}</span> </span> <mdc-icon [style.transform]="selectedFilter == filterCategory.value ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> </button>
+            <button outlined (click) = "toggleFilter(filterCategory.value)" 
+                    class="filter-category--button" 
+                    [class.filter--inverted]="selectedFilter == filterCategory.value"
+                    mdc-button>  
+                <span class="mdc-button__label">{{filterCategory.value | lowercase}} 
+                    <span>{{filterCategory.description}}</span> 
+                </span> 
+                <mdc-icon [style.transform]="selectedFilter == filterCategory.value ? 'rotate(-90deg)' : ''" >keyboard_arrow_down
+                </mdc-icon> 
+            </button>
             <div [mdcElevation]="4" [@openClose]="selectedFilter == filterCategory.value ? 'open' : 'closed'" class="form__group-content" [formGroupName]="filterCategory.key" >
                 <mdc-form-field class="caption" *ngFor="let choice of filterCategory.choices" >
                     <mdc-checkbox [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked ></mdc-checkbox>
-                        <label>{{choice.value | lowercase}}</label>
+                        <label class="from-field__label">{{choice.value | lowercase}}</label>
                 </mdc-form-field>
             </div>
     </div>

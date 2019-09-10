@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Category } from '../model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-menu',
@@ -34,6 +36,7 @@ export class ProductMenuComponent implements OnInit {
   isRootActive: boolean;
   isAccountCardActive: boolean;
   isReady: boolean;
+  isScrollingUp: boolean;
 
 
   constructor( private categoriesCache: CategoryCacheService) {
@@ -41,6 +44,7 @@ export class ProductMenuComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.isScrollingUp = true;
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
@@ -59,7 +63,14 @@ export class ProductMenuComponent implements OnInit {
           }
           ];
     this.rootCategories = treeMenu;
+    let prevPosition = window.pageYOffset;
+    const pageByScroll$ = fromEvent(window, "scroll").pipe(debounceTime(50)).subscribe(() => {
+          this.isScrollingUp = prevPosition > window.scrollY;
+          prevPosition = window.scrollY;
+    });
+
   }
+
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;
   }

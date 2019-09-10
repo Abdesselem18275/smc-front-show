@@ -16,7 +16,7 @@ header {
 }
 
 .nav-bar {
-    padding:  1rem 4rem 1rem 4rem;
+    padding:  1.25rem 4rem 1.25rem 4rem;
     display : flex;
     justify-content : space-between;
     align-items : center;
@@ -37,12 +37,10 @@ header {
     @include mdc-button-filled-accessible(white);
     mdc-icon {
         transition: 0.2s ease-out;
-    }
+      }
     .mdc-button__label {
       font-weight: bold;
-    }
-
-
+      }
 }
 
 
@@ -68,12 +66,16 @@ header {
 {
     display: flex;
     align-items: center;
+    mdc-icon:nth-child(2) {
+       margin: 0 1rem;
+    }
     .language-panel {
         display: flex;
         align-items: center;
         @include mdc-button-ink-color(black);
     }
 }
+
 
 
 
@@ -254,7 +256,7 @@ header {
       }
       @media only screen and (max-width:840px) {
         .nav-bar {
-            padding:  1rem 1rem 1rem 1rem;
+            padding:  1.25rem 1rem 1.25rem 1rem;
         }
 
 
