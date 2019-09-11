@@ -11,6 +11,9 @@ $color-text-deep-grey:rgb(30,30,30);
 $color-light-grey:rgb(248,248,248);
 $color-border-grey: rgba(30, 30, 30, 0.45);
 
+/* Gutters */
+$global-horizontal-gutter:calc(1.5rem + 1.5vw);
+
 @import "~@angular-mdc/theme/material";
 
 
@@ -99,7 +102,10 @@ select:-webkit-autofill:focus {
 
 }
 
+@media only screen and (max-width:840px) {
+  $global-horizontal-gutter:1rem;
 
+}
 @media only screen and (max-width:480px)  {
   html {
     font-size: 12px;

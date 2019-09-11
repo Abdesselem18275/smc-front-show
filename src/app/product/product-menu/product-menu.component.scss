@@ -1,12 +1,5 @@
 @import "src/styles.scss";
 
-:host {
-  z-index: 100000;
-  position: fixed;
-  width: 100%;
-  top:0;
-}
-
 
 header {
     color: black;
@@ -16,7 +9,7 @@ header {
 }
 
 .nav-bar {
-    padding:  1.25rem 4rem 1.25rem 4rem;
+    padding:  1.25rem $global-horizontal-gutter;
     display : flex;
     justify-content : space-between;
     align-items : center;
@@ -250,15 +243,4 @@ header {
 
               }
         }
-
-
-
-      }
-      @media only screen and (max-width:840px) {
-        .nav-bar {
-            padding:  1.25rem 1rem 1.25rem 1rem;
-        }
-
-
-        
       }

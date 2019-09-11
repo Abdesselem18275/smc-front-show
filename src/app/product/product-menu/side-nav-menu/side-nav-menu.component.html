@@ -8,12 +8,19 @@
       </button>
 <ul>
   <li>
+    <div>
     <p class="menu-sub-1">Categories</p>
     <mdc-icon>expand_more</mdc-icon>
+    </div>
+    <ul>
+      <li *ngFor="let cat of rootCategories">Hello</li>
+    </ul>
   </li>
   <li>
+    <div>
     <p class="menu-sub-1">Collections</p>
     <mdc-icon>expand_more</mdc-icon>
+  </div>
   </li>
 
   </ul>

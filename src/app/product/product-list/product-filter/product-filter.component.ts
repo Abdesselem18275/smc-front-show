@@ -3,9 +3,7 @@ import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../../service/filter-builder.service';
 import { FilterCategory } from '../../model';
 import { trigger, state, style, transition, animate, query } from '@angular/animations';
-import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { FilterCacheService } from '../../service/filter-cache.service';
 
 
 
@@ -17,10 +15,12 @@ import { FilterCacheService } from '../../service/filter-cache.service';
     trigger('openClose', [
       // ...
       state('open', style({
-        display : 'flex',
+        height : 'auto',
 
       })),
       state('closed', style({
+        height : '0px',
+
       })),
       transition('closed => open',
       [
@@ -39,12 +39,13 @@ export class ProductFilterComponent implements OnInit {
   selectedFilter = '';
   isScrollOver: boolean;
   isScrollable: boolean;
+  isActive: boolean;
 
   constructor(private fbs: FilterBuilderService) {
    }
 
   ngOnInit() {
-
+        this.isActive = false;
         this.filterForm = this.fbs.toFormGroup();
         this.filterCategories = this.fbs.filterCategories;
         this.clearFilter();
@@ -81,6 +82,9 @@ export class ProductFilterComponent implements OnInit {
   }
   toggleFilter(i) {
     this.selectedFilter === i ? this.selectedFilter = '' : this.selectedFilter = i;
+  }
+  toggleActive() {
+    this.isActive = !this.isActive;
   }
 
 }

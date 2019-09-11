@@ -1,5 +1,8 @@
 @import "src/styles.scss";
 
-.main-content {
-    margin-top:5rem;
+header {
+    z-index: 1000;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
 }

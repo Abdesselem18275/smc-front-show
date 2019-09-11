@@ -3,77 +3,61 @@
 :host{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
-header {
+.main-header {
+    width: 100%;
     display: flex;
     .title  {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 0.5rem;   
+        cursor: pointer;
+ 
     }
-    .clear-button span {
-        font-style: italic;
-    }
+    margin-bottom: 0.5rem;
 }
-section {
-    display: flex;
-    justify-content: center;
-    overflow: auto;
-    white-space: nowrap;
-}
+
 form {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-}
-form > * {
-    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding-left: 2rem;
+    width: 100%;
+    padding-top: 0.75rem;
+    flex-wrap: wrap;
 
+    @media only screen and (max-width:600px) {
+        justify-content: space-between;
+    }
 }
-.form__group-content {
+
+
+.form-group {
+    display: flex;
     flex-direction: column;
-    display: none;
-    position: absolute;
-    z-index: 1000;
-    background-color: white;
-    padding-right: 1.5rem;
+    header {
+        font-weight: 600;
+        margin-left: 0.5rem;
+}
+}
 
+.form__group-content {
+    display: flex;
+    max-height: 8rem;
+    width:100%;
+    flex-flow : column wrap;
+    flex : 1 1 auto;
+    @media only screen and (max-width:840px) {
+        max-height: 100%;
+
+    }
 }
 .from-field__label {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
+}
+.form-field {
+    margin-right: 0.875rem;
 }
 .filter-category__badge {
 
 }
-
-
-.filter-category--button {
-    margin: 0 0.5rem;
-    @include mdc-button-ink-color(black);
-    @include mdc-button-shape-radius(50%);
-    @include mdc-button-outline-color(black);
-    font-size: 0.875rem;
-    span {
-        text-transform: capitalize;
-        span {
-            text-transform: lowercase;
-            font-style: italic;
-        }
-    }
-
-    mdc-icon {
-        transition: 0.15s ease-out;
-    }
-}
-
-.filter--inverted {
-    @include mdc-button-ink-color(white);
-    @include mdc-button-filled-accessible(black);
-
-}
-
-.filter-spacer {
-    flex: 1 1 auto;    
-}
-

@@ -143,12 +143,6 @@
       border-left: 1.5px solid rgba(30, 30, 30, 0.4);  
       border-right: 1.5px solid rgba(30, 30, 30, 0.4);  
     }
-
-    // tr:nth-child(2n) {
-    //   background: $color-light-grey;
-    // }
-  
-
  }
 
   .component-detail {
@@ -183,13 +177,8 @@
       font-weight: 400;
       margin-bottom: 0em;
       font-style: italic;
-
     }
-    
   }
-  
-
-
 }
 
 .related-product {
@@ -213,7 +202,6 @@
         }
       }
     }
-
   }
   .title-section {
     margin-top : 1em;
@@ -229,7 +217,6 @@
       margin: 0;
 
     }
-
   }
 }
 
@@ -273,6 +260,9 @@
     }
   }
 
+}
+.related-product {
+  margin : 0 2em 4em 2em;
 }
 }
 

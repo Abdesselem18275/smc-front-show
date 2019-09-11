@@ -13,7 +13,7 @@ import { debounceTime } from 'rxjs/operators';
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '20em',
+        width : '20rem',
       })),
       state('closed', style({
       })),
@@ -64,9 +64,12 @@ export class ProductMenuComponent implements OnInit {
           ];
     this.rootCategories = treeMenu;
     let prevPosition = window.pageYOffset;
-    const pageByScroll$ = fromEvent(window, "scroll").pipe(debounceTime(50)).subscribe(() => {
+    const pageByScroll$ = fromEvent(window, 'scroll').pipe(debounceTime(100)).subscribe((x) => {
+          console.warn('prev ' + prevPosition);
           this.isScrollingUp = prevPosition > window.scrollY;
           prevPosition = window.scrollY;
+          console.warn('scrollY ' + window.scrollY);
+          console.warn(this.isScrollingUp);
     });
 
   }

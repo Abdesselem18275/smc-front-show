@@ -1,22 +1,23 @@
 
 <section  class="mdc-typography list-header">
-    <app-product-filter (req)=getRequest($event)></app-product-filter>
+    <div class="content__meta-bar">
+        <div class="content__meta-bar-breadcrumb" >
+          <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
+          <p class="mdcSubtitle2 content__objects-count">{{objCount}} selected products</p>
+        </div>
+            <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
+                <mdc-icon mdcIconOn>view_module</mdc-icon>
+                <mdc-icon>view_list</mdc-icon>
+            </button>
+      </div>
 
 
 </section>
 
 
           <section  class="content">
-              <div class="content__meta-bar">
-                  <div class="content__meta-bar-breadcrumb" >
-                    <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
-                    <p class="mdcSubtitle2 content__objects-count">{{objCount}} selected products</p>
-                  </div>
-                      <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
-                          <mdc-icon mdcIconOn>view_module</mdc-icon>
-                          <mdc-icon>view_list</mdc-icon>
-                      </button>
-                </div>
+
+              <app-product-filter (req)=getRequest($event)></app-product-filter>
 
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
               <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">

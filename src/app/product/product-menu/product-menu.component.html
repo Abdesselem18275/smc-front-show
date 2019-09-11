@@ -1,4 +1,4 @@
-<header *ngIf="isScrollingUp" [mdcElevation]="2" mdc-typography>
+<header [style.visibility]="isScrollingUp ? 'visible' : 'hidden'"  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
       <mdc-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
