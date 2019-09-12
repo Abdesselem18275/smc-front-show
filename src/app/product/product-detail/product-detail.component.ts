@@ -49,7 +49,7 @@ export class ProductDetailComponent implements OnInit {
   isReady: boolean;
   isImageReady: boolean;
   isRightChange: boolean;
-  displayedColumns: string[] = ['Reference', 'Designation' , 'Height', 'Capacity', 'Thickness', 'Diameter'];
+  displayedColumns: string[] = ['Reference','Height', 'Capacity', 'Thickness', 'Diameter'];
   componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
 
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
@@ -67,6 +67,7 @@ export class ProductDetailComponent implements OnInit {
         this.selectedImage =
         this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
+        console.warn(this.product);
       });
 
   }

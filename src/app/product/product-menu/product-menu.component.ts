@@ -14,7 +14,7 @@ import { Router, NavigationEnd } from '@angular/router';
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '20rem',
+        width : '25rem',
       })),
       state('closed', style({
       })),

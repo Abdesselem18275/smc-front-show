@@ -2,35 +2,34 @@
 
 
 <section>
-      <button mdc-button>
+      <p class="title">
         <mdc-icon svgIcon="rectangle"></mdc-icon>
-        <mdc-button-label mdcHeadline6>PRODCUTS</mdc-button-label>
-      </button>
+        PRODCUTS
+      </p>
 <ul>
-  <li>
-    <div>
+  <li class="menu-sub__expandable">
     <p class="menu-sub-1">Categories</p>
     <mdc-icon>expand_more</mdc-icon>
-    </div>
     <ul>
       <li *ngFor="let cat of rootCategories">Hello</li>
     </ul>
   </li>
-  <li>
-    <div>
-    <p class="menu-sub-1">Collections</p>
-    <mdc-icon>expand_more</mdc-icon>
-  </div>
-  </li>
+  <li class="menu-sub__expandable">
+      <p class="menu-sub-1">Collections</p>
+      <mdc-icon>expand_more</mdc-icon>
+      <ul>
+        <li *ngFor="let cat of rootCategories">Hello</li>
+      </ul>
+    </li>
 
   </ul>
 </section>
 
 <section>
-    <button mdc-button>
+    <p class="title">
       <mdc-icon svgIcon="rectangle"></mdc-icon>
-      <mdc-button-label mdcHeadline6>COMPANY</mdc-button-label>
-    </button>
+      COMPANY
+    </p>
 <ul>
 <li>
   <p class="menu-sub-1">About us</p>
@@ -43,10 +42,10 @@
 </section>
 
 <section>
-    <button mdc-button>
+    <p class="title">
       <mdc-icon svgIcon="rectangle"></mdc-icon>
-      <mdc-button-label mdcHeadline6>UTILITY</mdc-button-label>
-    </button>
+      UTILITY
+    </p>
 <ul>
 <li>
   <p class="menu-sub-1">Mainteance tips</p>
@@ -65,10 +64,10 @@
 </section>
 
 <section>
-    <button mdc-button>
+    <p class="title">
       <mdc-icon svgIcon="rectangle"></mdc-icon>
-      <mdc-button-label mdcHeadline6>PRODCUTS</mdc-button-label>
-    </button>
+      PRODCUT
+    </p>
 <ul>
 <li>
   <p class="menu-sub-1">Categories</p>

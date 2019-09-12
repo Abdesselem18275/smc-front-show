@@ -26,7 +26,7 @@
               <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
 
                   <div   class="product-card__primary">
-                        <mdc-icon class="collection-icon primary__collection-icon" 	svgIcon="Hanno">
+                        <mdc-icon class="collection-icon primary__collection-icon" 	[svgIcon]="productShort.collection?.svgIcon.designation">
                           
                         </mdc-icon>
                         <span class="spacer"></span>
@@ -43,7 +43,7 @@
                        [style.background-image]='productShort.thumbNail.content'>
                     <mdc-card-media-content class="product-card__media-content--with-icon">
                       <div>
-                          <mdc-icon class="collection-icon product-card__media-icon--absolute" 	svgIcon="Hanno">
+                          <mdc-icon class="collection-icon product-card__media-icon--absolute" 	[svgIcon]="productShort.collection?.svgIcon.designation">
                             </mdc-icon>
 
                       </div>

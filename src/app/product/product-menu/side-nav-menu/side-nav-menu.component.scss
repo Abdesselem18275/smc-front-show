@@ -8,28 +8,34 @@ section:first-child {
     border-top: solid 0.5px $color-border-grey;
 
 }
+.title {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center; 
+    font-weight: 600;
+    mdc-icon {
+        width : 1rem;
+        margin-right:0.5rem;
+    }
+}
+.menu-sub__expandable {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 section {
     border-bottom: solid 0.5px $color-border-grey;
-    button {
-        mdc-button-label {
-            font-weight: 600;
-    }
-
-    }
+    padding-top : 1rem;
 }
 ul {
     margin-top: 0.875rem;
     margin-bottom:  0.875rem;
-    div {
         li {
             padding: 0 0.875rem 1rem 0 ;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-    }
-
     li:hover {
         background-color: $color-light-grey;
 

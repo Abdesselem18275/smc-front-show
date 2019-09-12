@@ -11,9 +11,7 @@ export const API_URL = 'https://show-case-api.herokuapp.com';
 })
 export class ProductDataService  {
   test: string;
-  httpParams: HttpParams;
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
-    this.httpParams = new HttpParams();
   }
 
 
@@ -23,10 +21,12 @@ export class ProductDataService  {
     hyperLink?: any;
     param_key?: Map<string, string> } = {}): Observable<any[]> {
 
+
+    let httpParams = new HttpParams();
     const model = options.model || '';
     const param_key = options.param_key || new Map();
     param_key.forEach((value, key) => {
-      this.httpParams = this.httpParams.set(key, value);
+      httpParams = httpParams.set(key, value);
     });
 
 
@@ -37,8 +37,8 @@ export class ProductDataService  {
     model,
     's/'].join('') ;
     console.warn('req = ' + query);
-    console.warn('httpParams = ' + this.httpParams);
-   return this.http.get(query, {params: this.httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
+    console.warn('httpParams = ' + httpParams);
+   return this.http.get(query, {params: httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
 

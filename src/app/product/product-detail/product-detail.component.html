@@ -84,11 +84,9 @@
    </tr>
    <tr *ngFor="let variant of product?.variants" >
     <td>
-        {{variant?.reference | uppercase}}
+        {{ variant?.designation | uppercase }} /
+        <span>{{variant?.reference | uppercase}}</span>
     </td>
-    <td>
-        {{ variant?.designation | uppercase }}
-      </td>
       <td>
           {{variant.height.to_string()}}
         </td>
@@ -103,7 +101,8 @@
     </td>
    </tr>
  </table>
-  <table *ngIf="product?.components" mdcBody2 class="component-detail">
+  <table  *ngIf="product?.components.length > 0" mdcBody2 class="component-detail">
+      
       <tr>
           <th  *ngFor="let header of componnentDisplayedColumns">
             {{header}}
