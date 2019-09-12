@@ -1,8 +1,8 @@
 <header>
-            <app-product-menu [mdcElevation]="3"></app-product-menu>
+            <app-product-menu (isSideMenuActiveEvent)="toggleSideNav($event)" [mdcElevation]="3"></app-product-menu>
 
 </header>
-<div class="main-content">
+<div [style.opacity]="isSideMenuActive ? '0.5' : '1'" class="main-content">
       <router-outlet ></router-outlet>
 </div>
 

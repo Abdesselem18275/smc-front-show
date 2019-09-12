@@ -11,11 +11,13 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { AccountLoginComponent } from '../account/account-login/account-login.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent, 
-                 PaginatorComponent, AccountLoginComponent, ProductBoxComponent, CategoryBreadcrumbComponent],
+                 PaginatorComponent, AccountLoginComponent, 
+                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -33,6 +35,7 @@ import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-brea
     AccountLoginComponent,
     ProductBoxComponent,
     CategoryBreadcrumbComponent,
+    LoadingComponent,
     CommonModule,
 
   ]

@@ -1,4 +1,4 @@
-<header [style.visibility]="isScrollingUp ? 'visible' : 'hidden'"  [mdcElevation]="2" mdc-typography>
+<header *ngIf="isActive" [style.transform]="isScrollingUp ? 'translateY(0)' : 'translateY(-4.75rem)'"  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
       <mdc-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
 
@@ -6,32 +6,32 @@
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
-         <button (click)="toggleMenu()" class="nav-tab__button" mdc-button>  
-           <span class="mdc-button__label">PRDUCTS</span> 
+         <p mdcBody1 (click)="toggleMenu()" class="nav-tabs__tab">  
+           PRODUCTS
            <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> 
-         </button>
+         </p>
          
-        <div  *ngIf="isMenuActive" [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? 'auto' : '0px'">
+        <div  [mdcElevation]="isMenuActive ? 3 : 0" class="menu__sub-menu"  [style.z-index]="isMenuActive ? '1000' : '0'" [style.height]="isMenuActive ? '300px' : '0px'">
           <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-            <button (click)="toggleMenu()" mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
+            <p mdcHeadline6 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
               <mdc-icon svgIcon="rectangle"></mdc-icon>
-              <mdc-button-label mdcBody1>{{rootCat.designation | uppercase}}</mdc-button-label>
-              </button>
+              {{rootCat.designation | uppercase}}
+            </p>
             <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
-            <button (click)="toggleMenu()" mdc-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
-                <mdc-button-label mdcBody2>{{childCat.designation}}</mdc-button-label>
-            </button>
+            <p mdcBody1 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
+                {{childCat.designation | titlecase}}
+            </p>
           </div>
         </div>
-       <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">INSPIRATION</span>
-       </button>
-       <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">ABOUT US</span>
-       </button>
-       <button mdc-button  class="nav-tab__button">
-         <span class="mdc-button__label">CONTACT US</span>
-       </button>
+       <p mdcBody1 class="nav-tabs__tab">
+         INSPIRATION
+       </p>
+       <p mdcBody1 class="nav-tabs__tab">
+         ABOUT US
+       </p>
+       <p mdcBody1 class="nav-tabs__tab">
+         CONTACT US
+      </p>
      </div>
      <div class="nav-bar__tools">
         <mdc-icon (click)="toggleSearch()" >search</mdc-icon>

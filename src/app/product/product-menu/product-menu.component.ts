@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-product-menu',
@@ -37,13 +38,16 @@ export class ProductMenuComponent implements OnInit {
   isAccountCardActive: boolean;
   isReady: boolean;
   isScrollingUp: boolean;
+  isActive: boolean;
+  @Output() isSideMenuActiveEvent : EventEmitter<boolean> = new EventEmitter();
 
 
-  constructor( private categoriesCache: CategoryCacheService) {
+  constructor( private router: Router, private categoriesCache: CategoryCacheService) {
 
 
   }
   ngOnInit() {
+    this.isActive = true;
     this.isScrollingUp = true;
     this.isMenuActive = false;
     this.isSideMenuActive = false;
@@ -65,13 +69,14 @@ export class ProductMenuComponent implements OnInit {
     this.rootCategories = treeMenu;
     let prevPosition = window.pageYOffset;
     const pageByScroll$ = fromEvent(window, 'scroll').pipe(debounceTime(100)).subscribe((x) => {
-          console.warn('prev ' + prevPosition);
           this.isScrollingUp = prevPosition > window.scrollY;
           prevPosition = window.scrollY;
-          console.warn('scrollY ' + window.scrollY);
-          console.warn(this.isScrollingUp);
-    });
-
+      });
+    this.router.events.pipe(filter(x =>
+      x instanceof NavigationEnd
+      )).subscribe(event => {
+        this.isActive = !(event['url'] === '/product/home');
+      });
   }
 
   toggleMenu() {
@@ -79,6 +84,7 @@ export class ProductMenuComponent implements OnInit {
   }
   toggleSideMenu() {
     this.isSideMenuActive = !this.isSideMenuActive;
+    this.isSideMenuActiveEvent.emit(this.isSideMenuActive);
   }
   toggleSearch() {
     this.isSearchActive = !this.isSearchActive;

@@ -4,9 +4,13 @@
 header {
     color: black;
     background-color: white;
-
-
+    transition: 0.3s ease;
 }
+
+p {
+  cursor: pointer;
+}
+
 
 .nav-bar {
     padding:  1.25rem $global-horizontal-gutter;
@@ -20,7 +24,14 @@ header {
 .nav-bar__nav-tab
 {
     display : flex;
+    justify-content: space-between;
+    width: 50%;
+    max-width: 33rem;
 
+}
+.nav-tabs__tab {
+  display: flex;
+  align-items: center;
 }
 
 
@@ -75,53 +86,40 @@ header {
 
 .menu__sub-menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: absolute;
-    top:80px;
+    top:76px;
     left:0;
+    height: 0;
     background-color: white;
     height: 0px;
     overflow: hidden;
     transition: ease  0.3s ;
     min-width: 100%;
-    padding: 1.5rem 20%;
     .sub-menu__column{
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      padding-bottom: solid 1px black;
+      flex : 0 0 20%;
+      margin-top: 2rem;
 
       .sub-menu__column__image {
         max-width: 60%;
+        margin: 0.75rem 0;
       }
 
       .menu__sub-menu__tab {
-        @include mdc-button-container-fill-color(white);
-        @include mdc-button-ink-color(black);
-        @include mdc-button-horizontal-padding(0);
-        @include mdc-button-shape-radius(0px);
-        width: 100%;
-        align-items : flex-start;
-        justify-content: flex-start;
-        border-bottom: solid 0.5px white;
-        mdc-button-label {
-          font-weight: bold;
-
+        display: flex;
+        align-items: flex-end;
+        mdc-icon {
+          width: 0.5rem;
+          margin-right: 0.25rem;
         }
-
      }
-      .menu__sub-menu__tab--small .mdc-button__label{
-        text-transform: capitalize;
-        font-weight: 300;
+      .menu__sub-menu__tab--small{
+        margin-bottom: 0.75rem;
 
       }
-      // .menu__sub-menu__tab:hover {
-      //   border-bottom: solid 0.5px black;
-
-      // }
-
     }
 
 }
@@ -157,16 +155,16 @@ header {
 
 .search-container {
   position: absolute;
-  top: 10%;
+  top: 2rem;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%,-10%);
+  transform: translate(-50%);
   transition: 0.3s ease;
   background-color: white;
   width : 60%;
   z-index: 1000;
   padding : 2rem 4rem;
-  min-height: 60%;
+  min-height: 300px;
   mdc-icon {
     float: right;
   }

@@ -3,6 +3,7 @@
 <section *ngIf="products" class="result-container">
         <header mdcCaption>Search suggestion</header>
         <section>
+                <app-loading class="center" *ngIf="!isReady"></app-loading>
                 <app-product-box [product]="product" *ngFor="let product of products"></app-product-box>
         </section>
 </section>
