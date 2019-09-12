@@ -83,13 +83,15 @@
      </th>
    </tr>
    <tr *ngFor="let variant of product?.variants" >
-    <td class="variant-designation">
-      <p>{{ variant?.designation | uppercase }}</p>
-      <p mdcCaption class="variant-reference">{{variant?.reference}}</p>
+    <td>
+        {{variant?.reference | uppercase}}
     </td>
     <td>
-      {{variant.height.to_string()}}
-    </td>
+        {{ variant?.designation | uppercase }}
+      </td>
+      <td>
+          {{variant.height.to_string()}}
+        </td>
     <td>
       {{variant.capacity.to_string()}}
     </td>
@@ -101,25 +103,24 @@
     </td>
    </tr>
  </table>
-  <table class="component-detail mat-typography">
+  <table *ngIf="product?.components" mdcBody2 class="component-detail">
       <tr>
-          <th>
-            Component
+          <th  *ngFor="let header of componnentDisplayedColumns">
+            {{header}}
           </th>
         </tr>
-      <tr>
-          <td>
-            <article *ngFor="let component of product?.components">
-              <div class="variant-component-upper-section">
-                <p class="variant-component-designation">{{component.designation}}</p>
-                <mdc-icon class="component-detail__icon" [svgIcon]="component.svgIcon.designation"></mdc-icon>
-              </div>
-              <p class="variant-component-spec">
-                {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; --> &nbsp;&nbsp;{{component.measure_max.to_string()}}</span>
+      <tr *ngFor="let component of product?.components">
+          <td class="componnent-designation__aligned">
+              <mdc-icon  [svgIcon]="component.svgIcon.designation"></mdc-icon>
+              {{component.designation}}
 
-              </p>
-              <p class="variant-component-spec">Material : {{component.material.to_string()}}</p>
-            </article>
+          </td>
+          <td>
+              {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; --> &nbsp;&nbsp;{{component.measure_max.to_string()}}</span>
+
+          </td>
+          <td>
+              {{component.material.to_string()}}
           </td>
       </tr>
   </table>

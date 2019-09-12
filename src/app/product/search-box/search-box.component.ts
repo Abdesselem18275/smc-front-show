@@ -19,7 +19,7 @@ export class SearchBoxComponent implements OnInit {
     this.isReady = true;
 
   this.searchBar.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(200),
       distinctUntilChanged()).
       subscribe(term => {
         this.isReady = false;

@@ -2,7 +2,7 @@
 
 
 .list-header {
-  padding : 1em 4em 1em 4em;
+  padding : 1rem $global-horizontal-gutter ;
   margin-bottom: 2em;
   margin-top: 4em;
   border-bottom: 1px solid rgba(30, 30, 30, 0.3);
@@ -12,7 +12,7 @@
 .upper-section {
   display: flex;
   flex-direction: row;
-  margin : 0 4em 4em 4em;
+  margin : 0 $global-horizontal-gutter 4em $global-horizontal-gutter;
 }
 
 .description {
@@ -107,7 +107,7 @@
 
 
 .technical-description {
-  margin : 0 4em 4em 4em;
+  margin : 0 $global-horizontal-gutter;
 
 .technical-data-container {
   display: flex;
@@ -118,71 +118,44 @@
   margin-top: 2em;
 }
   table {
+  margin: 2em 0;
   border-collapse: collapse;
-  border: 1.5px solid rgba(30, 30, 30, 0.4);  
-    th {
-      border-top: 1.5px solid rgba(30, 30, 30, 0.4);  
-      border-bottom: 1.5px solid rgba(30, 30, 30, 0.4);  
-      padding:  0.5em 0 0.5em 0 ;
-      font-weight: 600;
-      font-size: 1rem;
+  border: 1px solid $color-border-grey;  
+
+    th,td {
+      padding:  1rem;
+      text-align: left;
+
     }     
+    th {
+      font-weight: 600;
+
+    }
+    tr:first  {
+      border-top: 1px solid $color-border-grey;  
+      border-bottom: 1px solid $color-border-grey;  
+    }
+    tr  {
+      border-bottom: 1px solid $color-border-grey;  
+    }
   }
 
- .variants-dimension-data {
-   width: 70%;
-   border-collapse: collapse;
-   border : 1.5px solid rgba(30, 30, 30, 0.4);  
-   .variant-reference {
-     color: $color-text-grey;
-  }
-    td,th {
-      text-align: center;
-    }
-    td:first-child , th:first-child {
-      border-left: 1.5px solid rgba(30, 30, 30, 0.4);  
-      border-right: 1.5px solid rgba(30, 30, 30, 0.4);  
-    }
- }
+
 
   .component-detail {
-    width: 25%;
-    border-right: 1.5px solid rgba(30, 30, 30, 0.4);  
-    td {
-      background-color: white;
+    .componnent-designation__aligned {
       display: flex;
-      flex-direction: column; 
-      justify-content: space-around;
       align-items: center;
-
-    }
-    article {
-      min-width: 80%;
-      margin: 1em;
-    }
-    .variant-component-upper-section {
-      display: flex;
-      border-bottom: 1px solid #7F6A23; 
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-    .feature-icon {
-      margin-left: auto;
-    }
-    .variant-component-designation {
-      font-weight: 600;
-      margin-bottom: 0em;
-    }
-    .variant-component-spec {
-      font-weight: 400;
-      margin-bottom: 0em;
-      font-style: italic;
+      mdc-icon {
+        width : 2rem;
+        margin-right: 1rem;
+      }
     }
   }
 }
 
 .related-product {
-  margin : 0 4em 4em 4em;
+  margin : 0 $global-horizontal-gutter;
 
 }
 .component-detail__icon{
@@ -220,50 +193,5 @@
   }
 }
 
-
-@media only screen and (max-width:800px)
-{
-  
-  table {
-    width: 100%;
-    margin: 2em 0 2em 0;
-  }
-}
-
-@media only screen and (max-width:840px) {
-  .upper-section {
-    margin : 0 2em 4em 2em;
-  }
-  .list-header {
-    padding : 1em 2rem 1em 2rem;
-  }
-  
-
-.technical-description {
-  margin : 0 2em 4em 2em;
-
-  .technical-data-container {
-    flex-direction: column;
-    .variants-dimension-data {
-      width: 100%;
-      
-      
-    }
-    .component-detail {
-      article {
-        min-width: auto;
-      }
-      width: 100%;
-      td {
-        flex-direction: row;
-      }
-    }
-  }
-
-}
-.related-product {
-  margin : 0 2em 4em 2em;
-}
-}
 
 

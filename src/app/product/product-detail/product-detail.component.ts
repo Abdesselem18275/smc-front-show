@@ -49,7 +49,9 @@ export class ProductDetailComponent implements OnInit {
   isReady: boolean;
   isImageReady: boolean;
   isRightChange: boolean;
-  displayedColumns: string[] = ['Variant' , 'Height', 'Capacity', 'Thickness', 'Diameter'];
+  displayedColumns: string[] = ['Reference', 'Designation' , 'Height', 'Capacity', 'Thickness', 'Diameter'];
+  componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
+
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
