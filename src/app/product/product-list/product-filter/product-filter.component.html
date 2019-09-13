@@ -1,20 +1,13 @@
-<header   class="main-header">
-    <mdc-icon (click) = "toggleActive()">tune</mdc-icon>
-    <p (click) = "toggleActive()" class="title" mdcBody1>
-        FILTER
-    </p>
-</header>
-<form  *ngIf="isActive" [@openClose]="isActive ? 'open' : 'closed'" [formGroup]="filterForm">
+
+<form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
-            <header>  
-                <span>{{filterCategory.value | titlecase }} 
-                    <span>{{filterCategory.description}}</span> 
-                </span> 
+            <header mdcBody2>  
+                {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >
                 <mdc-form-field class="form-field" *ngFor="let choice of filterCategory.choices" >
                     <mdc-checkbox [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked ></mdc-checkbox>
-                        <label class="from-field__label">{{choice.value | lowercase}}</label>
+                        <label mdcBody1 class="from-field__label">{{choice.value | lowercase}}</label>
                 </mdc-form-field>
             </div>
     </div></form>

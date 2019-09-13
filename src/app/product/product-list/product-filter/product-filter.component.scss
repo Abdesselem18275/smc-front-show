@@ -1,64 +1,25 @@
 
 @import "src/styles.scss";
-:host{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.main-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    .title  {
-        font-size: 16px;
-        font-weight: 600;
-        margin-left: 0.5rem;   
-        cursor: pointer;
- 
-    }
-    margin-bottom: 0.5rem;
-}
+
 
 form {
     display: flex;
-    justify-content: space-around;
-    padding-left: 2rem;
+    flex-direction: column;
+    padding-left: 1.5rem;
     width: 100%;
-    padding-top: 0.75rem;
-    flex-wrap: wrap;
-
-    @media only screen and (max-width:600px) {
-        justify-content: space-between;
-    }
 }
 
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    margin-bottom : 2rem;
     header {
-        font-weight: 600;
-        margin-left: 0.5rem;
-}
+        color: $color-text-grey;
+    }
+
 }
 
 .form__group-content {
     display: flex;
-    max-height: 8rem;
-    width:100%;
-    flex-flow : column wrap;
-    flex : 1 1 auto;
-    @media only screen and (max-width:840px) {
-        max-height: 100%;
-
-    }
-}
-.from-field__label {
-    font-size: 0.875rem;
-}
-.form-field {
-    margin-right: 0.875rem;
-}
-.filter-category__badge {
-
+    flex-direction: column;
 }

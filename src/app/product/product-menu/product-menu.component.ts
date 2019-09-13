@@ -14,12 +14,12 @@ import { Router, NavigationEnd } from '@angular/router';
     trigger('openClose', [
       // ...
       state('open', style({
-        width : '25rem',
+        transform : 'translateX(0)',
       })),
       state('closed', style({
       })),
       transition('open => closed', [
-        animate('0.15s')
+        animate('0.1s')
       ]),
       transition('closed => open', [
         animate('0.15s')

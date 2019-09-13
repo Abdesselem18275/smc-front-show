@@ -10,27 +10,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
-  styleUrls: ['./product-filter.component.scss'],
-  animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        height : 'auto',
-
-      })),
-      state('closed', style({
-        height : '0px',
-
-      })),
-      transition('closed => open',
-      [
-        animate('0.15s')
-      ]),
-      transition('open => closed', [
-        animate('0.15s')
-      ]),
-    ]),
-  ],
+  styleUrls: ['./product-filter.component.scss']
 })
 export class ProductFilterComponent implements OnInit {
   filterForm: FormGroup;

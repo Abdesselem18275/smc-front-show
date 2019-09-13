@@ -37,9 +37,26 @@
 
 
 
-app-product-filter {
-  padding : 1rem 0;
-
+.filter-container {
+  display: block;
+  header {
+    padding : 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   p {
+     font-weight: 600;
+   }
+}
+  width:20rem;
+  position: fixed;
+  top:0;
+  left:0;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  transition: ease-out 0.3s;
 }
 
 
@@ -180,4 +197,3 @@ app-product-filter {
 
 
   }
-

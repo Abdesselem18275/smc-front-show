@@ -6,7 +6,7 @@
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
           <p mdcBody2 class="content__objects-count">{{objCount}} selected products</p>
         </div>
-        <mdc-icon class="meta-bar__filter">
+        <mdc-icon (click)="filterToggle()" class="meta-bar__filter">
           tune
         </mdc-icon>
             <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
@@ -14,9 +14,16 @@
                 <mdc-icon>view_list</mdc-icon>
             </button>
       </div>
+      <div  [mdcElevation]="3" [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="filter-container">
+        <header>
+          <p mdcSubtitle1>
+            Filters
+          </p>
+            <mdc-icon (click)="filterToggle()">close</mdc-icon>
 
-      <app-product-filter *ngIf="false" (req)=getRequest($event)></app-product-filter>
-
+        </header>
+      <app-product-filter  (req)=getRequest($event)></app-product-filter>
+    </div>
 
 
           <section  class="content">
