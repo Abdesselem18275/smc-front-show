@@ -1,25 +1,26 @@
 
-<section  class="mdc-typography list-header">
     <app-loading class="center" *ngIf="!isReady"></app-loading>
 
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
-          <p class="mdcSubtitle2 content__objects-count">{{objCount}} selected products</p>
+          <p mdcBody2 class="content__objects-count">{{objCount}} selected products</p>
         </div>
+        <mdc-icon class="meta-bar__filter">
+          tune
+        </mdc-icon>
             <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
                 <mdc-icon mdcIconOn>view_module</mdc-icon>
                 <mdc-icon>view_list</mdc-icon>
             </button>
       </div>
 
+      <app-product-filter *ngIf="false" (req)=getRequest($event)></app-product-filter>
 
-</section>
 
 
           <section  class="content">
 
-              <app-product-filter (req)=getRequest($event)></app-product-filter>
 
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 

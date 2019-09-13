@@ -1,6 +1,5 @@
 @import "src/styles.scss";
 
-
 .content {
  margin : 0rem $global-horizontal-gutter;
  display: flex;
@@ -10,25 +9,24 @@
 }
 
 }
-.list-header {
-  margin: 1rem $global-horizontal-gutter;
-}
 
 .content__objects-count {
   font-style: italic;
   margin-top: 0.5rem;
-  font-weight: 500;
 }
 
 
 .content__meta-bar {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   .content__meta-bar-breadcrumb {
-      overflow: auto;
-      white-space: nowrap;
-    }
+  margin-top: 2.5rem;
+  padding: 1rem $global-horizontal-gutter;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.3);
+  border-top: 1px solid rgba(30, 30, 30, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .meta-bar__filter {
+    margin-left: auto;
   }
   
   .meta-bar__view-button {
@@ -41,8 +39,7 @@
 
 app-product-filter {
   padding : 1rem 0;
-  border-bottom: 1px solid rgba(30, 30, 30, 0.3);
-  border-top: 1px solid rgba(30, 30, 30, 0.3);
+
 }
 
 
@@ -60,7 +57,6 @@ app-product-filter {
 
     display: flex;
     flex-wrap : wrap;
-    margin-left : 1%;
     margin-top:1em;
     .content__image-container__product-box {
       margin-right : 1%;

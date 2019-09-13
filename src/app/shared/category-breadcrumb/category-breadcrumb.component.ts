@@ -29,10 +29,8 @@ export class CategoryBreadcrumbComponent implements OnInit {
             this.items = [];
             if (!this.currentProduct) {
               this.setItems(param);
-              this.isNotEmpty = true;
             } else {
               this.setItems(this.currentProduct);
-              this.isNotEmpty = true;
 
             }
 
@@ -46,7 +44,9 @@ export class CategoryBreadcrumbComponent implements OnInit {
 
 
   setItems(param) {
-    if ( param === '' ) { return ''; }
+    if ( param === '' ) {
+      this.items.push('Products');
+      return ''; }
     this.items.push(param);
     return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation));
   }

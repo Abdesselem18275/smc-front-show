@@ -3,6 +3,7 @@ section
 {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
 }
 p {
@@ -17,6 +18,8 @@ p:hover {
 :host(.body-style) {
   p {
     font-weight: bold;
+  }
+  mdc-icon {
     font-size: 1rem;
   }
 

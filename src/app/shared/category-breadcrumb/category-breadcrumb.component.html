@@ -1,12 +1,10 @@
 <section class="breadcrumb">
-        <p  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}" queryParamsHandling="merge">  
-            Products
-        </p>    
-        <mdc-icon>chevron_right</mdc-icon>   
-
-        <ng-container *ngFor="let item of items.reverse(); last as isLast">
-            <p  [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: ''}" queryParamsHandling="merge" >
+        <ng-container *ngFor="let item of items.reverse(); last as isLast ; first as isFirst">
+            <p  *ngIf="!isFirst"  mdcBody2 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item}" queryParamsHandling="merge" >
                 {{item | lowercase}}
+            </p> 
+            <p *ngIf="isFirst" mdcBody2 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: ''}" queryParamsHandling="merge" >
+                {{item | titlecase}}
             </p> 
             <mdc-icon *ngIf="!isLast">chevron_right</mdc-icon>   
         </ng-container>
