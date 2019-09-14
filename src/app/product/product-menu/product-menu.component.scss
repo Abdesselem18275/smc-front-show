@@ -41,6 +41,7 @@ p {
     @include mdc-button-filled-accessible(white);
     mdc-icon {
         transition: 0.2s ease-out;
+        font-weight: 300;
       }
     .mdc-button__label {
       font-weight: bold;
@@ -52,17 +53,9 @@ p {
   text-align:center;
   cursor: pointer;
   .header--big {
-    font-family: 'Stardos Stencil', cursive;
-    font-weight: bold;
-    font-size: 3rem;
-    line-height: 0;
-
-  }
-.sentence--small {
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.8rem;
-    margin-top: -0.75rem;
-    margin-right:  0.7rem;
+    font-family: 'Domine', serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.25rem;
   }
 }
 
@@ -71,12 +64,13 @@ p {
     display: flex;
     align-items: center;
     mdc-icon:nth-child(2) {
-       margin: 0 1rem;
+       margin-left : 1rem;
     }
     .language-panel {
         display: flex;
         align-items: center;
         @include mdc-button-ink-color(black);
+        margin-left : 1rem;
     }
 }
 

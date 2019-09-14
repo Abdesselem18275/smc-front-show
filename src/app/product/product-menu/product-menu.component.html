@@ -6,7 +6,7 @@
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
-         <p mdcBody1 (click)="toggleMenu()" class="nav-tabs__tab">  
+         <p mdcSubtitle2 (click)="toggleMenu()" class="nav-tabs__tab">  
            PRODUCTS
            <mdc-icon [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mdc-icon> 
          </p>
@@ -23,13 +23,13 @@
             </p>
           </div>
         </div>
-       <p mdcBody1 class="nav-tabs__tab">
+       <p mdcSubtitle2 class="nav-tabs__tab">
          INSPIRATION
        </p>
-       <p mdcBody1 class="nav-tabs__tab">
+       <p mdcSubtitle2 class="nav-tabs__tab">
          ABOUT US
        </p>
-       <p mdcBody1 class="nav-tabs__tab">
+       <p mdcSubtitle2 class="nav-tabs__tab">
          CONTACT US
       </p>
      </div>
@@ -55,7 +55,6 @@
   </header>
   
   <div [mdcElevation]="3" [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
-  <mdc-icon (click)="toggleSideMenu()" class="menu__close-icon">close</mdc-icon>
-<app-side-nav-menu ></app-side-nav-menu>
+<app-side-nav-menu (isSideNavMenuActiveEvent)="toggleSideMenu()"></app-side-nav-menu>
   
   </div>

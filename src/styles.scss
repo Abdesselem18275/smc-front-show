@@ -98,6 +98,13 @@ $mdc-typography-styles-button: (
   transform: translate(-50%, -50%)
 }
 
+.side-window__header {
+  padding : 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 
 @media only screen and (max-width:840px) {

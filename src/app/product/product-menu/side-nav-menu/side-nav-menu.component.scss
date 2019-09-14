@@ -9,10 +9,9 @@ section:first-child {
 
 }
 .title {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     display: flex;
-    align-items: center; 
-    font-weight: 600;
+    align-items: flex-start; 
     mdc-icon {
         width : 1rem;
         margin-right:0.5rem;

@@ -27,7 +27,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class SideNavMenuComponent implements OnInit {
   isCollectionOpen: Boolean;
   isCategoryOpen: Boolean;
-
+  @Output() isSideNavMenuActiveEvent:  EventEmitter<boolean> = new EventEmitter();
   rootCategories: Category[];
   constructor(private ccs: CategoryCacheService) { }
 
@@ -42,6 +42,10 @@ export class SideNavMenuComponent implements OnInit {
   }
   toggleCategory() {
     this.isCategoryOpen = !this.isCategoryOpen
+  }
+
+  closeMenu() {
+    this.isSideNavMenuActiveEvent.emit(false);
   }
 
 }

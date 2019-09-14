@@ -15,8 +15,8 @@
             </button>
       </div>
       <div  [mdcElevation]="3" [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="filter-container">
-        <header>
-          <p mdcSubtitle1>
+        <header class="side-window__header">
+          <p mdcHeadline6>
             Filters
           </p>
             <mdc-icon (click)="filterToggle()">close</mdc-icon>
