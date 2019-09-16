@@ -1,6 +1,6 @@
 <header *ngIf="isActive" [style.transform]="isScrollingUp ? 'translateY(0)' : 'translateY(-4.75rem)'"  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
-      <mdc-icon (click)="toggleSideMenu()" class="nav-bar__menu-icon">menu</mdc-icon>
+      <mdc-icon [routerLink]="[{ outlets: { popup: ['search'] } }]" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
@@ -34,17 +34,8 @@
       </p>
      </div>
      <div class="nav-bar__tools">
-        <mdc-icon (click)="toggleSearch()" >search</mdc-icon>
-        <div [mdcElevation]="3" *ngIf="isSearchActive" class="search-container">
-            <mdc-icon (click)="toggleSearch()">close</mdc-icon>
-            <app-search-box   class="search-icon"></app-search-box>
-        </div>
-        <mdc-icon (click)="toggleAccountCard()">person</mdc-icon>
-        <div *ngIf="isAccountCardActive" [mdcElevation]="3" class="account-card">
-        <mdc-icon (click)="toggleAccountCard()">close</mdc-icon>
-       <app-account-login>
-       </app-account-login>
-     </div>
+        <mdc-icon [routerLink]="[{ outlets: { popup: ['search'] } }]" >search</mdc-icon>
+        <mdc-icon [routerLink]="[{ outlets: { popup: ['login'] } }]" >person</mdc-icon>
         <button class="language-panel" mdc-button >
           <mdc-icon>language</mdc-icon>   
           <span class="mdc-button__label">EN</span> 

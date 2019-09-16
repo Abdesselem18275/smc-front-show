@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ProductDataService } from '../service/product-data.service';
 import { ProductShort } from '../model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -14,7 +15,7 @@ export class SearchBoxComponent implements OnInit {
   products: ProductShort[];
   isReady: boolean;
 
-  constructor(private pds: ProductDataService) { }
+  constructor(private router: Router , private pds: ProductDataService) { }
   ngOnInit() {
     this.isReady = true;
 
@@ -29,5 +30,13 @@ export class SearchBoxComponent implements OnInit {
           this.isReady = true;
         });
       });
+}
+
+cancel() {
+  this.closePopup();
+}
+
+closePopup() {
+  this.router.navigate([{ outlets: { popup: null }}]);
 }
 }

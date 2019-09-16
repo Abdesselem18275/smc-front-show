@@ -31,11 +31,9 @@ export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
-  isSearchActive: boolean;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;
-  isAccountCardActive: boolean;
   isReady: boolean;
   isScrollingUp: boolean;
   isActive: boolean;
@@ -52,8 +50,7 @@ export class ProductMenuComponent implements OnInit {
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
-    this.isAccountCardActive = false;
-    this.isSearchActive = false;
+
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
       {
@@ -86,15 +83,13 @@ export class ProductMenuComponent implements OnInit {
     this.isSideMenuActive = !this.isSideMenuActive;
     this.isSideMenuActiveEvent.emit(this.isSideMenuActive);
   }
-  toggleSearch() {
-    this.isSearchActive = !this.isSearchActive;
-  }
   toggleRoot() {
     this.isRootActive = !this.isRootActive;
   }
-  toggleAccountCard() {
-    this.isAccountCardActive = !this.isAccountCardActive;
-  }
 
+
+  closePopups() {
+    this.router.navigate([{ outlets: { popup: null }}]);
+  }
 
 }

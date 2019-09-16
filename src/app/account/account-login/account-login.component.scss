@@ -1,4 +1,24 @@
 @import "src/styles.scss";
+
+.content {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    background-color: white;
+    padding : 1.5rem 3rem;
+    z-index: 10000;
+    @media only screen and (max-width:840px) {
+        width : 100%;
+        top: 0;
+        left: 0;
+        margin-right: 0;
+        transform: translate(0, 0) ;
+      }
+
+
+}
 .login {
     padding : 2rem;
     border: 1px solid $color-deep-grey;

@@ -148,20 +148,7 @@ p {
 }
 
 .search-container {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%);
-  transition: 0.3s ease;
-  background-color: white;
-  width : 60%;
-  z-index: 1000;
-  height: 60vh;
-  padding : 2rem 4rem;
-  mdc-icon {
-    float: right;
-  }
+
   @media only screen and (max-width:1024px) {
     padding : 2rem 2rem;
     width : 80%;

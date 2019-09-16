@@ -1,8 +1,18 @@
+<section class="content" [mdcElevation]="3">
+<header class="side-window__header">
+        <p mdcHeadline6>
+          
+        </p>
+          <mdc-icon (click)="cancel()">close</mdc-icon>
+
+      </header>
+
 <input   placeholder="search" type="search" class="search-text-field"    [formControl]="searchBar" >
-<section *ngIf="products" class="result-container">
+<main *ngIf="products" class="result-container">
         <header  mdcCaption>Search suggestion</header>
         <section class="results-content">
                 <app-loading class="center" *ngIf="!isReady"></app-loading>
-                <app-product-box [product]="product" *ngFor="let product of products"></app-product-box>
+                <app-product-box (click) ="cancel()" [product]="product" *ngFor="let product of products"></app-product-box>
         </section>
+</main>
 </section>

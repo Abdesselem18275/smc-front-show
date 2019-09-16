@@ -75,4 +75,11 @@ export class AccountLoginComponent implements OnInit {
       }
     });
   }
+
+  cancel() {
+    this.closePopup();
+  }
+  closePopup() {
+    this.router.navigate([{ outlets: { popup: null }}]);
+  }
 }
