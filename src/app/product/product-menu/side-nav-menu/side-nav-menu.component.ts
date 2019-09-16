@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category } from '../../model';
 import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -27,15 +28,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class SideNavMenuComponent implements OnInit {
   isCollectionOpen: Boolean;
   isCategoryOpen: Boolean;
-  @Output() isSideNavMenuActiveEvent:  EventEmitter<boolean> = new EventEmitter();
   rootCategories: Category[];
-  constructor(private ccs: CategoryCacheService) { }
+  constructor(private router: Router, private ccs: CategoryCacheService) { }
 
   ngOnInit() {
     this.isCollectionOpen = false;
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.categories;
-    console.warn(this.rootCategories);
   }
   toggleCollection() {
     this.isCollectionOpen = !this.isCollectionOpen
@@ -45,7 +44,8 @@ export class SideNavMenuComponent implements OnInit {
   }
 
   closeMenu() {
-    this.isSideNavMenuActiveEvent.emit(false);
+    this.router.navigate([{ outlets: { side: null }}]);
   }
+
 
 }

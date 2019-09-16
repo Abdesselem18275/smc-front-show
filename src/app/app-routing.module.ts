@@ -28,7 +28,8 @@ const appRoutes: Routes = [
   {
     path: 'menu',
     component: SideNavMenuComponent,
-    outlet: 'side'
+    outlet: 'side',
+    data: { animation: 'sideNav' }
   },
   {path : '**' , component : PageNotFoundComponent}
 

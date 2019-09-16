@@ -1,6 +1,6 @@
 <header *ngIf="isActive" [style.transform]="isScrollingUp ? 'translateY(0)' : 'translateY(-4.75rem)'"  [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
-      <mdc-icon [routerLink]="[{ outlets: { popup: ['search'] } }]" class="nav-bar__menu-icon">menu</mdc-icon>
+      <mdc-icon [routerLink]="[{ outlets: { side: ['menu'] } }]" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
@@ -45,7 +45,3 @@
     </nav>
   </header>
   
-  <div [mdcElevation]="3" [@openClose]="isSideMenuActive ? 'open' : 'closed'" class="nav-bar__side-menu">
-<app-side-nav-menu (isSideNavMenuActiveEvent)="toggleSideMenu()"></app-side-nav-menu>
-  
-  </div>

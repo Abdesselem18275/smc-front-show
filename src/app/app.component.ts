@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdcIconRegistry } from '@angular-mdc/web';
+import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
@@ -17,10 +22,10 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.isSideMenuActive = false;
+  }
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
 
-  }
-  toggleSideNav(event) {
-    this.isSideMenuActive =   event;
-  }
+
 }

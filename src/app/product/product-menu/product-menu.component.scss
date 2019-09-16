@@ -177,25 +177,6 @@ p {
 }
 
 
-.nav-bar__side-menu {
-  width:25rem;
-  transform : translateX(-25rem);
-  position: fixed;
-  top:0;
-  left:0;
-  overflow-x: hidden;
-  height: 100%;
-  background-color: white;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s;
-  .menu__close-icon {
-    margin: 0.5em 0.5em;
-    align-self: flex-end;
-}
-
-}
 
 
 

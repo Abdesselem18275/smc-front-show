@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(['account/login']);
+    this.router.navigate([{ outlets: { popup: 'login' }}]);
     return false;
   }
 }
