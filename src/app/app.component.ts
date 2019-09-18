@@ -12,7 +12,7 @@ import { slideInAnimation } from './animations';
     slideInAnimation
   ]
 })
-export class AppComponent implements OnInit {
+export class AppCmponent implements OnInit {
   isSideMenuActive: boolean;
 
   constructor( iconRegistry: MdcIconRegistry, sanitizer: DomSanitizer) {
