@@ -26,25 +26,14 @@ form {
     }
 }
 .form-sub-part {
+    width: 25rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 
-.form__field__text-area {
-    @include mdc-text-field-shape-radius(10px);
-    width : 100%;
 
-}
-
-.form__field ,.form__field--inline {
-    margin-bottom: 1.5rem;
-
-}
-.form__field__with-helper {
-    margin-bottom: 0.25rem;
-}
 
 .form__submit-button {
     margin-bottom: 1rem;
@@ -57,17 +46,11 @@ form {
     background-color: $color-light-grey;
 }
 
-
-.form__field--inline {
-    display: flex;
-    justify-content: space-between;
-    .form__field__text-area {
-        width: 45%;
-    }
+.form__field {
+    margin-bottom: 1.5rem;
 }
 .form-group {
-    padding: 1rem 0 ;
-    border-top: solid 1px $mdc-theme-secondary;
+    margin-bottom: 2rem;
 }
 
 .block-divider {
@@ -82,17 +65,14 @@ mdc-radio-group {
 }
 
 .form-group__header {
-    color: $mdc-theme-secondary;
-    text-align: center;
-    font-weight: 700;
-    position: relative;
-    top : 1.75rem;
-    z-index: 1000;
-    background-color: white;
-    width: 10rem;    
-    align-self: center;
-    margin-bottom: 1rem;
-
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center; 
+    mdc-icon {
+        width : 0.875rem;
+        margin-right: 0.5rem;
+    }
 }
 
 .field-autocomplete-list {

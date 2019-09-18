@@ -6,7 +6,7 @@ margin : 2rem 1rem 0 1rem;
 .menu-tab-bar {
     border-top : solid 1px $color-border-grey;
     border-bottom : solid 1px $color-border-grey;
-    padding : 0 4rem;
+    padding : 0 $global-horizontal-gutter;
 }
 .menu-tab {
     text-transform: capitalize;
@@ -15,20 +15,20 @@ margin : 2rem 1rem 0 1rem;
 }
 
 .mdc-tab--active  {
-    @include mdc-tab-text-label-color($mdc-theme-secondary);
-    @include mdc-tab-icon-color($mdc-theme-secondary);
+    @include mdc-tab-text-label-color(black);
+    @include mdc-tab-icon-color(black);
 }
 
 .mdc-tab-indicator {
     @include mdc-tab-indicator-underline-color($mdc-theme-secondary);
 }
 .menu-content {
-    padding : 2rem 4rem;
+    padding : 2rem $global-horizontal-gutter;
     
     
 }
 .profile-title {
     margin-top: 2rem;
-    margin-left: 4rem;
+    margin-left: $global-horizontal-gutter  ;
     z-index: 1000;
 }

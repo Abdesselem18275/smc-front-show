@@ -7,8 +7,9 @@
     margin-right: -50%;
     transform: translate(-50%);
     background-color: white;
-    padding : 1.5rem 3rem;
+    padding : 1.5rem 1.5rem;
     z-index: 10000;
+
     @media only screen and (max-width:840px) {
         width : 100%;
         top: 0;
@@ -19,34 +20,36 @@
 
 
 }
-.login {
-    padding : 2rem;
-    border: 1px solid $color-deep-grey;
-    margin-bottom: 2rem;
+.forms-container {
+    display: flex; 
+    justify-content: space-between;
+    @media only screen and (max-width:1024px) {
+        flex-direction: column;
+        align-items: center;
+      }
 }
+section {
+    width: 25rem;
+    margin : 1.5rem 3rem ;
+
+    @media only screen and (max-width:1024px) {
+        margin : 1.5rem 0rem ;    
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid grey;
+
+
+    }
+}
+
+
 header {
-    text-align: center;
+    text-align: start;
     margin-bottom:1.5rem;
-
-}
-
-.form__field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-    label {
-        font-weight: 600;
-        text-transform: capitalize;
-        margin-bottom: 0.875rem;
-    }
-    input {
-        height: 3rem;
-        font-size: 1rem;
-    }
-    .field__note {
-        font-weight: 300;
+    .title--bold {
+       font-weight: bold;
     }
 }
+
 .form__submit-button {
     width : 100%;
 }
@@ -56,6 +59,8 @@ header {
 .inverted-theme {
     @include mdc-button-ink-color(black);
     @include mdc-button-outline-color(black);
+    @include mdc-button-container-fill-color(white);
+
 }
 .inverted-theme:hover {
     @include mdc-button-ink-color(white);

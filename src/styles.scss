@@ -28,9 +28,6 @@ body, html {
 }
 $mdc-typography-font-family: "'Raleway', sans-serif";
 
-hr {
-  border : solid 0.5px $mdc-theme-primary;
-}
 .mdc-list-item__graphic {
   width: 1.5rem;
   height: auto;
@@ -86,10 +83,16 @@ h1,h2,h3,h4,h5,h6,p {
   margin-block-end: 0em;
 }
 
-$mdc-typography-styles-button: (
-  font-size: 1rem,
-  text-transform: none
-);
+
+
+.side-window__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.space-divider {
+  flex: 1 1 auto;
+}
 .center {
   position: absolute;
   top: 50%;
@@ -97,19 +100,23 @@ $mdc-typography-styles-button: (
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
-
-.side-window__header {
+.form__field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  label {
+      text-transform: capitalize;
+      margin-bottom: 0.5rem;
+  }
+  input,select {
+      height: 3rem;
+      font-size: 0.875rem;
+  }
+  .field__note {
+      font-weight: 300;
+  }
 }
 
-
-
-@media only screen and (max-width:840px) {
-  $global-horizontal-gutter:1rem;
-
-}
 @media only screen and (max-width:480px)  {
   html {
     font-size: 12px;

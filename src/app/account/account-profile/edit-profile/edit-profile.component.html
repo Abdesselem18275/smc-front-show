@@ -2,86 +2,102 @@
 
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
   <section  class="form-sub-part">
-      <p class="form-group__header" mdcSubtitle2>Personal Informations</p>
 
       <div class="form-group">
-    <div formGroupName="profile" class="form__field--inline">
-        <mdc-text-field dense formControlName="first_name" outlined class="form__field__text-area" type="text" label="First name" >
-                <mdc-icon mdcTextFieldIcon leading>person</mdc-icon>
-        </mdc-text-field>
-        <mdc-text-field  dense formControlName="last_name" outlined class="form__field__text-area" type="text" label="Last name" >
-        </mdc-text-field>
+        <p class="form-group__header" mdcBody2>
+            <mdc-icon svgIcon="rectangle"></mdc-icon>
+            PERSONAL INFORMATION</p>
+        <div  formGroupName="profile" class="form__field">
+        <label mdcBody2 for="first_name">
+            first name
+        </label>
+        <input  required
+                type="text" 
+                id="first_name"
+                formControlName="first_name">                                
+        </div>
+        <div  formGroupName="profile" class="form__field">
+    <label mdcBody2 for="last_name">
+        last name
+    </label>
+    <input  required
+            type="text" 
+            id="last_name"
+            formControlName="last_name">                                
+        </div>
+    <div class="form__field">
+        <label mdcBody2 for="country">
+            Country
+        </label>
+        <select id="country" formControlName="country">
+            <option *ngFor="let item of countryNames" value="item.val">{{item.val}}</option>
+        </select>
     </div>
-
-    <mdc-form-field fluid class="form__field">
-        <mdc-text-field  dense formControlName="country"  
-        autocomplete="country-name"
-        outlined    
-        class="form__field__text-area"  
-        type="text" label="Country">
-        <mdc-icon mdcTextFieldIcon leading>flag</mdc-icon>
-
-        </mdc-text-field>
-        <ul *ngIf="display" [mdcElevation]="2"
-               class="field-autocomplete-list">
-               <li mdcSubtitle2 (click)="onClickCountry(item.val)" *ngFor="let item of countrySelections">
-                 {{item.val}}
-               </li>
-        </ul>
-    </mdc-form-field>
-
-  <mdc-text-field autocomplete="tel" dense formControlName="phoneNumber" outlined class="form__field__text-area" type="tel" label="Phone number" >
-    <mdc-icon mdcTextFieldIcon leading>phone</mdc-icon>
-   </mdc-text-field>
+    <div class="form__field">
+        <label mdcBody2 for="phoneNumber">
+            Phone Number
+        </label>
+        <input 
+        autocomplete="tel"  
+        formControlName="phoneNumber"  
+        type="tel" id="phoneNumber" >
+     </div>
   </div>
-    <p class="form-group__header" mdcSubtitle2>Password change</p>
     <div formGroupName="profile" class="form-group">
+        <p class="form-group__header" mdcSubtitle2>
+            <mdc-icon svgIcon="rectangle"></mdc-icon>
+            PASSWORD CHANGE</p>
 
-    <mdc-form-field fluid class="form__field">
-        <mdc-text-field  
-          dense 
-          formControlName="password"  
-          autocomplete="new-password"   
-          outlined    
-          class="form__field__text-area"  
-          type="password" 
-          label="password">
-        </mdc-text-field>
-    </mdc-form-field>
-
-    <mdc-form-field fluid class="form__field">
-      <mdc-text-field  
-        dense formControlName="confirmPassword" 
-        outlined  autocomplete="new-password"    
-        class="form__field__text-area" 
-        type ="password"   
-        label="confirm password">
-      </mdc-text-field>
-      <mdc-helper-text validation>
-          <span  *ngIf="accountForm.errors?.passwordNotConfirmed 
-                         && (accountForm.touched || accountForm.dirty)">
-              Passwords are not equals
-          </span>
-      </mdc-helper-text>
-    </mdc-form-field> 
+        <div formGroupName="profile" class="form__field">
+            <label mdcBody2 for="password">
+                    password
+                </label>
+    <input  
+                     autocomplete="new-password"  
+                     required  
+                     id ="password"
+                     type ="password" formControlName="password">
+    </div>
+    <div  formGroupName="profile" class="form__field">
+            <label mdcBody2 for="confirmPassword">
+                    confirm password
+            </label>
+    <input  
+                     autocomplete="new-password"  
+                     required  
+                     id ="confirmPassword"
+                     type ="password" 
+                     formControlName="confirmPassword">
+    <div  class="alert" *ngIf="accountForm.errors?.passwordNotConfirmed && (accountForm.get('profile.password').touched || accountForm.get('profile.confirmPassword').dirty)">
+    <p mdcCaption >
+            Passwords are not equals.
+    </p>
+    </div>
+  </div>
   </div>
   </section>
   <section class="form-sub-part">
 
-      <mdc-radio-group class="radio-group--gutter" formControlName="is_professional">
-          <span mdcSubtitle2>Who Are you :</span>
-          <span class="block-divider"></span>
-              <mdc-form-field>
-                <mdc-radio  value="true"></mdc-radio>
-                <label>Professional</label>
-              </mdc-form-field>
-              <mdc-form-field >
-                      <mdc-radio  value="false"></mdc-radio>
-                      <label>Private</label>
-              </mdc-form-field>
-      </mdc-radio-group>
-      <p class="form-group__header" mdcSubtitle2>Company informations</p>
       <div class="form-group">
+          <p class="form-group__header" mdcSubtitle2>
+              <mdc-icon svgIcon="rectangle"></mdc-icon>
+            COMPANY INFORMATIONS</p>
+
+
+      
+            <mdc-radio-group class="radio-group--gutter" formControlName="is_professional">
+                <span mdcSubtitle2>Who Are you :</span>
+                <span class="block-divider"></span>
+                    <mdc-form-field>
+                      <mdc-radio  value="true"></mdc-radio>
+                      <label>Professional</label>
+                    </mdc-form-field>
+                    <mdc-form-field >
+                            <mdc-radio  value="false"></mdc-radio>
+                            <label>Private</label>
+                    </mdc-form-field>
+            </mdc-radio-group>
+
       <mdc-form-field 
           fluid 
           class="form__field__with-helper">

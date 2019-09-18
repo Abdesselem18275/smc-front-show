@@ -19,7 +19,7 @@ export class AccountProfileComponent implements OnInit {
     this.tabs = [
       { label: 'Informations', icon: 'account_circle' },
       { label: 'Favorites', icon: 'favorite' },
-      { label: 'Icon', icon: 'message' }
+      { label: 'Messages', icon: 'message' }
     ];
   }
 

@@ -1,18 +1,19 @@
 <div class="content" [mdcElevation]="3">
 
         <header class="side-window__header">
-                <p mdcHeadline6>
-                  
+                <p></p>
+                <p  mdcHeadline5>
+                  SMC ACCOUNT
                 </p>
                   <mdc-icon (click)="cancel()">close</mdc-icon>
         
               </header>
 
-
+<main class="forms-container">
 <section class="login">
 <header>
-        <p mdcHeadline4>SIGN IN</p>
-        <p mdcCaption>Please enter the follwing informations to acces your account</p>
+        <p class="title--bold" mdcSubtitle2>SIGN IN</p>
+        <p mdcBody2>Please enter the following informations to acces your account</p>
     </header>
     <main>
             <p mdcCaption class="alert">{{auth_non_field_error}}</p>
@@ -48,9 +49,10 @@
                     <span mdcCaption class="field__note">Forget yous password ?</span>
                     </div>
                  
-                    <button class="form__submit-button" 
+                    <button class="inverted-theme form__submit-button" 
                             type="submit"  
-                            mdc-button 
+                            mdc-button
+                            outlined 
                             primary>LOGIN
                     </button>
                 
@@ -58,16 +60,71 @@
                 </form>    
 </main>
 </section>
-<section class="register">
+<section>
         <header>
-                <p mdcHeadline4>REGISTER NOW</p>
-                <p mdcCaption>Create and account and join us </p>
+                <p class="title--bold" mdcSubtitle2>REGISTER NOW</p>
+                <p mdcBody2>Create and account and join us </p>
         </header>
-        <button class="form__submit-button inverted-theme" 
-        type="submit"  
-        mdc-button
-        outlined >REGISTER
-        </button>
+        <main>
+                <form [formGroup]="createForm"   (ngSubmit)="onSubmit()">
+                        <div formGroupName="profile" class="form__field">
+                                <label mdcBody2 for="email">
+                                    email
+                                </label>
+                                <input  required
+                                        autocomplete="username email"   
+                                        type="email" 
+                                        id="email"
+                                        formControlName="email">
+                                    <div *ngIf="createForm.get('profile.email').invalid && (createForm.dirty || createForm.touched)" class="alert">
+                                    
+                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.required">
+                                        email is required.
+                                      </p>
+                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.email">
+                                        Enter a valid email 
+                                      </p>   
+                            </div>                                 
+                        </div>
+                        <div formGroupName="profile" class="form__field">
+                                <label mdcBody2 for="password">
+                                        password
+                                    </label>
+                        <input  
+                                         autocomplete="new-password"  
+                                         required  
+                                         id ="password"
+                                         type ="password" formControlName="password">
+                        </div>
+                        <div  formGroupName="profile" class="form__field">
+                                <label mdcBody2 for="confirmPassword">
+                                        confirm password
+                                </label>
+                        <input  
+                                         autocomplete="new-password"  
+                                         required  
+                                         id ="confirmPassword"
+                                         type ="password" 
+                                         formControlName="confirmPassword">
+                        <div  class="alert" *ngIf="createForm.errors?.passwordNotConfirmed && (createForm.get('profile.password').touched || createForm.get('profile.confirmPassword').dirty)">
+                        <p mdcCaption >
+                                Passwords are not equals.
+                        </p>
+                        </div>
+                        </div>
+                     
+                    
+                    </form>    
+                                     
+                    <button class="inverted-theme form__submit-button" 
+                            type="submit"  
+                            mdc-button 
+                            outlined
+                            primary>REGISTER
+                    </button>
+    </main>
+
 
 </section>
+</main>
 </div>
