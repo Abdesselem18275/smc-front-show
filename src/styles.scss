@@ -111,9 +111,10 @@ h1,h2,h3,h4,h5,h6,p {
   input,select {
       height: 3rem;
       font-size: 0.875rem;
+      padding-left: 0.5rem;
   }
   .field__note {
-      font-weight: 300;
+    color: $color-text-deep-grey;
   }
 }
 

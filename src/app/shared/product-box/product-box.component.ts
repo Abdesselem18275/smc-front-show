@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
 
 @Component({
@@ -6,11 +6,15 @@ import { ProductShort } from 'src/app/product/model';
   templateUrl: './product-box.component.html',
   styleUrls: ['./product-box.component.scss']
 })
-export class ProductBoxComponent implements OnInit {
+export class ProductBoxComponent implements OnInit , OnChanges {
   @Input() product: ProductShort;
+  @Input() mode: string;
   constructor() { }
 
   ngOnInit() {
+  }
+  ngOnChanges() {
+    console.warn(this.mode);
   }
 
 }

@@ -44,11 +44,6 @@ export class ProductListComponent implements OnInit {
          switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
        .subscribe(_products => {
               this.productShorts = _products['results'];
-              this.productShorts.map(productShort =>
-                productShort.thumbNail.content = this.sanitizer.bypassSecurityTrustStyle('url("'  + productShort.thumbNail.content + '")'));
-              // if (this.objCount  !== _products['count']) {
-              //    this.paginator.firstPage();
-              // }
               this.objCount  = _products['count'];
               this.isReady = true;
             });

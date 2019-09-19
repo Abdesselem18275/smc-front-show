@@ -31,7 +31,12 @@
 
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
-              <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
+
+                <app-product-box [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
+
+                </app-product-box>
+
+              <!-- <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
 
                   <div   class="product-card__primary">
                         <mdc-icon class="collection-icon primary__collection-icon" 	[svgIcon]="productShort.collection?.svgIcon.designation">
@@ -60,7 +65,7 @@
                   </mdc-card-media>
                 </mdc-card-primary-action>
                
-              </mdc-card>
+              </mdc-card> -->
             </div>
             <app-paginator [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator>
           </section>

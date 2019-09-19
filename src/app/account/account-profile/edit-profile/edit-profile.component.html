@@ -1,7 +1,6 @@
 
 
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-  <section  class="form-sub-part">
 
       <div class="form-group">
         <p class="form-group__header" mdcBody2>
@@ -43,40 +42,7 @@
         type="tel" id="phoneNumber" >
      </div>
   </div>
-    <div formGroupName="profile" class="form-group">
-        <p class="form-group__header" mdcSubtitle2>
-            <mdc-icon svgIcon="rectangle"></mdc-icon>
-            PASSWORD CHANGE</p>
 
-        <div formGroupName="profile" class="form__field">
-            <label mdcBody2 for="password">
-                    password
-                </label>
-    <input  
-                     autocomplete="new-password"  
-                     required  
-                     id ="password"
-                     type ="password" formControlName="password">
-    </div>
-    <div  formGroupName="profile" class="form__field">
-            <label mdcBody2 for="confirmPassword">
-                    confirm password
-            </label>
-    <input  
-                     autocomplete="new-password"  
-                     required  
-                     id ="confirmPassword"
-                     type ="password" 
-                     formControlName="confirmPassword">
-    <div  class="alert" *ngIf="accountForm.errors?.passwordNotConfirmed && (accountForm.get('profile.password').touched || accountForm.get('profile.confirmPassword').dirty)">
-    <p mdcCaption >
-            Passwords are not equals.
-    </p>
-    </div>
-  </div>
-  </div>
-  </section>
-  <section class="form-sub-part">
 
       <div class="form-group">
           <p class="form-group__header" mdcSubtitle2>
@@ -86,8 +52,6 @@
 
       
             <mdc-radio-group class="radio-group--gutter" formControlName="is_professional">
-                <span mdcSubtitle2>Who Are you :</span>
-                <span class="block-divider"></span>
                     <mdc-form-field>
                       <mdc-radio  value="true"></mdc-radio>
                       <label>Professional</label>
@@ -98,47 +62,79 @@
                     </mdc-form-field>
             </mdc-radio-group>
 
-      <mdc-form-field 
-          fluid 
-          class="form__field__with-helper">
-          <mdc-text-field  
-            dense  
+      <div
+          class="form__field">
+          <label mdcBody2 for="company_name">
+                Company
+            </label>
+          <input  
             formControlName="company_name" 
-            outlined  
             autocomplete="organization" 
-            class="form__field__text-area" 
             type ="text"   
-            label="Company">
-          </mdc-text-field>
-          <mdc-helper-text>
-              <span>
-                  Insert your position in the company
-              </span>
-          </mdc-helper-text>
-        </mdc-form-field>
-      <mdc-form-field fluid class="form__field__with-helper">
-          <mdc-text-field  dense formControlName="position" outlined autocomplete="organization-title" class="form__field__text-area" type ="text"   label="Position">
-          </mdc-text-field>
-          <mdc-helper-text>
-              <span>
-                  Insert your position in the company
-              </span>
-          </mdc-helper-text>
-        </mdc-form-field> 
-        <mdc-form-field fluid class="form__field__with-helper">
-            <mdc-text-field  dense formControlName="activity" outlined      class="form__field__text-area" type ="text"   label="Activity">
-            </mdc-text-field>
-            <mdc-helper-text>
-                <span>
-                    Whats your field of activity , eg: Tourism , Restoration
+            >
 
-                </span>
-            </mdc-helper-text>
-          </mdc-form-field> 
-          <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
+        </div>
+      <div class="form__field">
+            <label mdcBody2 for="position">
+                    Position
+                </label>
+          <input   
+                formControlName="position"  
+                autocomplete="organization-title" 
+                type ="text" >
+                <p mdcCaption class="field__note">
+                        Insert your current position , eg: sales manager 
+                        </p>
+            </div>
+
+            <div class="form__field">
+                    <label mdcBody2 for="activity">
+                            Activity
+                        </label>
+                  <input   
+                        formControlName="activity"  
+                        autocomplete="organization" 
+                        type ="text" >
+                        <p mdcCaption class="field__note">
+                                Insert your field of activity , eg: Tourism , Restoration
+                                </p>
+                    </div>
         </div>
 
 
-  </section>
+        <div formGroupName="profile" class="form-group">
+            <p class="form-group__header" mdcSubtitle2>
+                <mdc-icon svgIcon="rectangle"></mdc-icon>
+                PASSWORD CHANGE</p>
+    
+            <div  class="form__field">
+                <label mdcBody2 for="password">
+                        password
+                    </label>
+        <input  
+                         autocomplete="new-password"  
+                         required  
+                         id ="password"
+                         type ="password" formControlName="password">
+        </div>
+        <div   class="form__field">
+                <label mdcBody2 for="confirmPassword">
+                        confirm password
+                </label>
+        <input  
+                         autocomplete="new-password"  
+                         required  
+                         id ="confirmPassword"
+                         type ="password" 
+                         formControlName="confirmPassword">
+        <div  class="alert" *ngIf="accountForm.errors?.passwordNotConfirmed && (accountForm.get('profile.password').touched || accountForm.get('profile.confirmPassword').dirty)">
+        <p mdcCaption >
+                Passwords are not equals.
+        </p>
+        </div>
+      </div>
+      <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
+
+      </div>
   </form>
 

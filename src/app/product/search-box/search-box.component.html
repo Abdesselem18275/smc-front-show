@@ -12,7 +12,7 @@
         <header  mdcCaption>Search suggestion</header>
         <section class="results-content">
                 <app-loading class="center" *ngIf="!isReady"></app-loading>
-                <app-product-box (click) ="cancel()" [product]="product" *ngFor="let product of products"></app-product-box>
+                <app-product-box mode="list" (click) ="cancel()" [product]="product" *ngFor="let product of products"></app-product-box>
         </section>
 </main>
 </section>

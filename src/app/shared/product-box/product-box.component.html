@@ -1,7 +1,9 @@
+<div class="content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
+
 <img [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
-<section>
+<section class="content-text">
    <div>
-       <p mdcCaption> 
+       <p *ngIf="mode=='listWithBread'" mdcCaption> 
            <app-category-breadcrumb [currentProduct]="product.rootCategory" class="caption-style"></app-category-breadcrumb>
        </p>
        <p mdcSubtitle1>{{product.designation}}</p>
@@ -13,3 +15,22 @@
 </mdc-icon>
 
 </section>
+</div>
+
+<div class="content--grid" *ngIf="mode == 'grid'">
+
+        <img  [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
+        <section class="content-information">
+                <mdc-icon *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
+                    </mdc-icon>
+           <div class="content-information__text">
+               <p mdcHeadline6>{{product.designation}}</p>
+               <p class="text--grey" mdcBody2>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
+               </p>
+           </div>
+        
+
+        
+        </section>
+        </div>
+        
