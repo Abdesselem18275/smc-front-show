@@ -1,6 +1,6 @@
 
 
-<section *ngIf="isReady" class="list-header">
+<section  class="list-header">
 <div class="content__meta-bar">
   <div>
     <app-category-breadcrumb [currentProduct]="product.rootCategory" class="body-style breadcrumb"></app-category-breadcrumb>
@@ -10,7 +10,7 @@
 </section>
 
 
-<div *ngIf="isReady" class="upper-section">
+<div  class="upper-section">
 <section class="carousel">
   <section class="main-image">
       <app-loading class="inbox-center" *ngIf="!isImageReady"></app-loading>
@@ -30,7 +30,7 @@
 
 <section class="description">
   <header class="title-section">
-    <mdc-icon *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation"></mdc-icon>
+    <mdc-icon *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mdc-icon>
     <div>
       <p mdcHeadline6>{{product?.designation  | uppercase}}</p>
       <p  class="text--grey" mdcBody2> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
