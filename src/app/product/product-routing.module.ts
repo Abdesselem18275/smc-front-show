@@ -4,6 +4,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailResolverService } from './service/product-detail-resolver.service';
 
 const productRoutes: Routes = [
   { path : 'product',
@@ -19,7 +20,10 @@ const productRoutes: Routes = [
       },
       {
         path: ':id',
-        component : ProductDetailComponent
+        component : ProductDetailComponent,
+        resolve: {
+          product: ProductDetailResolverService
+        }
       },
       {
         path : '',

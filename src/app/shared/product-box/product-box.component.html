@@ -18,10 +18,8 @@
 </div>
 
 <div class="content--grid" *ngIf="mode == 'grid'">
-
-        <img  [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
         <section class="content-information">
-                <mdc-icon *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
+                <mdc-icon class="content__collection-icon" *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
                     </mdc-icon>
            <div class="content-information__text">
                <p mdcHeadline6>{{product.designation}}</p>
@@ -31,6 +29,19 @@
         
 
         
+        </section>
+
+        <img  [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
+
+        <section class="action-container"> 
+            <button mdc-button>
+                    <mdc-icon>favorite</mdc-icon>
+                    Like
+            </button>
+            <button mdc-button>
+                    <mdc-icon>message</mdc-icon>
+                    Ask
+            </button>
         </section>
         </div>
         

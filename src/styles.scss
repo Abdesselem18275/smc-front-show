@@ -6,7 +6,7 @@ $mdc-theme-black: #000000; // secondary color
 
 $color-grey:rgba(0, 0, 0, 0.507);
 $color-deep-grey:rgb(179,179,179);
-$color-text-grey:rgba(0,0,0,0.65);
+$color-text-grey:rgb(68,68,68);
 $color-text-deep-grey:rgb(30,30,30);
 $color-light-grey:rgb(248,248,248);
 $color-border-grey: rgba(30, 30, 30, 0.20);
@@ -98,7 +98,8 @@ h1,h2,h3,h4,h5,h6,p {
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  z-index: 5000;
 }
 .form__field {
   display: flex;
@@ -116,9 +117,25 @@ h1,h2,h3,h4,h5,h6,p {
   .field__note {
     color: $color-text-deep-grey;
   }
+  .alert {
+    color :red;
+  }
 }
 
-@media only screen and (max-width:480px)  {
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(256,256,256,0.5);
+  z-index: 200;
+}
+
+
+@media only screen and (max-width:720px)  {
   html {
     font-size: 12px;
   }

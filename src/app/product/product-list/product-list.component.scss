@@ -37,9 +37,6 @@
     }
   }
 
-
-
-
 .filter-container {
   display: block;
   width:20rem;
@@ -54,17 +51,6 @@
 }
 .side-window__header {
   padding: 1.5rem;
-}
-
-
-
-.collection-icon {
-  width : 2.5rem;
-  height : auto;
-}
-
-.product-card__subtitle {
-  color: $color-text-grey
 }
 
 .content__image-container--grid {
@@ -85,14 +71,12 @@
         width: 48%;
 
       }
-      @media only screen and (max-width:600px) {
+      @media only screen and (max-width:480px) {
         width: 98%;
 
       }
     }
 }
-
-
 
 .content__image-container--list {
   display: block;

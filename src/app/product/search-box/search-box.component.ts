@@ -33,7 +33,9 @@ export class SearchBoxComponent implements OnInit {
 }
 
 cancel() {
-  this.closePopup();
+  setTimeout(() => {
+    this.closePopup();
+     }, 150);
 }
 
 closePopup() {

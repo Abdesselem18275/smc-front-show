@@ -20,6 +20,7 @@
     
         }
     }
+
 }
 
 
@@ -28,11 +29,6 @@
     flex-direction: column;
     img {
         width: 100%;    
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-
-
-
     }
     .content-information {
         margin: 1rem;
@@ -48,5 +44,16 @@
     
         }
     }
+    .action-container {
+        display: flex;
+        align-self: flex-start;
+        padding: 1.5rem 1rem;
+        button {
+            margin-right: 0.5rem;
+            @include mdc-button-ink-color($color-text-grey);
+        }
+
+    }
+
 
 }

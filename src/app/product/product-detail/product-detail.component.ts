@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductDataService } from '../service/product-data.service';
-import { switchMap } from 'rxjs/operators';
 import { ProductLong, Variant } from '../model';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 
@@ -15,20 +14,23 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
         opacity : '0'
       })),
       state('in', style({
-        opacity : '1'
+        opacity : '1',
       })),
       state('outRight', style({
         opacity : '0'
       })),
       transition('* => outRight', [
         animate('0.1s ease-out', style({
-          transform : 'translateX(150%)'
+          transform : 'translateX(200%)',
+          position : 'relative'
 
         }))
       ]),
       transition('* => outLeft', [
         animate('0.1s ease-out', style({
-          transform : 'translateX(-100%)'
+          transform : 'translateX(-100%)',
+          position : 'relative'
+
 
         }))
       ]),
@@ -49,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
   isReady: boolean;
   isImageReady: boolean;
   isRightChange: boolean;
-  displayedColumns: string[] = ['Reference','Height', 'Capacity', 'Thickness', 'Diameter'];
+  displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
   componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
 
   constructor(private pds: ProductDataService, private route: ActivatedRoute) { }
@@ -58,16 +60,14 @@ export class ProductDetailComponent implements OnInit {
     this.selectedIndex = 0;
     this.isReady = false;
     this.isImageReady = true;
-    this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.pds.get_element({value: params.get('id'), model: 'product'}))).
-      subscribe((jsonItem: any) => {
+      this.route.data.subscribe((data: { product: ProductLong }) => {
+        console.warn(data);
 
-        this.product = new ProductLong(jsonItem);
+        this.product = new ProductLong(data.product);
         this.imagesNumber = this.product.images === undefined ? 1 : this.product.images.length;
         this.selectedImage =
         this.product.images[0] === undefined ? this.product.thumbNail.content : this.product.images[0].content;
         this.isReady = true;
-        console.warn(this.product);
       });
 
   }

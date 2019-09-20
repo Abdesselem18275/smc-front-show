@@ -1,4 +1,3 @@
-
     <app-loading class="center" *ngIf="!isReady"></app-loading>
 
     <div class="content__meta-bar">
@@ -27,6 +26,7 @@
 
 
           <section  class="content">
+            <div *ngIf="!isReady" class="overlay"> </div>
 
 
             <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
@@ -35,37 +35,6 @@
                 <app-product-box [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
 
                 </app-product-box>
-
-              <!-- <mdc-card  [mdcElevation]="3" mdc-card--outlined class="content__image-container__product-box" *ngFor="let productShort of productShorts">
-
-                  <div   class="product-card__primary">
-                        <mdc-icon class="collection-icon primary__collection-icon" 	[svgIcon]="productShort.collection?.svgIcon.designation">
-                          
-                        </mdc-icon>
-                        <span class="spacer"></span>
-                    <div class="product-card__description">
-                      <p class="product-card__title" mdcHeadline6>{{productShort?.designation}}</p>
-                      <p class="product-card__subtitle" mdcSubtitle2>
-                        {{productShort?.exteriorMaterial.designation}}<span>-{{productShort?.interiorMaterial.designation}}</span>
-                      </p>
-                    </div>
-                  </div>
-                <mdc-card-primary-action [routerLink]="['../', productShort.pk]" *ngIf="isReady">
-                  <mdc-card-media  class="product-card__media" 
-                       square 
-                       [style.background-image]='productShort.thumbNail.content'>
-                    <mdc-card-media-content class="product-card__media-content--with-icon">
-                      <div>
-                          <mdc-icon class="collection-icon product-card__media-icon--absolute" 	[svgIcon]="productShort.collection?.svgIcon.designation">
-                            </mdc-icon>
-
-                      </div>
-                        
-                    </mdc-card-media-content>
-                  </mdc-card-media>
-                </mdc-card-primary-action>
-               
-              </mdc-card> -->
             </div>
             <app-paginator [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator>
           </section>

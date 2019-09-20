@@ -21,14 +21,24 @@
   justify-content: flex-start;
 
   .title-section {
-    margin-bottom: 2em;
-    div {
-      float: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    mdc-icon {
+      width: 2.5rem;
+      margin-top: 0.5rem;
     }
-    #collection-icon {
-      float: right;
-      width: 3rem;
-      margin-top: 1rem;
+    div {
+      margin-right: auto;
+      margin-left: 0.5rem;
+
+      .text--grey {
+        color:$color-text-grey; 
+      }
+    }
+    button {
+      @include mdc-button-ink-color($color-text-grey);
+
     }
   }
   .description__content {
@@ -63,15 +73,6 @@
 
 
 
-::ng-deep .mat-tab-labels{
-  justify-content: space-evenly;
-  .mat-tab-label-content {
-    font-weight: bold;
-  }
-
-  
-}
-
 
 .carousel {
   flex : 1 1 50%;
@@ -79,6 +80,15 @@
   .main-image {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    .inbox-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+    }
+    
   }
   .main-image__arrow {
     align-self:center;
@@ -167,6 +177,7 @@
   .upper-section {
     display: flex;
     flex-direction: column;
+    z-index: 100;
     .carousel {
       .main-image {
         mdc-icon {
@@ -174,19 +185,8 @@
         }
       }
     }
-  }
-  .title-section {
-    margin-top : 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    div {
-      p {
-        text-align:center;
-      }
-    }
-    #collection-icon {
-      margin: 0;
+    .title-section {
+      padding: $global-horizontal-gutter;
 
     }
   }
