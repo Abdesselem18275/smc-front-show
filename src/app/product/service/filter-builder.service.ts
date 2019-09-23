@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FilterCategory, Category } from '../model';
+import { FilterCategory } from '../model';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CategoryCacheService } from './category-cache.service';
-import { ProductDataService } from './product-data.service';
 import { FilterCacheService } from './filter-cache.service';
 
 @Injectable({

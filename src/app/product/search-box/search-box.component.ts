@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ProductDataService } from '../service/product-data.service';
 import { ProductShort } from '../model';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -24,7 +24,7 @@ export class SearchBoxComponent implements OnInit {
       distinctUntilChanged()).
       subscribe(term => {
         this.isReady = false;
-        const myMap = new Map<string, string>().set('search', term);
+        const myMap =  new Map<string, string>().set('search', term);
         this.pds.get_elements({model: 'product', param_key: myMap}).subscribe(results => {
           this.products = results['results'];
           this.isReady = true;

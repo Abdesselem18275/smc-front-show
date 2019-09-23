@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
 
 @Component({
@@ -6,17 +6,20 @@ import { ProductShort } from 'src/app/product/model';
   templateUrl: './product-box.component.html',
   styleUrls: ['./product-box.component.scss']
 })
-export class ProductBoxComponent implements OnInit , OnChanges {
+export class ProductBoxComponent implements OnInit  {
   @Input() product: ProductShort;
   @Input() mode: string;
+  @ViewChild('img', {static: false}) img ;
   isLoading: boolean;
   constructor() { }
 
   ngOnInit() {
     this.isLoading = true;
   }
-  ngOnChanges() {
-    console.warn(this.mode);
+
+  onImageLoad(evt) {
+    console.warn('zzz');
   }
+
 
 }

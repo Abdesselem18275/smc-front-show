@@ -56,7 +56,6 @@ updateAccount(jsonData): Observable<any> {
     this.token,
     '/'
    ].join('');
-   console.warn('Query = ' + query);
 return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
   this.loadCookie(jsonArray);
   this.refreshAccount();

@@ -1,9 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../../service/filter-builder.service';
 import { FilterCategory } from '../../model';
-import { trigger, state, style, transition, animate, query } from '@angular/animations';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime} from 'rxjs/operators';
 
 
 
@@ -12,10 +11,12 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.scss']
 })
-export class ProductFilterComponent implements OnInit {
+export class ProductFilterComponent implements OnInit, OnChanges {
+
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
   @Output() req = new EventEmitter<Map<any, any>>();
+  @Input() resetFilter: boolean;
   selectedFilter = '';
   isScrollOver: boolean;
   isScrollable: boolean;
@@ -31,6 +32,13 @@ export class ProductFilterComponent implements OnInit {
         this.clearFilter();
         this.onChanges();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.resetFilter.firstChange) {
+      this.clearFilter();
+
+    }
+}
 
   onChanges(): void {
     this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(x => {
@@ -50,6 +58,7 @@ export class ProductFilterComponent implements OnInit {
               count === 0 ? '' : ['(', count.toString(), ' choices)'].join('');
 
     });
+
     this.req.emit(map);
   });
 }

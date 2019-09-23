@@ -16,7 +16,6 @@ export class CategoryCacheService {
           this._categories = jsonItems;
         });
     }
-    console.warn(this._categories);
     return this._categories;
   }
 

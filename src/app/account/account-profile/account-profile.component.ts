@@ -15,7 +15,6 @@ export class AccountProfileComponent implements OnInit {
 
   ngOnInit() {
     this.myProfile = this.authService.account;
-    console.warn(this.myProfile);
     this.tabs = [
       { label: 'Informations', icon: 'account_circle' },
       { label: 'Favorites', icon: 'favorite' },

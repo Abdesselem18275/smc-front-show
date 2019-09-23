@@ -1,6 +1,6 @@
 <div class="content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
 
-<img [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
+<img #img (load)="onImageLoad($event)" [routerLink]="['/product/', product.pk]" [src] ="product.thumbNail.content">
 <section class="content-text">
    <div>
        <p *ngIf="mode=='listWithBread'" mdcCaption> 

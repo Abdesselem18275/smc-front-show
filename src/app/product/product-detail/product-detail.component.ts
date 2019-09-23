@@ -61,8 +61,6 @@ export class ProductDetailComponent implements OnInit {
     this.isReady = false;
     this.isImageReady = true;
       this.route.data.subscribe((data: { product: ProductLong }) => {
-        console.warn(data);
-
         this.product = new ProductLong(data.product);
         this.imagesNumber = this.product.images === undefined ? 1 : this.product.images.length;
         this.selectedImage =

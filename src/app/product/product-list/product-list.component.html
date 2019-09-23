@@ -21,7 +21,7 @@
             <mdc-icon (click)="filterToggle()">close</mdc-icon>
 
         </header>
-      <app-product-filter  (req)=getRequest($event)></app-product-filter>
+      <app-product-filter  [resetFilter]="resetFilter"  (req) = filterEvent($event)></app-product-filter>
     </div>
 
 
@@ -33,8 +33,7 @@
 
 
                 <app-product-box [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
-
                 </app-product-box>
             </div>
-            <app-paginator [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator>
+            <app-paginator [pageResetToggle]="pageResetToggle" [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator>
           </section>
