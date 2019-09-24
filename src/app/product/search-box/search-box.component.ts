@@ -25,6 +25,7 @@ export class SearchBoxComponent implements OnInit {
       subscribe(term => {
         this.isReady = false;
         const myMap =  new Map<string, string>().set('search', term);
+        this.pds.resetHttpParams();
         this.pds.get_elements({model: 'product', param_key: myMap}).subscribe(results => {
           this.products = results['results'];
           this.isReady = true;

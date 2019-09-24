@@ -12,6 +12,7 @@ export const API_URL = 'https://show-case-api.herokuapp.com';
 export class ProductDataService  {
   test: string;
   globalHttpParams: HttpParams;
+  private query : string;
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
     this.globalHttpParams = new HttpParams();
   }

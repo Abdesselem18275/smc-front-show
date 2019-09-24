@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute} from '@angular/router';
-import { map, switchMap, tap,scan, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { map, switchMap, tap, debounceTime, reduce, scan } from 'rxjs/operators';
 import { Subject, merge } from 'rxjs';
 
 @Component({
@@ -40,14 +40,13 @@ export class ProductListComponent implements OnInit {
     .pipe(
       scan((acc, one) => {
         if (one !== undefined && acc !== undefined  ) {
-          console.warn('hello');
           one.forEach((value, key) => {
             acc.set(key, value);
           });
       }
         return acc;
       }),
-      debounceTime(50),
+      debounceTime(500),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
     .subscribe(_products => {
            this.productShorts = _products['results'];
