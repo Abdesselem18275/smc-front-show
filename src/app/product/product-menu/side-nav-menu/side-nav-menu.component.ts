@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Category } from '../../model';
+import { Category, ProductCollection } from '../../model';
 import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { CollectionCacheService } from '../../service/collection-cache.service';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -29,12 +30,14 @@ export class SideNavMenuComponent implements OnInit {
   isCollectionOpen: Boolean;
   isCategoryOpen: Boolean;
   rootCategories: Category[];
-  constructor(private router: Router, private ccs: CategoryCacheService) { }
+  collectionArray: ProductCollection[];
+  constructor(private router: Router, private ccs: CategoryCacheService, private colcs: CollectionCacheService) { }
 
   ngOnInit() {
     this.isCollectionOpen = false;
     this.isCategoryOpen = false;
-    this.rootCategories = this.ccs.categories;
+    this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
+    this.collectionArray = this.colcs.fetchCachedCollections();
   }
   toggleCollection() {
     this.isCollectionOpen = !this.isCollectionOpen

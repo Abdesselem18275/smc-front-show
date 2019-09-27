@@ -39,28 +39,32 @@ section:first-child {
 }
 .menu-sub__expandable {
     display: flex;
+    flex-direction: column;
+    ul {
+        padding-left: 1.5rem;
+        li {
+            text-transform: lowercase;
+        }
+
+    }
+
+}
+.menu-sub__header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 }
 section {
     border-bottom: solid 0.5px $color-border-grey;
     padding-top : 1rem;
-}
-ul {
-    margin-top: 0.875rem;
-    margin-bottom:  0.875rem;
-        li {
-            padding: 0 0.875rem 1rem 0 ;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-    li:hover {
-        background-color: $color-light-grey;
+    ul {
+        margin-top: 0.875rem;
+        margin-bottom:  0.875rem;
+            li {
+                padding: 0 0.875rem 1rem 0 ;
+            }
 
+    
     }
-    .menu-sub-1 {
-        font-size: 1.25rem;
-    }
-
 }
+

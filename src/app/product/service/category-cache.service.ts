@@ -7,6 +7,7 @@ import { Category } from '../model';
 })
 export class CategoryCacheService {
   _categories: Category[];
+  _sideMenuTree: Category[];
   constructor(private pds: ProductDataService) {}
 
   fetchCachedCategories() {
@@ -22,5 +23,6 @@ export class CategoryCacheService {
   set categories(categories) {
     this._categories = categories;
   }
+
 
 }

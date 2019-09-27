@@ -13,7 +13,7 @@ p {
 
 
 .nav-bar {
-    padding:  1.25rem $global-horizontal-gutter;
+    padding:  1rem $global-horizontal-gutter;
     display : flex;
     justify-content : space-between;
     align-items : center;
@@ -54,8 +54,11 @@ p {
   cursor: pointer;
   .header--big {
     font-family: 'Domine', serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     letter-spacing: 0.25rem;
+  }
+  @media only screen and (max-width:1024px) {
+    margin-left: 0.75rem;
   }
 }
 

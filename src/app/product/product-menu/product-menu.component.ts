@@ -65,10 +65,10 @@ export class ProductMenuComponent implements OnInit {
           ];
     this.rootCategories = treeMenu;
     let prevPosition = window.pageYOffset;
-    const pageByScroll$ = fromEvent(window, 'scroll').pipe(debounceTime(50)).subscribe((x) => {
-          this.isScrollingUp = prevPosition >= window.scrollY;
-          prevPosition = window.scrollY;
-      });
+    // const pageByScroll$ = fromEvent(window, 'scroll').pipe(debounceTime(50)).subscribe((x) => {
+    //       this.isScrollingUp = prevPosition >= window.scrollY;
+    //       prevPosition = window.scrollY;
+    //   });
     this.router.events.pipe(filter(x =>
       x instanceof NavigationEnd
       )).subscribe(event => {
