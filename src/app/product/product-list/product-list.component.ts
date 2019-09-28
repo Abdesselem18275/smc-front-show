@@ -46,6 +46,7 @@ export class ProductListComponent implements OnInit {
       }
         return acc;
       }),
+      tap(() => this.isReady = false),
       debounceTime(500),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
     .subscribe(_products => {
