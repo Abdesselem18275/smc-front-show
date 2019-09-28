@@ -41,9 +41,16 @@ section:first-child {
     display: flex;
     flex-direction: column;
     ul {
-        padding-left: 1.5rem;
+        padding: 0 1rem;
+        margin-bottom: 0rem;
+
+        height: 100%;
         li {
             text-transform: lowercase;
+        }
+        li:last-child {
+            padding-bottom: 0rem;
+
         }
 
     }

@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Category, ProductCollection } from '../../model';
 import { CategoryCacheService } from '../../service/category-cache.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Router } from '@angular/router';
+import { trigger, style, transition, animate } from '@angular/animations';
+import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
 
 @Component({
@@ -10,21 +10,28 @@ import { CollectionCacheService } from '../../service/collection-cache.service';
   templateUrl: './side-nav-menu.component.html',
   styleUrls: ['./side-nav-menu.component.scss'],
   animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        height : 'auto',
-      })),
-      state('closed', style({
-      })),
-      transition('open => closed', [
-        animate('0.15s')
-      ]),
-      transition('closed => open', [
-        animate('0.15s')
-      ]),
-    ]),
-  ],
+    trigger(
+      'inOutAnimation',
+      [
+        transition(
+          ':enter',
+          [
+            style({ 'max-height': 0, opacity: 0 }),
+            animate('200ms ease-out',
+                    style({ 'max-height': 200 , opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ 'max-height': 200, opacity: 1 }),
+            animate('200ms ease-in',
+                    style({ 'max-height': 0  , opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class SideNavMenuComponent implements OnInit {
   isCollectionOpen: Boolean;
@@ -40,14 +47,37 @@ export class SideNavMenuComponent implements OnInit {
     this.collectionArray = this.colcs.fetchCachedCollections();
   }
   toggleCollection() {
-    this.isCollectionOpen = !this.isCollectionOpen
+    this.isCollectionOpen = !this.isCollectionOpen;
   }
   toggleCategory() {
-    this.isCategoryOpen = !this.isCategoryOpen
+    this.isCategoryOpen = !this.isCategoryOpen;
   }
 
   closeMenu() {
     this.router.navigate([{ outlets: { side: null }}]);
+  }
+  navigateTo(param_key: string, val: string) {
+    this.closeMenu();
+    const navigationExtras: NavigationExtras = {
+      queryParams: { [param_key]: val },
+      queryParamsHandling: 'merge'
+    };
+    this.router.navigate([{
+      outlets: {
+        primary : 'product/list',
+        side: null }}],
+        navigationExtras);
+  }
+
+  toggleSubMenu(type) {
+    switch (type) {
+      case('collection') : this.isCollectionOpen = !this.isCollectionOpen;
+                           this.isCategoryOpen = false;
+           break;
+      case('category') : this.isCategoryOpen = !this.isCategoryOpen;
+                         this.isCollectionOpen = false;
+           break;
+    }
   }
 
 

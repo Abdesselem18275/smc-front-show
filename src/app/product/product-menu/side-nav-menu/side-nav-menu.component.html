@@ -13,19 +13,23 @@
   <li class="menu-sub__expandable">
     <div class="menu-sub__header">
       <p mdcHeadline6 >Categories</p>
-      <mdc-icon>expand_more</mdc-icon>
+      <mdc-icon (click)="toggleSubMenu('category')">expand_more</mdc-icon>
     </div>
-    <ul>
-      <li  mdcSubtitle1 *ngFor="let cat of rootCategories">{{cat.designation}}</li>
+    <ul [@inOutAnimation] *ngIf="isCategoryOpen">
+      <li  mdcSubtitle1 
+           (click)="navigateTo('categories__designation__in',cat.designation)"
+           *ngFor="let cat of rootCategories">{{cat.designation}}</li>
     </ul>
 
   <li class="menu-sub__expandable">
       <div class="menu-sub__header">
       <p mdcHeadline6 class="menu-sub-1">Collections</p>
-      <mdc-icon>expand_more</mdc-icon>
+      <mdc-icon (click)="toggleSubMenu('collection')">expand_more</mdc-icon>
       </div>
-      <ul>
-        <li mdcSubtitle1 *ngFor="let col of collectionArray">{{col.designation}}</li>
+      <ul [@inOutAnimation] *ngIf="isCollectionOpen">
+        <li mdcSubtitle1 
+            (click)="navigateTo('collection__designation__in',col.designation)"
+            *ngFor="let col of collectionArray">{{col.designation}}</li>
       </ul>
     </li>
     </ul>
