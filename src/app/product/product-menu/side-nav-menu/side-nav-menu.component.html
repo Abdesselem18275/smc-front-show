@@ -13,7 +13,9 @@
   <li class="menu-sub__expandable">
     <div class="menu-sub__header">
       <p mdcHeadline6 >Categories</p>
-      <mdc-icon (click)="toggleSubMenu('category')">expand_more</mdc-icon>
+      <mdc-icon (click)="toggleSubMenu('category')"
+                 [style.transform]="isCategoryOpen ? 'rotate(-90deg)' : ''">
+        expand_more</mdc-icon>
     </div>
     <ul [@inOutAnimation] *ngIf="isCategoryOpen">
       <li  mdcSubtitle1 
@@ -24,7 +26,8 @@
   <li class="menu-sub__expandable">
       <div class="menu-sub__header">
       <p mdcHeadline6 class="menu-sub-1">Collections</p>
-      <mdc-icon (click)="toggleSubMenu('collection')">expand_more</mdc-icon>
+      <mdc-icon (click)="toggleSubMenu('collection')"
+                [style.transform]="isCollectionOpen ? 'rotate(-90deg)' : ''" >expand_more</mdc-icon>
       </div>
       <ul [@inOutAnimation] *ngIf="isCollectionOpen">
         <li mdcSubtitle1 
