@@ -18,7 +18,6 @@ export class ProductBoxComponent implements OnInit  {
   }
 
   onImageLoad(evt) {
-    console.warn('zzz');
   }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute} from '@angular/router';
-import { map, switchMap, tap, debounceTime, reduce, scan } from 'rxjs/operators';
+import { map, switchMap, tap, debounceTime, reduce, scan, windowTime, take, mergeAll, takeLast, switchAll } from 'rxjs/operators';
 import { Subject, merge } from 'rxjs';
 
 @Component({
@@ -28,7 +28,9 @@ export class ProductListComponent implements OnInit {
     this.isFilterActive = false;
     merge(this.paramRequest,
      this.route.queryParamMap.pipe(
-                                   tap(() => { this.resetFilter = !this.resetFilter;
+                                   tap(() => { console.warn('start');
+                                               this.resetFilter = !this.resetFilter;
+                                               console.warn('end');  
                                                this.pds.resetHttpParams();
                                                 }),
                                    map(params => {
@@ -38,16 +40,21 @@ export class ProductListComponent implements OnInit {
                                       return paramsMap; }),
                                       ))
     .pipe(
-      scan((acc, one) => {
+      windowTime(2000),
+      map(win => win.pipe(
+        reduce((acc, one) => {
         if (one !== undefined && acc !== undefined  ) {
           one.forEach((value, key) => {
             acc.set(key, value);
           });
       }
         return acc;
+      }))),
+      mergeAll(),
+      tap((x) => {
+                 console.warn(x);
+                 this.isReady = false;
       }),
-      tap(() => this.isReady = false),
-      debounceTime(500),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
     .subscribe(_products => {
            this.productShorts = _products['results'];

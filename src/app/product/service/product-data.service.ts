@@ -24,11 +24,9 @@ export class ProductDataService  {
     hyperLink?: any;
     param_key?: Map<string, string> } = {}): Observable<any[]> {
 
-      console.warn(options.param_key);
 
       const model = options.model || '';
       const param_key = options.param_key || new Map();
-      console.warn('data service');
       param_key.forEach((value, key) => {
         this.globalHttpParams = this.globalHttpParams.set(key, value);
       });

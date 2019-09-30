@@ -31,7 +31,6 @@ export class PaginatorComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.currentPageNumber = 1 ;
-    this.currentPageNumberEmitter.emit(this.currentPageNumber);
 }
   updateIndex(step: number) {
     this.currentPageNumber = this.currentPageNumber + step;

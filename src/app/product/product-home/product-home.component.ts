@@ -18,7 +18,6 @@ export class ProductHomeComponent implements OnInit {
     let map3 = new Map().set('idani', '42');
 
     let map4 = new Set([map1, map2, map3]);
-    console.warn(map4);
 
     this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isLeaf);
   }
