@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdcIconRegistry } from '@angular-mdc/web';
-import { RouterOutlet, Router, NavigationStart } from '@angular/router';
-import { slideInAnimation } from './animations';
+import { RouterOutlet} from '@angular/router';
+import { sideSlideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    slideInAnimation
+    sideSlideInAnimation
   ]
 })
 export class AppComponent implements OnInit {
@@ -24,7 +24,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 }
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    console.warn(res || 'empty');
+
+    return res || 'empty';
+
   }
 
 

@@ -1,18 +1,13 @@
-import { trigger, transition, style, query, animateChild, animate, group } from "@angular/animations";
+import { trigger, transition, style,animate, group } from "@angular/animations";
 
 
-export const slideInAnimation =
-  trigger('routeAnimations', [
-    transition('* <=> *', [
-      style({ 'position': 'fixed' }),
-      query(':enter, :leave', [
-        style({
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          'background-color' : 'red'
-        })
-      ]),
-    ])
-  ]);
+export const sideSlideInAnimation =
+trigger('routeAnimations', [
+  transition('empty => sideNav', [
+    style({
+            left: '-100%',
+  }),
+  animate('200ms ease-out',
+  style({ left: 0 , }))
+])
+]);

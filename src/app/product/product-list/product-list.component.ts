@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
      this.route.queryParamMap.pipe(
                                    tap(() => { console.warn('start');
                                                this.resetFilter = !this.resetFilter;
-                                               console.warn('end');  
+                                               console.warn('end');
                                                this.pds.resetHttpParams();
                                                 }),
                                    map(params => {
