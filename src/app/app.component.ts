@@ -9,8 +9,7 @@ import { sideSlideInAnimation } from './animations';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    sideSlideInAnimation
-  ]
+    sideSlideInAnimation  ]
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;

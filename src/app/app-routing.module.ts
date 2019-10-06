@@ -18,7 +18,9 @@ const appRoutes: Routes = [
   {
     path: 'search',
     component: SearchBoxComponent,
-    outlet: 'popup'
+    outlet: 'popup',
+    data: { animation: 'centerNav' }
+
   },
   {
     path: 'login',

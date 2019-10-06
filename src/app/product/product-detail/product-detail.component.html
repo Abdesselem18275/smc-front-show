@@ -15,16 +15,19 @@
   <section class="main-image">
       <app-loading class="inbox-center" *ngIf="!isImageReady"></app-loading>
 
-    <button class="main-image__arrow" *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mdc-icon-button icon="keyboard_arrow_left"></button>
    
     <div>
       <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
     </div>
-    <button  class="main-image__arrow" *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mdc-icon-button icon="keyboard_arrow_right"></button>
 
   </section>
   <section class='images-selector'>
+      <button class="main-image__arrow" *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mdc-icon-button icon="keyboard_arrow_left"></button>
+      <div class="dots-container">
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
+      </div>
+      <button  class="main-image__arrow" *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mdc-icon-button icon="keyboard_arrow_right"></button>
+
   </section>
 </section>
 
