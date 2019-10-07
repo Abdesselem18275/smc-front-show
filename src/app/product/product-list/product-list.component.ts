@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ProductShort } from '../model';
 import { ProductDataService } from '../service/product-data.service';
 import { ActivatedRoute} from '@angular/router';
-import { map, switchMap, tap, debounceTime, reduce, scan, windowTime, take, mergeAll, takeLast, switchAll } from 'rxjs/operators';
+import { map, switchMap, tap, reduce, windowTime, mergeAll } from 'rxjs/operators';
 import { Subject, merge } from 'rxjs';
 
 @Component({
@@ -12,27 +12,23 @@ import { Subject, merge } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
   productShorts: ProductShort[];
-  CurrentParam: String;
   objCount: number;
   isReady: boolean;
   isFilterActive: boolean;
   isListActive: boolean;
-  reqNumber: number;
   paramRequest = new Subject<any>();
   resetFilter: boolean;
-  pageResetToggle: boolean;
-
+  pageNumber: number;
   constructor(private route: ActivatedRoute, private pds: ProductDataService) { }
   ngOnInit() {
-    this.reqNumber = 0;
+    this.pageNumber = 1;
     this.isFilterActive = false;
     merge(this.paramRequest,
      this.route.queryParamMap.pipe(
-                                   tap(() => { console.warn('start');
-                                               this.resetFilter = !this.resetFilter;
-                                               console.warn('end');
-                                               this.pds.resetHttpParams();
-                                                }),
+                                   tap(() => {
+                                              this.resetFilter = !this.resetFilter;
+                                              this.pds.resetHttpParams();
+                                            }),
                                    map(params => {
                                       let paramsMap = new Map();
                                       params.keys.forEach(key => {
@@ -40,7 +36,7 @@ export class ProductListComponent implements OnInit {
                                       return paramsMap; }),
                                       ))
     .pipe(
-      windowTime(2000),
+      windowTime(500),
       map(win => win.pipe(
         reduce((acc, one) => {
         if (one !== undefined && acc !== undefined  ) {
@@ -57,7 +53,10 @@ export class ProductListComponent implements OnInit {
       }),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
     .subscribe(_products => {
-           this.productShorts = _products['results'];
+           console.warn(this.pageNumber === 1 || this.pageNumber === undefined ? 'New Array' : 'Merge');
+           console.warn(this.pageNumber);
+           this.productShorts = this.pageNumber === 1 || this.pageNumber === undefined ?
+           _products['results'] : this.productShorts.concat(_products['results']) ;
            this.objCount  = _products['count'];
            this.isReady = true;
          });
@@ -67,11 +66,13 @@ mergeParam(param: Map<any, any>) {
   this.paramRequest.next(param);
 }
 filterEvent(param) {
-  this.pageResetToggle = !this.pageResetToggle;
+  this.objCount = 1;
+  this.pageNumber = 1;
   this.mergeParam(param);
 }
 
 pageEvent(pageNumber) {
+  this.pageNumber = pageNumber;
   this.mergeParam(new Map().set('page', pageNumber ));
 
 }

@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
+
 
 @Component({
   selector: 'app-product-box',
   templateUrl: './product-box.component.html',
   styleUrls: ['./product-box.component.scss']
 })
-export class ProductBoxComponent implements OnInit  {
+export class ProductBoxComponent implements OnInit, OnChanges  {
+
   @Input() product: ProductShort;
   @Input() mode: string;
-  @ViewChild('img', {static: false}) img ;
   isLoading: boolean;
   constructor() { }
 
@@ -17,7 +18,15 @@ export class ProductBoxComponent implements OnInit  {
     this.isLoading = true;
   }
 
+  ngOnChanges(changes: SimpleChanges)  {
+    this.isLoading  = true;
+
+  }
+
+
   onImageLoad(evt) {
+    this.isLoading  = false;
+
   }
 
 

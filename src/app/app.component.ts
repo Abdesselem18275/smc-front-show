@@ -24,10 +24,7 @@ export class AppComponent implements OnInit {
 }
   prepareRoute(outlet: RouterOutlet) {
     const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-    console.warn(res || 'empty');
-
     return res || 'empty';
-
   }
 
 

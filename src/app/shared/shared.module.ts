@@ -12,12 +12,13 @@ import { AccountLoginComponent } from '../account/account-login/account-login.co
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ScrollPaginatorDirective } from './scroll-paginator.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent, 
                  PaginatorComponent, AccountLoginComponent, 
-                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent],
+                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent, ScrollPaginatorDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -35,6 +36,7 @@ import { LoadingComponent } from './loading/loading.component';
     AccountLoginComponent,
     ProductBoxComponent,
     CategoryBreadcrumbComponent,
+    ScrollPaginatorDirective,
     LoadingComponent,
     CommonModule,
 

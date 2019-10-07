@@ -1,5 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { ProductDataService } from '../service/product-data.service';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Category } from '../model';
 import { CategoryCacheService } from '../service/category-cache.service';
 
@@ -11,13 +10,10 @@ import { CategoryCacheService } from '../service/category-cache.service';
 })
 export class ProductHomeComponent implements OnInit {
   categories: Category[];
+
   constructor(private categoryCache: CategoryCacheService) { }
   ngOnInit() {
-    let map1 = new Map().set('abdesselem', '50');
-    let map2 = new Map().set('idani', '42');
-    let map3 = new Map().set('idani', '42');
 
-    let map4 = new Set([map1, map2, map3]);
 
     this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isLeaf);
   }

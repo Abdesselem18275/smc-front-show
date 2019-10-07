@@ -1,4 +1,3 @@
-    <app-loading class="center" *ngIf="!isReady"></app-loading>
 
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
@@ -25,15 +24,18 @@
     </div>
 
 
-          <section  class="content">
-            <div *ngIf="!isReady" class="overlay"> </div>
+          <section   class="content">
 
 
-            <div  [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
+            <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
 
                 <app-product-box [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
                 </app-product-box>
             </div>
-            <app-paginator [pageResetToggle]="pageResetToggle" [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator>
+            <!-- <app-paginator  [pageResetToggle]="pageResetToggle" [elementsCount]="objCount" (currentPageNumberEmitter)="pageEvent($event)"></app-paginator> -->
+
           </section>
+          <div  appScrollPaginator (pageNumber)="pageEvent($event)" [objectsNumber]="objCount" class='bottom-line'>
+
+            </div>

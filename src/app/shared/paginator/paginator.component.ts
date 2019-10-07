@@ -21,7 +21,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
   currentPageNumber: number;
   @Output() currentPageNumberEmitter =  new EventEmitter<number>();
   constructor() { }
-  ngOnInit() {
+  ngOnInit() { 
     this.elementsPerPage = 10;
     this.pagesNumber = Math.ceil(this.elementsCount / this.elementsPerPage);
     this.currentPageNumber = 1;
@@ -33,7 +33,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
     this.currentPageNumber = 1 ;
 }
   updateIndex(step: number) {
-    this.currentPageNumber = this.currentPageNumber + step;
+    this.currentPageNumber = this.checkInRange(step) ? this.currentPageNumber + step : this.currentPageNumber;
     this.currentPageNumberEmitter.emit(this.currentPageNumber);
   }
   checkInRange(step: number) {
