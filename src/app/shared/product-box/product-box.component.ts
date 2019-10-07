@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
+import { NavigationExtras, Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   @Input() product: ProductShort;
   @Input() mode: string;
   isLoading: boolean;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -27,6 +28,13 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   onImageLoad(evt) {
     this.isLoading  = false;
 
+  }
+
+  navigateTo(id: number) {
+    this.router.navigate([{
+      outlets: {
+        primary : ['product', id],
+        popup: null }}]);
   }
 
 

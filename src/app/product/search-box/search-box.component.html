@@ -3,7 +3,7 @@
         <p mdcHeadline6>
           
         </p>
-          <mdc-icon (click)="cancel()">close</mdc-icon>
+          <mdc-icon (click)="closePopup()">close</mdc-icon>
 
       </header>
 
@@ -12,11 +12,17 @@
         <header  mdcCaption>Search suggestion</header>
         <section class="results-content">
                 <app-loading class="center" *ngIf="!isReady"></app-loading>
-                <app-product-box [routerLink]="['/product/', product.pk]" 
-                                 mode="listWithBread" 
-                                 [product]="product" 
+                <app-product-box  mode="listWithBread" 
+                                  [product]="product" 
                                  *ngFor="let product of products">
                 </app-product-box>
         </section>
+        <div  appScrollPaginator 
+              (pageNumber)="pageEvent($event)" 
+              [objectsNumber]="objCount" 
+              onViewPort="false"
+              class='bottom-line'>
+        </div>
+
 </main>
 </section>

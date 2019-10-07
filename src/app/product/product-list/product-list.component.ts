@@ -80,10 +80,6 @@ filterToggle() {
   this.isFilterActive = !this.isFilterActive;
 }
 
-counter() {
-  return new Array(10);
-
-}
 toggleView(event) {
   this.isListActive = !event.value;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { ProductDataService } from '../service/product-data.service';
 import { ProductShort } from '../model';
 import { Router} from '@angular/router';
@@ -13,6 +13,7 @@ import { Router} from '@angular/router';
 export class SearchBoxComponent implements OnInit {
   searchBar = new FormControl('');
   products: ProductShort[];
+  objCount: number;
   isReady: boolean;
 
   constructor(private router: Router , private pds: ProductDataService) { }
@@ -21,25 +22,26 @@ export class SearchBoxComponent implements OnInit {
 
   this.searchBar.valueChanges.pipe(
       debounceTime(200),
-      distinctUntilChanged()).
+      distinctUntilChanged(),
+      filter(term => term !== '')).
       subscribe(term => {
         this.isReady = false;
         const myMap =  new Map<string, string>().set('search', term);
         this.pds.resetHttpParams();
         this.pds.get_elements({model: 'product', param_key: myMap}).subscribe(results => {
           this.products = results['results'];
+          this.objCount  = results['count'];
           this.isReady = true;
         });
       });
 }
 
-cancel() {
-  setTimeout(() => {
-    this.closePopup();
-     }, 150);
-}
 
 closePopup() {
   this.router.navigate([{ outlets: { popup: null }}]);
+}
+pageEvent(pageNumber) {
+  console.warn(pageNumber);
+
 }
 }

@@ -57,7 +57,6 @@ export class SideNavMenuComponent implements OnInit {
     this.router.navigate([{ outlets: { side: null }}]);
   }
   navigateTo(param_key: string, val: string) {
-    this.closeMenu();
     const navigationExtras: NavigationExtras = {
       queryParams: { [param_key]: val },
       queryParamsHandling: 'merge'

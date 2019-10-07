@@ -1,4 +1,7 @@
-import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input,
+         OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
+import { Observable, fromEvent, from, Subject } from 'rxjs';
+import { debounce, debounceTime, throttleTime } from 'rxjs/operators';
 
 @Directive({
   selector: '[appScrollPaginator]'
@@ -7,27 +10,31 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
 
 
   @Output() public pageNumber: EventEmitter<number> = new EventEmitter();
-  @Input()  objectsNumber;
-  private _intersectionObserver?: IntersectionObserver;
+  @Input()  objectsNumber: number;
+  @Input()  onViewPort = true;
   private _pageCounter: number;
   private _pageNumber: number;
   private _elementsPerPage = 10;
+  private _observerEvents = new Subject<any>();
 
 
-  constructor(private _element: ElementRef) { }
+  constructor(private _element: ElementRef , private _renderer: Renderer2) { }
 
   ngAfterViewInit() {
     this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
     this._pageCounter = 1;
+    const rootElement = this._renderer.parentNode(this._element.nativeElement);
+    console.warn(rootElement);
     const options = {
       root : null,
-      rootMargin: '40px',
-      threshold: 0.8 };
-
-    this._intersectionObserver = new IntersectionObserver(entries => this.entriesHandler(entries), 
-    options);
-
-    this._intersectionObserver.observe(<Element>(this._element.nativeElement));
+      rootMargin: '0px',
+      threshold: 0.9};
+      new IntersectionObserver(entries => this._observerEvents.next(entries), options).
+      observe(<Element>(this._element.nativeElement));
+      this._observerEvents.asObservable().pipe(throttleTime(1500)).
+      subscribe(entries => {
+        this.entriesHandler(entries);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -42,6 +49,7 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
       this._pageCounter = this._pageCounter + 1 ;
       this.pageNumber.emit(this._pageCounter);
     }
+    console.warn(entries);
     console.warn(this._pageCounter);
 
   }

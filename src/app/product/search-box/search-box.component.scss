@@ -41,6 +41,7 @@
         border-bottom: solid 0.5px $color-border-grey;
         overflow-y :scroll;
         height: 25rem;
+        min-height: 110%;
         @media only screen and (max-width:840px) {
             height: 100%;
 
