@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
                                               this.pds.resetHttpParams();
                                             }),
                                    map(params => {
-                                      let paramsMap = new Map();
+                                      const paramsMap = new Map();
                                       params.keys.forEach(key => {
                                       paramsMap.set(key, params.get(key)); });
                                       return paramsMap; }),

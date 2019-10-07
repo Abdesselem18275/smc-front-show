@@ -23,10 +23,11 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
   ngAfterViewInit() {
     this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
     this._pageCounter = 1;
-    const rootElement = this._renderer.parentNode(this._element.nativeElement);
+    const rootElement = this.onViewPort === true ? null : this._renderer.parentNode(this._element.nativeElement);
+    console.warn(this.onViewPort);
     console.warn(rootElement);
     const options = {
-      root : null,
+      root : rootElement,
       rootMargin: '0px',
       threshold: 1};
       new IntersectionObserver(entries => this._observerEvents.next(entries), options).

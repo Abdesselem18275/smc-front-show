@@ -1,28 +1,32 @@
 <section class="content" [mdcElevation]="3">
-<header class="side-window__header">
+<header [mdcElevation]="3" class="side-window__header">
         <p mdcHeadline6>
-          
+          Search bar
         </p>
           <mdc-icon (click)="closePopup()">close</mdc-icon>
 
       </header>
-
+<section class="container">
 <input   placeholder="search" type="search" class="search-text-field"    [formControl]="searchBar" >
 <main *ngIf="products" class="result-container">
         <header  mdcCaption>Search suggestion</header>
+        <p  mdcCaption>{{objCount}} products found</p>
         <section class="results-content">
-                <app-loading class="center" *ngIf="!isReady"></app-loading>
                 <app-product-box  mode="listWithBread" 
                                   [product]="product" 
                                  *ngFor="let product of products">
                 </app-product-box>
-        </section>
         <div  appScrollPaginator 
               (pageNumber)="pageEvent($event)" 
               [objectsNumber]="objCount" 
               onViewPort="false"
               class='bottom-line'>
+              <mdc-icon *ngIf="!isReady"svgIcon="loading_2"></mdc-icon>
+
         </div>
+        </section>
+
 
 </main>
+</section>
 </section>

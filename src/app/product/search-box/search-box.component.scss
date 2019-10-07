@@ -1,12 +1,18 @@
 @import "src/styles.scss";
 
+.side-window__header {
+    background-color : $mdc-theme-secondary;
+    padding : 1.2rem;
+
+}
+
 .content {
     position: absolute;
-    padding : 1.5rem;
-    top: 20%;
+
+    top: 0%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -20%) ;
+    transform: translate(-50%, 0%) ;
     background-color: white;
     min-height: 80%;
     width: 60%;
@@ -19,6 +25,12 @@
         margin-right: 0;
         transform: translate(0, 0) ;
       }
+}
+
+.container {
+    margin-top: 2rem;
+    padding :0 1.45rem;
+
 }
 
 
@@ -34,7 +46,11 @@
 
     header {
         font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    p {
         margin-bottom: 1rem;
+  
     }
     section {
         border-top: solid 0.5px $color-border-grey;
@@ -50,3 +66,9 @@
     }
 
 }
+
+.bottom-line {
+    margin : 1rem auto;
+    width: 4rem;
+    min-height: 1rem;
+  } 
