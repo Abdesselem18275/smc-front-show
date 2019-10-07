@@ -39,4 +39,5 @@
           (pageNumber)="pageEvent($event)" 
           [objectsNumber]="objCount" 
           class='bottom-line'>
-          </div>
+          <mdc-icon *ngIf="!isReady"svgIcon="loading_2"></mdc-icon>
+        </div>

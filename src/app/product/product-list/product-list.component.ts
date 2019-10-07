@@ -53,8 +53,6 @@ export class ProductListComponent implements OnInit {
       }),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
     .subscribe(_products => {
-           console.warn(this.pageNumber === 1 || this.pageNumber === undefined ? 'New Array' : 'Merge');
-           console.warn(this.pageNumber);
            this.productShorts = this.pageNumber === 1 || this.pageNumber === undefined ?
            _products['results'] : this.productShorts.concat(_products['results']) ;
            this.objCount  = _products['count'];

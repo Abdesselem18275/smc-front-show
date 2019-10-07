@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input,
          OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
-import { Observable, fromEvent, from, Subject } from 'rxjs';
-import { debounce, debounceTime, throttleTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 
 @Directive({
   selector: '[appScrollPaginator]'
@@ -28,7 +28,7 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
     const options = {
       root : null,
       rootMargin: '0px',
-      threshold: 0.9};
+      threshold: 1};
       new IntersectionObserver(entries => this._observerEvents.next(entries), options).
       observe(<Element>(this._element.nativeElement));
       this._observerEvents.asObservable().pipe(throttleTime(1500)).
