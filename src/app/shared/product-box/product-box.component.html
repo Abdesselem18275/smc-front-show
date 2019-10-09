@@ -6,9 +6,11 @@
        [src] ="product.thumbNail.content">
 <section class="content-text">
    <div>
-       <p *ngIf="mode=='listWithBread'" mdcCaption> 
-           <app-category-breadcrumb [currentProduct]="product.rootCategory" class="caption-style"></app-category-breadcrumb>
-       </p>
+           <app-category-breadcrumb mdcCaption 
+                                    *ngIf="mode=='listWithBread'" 
+                                    [currentProduct]="product.rootCategory" 
+                                    class="caption-style">
+            </app-category-breadcrumb>
        <p mdcSubtitle1>{{product.designation}}</p>
        <p mdcCaption>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
        </p>

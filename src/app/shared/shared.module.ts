@@ -13,12 +13,13 @@ import { ProductBoxComponent } from './product-box/product-box.component';
 import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
+import { TextHightlightDirective } from './text-hightlight.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent, 
                  PaginatorComponent, AccountLoginComponent, 
-                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent, ScrollPaginatorDirective],
+                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective],
   imports:  [
     CommonModule,
     RouterModule,

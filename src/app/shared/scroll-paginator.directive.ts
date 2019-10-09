@@ -24,8 +24,6 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
     this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
     this._pageCounter = 1;
     const rootElement = this.onViewPort === true ? null : this._renderer.parentNode(this._element.nativeElement);
-    console.warn(this.onViewPort);
-    console.warn(rootElement);
     const options = {
       root : rootElement,
       rootMargin: '0px',
@@ -39,7 +37,6 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.warn(changes);
     this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
     this._pageCounter = 1;
     this.pageNumber.emit(this._pageCounter);
@@ -50,8 +47,6 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
       this._pageCounter = this._pageCounter + 1 ;
       this.pageNumber.emit(this._pageCounter);
     }
-    console.warn(entries);
-    console.warn(this._pageCounter);
 
   }
 

@@ -13,6 +13,7 @@ import { Subject, merge } from 'rxjs';
 })
 export class SearchBoxComponent implements OnInit {
   searchBar = new FormControl('');
+  searchTerm: string;
   products: ProductShort[];
   objCount: number;
   isReady: boolean;
@@ -27,16 +28,16 @@ export class SearchBoxComponent implements OnInit {
   this.searchBar.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      filter((term: string) => term !== '' && term.length > 2),
-      tap(() => {
+      tap(term => {
         this.pds.resetHttpParams();
+        this.searchTerm = term;
+
       }),
+      filter((term: string) => term !== '' && term.length > 2),
       map(term => new Map<string, string>().set('search', term),
       ))).
       subscribe(param => {
-        console.warn(param);
         this.isReady = false;
-
         this.pds.get_elements({model: 'product', param_key: param}).subscribe(results => {
           this.products = this.pageNumber === 1 || this.pageNumber === undefined ?
           results['results'] : this.products.concat(results['results']) ;

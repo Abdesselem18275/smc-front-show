@@ -7,13 +7,14 @@
 
       </header>
 <section class="container">
-<input   placeholder="search" type="search" class="search-text-field"    [formControl]="searchBar" >
+<input   placeholder="type something" type="search" class="search-text-field"    [formControl]="searchBar" >
 <main *ngIf="products" class="result-container">
         <header  mdcCaption>Search suggestion</header>
         <p  mdcCaption>{{objCount}} products found</p>
         <section class="results-content">
                 <app-product-box  mode="listWithBread" 
                                   [product]="product" 
+                                  [appTextHightlight]="searchTerm"
                                  *ngFor="let product of products">
                 </app-product-box>
         <div  appScrollPaginator 
