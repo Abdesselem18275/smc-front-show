@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../../service/account-form.service';
 import { AuthService } from '../../service/auth.service';
-import { tap } from 'rxjs/operators';
 import { MdcSnackbar } from '@angular-mdc/web';
-import { UserAccount } from '../../model';
 
 interface CustomClasses {
   classes?: string | string[];

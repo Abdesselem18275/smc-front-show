@@ -1,11 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { API_URL } from 'src/app/product/service/product-data.service';
-import { HttpHeaders, HttpClient, HttpXsrfTokenExtractor } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserAccount, Profile } from '../model';
-import { CookieService } from 'ngx-cookie-service';
 import countryNames from '../../../assets/data/world-countries.json';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,9 +21,10 @@ export class AuthService {
   _token: string;
   _countries: any[];
   redirectUrl: string;
+  account$ = new Subject<UserAccount>();
 
 
-  constructor(private cookieService: CookieService,
+  constructor(private appStorage: LocalStorageHandlerService,
               private http: HttpClient,
               @Inject(API_URL) private apiUrl: string) { }
 
@@ -44,7 +45,7 @@ login(credentials: any): Observable<any> {
       '/token-auth/'
        ].join('');
   return this.http.post(query, credentials, httpOptions).pipe( tap(jsonArray => {
-    this.loadCookie(jsonArray);
+    this.appStorage.loadLocalStorage(jsonArray);
   }));
 }
 
@@ -57,35 +58,21 @@ updateAccount(jsonData): Observable<any> {
     '/'
    ].join('');
 return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
-  this.loadCookie(jsonArray);
+  this.appStorage.loadLocalStorage(jsonArray);
   this.refreshAccount();
 })) ;
 }
 
-
-
-
-loadCookie(data) {
-  if (data['token']) {
-    this.cookieService.set('token', data['token']);
-  }
-  const account_data = data['account'] ? data['account'] : data;
-  Object.keys(account_data).forEach(key => {
-    this.cookieService.set(key, account_data[key]);
-  });
-  Object.keys(account_data['profile']).forEach( key => {
-    this.cookieService.set(key, account_data['profile'][key]);
-  });
-}
-
 refreshAccount() {
-  this._account = new UserAccount(this.cookieService.getAll());
+  this._account = new UserAccount(this.appStorage.getAll());
   const profile = new Profile({
-    first_name : this.cookieService.get('first_name'),
-    last_name : this.cookieService.get('last_name'),
-    email : this.cookieService.get('email')
+    first_name : this.appStorage.get('first_name'),
+    last_name : this.appStorage.get('last_name'),
+    email : this.appStorage.get('email')
   });
+  this._account.favorites = this.appStorage.get('favorites').split(',').map( x => Number(x));
   this._account.profile = profile;
+  this.account$.next(this._account);
 }
 
 
@@ -100,9 +87,9 @@ get account() {
 get token() {
   if (!this._token) {
 
-    this._token = this.cookieService.get('token');
+    this._token = this.appStorage.get('token');
   }
-  return this.cookieService.get('token');
+  return this.appStorage.get('token');
 
 }
 
@@ -142,11 +129,11 @@ get countries() {
 
 
 logout(): void {
-  this.cookieService.deleteAll();
+  this.appStorage.deleteAll();
 }
 
 isLogged(): boolean {
-  return this.cookieService.check('token');
+  return this.appStorage.check('token');
 }
 
 

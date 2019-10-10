@@ -9,10 +9,10 @@
 .content {
     position: absolute;
 
-    top: 8%;
+    top: 0%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, 8%) ;
+    transform: translate(-50%, 0%) ;
     background-color: white;
     min-height: 80%;
     width: 60%;
@@ -35,11 +35,12 @@
 
 
 .search-text-field {
-    width: 100%;
-    font-size: 2rem;  
-    margin-bottom: 1rem;
+    flex : 1 1 auto;
     border : none;
-    border-bottom: solid 1px $color-border-grey;
+    font-size: 1.25rem;
+    padding: 0.25rem 1rem;
+    margin-right: 2rem;
+    border-radius: 10px;
 }
 
 .result-container {
@@ -58,10 +59,6 @@
         overflow-y :scroll;
         height: 25rem;
         min-height: 110%;
-        @media only screen and (max-width:840px) {
-            height: 100%;
-
-          }
 
     }
 

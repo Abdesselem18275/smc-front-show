@@ -38,7 +38,7 @@
       <p mdcHeadline6>{{product?.designation  | uppercase}}</p>
       <p  class="text--grey" mdcBody2> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
-    <button mdc-icon-button icon="favorite"></button>
+    <button mdc-icon-button appFavoriteHandler icon="favorite"></button>
     <button mdc-icon-button icon="message"></button>
 
   </header>

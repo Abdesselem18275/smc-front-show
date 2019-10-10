@@ -1,13 +1,14 @@
 <section class="content" [mdcElevation]="3">
 <header [mdcElevation]="3" class="side-window__header">
+
+        
+        <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
         <p mdcHeadline6>
-          Search bar
-        </p>
+              </p>
           <mdc-icon (click)="closePopup()">close</mdc-icon>
 
       </header>
 <section class="container">
-<input   placeholder="type something" type="search" class="search-text-field"    [formControl]="searchBar" >
 <main *ngIf="products" class="result-container">
         <header  mdcCaption>Search suggestion</header>
         <p  mdcCaption>{{objCount}} products found</p>
