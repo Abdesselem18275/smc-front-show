@@ -51,6 +51,7 @@
                  
                     <button class="inverted-theme form__submit-button" 
                             type="submit"  
+                            [disabled]="!loginForm.valid"
                             mdc-button
                             outlined 
                             primary>LOGIN
@@ -128,3 +129,5 @@
 </section>
 </main>
 </div>
+
+<app-loading class="center" *ngIf="isChecking"></app-loading>

@@ -11,7 +11,8 @@ export class FavoriteHandlerService {
              private _authService: AuthService) { }
 
   checkIsFavorites(id: number): boolean {
-    return this._authService.account.favorites.includes(id);
+
+    return this._authService.isLogged() ? this._authService.account.favorites.includes(id) : false;
   }
 
   addRemoveFavorites(id: number) {

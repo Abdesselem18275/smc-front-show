@@ -4,6 +4,7 @@ import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { trigger } from '@angular/animations';
 
 interface CustomClasses {
   classes: string | string[];
@@ -26,6 +27,7 @@ export class AccountLoginComponent implements OnInit {
   createForm: FormGroup;
   loginForm: FormGroup;
   countryNames: any;
+  isChecking: boolean;
 
 
 
@@ -34,6 +36,8 @@ export class AccountLoginComponent implements OnInit {
    }
 
    ngOnInit() {
+    this.authService.logout();
+    this.isChecking = false;
     this.createForm = this.accountFormService.createAccountForm();
     this.loginForm = this.accountFormService.createAuthForm();
     this.countryNames = this.authService.countries;
@@ -41,6 +45,7 @@ export class AccountLoginComponent implements OnInit {
 
 
   onSubmit() {
+    this.isChecking = true;
     const credentials = this.loginForm.value;
     this.auth_non_field_error = '';
     if (this.loginForm.valid) {
@@ -52,6 +57,7 @@ export class AccountLoginComponent implements OnInit {
         }
       },
       error => {
+        this.isChecking = false;
         console.warn(error);
         this.auth_non_field_error  = error.error['non_field_errors'] || '';
       });

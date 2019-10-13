@@ -64,15 +64,19 @@ return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
 }
 
 refreshAccount() {
-  this._account = new UserAccount(this.appStorage.getAll());
-  const profile = new Profile({
-    first_name : this.appStorage.get('first_name'),
-    last_name : this.appStorage.get('last_name'),
-    email : this.appStorage.get('email')
-  });
-  this._account.favorites = this.appStorage.get('favorites').split(',').map( x => Number(x));
-  this._account.profile = profile;
-  this.account$.next(this._account);
+  if (this.isLogged()) {
+    console.warn(this.isLogged());
+    this._account = new UserAccount(this.appStorage.getAll());
+    const profile = new Profile({
+      first_name : this.appStorage.get('first_name'),
+      last_name : this.appStorage.get('last_name'),
+      email : this.appStorage.get('email')
+    });
+    this._account.favorites = this.appStorage.get('favorites').split(',').map( x => Number(x));
+    this._account.profile = profile;
+    this.account$.next(this._account);
+  }
+
 }
 
 

@@ -27,11 +27,11 @@ export class FavoriteHandlerDirective implements AfterViewInit {
 
   @HostListener('click')
   onClick() {
-    if (this._authService.isLogged) {
+    if (this._authService.isLogged()) {
       this._favHandlerService.addRemoveFavorites(this.appFavoriteHandler);
     } else {
       this._modalHandler.openModal('You have to login to perform this action', 'Login').
-      afterDismiss().pipe(filter(x => x === 'Login')).subscribe(() => {
+      afterDismiss().pipe(filter(x => x === 'action')).subscribe(() => {
         this.router.navigate([{ outlets: { popup: ['login']  }}]);
       });
 
