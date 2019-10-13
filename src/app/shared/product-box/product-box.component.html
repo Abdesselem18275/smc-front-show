@@ -42,10 +42,10 @@
         (click)="navigateTo(product.pk)"
         [src] ="product.thumbNail.content">
         <section class="action-container"> 
-            <button appFavoriteHandler 
-                    [productId]="product.pk"
-                    class="favorites" mdc-button>
-                    <mdc-icon  >favorite</mdc-icon>
+            <button  [appFavoriteHandler]="product.pk"
+                    class="favorites" 
+                    mdc-button>
+                    <mdc-icon >favorite</mdc-icon>
                     Like
             </button>
             <button mdc-button>

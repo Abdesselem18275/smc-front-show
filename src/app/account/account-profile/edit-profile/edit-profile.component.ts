@@ -2,13 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../../service/account-form.service';
 import { AuthService } from '../../service/auth.service';
-import { MdcSnackbar } from '@angular-mdc/web';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
-interface CustomClasses {
-  classes?: string | string[];
-  actionClasses?: string | string[];
-  dismissClasses?: string | string[];
-}
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -19,7 +15,9 @@ export class EditProfileComponent implements OnInit {
   accountForm: FormGroup;
   countryNames: any[];
   display: boolean;
-  constructor(private snackbar: MdcSnackbar , private accountFormService: AccountFormService , private authService: AuthService) { }
+  constructor(private _modalHandler: ModalHandlerService,
+              private accountFormService: AccountFormService ,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.display = false;
@@ -31,7 +29,7 @@ export class EditProfileComponent implements OnInit {
     const formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
     this.authService.updateAccount(formData).subscribe(accountData => {
       this.accountForm = this.accountFormService.createLoadFullAccountForm();
-      this.openCustom({classes: 'custom-snackbar--shape-radius'});
+      this._modalHandler.openModal('Succefully modified');
 
 
     },
@@ -42,10 +40,10 @@ export class EditProfileComponent implements OnInit {
 
   }
 
-  openCustom(customClasses: CustomClasses) {
-    this.snackbar.open(`Changes successfully saved`, '', {
-      dismiss: true,
-      classes: customClasses.classes
-    });
-  }
+  // openCustom(customClasses: CustomClasses) {
+  //   this.snackbar.open(`Changes successfully saved`, '', {
+  //     dismiss: true,
+  //     classes: customClasses.classes
+  //   });
+  // }
 }

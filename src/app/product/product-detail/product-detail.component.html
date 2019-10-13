@@ -32,13 +32,21 @@
 
 <section class="description">
   <header class="title-section">
-    <mdc-icon *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mdc-icon>
+    <mdc-icon id="collection" *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mdc-icon>
     <div>
       <p mdcHeadline6>{{product?.designation  | uppercase}}</p>
       <p  class="text--grey" mdcBody2> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
-    <button mdc-icon-button appFavoriteHandler icon="favorite"></button>
-    <button mdc-icon-button icon="message"></button>
+    <button 
+      [appFavoriteHandler]="product.pk" 
+      mdcIconButton>
+    <mdc-icon >favorite</mdc-icon>
+
+    </button>
+    <button  mdcIconButton>
+     <mdc-icon>message</mdc-icon>
+
+</button>
 
   </header>
   <section>

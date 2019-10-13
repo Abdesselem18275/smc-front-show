@@ -19,9 +19,11 @@ import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
-                 SideNavMenuComponent, SearchBoxComponent, 
-                 PaginatorComponent, AccountLoginComponent, 
-                 ProductBoxComponent, CategoryBreadcrumbComponent, LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective, FavoriteHandlerDirective, RouterOutletToggleDirective],
+                 SideNavMenuComponent, SearchBoxComponent,
+                 PaginatorComponent, AccountLoginComponent,
+                 ProductBoxComponent, CategoryBreadcrumbComponent,
+                 LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
+                 FavoriteHandlerDirective, RouterOutletToggleDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -40,6 +42,7 @@ import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
     ProductBoxComponent,
     CategoryBreadcrumbComponent,
     ScrollPaginatorDirective,
+    FavoriteHandlerDirective,
     LoadingComponent,
     CommonModule,
 
