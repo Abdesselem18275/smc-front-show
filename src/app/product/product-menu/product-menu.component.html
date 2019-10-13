@@ -1,4 +1,4 @@
-<header *ngIf="isActive" [style.transform]="isScrollingUp ? 'translateY(0)' : 'translateY(-4.75rem)'"  [mdcElevation]="2" mdc-typography>
+<header *ngIf="isActive"   [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
       <mdc-icon [routerLink]="[{ outlets: { side: ['menu'] } }]" class="nav-bar__menu-icon">menu</mdc-icon>
 

@@ -13,10 +13,12 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   @Input() product: ProductShort;
   @Input() mode: string;
   isLoading: boolean;
+  isFetching: boolean;
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.isLoading = true;
+    this.isFetching = false;
   }
 
   ngOnChanges(changes: SimpleChanges)  {
@@ -31,6 +33,7 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   }
 
   navigateTo(id: number) {
+    this.isFetching = true;
     this.router.navigate([{
       outlets: {
         primary : ['product', id],

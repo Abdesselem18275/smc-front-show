@@ -8,6 +8,9 @@
           <mdc-icon (click)="closePopup()">close</mdc-icon>
 
       </header>
+<mdc-linear-progress secondary="true" [open]="!isReady">
+
+</mdc-linear-progress>
 <section class="container">
 <main *ngIf="products" class="result-container">
         <header  mdcCaption>Search suggestion</header>

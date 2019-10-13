@@ -1,4 +1,4 @@
-
+<header class="main-header--sticky">
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
@@ -11,7 +11,12 @@
                 <mdc-icon mdcIconOn>view_module</mdc-icon>
                 <mdc-icon>view_list</mdc-icon>
             </button>
+
       </div>
+      <mdc-linear-progress secondary="true" [open]="!isReady">
+
+      </mdc-linear-progress>
+    </header>
       <div  [mdcElevation]="3" [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="filter-container">
         <header class="side-window__header">
           <p mdcHeadline6>

@@ -15,7 +15,6 @@
   <section class="main-image">
       <app-loading class="inbox-center" *ngIf="!isImageReady"></app-loading>
 
-   
     <div>
       <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
     </div>
