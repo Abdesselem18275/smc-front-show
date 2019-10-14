@@ -9,6 +9,20 @@ export class AccountFormService {
 
   constructor(private fb: FormBuilder , private authService: AuthService) { }
 
+  createShortAccountForm(): FormGroup {
+    const  form = this.fb.group({
+      profile : this.fb.group({
+        email : ['', [
+          Validators.email, Validators.required]
+        ],
+        password : ['', Validators.required],
+        confirmPassword : ['', Validators.required]
+      }),
+    } , { validators: this.passwordConfirmedValidator });
+    return form;
+
+  }
+
   createAccountForm(): FormGroup {
     const  form = this.fb.group({
       profile : this.fb.group({

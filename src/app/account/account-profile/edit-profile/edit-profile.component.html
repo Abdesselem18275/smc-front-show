@@ -3,8 +3,7 @@
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
-        <p class="form-group__header" mdcBody2>
-            <mdc-icon svgIcon="rectangle"></mdc-icon>
+        <p class="form-group__header smc-header" mdcBody2>
             PERSONAL INFORMATION</p>
         <div  formGroupName="profile" class="form__field">
         <label mdcBody2 for="first_name">
@@ -46,7 +45,6 @@
 
       <div class="form-group">
           <p class="form-group__header" mdcSubtitle2>
-              <mdc-icon svgIcon="rectangle"></mdc-icon>
             COMPANY INFORMATIONS</p>
 
 
@@ -99,10 +97,13 @@
                                 Insert your field of activity , eg: Tourism , Restoration
                                 </p>
                     </div>
+
+                    <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
+
         </div>
 
 
-        <div formGroupName="profile" class="form-group">
+        <!-- <div formGroupName="profile" class="form-group">
             <p class="form-group__header" mdcSubtitle2>
                 <mdc-icon svgIcon="rectangle"></mdc-icon>
                 PASSWORD CHANGE</p>
@@ -133,8 +134,8 @@
         </p>
         </div>
       </div>
-      <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
 
-      </div>
+      </div> -->
+
   </form>
 

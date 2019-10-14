@@ -38,7 +38,7 @@ export class AccountLoginComponent implements OnInit {
    ngOnInit() {
     this.authService.logout();
     this.isChecking = false;
-    this.createForm = this.accountFormService.createAccountForm();
+    this.createForm = this.accountFormService.createShortAccountForm();
     this.loginForm = this.accountFormService.createAuthForm();
     this.countryNames = this.authService.countries;
   }
@@ -67,9 +67,15 @@ export class AccountLoginComponent implements OnInit {
   }
 
   createProfile() {
+    this.isChecking = true;
+    console.warn(JSON.stringify(this.createForm.value));
+
     this.authService.createAccount(JSON.stringify(this.createForm.value)).subscribe(x => {
+      console.warn(x);
     },
     error => {
+      console.warn(error);
+
       if (error instanceof HttpErrorResponse) {
         this.creation_non_field_error  = error.error['non_field_errors'] || '';
         this.fieldError = error.error || '';

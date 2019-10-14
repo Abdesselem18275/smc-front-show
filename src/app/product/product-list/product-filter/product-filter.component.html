@@ -7,7 +7,7 @@
             <div class="form__group-content" [formGroupName]="filterCategory.key" >
                 <mdc-form-field class="form-field" *ngFor="let choice of filterCategory.choices" >
                     <mdc-checkbox [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked ></mdc-checkbox>
-                        <label mdcBody1 class="from-field__label">{{choice.value | lowercase}}</label>
+                        <label mdcBody1 class="from-field__label">{{choice.value | titlecase}}</label>
                 </mdc-form-field>
             </div>
     </div></form>

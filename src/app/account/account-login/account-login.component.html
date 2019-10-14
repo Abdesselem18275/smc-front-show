@@ -67,7 +67,7 @@
                 <p mdcBody2>Create and account and join us </p>
         </header>
         <main>
-                <form [formGroup]="createForm"   (ngSubmit)="onSubmit()">
+                <form [formGroup]="createForm"   (ngSubmit)="createProfile()">
                         <div formGroupName="profile" class="form__field">
                                 <label mdcBody2 for="email">
                                     email
@@ -75,12 +75,12 @@
                                 <input  required
                                         autocomplete="username email"   
                                         type="email" 
-                                        id="email"
+                                        id="new-email"
                                         formControlName="email">
                                     <div *ngIf="createForm.get('profile.email').invalid && (createForm.dirty || createForm.touched)" class="alert">
                                     
                                       <p mdcCaption *ngIf="createForm.get('profile.email').errors.required">
-                                        email is required.
+                                        Email is required.
                                       </p>
                                       <p mdcCaption *ngIf="createForm.get('profile.email').errors.email">
                                         Enter a valid email 
@@ -94,7 +94,7 @@
                         <input  
                                          autocomplete="new-password"  
                                          required  
-                                         id ="password"
+                                         id ="new-password"
                                          type ="password" formControlName="password">
                         </div>
                         <div  formGroupName="profile" class="form__field">
@@ -104,7 +104,7 @@
                         <input  
                                          autocomplete="new-password"  
                                          required  
-                                         id ="confirmPassword"
+                                         id ="new-confirmPassword"
                                          type ="password" 
                                          formControlName="confirmPassword">
                         <div  class="alert" *ngIf="createForm.errors?.passwordNotConfirmed && (createForm.get('profile.password').touched || createForm.get('profile.confirmPassword').dirty)">
@@ -113,16 +113,17 @@
                         </p>
                         </div>
                         </div>
-                     
+                <button class="inverted-theme form__submit-button" 
+                        type="submit"  
+                        [disabled]="!createForm.valid"
+                        mdc-button 
+                        outlined
+                        primary>REGISTER
+                </button>
                     
                     </form>    
                                      
-                    <button class="inverted-theme form__submit-button" 
-                            type="submit"  
-                            mdc-button 
-                            outlined
-                            primary>REGISTER
-                    </button>
+
     </main>
 
 
