@@ -1,4 +1,6 @@
+      <mdc-linear-progress secondary="true" [open]="isUpdating">
 
+      </mdc-linear-progress>
 
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
 
@@ -28,7 +30,7 @@
             Country
         </label>
         <select id="country" formControlName="country">
-            <option *ngFor="let item of countryNames" value="item.val">{{item.val}}</option>
+            <option *ngFor="let item of countryNames" [value]="item.val">{{item.val}}</option>
         </select>
     </div>
     <div class="form__field">
@@ -43,34 +45,30 @@
   </div>
 
 
-      <div class="form-group">
-          <p class="form-group__header" mdcSubtitle2>
-            COMPANY INFORMATIONS</p>
 
 
-      
-            <mdc-radio-group class="radio-group--gutter" formControlName="is_professional">
-                    <mdc-form-field>
-                      <mdc-radio  value="true"></mdc-radio>
-                      <label>Professional</label>
-                    </mdc-form-field>
-                    <mdc-form-field >
-                            <mdc-radio  value="false"></mdc-radio>
-                            <label>Private</label>
-                    </mdc-form-field>
-            </mdc-radio-group>
+    <div   class="form-group">
+        <p class="form-group__header smc-header" mdcSubtitle2>
+        COMPANY INFORMATIONS
+    </p>
 
-      <div
-          class="form__field">
+
+    <mdc-form-field class="switch--space-between"  
+                    alignEnd>
+        <mdc-switch   formControlName="is_professional" 
+                      (change)="onchanges($event)">
+        </mdc-switch>
+        <label mdcBody2>Are you professional ?</label>
+    </mdc-form-field>
+
+      <div class="form__field">
           <label mdcBody2 for="company_name">
                 Company
             </label>
           <input  
             formControlName="company_name" 
             autocomplete="organization" 
-            type ="text"   
-            >
-
+            type ="text">
         </div>
       <div class="form__field">
             <label mdcBody2 for="position">
@@ -101,41 +99,6 @@
                     <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
 
         </div>
-
-
-        <!-- <div formGroupName="profile" class="form-group">
-            <p class="form-group__header" mdcSubtitle2>
-                <mdc-icon svgIcon="rectangle"></mdc-icon>
-                PASSWORD CHANGE</p>
-    
-            <div  class="form__field">
-                <label mdcBody2 for="password">
-                        password
-                    </label>
-        <input  
-                         autocomplete="new-password"  
-                         required  
-                         id ="password"
-                         type ="password" formControlName="password">
-        </div>
-        <div   class="form__field">
-                <label mdcBody2 for="confirmPassword">
-                        confirm password
-                </label>
-        <input  
-                         autocomplete="new-password"  
-                         required  
-                         id ="confirmPassword"
-                         type ="password" 
-                         formControlName="confirmPassword">
-        <div  class="alert" *ngIf="accountForm.errors?.passwordNotConfirmed && (accountForm.get('profile.password').touched || accountForm.get('profile.confirmPassword').dirty)">
-        <p mdcCaption >
-                Passwords are not equals.
-        </p>
-        </div>
-      </div>
-
-      </div> -->
 
   </form>
 

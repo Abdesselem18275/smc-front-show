@@ -36,7 +36,6 @@ export class AccountLoginComponent implements OnInit {
    }
 
    ngOnInit() {
-    this.authService.logout();
     this.isChecking = false;
     this.createForm = this.accountFormService.createShortAccountForm();
     this.loginForm = this.accountFormService.createAuthForm();

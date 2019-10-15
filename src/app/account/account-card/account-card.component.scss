@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+
+
+#logo {
+    width : 6rem;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.text--grey {
+    color:$color-text-grey;
+}
+.text--blue {
+    color:blue;
+}

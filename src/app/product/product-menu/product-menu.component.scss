@@ -104,10 +104,6 @@ p {
       .menu__sub-menu__tab {
         display: flex;
         align-items: flex-end;
-        mdc-icon {
-          width: 0.5rem;
-          margin-right: 0.25rem;
-        }
      }
       .menu__sub-menu__tab--small{
         margin-bottom: 0.75rem;
@@ -119,31 +115,13 @@ p {
 
 .account-card {
   position: absolute;
-  top: 2rem;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%);
+  top: 5rem;
+  right: 2rem;
   color: black;
   z-index: 1000;
   padding: 1rem;
   background-color: white;
-  border: solid 0.5px $color-border-grey;
-  display: flex;
-  flex-direction: column;
-    mdc-icon {
-      font-size: 1rem;
-      align-self: flex-end;
-      font-size: 1.5rem;
-    }
-  app-account-login {
-    margin : 1.5rem 5rem;
-    @media only screen and (max-width:600px) {
-      margin : 1.5rem 2rem;
-
-    }
-  }
-
-
+  border-radius: 5px;
 }
 
 .search-container {

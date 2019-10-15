@@ -49,7 +49,7 @@ export class AccountFormService {
   }
 
   createLoadFullAccountForm() {
-    let myForm  = this.createAccountForm();
+    const myForm  = this.createAccountForm();
     const account = this.authService.account;
     myForm.addControl('company_name', new FormControl(account.company_name));
     myForm.addControl('position', new FormControl(account.position));

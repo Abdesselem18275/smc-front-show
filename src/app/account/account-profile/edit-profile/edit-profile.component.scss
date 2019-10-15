@@ -33,11 +33,10 @@ form {
     background-color: $color-light-grey;
 }
 
-.form__field {
+.form__field ,.switch--space-between {
     margin-bottom: 1rem;
 }
 .form-group {
-    margin: 1.5rem;
     width: 22rem;
     @media only screen and (max-width:960px) {
         width: 75%;
@@ -60,4 +59,10 @@ mdc-radio-group {
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
+.switch--space-between {
+    label {
+        padding-left: 0px;
+        margin-right: 2rem;
+    }
 
+}

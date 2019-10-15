@@ -14,36 +14,47 @@ import { ModalHandlerService } from 'src/app/shared/service/modal-handler.servic
 export class EditProfileComponent implements OnInit {
   accountForm: FormGroup;
   countryNames: any[];
-  display: boolean;
+  isUpdating: boolean;
   constructor(private _modalHandler: ModalHandlerService,
               private accountFormService: AccountFormService ,
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.display = false;
+    this.isUpdating = false;
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
     this.countryNames = this.authService.countries;
   }
 
+
+  onchanges(val) {
+    this.accountForm.get('is_professional').setValue(val.checked);
+    if (!val.checked) {
+      this.accountForm.get('company_name').disable();
+      this.accountForm.get('position').disable();
+      this.accountForm.get('activity').disable();
+    } else {
+      this.accountForm.get('company_name').enable();
+      this.accountForm.get('position').enable();
+      this.accountForm.get('activity').enable();
+    }
+  }
+
   onSubmit() {
+    this.isUpdating = true;
     const formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
+    console.warn(formData);
     this.authService.updateAccount(formData).subscribe(accountData => {
       this.accountForm = this.accountFormService.createLoadFullAccountForm();
+      this.isUpdating = false;
       this._modalHandler.openModal('Succefully modified');
 
 
     },
     error => {
-           console.warn('Error');
+           this.isUpdating = false;
            console.warn(error);
     });
 
   }
 
-  // openCustom(customClasses: CustomClasses) {
-  //   this.snackbar.open(`Changes successfully saved`, '', {
-  //     dismiss: true,
-  //     classes: customClasses.classes
-  //   });
-  // }
 }

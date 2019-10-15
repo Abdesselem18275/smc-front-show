@@ -12,6 +12,7 @@ import { MdcListModule } from '@angular-mdc/web';
 import { MdcRadioModule } from '@angular-mdc/web';
 import { MdcSnackbarModule } from '@angular-mdc/web';
 import { MdcLinearProgressModule } from '@angular-mdc/web';
+import { MdcSwitchModule } from '@angular-mdc/web';
 
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,11 +20,11 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [MdcButtonModule, MdcIconModule, MdcIconButtonModule, MdcTypographyModule,
             MdcTextFieldModule, MdcElevationModule, MdcFormFieldModule, MdcCheckboxModule, MdcTabBarModule, BrowserAnimationsModule,
-            MdcListModule, MdcRadioModule, MdcSnackbarModule, MdcLinearProgressModule],
+            MdcListModule, MdcRadioModule, MdcSnackbarModule, MdcLinearProgressModule, MdcSwitchModule],
 
   exports: [MdcButtonModule, MdcIconModule, MdcIconButtonModule,
             MdcTextFieldModule, MdcTypographyModule, MdcElevationModule, MdcFormFieldModule,
             MdcCheckboxModule, MdcTabBarModule, BrowserAnimationsModule , MdcListModule, MdcRadioModule,
-             MdcSnackbarModule, MdcLinearProgressModule],
+             MdcSnackbarModule, MdcLinearProgressModule, MdcSwitchModule],
 })
 export class MaterialModule {}

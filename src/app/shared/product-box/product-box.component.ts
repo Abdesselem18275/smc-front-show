@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({

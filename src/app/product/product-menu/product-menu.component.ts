@@ -5,27 +5,35 @@ import { CategoryCacheService } from '../service/category-cache.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from 'src/app/account/service/auth.service';
 
 @Component({
   selector: 'app-product-menu',
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
   animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        transform : 'translateX(0)',
-      })),
-      state('closed', style({
-      })),
-      transition('open => closed', [
-        animate('0.1s')
-      ]),
-      transition('closed => open', [
-        animate('0.15s')
-      ]),
-    ]),
-  ],
+    trigger(
+      'inOutAnimation',
+      [
+        transition(
+          ':enter',
+          [
+            style({ 'max-height': 0, opacity: 0 }),
+            animate('300ms ease-out',
+                    style({ 'max-height': 200 , opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ 'max-height': 200, opacity: 1 }),
+            animate('300ms ease-in',
+                    style({ 'max-height': 0  , opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class ProductMenuComponent implements OnInit {
 
@@ -37,14 +45,18 @@ export class ProductMenuComponent implements OnInit {
   isReady: boolean;
   isScrollingUp: boolean;
   isActive: boolean;
-  @Output() isSideMenuActiveEvent : EventEmitter<boolean> = new EventEmitter();
+  isCardActive: boolean;
+  @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
 
 
-  constructor( private router: Router, private categoriesCache: CategoryCacheService) {
+  constructor( private router: Router,
+               private categoriesCache: CategoryCacheService,
+               private authService: AuthService) {
 
 
   }
   ngOnInit() {
+    this.isCardActive = false;
     this.isActive = true;
     this.isScrollingUp = true;
     this.isMenuActive = false;
@@ -64,11 +76,6 @@ export class ProductMenuComponent implements OnInit {
           }
           ];
     this.rootCategories = treeMenu;
-    let prevPosition = window.pageYOffset;
-    // const pageByScroll$ = fromEvent(window, 'scroll').pipe(debounceTime(50)).subscribe((x) => {
-    //       this.isScrollingUp = prevPosition >= window.scrollY;
-    //       prevPosition = window.scrollY;
-    //   });
     this.router.events.pipe(filter(x =>
       x instanceof NavigationEnd
       )).subscribe(event => {
@@ -87,9 +94,19 @@ export class ProductMenuComponent implements OnInit {
     this.isRootActive = !this.isRootActive;
   }
 
-
   closePopups() {
     this.router.navigate([{ outlets: { popup: null }}]);
   }
+  cardToggle() {
+    if (!this.authService.isLogged()) {
+      this.router.navigate([{ outlets: {popup: ['login'] }}]);
+    } else {
 
+      this.isCardActive = !this.isCardActive;
+
+    }
+    // if (!this.isCardActive) {
+    //   this.closePopups();
+    // }
+  }
 }
