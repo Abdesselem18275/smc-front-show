@@ -1,19 +1,30 @@
 @import "src/styles.scss";
 
-
-#logo {
-    width : 6rem;
-}
-
-:host {
+:host,.content__action {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+#logo {
+    width :5rem;
+    background-color: $mdc-theme-secondary;
+    border: 3px solid black;
+    border-radius: 100px;
+    padding: 0.5rem;
 }
 .text--grey {
     color:$color-text-grey;
 }
-.text--blue {
-    color:blue;
-}
+
+.content {
+        align-items: flex-start;
+        margin-left: 1rem;
+        justify-content: space-between;
+    }
+    .content__action {
+        margin-left: -1rem;
+        button {
+            @include mdc-button-filled-accessible(white);
+        }
+    }

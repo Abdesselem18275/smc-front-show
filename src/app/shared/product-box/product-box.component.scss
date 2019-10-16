@@ -1,11 +1,17 @@
 @import "src/styles.scss";
 
-
+img {
+    max-width: 100%;
+}
+.loading-placeholder {
+    width: 100%;
+    background-color: grey;
+}
 .content--list {
     display: flex;
     padding: 1rem 1rem 1rem 0 ;
     border-bottom: solid 0.5px $color-deep-grey;
-    img {
+    .content__thumbnail {
         width: 25%;
         max-width: 6rem;
         margin-right: 1.5rem;
@@ -27,9 +33,6 @@
 .content--grid {
     display: flex;
     flex-direction: column;
-    img {
-        width: 100%;    
-    }
     .content-information {
         margin: 1rem;
         display: flex;
@@ -52,8 +55,5 @@
             margin-right: 0.5rem;
             @include mdc-button-ink-color($color-text-grey);
         }
-
     }
-
-
 }

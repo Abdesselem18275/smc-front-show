@@ -1,3 +1,5 @@
-<p>
-  favorites-profile works!
-</p>
+
+<app-product-box  mode="listWithBread" 
+[product]="favorite" 
+*ngFor='let favorite of favorites$ | async'>
+</app-product-box

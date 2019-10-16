@@ -4,6 +4,8 @@ import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
+import { AuthService } from 'src/app/account/service/auth.service';
+import { UserAccount } from 'src/app/account/model';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -38,9 +40,14 @@ export class SideNavMenuComponent implements OnInit {
   isCategoryOpen: Boolean;
   rootCategories: Category[];
   collectionArray: ProductCollection[];
-  constructor(private router: Router, private ccs: CategoryCacheService, private colcs: CollectionCacheService) { }
+  isLogged: boolean;
+  constructor(private router: Router,
+              private authService : AuthService,
+              private ccs: CategoryCacheService,
+              private colcs: CollectionCacheService) { }
 
   ngOnInit() {
+    this.isLogged = this.authService.isLogged()
     this.isCollectionOpen = false;
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MdcSnackbar } from '@angular-mdc/web';
+import { Subject } from 'rxjs';
 
 
 
@@ -7,6 +8,8 @@ import { MdcSnackbar } from '@angular-mdc/web';
   providedIn: 'root'
 })
 export class ModalHandlerService {
+
+  profileCardToggeler = new Subject<boolean>();
 
   constructor(private snackbar: MdcSnackbar ) { }
 
@@ -17,4 +20,14 @@ export class ModalHandlerService {
     });
     return snackbar;
   }
+
+  closeAll() {
+    this.profileCardToggeler.next(false);
+  }
+
+  openProfileCard() {
+    this.profileCardToggeler.next(true);
+  }
+
+
 }

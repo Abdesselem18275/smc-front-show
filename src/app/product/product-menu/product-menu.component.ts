@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
-import { fromEvent } from 'rxjs';
-import { debounceTime, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/account/service/auth.service';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
 @Component({
   selector: 'app-product-menu',
@@ -18,17 +18,17 @@ import { AuthService } from 'src/app/account/service/auth.service';
         transition(
           ':enter',
           [
-            style({ 'max-height': 0, opacity: 0 }),
-            animate('300ms ease-out',
-                    style({ 'max-height': 200 , opacity: 1 }))
+            style({ 'transform': 'translateX(150%)'}),
+            animate('150ms ease-out',
+                    )
           ]
         ),
         transition(
           ':leave',
           [
-            style({ 'max-height': 200, opacity: 1 }),
-            animate('300ms ease-in',
-                    style({ 'max-height': 0  , opacity: 0 }))
+            style({ opacity : 1 }),
+            animate('150ms ease-in',
+               style({opacity : 0})     )
           ]
         )
       ]
@@ -51,6 +51,7 @@ export class ProductMenuComponent implements OnInit {
 
   constructor( private router: Router,
                private categoriesCache: CategoryCacheService,
+               private modalHandler: ModalHandlerService,
                private authService: AuthService) {
 
 
@@ -62,6 +63,10 @@ export class ProductMenuComponent implements OnInit {
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
+
+    this.modalHandler.profileCardToggeler.subscribe( x => {
+      this.isCardActive = x;
+    });
 
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
@@ -102,11 +107,9 @@ export class ProductMenuComponent implements OnInit {
       this.router.navigate([{ outlets: {popup: ['login'] }}]);
     } else {
 
-      this.isCardActive = !this.isCardActive;
+      this.isCardActive ? this.modalHandler.closeAll() : this.modalHandler.openProfileCard();
 
     }
-    // if (!this.isCardActive) {
-    //   this.closePopups();
-    // }
+
   }
 }

@@ -19,9 +19,12 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   ngOnInit() {
     this.isLoading = true;
     this.isFetching = false;
+    this.ImageMockup();
+
   }
 
   ngOnChanges(changes: SimpleChanges)  {
+    this.ImageMockup();
     this.isLoading  = true;
 
   }
@@ -38,6 +41,10 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
       outlets: {
         primary : ['product', id],
         popup: null }}]);
+  }
+
+  ImageMockup() {
+    //this.product.thumbNail.content = '/src/assets/images/Pic_1.jpg';
   }
 
 

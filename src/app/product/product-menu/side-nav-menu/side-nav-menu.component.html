@@ -1,13 +1,17 @@
   <div [mdcElevation]="2" class="ribon">
     <p>
-      SMC 
+      Menu 
     </p>
     <mdc-icon class="close-icon" 
               (click)="closeMenu()">close</mdc-icon>
 
-    </div>  
 
+    </div>
 
+<div class="card-container" *ngIf="isLogged">
+  <app-account-card></app-account-card>
+
+</div>
 
 <section>
       <p mdcHeadline5 class="smc-header title">

@@ -1,9 +1,14 @@
 <div class="content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
+<div class='content__thumbnail'>
 
-<img  (load)="onImageLoad($event)" 
+<img   (load)="onImageLoad($event)" 
        [style.display]="isLoading ? 'none' : 'block'"   
         (click)="navigateTo(product.pk)"
        [src] ="product.thumbNail.content">
+       
+<div  class="loading-placeholder" *ngIf="isLoading"></div>
+</div>
+
 <section class="content-text">
    <div>
            <app-category-breadcrumb mdcCaption 
@@ -35,12 +40,15 @@
 
         
         </section>
-
+        <div class='content__thumbnail'>
         <img  
         (load)="onImageLoad($event)" 
         [style.display]="isLoading ? 'none' : 'block'" 
         (click)="navigateTo(product.pk)"
         [src] ="product.thumbNail.content">
+        </div>
+
+
         <section class="action-container"> 
             <button  [appFavoriteHandler]="product.pk"
                     class="favorites" 

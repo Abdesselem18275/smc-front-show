@@ -4,7 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserAccount, Profile } from '../model';
 import countryNames from '../../../assets/data/world-countries.json';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 
 const httpOptions = {
@@ -65,7 +65,6 @@ return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
 
 refreshAccount() {
   if (this.isLogged()) {
-    console.warn(this.isLogged());
     this._account = new UserAccount(this.appStorage.getAll());
     const profile = new Profile({
       first_name : this.appStorage.get('first_name'),
@@ -76,6 +75,17 @@ refreshAccount() {
     this._account.profile = profile;
     this.account$.next(this._account);
   }
+
+}
+
+getUserFavorites() {
+  const query: string = [
+    this.apiUrl,
+    '/account/',
+    this.token,
+    '/favorites/'
+   ].join('');
+   return this.http.get(query, httpOptions).pipe(map((jsonArray: any[]) => jsonArray));
 
 }
 
