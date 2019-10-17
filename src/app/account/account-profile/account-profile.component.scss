@@ -2,11 +2,17 @@
 
 .menu-tab-bar-container {
 margin : 2rem 1rem 0 1rem;
+@media only screen and (max-width:480px) {
+    margin : 2rem 0;
+  }
 }
 .menu-tab-bar {
     border-top : solid 1px $color-border-grey;
     border-bottom : solid 1px $color-border-grey;
     padding : 0 $global-horizontal-gutter;
+    @media only screen and (max-width:480px) {
+        padding : 0;
+      }
 }
 .menu-tab {
     text-transform: capitalize;

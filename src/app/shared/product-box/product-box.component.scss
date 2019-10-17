@@ -2,6 +2,7 @@
 
 img {
     max-width: 100%;
+    width: 100%;
 }
 .loading-placeholder {
     width: 100%;
@@ -32,6 +33,9 @@ img {
 .content--grid {
     display: flex;
     flex-direction: column;
+    .content__thumbnail {
+        width: 100%;
+    }
     .content-information {
         margin: 1rem;
         display: flex;

@@ -1,11 +1,13 @@
 <section class="product-container">
+<mdc-linear-progress secondary="true" [open]="!favorites">
+    </mdc-linear-progress>
 
 <app-product-box  
 class="product-box"
 [mdcElevation]="2"
 mode="listWithBread" 
 [product]="favorite" 
-*ngFor='let favorite of favorites$ | async'>
+*ngFor='let favorite of favorites'>
 </app-product-box>
 
 </section>

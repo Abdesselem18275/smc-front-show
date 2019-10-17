@@ -35,7 +35,7 @@
             <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
 
-                <app-product-box [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
+                <app-product-box class="product-box" [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
                 </app-product-box>
             </div>
 

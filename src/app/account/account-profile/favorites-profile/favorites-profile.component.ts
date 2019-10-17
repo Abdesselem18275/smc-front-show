@@ -9,12 +9,14 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./favorites-profile.component.scss']
 })
 export class FavoritesProfileComponent implements OnInit {
-  favorites$: Observable<ProductShort[]>;
+  favorites: ProductShort[];
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.favorites$ = this.authService.getUserFavorites();
+    this.authService.getUserFavorites().subscribe(results => {
+      this.favorites = results;
+    });
   }
 
 }
