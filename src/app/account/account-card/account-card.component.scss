@@ -1,30 +1,43 @@
 @import "src/styles.scss";
 
-:host,.content__action {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+:host {
+  width: 100%;
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
+  grid-template-columns: 3.5rem auto;
+  grid-template-rows:  auto;
+  grid-template-areas: 
+  "logo content"
+  "action action";
+}
+
+
+
+.content {
+grid-area: content;
 }
 
 #logo {
-    width :5rem;
+    grid-area: logo;
     background-color: $mdc-theme-secondary;
-    border: 3px solid black;
-    border-radius: 100px;
+    border: 2px solid black;
+    border-radius: 4rem;
     padding: 0.5rem;
 }
 .text--grey {
     color:$color-text-grey;
 }
 
-.content {
-        align-items: flex-start;
-        margin-left: 1rem;
-        justify-content: space-between;
+.content__action {
+    grid-area: action;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -1rem;
+
+    button {
+        @include mdc-button-filled-accessible(white);
+        margin-right: 0.5rem;
     }
-    .content__action {
-        margin-left: -1rem;
-        button {
-            @include mdc-button-filled-accessible(white);
-        }
-    }
+
+}
