@@ -1,13 +1,17 @@
-<section class="product-container">
 <mdc-linear-progress secondary="true" [open]="!favorites">
     </mdc-linear-progress>
-
-<app-product-box  
-class="product-box"
-[mdcElevation]="2"
-mode="listWithBread" 
-[product]="favorite" 
-*ngFor='let favorite of favorites'>
-</app-product-box>
-
+<section class="product-container">
+    <p class="text--center"  mdcBody2 *ngIf="favorites?.length < 1"> You dont have favorites</p>
+<div *ngFor='let favorite of favorites' 
+      [mdcElevation]="2"
+      @myInsertRemoveTrigger
+      class="product-box">
+    <app-product-box  
+                       mode="listWithBread" 
+                       [product]="favorite" >
+    </app-product-box>
+    <div class="action-container">
+        <mdc-icon (click)="removeFavorite(favorite.pk)">close</mdc-icon>
+    </div>
+</div>
 </section>

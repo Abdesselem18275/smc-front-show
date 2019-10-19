@@ -48,7 +48,6 @@ export class ProductListComponent implements OnInit {
       }))),
       mergeAll(),
       tap((x) => {
-                 console.warn(x);
                  this.isReady = false;
       }),
       switchMap(param => this.pds.get_elements({model: 'product', param_key: param})))
