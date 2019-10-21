@@ -27,7 +27,7 @@ export class FavoriteHandlerService {
     console.warn(id);
     console.warn(myAccount);
     this._authService.updateAccount(myAccount).subscribe( () => {
-      this._modalHandler.openModal(exist ? 'Unmarked as favorite.' : 'Marked as favorite.');
+      this._modalHandler.openSnak(exist ? 'Unmarked as favorite.' : 'Marked as favorite.');
     });
   }
 }

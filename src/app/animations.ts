@@ -11,16 +11,25 @@ trigger('routeAnimations', [
   style({ left: 0 , }))
 ])
 ]);
-// export const centerSlideInAnimation =
-// trigger('auxRouteAnimations', [
-//   transition('empty => centerNav', [
-//     style({
-//       transform : 'translateX(0)',
-
-//   }),
-//   animate('100ms ease-out',
-//   style({ left: '50%' ,
-//           width: '50%'
-// }))
-// ])
-// ]);
+export const centerSlideInAnimation =
+  trigger(
+    'inOutAnimation',
+    [
+      transition(
+        ':enter',
+        [
+          style({ 'transform': 'translateX(150%)'}),
+          animate('150ms ease-out',
+                  )
+        ]
+      ),
+      transition(
+        ':leave',
+        [
+          style({ 'transform': 'translateX(0)' }),
+          animate('150ms ease-in',
+             style({'transform': 'translateX(150%)'})     )
+        ]
+      )
+    ]
+  );

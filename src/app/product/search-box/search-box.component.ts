@@ -5,6 +5,7 @@ import { ProductDataService } from '../service/product-data.service';
 import { ProductShort } from '../model';
 import { Router} from '@angular/router';
 import { Subject, merge } from 'rxjs';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
 @Component({
   selector: 'app-search-box',
@@ -21,7 +22,7 @@ export class SearchBoxComponent implements OnInit {
   paramRequest = new Subject<any>();
 
 
-  constructor(private router: Router , private pds: ProductDataService) { }
+  constructor(private modalHandlerService: ModalHandlerService, private pds: ProductDataService) { }
   ngOnInit() {
     this.isReady = true;
   merge(this.paramRequest,
@@ -49,7 +50,7 @@ export class SearchBoxComponent implements OnInit {
 
 
 closePopup() {
-  this.router.navigate([{ outlets: { popup: null }}]);
+    this.modalHandlerService.closeAll();
 }
 pageEvent(pageNumber) {
   this.pageNumber  = pageNumber;

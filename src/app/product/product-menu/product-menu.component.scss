@@ -12,7 +12,7 @@ p {
 
 
 .nav-bar {
-    padding:  1rem $global-horizontal-gutter;
+    padding:  0.5rem $global-horizontal-gutter;
     display : flex;
     justify-content : space-between;
     align-items : center;
@@ -63,7 +63,6 @@ p {
     display: flex;
     align-items: center;
     #account-icon {
-      margin-left: 1rem;
       @media only screen and (max-width:1024px) { 
         display: none;
       }
@@ -72,7 +71,6 @@ p {
         display: flex;
         align-items: center;
         @include mdc-button-ink-color(black);
-        margin-left : 1rem;
     }
 }
 
@@ -113,16 +111,6 @@ p {
 
 }
 
-.account-card {
-  position: absolute;
-  top: 5rem;
-  right: 2rem;
-  color: black;
-  z-index: 1000;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 5px;
-}
 
 .search-container {
 
@@ -153,15 +141,9 @@ p {
   flex :  1 1 auto;
 }
 
-
-
-
-
 #main {
     transition: 0.3s;
 }
-
-
 .nav-bar__menu-icon {
     display: none;
 }

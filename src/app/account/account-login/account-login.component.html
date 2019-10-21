@@ -1,11 +1,12 @@
-<div class="content" [mdcElevation]="3">
 
-        <header class="side-window__header">
+        <header [mdcElevation]="2" class="side-window__header">
                 <p></p>
                 <p  mdcHeadline5>
                   SMC ACCOUNT
                 </p>
-                  <mdc-icon (click)="cancel()">close</mdc-icon>
+                <button mdcIconButton>
+                        <mdc-icon (click)="cancel()">close</mdc-icon>
+                </button>
         
               </header>
 
@@ -129,6 +130,5 @@
 
 </section>
 </main>
-</div>
 
 <app-loading class="center" *ngIf="isChecking"></app-loading>

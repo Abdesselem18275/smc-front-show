@@ -1,6 +1,6 @@
 <header *ngIf="isActive"   [mdcElevation]="2" mdc-typography>
     <nav class='nav-bar'>
-      <mdc-icon [routerLink]="[{ outlets: { side: ['menu'] } }]" class="nav-bar__menu-icon">menu</mdc-icon>
+      <mdc-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mdc-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
         <p class="header--big">SMC</p>
@@ -23,8 +23,12 @@
       </p>
      </div>
      <div class="nav-bar__tools">
-        <mdc-icon [routerLink]="[{ outlets: { popup: ['search'] } }]" >search</mdc-icon>
-        <mdc-icon id="account-icon" (click)="cardToggle()">person</mdc-icon>
+        <button mdcIconButton (click)="toggleModal('searchBox')">
+            <mdc-icon >search</mdc-icon>
+        </button>
+        <button mdcIconButton (click)="toggleModal('userCardBox')" id="account-icon">
+            <mdc-icon>person</mdc-icon>
+        </button>
         <button class="language-panel" mdc-button >
           <mdc-icon>language</mdc-icon>   
           <span class="mdc-button__label">EN</span> 
@@ -46,8 +50,4 @@
     </div>
   </div>
 
-  <div [mdcElevation]="2" [@inOutAnimation] *ngIf="isCardActive" class="account-card">
-    <app-account-card>
-    </app-account-card>
-  </div>
   

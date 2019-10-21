@@ -6,19 +6,9 @@
     justify-content: flex-start;
     width:25rem;
 }
-.ribon {
-    padding: 1rem;
+.side-window__header {
+    padding: 0.5rem;
     background-color: $mdc-theme-secondary;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p {
-        margin-left: 0.75rem;
-        cursor: pointer;
-        font-size: 2rem;
-        letter-spacing: 0.25rem;
-
-    }
 }
 .card-container {
     margin-top: 1rem;

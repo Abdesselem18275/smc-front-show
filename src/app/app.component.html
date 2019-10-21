@@ -1,15 +1,37 @@
-<header>
-            <app-product-menu  [mdcElevation]="3"></app-product-menu>
+<header >
+            <app-product-menu ></app-product-menu>
 
 </header>
-<div [style.opacity]="isSideMenuActive ? '0.5' : '1'" class="main-content">
-      <router-outlet name="primary" ></router-outlet>
+
+<div [mdcElevation]="2" [@inOutAnimation] *ngIf="modalStateStore.userCardBox" class="account-card">
+
+      <app-account-card>
+      </app-account-card>
 </div>
-<div>
-      <router-outlet   name="popup"></router-outlet>
+
+<div [mdcElevation]="2"  *ngIf="modalStateStore.loginBox" class="center-box">
+
+      <app-account-login >
+      </app-account-login>
 </div>
-<div  class="side" [@routeAnimations]="prepareRoute(outlet)" [mdcElevation]="3" >
-<router-outlet  #outlet="outlet" name="side"></router-outlet>
+
+<div [mdcElevation]="2"  *ngIf="modalStateStore.searchBox" class="center-box">
+
+      <app-search-box>
+      </app-search-box>
+</div>
+
+
+<div [mdcElevation]="2"  *ngIf="modalStateStore.sideMenuBox" class="side-box">
+
+      <app-side-nav-menu>
+      </app-side-nav-menu>
+      </div>
+
+      <router-outlet></router-outlet>
+
+<div class='overlay' *ngIf="modalStateStore.isOpen()">
+
 </div>
 
 

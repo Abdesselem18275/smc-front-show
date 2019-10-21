@@ -1,11 +1,12 @@
-<section class="content" [mdcElevation]="3">
-<header [mdcElevation]="3" class="side-window__header">
+<header [mdcElevation]="2" class="side-window__header">
 
         
         <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
         <p mdcHeadline6>
               </p>
-          <mdc-icon (click)="closePopup()">close</mdc-icon>
+              <button (click)="closePopup()" mdcIconButton>
+                        <mdc-icon >close</mdc-icon>
+              </button>
 
       </header>
 <mdc-linear-progress secondary="true" [open]="!isReady">
@@ -33,5 +34,4 @@
 
 
 </main>
-</section>
 </section>

@@ -46,7 +46,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.updateAccount(formData).subscribe(accountData => {
       this.accountForm = this.accountFormService.createLoadFullAccountForm();
       this.isUpdating = false;
-      this._modalHandler.openModal('Succefully modified');
+      this._modalHandler.openSnak('Succefully modified');
 
 
     },

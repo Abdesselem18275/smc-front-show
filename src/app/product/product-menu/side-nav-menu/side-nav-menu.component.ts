@@ -5,7 +5,7 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
 import { AuthService } from 'src/app/account/service/auth.service';
-import { UserAccount } from 'src/app/account/model';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -42,7 +42,8 @@ export class SideNavMenuComponent implements OnInit {
   collectionArray: ProductCollection[];
   isLogged: boolean;
   constructor(private router: Router,
-              private authService : AuthService,
+              private authService: AuthService,
+              private modalHandlerService: ModalHandlerService,
               private ccs: CategoryCacheService,
               private colcs: CollectionCacheService) { }
 
@@ -61,7 +62,7 @@ export class SideNavMenuComponent implements OnInit {
   }
 
   closeMenu() {
-    this.router.navigate([{ outlets: { side: null }}]);
+    this.modalHandlerService.closeAll();
   }
   navigateTo(param_key: string, val: string) {
     const navigationExtras: NavigationExtras = {

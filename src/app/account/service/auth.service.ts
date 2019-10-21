@@ -3,7 +3,7 @@ import { API_URL } from 'src/app/product/service/product-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserAccount, Profile } from '../model';
 import countryNames from '../../../assets/data/world-countries.json';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 
@@ -21,12 +21,14 @@ export class AuthService {
   _token: string;
   _countries: any[];
   redirectUrl: string;
-  account$ = new Subject<UserAccount>();
+  account$: BehaviorSubject<UserAccount>;
 
 
   constructor(private appStorage: LocalStorageHandlerService,
               private http: HttpClient,
-              @Inject(API_URL) private apiUrl: string) { }
+              @Inject(API_URL) private apiUrl: string) {
+                this.account$ = new BehaviorSubject<UserAccount>(this._account);
+               }
 
 
 createAccount(jsonData): Observable<any> {

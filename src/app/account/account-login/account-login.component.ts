@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { trigger } from '@angular/animations';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
 interface CustomClasses {
   classes: string | string[];
@@ -32,7 +33,8 @@ export class AccountLoginComponent implements OnInit {
 
 
   constructor(public router: Router, private authService: AuthService,
-              private accountFormService: AccountFormService) {
+              private accountFormService: AccountFormService,
+              private modalHandlerService: ModalHandlerService) {
    }
 
    ngOnInit() {
@@ -88,9 +90,7 @@ export class AccountLoginComponent implements OnInit {
   }
 
   cancel() {
-    this.closePopup();
+    this.modalHandlerService.closeAll();
   }
-  closePopup() {
-    this.router.navigate([{ outlets: { popup: null }}]);
-  }
+
 }

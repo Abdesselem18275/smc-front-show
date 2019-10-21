@@ -1,9 +1,11 @@
-  <div [mdcElevation]="2" class="ribon">
-    <p>
+  <div [mdcElevation]="2" class="side-window__header">
+    <p mdcHeadline5>
       Menu 
     </p>
-    <mdc-icon class="close-icon" 
-              (click)="closeMenu()">close</mdc-icon>
+    <button (click)="closeMenu()" mdcIconButton>
+      <mdc-icon>close</mdc-icon>
+    </button>
+
 
 
     </div>

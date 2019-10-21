@@ -6,39 +6,20 @@ import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/account/service/auth.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { centerSlideInAnimation } from 'src/app/animations';
+import { ModalStateStore } from 'src/app/shared/token';
 
 @Component({
   selector: 'app-product-menu',
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ 'transform': 'translateX(150%)'}),
-            animate('150ms ease-out',
-                    )
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ opacity : 1 }),
-            animate('150ms ease-in',
-               style({opacity : 0})     )
-          ]
-        )
-      ]
-    )
-  ]
+  animations: [centerSlideInAnimation]
 })
 export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
+  modalStateStore: ModalStateStore;
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;
@@ -51,22 +32,17 @@ export class ProductMenuComponent implements OnInit {
 
   constructor( private router: Router,
                private categoriesCache: CategoryCacheService,
-               private modalHandler: ModalHandlerService,
-               private authService: AuthService) {
+               private modalHandler: ModalHandlerService) {
 
 
   }
   ngOnInit() {
-    this.isCardActive = false;
     this.isActive = true;
     this.isScrollingUp = true;
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
 
-    this.modalHandler.profileCardToggeler.subscribe( x => {
-      this.isCardActive = x;
-    });
 
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
@@ -102,14 +78,9 @@ export class ProductMenuComponent implements OnInit {
   closePopups() {
     this.router.navigate([{ outlets: { popup: null }}]);
   }
-  cardToggle() {
-    if (!this.authService.isLogged()) {
-      this.router.navigate([{ outlets: {popup: ['login'] }}]);
-    } else {
+  toggleModal(key) {
 
-      this.isCardActive ? this.modalHandler.closeAll() : this.modalHandler.openProfileCard();
-
-    }
+    this.modalHandler.toggleModal(key);
 
   }
 }

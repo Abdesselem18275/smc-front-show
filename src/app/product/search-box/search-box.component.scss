@@ -1,39 +1,9 @@
 @import "src/styles.scss";
 
-.side-window__header {
-    background-color : $mdc-theme-secondary;
-    padding : 1.2rem;
-
-}
-
-.content {
-    position: absolute;
-
-    top: 0%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, 0%) ;
-    background-color: white;
-    min-height: 80%;
-    width: 60%;
-    z-index: 10000;
-
-    @media only screen and (max-width:840px) {
-        width : 100%;
-        top: 0;
-        left: 0;
-        margin-right: 0;
-        transform: translate(0, 0) ;
-      }
-}
-
 .container {
     margin-top: 2rem;
-    padding :0 1.45rem;
-
+    padding :0 1.5rem;
 }
-
-
 .search-text-field {
     flex : 1 1 auto;
     border : none;
@@ -42,7 +12,6 @@
     margin-right: 2rem;
     border-radius: 10px;
 }
-
 .result-container {
 
     header {

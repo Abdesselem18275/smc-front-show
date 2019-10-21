@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { MdcSnackbar } from '@angular-mdc/web';
-import { Subject } from 'rxjs';
-
-
+import { BehaviorSubject } from 'rxjs';
+import { ModalStateStore } from '../token';
+import { AuthService } from 'src/app/account/service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalHandlerService {
+  modalStateStore = new ModalStateStore();
+  ModalToggeler$ = new BehaviorSubject<ModalStateStore>(this.modalStateStore);
 
-  profileCardToggeler = new Subject<boolean>();
+  constructor(private authService: AuthService, private snackbar: MdcSnackbar ) {
+    console.warn('Initialisation');
+   }
 
-  constructor(private snackbar: MdcSnackbar ) { }
 
-
-  openModal(message?: string, action: string = ' ') {
+  openSnak(message?: string, action: string = ' ') {
     const snackbar = this.snackbar.open(message, action, {
       dismiss: true,
     });
@@ -22,11 +24,17 @@ export class ModalHandlerService {
   }
 
   closeAll() {
-    this.profileCardToggeler.next(false);
+    this.modalStateStore = new ModalStateStore();
+    this.ModalToggeler$.next(this.modalStateStore );
   }
 
-  openProfileCard() {
-    this.profileCardToggeler.next(true);
+  toggleModal(key: string) {
+    const tempKey = key;
+    key = tempKey === 'userCardBox' ? this.authService.isLogged() ? key : 'loginBox' : key;
+    const tempModalStateStore = this.modalStateStore;
+    this.modalStateStore = new ModalStateStore();
+    this.modalStateStore[key] =  !tempModalStateStore[key];
+    this.ModalToggeler$.next(this.modalStateStore);
   }
 
 
