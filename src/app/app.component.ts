@@ -11,7 +11,7 @@ import { ModalHandlerService } from './shared/service/modal-handler.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    sideSlideInAnimation, centerSlideInAnimation ]
+    centerSlideInAnimation, sideSlideInAnimation ]
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;

@@ -22,7 +22,7 @@
 </div>
 
 
-<div [mdcElevation]="2"  *ngIf="modalStateStore.sideMenuBox" class="side-box">
+<div [mdcElevation]="2" [@sideSlideInAnimation] *ngIf="modalStateStore.sideMenuBox" class="side-box">
 
       <app-side-nav-menu>
       </app-side-nav-menu>
