@@ -11,7 +11,9 @@
                        [product]="favorite" >
     </app-product-box>
     <div class="action-container">
-        <mdc-icon (click)="removeFavorite(favorite.pk)">close</mdc-icon>
+        <button (click)="removeFavorite(favorite.pk)" mdcIconButton>
+        <mdc-icon >close</mdc-icon>
+       </button>
     </div>
 </div>
 </section>

@@ -13,12 +13,16 @@ header {
     z-index: 10000;
 }
 
+.main-content {
+  transition: 0.2s ease;
+}
+
 .account-card {
     position: absolute;
     top: 4.75rem;
     right: 1rem;
     color: black;
-    z-index: 1000;
+    z-index: 10000;
     padding: 1rem;
     background-color: white;
     border-radius: 5px;

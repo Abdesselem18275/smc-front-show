@@ -4,7 +4,6 @@ import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { trigger } from '@angular/animations';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 
 interface CustomClasses {
@@ -55,6 +54,7 @@ export class AccountLoginComponent implements OnInit {
           const redirect = this.authService.redirectUrl ?
           this.router.parseUrl(this.authService.redirectUrl) : '/account/profile';
           this.router.navigateByUrl(redirect);
+          this.isChecking = false;
         }
       },
       error => {

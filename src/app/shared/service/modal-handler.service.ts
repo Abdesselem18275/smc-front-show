@@ -12,7 +12,6 @@ export class ModalHandlerService {
   ModalToggeler$ = new BehaviorSubject<ModalStateStore>(this.modalStateStore);
 
   constructor(private authService: AuthService, private snackbar: MdcSnackbar ) {
-    console.warn('Initialisation');
    }
 
 

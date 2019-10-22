@@ -32,7 +32,7 @@ export class FavoriteHandlerDirective implements AfterViewInit {
     } else {
       this._modalHandler.openSnak('You have to login to perform this action', 'Login').
       afterDismiss().pipe(filter(x => x === 'action')).subscribe(() => {
-        this.router.navigate([{ outlets: { popup: ['login']  }}]);
+        this._modalHandler.toggleModal('loginBox');
       });
 
 

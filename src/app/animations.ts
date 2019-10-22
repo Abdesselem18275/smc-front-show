@@ -2,15 +2,27 @@ import { trigger, transition, style, animate } from "@angular/animations";
 
 
 export const sideSlideInAnimation =
-trigger('routeAnimations', [
-  transition('empty => sideNav', [
-    style({
-            left: '-100%',
-  }),
-  animate('200ms ease-out',
-  style({ left: 0 , }))
-])
-]);
+trigger(
+  'routeAnimations',
+  [
+    transition(
+      ':enter',
+      [
+        style({ 'transform': 'translateX(-150%)'}),
+        animate('200ms ease-out',
+                )
+      ]
+    ),
+    transition(
+      ':leave',
+      [
+        style({ 'transform': 'translateX(0)' }),
+        animate('200ms ease-in',
+           style({'transform': 'translateX(-150%)'})     )
+      ]
+    )
+  ]
+);
 export const centerSlideInAnimation =
   trigger(
     'inOutAnimation',
@@ -19,7 +31,7 @@ export const centerSlideInAnimation =
         ':enter',
         [
           style({ 'transform': 'translateX(150%)'}),
-          animate('150ms ease-out',
+          animate('200ms ease-out',
                   )
         ]
       ),
@@ -27,9 +39,11 @@ export const centerSlideInAnimation =
         ':leave',
         [
           style({ 'transform': 'translateX(0)' }),
-          animate('150ms ease-in',
+          animate('200ms ease-in',
              style({'transform': 'translateX(150%)'})     )
         ]
       )
     ]
   );
+
+

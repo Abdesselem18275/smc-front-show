@@ -17,4 +17,7 @@ export class ModalStateStore {
     isOpen() {
         return this.searchBox || this.loginBox || this.sideMenuBox || this.filterBox || this.userCardBox;
     }
+    isCenterOpen() {
+        return this.searchBox || this.loginBox ;
+    }
   }

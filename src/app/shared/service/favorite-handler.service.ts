@@ -24,8 +24,6 @@ export class FavoriteHandlerService {
       myAccount.favorites.push(id);
     }
     delete myAccount.profile;
-    console.warn(id);
-    console.warn(myAccount);
     this._authService.updateAccount(myAccount).subscribe( () => {
       this._modalHandler.openSnak(exist ? 'Unmarked as favorite.' : 'Marked as favorite.');
     });

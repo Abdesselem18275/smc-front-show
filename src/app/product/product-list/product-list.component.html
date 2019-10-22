@@ -4,9 +4,11 @@
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
           <p mdcBody2 class="content__objects-count">{{objCount}} selected products</p>
         </div>
-        <mdc-icon (click)="filterToggle()" class="meta-bar__filter">
+        <button class="meta-bar__filter" mdcIconButton>
+        <mdc-icon (click)="filterToggle()" >
           tune
         </mdc-icon>
+      </button>
             <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
                 <mdc-icon mdcIconOn>view_module</mdc-icon>
                 <mdc-icon>view_list</mdc-icon>
@@ -18,11 +20,14 @@
       </mdc-linear-progress>
     </header>
       <div  [mdcElevation]="3" [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="filter-container">
-        <header class="side-window__header">
+        <header [mdcElevation]="2" class="side-window__header">
           <p mdcHeadline6>
             Filters
           </p>
-            <mdc-icon (click)="filterToggle()">close</mdc-icon>
+          <button (click)="filterToggle()" mdcIconButton>
+            <mdc-icon >close</mdc-icon>
+
+          </button>
 
         </header>
       <app-product-filter  [resetFilter]="resetFilter"  (req) = filterEvent($event)></app-product-filter>

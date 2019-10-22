@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './service/auth.service';
+import { ModalHandlerService } from '../shared/service/modal-handler.service';
 
 
 @Injectable({
@@ -9,7 +10,9 @@ import { AuthService } from './service/auth.service';
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService,
+              private router: Router,
+              private modalHandlerService: ModalHandlerService) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -30,7 +33,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate([{ outlets: { popup: 'login' }}]);
+    this.modalHandlerService.toggleModal('loginBox');
     return false;
   }
 }
