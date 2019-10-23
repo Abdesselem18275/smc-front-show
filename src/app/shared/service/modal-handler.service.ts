@@ -3,6 +3,8 @@ import { MdcSnackbar } from '@angular-mdc/web';
 import { BehaviorSubject } from 'rxjs';
 import { ModalStateStore } from '../token';
 import { AuthService } from 'src/app/account/service/auth.service';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,13 @@ export class ModalHandlerService {
   modalStateStore = new ModalStateStore();
   ModalToggeler$ = new BehaviorSubject<ModalStateStore>(this.modalStateStore);
 
-  constructor(private authService: AuthService, private snackbar: MdcSnackbar ) {
+  constructor(private authService: AuthService, private snackbar: MdcSnackbar , private router: Router ) {
+    this.router.events.pipe(filter( event => event instanceof NavigationEnd)).subscribe(() => {
+      this.closeAll();
+    });
+
    }
+
 
 
   openSnak(message?: string, action: string = ' ') {

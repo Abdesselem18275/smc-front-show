@@ -8,10 +8,19 @@ import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ConfigService } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
-import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('541271383309-k3e64igmtqkenbosdl6mm7uo7og3jggg.apps.googleusercontent.com')
+  }]);
+export function provideConfig() {
+    return this.config;
+  }
 
 export function loadCategories(configService: ConfigService) {
   return () => configService.getCategories();
@@ -32,13 +41,16 @@ export function loadCategories(configService: ConfigService) {
     AppRoutingModule,
   ],
   providers: [
-    CookieService,
-    {
+        {
       provide: APP_INITIALIZER,
       useFactory: loadCategories,
       deps: [ConfigService],
       multi: true
     },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

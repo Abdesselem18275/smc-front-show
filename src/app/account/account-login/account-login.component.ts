@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AuthService } from '../service/auth.service';
+import { AuthService  } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { AuthService as GoogleAuthService} from 'angularx-social-login';
+
 
 interface CustomClasses {
   classes: string | string[];
   actionClasses: string | string[];
   dismissClasses: string | string[];
 }
+declare const gapi: any;
 
 @Component({
   selector: 'app-account-login',
@@ -31,7 +34,9 @@ export class AccountLoginComponent implements OnInit {
 
 
 
-  constructor(public router: Router, private authService: AuthService,
+  constructor(private router: Router,
+              private authService: AuthService,
+              private googleAuthService: GoogleAuthService,
               private accountFormService: AccountFormService,
               private modalHandlerService: ModalHandlerService) {
    }
