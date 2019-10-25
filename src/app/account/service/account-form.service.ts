@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { SmcAuthService } from './smc-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountFormService {
 
-  constructor(private fb: FormBuilder , private authService: AuthService) { }
+  constructor(private fb: FormBuilder , private authService: SmcAuthService) { }
 
   createShortAccountForm(): FormGroup {
     const  form = this.fb.group({
@@ -16,7 +16,9 @@ export class AccountFormService {
           Validators.email, Validators.required]
         ],
         password : ['', Validators.required],
-        confirmPassword : ['', Validators.required]
+        confirmPassword : ['', Validators.required],
+        first_name : ['', Validators.required],
+        last_name : ['', Validators.required],
       }),
     } , { validators: this.passwordConfirmedValidator });
     return form;

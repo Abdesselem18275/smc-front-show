@@ -27,9 +27,6 @@ export class FilterCategory {
         this.inputValue = options.inputValue || this.min;
         this.description = options.description || '';
     }
-
-
-
 }
 
 export class Choice {

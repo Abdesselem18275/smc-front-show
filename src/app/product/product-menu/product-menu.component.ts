@@ -4,7 +4,6 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from 'src/app/account/service/auth.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { centerSlideInAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';

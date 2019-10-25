@@ -11,6 +11,8 @@
 section {
     width: 25rem;
     margin : 1.5rem 3rem ;
+    display: flex;
+    flex-direction: column;
 
     @media only screen and (max-width:1024px) {
         margin : 1.5rem 0rem ;    
@@ -27,14 +29,13 @@ header {
     margin-bottom:1.5rem;
     .title--bold {
        font-weight: bold;
+       margin-bottom: 1rem;
     }
 }
 
 .form__submit-button {
     width : 100%;
-}
-.alert {
-    color: red;
+    height: 3rem;
 }
 .inverted-theme {
     @include mdc-button-ink-color(black);
@@ -45,4 +46,11 @@ header {
 .inverted-theme:hover {
     @include mdc-button-ink-color(white);
     @include mdc-button-container-fill-color(black);
+}
+
+#google-sign {
+    margin-bottom: 3rem;
+    header {
+        margin-bottom: 2rem;
+    }
 }

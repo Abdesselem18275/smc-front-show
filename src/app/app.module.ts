@@ -19,7 +19,7 @@ const config = new AuthServiceConfig([
     provider: new GoogleLoginProvider('541271383309-k3e64igmtqkenbosdl6mm7uo7og3jggg.apps.googleusercontent.com')
   }]);
 export function provideConfig() {
-    return this.config;
+    return config;
   }
 
 export function loadCategories(configService: ConfigService) {
@@ -37,6 +37,7 @@ export function loadCategories(configService: ConfigService) {
     ProductModule,
     AccountModule,
     ReactiveFormsModule,
+    SocialLoginModule,
     SharedModule,
     AppRoutingModule,
   ],

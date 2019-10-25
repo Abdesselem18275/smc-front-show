@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from 'src/app/account/service/auth.service';
 import { ModalHandlerService } from './modal-handler.service';
+import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { ModalHandlerService } from './modal-handler.service';
 export class FavoriteHandlerService {
 
   constructor(private _modalHandler: ModalHandlerService ,
-             private _authService: AuthService) { }
+             private _authService: SmcAuthService) { }
 
   checkIsFavorites(id: number): boolean {
 

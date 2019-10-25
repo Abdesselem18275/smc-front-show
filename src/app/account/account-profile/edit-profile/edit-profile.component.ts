@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../../service/account-form.service';
-import { AuthService } from '../../service/auth.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { SmcAuthService } from '../../service/smc-auth.service';
 
 
 
@@ -17,7 +17,7 @@ export class EditProfileComponent implements OnInit {
   isUpdating: boolean;
   constructor(private _modalHandler: ModalHandlerService,
               private accountFormService: AccountFormService ,
-              private authService: AuthService) { }
+              private authService: SmcAuthService) { }
 
   ngOnInit() {
     this.isUpdating = false;

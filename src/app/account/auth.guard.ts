@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './service/auth.service';
 import { ModalHandlerService } from '../shared/service/modal-handler.service';
+import { SmcAuthService } from './service/smc-auth.service';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { ModalHandlerService } from '../shared/service/modal-handler.service';
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor(private authService: AuthService,
+  constructor(private authService: SmcAuthService,
               private router: Router,
               private modalHandlerService: ModalHandlerService) {}
   canActivate(

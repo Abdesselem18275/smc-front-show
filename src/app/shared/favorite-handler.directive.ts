@@ -1,9 +1,9 @@
 import { Directive, ElementRef, AfterViewInit, Input, HostListener } from '@angular/core';
-import { AuthService } from '../account/service/auth.service';
 import { FavoriteHandlerService } from './service/favorite-handler.service';
 import { ModalHandlerService } from './service/modal-handler.service';
 import { filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SmcAuthService } from '../account/service/smc-auth.service';
 
 @Directive({
   selector: '[appFavoriteHandler]'
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class FavoriteHandlerDirective implements AfterViewInit {
   @Input() appFavoriteHandler: number;
   constructor(private _element: ElementRef ,
-              private _authService: AuthService ,
+              private _authService: SmcAuthService ,
               private _favHandlerService: FavoriteHandlerService ,
               private _modalHandler: ModalHandlerService,
               private router: Router) {

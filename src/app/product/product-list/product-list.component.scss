@@ -2,7 +2,7 @@
 
 
 .content {
- margin : 0rem $global-horizontal-gutter;
+ margin : 1rem $global-horizontal-gutter;
  display: flex;
  flex-direction: column;
  min-height: 100vh;
@@ -83,9 +83,7 @@
       }
       @media only screen and (max-width:480px) {
         width: 98%;
-        .product-box {
-              margin-bottom: 1rem;
-        }
+        margin-bottom: 1.5rem;
 
       }
     }

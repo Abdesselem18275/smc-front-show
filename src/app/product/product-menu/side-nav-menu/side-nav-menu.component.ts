@@ -4,8 +4,8 @@ import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
-import { AuthService } from 'src/app/account/service/auth.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -42,7 +42,7 @@ export class SideNavMenuComponent implements OnInit {
   collectionArray: ProductCollection[];
   isLogged: boolean;
   constructor(private router: Router,
-              private authService: AuthService,
+              private authService: SmcAuthService,
               private modalHandlerService: ModalHandlerService,
               private ccs: CategoryCacheService,
               private colcs: CollectionCacheService) { }

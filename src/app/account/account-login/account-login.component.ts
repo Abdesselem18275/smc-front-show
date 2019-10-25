@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AuthService  } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
-import { AuthService as GoogleAuthService} from 'angularx-social-login';
+import { SmcAuthService } from '../service/smc-auth.service';
 
 
 interface CustomClasses {
@@ -13,6 +12,7 @@ interface CustomClasses {
   actionClasses: string | string[];
   dismissClasses: string | string[];
 }
+
 declare const gapi: any;
 
 @Component({
@@ -20,8 +20,7 @@ declare const gapi: any;
   templateUrl: './account-login.component.html',
   styleUrls: ['./account-login.component.scss']
 })
-export class AccountLoginComponent implements OnInit {
-
+export class AccountLoginComponent implements OnInit   {
   email: string;
   account: string;
   auth_non_field_error: any;
@@ -31,16 +30,11 @@ export class AccountLoginComponent implements OnInit {
   loginForm: FormGroup;
   countryNames: any;
   isChecking: boolean;
-
-
-
-  constructor(private router: Router,
-              private authService: AuthService,
-              private googleAuthService: GoogleAuthService,
+  constructor(
+              private authService: SmcAuthService,
               private accountFormService: AccountFormService,
               private modalHandlerService: ModalHandlerService) {
-   }
-
+  }
    ngOnInit() {
     this.isChecking = false;
     this.createForm = this.accountFormService.createShortAccountForm();
@@ -48,52 +42,50 @@ export class AccountLoginComponent implements OnInit {
     this.countryNames = this.authService.countries;
   }
 
-
   onSubmit() {
     this.isChecking = true;
     const credentials = this.loginForm.value;
     this.auth_non_field_error = '';
     if (this.loginForm.valid) {
       this.authService.login(JSON.stringify(credentials)).subscribe(() => {
-        if (this.authService.isLogged()) {
-          const redirect = this.authService.redirectUrl ?
-          this.router.parseUrl(this.authService.redirectUrl) : '/account/profile';
-          this.router.navigateByUrl(redirect);
-          this.isChecking = false;
-        }
+      this.authService.redirect();
+      this.isChecking = false;
       },
       error => {
         this.isChecking = false;
         console.warn(error);
         this.auth_non_field_error  = error.error['non_field_errors'] || '';
       });
-
     }
-
   }
 
   createProfile() {
     this.isChecking = true;
-    console.warn(JSON.stringify(this.createForm.value));
+    const jsonData = JSON.stringify(this.createForm.value);
 
-    this.authService.createAccount(JSON.stringify(this.createForm.value)).subscribe(x => {
-      console.warn(x);
+    this.authService.createAccount(jsonData).subscribe(x => {
+      const cred = JSON.stringify({
+        email : this.createForm.get('profile.email').value,
+        password : this.createForm.get('profile.password').value
+      });
+      this.authService.login(cred).subscribe(() => {
+        this.authService.redirect();
+        this.isChecking = false;
+        });
     },
     error => {
-      console.warn(error);
-
+      this.isChecking = false;
       if (error instanceof HttpErrorResponse) {
         this.creation_non_field_error  = error.error['non_field_errors'] || '';
         this.fieldError = error.error || '';
         console.warn(error.error);
         const email_error = error.error['profile']['email'] || '';
         if (email_error !== '') {
-          this.createForm.get('profile.email').setErrors({'incorrect': true});
+          this.createForm.get('profile.email').setErrors({'not_unique': true});
         }
       }
     });
   }
-
   cancel() {
     this.modalHandlerService.closeAll();
   }

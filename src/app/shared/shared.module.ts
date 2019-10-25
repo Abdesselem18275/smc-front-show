@@ -18,11 +18,13 @@ import { TextHightlightDirective } from './text-hightlight.directive';
 import { FavoriteHandlerDirective } from './favorite-handler.directive';
 import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 import { AccountCardComponent } from '../account/account-card/account-card.component';
+import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
                  PaginatorComponent, AccountLoginComponent,
+                 GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
@@ -47,6 +49,7 @@ import { AccountCardComponent } from '../account/account-card/account-card.compo
     ScrollPaginatorDirective,
     FavoriteHandlerDirective,
     LoadingComponent,
+    GoogleSignInComponent,
     AccountCardComponent,
     CommonModule,
 

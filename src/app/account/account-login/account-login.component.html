@@ -12,9 +12,19 @@
 
 <main class="forms-container">
 <section class="login">
+                <div id="google-sign">
+                                <header>
+                                        <p class="title--bold smc-header" mdcSubtitle2>SIGN IN WITH GOOGLE</p>
+                                        <p  class="text--grey" mdcBody2>Create or acces your account by sign in to your google account</p>
+                                
+                                </header>
+                                <app-google-sign-in>
+                                </app-google-sign-in>
+                                </div>
+
 <header>
-        <p class="title--bold" mdcSubtitle2>SIGN IN</p>
-        <p mdcBody2>Please enter the following informations to acces your account</p>
+        <p class="title--bold smc-header" mdcSubtitle2>SIGN IN WITH SMC</p>
+        <p class="text--grey" mdcBody2>Please enter the following informations</p>
     </header>
     <main>
             <p mdcCaption class="alert">{{auth_non_field_error}}</p>
@@ -58,16 +68,19 @@
                             primary>LOGIN
                     </button>
                 
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-                </form>    
+                </form>   
+
 
 </main>
+
+
+
 </section>
 <section>
         <header>
-                <p class="title--bold" mdcSubtitle2>REGISTER NOW</p>
-                <p mdcBody2>Create and account and join us </p>
+                <p class="title--bold smc-header" mdcSubtitle2>REGISTER NOW</p>
+                <p class="text--grey" mdcBody2>Create and account and join us </p>
         </header>
         <main>
                 <form [formGroup]="createForm"   (ngSubmit)="createProfile()">
@@ -88,8 +101,33 @@
                                       <p mdcCaption *ngIf="createForm.get('profile.email').errors.email">
                                         Enter a valid email 
                                       </p>   
+                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.not_unique">
+                                               This email already exist 
+                                      </p> 
                             </div>                                 
                         </div>
+
+                        <div  formGroupName="profile" class="form__field">
+                                <label mdcBody2 for="first_name">
+                                    first name
+                                </label>
+                                <input  required
+                                        type="text" 
+                                        id="first_name"
+                                        formControlName="first_name">                                
+                        </div>
+
+                        <div  formGroupName="profile" class="form__field">
+                                <label mdcBody2 for="last_name">
+                                    last name
+                                </label>
+                                <input  required
+                                        type="text" 
+                                        id="last_name"
+                                        formControlName="last_name">                                
+                        </div>
+                        
+                        
                         <div formGroupName="profile" class="form__field">
                                 <label mdcBody2 for="password">
                                         password

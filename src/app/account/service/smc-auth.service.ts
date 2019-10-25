@@ -6,6 +6,7 @@ import countryNames from '../../../assets/data/world-countries.json';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +17,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class SmcAuthService {
   _account: UserAccount;
   _token: string;
   _countries: any[];
@@ -26,6 +27,7 @@ export class AuthService {
 
   constructor(private appStorage: LocalStorageHandlerService,
               private http: HttpClient,
+              private router: Router,
               @Inject(API_URL) private apiUrl: string) {
                 this.account$ = new BehaviorSubject<UserAccount>(this._account);
                }
@@ -74,7 +76,9 @@ refreshAccount() {
       last_name : this.appStorage.get('last_name'),
       email : this.appStorage.get('email')
     });
-    this._account.favorites = this.appStorage.get('favorites').split(',').map( x => Number(x));
+    this._account.favorites = this.appStorage.get('favorites') === '' ?
+                                  [] : this.appStorage.get('favorites').split(',').map( x => Number(x));
+
     this._account.profile = profile;
     this.account$.next(this._account);
   }
@@ -108,6 +112,14 @@ get token() {
   }
   return this.appStorage.get('token');
 
+}
+
+redirect() {
+  if (this.isLogged()) {
+    const redirect = this.redirectUrl ?
+    this.router.parseUrl(this.redirectUrl) : '/account/profile';
+    this.router.navigateByUrl(redirect);
+  }
 }
 
 

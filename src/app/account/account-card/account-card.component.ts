@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
 import { UserAccount } from '../model';
 import { Router } from '@angular/router';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { SmcAuthService } from '../service/smc-auth.service';
 
 @Component({
   selector: 'app-account-card',
@@ -13,7 +13,7 @@ export class AccountCardComponent implements OnInit {
   account: UserAccount;
   constructor(private router: Router,
               private modalHandler: ModalHandlerService,
-              private authService: AuthService) { }
+              private authService: SmcAuthService) { }
 
   ngOnInit() {
     this.account = this.authService.account;
