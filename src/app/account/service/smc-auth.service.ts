@@ -1,12 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { API_URL } from 'src/app/product/service/product-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { UserAccount, Profile } from '../model';
 import countryNames from '../../../assets/data/world-countries.json';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 import { Router } from '@angular/router';
+import { AccountCacheService } from './account-cache.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,18 +18,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SmcAuthService {
-  _account: UserAccount;
-  _token: string;
+
   _countries: any[];
   redirectUrl: string;
-  account$: BehaviorSubject<UserAccount>;
 
 
   constructor(private appStorage: LocalStorageHandlerService,
               private http: HttpClient,
               private router: Router,
+              private accountCache: AccountCacheService,
               @Inject(API_URL) private apiUrl: string) {
-                this.account$ = new BehaviorSubject<UserAccount>(this._account);
                }
 
 
@@ -43,7 +41,6 @@ createAccount(jsonData): Observable<any> {
 }
 
 login(credentials: any): Observable<any> {
-
   const query: string = [
       this.apiUrl,
       '/token-auth/'
@@ -59,58 +56,23 @@ updateAccount(jsonData): Observable<any> {
   const query: string = [
     this.apiUrl,
     '/account/',
-    this.token,
+    this.accountCache.token,
     '/'
    ].join('');
 return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
   this.appStorage.loadLocalStorage(jsonArray);
-  this.refreshAccount();
+  this.accountCache.refreshAccount();
 })) ;
-}
-
-refreshAccount() {
-  if (this.isLogged()) {
-    this._account = new UserAccount(this.appStorage.getAll());
-    const profile = new Profile({
-      first_name : this.appStorage.get('first_name'),
-      last_name : this.appStorage.get('last_name'),
-      email : this.appStorage.get('email')
-    });
-    this._account.favorites = this.appStorage.get('favorites') === '' ?
-                                  [] : this.appStorage.get('favorites').split(',').map( x => Number(x));
-
-    this._account.profile = profile;
-    this.account$.next(this._account);
-  }
-
 }
 
 getUserFavorites() {
   const query: string = [
     this.apiUrl,
     '/account/',
-    this.token,
+    this.accountCache.token,
     '/favorites/'
    ].join('');
    return this.http.get(query, httpOptions).pipe(map((jsonArray: any[]) => jsonArray));
-
-}
-
-
-get account() {
-  if (!this._account) {
-    this.refreshAccount();
-
-  }
-  return this._account;
-}
-
-get token() {
-  if (!this._token) {
-
-    this._token = this.appStorage.get('token');
-  }
-  return this.appStorage.get('token');
 
 }
 

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
 import { SmcAuthService } from './smc-auth.service';
+import { AccountCacheService } from './account-cache.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountFormService {
 
-  constructor(private fb: FormBuilder , private authService: SmcAuthService) { }
+  constructor(private fb: FormBuilder , private  accountCache: AccountCacheService) { }
 
   createShortAccountForm(): FormGroup {
     const  form = this.fb.group({
@@ -52,7 +53,7 @@ export class AccountFormService {
 
   createLoadFullAccountForm() {
     const myForm  = this.createAccountForm();
-    const account = this.authService.account;
+    const account = this.accountCache.account;
     myForm.addControl('company_name', new FormControl(account.company_name));
     myForm.addControl('position', new FormControl(account.position));
     myForm.addControl('activity', new FormControl(account.activity_field));

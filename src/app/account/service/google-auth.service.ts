@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
+import { API_URL } from 'src/app/product/service/product-data.service';
+import { AccountCacheService } from './account-cache.service';
+import { SmcAuthService } from './smc-auth.service';
 
 declare const gapi: any;
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type':  'application/x-www-form-urlencoded'
   })
 };
 
@@ -15,7 +19,11 @@ const httpOptions = {
 })
 export class GoogleAuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient ,
+              private appStorage: LocalStorageHandlerService,
+              private accountCache: AccountCacheService,
+              private authService: SmcAuthService,
+              @Inject(API_URL) private apiUrl: string) {
     gapi.load('auth2', () => {
       gapi.auth2.init({
         client_id: '541271383309-k3e64igmtqkenbosdl6mm7uo7og3jggg.apps.googleusercontent.com'
@@ -36,27 +44,26 @@ export class GoogleAuthService {
   }
 
   private onSignIn(googleUser) {
-    console.warn(googleUser.getAuthResponse());
-    this.verifyToken(googleUser.getAuthResponse().id_token).subscribe(x => {
-      console.warn(x);
+    this.createOrSignin(googleUser.getAuthResponse().id_token).subscribe(jsonData => {
+      this.appStorage.loadLocalStorage(jsonData);
+      this.accountCache.refreshAccount();
+      this.authService.redirect();
+      this.signOut();
     });
-    // this.signOut().then(() => {
-    //   console.warn('Sign out');
-    // });
      }
 
   private onFailure() {
       console.warn('failure');
     }
 
-  verifyToken(id_token: string) {
-    const apiUrl = 'https://oauth2.googleapis.com/tokeninfo'
+  createOrSignin(id_token: string) {
+    const endPoint = '/google-auth/';
     const query: string = [
-      apiUrl,
-      '?id_token=',
-      id_token
+      this.apiUrl,
+      endPoint
          ].join('');
-     return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray));
+    const httpParams = new HttpParams().set('id_token', id_token);
+     return this.http.post(query, httpParams, httpOptions).pipe(map((jsonArray: any[]) => jsonArray));
   }
 
   isSignIn(): boolean {
@@ -64,7 +71,7 @@ export class GoogleAuthService {
   }
 
   signOut() {
-    let auth2 = gapi.auth2.getAuthInstance();
+    const auth2 = gapi.auth2.getAuthInstance();
     return auth2.signOut();
   }
 

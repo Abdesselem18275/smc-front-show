@@ -11,10 +11,9 @@ export class AccountProfileComponent implements OnInit {
 
   myProfile: UserAccount;
   tabs: any[];
-  constructor(private authService: SmcAuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.myProfile = this.authService.account;
     this.tabs = [
       { label: 'Informations', icon: 'account_circle' },
       { label: 'Favorites', icon: 'favorite' },

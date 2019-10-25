@@ -4,6 +4,7 @@ import { ModalHandlerService } from './service/modal-handler.service';
 import { filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SmcAuthService } from '../account/service/smc-auth.service';
+import { AccountCacheService } from '../account/service/account-cache.service';
 
 @Directive({
   selector: '[appFavoriteHandler]'
@@ -11,16 +12,16 @@ import { SmcAuthService } from '../account/service/smc-auth.service';
 export class FavoriteHandlerDirective implements AfterViewInit {
   @Input() appFavoriteHandler: number;
   constructor(private _element: ElementRef ,
+              private accountCache: AccountCacheService,
               private _authService: SmcAuthService ,
               private _favHandlerService: FavoriteHandlerService ,
-              private _modalHandler: ModalHandlerService,
-              private router: Router) {
+              private _modalHandler: ModalHandlerService) {
    }
 
 
    ngAfterViewInit() {
     this.updateIconStyle();
-     this._authService.account$.subscribe( x =>  {
+     this.accountCache.account$.subscribe( x =>  {
       this.updateIconStyle();
      });
   }

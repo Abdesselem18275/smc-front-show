@@ -3,6 +3,8 @@ import { UserAccount } from '../model';
 import { Router } from '@angular/router';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from '../service/smc-auth.service';
+import { AccountCacheService } from '../service/account-cache.service';
+import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-account-card',
@@ -13,10 +15,11 @@ export class AccountCardComponent implements OnInit {
   account: UserAccount;
   constructor(private router: Router,
               private modalHandler: ModalHandlerService,
-              private authService: SmcAuthService) { }
+              private authService: SmcAuthService,
+              private accountCache: AccountCacheService) { }
 
   ngOnInit() {
-    this.account = this.authService.account;
+    this.account = this.accountCache.account;
   }
 
   logOut() {
