@@ -48,21 +48,12 @@ form {
 .block-divider {
     flex : 1 1 auto;
 }
-mdc-radio-group {
-    height: 6.3rem;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .form-group__header {
-    font-weight: bold;
     margin-bottom: 1.5rem;
 }
-.switch--space-between {
-    label {
-        padding-left: 0px;
-        margin-right: 2rem;
-    }
 
+.slide-toggle--margin-8 {
+    margin-bottom: 1rem;
 }

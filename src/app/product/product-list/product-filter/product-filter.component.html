@@ -1,13 +1,15 @@
 
 <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
-            <header mdcBody2>  
+            <header   class="mat-caption" >  
                 {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >
-                <mdc-form-field class="form-field" *ngFor="let choice of filterCategory.choices" >
-                    <mdc-checkbox [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked ></mdc-checkbox>
-                        <label mdcBody1 class="from-field__label">{{choice.value | titlecase}}</label>
-                </mdc-form-field>
+                    <mat-checkbox  *ngFor="let choice of filterCategory.choices" [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked >
+                        <span class="mat-body from-field__label">{{choice.value | titlecase}}</span>
+                    </mat-checkbox>
             </div>
-    </div></form>
+        <mat-divider></mat-divider>
+
+    </div>
+</form>

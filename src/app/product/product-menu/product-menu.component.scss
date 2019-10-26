@@ -34,17 +34,13 @@ p {
 }
 
 
-.nav-bar__nav-tab > button
+.nav-bar__nav-tab > p
 {   
-    margin-right: 1rem;
-    @include mdc-button-filled-accessible(white);
-    mdc-icon {
+    mat-icon {
         transition: 0.2s ease-out;
-        font-weight: 300;
+        font-size: 1.5rem;
       }
-    .mdc-button__label {
-      font-weight: bold;
-      }
+
 }
 
 
@@ -70,7 +66,9 @@ p {
     .language-panel {
         display: flex;
         align-items: center;
-        @include mdc-button-ink-color(black);
+        span {
+          margin-left: 0.5rem;
+        }
     }
 }
 
@@ -93,7 +91,6 @@ p {
       align-items: flex-start;
       flex : 0 0 20%;
       margin: 2rem 0;
-
       .sub-menu__column__image {
         max-width: 75%;
         margin: 0.75rem 0;

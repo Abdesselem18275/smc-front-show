@@ -20,7 +20,7 @@ img {
         display: flex;
         justify-content: space-between;
         flex : 1 1 auto;
-        mdc-icon {
+        mat-icon {
             width: 2rem;
             align-self: flex-start;
     
@@ -44,7 +44,7 @@ img {
                 color: $color-text-grey;
             }
         }
-        mdc-icon {
+        mat-icon {
             width: 2rem;
             margin-right: 1rem;
     
@@ -56,7 +56,7 @@ img {
         padding: 1.5rem 1rem;
         button {
             margin-right: 0.5rem;
-            @include mdc-button-ink-color($color-text-grey);
+            color : $color-text-grey;
         }
     }
 }

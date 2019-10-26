@@ -10,6 +10,7 @@ import { ConfigService } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -30,6 +31,7 @@ export function loadCategories(configService: ConfigService) {
     ReactiveFormsModule,
     SharedModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
         {

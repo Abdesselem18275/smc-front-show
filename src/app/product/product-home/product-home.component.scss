@@ -39,7 +39,7 @@
     width: 20%;
     margin-top: 2em;
 
-    mdc-icon  {
+    mat-icon  {
       transform: scale(2);
   
     }
@@ -47,7 +47,7 @@
       margin-top : 1em;
     }
 
-    mdc-icon:hover {
+    mat-icon:hover {
       transform: scale(2.5);
       transition : ease 0.3s;
 
@@ -67,7 +67,7 @@
       width: 20%;
       margin-top: 2em;
   
-      mdc-icon  {
+      mat-icon  {
         transform: scale(1.75);
     
       }

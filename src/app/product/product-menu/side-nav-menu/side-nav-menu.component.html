@@ -1,9 +1,9 @@
-  <div [mdcElevation]="2" class="side-window__header">
-    <p mdcHeadline5>
+  <div  class="side-window__header">
+    <p  >
       Menu 
     </p>
-    <button (click)="closeMenu()" mdcIconButton>
-      <mdc-icon>close</mdc-icon>
+    <button (click)="closeMenu()" mat-icon-button >
+      <mat-icon>close</mat-icon>
     </button>
 
 
@@ -16,31 +16,31 @@
 </div>
 
 <section>
-      <p mdcHeadline5 class="smc-header title">
+      <p   class="smc-header title">
         PRODCUTS
       </p>
   <ul>
   <li class="menu-sub__expandable">
     <div class="menu-sub__header">
-      <p mdcHeadline6 >Categories</p>
-      <mdc-icon (click)="toggleSubMenu('category')"
+      <p   >Categories</p>
+      <mat-icon (click)="toggleSubMenu('category')"
                  [style.transform]="isCategoryOpen ? 'rotate(-90deg)' : ''">
-        expand_more</mdc-icon>
+        expand_more</mat-icon>
     </div>
     <ul [@inOutAnimation] *ngIf="isCategoryOpen">
-      <li  mdcSubtitle1 
+      <li     
            (click)="navigateTo('categories__designation__in',cat.designation)"
            *ngFor="let cat of rootCategories">{{cat.designation}}</li>
     </ul>
 
   <li class="menu-sub__expandable">
       <div class="menu-sub__header">
-      <p mdcHeadline6 class="menu-sub-1">Collections</p>
-      <mdc-icon (click)="toggleSubMenu('collection')"
-                [style.transform]="isCollectionOpen ? 'rotate(-90deg)' : ''" >expand_more</mdc-icon>
+      <p   class="menu-sub-1">Collections</p>
+      <mat-icon (click)="toggleSubMenu('collection')"
+                [style.transform]="isCollectionOpen ? 'rotate(-90deg)' : ''" >expand_more</mat-icon>
       </div>
       <ul [@inOutAnimation] *ngIf="isCollectionOpen">
-        <li mdcSubtitle1 
+        <li    
             (click)="navigateTo('collection__designation__in',col.designation)"
             *ngFor="let col of collectionArray">{{col.designation}}</li>
       </ul>
@@ -50,51 +50,51 @@
 </section>
 
 <section>
-    <p mdcHeadline5 class="smc-header title">
+    <p   class="smc-header title">
       COMPANY
     </p>
 <ul>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">About us</p>
+  <p   class="menu-sub-1">About us</p>
 </li>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Contact us</p>
+  <p   class="menu-sub-1">Contact us</p>
 </li>
 
 </ul>
 </section>
 
 <section>
-    <p mdcHeadline5 class=" smc-header title">
+    <p   class=" smc-header title">
       UTILITY
     </p>
 <ul>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Mainteance tips</p>
+  <p   class="menu-sub-1">Mainteance tips</p>
 </li>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Copper benefits</p>
+  <p   class="menu-sub-1">Copper benefits</p>
 </li>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Returns</p>
+  <p   class="menu-sub-1">Returns</p>
 </li>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Paiments Information</p>
+  <p   class="menu-sub-1">Paiments Information</p>
 </li>
 
 </ul>
 </section>
 
 <section>
-    <p mdcHeadline5 class="smc-header title">
+    <p   class="smc-header title">
       ACCOUNT
     </p>
 <ul>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Sign in / Register</p>
+  <p   class="menu-sub-1">Sign in / Register</p>
 </li>
 <li>
-  <p mdcHeadline6 class="menu-sub-1">Favorites</p>
+  <p   class="menu-sub-1">Favorites</p>
 </li>
 
 </ul>

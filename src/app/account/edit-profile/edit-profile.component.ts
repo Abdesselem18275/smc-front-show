@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AccountFormService } from '../../service/account-form.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
-import { SmcAuthService } from '../../service/smc-auth.service';
+import { AccountFormService } from '../service/account-form.service';
+import { SmcAuthService } from '../service/smc-auth.service';
 
 
 
@@ -23,6 +23,7 @@ export class EditProfileComponent implements OnInit {
     this.isUpdating = false;
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
     this.countryNames = this.authService.countries;
+    console.warn(this.accountForm);
   }
 
 

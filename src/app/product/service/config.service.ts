@@ -5,8 +5,8 @@ import { ProductDataService } from './product-data.service';
 import { Category, ProductCollection, FilterCategory } from '../model';
 import { CollectionCacheService } from './collection-cache.service';
 import { FilterCacheService } from './filter-cache.service';
-import { MdcIconRegistry } from '@angular-mdc/web';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class ConfigService {
   constructor(private pds: ProductDataService , private _collectionCache: CollectionCacheService
               , private _categoryCache: CategoryCacheService,
                private _filterCache:  FilterCacheService,
-               private iconRegistry: MdcIconRegistry , private sanitizer: DomSanitizer) { }
+               private iconRegistry: MatIconRegistry , private sanitizer: DomSanitizer) { }
 
   getCategories(): Promise<object> {
     return    this.pds.get_elements({model: 'categorie'}).pipe(

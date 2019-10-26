@@ -1,9 +1,8 @@
-<mdc-linear-progress secondary="true" [open]="!favorites">
-    </mdc-linear-progress>
+<mat-progress-bar secondary="true" *ngIf="!favorites">
+    </mat-progress-bar>
 <section class="product-container">
-    <p class="text--center"  mdcBody2 *ngIf="favorites?.length < 1"> You dont have favorites</p>
+    <p class="text--center"   *ngIf="favorites?.length < 1"> You dont have favorites</p>
 <div *ngFor='let favorite of favorites' 
-      [mdcElevation]="2"
       @myInsertRemoveTrigger
       class="product-box">
     <app-product-box  
@@ -11,8 +10,8 @@
                        [product]="favorite" >
     </app-product-box>
     <div class="action-container">
-        <button (click)="removeFavorite(favorite.pk)" mdcIconButton>
-        <mdc-icon >close</mdc-icon>
+        <button (click)="removeFavorite(favorite.pk)" mat-icon-button>
+        <mat-icon >close</mat-icon>
        </button>
     </div>
 </div>

@@ -1,1 +1,19 @@
+<nav mat-align-tabs="center"  
+     mat-tab-nav-bar  
+     mat-stretch-tabs
+     class="menu-tab-bar">
+        <a mat-tab-link  
+          (click)="activeLink = tab.label"
+          [active]="activeLink == tab.label"
+          [routerLink]="tab.path" 
+          class=" mat-tab-link"
+          *ngFor="let tab of tabs">
+          <div class="tab__content">
+                <span class="mat-body">{{tab.label}}</span>
+                <mat-icon>{{tab.icon}}</mat-icon>
+          </div>
+
+        </a>
+</nav>
+
 <router-outlet></router-outlet>

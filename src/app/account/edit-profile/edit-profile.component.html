@@ -1,14 +1,14 @@
-      <mdc-linear-progress secondary="true" [open]="isUpdating">
+      <mat-progress-bar secondary="true" *ngIf="isUpdating">
 
-      </mdc-linear-progress>
+      </mat-progress-bar>
 
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
-        <p class="form-group__header smc-header" mdcBody2>
+        <p class="mat-body-strong form-group__header smc-header"    >
             PERSONAL INFORMATION</p>
         <div  formGroupName="profile" class="form__field">
-        <label mdcBody2 for="first_name">
+        <label     for="first_name">
             first name
         </label>
         <input  required
@@ -17,7 +17,7 @@
                 formControlName="first_name">                                
         </div>
         <div  formGroupName="profile" class="form__field">
-    <label mdcBody2 for="last_name">
+    <label     for="last_name">
         last name
     </label>
     <input  required
@@ -26,7 +26,7 @@
             formControlName="last_name">                                
         </div>
     <div class="form__field">
-        <label mdcBody2 for="country">
+        <label     for="country">
             Country
         </label>
         <select id="country" formControlName="country">
@@ -34,7 +34,7 @@
         </select>
     </div>
     <div class="form__field">
-        <label mdcBody2 for="phoneNumber">
+        <label     for="phoneNumber">
             Phone Number
         </label>
         <input 
@@ -48,21 +48,21 @@
 
 
     <div   class="form-group">
-        <p class="form-group__header smc-header" mdcSubtitle2>
+        <p class="mat-body-strong form-group__header smc-header"  >
         COMPANY INFORMATIONS
     </p>
 
 
-    <mdc-form-field class="switch--space-between"  
-                    alignEnd>
-        <mdc-switch   formControlName="is_professional" 
-                      (change)="onchanges($event)">
-        </mdc-switch>
-        <label mdcBody1>Are you professional ?</label>
-    </mdc-form-field>
+
+        <mat-slide-toggle  class="slide-toggle--margin-8" 
+                    formControlName="is_professional" 
+                    (change)="onchanges($event)"
+                    [labelPosition] = "'before'">
+                    <span class="mat-body">Are you professional ?</span>
+        </mat-slide-toggle>
 
       <div class="form__field">
-          <label mdcBody2 for="company_name">
+          <label     for="company_name">
                 Company
             </label>
           <input  
@@ -71,32 +71,32 @@
             type ="text">
         </div>
       <div class="form__field">
-            <label mdcBody2 for="position">
+            <label     for="position">
                     Position
                 </label>
           <input   
                 formControlName="position"  
                 autocomplete="organization-title" 
                 type ="text" >
-                <p mdcCaption class="field__note">
+                <p    class="field__note">
                         Insert your current position , eg: sales manager 
                         </p>
             </div>
 
             <div class="form__field">
-                    <label mdcBody2 for="activity">
+                    <label     for="activity">
                             Activity
                         </label>
                   <input   
                         formControlName="activity"  
                         autocomplete="organization" 
                         type ="text" >
-                        <p mdcCaption class="field__note">
+                        <p    class="field__note">
                                 Insert your field of activity , eg: Tourism , Restoration
                                 </p>
                     </div>
 
-                    <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mdc-button primary>Save changes</button>
+                    <button class="form__submit-button" [disabled]="!accountForm.valid" type="submit"  mat-button  primary>Save changes</button>
 
         </div>
 

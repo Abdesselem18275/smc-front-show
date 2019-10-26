@@ -2,7 +2,6 @@ import { Directive, ElementRef, AfterViewInit, Input, HostListener } from '@angu
 import { FavoriteHandlerService } from './service/favorite-handler.service';
 import { ModalHandlerService } from './service/modal-handler.service';
 import { filter } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { SmcAuthService } from '../account/service/smc-auth.service';
 import { AccountCacheService } from '../account/service/account-cache.service';
 
@@ -32,7 +31,7 @@ export class FavoriteHandlerDirective implements AfterViewInit {
       this._favHandlerService.addRemoveFavorites(this.appFavoriteHandler);
     } else {
       this._modalHandler.openSnak('You have to login to perform this action', 'Login').
-      afterDismiss().pipe(filter(x => x === 'action')).subscribe(() => {
+      afterDismissed().pipe(filter(x => true)).subscribe(() => {
         this._modalHandler.toggleModal('loginBox');
       });
 

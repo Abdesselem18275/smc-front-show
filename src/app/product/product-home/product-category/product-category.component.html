@@ -14,17 +14,17 @@
 
 <section class="image-list--small-screen">
   <section class="main-image">
-    <mdc-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mdc-icon>
+    <mat-icon (click) = "stepUpdateImage(-1)">keyboard_arrow_left</mat-icon>
     <div>
       <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)" [src]="selectedImage">
     </div>
-    <mdc-icon (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mdc-icon>
+    <mat-icon (click) = "stepUpdateImage(1)" >keyboard_arrow_right</mat-icon>
   </section>
   <section class='images-selector'>
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
   </section>
 </section>
-<mdc-icon id="collection-icon" [svgIcon]="selectedCollection.svgIcon.designation"></mdc-icon>
+<mat-icon id="collection-icon" [svgIcon]="selectedCollection.svgIcon.designation"></mat-icon>
 
 <div class="collection-description">
   <p>{{selectedCollection.description}}</p>

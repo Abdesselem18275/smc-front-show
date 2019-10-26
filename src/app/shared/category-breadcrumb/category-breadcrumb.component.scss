@@ -15,21 +15,12 @@ p:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-:host(.body-style) {
-  p {
-    font-weight: bold;
-  }
-  mdc-icon {
-    font-size: 1rem;
-  }
 
-}
 
 
 :host(.caption-style) {
-  p, mdc-icon {
+  p  {
     color : $color-text-grey;
-    font-size: 0.875rem;
   }
   
 

@@ -1,21 +1,21 @@
-<header [mdcElevation]="2" class="side-window__header">
+<header class="side-window__header">
 
         
         <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
-        <p mdcHeadline6>
+        <p  >
               </p>
-              <button (click)="closePopup()" mdcIconButton>
-                        <mdc-icon >close</mdc-icon>
+              <button (click)="closePopup()" mat-icon-button >
+                        <mat-icon >close</mat-icon>
               </button>
 
       </header>
-<mdc-linear-progress secondary="true" [open]="!isReady">
+<mat-progress-bar secondary="true" *ngIf="!isReady">
 
-</mdc-linear-progress>
+</mat-progress-bar>
 <section class="container">
 <main *ngIf="products" class="result-container">
-        <header  mdcCaption>Search suggestion</header>
-        <p  mdcCaption>{{objCount}} products found</p>
+        <header    >Search suggestion</header>
+        <p    >{{objCount}} products found</p>
         <section class="results-content">
                 <app-product-box  mode="listWithBread" 
                                   [product]="product" 
@@ -27,7 +27,7 @@
               [objectsNumber]="objCount" 
               onViewPort="false"
               class='bottom-line'>
-              <mdc-icon *ngIf="!isReady"svgIcon="loading_2"></mdc-icon>
+              <mat-icon *ngIf="!isReady"svgIcon="loading_2"></mat-icon>
 
         </div>
         </section>

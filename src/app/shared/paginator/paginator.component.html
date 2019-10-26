@@ -1,13 +1,13 @@
 <div>
-    <span mdcCaption>Items per page : 10 </span>
-    <span mdcCaption>page number : {{currentPageNumber}} </span>
-    <span mdcCaption >{{pageLowerIndex()}} - {{pageUpperIndex()}} of {{elementsCount}}</span>
-    <button mdc-icon-button 
+    <span   >Items per page : 10 </span>
+    <span   >page number : {{currentPageNumber}} </span>
+    <span    >{{pageLowerIndex()}} - {{pageUpperIndex()}} of {{elementsCount}}</span>
+    <button mat-icon-button  
             icon="keyboard_arrow_left" 
             [style.color] = "checkInRange(-1) ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.54)'" 
             (click) = "checkInRange(-1) ? updateIndex(-1) : ''">
     </button>
-    <button mdc-icon-button 
+    <button mat-icon-button  
             icon="keyboard_arrow_right" 
             [style.color] = "checkInRange(1) ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.54)'" 
             (click) = "checkInRange(1) ? updateIndex(1) : ''" >

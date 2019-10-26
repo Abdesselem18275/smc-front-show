@@ -36,7 +36,6 @@ grid-area: content;
     margin-left: -1rem;
 
     button {
-        @include mdc-button-filled-accessible(white);
         margin-right: 0.5rem;
     }
 

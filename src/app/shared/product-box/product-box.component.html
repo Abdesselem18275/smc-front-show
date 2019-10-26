@@ -11,29 +11,29 @@
 
 <section class="content-text">
    <div>
-           <app-category-breadcrumb mdcCaption 
+           <app-category-breadcrumb    
                                     *ngIf="mode=='listWithBread'" 
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
             </app-category-breadcrumb>
-       <p mdcSubtitle1>{{product.designation}}</p>
-       <p mdcCaption>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
+       <p class="mat-body-strong">{{product.designation}}</p>
+       <p class="mat-caption">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
        </p>
    </div>
 
-<mdc-icon [svgIcon]="product.collection?.svgIcon.designation">
-</mdc-icon>
+<mat-icon [svgIcon]="product.collection?.svgIcon.designation">
+</mat-icon>
 
 </section>
 </div>
 
 <div class="content--grid" *ngIf="mode == 'grid'">
         <section class="content-information">
-                <mdc-icon class="content__collection-icon" *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
-                    </mdc-icon>
+                <mat-icon inline="true" class="content__collection-icon" *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
+                    </mat-icon>
            <div class="content-information__text">
-               <p mdcHeadline6>{{product.designation}}</p>
-               <p class="text--grey" mdcBody2>{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
+               <p class="mat-body-strong">{{product.designation}}</p>
+               <p class="text--grey mat-caption">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
                </p>
            </div>
         
@@ -51,13 +51,13 @@
 
         <section class="action-container"> 
             <button  [appFavoriteHandler]="product.pk"
-                    class="favorites" 
-                    mdc-button>
-                    <mdc-icon >favorite</mdc-icon>
+                    class="favorites"
+                    mat-button>
+                    <mat-icon>favorite</mat-icon>
                     Like
             </button>
-            <button mdc-button>
-                    <mdc-icon>message</mdc-icon>
+            <button mat-button>
+                    <mat-icon >message</mat-icon>
                     Ask
             </button>
         </section>

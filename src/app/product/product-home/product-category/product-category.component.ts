@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCollection } from '../../model';
-import { ProductDataService } from '../../service/product-data.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { DomSanitizer } from '@angular/platform-browser';
 import { CollectionCacheService } from '../../service/collection-cache.service';
-import { MdcIconRegistry } from '@angular-mdc/web';
 
 @Component({
   selector: 'app-product-category',

@@ -25,31 +25,27 @@
     align-items: center;
     margin-bottom: 1.5rem;
     #collection {
-      width: 2.5rem;
+      width: 32px;
       align-self: flex-end;
-      margin-right: 1rem;
     }
     div {
+      margin-left: 1rem;
       margin-right: auto;
-
-      .text--grey {
-        color:$color-text-grey; 
-      }
+      flex-grow: 1;
     }
-    button {
-      // @include mdc-button-ink-color($color-text-grey);
-      color: $color-text-grey;
-
+    .text--grey {
+      color:$color-text-grey; 
     }
   }
   .description__content {
     min-height: 8rem;
     .description__text {
-      padding: 1rem 1rem;
-      p  {
-        text-align: justify;
-      }
+      padding: 0.5rem 2rem;
+      text-align: justify;
+      @media only screen and (max-width:960px) {
+        padding: 0.5rem 1rem;
 
+      }
     }
 
 
@@ -145,10 +141,6 @@
       text-align: left;
 
     }     
-    th {
-      font-weight: 600;
-
-    }
     tr:first  {
       border-top: 1px solid $color-border-grey;  
       border-bottom: 1px solid $color-border-grey;  
@@ -164,7 +156,7 @@
     .componnent-designation__aligned {
       display: flex;
       align-items: center;
-      mdc-icon {
+      mat-icon {
         width : 2rem;
         margin-right: 1rem;
       }

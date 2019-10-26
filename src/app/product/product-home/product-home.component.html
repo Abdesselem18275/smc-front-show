@@ -4,13 +4,13 @@
 <p class="header--big">SMC</p>
 <p class="sentence--small">sweat for you</p>
 </div>
-<div mdc-typography class="icons__wrap">
+<div class="icons__wrap">
 
    <figure *ngFor="let category of categories">
-      <button class='category-icon' mdcIconButton>
-         <mdc-icon  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [svgIcon]="category.svgIcon.designation"></mdc-icon>
+      <button class='category-icon' mat-icon-button >
+         <mat-icon  inline="true" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [svgIcon]="category.svgIcon.designation"></mat-icon>
       </button>
-      <figcaption mdcCaption>{{category.designation | titlecase}}</figcaption>
+      <figcaption>{{category.designation | titlecase}}</figcaption>
    </figure>
 
 
@@ -21,6 +21,6 @@
 
 <section class="category-page">
 
-<app-product-category mdc-typography></app-product-category> 
+<app-product-category></app-product-category> 
 
 </section>

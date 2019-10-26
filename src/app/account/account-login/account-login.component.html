@@ -1,11 +1,11 @@
 
-        <header [mdcElevation]="2" class="side-window__header">
+        <header class="side-window__header">
                 <p></p>
-                <p  mdcHeadline5>
+                <p class="mat-body">
                   SMC ACCOUNT
                 </p>
-                <button mdcIconButton>
-                        <mdc-icon (click)="cancel()">close</mdc-icon>
+                <button mat-icon-button >
+                        <mat-icon (click)="cancel()">close</mat-icon>
                 </button>
         
               </header>
@@ -14,8 +14,8 @@
 <section class="login">
                 <div id="google-sign">
                                 <header>
-                                        <p class="title--bold smc-header" mdcSubtitle2>SIGN IN WITH GOOGLE</p>
-                                        <p  class="text--grey" mdcBody2>Create or acces your account by sign in to your google account</p>
+                                        <p class="mat-title smc-header"  >SIGN IN WITH GOOGLE</p>
+                                        <p  class="text--grey mat-body"    >Create or acces your account by sign in to your google account</p>
                                 
                                 </header>
                                 <app-google-sign-in>
@@ -23,14 +23,14 @@
                                 </div>
 
 <header>
-        <p class="title--bold smc-header" mdcSubtitle2>SIGN IN WITH SMC</p>
-        <p class="text--grey" mdcBody2>Please enter the following informations</p>
+        <p class="mat-title  smc-header"  >SIGN IN WITH SMC</p>
+        <p class="text--grey mat-body"    >Please enter the following informations</p>
     </header>
     <main>
-            <p mdcCaption class="alert">{{auth_non_field_error}}</p>
+            <p class="alert">{{auth_non_field_error}}</p>
             <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
                     <div class="form__field">
-                            <label mdcBody2 for="email">
+                            <label     for="email">
                                 email
                             </label>
                             <input  required
@@ -40,16 +40,16 @@
                                     formControlName="email">
                                 <div *ngIf="loginForm.get('email').invalid && (loginForm.dirty || loginForm.touched)" class="alert">
                                 
-                                  <p mdcCaption *ngIf="loginForm.get('email').errors.required">
+                                  <p    *ngIf="loginForm.get('email').errors.required">
                                     email is required.
                                   </p>
-                                  <p mdcCaption *ngIf="loginForm.get('email').errors.email">
+                                  <p    *ngIf="loginForm.get('email').errors.email">
                                     Enter a valid email 
                                   </p>   
                         </div>                                 
                     </div>
                     <div  class="form__field">
-                            <label mdcBody2 for="password">
+                            <label     for="password">
                                     password
                                 </label>
                     <input  
@@ -57,14 +57,14 @@
                                      required  
                                      id ="password"
                                      type ="password" formControlName="password">
-                    <span mdcCaption class="field__note">Forget yous password ?</span>
+                    <span    class="field__note">Forget yous password ?</span>
                     </div>
                  
                     <button class="inverted-theme form__submit-button" 
                             type="submit"  
                             [disabled]="!loginForm.valid"
-                            mdc-button
-                            outlined 
+                            mat-raised-button
+                            color = "primary"
                             primary>LOGIN
                     </button>
                 
@@ -79,13 +79,13 @@
 </section>
 <section>
         <header>
-                <p class="title--bold smc-header" mdcSubtitle2>REGISTER NOW</p>
-                <p class="text--grey" mdcBody2>Create and account and join us </p>
+                <p class="mat-title  smc-header"  >REGISTER NOW</p>
+                <p class="mat-body text--grey"    >Create and account and join us </p>
         </header>
         <main>
                 <form [formGroup]="createForm"   (ngSubmit)="createProfile()">
                         <div formGroupName="profile" class="form__field">
-                                <label mdcBody2 for="email">
+                                <label     for="email">
                                     email
                                 </label>
                                 <input  required
@@ -95,20 +95,20 @@
                                         formControlName="email">
                                     <div *ngIf="createForm.get('profile.email').invalid && (createForm.dirty || createForm.touched)" class="alert">
                                     
-                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.required">
+                                      <p    *ngIf="createForm.get('profile.email').errors.required">
                                         Email is required.
                                       </p>
-                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.email">
+                                      <p    *ngIf="createForm.get('profile.email').errors.email">
                                         Enter a valid email 
                                       </p>   
-                                      <p mdcCaption *ngIf="createForm.get('profile.email').errors.not_unique">
+                                      <p    *ngIf="createForm.get('profile.email').errors.not_unique">
                                                This email already exist 
                                       </p> 
                             </div>                                 
                         </div>
 
                         <div  formGroupName="profile" class="form__field">
-                                <label mdcBody2 for="first_name">
+                                <label     for="first_name">
                                     first name
                                 </label>
                                 <input  required
@@ -118,7 +118,7 @@
                         </div>
 
                         <div  formGroupName="profile" class="form__field">
-                                <label mdcBody2 for="last_name">
+                                <label     for="last_name">
                                     last name
                                 </label>
                                 <input  required
@@ -129,7 +129,7 @@
                         
                         
                         <div formGroupName="profile" class="form__field">
-                                <label mdcBody2 for="password">
+                                <label     for="password">
                                         password
                                     </label>
                         <input  
@@ -139,7 +139,7 @@
                                          type ="password" formControlName="password">
                         </div>
                         <div  formGroupName="profile" class="form__field">
-                                <label mdcBody2 for="confirmPassword">
+                                <label     for="confirmPassword">
                                         confirm password
                                 </label>
                         <input  
@@ -149,7 +149,7 @@
                                          type ="password" 
                                          formControlName="confirmPassword">
                         <div  class="alert" *ngIf="createForm.errors?.passwordNotConfirmed && (createForm.get('profile.password').touched || createForm.get('profile.confirmPassword').dirty)">
-                        <p mdcCaption >
+                        <p    >
                                 Passwords are not equals.
                         </p>
                         </div>
@@ -157,8 +157,8 @@
                 <button class="inverted-theme form__submit-button" 
                         type="submit"  
                         [disabled]="!createForm.valid"
-                        mdc-button 
-                        outlined
+                        mat-raised-button
+                        color = "primary"  
                         primary>REGISTER
                 </button>
                     

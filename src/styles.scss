@@ -1,3 +1,5 @@
+@import './app-custom-themes.scss';
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script|Raleway|Stardos+Stencil|Roboto');
 $mdc-theme-primary: black; // primary color
@@ -14,19 +16,9 @@ $color-border-grey: rgba(30, 30, 30, 0.20);
 /* Gutters */
 $global-horizontal-gutter:calc(1.5rem + 1.5vw);
 
-@import "~@angular-mdc/theme/material";
-
-
-body, html {
-  height: 100%;
-  margin : 0 0 0 0 ;
-  font-size: 16px;
-
-}
 *:focus {
   outline: 0;
 }
-$mdc-typography-font-family: "'Raleway', sans-serif";
 
 .mdc-list-item__graphic {
   width: 1.5rem;
@@ -34,10 +26,7 @@ $mdc-typography-font-family: "'Raleway', sans-serif";
   margin-right: 2rem;
 }
 
-.mdc-list-item {
-  @include mdc-list-item-graphic-ink-color(black);
-  
-}
+
 
 
 
@@ -103,6 +92,7 @@ h1,h2,h3,h4,h5,h6,p {
   label {
       text-transform: capitalize;
       margin-bottom: 0.5rem;
+      @extend .mat-body
   }
   input,select {
       height: 3rem;
@@ -111,10 +101,13 @@ h1,h2,h3,h4,h5,h6,p {
   }
   .field__note {
     color: $color-text-deep-grey;
+    @extend .mat-caption
   }
-  .alert {
-    color :red;
-  }
+
+}
+.alert {
+  color :red;
+  @extend .mat-caption
 }
 .text--grey {
   color: $color-text-grey;
@@ -155,3 +148,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+html, body { height: 100%; }
+body { margin: 0; 
+       font-family: Roboto, "Helvetica Neue", sans-serif;}

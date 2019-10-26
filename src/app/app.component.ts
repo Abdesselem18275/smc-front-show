@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MdcIconRegistry } from '@angular-mdc/web';
 import { RouterOutlet} from '@angular/router';
 import { sideSlideInAnimation, centerSlideInAnimation } from './animations';
 import { ModalStateStore } from './shared/token';
 import { ModalHandlerService } from './shared/service/modal-handler.service';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   modalStateStore  = new ModalStateStore();
 
   constructor(private modalHandler: ModalHandlerService,
-              iconRegistry: MdcIconRegistry,
+              iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
     iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))

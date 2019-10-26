@@ -21,82 +21,76 @@
 
   </section>
   <section class='images-selector'>
-      <button class="main-image__arrow" *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mdc-icon-button icon="keyboard_arrow_left"></button>
+      <button class="main-image__arrow" *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mat-icon-button  icon="keyboard_arrow_left"></button>
       <div class="dots-container">
       <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
       </div>
-      <button  class="main-image__arrow" *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mdc-icon-button icon="keyboard_arrow_right"></button>
+      <button  class="main-image__arrow" *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mat-icon-button  icon="keyboard_arrow_right"></button>
 
   </section>
 </section>
 
 <section class="description">
   <header class="title-section">
-    <mdc-icon id="collection" *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mdc-icon>
+    <mat-icon id="collection" inline="true" *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mat-icon>
     <div>
-      <p mdcHeadline6>{{product?.designation  | uppercase}}</p>
-      <p  class="text--grey" mdcBody2> {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+      <p class="mat-body-strong">{{product?.designation  | uppercase}}</p>
+      <p  class="text--grey mat-caption" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
     <button 
       [appFavoriteHandler]="product.pk" 
-      mdcIconButton>
-    <mdc-icon >favorite</mdc-icon>
-
+      class="text--grey"
+      mat-icon-button >
+    <mat-icon>favorite</mat-icon>
     </button>
-    <button  mdcIconButton>
-     <mdc-icon>message</mdc-icon>
-
+    <button class="text--grey"  mat-icon-button>
+     <mat-icon>message</mat-icon>
 </button>
 
   </header>
   <section>
-<mdc-tab-bar #myIndex [activeTabIndex]="0" class="description__content">
-  <mdc-tab-scroller>
-    <mdc-tab label="Area of Use">
-
-    </mdc-tab>
-    <mdc-tab label="Materials">
-
-    </mdc-tab>
-    <mdc-tab label="Aesthetics">
-
-    </mdc-tab>
-
-    </mdc-tab-scroller>
-    <div  class="description__text" [ngSwitch]="myIndex.activeTabIndex ">
-      <p mdcBody2 *ngSwitchCase="0">
+<mat-tab-group mat-stretch-tabs [selectedIndex]="0" class="description__content">
+    <mat-tab class="description__text" label="Area of Use">
+      <p class="mat-body description__text">
           {{product.areaOfUse}}
+        </p>
+    </mat-tab>
+    <mat-tab  label="Materials">
+      <p class="mat-body description__text">
+        {{product.materials}}
       </p>
-      <p mdcBody2 *ngSwitchCase="1">
-          {{product.materials}}
 
-      </p>
-      <p mdcBody2 *ngSwitchCase="2">
+    </mat-tab>
+    <mat-tab label="Aesthetics">
+      <p class="mat-body description__text">
           {{product.aesthetics}}
 
       </p>
-    </div>
-  
-  </mdc-tab-bar>
+
+
+    </mat-tab>
+
+
+  </mat-tab-group>
   </section>
   <section *ngIf="product.features" class="feature-container">
     
-        <mdc-icon *ngFor="let feature of product.features" class="feature-icon-button--large" [svgIcon]="feature.svgIcon.designation"></mdc-icon>
+        <mat-icon *ngFor="let feature of product.features" class="feature-icon-button--large" [svgIcon]="feature.svgIcon.designation"></mat-icon>
       
   </section>
   <span class="description__spacer"></span>
 </section>
 </div>
 <section  class="technical-description">
-    <p mdcHeadline5>Technical details</p>
+    <p class="mat-headline">Technical details</p>
   <section class="technical-data-container">
-  <table mdcBody2 class="variants-dimension-data">
+  <table  class="variants-dimension-data">
    <tr>
-     <th  *ngFor="let header of displayedColumns">
+     <th  class="mat-body-strong" *ngFor="let header of displayedColumns">
        {{header}}
      </th>
    </tr>
-   <tr *ngFor="let variant of product?.variants" >
+   <tr class="mat-body" *ngFor="let variant of product?.variants" >
     <td>
         {{ variant?.designation | uppercase }} /
         <span>{{variant?.reference | uppercase}}</span>
@@ -115,21 +109,21 @@
     </td>
    </tr>
  </table>
-  <table  *ngIf="product?.components.length > 0" mdcBody2 class="component-detail">
+  <table  *ngIf="product?.components.length > 0"  class="component-detail">
       
       <tr>
-          <th  *ngFor="let header of componnentDisplayedColumns">
+          <th  class="mat-body-strong" *ngFor="let header of componnentDisplayedColumns">
             {{header}}
           </th>
         </tr>
-      <tr *ngFor="let component of product?.components">
-          <td class="componnent-designation__aligned">
-              <mdc-icon  [svgIcon]="component.svgIcon.designation"></mdc-icon>
+      <tr class="mat-body" *ngFor="let component of product?.components">
+          <td class=" componnent-designation__aligned">
+              <mat-icon  [svgIcon]="component.svgIcon.designation"></mat-icon>
               {{component.designation}}
 
           </td>
           <td>
-              {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; --> &nbsp;&nbsp;{{component.measure_max.to_string()}}</span>
+              {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; -> &nbsp;{{component.measure_max.to_string()}}</span>
 
           </td>
           <td>
@@ -146,6 +140,6 @@
 
 <section class="related-product">
 
-  <p mdcHeadline5>Related Products</p>
+  <p class="mat-headline">Related Products</p>
 </section>
 

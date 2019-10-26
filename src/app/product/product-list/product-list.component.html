@@ -2,30 +2,29 @@
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
-          <p mdcBody2 class="content__objects-count">{{objCount}} selected products</p>
+          <p     class="content__objects-count mat-caption">{{objCount}} selected products</p>
         </div>
-        <button class="meta-bar__filter" mdcIconButton>
-        <mdc-icon (click)="filterToggle()" >
+        <button class="meta-bar__filter" mat-icon-button >
+        <mat-icon (click)="filterToggle()" >
           tune
-        </mdc-icon>
+        </mat-icon>
       </button>
-            <button class="meta-bar__view-button" (change)="toggleView($event)" mdcIconButton>
-                <mdc-icon mdcIconOn>view_module</mdc-icon>
-                <mdc-icon>view_list</mdc-icon>
+            <button class="meta-bar__view-button" (click)="toggleView($event)" mat-icon-button>
+                <mat-icon >view_module</mat-icon>
             </button>
 
       </div>
-      <mdc-linear-progress secondary="true" [open]="!isReady">
+      <mat-progress-bar *ngIf="!isReady" mode="indeterminate">
 
-      </mdc-linear-progress>
+      </mat-progress-bar>
     </header>
-      <div  [mdcElevation]="3" [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="filter-container">
-        <header [mdcElevation]="2" class="side-window__header">
-          <p mdcHeadline6>
+      <div   [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="mat-elevation-z3 filter-container">
+        <header class=" mat-elevation-z2 side-window__header">
+          <p  >
             Filters
           </p>
-          <button (click)="filterToggle()" mdcIconButton>
-            <mdc-icon >close</mdc-icon>
+          <button (click)="filterToggle()" mat-icon-button >
+            <mat-icon >close</mat-icon>
 
           </button>
 
@@ -40,7 +39,7 @@
             <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
 
-                <app-product-box class="product-box" [mdcElevation]="2" [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
+                <app-product-box class="mat-elevation-z2 product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
                 </app-product-box>
             </div>
 
@@ -49,5 +48,5 @@
           (pageNumber)="pageEvent($event)" 
           [objectsNumber]="objCount" 
           class='bottom-line'>
-          <mdc-icon *ngIf="!isReady"svgIcon="loading_2"></mdc-icon>
+          <mat-icon inline="true" *ngIf="!isReady"svgIcon="loading_2"></mat-icon>
         </div>

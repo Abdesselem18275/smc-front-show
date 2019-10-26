@@ -1,12 +1,9 @@
-<!-- <div id="logo">
-        <mdc-icon  svgIcon="logo_2"></mdc-icon>
-</div> -->
 
 <div class="content">
-    <p mdcHeadline6>Welcome {{account.profile.first_name}}</p>
-    <p class="text--grey" mdcSubtitle1>{{account.profile.email}}</p>
+    <p class="mat-body" >Welcome {{account.profile.first_name}}</p>
+    <p class="mat-caption text--grey">{{account.profile.email}}</p>
 </div>
-<div class="content__action">
-        <button (click)="logOut()" mdc-button    unelevated>Log out</button>
-        <button [routerLink]="['/account/profile']" mdc-button  unelevated>My profile</button>
+<div class="mat-body content__action">
+        <button (click)="logOut()" mat-button>Log out</button>
+        <button [routerLink]="['/account/profile']" mat-button>My profile</button>
 </div>

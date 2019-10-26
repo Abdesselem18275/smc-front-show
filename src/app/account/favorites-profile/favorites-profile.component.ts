@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
 import { FavoriteHandlerService } from 'src/app/shared/service/favorite-handler.service';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { SmcAuthService } from '../../service/smc-auth.service';
+import { SmcAuthService } from '../service/smc-auth.service';
 
 @Component({
   selector: 'app-favorites-profile',
@@ -25,7 +25,8 @@ import { SmcAuthService } from '../../service/smc-auth.service';
 export class FavoritesProfileComponent implements OnInit {
   favorites: ProductShort[];
 
-  constructor(private favHandler: FavoriteHandlerService ,private authService: SmcAuthService) { }
+  constructor(private favHandler: FavoriteHandlerService ,
+              private authService: SmcAuthService) { }
 
   ngOnInit() {
     this.authService.getUserFavorites().subscribe(results => {
