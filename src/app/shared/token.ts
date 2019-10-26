@@ -6,12 +6,14 @@ export class ModalStateStore {
     sideMenuBox: boolean;
     filterBox: boolean;
     userCardBox: boolean;
+    languageBox: boolean;
     constructor() {
         this.searchBox = false;
         this.loginBox = false;
         this.sideMenuBox = false;
         this.filterBox = false;
         this.userCardBox = false;
+        this.languageBox = false;
 
     }
     isOpen() {

@@ -6,7 +6,7 @@ $mdc-theme-black: #000000; // secondary color
 
 $color-grey:rgba(0, 0, 0, 0.507);
 $color-deep-grey:rgb(179,179,179);
-$color-text-grey:rgb(68,68,68);
+$color-text-grey:rgb(85,85,85);
 $color-text-deep-grey:rgb(30,30,30);
 $color-light-grey:rgb(248,248,248);
 $color-border-grey: rgba(30, 30, 30, 0.20);
@@ -140,3 +140,18 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+::-webkit-scrollbar {
+  width: 2px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

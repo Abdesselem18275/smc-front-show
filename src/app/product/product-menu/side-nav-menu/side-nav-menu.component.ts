@@ -1,11 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-import { Category, ProductCollection } from '../../model';
+import { Category, ProductCollection, NavTree } from '../../model';
 import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
+
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -40,6 +41,7 @@ export class SideNavMenuComponent implements OnInit {
   isCategoryOpen: Boolean;
   rootCategories: Category[];
   collectionArray: ProductCollection[];
+  navMenuData: NavTree[];
   isLogged: boolean;
   constructor(private router: Router,
               private authService: SmcAuthService,
@@ -48,11 +50,52 @@ export class SideNavMenuComponent implements OnInit {
               private colcs: CollectionCacheService) { }
 
   ngOnInit() {
-    this.isLogged = this.authService.isLogged()
+    this.isLogged = this.authService.isLogged();
     this.isCollectionOpen = false;
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
     this.collectionArray = this.colcs.fetchCachedCollections();
+    // this.navMenuData = [
+    //   {
+    //     designation : 'Products',
+    //     level : 1,
+    //     children : [
+    //       {
+    //         designation : 'Categories',
+    //         level : 2,
+    //         children : <NavTree[]>this.rootCategories.map(x => x.level)
+    //       }
+
+    //     ]
+    //   },
+    //   {
+
+    //   }
+    // ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   toggleCollection() {
     this.isCollectionOpen = !this.isCollectionOpen;

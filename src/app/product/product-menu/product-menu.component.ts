@@ -18,14 +18,13 @@ export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
-  modalStateStore: ModalStateStore;
+  modalStateStore = new ModalStateStore();
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;
   isReady: boolean;
-  isScrollingUp: boolean;
   isActive: boolean;
-  isCardActive: boolean;
+
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
 
 
@@ -37,7 +36,6 @@ export class ProductMenuComponent implements OnInit {
   }
   ngOnInit() {
     this.isActive = true;
-    this.isScrollingUp = true;
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
@@ -74,12 +72,7 @@ export class ProductMenuComponent implements OnInit {
     this.isRootActive = !this.isRootActive;
   }
 
-  closePopups() {
-    this.router.navigate([{ outlets: { popup: null }}]);
-  }
   toggleModal(key) {
-
     this.modalHandler.toggleModal(key);
-
   }
 }

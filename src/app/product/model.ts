@@ -1,3 +1,8 @@
+export class Base {
+
+}
+
+
 
 export class FilterCategory {
     controlType: string;
@@ -243,14 +248,14 @@ export class MeasureUnit {
 }
 
 
-export class Category {
-    designation: string;
-    parentCategory: Category;
-    isRoot: boolean;
-    isLeaf: boolean;
-    children: Category[];
-    thumbNail: BaseImage;
-    svgIcon: BaseImage;
+export class Category   {
+    designation?: string;
+    parentCategory?: Category;
+    isRoot?: boolean;
+    isLeaf?: boolean;
+    children?: Category[];
+    thumbNail?: BaseImage;
+    svgIcon?: BaseImage;
     constructor(options: {
         designation?: string,
         parentCategory?: Category,
@@ -303,6 +308,14 @@ export class ProductCollection {
         this.thumbNail = options.thumbNail || new BaseImage({});
         this.svgIcon = options.svgIcon || new BaseImage({});
     }
+
+}
+
+
+export class NavTree extends Category {
+    routerLink?: string;
+    level: number;
+    navChildren?: NavTree[];
 
 }
 
