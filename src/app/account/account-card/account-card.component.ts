@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from '../service/smc-auth.service';
 import { AccountCacheService } from '../service/account-cache.service';
-import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-account-card',
