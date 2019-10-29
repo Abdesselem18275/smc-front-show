@@ -2,8 +2,7 @@
 
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script|Raleway|Stardos+Stencil|Roboto');
-$mdc-theme-primary: black; // primary color
-$mdc-theme-secondary: #ffb74d; // secondary color
+$mdc-theme-primary: mat-color($smc-show-case-primary); // primary color
 $mdc-theme-black: #000000; // secondary color
 
 $color-grey:rgba(0, 0, 0, 0.507);
@@ -71,7 +70,7 @@ h1,h2,h3,h4,h5,h6,p {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
-  background-color: $mdc-theme-secondary;
+  background-color: $mdc-theme-primary;
 }
 .space-divider {
   flex: 1 1 auto;
@@ -114,7 +113,7 @@ h1,h2,h3,h4,h5,h6,p {
 }
 
 .smc-header {
-  border-left: solid 12px $mdc-theme-secondary;
+  border-left: solid 12px $mdc-theme-primary;
   padding-left: 0.5rem;
 } 
 @media only screen and (max-width:720px)  {
