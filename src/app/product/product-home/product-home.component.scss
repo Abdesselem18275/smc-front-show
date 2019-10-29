@@ -1,19 +1,29 @@
+@import "../../../styles.scss";
+
 
 .landing-page {
-  background-image:url('../../../assets/images/Hero_image.png');
+  background-image:url('../../../assets/images/Hero_image.jpg') ;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: 100vh;
 
+}
+
+main {
+    background-color: rgba(30, 30, 30, 0.45);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 .upper-text,figure {
   text-align:center;
-  color: white;
-
-
+  color:white;
 
 }
 .upper-text {
@@ -34,54 +44,52 @@
   display: flex;
   flex-wrap: wrap;
   width: 50%;
+  min-width: 320px;
   justify-content: space-evenly;
   figure {
     width: 20%;
     margin-top: 2em;
 
     mat-icon  {
-      transform: scale(2);
-  
+      width: 3rem;  
     }
     figcaption {
-      margin-top : 1em;
+      margin-top : 0.75rem;
     }
-
     mat-icon:hover {
-      transform: scale(2.5);
+      transform: scale(1.25);
       transition : ease 0.3s;
-
     }
   }
-
-
 }
-@media only screen and (max-width:600px) {
 
-  .icons__wrap { 
-    width: 100%;
-  }
-   .landing-page {
-    height: 100vh;
-    figure {
-      width: 20%;
-      margin-top: 2em;
+
+// @media only screen and (max-width:600px) {
+
+//   .icons__wrap { 
+//     width: 100%;
+//   }
+//    .landing-page {
+//     height: 100vh;
+//     figure {
+//       width: 20%;
+//       margin-top: 2em;
   
-      mat-icon  {
-        transform: scale(1.75);
+//       mat-icon  {
+//         transform: scale(1.75);
     
-      }
-    }
-  }
+//       }
+//     }
+//   }
 
-}
+// }
 
-@media only screen and (min-width:1200px) {
+// @media only screen and (min-width:1200px) {
 
-  .landing-page {
-    height: 136%;
+//   .landing-page {
+//     height: 136%;
   
-  }
+//   }
 
-}
+// }
 
