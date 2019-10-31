@@ -121,7 +121,6 @@
 
 
 .technical-description {
-  margin : 0 $global-horizontal-gutter;
 
 .technical-data-container {
   display: flex;
@@ -130,6 +129,8 @@
   flex-wrap: wrap;
   width: 100%;
   margin-top: 2em;
+  margin : 0 $global-horizontal-gutter;
+
 }
   table {
   margin: 2em 0;

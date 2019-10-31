@@ -1,18 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model';
-import { trigger, style, transition, animate } from '@angular/animations';
 import { CategoryCacheService } from '../service/category-cache.service';
 import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
-import { centerSlideInAnimation } from 'src/app/animations';
+import { centerSlideInAnimation, sideSlideInAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
 
 @Component({
   selector: 'app-product-menu',
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
-  animations: [centerSlideInAnimation]
+  animations: [centerSlideInAnimation,
+    centerSlideInAnimation,
+    sideSlideInAnimation]
 })
 export class ProductMenuComponent implements OnInit {
 
@@ -59,6 +60,9 @@ export class ProductMenuComponent implements OnInit {
       )).subscribe(event => {
         this.isActive = !(event['url'] === '/product/home');
       });
+    this.modalHandler.ModalToggeler$.subscribe( stateStore => {
+      this.modalStateStore = stateStore;
+    });
   }
 
   toggleMenu() {

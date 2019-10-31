@@ -39,7 +39,7 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
   ngOnChanges(changes: SimpleChanges) {
     this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
     this._pageCounter = 1;
-    this.pageNumber.emit(this._pageCounter);
+    //this.pageNumber.emit(this._pageCounter);
   }
 
    entriesHandler(entries) {

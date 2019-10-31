@@ -30,7 +30,6 @@ export class SearchBoxComponent implements OnInit {
       debounceTime(200),
       distinctUntilChanged(),
       tap(term => {
-        this.pds.resetHttpParams();
         this.searchTerm = term;
 
       }),

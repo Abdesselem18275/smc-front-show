@@ -1,9 +1,6 @@
 @import './app-custom-themes.scss';
 
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script|Raleway|Stardos+Stencil|Roboto');
 $mdc-theme-primary: mat-color($smc-show-case-primary); // primary color
-$mdc-theme-black: #000000; // secondary color
 
 $color-grey:rgba(0, 0, 0, 0.507);
 $color-deep-grey:rgb(179,179,179);
@@ -18,15 +15,6 @@ $global-horizontal-gutter:calc(1.5rem + 1.5vw);
 *:focus {
   outline: 0;
 }
-
-.mdc-list-item__graphic {
-  width: 1.5rem;
-  height: auto;
-  margin-right: 2rem;
-}
-
-
-
 
 
 * {
@@ -46,7 +34,6 @@ li {
   display: inline-block;
   transition: 0.2s;
   cursor: pointer;
-
 }
 .dot:hover {
   transform: scale(1.25);

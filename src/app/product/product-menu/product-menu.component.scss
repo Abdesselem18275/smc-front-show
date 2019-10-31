@@ -161,3 +161,39 @@ p {
               }
         }
       }
+
+.side-box {
+        position: fixed;
+        top:0;
+        background-color: white;
+        z-index: 10000;
+    }
+
+.account-card {
+      position: absolute;
+      top: 4rem;
+      right: 0.5rem;
+      color: black;
+      z-index: 10000;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 10px;
+    }
+.center-box {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, 0%) ;
+      background-color: white;
+      min-height: 60%;
+      z-index: 10000;
+      width: 80%;
+      @media only screen and (max-width:840px) {
+          width : 100%;
+          top: 0;
+          left: 0;
+          margin-right: 0;
+          transform: translate(0, 0) ;
+        }
+  }

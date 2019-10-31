@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet} from '@angular/router';
-import { sideSlideInAnimation, centerSlideInAnimation } from './animations';
 import { ModalStateStore } from './shared/token';
 import { ModalHandlerService } from './shared/service/modal-handler.service';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -9,9 +8,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [
-    centerSlideInAnimation, sideSlideInAnimation ]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;

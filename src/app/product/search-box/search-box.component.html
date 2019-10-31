@@ -1,6 +1,4 @@
 <header class="side-window__header">
-
-        
         <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
         <p  >
               </p>
@@ -12,10 +10,13 @@
 <mat-progress-bar secondary="true" *ngIf="!isReady">
 
 </mat-progress-bar>
-<section class="container">
-<main *ngIf="products" class="result-container">
-        <header    >Search suggestion</header>
-        <p    >{{objCount}} products found</p>
+<section *ngIf="products" class="container">
+<main  class="result-container">
+        <header >
+                <p class="mat-body-1"> Search suggestion</p>
+                        <p class="mat-caption">{{objCount}} products found</p>
+
+        </header>
         <section class="results-content">
                 <app-product-box  mode="listWithBread" 
                                   [product]="product" 

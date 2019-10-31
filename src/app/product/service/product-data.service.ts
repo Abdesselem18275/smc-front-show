@@ -10,11 +10,9 @@ export const API_URL = 'https://show-case-api.herokuapp.com';
   providedIn: 'root'
 })
 export class ProductDataService  {
-  test: string;
-  globalHttpParams: HttpParams;
-  private query : string;
+
+  private query: string;
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
-    this.globalHttpParams = new HttpParams();
   }
 
 
@@ -27,16 +25,17 @@ export class ProductDataService  {
 
       const model = options.model || '';
       const param_key = options.param_key || new Map();
+      let httpParams = new HttpParams();
       param_key.forEach((value, key) => {
-        this.globalHttpParams = this.globalHttpParams.set(key, value);
+        httpParams = httpParams.set(key, value);
       });
-
+    console.warn(httpParams);
     const query: string = [
     this.apiUrl,
     '/',
     model,
     's/'].join('') ;
-   return this.http.get(query, {params: this.globalHttpParams}).pipe(map((jsonArray: any[]) => jsonArray));
+   return this.http.get(query, {params: httpParams}).pipe(map((jsonArray: any[]) => jsonArray));
 
   }
 
@@ -78,9 +77,4 @@ export class ProductDataService  {
     ];
     return treeMenu;
   }
-  resetHttpParams() {
-    this.globalHttpParams = new HttpParams();
-  }
-
-
 }

@@ -1,34 +1,12 @@
-<div class=" main-content">
       <header class="mat-elevation-z2">
-            <app-product-menu ></app-product-menu>
+            <app-product-menu></app-product-menu>
       </header>
+
+<div>
       <router-outlet></router-outlet>
       <div class='overlay' *ngIf="modalStateStore.isCenterOpen() || modalStateStore.sideMenuBox">
-      </div>
 </div>
       
-
-<div  [@inOutAnimation] *ngIf="modalStateStore.userCardBox" class="mat-elevation-z2 account-card">
-
-      <app-account-card>
-      </app-account-card>
-</div>
-
-<div  [@inOutAnimation] *ngIf="modalStateStore.isCenterOpen()" class="mat-elevation-z2 center-box">
-
-      <app-account-login *ngIf="modalStateStore.loginBox">
-      </app-account-login>
-
-      <app-search-box *ngIf="modalStateStore.searchBox">
-      </app-search-box>
-</div>
-
-
-
-<div  [@routeAnimations] *ngIf="modalStateStore.sideMenuBox" class="mat-elevation-z2 side-box">
-      <app-side-nav-menu>
-      </app-side-nav-menu>
-</div>
 
 
 

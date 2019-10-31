@@ -46,7 +46,7 @@
           </section>
           <div  appScrollPaginator 
           (pageNumber)="pageEvent($event)" 
-          [objectsNumber]="objCount" 
+          [objectsNumber]="objCount || 0" 
           class='bottom-line'>
           <mat-icon inline="true" *ngIf="!isReady"svgIcon="loading_2"></mat-icon>
         </div>
