@@ -7,16 +7,18 @@ import * as ProductStoreActions from './actions';
 import * as ProductStoreState from './state';
 import * as ParamStore from '../param-store';
 import { of } from 'rxjs';
+import { AddOrUpdateManyAction } from '../param-store/actions';
+import { selectAllParams } from '../param-store/selectors';
 
 
 @Injectable()
 export class ProductEffects {
     fetchProducts$  = createEffect(() =>
     this.actions$.pipe(
-          ofType(ParamStore.ParamStoreActions.AddOrUpdateManyAction) ,
+          ofType(AddOrUpdateManyAction) ,
           concatMap(action => of(action).pipe(
             withLatestFrom(this.store$.pipe(
-            select(ParamStore.ParamStoreSelectors.selectAllParams))))),
+            select(selectAllParams))))),
           switchMap(([action, params])  => this.pds.get_elements({model: 'product', param_key : params}).pipe(
            map(results => (ProductStoreActions.AddOrUpdateManyAction({results : results})))))));
 constructor(private actions$: Actions ,
