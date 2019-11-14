@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "eslint": "eslint 'src/**/*.ts'",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot --prod"
   },
@@ -28,6 +29,9 @@
     "@angular/platform-browser": "^9.0.0-next.0",
     "@angular/platform-browser-dynamic": "^9.0.0-next.0",
     "@angular/router": "^9.0.0-next.0",
+    "@ngrx/effects": "^8.4.0",
+    "@ngrx/entity": "^8.4.0",
+    "@ngrx/store": "^8.4.0",
     "classlist.js": "^1.1.20150312",
     "codelyzer": "^5.2.0",
     "core-js": "^2.5.4",
@@ -38,7 +42,6 @@
     "intersection-observer": "^0.7.0",
     "node-sass": "^4.12.0",
     "rxjs": "^6.5.3",
-    "typescript": "~3.5.3",
     "web-animations-js": "^2.3.1",
     "zone.js": "~0.9.1"
   },
@@ -49,6 +52,10 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "^6.6.0",
+    "eslint-plugin-import": "^2.18.2",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^4.1.0",
@@ -58,6 +65,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0"
+    "tslint": "^5.20.1",
+    "typescript": "^3.5.3"
   }
 }

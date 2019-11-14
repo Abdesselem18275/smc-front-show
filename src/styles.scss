@@ -1,6 +1,7 @@
 @import './app-custom-themes.scss';
 
 $mdc-theme-primary: mat-color($smc-show-case-primary); // primary color
+$config: mat-typography-config();
 
 $color-grey:rgba(0, 0, 0, 0.507);
 $color-deep-grey:rgb(179,179,179);
@@ -58,6 +59,9 @@ h1,h2,h3,h4,h5,h6,p {
   justify-content: space-between;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   background-color: $mdc-theme-primary;
+  title {
+    @extend .mat-subheading-2 
+  }
 }
 .space-divider {
   flex: 1 1 auto;
@@ -71,30 +75,7 @@ h1,h2,h3,h4,h5,h6,p {
   z-index: 50000000;
 }
 
-.form__field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  label {
-      text-transform: capitalize;
-      margin-bottom: 0.5rem;
-      @extend .mat-body
-  }
-  input,select {
-      height: 3rem;
-      font-size: 0.875rem;
-      padding-left: 0.5rem;
-  }
-  .field__note {
-    color: $color-text-deep-grey;
-    @extend .mat-caption
-  }
 
-}
-.alert {
-  color :red;
-  @extend .mat-caption
-}
 .text--grey {
   color: $color-text-grey;
 }
@@ -109,18 +90,11 @@ h1,h2,h3,h4,h5,h6,p {
   }
 }
 
-/* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
 
-/* clears the 'X' from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 ::-webkit-scrollbar {
   width: 2px;
+  height: 2px;
 }
 /* Track */
 ::-webkit-scrollbar-track {

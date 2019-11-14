@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PaginatorComponent } from './paginator/paginator.component';
 import { AccountLoginComponent } from '../account/account-login/account-login.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
@@ -23,7 +22,7 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
-                 PaginatorComponent, AccountLoginComponent,
+                 AccountLoginComponent,
                  GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
                  AccountCardComponent,
@@ -42,7 +41,6 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
     SearchBoxComponent,
     ReactiveFormsModule,
     MaterialModule,
-    PaginatorComponent,
     AccountLoginComponent,
     ProductBoxComponent,
     CategoryBreadcrumbComponent,

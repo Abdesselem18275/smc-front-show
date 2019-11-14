@@ -25,7 +25,6 @@
                 </app-product-box>
         <div  appScrollPaginator 
               (pageNumber)="pageEvent($event)" 
-              [objectsNumber]="objCount" 
               onViewPort="false"
               class='bottom-line'>
               <mat-icon *ngIf="!isReady"svgIcon="loading_2"></mat-icon>

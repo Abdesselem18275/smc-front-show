@@ -30,10 +30,17 @@ export class ParamStoreService {
         });
         break;
       }
-      case 'PAGE' : {
+      case 'page' : {
         tempParamStore = this.paramStore;
         action.content.forEach((value, key) => {
           tempParamStore.page.set(key, value);
+        });
+        break;
+      }
+      case 'SEARCH' : {
+        tempParamStore = this.paramStore;
+        action.content.forEach((value, key) => {
+          tempParamStore.search.set(key, value);
         });
       }
     }

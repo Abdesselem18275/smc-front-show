@@ -11,6 +11,9 @@ import { AccountModule } from './account/account.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RootStoreModule } from './root-store/root-store.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 
 
@@ -32,6 +35,8 @@ export function loadCategories(configService: ConfigService) {
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    RootStoreModule,
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
         {

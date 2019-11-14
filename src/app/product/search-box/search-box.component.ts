@@ -1,11 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, tap, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, tap, map, switchMap } from 'rxjs/operators';
 import { ProductDataService } from '../service/product-data.service';
 import { ProductShort } from '../model';
-import { Router} from '@angular/router';
-import { Subject, merge } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { ParamStoreService } from '../service/param-store.service';
+import { PramAction } from '../action';
 
 @Component({
   selector: 'app-search-box',
@@ -22,29 +23,33 @@ export class SearchBoxComponent implements OnInit {
   paramRequest = new Subject<any>();
 
 
-  constructor(private modalHandlerService: ModalHandlerService, private pds: ProductDataService) { }
+  constructor(private modalHandlerService: ModalHandlerService,
+              private paramStoreService: ParamStoreService,
+              private pds: ProductDataService) { }
   ngOnInit() {
-    this.isReady = true;
-  merge(this.paramRequest,
+  this.isReady = true;
   this.searchBar.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),
       tap(term => {
         this.searchTerm = term;
-
       }),
       filter((term: string) => term !== '' && term.length > 2),
-      map(term => new Map<string, string>().set('search', term),
-      ))).
-      subscribe(param => {
-        this.isReady = false;
-        this.pds.get_elements({model: 'product', param_key: param}).subscribe(results => {
-          this.products = this.pageNumber === 1 || this.pageNumber === undefined ?
-          results['results'] : this.products.concat(results['results']) ;
-          this.objCount  = results['count'];
-          this.isReady = true;
-        });
+      map(term => new Map<string, string>().set('search', term))).subscribe(param => {
+        this.paramStoreService.dispatch(
+          new PramAction(
+            'SEARCH',
+            param));
       });
+      // this.paramStoreService.paramStore$.pipe(switchMap(store =>
+      //   this.pds.get_elements({model: 'product', param_key: store.page})
+      //   )).subscribe(results => {
+      //     this.isReady = false;
+      //     this.products = this.pageNumber === 1 || this.pageNumber === undefined ?
+      //     results['results'] : this.products.concat(results['results']) ;
+      //     this.objCount  = results['count'];
+      //     this.isReady = true;
+      //   });
 }
 
 
@@ -53,7 +58,10 @@ closePopup() {
 }
 pageEvent(pageNumber) {
   this.pageNumber  = pageNumber;
-  this.paramRequest.next(new Map().set('page', pageNumber ));
+  this.paramStoreService.dispatch(
+    new PramAction(
+      'page',
+      new Map().set('page', pageNumber )));
 
 }
 }

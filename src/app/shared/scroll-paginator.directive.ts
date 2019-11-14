@@ -1,28 +1,29 @@
 import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input,
          OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { throttleTime, map, distinctUntilChanged, skip } from 'rxjs/operators';
+import { RootStoreState } from '../root-store';
+import { Store } from '@ngrx/store';
+import { selectPageParam } from '../root-store/param-store/selectors';
+import  * as ParamStore from '../root-store/param-store';
+import { ParamType } from '../product/model';
+import { AddOrUpdateAction } from '../root-store/param-store/actions';
+import { LoadRequestAction } from '../root-store/product-store/actions';
 
 @Directive({
   selector: '[appScrollPaginator]'
 })
-export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
+export class ScrollPaginatorDirective implements AfterViewInit  {
 
 
   @Output() public pageNumber: EventEmitter<number> = new EventEmitter();
-  @Input()  objectsNumber: number;
   @Input()  onViewPort = true;
-  private _pageCounter: number;
-  private _pageNumber: number;
-  private _elementsPerPage = 10;
   private _observerEvents = new Subject<any>();
-
-
-  constructor(private _element: ElementRef , private _renderer: Renderer2) { }
+  constructor(private _element: ElementRef ,
+              private store$: Store<RootStoreState.State>,
+              private _renderer: Renderer2) { }
 
   ngAfterViewInit() {
-    this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
-    this._pageCounter = 1;
     const rootElement = this.onViewPort === true ? null : this._renderer.parentNode(this._element.nativeElement);
     const options = {
       root : rootElement,
@@ -30,23 +31,15 @@ export class ScrollPaginatorDirective implements AfterViewInit , OnChanges  {
       threshold: 1};
       new IntersectionObserver(entries => this._observerEvents.next(entries), options).
       observe(<Element>(this._element.nativeElement));
-      this._observerEvents.asObservable().pipe(throttleTime(1500)).
+      this._observerEvents.asObservable().pipe(throttleTime(1500) , skip(1)).
       subscribe(entries => {
         this.entriesHandler(entries);
       });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this._pageNumber = Math.ceil(this.objectsNumber / this._elementsPerPage);
-    this._pageCounter = 1;
-    //this.pageNumber.emit(this._pageCounter);
-  }
 
    entriesHandler(entries) {
-    if (this._pageCounter + 1  <= this._pageNumber ) {
-      this._pageCounter = this._pageCounter + 1 ;
-      this.pageNumber.emit(this._pageCounter);
-    }
+    this.store$.dispatch(ParamStore.ParamStoreActions.NextPageAction());
 
   }
 

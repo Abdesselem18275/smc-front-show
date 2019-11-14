@@ -2,7 +2,7 @@
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
           <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
-          <p     class="content__objects-count mat-caption">{{objCount}} selected products</p>
+          <p     class="content__objects-count mat-caption">{{objCount | async}} selected products</p>
         </div>
         <button class="meta-bar__filter" mat-icon-button >
         <mat-icon (click)="filterToggle()" >
@@ -14,7 +14,7 @@
             </button>
 
       </div>
-      <mat-progress-bar *ngIf="!isReady" mode="indeterminate">
+      <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate">
 
       </mat-progress-bar>
     </header>
@@ -29,7 +29,7 @@
           </button>
 
         </header>
-      <app-product-filter  [resetFilter]="resetFilter"  (req) = filterEvent($event)></app-product-filter>
+      <app-product-filter  [resetFilter]="resetFilter"></app-product-filter>
     </div>
 
 
@@ -39,14 +39,13 @@
             <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
 
-                <app-product-box class="mat-elevation-z2 product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts">
+                <app-product-box class="mat-elevation-z2 product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts | async">
                 </app-product-box>
             </div>
 
           </section>
           <div  appScrollPaginator 
           (pageNumber)="pageEvent($event)" 
-          [objectsNumber]="objCount || 0" 
           class='bottom-line'>
-          <mat-icon inline="true" *ngIf="!isReady"svgIcon="loading_2"></mat-icon>
+          <mat-icon inline="true" *ngIf="isLoading | async" svgIcon="loading_2"></mat-icon>
         </div>

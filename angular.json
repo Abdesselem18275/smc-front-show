@@ -20,7 +20,6 @@
             "outputPath": "dist/smc-show-case",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "aot": true,
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [

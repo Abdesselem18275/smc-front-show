@@ -1,8 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { FilterBuilderService } from '../../service/filter-builder.service';
-import { FilterCategory } from '../../model';
-import { debounceTime} from 'rxjs/operators';
+import { FilterCategory, ParamType } from '../../model';
+import { debounceTime, pairwise, map, filter, tap, distinctUntilChanged} from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { RootStoreState } from 'src/app/root-store';
+import { AddOrUpdateManyAction, NextPageAction, AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
+import { ParamStoreState } from 'src/app/root-store/param-store';
 
 
 
@@ -22,7 +26,9 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   isScrollable: boolean;
   isActive: boolean;
 
-  constructor(private fbs: FilterBuilderService) {
+  constructor(private fbs: FilterBuilderService,
+              private store$: Store<ParamStoreState.State>,
+    ) {
    }
 
   ngOnInit() {
@@ -41,26 +47,23 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 }
 
   onChanges(): void {
-    this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(x => {
-      let map = new Map();
-      Object.keys(x).forEach(key => {
-        let req = '';
-        let count = 0;
-        const tempForm = <FormGroup>this.filterForm.get(key);
-        Object.keys(tempForm.controls).filter(y =>  tempForm.get(y).value).
-               forEach( z => {
-                         count = count + 1 ;
-                         req = req + z.substr(z.lastIndexOf('_') + 1) + ',';
-         });
-         map.set(key, req);
-
-         this.filterCategories.filter(category => category.key === key)[0].description =
-              count === 0 ? '' : ['(', count.toString(), ' choices)'].join('');
-
+    Object.keys(this.filterForm.controls).forEach(key => {
+      this.filterForm.get(key).valueChanges.pipe(
+        debounceTime(500)).subscribe( tempForm  => {
+          const reqArray = [];
+          for (const property in tempForm) {
+            if (tempForm[property]) {
+              reqArray.push(property.substr(property.lastIndexOf('_') + 1));
+            }
+          }
+        const param = {
+           key: key,
+           value: reqArray.join(','),
+           type : ParamType.FILTER
+         };
+        this.store$.dispatch(AddOrUpdateAction({param : param}));
     });
-
-    this.req.emit(map);
-  });
+  }) ;
 }
 
   clearFilter() {

@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory, Category, ProductCollection} from '../model';
+import { FilterCategory, Param} from '../model';
 import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -19,17 +19,15 @@ export class ProductDataService  {
 
   get_elements(options: {
     model?: string;
-    hyperLink?: any;
-    param_key?: Map<string, string> } = {}): Observable<any[]> {
-
-
+    param_key?: Param[] } = {}): Observable<any[]> {
+      console.warn(options.param_key);
       const model = options.model || '';
       const param_key = options.param_key || new Map();
+
       let httpParams = new HttpParams();
-      param_key.forEach((value, key) => {
-        httpParams = httpParams.set(key, value);
+      param_key.forEach((param: Param) => {
+        httpParams = httpParams.set(param.key, param.value);
       });
-    console.warn(httpParams);
     const query: string = [
     this.apiUrl,
     '/',

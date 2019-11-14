@@ -318,6 +318,16 @@ export class NavTree extends Category {
     navChildren?: NavTree[];
 
 }
+export enum ParamType {
+    PAGE = 'page',
+    FILTER = 'Filter',
+    CATEGORY = 'Category'
+}
+export interface Param {
+    key: string;
+    value: string;
+    type: ParamType;
+}
 
 
 

@@ -1,7 +1,7 @@
 
-        <header class="side-window__header">
+        <header class="mat-elevation-z2 side-window__header">
                 <p></p>
-                <p class="mat-body">
+                <p class="title">
                   SMC ACCOUNT
                 </p>
                 <button mat-icon-button >
@@ -12,18 +12,10 @@
 
 <main class="forms-container">
 <section class="login">
-                <div id="google-sign">
-                                <header>
-                                        <p class="mat-title smc-header"  >SIGN IN WITH GOOGLE</p>
-                                        <p  class="text--grey mat-body"    >Create or acces your account by sign in to your google account</p>
-                                
-                                </header>
-                                <app-google-sign-in>
-                                </app-google-sign-in>
-                                </div>
 
-<header>
-        <p class="mat-title  smc-header"  >SIGN IN WITH SMC</p>
+        <div id="smc-login">
+<header class="form-group__header">
+        <p class="mat-subheading-2  smc-header"  >SIGN IN WITH SMC</p>
         <p class="text--grey mat-body"    >Please enter the following informations</p>
     </header>
     <main>
@@ -73,13 +65,22 @@
 
 
 </main>
-
+</div>
+<div id="google-sign">
+        <header class="form-group__header">
+                <p class="mat-subheading-2 smc-header"  >SIGN IN WITH GOOGLE</p>
+                <p class="text--grey mat-body">Create or acces your account by sign in to your google account</p>
+        
+        </header>
+        <app-google-sign-in>
+        </app-google-sign-in>
+</div>
 
 
 </section>
 <section>
-        <header>
-                <p class="mat-title  smc-header"  >REGISTER NOW</p>
+        <header class="form-group__header">
+                <p class="mat-subheading-2 smc-header"  >REGISTER NOW</p>
                 <p class="mat-body text--grey"    >Create and account and join us </p>
         </header>
         <main>
@@ -106,27 +107,31 @@
                                       </p> 
                             </div>                                 
                         </div>
-
-                        <div  formGroupName="profile" class="form__field">
-                                <label     for="first_name">
-                                    first name
-                                </label>
-                                <input  required
-                                        type="text" 
-                                        id="first_name"
-                                        formControlName="first_name">                                
-                        </div>
-
-                        <div  formGroupName="profile" class="form__field">
-                                <label     for="last_name">
-                                    last name
-                                </label>
-                                <input  required
-                                        type="text" 
-                                        id="last_name"
-                                        formControlName="last_name">                                
-                        </div>
+                        <div class="inline-fields">
+                                        <div  formGroupName="profile" class="form__field">
+                                                        <label     for="first_name">
+                                                            first name
+                                                        </label>
+                                                        <input  required
+                                                                type="text" 
+                                                                id="first_name"
+                                                                formControlName="first_name">                                
+                                                </div>
                         
+                                                <div  formGroupName="profile" class="form__field">
+                                                                <label     for="last_name">
+                                                                    last name
+                                                                </label>
+                                                                <input  required
+                                                                        type="text" 
+                                                                        id="last_name"
+                                                                        formControlName="last_name">                                
+                                                        </div>
+                                                        
+
+                        </div>
+
+
                         
                         <div formGroupName="profile" class="form__field">
                                 <label     for="password">
