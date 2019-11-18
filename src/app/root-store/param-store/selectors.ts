@@ -28,12 +28,18 @@ export const reducers: ActionReducerMap<State> = {
 
   export const selectPageParam = createSelector(
     selectAllParams,
-    selectProductsCount,
     (AllParams , ProductsCount) => {
-      console.warn('hello');
         return {
           page_number : AllParams.filter(x => x.type === ParamType.PAGE).shift().value,
           count : ProductsCount
         }
+    }
+  );
+
+  export const selectFilterPramCount = createSelector(
+    selectParamState,
+    selectAllParams,
+    (x, allEntities) => {
+        return allEntities.filter(x => x.type === ParamType.FILTER).length;
     }
   );

@@ -1,11 +1,21 @@
+<mat-toolbar class="mat-elevation-z2" color="primary">
+    <mat-toolbar-row>
+        <span>Filter</span>
+        <span class="space-divider"></span>
+        <button (click)="closeMenu()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
 
-<form  [formGroup]="filterForm">
+
+    <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
             <header   class="mat-caption" >  
                 {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >
-                    <mat-checkbox  *ngFor="let choice of filterCategory.choices" [checked]="true" [formControlName]="choice.key" [id]="choice.key" indeterminateToChecked >
+                    <mat-checkbox  *ngFor="let choice of filterCategory.choices" [formControlName]="choice.key" [id]="choice.key" >
                         <span class="mat-body from-field__label">{{choice.value | titlecase}}</span>
                     </mat-checkbox>
             </div>

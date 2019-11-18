@@ -1,37 +1,11 @@
-<header class="side-window__header">
-        <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
-        <p  >
-              </p>
-              <button (click)="closePopup()" mat-icon-button >
-                        <mat-icon >close</mat-icon>
-              </button>
-
-      </header>
-<mat-progress-bar secondary="true" *ngIf="!isReady">
-
-</mat-progress-bar>
-<section *ngIf="products" class="container">
-<main  class="result-container">
-        <header >
-                <p class="mat-body-1"> Search suggestion</p>
-                        <p class="mat-caption">{{objCount}} products found</p>
-
-        </header>
-        <section class="results-content">
-                <app-product-box  mode="listWithBread" 
-                                  [product]="product" 
-                                  [appTextHightlight]="searchTerm"
-                                 *ngFor="let product of products">
-                </app-product-box>
-        <div  appScrollPaginator 
-              (pageNumber)="pageEvent($event)" 
-              onViewPort="false"
-              class='bottom-line'>
-              <mat-icon *ngIf="!isReady"svgIcon="loading_2"></mat-icon>
-
-        </div>
-        </section>
 
 
-</main>
-</section>
+      <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <span></span>
+                    <input   placeholder="search ..." type="search" class="search-text-field"    [formControl]="searchBar" >
+                    <button (click)="closePopup()" mat-icon-button>
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-toolbar-row>
+            </mat-toolbar>

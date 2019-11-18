@@ -1,14 +1,13 @@
 
-        <header class="mat-elevation-z2 side-window__header">
-                <p></p>
-                <p class="title">
-                  SMC ACCOUNT
-                </p>
-                <button mat-icon-button >
-                        <mat-icon (click)="cancel()">close</mat-icon>
-                </button>
-        
-              </header>
+<mat-toolbar  color="primary">
+    <mat-toolbar-row class="mat-elevation-z2">
+        <span>Account</span>
+        <span class="space-divider"></span>
+        <button (click)="cancel()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
 
 <main class="forms-container">
 <section class="login">

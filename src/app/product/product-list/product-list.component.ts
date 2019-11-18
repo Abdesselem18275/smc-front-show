@@ -3,32 +3,41 @@ import { ProductShort, ParamType } from '../model';
 import { ActivatedRoute} from '@angular/router';
 import { map} from 'rxjs/operators';
 import { Store} from '@ngrx/store';
-import { ParamStoreActions } from 'src/app/root-store/param-store';
+import { ParamStoreActions, ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
 
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
-import { selectIsLoading } from 'src/app/root-store/product-store/selectors';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { sideSlideInAnimation } from 'src/app/animations';
+import { ModalStateStore } from 'src/app/shared/token';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+  animations: [sideSlideInAnimation]
 })
 export class ProductListComponent implements OnInit {
 
   productShorts: Observable<ProductShort[]>;
   objCount: Observable<number>;
   isLoading: Observable<boolean>;
+  filterBox: Observable<boolean>;
+  filterParamCount: Observable<number>;
+
   isFilterActive: boolean;
   isListActive: boolean;
   resetFilter: boolean;
-  filterCount: number;
+  modalStateStore = new ModalStateStore();
+
 
   constructor(private route: ActivatedRoute,
+              private modalHandler: ModalHandlerService,
               private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
     this.isFilterActive = false;
+    this.isListActive = false;
     this.route.queryParamMap.pipe(
         map(params => {
           const paramsArray = [];
@@ -43,25 +52,22 @@ export class ProductListComponent implements OnInit {
       subscribe(paramArray => {
         this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : paramArray.shift()}));
       });
+    this.filterBox = this.modalHandler.ModalToggeler$.pipe( map(stateStore => stateStore.filterBox));
     this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
     this.isLoading = this.store$.pipe(map(x => x.product.isLoading));
-    this.isLoading.subscribe(x => {
-    });
-    this.store$.subscribe( x => {
-      console.warn(x);
-    });
-
+    this.filterParamCount = this.store$.select(ParamStoreSelectors.selectAllParams).pipe(map(params => 
+      params.filter(x => x.type === ParamType.FILTER).length));
   }
 
-pageEvent(pageNumber: number) {
-}
-filterToggle() {
-  this.isFilterActive = !this.isFilterActive;
-}
+  toggleModal(key) {
+    this.modalHandler.toggleModal(key);
+  }
 
 toggleView(event) {
-  this.isListActive = !event.value;
+  this.isListActive = event.value === 'list';
 }
+
+
 
 }

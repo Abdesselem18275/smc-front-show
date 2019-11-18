@@ -18,6 +18,7 @@ import { FavoriteHandlerDirective } from './favorite-handler.directive';
 import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 import { AccountCardComponent } from '../account/account-card/account-card.component';
 import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.component';
+import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
@@ -25,6 +26,7 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
                  AccountLoginComponent,
                  GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
+                 ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
                  FavoriteHandlerDirective, RouterOutletToggleDirective],
@@ -49,6 +51,7 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
     LoadingComponent,
     GoogleSignInComponent,
     AccountCardComponent,
+    ProductFilterComponent,
     CommonModule,
 
   ]

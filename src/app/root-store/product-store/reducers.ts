@@ -18,11 +18,9 @@ const productReducer = createReducer(
       return adapter.upsertMany(results['results'], newState);
     }),
     on(ProductActions.ClearAllAction, (state) => {
-      console.warn('ClearAllAction');
       return adapter.removeAll(initialState);
     }),
     on(ProductActions.LoadRequestAction, (state) => {
-      console.warn('LoadRequestAction');
       return {
         ...state ,
         isLoading : true

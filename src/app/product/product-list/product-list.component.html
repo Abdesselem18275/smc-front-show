@@ -1,39 +1,40 @@
+
 <header class="main-header--sticky">
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
-          <app-category-breadcrumb class="body-style breadcrumb"></app-category-breadcrumb>
-          <p     class="content__objects-count mat-caption">{{objCount | async}} selected products</p>
+          <app-category-breadcrumb class="breadcrumb"></app-category-breadcrumb>
+          <p     class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
         <button class="meta-bar__filter" mat-icon-button >
-        <mat-icon (click)="filterToggle()" >
+        <mat-icon [matBadge]="filterParamCount | async" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
           tune
         </mat-icon>
       </button>
-            <button class="meta-bar__view-button" (click)="toggleView($event)" mat-icon-button>
-                <mat-icon >view_module</mat-icon>
-            </button>
-
       </div>
-      <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate">
 
-      </mat-progress-bar>
     </header>
-      <div   [style.transform]="isFilterActive ? 'translateX(0)' : 'translateX(-20rem)'" class="mat-elevation-z3 filter-container">
-        <header class=" mat-elevation-z2 side-window__header">
-          <p  >
-            Filters
-          </p>
-          <button (click)="filterToggle()" mat-icon-button >
-            <mat-icon >close</mat-icon>
 
-          </button>
+    
+<div  [@routeAnimations]  *ngIf="filterBox |async" class="mat-elevation-z2 side-box">
+    <app-product-filter>
+      </app-product-filter>
+</div>
 
-        </header>
-      <app-product-filter  [resetFilter]="resetFilter"></app-product-filter>
-    </div>
+    
+    <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate">
 
+    </mat-progress-bar>
 
           <section   class="content">
+
+              <mat-button-toggle-group  class="view-toggeler" (change)="toggleView($event)">
+                  <mat-button-toggle value="box" aria-label="Text align left">
+                    <mat-icon>view_module</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="list" aria-label="Text align center">
+                    <mat-icon>view_list</mat-icon>
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
 
 
             <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
@@ -41,6 +42,8 @@
 
                 <app-product-box class="mat-elevation-z2 product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts | async">
                 </app-product-box>
+                <mat-divider [inset]="true" ></mat-divider>
+
             </div>
 
           </section>

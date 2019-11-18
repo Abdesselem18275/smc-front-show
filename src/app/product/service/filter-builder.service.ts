@@ -7,26 +7,44 @@ import { FilterCacheService } from './filter-cache.service';
   providedIn: 'root'
 })
 export class FilterBuilderService {
-  _filterCategories: FilterCategory[];
-  constructor(private filterCache: FilterCacheService) { }
+  private _filterCategories: FilterCategory[];
+  private _filterForm: FormGroup;
+
+
+  
+  public get filterForm(): FormGroup {
+    return this._filterForm;
+  }
+  public set filterForm(value: FormGroup) {
+    this._filterForm = value;
+  }
+  constructor(private filterCache: FilterCacheService) {
+    this.toFormGroup();
+  }
+
+
 
   get filterCategories() {
-    return this.filterCache.fetchCachedFilter();
+    if (!this._filterCategories) {
+      this._filterCategories = this.filterCache.fetchCachedFilter();
+    }
+    return this._filterCategories;
   }
 
   toFormGroup() {
+    console.warn('Filter builder');
     const group = {};
     this.filterCategories.forEach(filterCategorie => {
       const subGroup = {};
       if (filterCategorie.controlType === 'check-box') {
       filterCategorie.choices.forEach(choice => {
-        subGroup[choice.key] = new FormControl(choice.value);
+        subGroup[choice.key] = new FormControl(false);
       });
       group[filterCategorie.key] = new FormGroup(subGroup);
       } else {
-      group[filterCategorie.key] = new FormControl(filterCategorie.key);
+      group[filterCategorie.key] = new FormControl('false');
       }
     });
-    return new FormGroup(group);
+    this.filterForm = new FormGroup(group);
   }
 }

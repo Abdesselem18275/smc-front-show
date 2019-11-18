@@ -1,12 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup} from '@angular/forms';
-import { FilterBuilderService } from '../../service/filter-builder.service';
-import { FilterCategory, ParamType } from '../../model';
-import { debounceTime, pairwise, map, filter, tap, distinctUntilChanged} from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { AddOrUpdateManyAction, NextPageAction, AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
+import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
 import { ParamStoreState } from 'src/app/root-store/param-store';
+import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
+import { FilterCategory, ParamType } from '../model';
+import { FilterBuilderService } from '../service/filter-builder.service';
 
 
 
@@ -15,12 +15,10 @@ import { ParamStoreState } from 'src/app/root-store/param-store';
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.scss']
 })
-export class ProductFilterComponent implements OnInit, OnChanges {
+export class ProductFilterComponent implements OnInit {
 
   filterForm: FormGroup;
   filterCategories: FilterCategory[] ;
-  @Output() req = new EventEmitter<Map<any, any>>();
-  @Input() resetFilter: boolean;
   selectedFilter = '';
   isScrollOver: boolean;
   isScrollable: boolean;
@@ -28,23 +26,16 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 
   constructor(private fbs: FilterBuilderService,
               private store$: Store<ParamStoreState.State>,
+              private modalHandlerService: ModalHandlerService
     ) {
    }
 
   ngOnInit() {
-        this.isActive = false;
-        this.filterForm = this.fbs.toFormGroup();
+        this.filterForm = this.fbs.filterForm;
         this.filterCategories = this.fbs.filterCategories;
-        this.clearFilter();
         this.onChanges();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!changes.resetFilter.firstChange) {
-      this.clearFilter();
-
-    }
-}
 
   onChanges(): void {
     Object.keys(this.filterForm.controls).forEach(key => {
@@ -64,6 +55,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         this.store$.dispatch(AddOrUpdateAction({param : param}));
     });
   }) ;
+  this.fbs.filterForm = this.filterForm;
 }
 
   clearFilter() {
@@ -78,5 +70,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   toggleActive() {
     this.isActive = !this.isActive;
   }
-
+  closeMenu() {
+    this.modalHandlerService.closeAll();
+  }
 }

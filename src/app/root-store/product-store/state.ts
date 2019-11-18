@@ -16,7 +16,7 @@ export function sortByName(a: ProductShort, b: ProductShort): number {
 }
 export const adapter: EntityAdapter<ProductShort> = createEntityAdapter<ProductShort>({
   selectId: selectParamKey,
-  sortComparer: sortByName,
+ // sortComparer: sortByName,
 });
 
 export const initialState: State = adapter.getInitialState({

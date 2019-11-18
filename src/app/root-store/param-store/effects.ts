@@ -38,18 +38,28 @@ export class ParamEffects {
     paramLogic$ = createEffect(() =>
     this.actions$.pipe(
         ofType(AddOrUpdateAction),
-        switchMap(action => action.param.type === ParamType.FILTER || action.param.type === ParamType.CATEGORY  ?
-            [
-                AddOrUpdateManyAction({params : [action.param , {
+        switchMap(action => {
+            const pageInit = {
                 key : 'page',
                 value: '1',
-                 type : ParamType.PAGE}]}) ,
-                ProductStore.ProductStoreActions.ClearAllAction(),
-                ProductStore.ProductStoreActions.LoadRequestAction()
-        ] :
-            [
-                action, , ProductStore.ProductStoreActions.LoadRequestAction()
-            ]
+                type : ParamType.PAGE };
+
+            switch (action.param.type) {
+                case ParamType.FILTER:
+                case ParamType.SEARCH:
+                case ParamType.CATEGORY: {
+                    return [
+                        ProductStore.ProductStoreActions.ClearAllAction(),
+                        AddOrUpdateManyAction({params : [action.param , pageInit]}) ,
+                        ProductStore.ProductStoreActions.LoadRequestAction()];
+                    }
+                case ParamType.PAGE: {
+                    return [
+                        action, ProductStore.ProductStoreActions.LoadRequestAction()
+                    ];
+                }
+
+        }}
             )
     ));
 

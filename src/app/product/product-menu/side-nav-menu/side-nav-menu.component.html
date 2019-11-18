@@ -1,18 +1,17 @@
-  <div  class="side-window__header">
-    <p  >
-      Menu 
-    </p>
-    <button (click)="closeMenu()" mat-icon-button >
-      <mat-icon>close</mat-icon>
-    </button>
 
-
-
-    </div>
+  <mat-toolbar class="mat-elevation-z2" color="primary">
+      <mat-toolbar-row>
+          <span>Menu</span>
+          <span class="space-divider"></span>
+          <button (click)="closeMenu()" mat-icon-button>
+              <mat-icon>close</mat-icon>
+          </button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+  
 
 <div class="card-container" *ngIf="isLogged">
   <app-account-card></app-account-card>
-
 </div>
 
 <section>

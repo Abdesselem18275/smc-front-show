@@ -319,9 +319,10 @@ export class NavTree extends Category {
 
 }
 export enum ParamType {
-    PAGE = 'page',
+    PAGE = 'Page',
     FILTER = 'Filter',
-    CATEGORY = 'Category'
+    CATEGORY = 'Category',
+    SEARCH = 'Search',
 }
 export interface Param {
     key: string;

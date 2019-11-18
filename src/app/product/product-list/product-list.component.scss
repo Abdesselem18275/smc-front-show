@@ -8,8 +8,9 @@
  min-height: 100vh;
 
 
-  
 }
+
+  
 .bottom-line {
   margin : 1rem auto;
   width: 4rem;
@@ -29,8 +30,7 @@
 .content__meta-bar {
   margin-top: 2.5rem;
   padding: 1rem $global-horizontal-gutter;
-  border-bottom: 1px solid rgba(30, 30, 30, 0.3);
-  border-top: 1px solid rgba(30, 30, 30, 0.3);
+  background-color: $color-light-grey;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,31 +39,22 @@
     margin-left: auto;
   }
   
-  .meta-bar__view-button {
+  .view-toggeler {
     align-self: center;
     display: none;
     @media only screen and (max-width:600px) { 
-      display: block;
+      display: flex;
+      margin-bottom: 1rem;
     }
   }
 
-.filter-container {
-  display: block;
-  width:20rem;
-  position: fixed;
-  top:0;
-  left:0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-
-  height: 100%;
-  background-color: white;
-  z-index: 1000;
-  transition: ease-out 0.3s;
-  header {
-    margin-bottom: 1.5em;
-  }
+  .side-box {
+    position: fixed;
+    top:0;
+    background-color: white;
+    z-index: 10000;
 }
+
 
 
 .content__image-container--grid {

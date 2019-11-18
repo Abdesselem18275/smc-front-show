@@ -1,5 +1,5 @@
-<header *ngIf="isActive">
-    <nav class='nav-bar'>
+<mat-toolbar *ngIf="isActive">
+    <mat-toolbar-row class='nav-bar'>
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo--layout logo">
@@ -37,8 +37,8 @@
 
         </div>
     </div>
-    </nav>
-  </header>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
   <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
@@ -60,20 +60,22 @@
     </app-account-card>
 </div>
 
-<div  [@inOutAnimation] *ngIf="modalStateStore.isCenterOpen()" class="mat-elevation-z2 center-box">
+<div  [@inOutAnimation] *ngIf="modalStateStore.loginBox" class="mat-elevation-z2 center-box">
 
-    <app-account-login *ngIf="modalStateStore.loginBox">
+    <app-account-login >
     </app-account-login>
+</div>
 
-    <app-search-box *ngIf="modalStateStore.searchBox">
+<div  [@inOutAnimation] *ngIf="modalStateStore.searchBox" class="mat-elevation-z2 search-box">
+    <app-search-box >
     </app-search-box>
 </div>
 
 
-
-<div  [@routeAnimations] *ngIf="modalStateStore.sideMenuBox" class="mat-elevation-z2 side-box">
-    <app-side-nav-menu>
+<div  [@routeAnimations]  *ngIf="modalStateStore.sideMenuBox || modalStateStore.filterBox" class="mat-elevation-z2 side-box">
+    <app-side-nav-menu *ngIf="modalStateStore.sideMenuBox" >
     </app-side-nav-menu>
+
 </div>
 
   
