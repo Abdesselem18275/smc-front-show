@@ -40,6 +40,6 @@ export const reducers: ActionReducerMap<State> = {
     selectParamState,
     selectAllParams,
     (x, allEntities) => {
-        return allEntities.filter(x => x.type === ParamType.FILTER).length;
+        return allEntities.filter( x => x.type === ParamType.FILTER && x.value !== '').length;
     }
   );

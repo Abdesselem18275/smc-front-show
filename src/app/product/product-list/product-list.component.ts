@@ -56,8 +56,7 @@ export class ProductListComponent implements OnInit {
     this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
     this.isLoading = this.store$.pipe(map(x => x.product.isLoading));
-    this.filterParamCount = this.store$.select(ParamStoreSelectors.selectAllParams).pipe(map(params => 
-      params.filter(x => x.type === ParamType.FILTER).length));
+    this.filterParamCount = this.store$.select(ParamStoreSelectors.selectFilterPramCount);
   }
 
   toggleModal(key) {

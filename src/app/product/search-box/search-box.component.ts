@@ -9,6 +9,7 @@ import { PramAction } from '../action';
 import { Store } from '@ngrx/store';
 import { ParamStoreState } from 'src/app/root-store';
 import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
+import { ClearAllAction } from 'src/app/root-store/product-store/actions';
 
 @Component({
   selector: 'app-search-box',
