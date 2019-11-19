@@ -2,8 +2,8 @@
 <header class="main-header--sticky">
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
-          <app-category-breadcrumb class="breadcrumb"></app-category-breadcrumb>
-          <p     class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
+          <app-category-breadcrumb *ngIf="!(isSearchActive |async)" class="breadcrumb"></app-category-breadcrumb>
+          <p class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
         <button class="meta-bar__filter" mat-icon-button >
         <mat-icon [matBadge]="filterParamCount | async" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
@@ -14,7 +14,6 @@
 
     </header>
 
-    
 <div  [@routeAnimations]  *ngIf="filterBox |async" class="mat-elevation-z2 side-box">
     <app-product-filter>
       </app-product-filter>

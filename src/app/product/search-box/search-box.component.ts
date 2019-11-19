@@ -38,6 +38,12 @@ export class SearchBoxComponent implements OnInit {
 }
 
 closePopup() {
+  const param = {
+    key: 'search',
+    value: '',
+    type : ParamType.SEARCH
+  };
+    this.store$.dispatch(AddOrUpdateAction({param : param}));
     this.modalHandlerService.closeAll();
 }
 }

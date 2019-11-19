@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { ProductShort, ParamType, Param } from '../model';
 import { ActivatedRoute} from '@angular/router';
-import { map} from 'rxjs/operators';
+import { map, tap} from 'rxjs/operators';
 import { Store} from '@ngrx/store';
 import { ParamStoreActions, ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
@@ -57,9 +57,9 @@ export class ProductListComponent implements OnInit {
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
     this.isLoading = this.store$.pipe(map(x => x.product.isLoading));
     this.filterParamCount = this.store$.select(ParamStoreSelectors.selectFilterPramCount);
-    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { props: ParamType.SEARCH}).
-                                      pipe(
-                                        map( (params: Param[]) => params.length < 1));
+    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
+                            pipe(
+                              map( (params: Param[]) => params.length !== 0));
   }
 
   toggleModal(key) {
