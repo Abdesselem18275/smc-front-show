@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
-import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction } from "./actions";
+import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction } from "./actions";
 import { Store, select } from "@ngrx/store";
 import { map, tap, debounceTime, switchMap, filter, concatMap, withLatestFrom } from "rxjs/operators";
 import { State } from "./state";
@@ -8,7 +8,6 @@ import { ParamType } from "src/app/product/model";
 import { selectPageParam , selectAllParams } from "./selectors";
 import { of } from "rxjs";
 import * as ProductStore from '../product-store';
-import { ParamStoreActions } from ".";
 
 @Injectable()
 export class ParamEffects {
@@ -50,7 +49,7 @@ export class ParamEffects {
                 case ParamType.CATEGORY: {
                     return [
                         ProductStore.ProductStoreActions.ClearAllAction(),
-                        ParamStoreActions.DeleteManyAction(
+                        DeleteManyAction(
                             {ids :
                                 allParams.filter(param => param.type === ParamType.SEARCH).
                                 map(param => param.key)
@@ -67,7 +66,7 @@ export class ParamEffects {
                 case ParamType.SEARCH: {
                     return [
                     ProductStore.ProductStoreActions.ClearAllAction(),
-                    ParamStoreActions.ClearAction(),
+                    ClearAction(),
                     AddOrUpdateManyAction({params : [action.param , pageInit]}) ,
                     ProductStore.ProductStoreActions.LoadRequestAction()];
                 }
