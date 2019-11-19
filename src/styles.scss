@@ -1,6 +1,7 @@
 @import './app-custom-themes.scss';
 
 $mdc-theme-primary: mat-color($smc-show-case-primary); // primary color
+$mdc-theme-secondary: mat-color($smc-show-case-accent); // primary color
 $config: mat-typography-config();
 
 $color-grey:rgba(0, 0, 0, 0.507);

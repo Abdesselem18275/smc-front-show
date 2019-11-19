@@ -1,15 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, tap, map, switchMap } from 'rxjs/operators';
-import { ProductDataService } from '../service/product-data.service';
-import { ProductShort, ParamType } from '../model';
-import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
+import { ParamType } from '../model';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
-import { PramAction } from '../action';
 import { Store } from '@ngrx/store';
 import { ParamStoreState } from 'src/app/root-store';
 import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
-import { ClearAllAction } from 'src/app/root-store/product-store/actions';
 
 @Component({
   selector: 'app-search-box',
@@ -25,13 +21,12 @@ export class SearchBoxComponent implements OnInit {
               private store$: Store<ParamStoreState.State>) { }
   ngOnInit() {
   this.searchBar.valueChanges.pipe(
-      debounceTime(200),
+      debounceTime(500),
       distinctUntilChanged(),
       tap(term => {
         this.searchTerm = term;
       }),
       filter((term: string) => term !== '' && term.length > 2)).subscribe(term => {
-        console.warn(term);
         const param = {
           key: 'search',
           value: term,

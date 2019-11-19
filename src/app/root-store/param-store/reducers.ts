@@ -14,8 +14,8 @@ const paramReducer = createReducer(
     on(ParamActions.AddOrUpdateManyAction, (state, { params }) => {
       return adapter.upsertMany(params, state);
     }),
-    on(ParamActions.DeleteAction, (state, { key }) => {
-        return adapter.removeOne(key, state);
+    on(ParamActions.DeleteManyAction, (state, { ids }) => {
+        return adapter.removeMany(ids, state);
       }),
     on(ParamActions.NextPageAction, (state) => {
         return state;

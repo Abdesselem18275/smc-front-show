@@ -4,6 +4,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: scroll;
+
+
+}
+.clear-button--centred {
+    margin: 1rem 0;
+    width: 50%;
+    align-self: center;
 
 }
 form {
@@ -11,7 +19,7 @@ form {
     flex-direction: column;
     padding-left: 1rem;
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 

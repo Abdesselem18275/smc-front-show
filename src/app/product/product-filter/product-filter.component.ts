@@ -40,7 +40,7 @@ export class ProductFilterComponent implements OnInit {
   onChanges(): void {
     Object.keys(this.filterForm.controls).forEach(key => {
       this.filterForm.get(key).valueChanges.pipe(
-        debounceTime(500)).subscribe( tempForm  => {
+        debounceTime(1000)).subscribe( tempForm  => {
           const reqArray = [];
           for (const property in tempForm) {
             if (tempForm[property]) {

@@ -28,6 +28,7 @@ export const reducers: ActionReducerMap<State> = {
 
   export const selectPageParam = createSelector(
     selectAllParams,
+    selectProductsCount,
     (AllParams , ProductsCount) => {
         return {
           page_number : AllParams.filter(x => x.type === ParamType.PAGE).shift().value,

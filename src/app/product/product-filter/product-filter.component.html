@@ -8,6 +8,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
+<button (click)="clearFilter()" class="clear-button--centred" color="primary" mat-raised-button> Clear filter</button>
+<mat-divider></mat-divider>
 
     <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">

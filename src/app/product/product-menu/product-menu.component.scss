@@ -1,7 +1,5 @@
 @import "src/styles.scss";
 
-
-
 p {
   cursor: pointer;
 }
@@ -43,7 +41,6 @@ p {
 .logo {
   text-align:center;
   cursor: pointer;
-  color: $mdc-theme-primary;
   .header--big {
     font-family: 'Domine', serif;
     font-size: 2.5rem;

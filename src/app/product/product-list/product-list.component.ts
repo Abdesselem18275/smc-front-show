@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import { ProductShort, ParamType } from '../model';
+import { ProductShort, ParamType, Param } from '../model';
 import { ActivatedRoute} from '@angular/router';
 import { map} from 'rxjs/operators';
 import { Store} from '@ngrx/store';
 import { ParamStoreActions, ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
-
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
@@ -25,6 +24,7 @@ export class ProductListComponent implements OnInit {
   isLoading: Observable<boolean>;
   filterBox: Observable<boolean>;
   filterParamCount: Observable<number>;
+  isSearchActive: Observable<boolean>;
 
   isFilterActive: boolean;
   isListActive: boolean;
@@ -57,6 +57,9 @@ export class ProductListComponent implements OnInit {
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
     this.isLoading = this.store$.pipe(map(x => x.product.isLoading));
     this.filterParamCount = this.store$.select(ParamStoreSelectors.selectFilterPramCount);
+    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { props: ParamType.SEARCH}).
+                                      pipe(
+                                        map( (params: Param[]) => params.length < 1));
   }
 
   toggleModal(key) {

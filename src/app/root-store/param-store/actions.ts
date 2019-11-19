@@ -4,7 +4,7 @@ import { Param } from 'src/app/product/model';
 export enum ActionsType {
   UPDATE     = '[Param] Add Or Update',
   UPDATES = '[Param] Multiple Add Or Update',
-  DELETE   = '[Param] Delete',
+  DELETE_MANY   = '[Param] Delete',
   NEXT_PAGE = '[Param] Next Page',
   CLEAR = '[Param] Clear'
 }
@@ -21,13 +21,13 @@ export const AddOrUpdateManyAction = createAction(
     props<{ params: Param[]}>()
   );
 
-export const DeleteAction = createAction(
-    ActionsType.DELETE,
-    props<{ key: string}>()
+export const DeleteManyAction = createAction(
+    ActionsType.DELETE_MANY,
+    props<{ ids: string[]}>()
   );
 
 export const ClearAction = createAction(
-    ActionsType.DELETE
+    ActionsType.CLEAR
   );
 
   export const NextPageAction = createAction(
