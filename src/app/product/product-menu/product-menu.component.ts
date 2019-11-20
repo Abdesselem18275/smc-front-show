@@ -4,7 +4,7 @@ import { CategoryCacheService } from '../service/category-cache.service';
 import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
-import { centerSlideInAnimation, sideSlideInAnimation } from 'src/app/animations';
+import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
 
 @Component({
@@ -12,7 +12,7 @@ import { ModalStateStore } from 'src/app/shared/token';
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
   animations: [centerSlideInAnimation,
-    centerSlideInAnimation,
+    expandAnimation,
     sideSlideInAnimation]
 })
 export class ProductMenuComponent implements OnInit {

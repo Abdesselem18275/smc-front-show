@@ -14,7 +14,7 @@
 
         <div id="smc-login">
 <header class="form-group__header">
-        <p class="mat-subheading-2  smc-header"  >SIGN IN WITH SMC</p>
+        <p class="mat-subheading-2  smc-header"  >Sign in with SMC</p>
         <p class="text--grey mat-body"    >Please enter the following informations</p>
     </header>
     <main>
@@ -65,19 +65,31 @@
 
 </main>
 </div>
-<div id="google-sign">
+</section>
+
+<section id="google-sign">
         <header class="form-group__header">
-                <p class="mat-subheading-2 smc-header"  >SIGN IN WITH GOOGLE</p>
+                <p class="mat-subheading-2 smc-header"  >Sign in with google</p>
                 <p class="text--grey mat-body">Create or acces your account by sign in to your google account</p>
         
         </header>
         <app-google-sign-in>
         </app-google-sign-in>
-</div>
-
-
 </section>
-<section>
+<section id="smc-register">
+        <header class="form-group__header">
+                <p class="mat-subheading-2 smc-header"  >Register with SMC</p>
+                <p class="text--grey mat-body">Create or acces your account by sign in to your google account</p>
+        
+        </header>
+        <button class="form__submit-button" 
+        type="submit"  
+        mat-raised-button
+        color = "primary"
+        primary>LOGIN
+</button>
+</section>
+<!-- <section>
         <header class="form-group__header">
                 <p class="mat-subheading-2 smc-header"  >REGISTER NOW</p>
                 <p class="mat-body text--grey"    >Create and account and join us </p>
@@ -172,7 +184,7 @@
     </main>
 
 
-</section>
+</section> -->
 </main>
 
 <app-loading class="center" *ngIf="isChecking"></app-loading>

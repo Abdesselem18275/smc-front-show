@@ -2,28 +2,25 @@
 @import "src/form-styles.scss";
 
 .forms-container {
-    display: flex; 
-    justify-content: space-between;
-    background-color: $color-light-grey;
+    padding : 2.5rem;
+    display: grid; 
+    grid-template-columns : 1fr 1fr;
+    grid-template-rows : 11rem 11rem;
+    grid-gap: 3rem;
+    grid-template-areas: 
+    "smc-login google-signin"
+    "smc-login smc-register";
     @media only screen and (max-width:1024px) {
-        flex-direction: column;
-        align-items: center;
-      }
-}
-section {
-    width: 25rem;
-    margin : 1.5rem 3rem ;
-    display: flex;
-    flex-direction: column;
-
-    @media only screen and (max-width:1024px) {
-        margin : 1.5rem 0rem ;    
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid grey;
+        grid-template-areas: 
+        "smc-login smc-login"
+        "google-signin google-signin"
+        "smc-register smc-register"
+        ;
 
 
     }
 }
+
 
 
 .form-group__header {
@@ -37,5 +34,13 @@ section {
 }
 
 #smc-login {
-    margin-bottom: 3rem;
+    grid-area: smc-login
+
+}
+#smc-register {
+    grid-area: smc-register
+}
+#google-sign {
+    grid-area: google-signin
+
 }

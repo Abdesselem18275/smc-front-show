@@ -46,4 +46,30 @@ export const centerSlideInAnimation =
     ]
   );
 
+  export const expandAnimation =
+  trigger(
+    'expandAnimation',
+    [
+      transition(
+        ':enter',
+        [
+          style({ 'width': '0'}),
+          animate('150ms ease-in',
+            style({'width': '100%'})
+                  )
+        ]
+      ),
+      transition(
+        ':leave',
+        [
+          style({ 'width': '100%' }),
+          animate('150ms ease-in',
+             style({'width': '0'})     )
+        ]
+      )
+    ]
+  );
+
+
+
 

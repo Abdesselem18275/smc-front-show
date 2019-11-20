@@ -4,8 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
 import { ParamType } from '../model';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { Store } from '@ngrx/store';
-import { ParamStoreState } from 'src/app/root-store';
-import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
+import { ParamStoreState, ParamStoreActions } from 'src/app/root-store';
 
 @Component({
   selector: 'app-search-box',
@@ -32,18 +31,13 @@ export class SearchBoxComponent implements OnInit {
           value: term,
           type : ParamType.SEARCH
         };
-       this.store$.dispatch(AddOrUpdateAction({param : param}));
+       this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : param}));
       });
 
 }
 
 closePopup() {
-  const param = {
-    key: 'search',
-    value: '',
-    type : ParamType.SEARCH
-  };
-    this.store$.dispatch(AddOrUpdateAction({param : param}));
+    this.store$.dispatch(ParamStoreActions.DeleteManyAction({ids : ['search']}));
     this.modalHandlerService.closeAll();
 }
 }
