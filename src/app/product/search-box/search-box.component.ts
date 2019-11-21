@@ -5,6 +5,7 @@ import { ParamType } from '../model';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { Store } from '@ngrx/store';
 import { ParamStoreState, ParamStoreActions } from 'src/app/root-store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -17,6 +18,7 @@ export class SearchBoxComponent implements OnInit {
 
 
   constructor(private modalHandlerService: ModalHandlerService,
+              private router: Router,
               private store$: Store<ParamStoreState.State>) { }
   ngOnInit() {
   this.searchBar.valueChanges.pipe(
@@ -32,6 +34,8 @@ export class SearchBoxComponent implements OnInit {
           type : ParamType.SEARCH
         };
        this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : param}));
+       this.router.navigate(['product/list']);
+
       });
 
 }

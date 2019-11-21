@@ -1,59 +1,61 @@
 
-<mat-toolbar  color="primary">
-    <mat-toolbar-row class="mat-elevation-z2">
+<mat-toolbar>
+    <mat-toolbar-row>
         <span>Login / Register</span>
         <span class="space-divider"></span>
         <button (click)="cancel()" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
     </mat-toolbar-row>
+
 </mat-toolbar>
+<mat-progress-bar *ngIf="isChecking" mode="indeterminate">
 
+        </mat-progress-bar>
 <main class="forms-container">
-<section class="login">
+<section id="smc-login">
 
-        <div id="smc-login">
 <header class="form-group__header">
         <p class="mat-subheading-2  smc-header"  >Sign in with SMC</p>
         <p class="text--grey mat-body"    >Please enter the following informations</p>
-    </header>
-    <main>
-            <p class="alert">{{auth_non_field_error}}</p>
+        <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
+                        {{item.value}}
+                 </p>
+    
+</header>
+        <main>
+
             <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
-                    <div class="form__field">
-                            <label     for="email">
-                                email
-                            </label>
-                            <input  required
-                                    autocomplete="username email"   
-                                    type="email" 
-                                    id="email"
-                                    formControlName="email">
-                                <div *ngIf="loginForm.get('email').invalid && (loginForm.dirty || loginForm.touched)" class="alert">
-                                
-                                  <p    *ngIf="loginForm.get('email').errors.required">
-                                    email is required.
-                                  </p>
-                                  <p    *ngIf="loginForm.get('email').errors.email">
-                                    Enter a valid email 
-                                  </p>   
-                        </div>                                 
-                    </div>
-                    <div  class="form__field">
-                            <label     for="password">
-                                    password
-                                </label>
-                    <input  
-                                     autocomplete="new-password"  
-                                     required  
-                                     id ="password"
-                                     type ="password" formControlName="password">
-                    <span    class="field__note">Forget yous password ?</span>
-                    </div>
+                        <mat-form-field 
+                        appearance="fill">
+                               <mat-label>email</mat-label>
+                                <input
+                                required 
+                                matInput 
+                                type="email"
+                                formControlName="email"
+                                id="email">
+                                <mat-error *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">{{getEmailErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field 
+                        appearance="fill">
+                                <mat-label>password</mat-label>
+                                <input
+                                required 
+                                matInput 
+                                type="password"
+                                formControlName="password"
+                                id="password"
+                                placeholder="password">
+                                <mat-hint>Forget yous password ?</mat-hint>
+                                <mat-error *ngIf="loginForm.get('password').invalid">
+                                        this field is required.
+                                </mat-error>
+                        </mat-form-field>
                  
-                    <button class="inverted-theme form__submit-button" 
+                    <button class="form__submit-button" 
                             type="submit"  
-                            [disabled]="!loginForm.valid"
+                            [disabled]="loginForm.invalid"
                             mat-raised-button
                             color = "primary"
                             primary>LOGIN
@@ -64,7 +66,6 @@
 
 
 </main>
-</div>
 </section>
 
 <section id="google-sign">
@@ -86,7 +87,7 @@
         type="submit"  
         mat-raised-button
         color = "primary"
-        primary>LOGIN
+        primary>Register
 </button>
 </section>
 <!-- <section>
@@ -186,5 +187,3 @@
 
 </section> -->
 </main>
-
-<app-loading class="center" *ngIf="isChecking"></app-loading>

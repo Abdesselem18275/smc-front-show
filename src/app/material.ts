@@ -10,17 +10,20 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   imports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatBadgeModule ,MatIconModule ,MatToolbarModule,
-            MatSnackBarModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
+            MatTabsModule, MatBadgeModule , MatInputModule, MatIconModule ,MatToolbarModule,
+            MatSnackBarModule, MatFormFieldModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
 
   exports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatIconModule ,MatBadgeModule, MatToolbarModule,
-            MatSnackBarModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
+            MatTabsModule, MatIconModule , MatInputModule, MatBadgeModule, MatToolbarModule,
+            MatSnackBarModule, MatFormFieldModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
 })
 export class MaterialModule {}

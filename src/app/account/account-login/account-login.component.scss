@@ -2,15 +2,17 @@
 @import "src/form-styles.scss";
 
 .forms-container {
-    padding : 2.5rem;
+    padding : 4rem;
     display: grid; 
     grid-template-columns : 1fr 1fr;
-    grid-template-rows : 11rem 11rem;
-    grid-gap: 3rem;
+    grid-template-rows : 10rem 10rem;
+    grid-gap: 4rem;
     grid-template-areas: 
     "smc-login google-signin"
     "smc-login smc-register";
     @media only screen and (max-width:1024px) {
+        grid-template-rows : auto;
+
         grid-template-areas: 
         "smc-login smc-login"
         "google-signin google-signin"
@@ -21,6 +23,12 @@
     }
 }
 
+form,mat-form-field,.form__submit-button {
+    width: 100%;
+    margin-bottom: 2rem;
+   
+   }
+
 
 
 .form-group__header {
@@ -28,10 +36,7 @@
     margin-bottom: 1.5rem;
 }
 
-.form__submit-button {
-    width : 100%;
-    height: 2.5rem;
-}
+
 
 #smc-login {
     grid-area: smc-login

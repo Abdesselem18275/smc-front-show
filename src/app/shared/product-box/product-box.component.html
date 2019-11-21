@@ -1,4 +1,4 @@
-<div class="content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
+<div class=" mat-elevation-z2 content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
 <div class='content__thumbnail'>
 
 <img   (load)="onImageLoad($event)" 
@@ -27,7 +27,7 @@
 </section>
 </div>
 
-<div class="content--grid" *ngIf="mode == 'grid'">
+<div class=" mat-elevation-z2 content--grid" *ngIf="mode == 'grid'">
         <section class="content-information">
                 <mat-icon inline="true" class="content__collection-icon" *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
                     </mat-icon>

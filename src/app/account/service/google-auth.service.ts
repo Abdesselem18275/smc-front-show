@@ -35,7 +35,7 @@ export class GoogleAuthService {
     gapi.signin2.render(elementId, {
       'scope': 'profile email',
       'width' : width,
-      'height' : '36',
+      'height' : '56',
       'theme': 'dark',
       'longtitle': true,
       'onsuccess': param => this.onSignIn(param),

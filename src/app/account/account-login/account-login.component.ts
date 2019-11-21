@@ -53,8 +53,8 @@ export class AccountLoginComponent implements OnInit   {
       },
       error => {
         this.isChecking = false;
-        console.warn(error);
-        this.auth_non_field_error  = error.error['non_field_errors'] || '';
+        this.auth_non_field_error  = JSON.parse(JSON.stringify(error.error));
+        console.warn(this.auth_non_field_error);
       });
     }
   }
@@ -88,6 +88,11 @@ export class AccountLoginComponent implements OnInit   {
   }
   cancel() {
     this.modalHandlerService.closeAll();
+  }
+  getEmailErrorMessage() {
+    return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
+        this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
+            '';
   }
 
 }

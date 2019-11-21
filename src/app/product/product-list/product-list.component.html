@@ -6,7 +6,7 @@
           <p class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
         <button class="meta-bar__filter" mat-icon-button >
-        <mat-icon [matBadge]="filterParamCount | async" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
+        <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
           tune
         </mat-icon>
       </button>
@@ -39,7 +39,7 @@
             <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
 
 
-                <app-product-box class="mat-elevation-z2 product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts | async">
+                <app-product-box class=" product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts | async">
                 </app-product-box>
                 <mat-divider [inset]="true" ></mat-divider>
 

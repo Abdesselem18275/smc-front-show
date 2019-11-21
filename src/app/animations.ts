@@ -54,7 +54,7 @@ export const centerSlideInAnimation =
         ':enter',
         [
           style({ 'width': '0'}),
-          animate('150ms ease-in',
+          animate('100ms ease-in',
             style({'width': '100%'})
                   )
         ]
@@ -63,7 +63,7 @@ export const centerSlideInAnimation =
         ':leave',
         [
           style({ 'width': '100%' }),
-          animate('150ms ease-in',
+          animate('100ms ease-in',
              style({'width': '0'})     )
         ]
       )
