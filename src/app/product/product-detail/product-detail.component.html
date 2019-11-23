@@ -9,30 +9,23 @@
 </div>
 </section>
 
-
-<div  class="upper-section">
-<section class="carousel">
+<section class="main-content" >
   <section class="main-image">
-      <app-loading class="inbox-center" *ngIf="!isImageReady"></app-loading>
-
-    <div>
-      <img [@imageChangeTrigger] ="getState()" (swipeleft) = "stepUpdateImage(-1)" (swiperight) = "stepUpdateImage(1)"[src]="selectedImage">
-    </div>
-
-  </section>
+    <button  (click)="stepUpdateImage(-1)" mat-icon-button>
+      <mat-icon inline="true">keyboard_arrow_left</mat-icon>
+    </button>
+    <section  class="images-container">
+      <img [id]='image.id' *ngFor="let image of product.images" [src]="image.content">
+    </section>
+    <button (click)="stepUpdateImage(1)" mat-icon-button>
+        <mat-icon [inline]="true">keyboard_arrow_right</mat-icon>
+    </button>  </section>
   <section class='images-selector'>
-      <button class="main-image__arrow" *ngIf="imagesNumber > 1" (click) = "stepUpdateImage(-1)" mat-icon-button  icon="keyboard_arrow_left"></button>
-      <div class="dots-container">
-      <span [style.background-color] = "i == selectedIndex ? '#7F6A23' : 'black'" (click) = "updateImage(i)" class="dot" *ngFor='let el of counter() ;let i = index'></span>
-      </div>
-      <button  class="main-image__arrow" *ngIf="imagesNumber > 1 "  (click) = "stepUpdateImage(1)" mat-icon-button  icon="keyboard_arrow_right"></button>
-
+      <span (click) = "updateIndex(i)" [style.background-color] = "i == selectedIndex ? 'black' : 'grey' " class="dot" *ngFor='let el of indexArray ;let i = index'>        
+      </span>
   </section>
-</section>
 
-<section class="description">
-  <header class="title-section">
-    <mat-icon id="collection" inline="true" *ngIf="product.collection.svgIcon.designation" [svgIcon]="product.collection?.svgIcon.designation"></mat-icon>
+  <section class="title-section">
     <div>
       <p class="mat-body-strong">{{product?.designation  | uppercase}}</p>
       <p  class="text--grey mat-caption" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
@@ -47,9 +40,10 @@
      <mat-icon>message</mat-icon>
 </button>
 
-  </header>
-  <section>
-<mat-tab-group mat-stretch-tabs [selectedIndex]="0" class="description__content">
+  </section>
+
+    <section class="description__content">
+<mat-tab-group mat-stretch-tabs [selectedIndex]="0">
     <mat-tab class="description__text" label="Area of Use">
       <p class="mat-body description__text">
           {{product.areaOfUse}}
@@ -73,18 +67,16 @@
 
   </mat-tab-group>
   </section>
+
   <section *ngIf="product.features" class="feature-container">
-    
-        <mat-icon *ngFor="let feature of product.features" class="feature-icon-button--large" [svgIcon]="feature.svgIcon.designation"></mat-icon>
-      
+      <figure *ngFor="let feature of product.features" >
+        <mat-icon class="feature-icon-button--large" [svgIcon]="feature.svgIcon.designation"></mat-icon>
+        <figcaption class="mat-caption">{{feature.designation}}</figcaption>
+      </figure>
   </section>
-  <span class="description__spacer"></span>
-</section>
-</div>
-<section  class="technical-description">
-    <p class="mat-headline">Technical details</p>
-  <section class="technical-data-container">
-  <table >
+
+  <p class="product-technical__title mat-headline">TECHNICAL DETAILS</p>
+  <table class="product-dimensions">
    <tr>
      <th  class="mat-body-strong" *ngFor="let header of displayedColumns">
        {{header}}
@@ -132,14 +124,8 @@
       </tr>
   </table>
 
-</section>
-  
-
-</section>
-
-
+  <p class="related-product__title mat-headline">RELATED PRODUCTS</p>
 <section class="related-product">
 
-  <p class="mat-headline">Related Products</p>
 </section>
-
+</section>

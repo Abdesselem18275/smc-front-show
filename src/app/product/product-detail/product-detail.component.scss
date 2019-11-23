@@ -4,30 +4,46 @@
 .list-header {
   padding : 1rem $global-horizontal-gutter ;
   margin: 2.5rem 0;
-  border-bottom: 1px solid rgba(30, 30, 30, 0.3);
-  border-top: 1px solid rgba(30, 30, 30, 0.3);
+  background-color: $color-light-grey;
+
+}
+.main-content {
+  display: grid;
+  padding : 1rem $global-horizontal-gutter ;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(2rem, auto);
+  grid-template-areas: 
+  "main-image title-section"
+  "main-image description__content"
+   "images-selector feature-container"
+   "product-technical__title product-technical__title"
+   "product-dimensions component-detail"
+   "related-product__title related-product__title"
+   "related-product related-product";
+   @media only screen and (max-width:960px) {
+    grid-template-areas: 
+    "title-section title-section"
+    "main-image main-image"
+     "images-selector images-selector"
+     "description__content description__content"
+     "feature-container feature-container"
+     "product-technical__title product-technical__title"
+     "product-dimensions product-dimensions"
+     "component-detail component-detail"
+     "related-product__title related-product__title"
+     "related-product related-product";
+  }
 }
 
-.upper-section {
+
+section {
   display: flex;
-  flex-direction: row;
-  margin : 0 $global-horizontal-gutter 4em $global-horizontal-gutter;
 }
-
-.description {
-  flex : 1 1 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
   .title-section {
-    display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
-    #collection {
-      width: 32px;
-      align-self: flex-end;
-    }
+    grid-area: title-section;
     div {
       margin-left: 1rem;
       margin-right: auto;
@@ -37,103 +53,65 @@
       color:$color-text-grey; 
     }
   }
+
   .description__content {
-    min-height: 8rem;
+    grid-area: description__content;
     .description__text {
       padding: 0.5rem 2rem;
       text-align: justify;
-      @media only screen and (max-width:960px) {
-        padding: 0.5rem 1rem;
-
-      }
     }
-
-
   }
 
    .feature-container {
-     margin : 1rem 0 1rem 0;
-     display: flex;
+    grid-area: feature-container;
      justify-content: center;
+     figure {
+       display: flex;
+       flex-direction : column;
+       align-items: center;
+     }
+       figcaption {
+        word-break: keep-all;
+     }
      .feature-icon-button--large {
        width : 3rem;
+       color: black;
        height: auto;
-       margin: 0 2rem;
-
      }
 
    }
-   .description__spacer {
-     flex : 1 1 auto;
-   }
-}
 
-
-
-
-.carousel {
-  flex : 1 1 50%;
-  .main-image {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    .inbox-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%);
+   .main-image {
+    grid-area: main-image;
+    align-items: center;
+    button {
+      font-size: 2rem;
+      @media only screen and (max-width:960px) { 
+        display: none;
+      }
     }
-    
-  }
-
-
-  div {
-    flex: 1 1 auto;
-    padding: 0 1rem;
+     .images-container {
+      margin : 0 1rem;
+      overflow: scroll;
+      scroll-snap-type: x mandatory;
     img {
-       height: auto;
-       width: 100%;
-    }
-    @media only screen and (max-width:960px){
-      padding: 0 ;
-
-    }
-    
+      scroll-snap-align: start;
+      height: auto;
+      max-width: 100%;}
+     }
   }
   .images-selector {
-    
-    margin-top : 1.5em;
-    display: flex;
-    justify-content: space-between;
+    grid-area: images-selector;
     align-items: center;
-    .dots-container {
-      display: flex;
-      justify-content: center;
-
-    }
-
+    justify-content: center;
   }
 
-}
 
 
-
-
-.technical-description {
-
-.technical-data-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: 2em;
-  margin : 0 $global-horizontal-gutter;
-
+.product-dimensions {
+  grid-area: product-dimensions
 }
   table {
-  margin: 2em 0;
   border-collapse: collapse;
   border: 1px solid $color-border-grey;  
 
@@ -154,8 +132,9 @@
 
 
   .component-detail {
+    grid-area: component-detail;
+
     .componnent-designation__aligned {
-      display: flex;
       align-items: center;
       mat-icon {
         width : 2rem;
@@ -163,29 +142,30 @@
       }
     }
   }
-}
 
 .related-product {
-  margin : 0 $global-horizontal-gutter;
-
+  grid-area: related-product;
 }
-.component-detail__icon{
+
+.component-detail__icon {
   width: 2rem;
   height: auto;
 }
-  @media only screen and (max-width:960px)
-  {
-  
-  .upper-section {
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-    .title-section {
-      margin : 1.5rem 0 ;
 
-    }
-  }
+
+.product-technical__title {
+  grid-area: product-technical__title;
+
 }
+.related-product__title {
+  grid-area: related-product__title;
 
+}
+#left-arrow {
+  grid-area: left-arrow;
 
+}
+#right-arrow {
+  grid-area: right-arrow;
 
+}
