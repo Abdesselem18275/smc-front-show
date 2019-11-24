@@ -1,189 +1,78 @@
-
 <mat-toolbar>
-    <mat-toolbar-row>
-        <span>Login / Register</span>
-        <span class="space-divider"></span>
-        <button (click)="cancel()" mat-icon-button>
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-toolbar-row>
+        <mat-toolbar-row>
+                <span>Login / Register</span>
+                <span class="space-divider"></span>
+                <button (click)="cancel()" mat-icon-button>
+                        <mat-icon>close</mat-icon>
+                </button>
+        </mat-toolbar-row>
 
 </mat-toolbar>
 <mat-progress-bar *ngIf="isChecking" mode="indeterminate">
 
-        </mat-progress-bar>
+</mat-progress-bar>
 <main class="forms-container">
-<section id="smc-login">
+        <section id="smc-login">
 
-<header class="form-group__header">
-        <p class="mat-subheading-2  smc-header"  >Sign in with SMC</p>
-        <p class="text--grey mat-body"    >Please enter the following informations</p>
-        <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
-                        {{item.value}}
-                 </p>
-    
-</header>
-        <main>
-
-            <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
-                        <mat-form-field 
-                        appearance="fill">
-                               <mat-label>email</mat-label>
-                                <input
-                                required 
-                                matInput 
-                                type="email"
-                                formControlName="email"
-                                id="email">
-                                <mat-error *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">{{getEmailErrorMessage()}}</mat-error>
-                        </mat-form-field>
-                        <mat-form-field 
-                        appearance="fill">
-                                <mat-label>password</mat-label>
-                                <input
-                                required 
-                                matInput 
-                                type="password"
-                                formControlName="password"
-                                id="password"
-                                placeholder="password">
-                                <mat-hint>Forget yous password ?</mat-hint>
-                                <mat-error *ngIf="loginForm.get('password').invalid">
-                                        this field is required.
-                                </mat-error>
-                        </mat-form-field>
-                 
-                    <button class="form__submit-button" 
-                            type="submit"  
-                            [disabled]="loginForm.invalid"
-                            mat-raised-button
-                            color = "primary"
-                            primary>LOGIN
-                    </button>
-                
-
-                </form>   
-
-
-</main>
-</section>
-
-<section id="google-sign">
-        <header class="form-group__header">
-                <p class="mat-subheading-2 smc-header"  >Sign in with google</p>
-                <p class="text--grey mat-body">Create or acces your account by sign in to your google account</p>
-        
-        </header>
-        <app-google-sign-in>
-        </app-google-sign-in>
-</section>
-<section id="smc-register">
-        <header class="form-group__header">
-                <p class="mat-subheading-2 smc-header"  >Register with SMC</p>
-                <p class="text--grey mat-body">Create or acces your account by sign in to your google account</p>
-        
-        </header>
-        <button class="form__submit-button" 
-        type="submit"  
-        mat-raised-button
-        color = "primary"
-        primary>Register
-</button>
-</section>
-<!-- <section>
-        <header class="form-group__header">
-                <p class="mat-subheading-2 smc-header"  >REGISTER NOW</p>
-                <p class="mat-body text--grey"    >Create and account and join us </p>
-        </header>
-        <main>
-                <form [formGroup]="createForm"   (ngSubmit)="createProfile()">
-                        <div formGroupName="profile" class="form__field">
-                                <label     for="email">
-                                    email
-                                </label>
-                                <input  required
-                                        autocomplete="username email"   
-                                        type="email" 
-                                        id="new-email"
-                                        formControlName="email">
-                                    <div *ngIf="createForm.get('profile.email').invalid && (createForm.dirty || createForm.touched)" class="alert">
-                                    
-                                      <p    *ngIf="createForm.get('profile.email').errors.required">
-                                        Email is required.
-                                      </p>
-                                      <p    *ngIf="createForm.get('profile.email').errors.email">
-                                        Enter a valid email 
-                                      </p>   
-                                      <p    *ngIf="createForm.get('profile.email').errors.not_unique">
-                                               This email already exist 
-                                      </p> 
-                            </div>                                 
-                        </div>
-                        <div class="inline-fields">
-                                        <div  formGroupName="profile" class="form__field">
-                                                        <label     for="first_name">
-                                                            first name
-                                                        </label>
-                                                        <input  required
-                                                                type="text" 
-                                                                id="first_name"
-                                                                formControlName="first_name">                                
-                                                </div>
-                        
-                                                <div  formGroupName="profile" class="form__field">
-                                                                <label     for="last_name">
-                                                                    last name
-                                                                </label>
-                                                                <input  required
-                                                                        type="text" 
-                                                                        id="last_name"
-                                                                        formControlName="last_name">                                
-                                                        </div>
-                                                        
-
-                        </div>
-
-
-                        
-                        <div formGroupName="profile" class="form__field">
-                                <label     for="password">
-                                        password
-                                    </label>
-                        <input  
-                                         autocomplete="new-password"  
-                                         required  
-                                         id ="new-password"
-                                         type ="password" formControlName="password">
-                        </div>
-                        <div  formGroupName="profile" class="form__field">
-                                <label     for="confirmPassword">
-                                        confirm password
-                                </label>
-                        <input  
-                                         autocomplete="new-password"  
-                                         required  
-                                         id ="new-confirmPassword"
-                                         type ="password" 
-                                         formControlName="confirmPassword">
-                        <div  class="alert" *ngIf="createForm.errors?.passwordNotConfirmed && (createForm.get('profile.password').touched || createForm.get('profile.confirmPassword').dirty)">
-                        <p    >
-                                Passwords are not equals.
+                <header class="form-group__header">
+                        <p class="mat-subheading-2  smc-header">Sign in with SMC</p>
+                        <p class="text--grey mat-body">Please enter the following informations</p>
+                        <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
+                                {{item.value}}
                         </p>
-                        </div>
-                        </div>
-                <button class="inverted-theme form__submit-button" 
-                        type="submit"  
-                        [disabled]="!createForm.valid"
-                        mat-raised-button
-                        color = "primary"  
-                        primary>REGISTER
+
+                </header>
+                <main>
+
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <mat-form-field appearance="fill">
+                                        <mat-label>email</mat-label>
+                                        <input required matInput type="email" formControlName="email" id="email">
+                                        <mat-error
+                                                *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+                                                {{getEmailErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                        <mat-label>password</mat-label>
+                                        <input required matInput type="password" formControlName="password"
+                                                id="password" placeholder="password">
+                                        <mat-hint>Forget yous password ?</mat-hint>
+                                        <mat-error *ngIf="loginForm.get('password').invalid">
+                                                this field is required.
+                                        </mat-error>
+                                </mat-form-field>
+
+                                <button class="form__submit-button" type="submit" [disabled]="loginForm.invalid"
+                                        mat-raised-button color="primary" primary>LOGIN
+                                </button>
+
+
+                        </form>
+
+
+                </main>
+        </section>
+
+        <section id="google-sign">
+                <header class="form-group__header">
+                        <p class="mat-subheading-2 smc-header">Sign in with google</p>
+                        <p class="text--grey mat-body">Create or acces your account by sign in to your google account
+                        </p>
+
+                </header>
+                <app-google-sign-in>
+                </app-google-sign-in>
+        </section>
+        <section id="smc-register">
+                <header class="form-group__header">
+                        <p class="mat-subheading-2 smc-header">Register with SMC</p>
+                        <p class="text--grey mat-body">Create or acces your account by sign in to your google account
+                        </p>
+
+                </header>
+                <button class="form__submit-button" type="submit" (click)="toggleModal('createProfileBox')"
+                        mat-raised-button color="primary" primary>Register
                 </button>
-                    
-                    </form>    
-                                     
+        </section>
 
-    </main>
-
-
-</section> -->
 </main>

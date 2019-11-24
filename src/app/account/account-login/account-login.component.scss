@@ -5,28 +5,26 @@
     padding : 4rem;
     display: grid; 
     grid-template-columns : 1fr 1fr;
-    grid-template-rows : 10rem 10rem;
-    grid-gap: 4rem;
+    grid-auto-rows: minmax(2.5rem, auto);
+    column-gap: 4rem;
+    row-gap: 4rem;
     grid-template-areas: 
     "smc-login google-signin"
     "smc-login smc-register";
-    @media only screen and (max-width:1024px) {
+    @media only screen and (max-width:1200px) {
         grid-template-rows : auto;
-
         grid-template-areas: 
         "smc-login smc-login"
         "google-signin google-signin"
-        "smc-register smc-register"
-        ;
-
-
+        "smc-register smc-register";
     }
 }
 
 form,mat-form-field,.form__submit-button {
     width: 100%;
-    margin-bottom: 2rem;
-   
+   }
+   mat-form-field {
+     margin-bottom: 1.35rem;
    }
 
 
@@ -34,6 +32,18 @@ form,mat-form-field,.form__submit-button {
 .form-group__header {
     text-align: start;
     margin-bottom: 1.5rem;
+    @media only screen and (max-width:1200px) {
+        .smc-header {
+            border-right: solid 12px $mdc-theme-primary;
+            padding-right: 0.5rem;
+    
+        }
+        grid-area: group-header;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
 }
 
 

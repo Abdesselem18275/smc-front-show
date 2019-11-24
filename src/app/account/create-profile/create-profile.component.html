@@ -1,0 +1,71 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>Create profile</span>
+        <span class="space-divider"></span>
+        <button (click)="cancel()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+</mat-toolbar-row>
+</mat-toolbar>
+
+    <mat-progress-bar *ngIf="isChecking" mode="indeterminate">
+
+    </mat-progress-bar>
+
+
+            <form [formGroup]="createForm" (ngSubmit)="createProfile()">
+                    <header class="form-group__header">
+                            <p class="mat-subheading-2  smc-header">Register your account</p>
+                            <p class="text--grey mat-body">Please enter the following informations</p>
+                            <p class="alert" *ngFor="let item of serverError  | keyvalue">
+                                    {{item.value}}</p>
+                    </header>
+
+                <section class="section--left">
+                <mat-form-field formGroupName="profile" appearance="fill">
+                    <mat-label>email</mat-label>
+                    <input required matInput type="email" formControlName="email" id="email">
+                    <mat-error
+                        *ngIf="createForm.get('profile.email').invalid && createForm.get('profile.email').touched">
+                        {{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field formGroupName="profile" appearance="fill">
+                    <mat-label>password</mat-label>
+                    <input required matInput autocomplete="new-password" type="password" formControlName="password" id="password">
+                    <mat-error *ngIf="createForm.get('profile.password').invalid && createForm.get('profile.password').touched">
+                    {{getPasswordErrorMessage('password')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field formGroupName="profile" appearance="fill">
+                    <mat-label>confirm your password</mat-label>
+                    <input required matInput autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
+                    <mat-error *ngIf="createForm.invalid || createForm.get('profile.password').invalid && createForm.get('profile.password').touched">
+                            {{getPasswordErrorMessage('confirmPassword')}}</mat-error>
+                </mat-form-field>
+
+                </section>
+                <section class="section--right">
+                <mat-form-field formGroupName="profile" appearance="fill">
+                    <mat-label>first name</mat-label>
+                    <input required matInput type="text" formControlName="first_name" id="first_name">
+                </mat-form-field>
+                <mat-form-field formGroupName="profile" appearance="fill">
+                    <mat-label>last name</mat-label>
+                    <input required matInput type="text" formControlName="last_name" id="last_name">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country" id="country">
+                          <mat-option *ngFor="let country of countryNames" [value]="country.val">
+                            {{country.val}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </section>
+                <button class="form__submit-button" type="submit" [disabled]="!createForm.valid"
+                mat-raised-button color="primary" primary>REGISTER
+            </button>
+
+            </form>
+

@@ -19,18 +19,19 @@ import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 import { AccountCardComponent } from '../account/account-card/account-card.component';
 import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.component';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
-import { ScrollerDirective } from './scroller.directive';
+import { CreateProfileComponent } from '../account/create-profile/create-profile.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
                  AccountLoginComponent,
+                 CreateProfileComponent,
                  GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 FavoriteHandlerDirective, RouterOutletToggleDirective, ScrollerDirective],
+                 FavoriteHandlerDirective, RouterOutletToggleDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -51,9 +52,9 @@ import { ScrollerDirective } from './scroller.directive';
     FavoriteHandlerDirective,
     LoadingComponent,
     GoogleSignInComponent,
+    CreateProfileComponent,
     AccountCardComponent,
     ProductFilterComponent,
-    ScrollerDirective,
     CommonModule,
 
   ]

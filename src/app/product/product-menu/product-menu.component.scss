@@ -3,6 +3,10 @@
 p {
   cursor: pointer;
 }
+mat-toolbar-row {
+  background-color: white;
+  border-bottom: solid $mdc-theme-primary 2px;
+}
 
 
 .nav-bar {
@@ -40,6 +44,7 @@ p {
 
 .logo {
   text-align:center;
+  color: $mdc-theme-primary;
   cursor: pointer;
   .header--big {
     font-family: 'Domine', serif;

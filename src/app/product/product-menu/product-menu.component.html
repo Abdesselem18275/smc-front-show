@@ -60,10 +60,13 @@
     </app-account-card>
 </div>
 
-<div  [@inOutAnimation] *ngIf="modalStateStore.loginBox" class="mat-elevation-z2 center-box">
+<div  [@inOutAnimation] *ngIf="modalStateStore.loginBox || modalStateStore.createProfileBox" class="mat-elevation-z2 center-box">
 
-    <app-account-login >
+    <app-account-login *ngIf="modalStateStore.loginBox" >
     </app-account-login>
+    <app-create-profile *ngIf="modalStateStore.createProfileBox">
+
+    </app-create-profile>
 </div>
 
 <div  [@expandAnimation] *ngIf="modalStateStore.searchBox" class=" search-box">

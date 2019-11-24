@@ -1,0 +1,55 @@
+@import "src/styles.scss";
+@import "src/form-styles.scss";
+form {
+    margin: 2rem 3rem;
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 1rem;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "group-header group-header"
+    "section-left section-right"
+    "submit-button submit-button";
+    @media only screen and (max-width:480px) {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+
+        grid-template-areas: 
+        "group-header"
+        "section-left"
+        "section-right"
+        "submit-button"
+      }
+}
+
+.form-group__header {
+    .smc-header {
+        border-right: solid 12px $mdc-theme-primary;
+        padding-right: 0.5rem;
+
+    }
+    grid-area: group-header;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+section {
+    display: flex;
+    flex-direction: column;
+}
+mat-form-field {
+    width: 100%;
+}
+.section--left {
+    grid-area: section-left;
+}
+.section--right {
+    grid-area: section-right;
+}
+.form__submit-button {
+    grid-area: submit-button;
+    min-width: 25rem;
+}

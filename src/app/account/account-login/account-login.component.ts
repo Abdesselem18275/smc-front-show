@@ -59,33 +59,7 @@ export class AccountLoginComponent implements OnInit   {
     }
   }
 
-  createProfile() {
-    this.isChecking = true;
-    const jsonData = JSON.stringify(this.createForm.value);
 
-    this.authService.createAccount(jsonData).subscribe(x => {
-      const cred = JSON.stringify({
-        email : this.createForm.get('profile.email').value,
-        password : this.createForm.get('profile.password').value
-      });
-      this.authService.login(cred).subscribe(() => {
-        this.authService.redirect();
-        this.isChecking = false;
-        });
-    },
-    error => {
-      this.isChecking = false;
-      if (error instanceof HttpErrorResponse) {
-        this.creation_non_field_error  = error.error['non_field_errors'] || '';
-        this.fieldError = error.error || '';
-        console.warn(error.error);
-        const email_error = error.error['profile']['email'] || '';
-        if (email_error !== '') {
-          this.createForm.get('profile.email').setErrors({'not_unique': true});
-        }
-      }
-    });
-  }
   cancel() {
     this.modalHandlerService.closeAll();
   }
@@ -93,6 +67,10 @@ export class AccountLoginComponent implements OnInit   {
     return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
         this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
             '';
+  }
+
+  toggleModal(key) {
+    this.modalHandlerService.toggleModal(key);
   }
 
 }

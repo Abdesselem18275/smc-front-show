@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +20,11 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatBadgeModule , MatInputModule, MatIconModule ,MatToolbarModule,
-            MatSnackBarModule, MatFormFieldModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
+            MatTabsModule, MatBadgeModule , MatInputModule, MatIconModule , MatToolbarModule,
+            MatSnackBarModule, MatSelectModule,  MatFormFieldModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
 
   exports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatIconModule , MatInputModule, MatBadgeModule, MatToolbarModule,
+            MatTabsModule, MatSelectModule , MatIconModule , MatInputModule, MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, MatFormFieldModule, MatButtonToggleModule, MatProgressBarModule, MatSlideToggleModule],
 })
 export class MaterialModule {}
