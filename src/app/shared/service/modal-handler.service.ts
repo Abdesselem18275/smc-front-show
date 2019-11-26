@@ -24,7 +24,7 @@ export class ModalHandlerService {
 
 
 
-  openSnak(message?: string, action: string = ' ') {
+  openSnak(message: string, action?: string) {
     const snackbar = this.snackbar.open(message, action);
     return snackbar;
   }

@@ -1,59 +1,63 @@
 @import "src/styles.scss";
-
-
-
-.form__non-field-error {
-    color: red;
-    margin-top: 1rem;
-}
-
-
+@import "src/form-styles.scss";
 form {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    padding: 2rem 0 ;
+    margin: 2rem 3rem;
+    display: grid;
+    column-gap: 5rem;
+    row-gap: 1rem;
 
-    @media only screen and (max-width:960px) {
-        flex-direction: column;
-        align-items: center;
-    }
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "section-left section-right"
+    "submit-button submit-button";
+    @media only screen and (max-width:480px) {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+
+        grid-template-areas: 
+        "section-left"
+        "section-right"
+        "submit-button"
+      }
 }
-
-
-
-.form__submit-button {
-    margin: 1rem 0;
-    width : 100%;
-    height: 3rem;
-
-}
-.form__submit-button:disabled {
-    border: solid 1px $color-deep-grey;
-    background-color: $color-light-grey;
-}
-
-.form__field ,.switch--space-between {
-    margin-bottom: 1rem;
-}
-.form-group {
-    width: 22rem;
-    @media only screen and (max-width:960px) {
-        width: 100%;
-
-    }
-
-}
-
-.block-divider {
-    flex : 1 1 auto;
-}
-
 
 .form-group__header {
+    text-align: start;
     margin-bottom: 1.5rem;
+    @media only screen and (max-width:1200px) {
+        .smc-header {
+            border-right: solid 12px $mdc-theme-primary;
+            padding-right: 0.5rem;
+    
+        }
+        grid-area: group-header;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
 }
-
-.slide-toggle--margin-8 {
+section {
+    display: flex;
+    flex-direction: column;
+}
+mat-form-field {
+    width: 100%;
+}
+.section--left {
+    grid-area: section-left;
+}
+.section--right {
+    grid-area: section-right;
+}
+.form__submit-button {
+    grid-area: submit-button;
+    min-width: 25rem;
+    margin: 0 auto;
+}
+mat-slide-toggle {
+    height: 4rem;
+ 
     margin-bottom: 1rem;
 }

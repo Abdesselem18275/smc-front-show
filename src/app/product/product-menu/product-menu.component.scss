@@ -4,8 +4,10 @@ p {
   cursor: pointer;
 }
 mat-toolbar-row {
-  background-color: white;
+  background-color: black;
   border-bottom: solid $mdc-theme-primary 2px;
+  border-top: solid $mdc-theme-primary 2px;
+  color: $mdc-theme-secondary;
 }
 
 

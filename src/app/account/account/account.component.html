@@ -1,19 +1,39 @@
-<nav mat-align-tabs="center"  
-     mat-tab-nav-bar  
-     mat-stretch-tabs
-     class="menu-tab-bar">
-        <a mat-tab-link  
-          (click)="activeLink = tab.label"
-          [active]="activeLink == tab.label"
-          [routerLink]="tab.path" 
-          class=" mat-tab-link"
-          *ngFor="let tab of tabs">
-          <div class="tab__content">
-                <span class="mat-body">{{tab.label}}</span>
-                <mat-icon>{{tab.icon}}</mat-icon>
+
+
+<mat-tab-group mat-stretch-tabs class="tab-group" color="primary">
+    <mat-tab >
+        <ng-template mat-tab-label>
+          <div class="tab-group__label">
+            <mat-icon >account_circle</mat-icon>
+            <p>Profile</p>
           </div>
+          </ng-template>
+      <ng-template matTabContent>
+        <app-edit-profile></app-edit-profile>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="tab-group__element"  label="Favorite">
+        <ng-template mat-tab-label>
+            <div class="tab-group__label">
+              <mat-icon >favorite</mat-icon>
+              <p>Favorites</p>
+            </div>
+            </ng-template>
+      <ng-template matTabContent>
+        <app-favorites-profile></app-favorites-profile>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="tab-group__element"  label="Message">
+        <ng-template mat-tab-label>
+            <div class="tab-group__label">
+              <mat-icon >message</mat-icon>
+              <p>Messages</p>
+            </div>
+            </ng-template>
+        <ng-template matTabContent>
+          The Second Content
+        </ng-template>
+      </mat-tab>
+  </mat-tab-group>
 
-        </a>
-</nav>
-
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

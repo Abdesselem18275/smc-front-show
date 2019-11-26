@@ -23,12 +23,12 @@ export class EditProfileComponent implements OnInit {
     this.isUpdating = false;
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
     this.countryNames = this.authService.countries;
-    console.warn(this.accountForm);
   }
 
 
   onchanges(val) {
-    this.accountForm.get('is_professional').setValue(val.checked);
+    console.warn(val);
+    console.warn(this.accountForm.get('is_professional').value);
     if (!val.checked) {
       this.accountForm.get('company_name').disable();
       this.accountForm.get('position').disable();

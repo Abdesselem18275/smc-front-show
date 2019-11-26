@@ -30,8 +30,8 @@ export class FavoriteHandlerDirective implements AfterViewInit {
     if (this._authService.isLogged()) {
       this._favHandlerService.addRemoveFavorites(this.appFavoriteHandler);
     } else {
-      this._modalHandler.openSnak('You have to login to perform this action', 'Login').
-      afterDismissed().pipe(filter(x => true)).subscribe(() => {
+      this._modalHandler.openSnak('You have to login to perform this action', 'Login')
+      .onAction().pipe(filter(x => true)).subscribe(() => {
         this._modalHandler.toggleModal('loginBox');
       });
 

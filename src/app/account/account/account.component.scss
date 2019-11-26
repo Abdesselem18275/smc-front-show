@@ -1,12 +1,15 @@
-.menu-tab-bar {
-    margin : 1rem 0 2rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+@import "src/styles.scss";
 
+.tab-group {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    margin : 1rem 0 2rem 0;
 }
-.tab__content {
+.tab-group__label {
+    margin: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    
+    mat-icon {
+        margin-right: 0.5rem;
+    }
 }
+

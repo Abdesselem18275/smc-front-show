@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootStoreModule } from './root-store/root-store.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 
 
@@ -39,7 +40,9 @@ export function loadCategories(configService: ConfigService) {
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
-        {
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    {
       provide: APP_INITIALIZER,
       useFactory: loadCategories,
       deps: [ConfigService],
