@@ -1,4 +1,4 @@
-<div class=" mat-elevation-z2 content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
+<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
 <div class='content__thumbnail'>
 
 <img   (load)="onImageLoad($event)" 
@@ -12,7 +12,7 @@
 <section class="content-text">
    <div>
            <app-category-breadcrumb    
-                                    *ngIf="mode=='listWithBread'" 
+                                    *ngIf="isSearchActive |async" 
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
             </app-category-breadcrumb>
@@ -21,19 +21,19 @@
        </p>
    </div>
 
-<mat-icon [svgIcon]="product.collection?.svgIcon.designation">
-</mat-icon>
-
 </section>
 </div>
 
-<div class=" mat-elevation-z2 content--grid" *ngIf="mode == 'grid'">
+<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid" *ngIf="mode == 'grid'">
         <section class="content-information">
-                <mat-icon inline="true" class="content__collection-icon" *ngIf="product.collection?.svgIcon" [svgIcon]="product.collection?.svgIcon.designation">
-                    </mat-icon>
            <div class="content-information__text">
-               <p class="mat-body-strong">{{product.designation}}</p>
-               <p class="text--grey mat-caption">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
+                <app-category-breadcrumb    
+                                    *ngIf="isSearchActive |async" 
+                                    [currentProduct]="product.rootCategory" 
+                                    class="caption-style">
+               </app-category-breadcrumb>  
+               <p class="mat-subheading-2">{{product.designation}}</p>
+               <p class="mat-body-1">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
                </p>
            </div>
         

@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ProductShort } from 'src/app/product/model';
+import { ProductShort, Param, ParamType } from 'src/app/product/model';
 import { Router } from '@angular/router';
+import { RootStoreState, ParamStoreSelectors } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -14,9 +18,18 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   @Input() mode: string;
   isLoading: boolean;
   isFetching: boolean;
-  constructor(private router: Router) { }
+  isSearchActive: Observable<boolean>;
+  searchTerm: Observable<string>;
+  constructor(private router: Router,
+              private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
+    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
+    pipe(
+      map( (params: Param[]) => params.length !== 0));
+    this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
+      pipe(
+        map( (params: Param[]) => params.shift().value));
     this.isLoading = true;
     this.isFetching = false;
     this.ImageMockup();

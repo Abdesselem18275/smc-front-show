@@ -1,12 +1,7 @@
 
 
 <section  class="list-header">
-<div class="content__meta-bar">
-  <div>
     <app-category-breadcrumb [currentProduct]="product.rootCategory" class="body-style breadcrumb"></app-category-breadcrumb>
-  </div>
-    <span class="content__meta-bar--spacer"></span>
-</div>
 </section>
 
 <section class="main-content" >
@@ -27,8 +22,8 @@
 
   <section class="title-section">
     <div>
-      <p class="mat-body-strong">{{product?.designation  | uppercase}}</p>
-      <p  class="text--grey mat-caption" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+      <p class="mat-subheading-2">{{product?.designation  | uppercase}}</p>
+      <p  class="mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
     <button 
       [appFavoriteHandler]="product.pk" 

@@ -4,7 +4,7 @@
 .list-header {
   padding : 1rem $global-horizontal-gutter ;
   margin: 2.5rem 0;
-  background-color: $color-light-grey;
+  background-color: $mdc-theme-accent--lighter;
 
 }
 .main-content {
@@ -13,7 +13,7 @@
   column-gap: 2rem;
   row-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(2rem, auto);
+  grid-auto-rows: minmax(2rem, auto)  auto;
   grid-template-areas: 
   "main-image title-section"
   "main-image description__content"
@@ -42,7 +42,7 @@ section {
   display: flex;
 }
   .title-section {
-    align-items: center;
+    align-items: flex-start;
     grid-area: title-section;
     div {
       margin-left: 1rem;
@@ -56,6 +56,9 @@ section {
 
   .description__content {
     grid-area: description__content;
+    mat-tab-group {
+      width: 100%;
+    }
     .description__text {
       padding: 0.5rem 2rem;
       text-align: justify;

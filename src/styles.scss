@@ -1,7 +1,9 @@
 @import './app-custom-themes.scss';
 
 $mdc-theme-primary: mat-color($smc-show-case-primary); // primary color
-$mdc-theme-secondary: mat-color($smc-show-case-accent); // primary color
+$mdc-theme-accent: mat-color($smc-show-case-accent); // accent color
+$mdc-theme-accent--lighter: mat-color($smc-show-case-accent,lighter); // accent color
+
 $config: mat-typography-config();
 
 $color-grey:rgba(0, 0, 0, 0.507);
@@ -52,7 +54,12 @@ h1,h2,h3,h4,h5,h6,p {
   margin-block-end: 0em;
 }
 
-
+mat-toolbar-row {
+  background-color: black;
+  border-bottom: solid $mdc-theme-primary 2px;
+  border-top: solid $mdc-theme-primary 2px;
+  color: $mdc-theme-accent;
+}
 
 .side-window__header {
   display: flex;
