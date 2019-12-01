@@ -4,7 +4,7 @@
 
 <div>
       <router-outlet></router-outlet>
-      <div class='overlay' *ngIf="modalStateStore.isCenterOpen() || modalStateStore.sideMenuBox">
+      <div class='overlay' *ngIf="(modalStore$ | async).sideMenuBox">
 </div>
       
 

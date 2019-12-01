@@ -13,8 +13,7 @@
       </div>
 
     </header>
-
-<div  [@routeAnimations]  *ngIf="filterBox |async" class="mat-elevation-z2 side-box">
+<div  [@routeAnimations]  *ngIf="(filterBox |async)" class="mat-elevation-z2 side-box">
     <app-product-filter>
       </app-product-filter>
 </div>

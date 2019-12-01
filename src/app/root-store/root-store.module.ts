@@ -4,6 +4,7 @@ import { ProductStoreModule } from './product-store/product-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ParamStoreModule } from './param-store/param-store.module';
+import { ModalStoreModule } from './modal-store/modal-store.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ParamStoreModule } from './param-store/param-store.module';
       },
     }),
     EffectsModule.forRoot([]),
+    ModalStoreModule,
   ]
 })
 export class RootStoreModule { }

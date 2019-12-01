@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ModalHandlerService } from './modal-handler.service';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { AccountCacheService } from 'src/app/account/service/account-cache.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteHandlerService {
 
-  constructor(private _modalHandler: ModalHandlerService ,
+  constructor(private snakBar: MatSnackBar ,
              private accountCache: AccountCacheService,
              private authService: SmcAuthService) { }
 
@@ -27,7 +27,7 @@ export class FavoriteHandlerService {
     }
     delete myAccount.profile;
     this.authService.updateAccount(myAccount).subscribe( () => {
-      this._modalHandler.openSnak(exist ? 'Unmarked as favorite.' : 'Marked as favorite.');
+      this.snakBar.open(exist ? 'Unmarked as favorite.' : 'Marked as favorite.');
     });
   }
 }

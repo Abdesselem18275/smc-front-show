@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { AccountFormService } from '../service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { SmcAuthService } from '../service/smc-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
 
 @Component({
   selector: 'app-create-profile',
@@ -18,8 +19,9 @@ export class CreateProfileComponent implements OnInit {
 
 
 
-  constructor(private modalHandlerService: ModalHandlerService,
+  constructor(
               private authService: SmcAuthService,
+              private store$: Store<ParamStoreState.State>,
               private accountFormService: AccountFormService,
     ) { }
 
@@ -32,7 +34,7 @@ export class CreateProfileComponent implements OnInit {
 
 
   cancel() {
-    this.modalHandlerService.closeAll();
+    this.store$.dispatch(ModalStoreActions.CloseAllAction);
   }
 
   createProfile() {

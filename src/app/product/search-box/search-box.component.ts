@@ -2,9 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
 import { ParamType } from '../model';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { Store } from '@ngrx/store';
-import { ParamStoreState, ParamStoreActions } from 'src/app/root-store';
+import { ParamStoreState, ParamStoreActions , ModalStoreActions } from 'src/app/root-store';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +16,7 @@ export class SearchBoxComponent implements OnInit {
   searchTerm: string;
 
 
-  constructor(private modalHandlerService: ModalHandlerService,
+  constructor(
               private router: Router,
               private store$: Store<ParamStoreState.State>) { }
   ngOnInit() {
@@ -41,7 +40,7 @@ export class SearchBoxComponent implements OnInit {
 }
 
 closePopup() {
+    this.store$.dispatch(ModalStoreActions.CloseAllAction());
     this.store$.dispatch(ParamStoreActions.DeleteManyAction({ids : ['search']}));
-    this.modalHandlerService.closeAll();
 }
 }

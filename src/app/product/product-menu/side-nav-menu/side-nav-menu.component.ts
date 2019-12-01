@@ -4,8 +4,10 @@ import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { CollectionCacheService } from '../../service/collection-cache.service';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
+import { Store } from '@ngrx/store';
+import { RootStoreState } from 'src/app/root-store';
+import { CloseAllAction } from 'src/app/root-store/modal-store/actions';
 
 
 @Component({
@@ -45,7 +47,7 @@ export class SideNavMenuComponent implements OnInit {
   isLogged: boolean;
   constructor(private router: Router,
               private authService: SmcAuthService,
-              private modalHandlerService: ModalHandlerService,
+              private store$: Store<RootStoreState.State>,
               private ccs: CategoryCacheService,
               private colcs: CollectionCacheService) { }
 
@@ -105,7 +107,7 @@ export class SideNavMenuComponent implements OnInit {
   }
 
   closeMenu() {
-    this.modalHandlerService.closeAll();
+    this.store$.dispatch(CloseAllAction());
   }
   navigateTo(param_key: string, val: string) {
     const navigationExtras: NavigationExtras = {

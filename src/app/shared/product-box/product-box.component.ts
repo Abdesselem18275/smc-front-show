@@ -29,7 +29,7 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
       map( (params: Param[]) => params.length !== 0));
     this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
       pipe(
-        map( (params: Param[]) => params.shift().value));
+        map( (params: Param[]) => params.length < 1 ? '' : params.shift().value));
     this.isLoading = true;
     this.isFetching = false;
     this.ImageMockup();

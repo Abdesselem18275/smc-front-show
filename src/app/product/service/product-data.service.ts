@@ -20,7 +20,6 @@ export class ProductDataService  {
   get_elements(options: {
     model?: string;
     param_key?: Param[] } = {}): Observable<any[]> {
-      console.warn(options.param_key);
       const model = options.model || '';
       const param_key = options.param_key || new Map();
 

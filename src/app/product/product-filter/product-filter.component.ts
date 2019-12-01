@@ -4,9 +4,9 @@ import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
 import { ParamStoreState } from 'src/app/root-store/param-store';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { FilterCategory, ParamType } from '../model';
 import { FilterBuilderService } from '../service/filter-builder.service';
+import { ModalStoreActions } from 'src/app/root-store';
 
 
 
@@ -26,7 +26,6 @@ export class ProductFilterComponent implements OnInit {
 
   constructor(private fbs: FilterBuilderService,
               private store$: Store<ParamStoreState.State>,
-              private modalHandlerService: ModalHandlerService
     ) {
    }
 
@@ -71,6 +70,7 @@ export class ProductFilterComponent implements OnInit {
     this.isActive = !this.isActive;
   }
   closeMenu() {
-    this.modalHandlerService.closeAll();
+    this.store$.dispatch(ModalStoreActions.CloseAllAction());
+
   }
 }

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ModalHandlerService } from '../shared/service/modal-handler.service';
 import { SmcAuthService } from './service/smc-auth.service';
+import { Store } from '@ngrx/store';
+import { State } from '../root-store/state';
+import { ModalStoreActions } from '../root-store';
 
 
 @Injectable({
@@ -12,7 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(private authService: SmcAuthService,
               private router: Router,
-              private modalHandlerService: ModalHandlerService) {}
+              private store$: Store<State>) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -33,7 +35,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.modalHandlerService.toggleModal('loginBox');
+    this.store$.dispatch(ModalStoreActions.ToggleAction({key: 'loginBox'}));
     return false;
   }
 }

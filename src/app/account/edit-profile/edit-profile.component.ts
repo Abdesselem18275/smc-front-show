@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { AccountFormService } from '../service/account-form.service';
 import { SmcAuthService } from '../service/smc-auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -15,7 +15,7 @@ export class EditProfileComponent implements OnInit  {
   accountForm: FormGroup;
   countryNames: any[];
   isUpdating: boolean;
-  constructor(private _modalHandler: ModalHandlerService,
+  constructor(private snakBar: MatSnackBar,
               private accountFormService: AccountFormService ,
               private authService: SmcAuthService) { }
 
@@ -41,13 +41,10 @@ export class EditProfileComponent implements OnInit  {
   onSubmit() {
     this.isUpdating = true;
     const formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
-    console.warn(formData);
     this.authService.updateAccount(formData).subscribe(accountData => {
       this.accountForm = this.accountFormService.createLoadFullAccountForm();
       this.isUpdating = false;
-      this._modalHandler.openSnak('Succefully modified');
-
-
+      this.snakBar.open('Succefully modified');
     },
     error => {
            this.isUpdating = false;

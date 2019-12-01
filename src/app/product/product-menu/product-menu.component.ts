@@ -3,9 +3,13 @@ import { Category } from '../model';
 import { CategoryCacheService } from '../service/category-cache.service';
 import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
+import { Store } from '@ngrx/store';
+import { RootStoreState, ModalStoreState } from 'src/app/root-store';
+import { selectModalStateByType, selectAllModalState } from 'src/app/root-store/modal-store/selectors';
+import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-menu',
@@ -25,13 +29,13 @@ export class ProductMenuComponent implements OnInit {
   isRootActive: boolean;
   isReady: boolean;
   isActive: boolean;
-
+  modalStore$: Observable<ModalStoreState.State>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
 
 
   constructor( private router: Router,
                private categoriesCache: CategoryCacheService,
-               private modalHandler: ModalHandlerService) {
+               private store$: Store<RootStoreState.State>) {
 
 
   }
@@ -40,7 +44,7 @@ export class ProductMenuComponent implements OnInit {
     this.isMenuActive = false;
     this.isSideMenuActive = false;
     this.isRootActive = false;
-
+    this.modalStore$ = this.store$.select(selectAllModalState);
 
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
@@ -60,9 +64,6 @@ export class ProductMenuComponent implements OnInit {
       )).subscribe(event => {
         this.isActive = !(event['url'] === '/product/home');
       });
-    this.modalHandler.ModalToggeler$.subscribe( stateStore => {
-      this.modalStateStore = stateStore;
-    });
   }
 
   toggleMenu() {
@@ -76,7 +77,16 @@ export class ProductMenuComponent implements OnInit {
     this.isRootActive = !this.isRootActive;
   }
 
-  toggleModal(key) {
-    this.modalHandler.toggleModal(key);
+  getModalState(value) {
+    console.warn(value);
+    return this.store$.select(selectModalStateByType, {key: value});
   }
+
+  toggleModal(value) {
+    console.warn('value + toggleModal');
+    this.store$.dispatch(ToggleAction({key: value}));
+  }
+  toggleUserCard() {
+    this.store$.dispatch(ToggleUserCard());
+    }
 }

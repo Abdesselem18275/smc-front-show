@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet} from '@angular/router';
-import { ModalStateStore } from './shared/token';
-import { ModalHandlerService } from './shared/service/modal-handler.service';
 import { MatIconRegistry } from '@angular/material/icon';
+import { RootStoreState, ModalStoreState } from './root-store';
+import { Store } from '@ngrx/store';
+import { selectAllModalState } from './root-store/modal-store/selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,10 @@ import { MatIconRegistry } from '@angular/material/icon';
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
-  modalStateStore  = new ModalStateStore();
+  modalStore$: Observable<ModalStoreState.State>;
 
-  constructor(private modalHandler: ModalHandlerService,
+  constructor(
+              private store$: Store<RootStoreState.State>,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
@@ -24,9 +27,8 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('logo_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_2.svg'));
   }
   ngOnInit() {
-    this.modalHandler.ModalToggeler$.subscribe( state => {
-      this.modalStateStore = state;
-    });
+    this.modalStore$ = this.store$.select(selectAllModalState);
+
 }
   prepareRoute(outlet: RouterOutlet) {
     const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

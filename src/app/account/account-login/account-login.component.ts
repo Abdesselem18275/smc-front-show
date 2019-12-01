@@ -1,10 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AccountFormService } from '../service/account-form.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from '../service/smc-auth.service';
+import { Store } from '@ngrx/store';
+import { ParamStoreState, ModalStoreActions } from 'src/app/root-store';
 
 
 interface CustomClasses {
@@ -33,7 +32,7 @@ export class AccountLoginComponent implements OnInit   {
   constructor(
               private authService: SmcAuthService,
               private accountFormService: AccountFormService,
-              private modalHandlerService: ModalHandlerService) {
+              private store$: Store<ParamStoreState.State>) {
   }
    ngOnInit() {
     this.isChecking = false;
@@ -61,7 +60,7 @@ export class AccountLoginComponent implements OnInit   {
 
 
   cancel() {
-    this.modalHandlerService.closeAll();
+    this.store$.dispatch(ModalStoreActions.CloseAllAction());
   }
   getEmailErrorMessage() {
     return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
@@ -69,8 +68,8 @@ export class AccountLoginComponent implements OnInit   {
             '';
   }
 
-  toggleModal(key) {
-    this.modalHandlerService.toggleModal(key);
+  toggleModal(value) {
+    this.store$.dispatch(ModalStoreActions.ToggleAction({key: value}));
   }
 
 }

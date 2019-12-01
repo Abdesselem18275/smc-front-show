@@ -1,15 +1,16 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { ProductShort, ParamType, Param } from '../model';
 import { ActivatedRoute} from '@angular/router';
-import { map, tap} from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { Store} from '@ngrx/store';
 import { ParamStoreActions, ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { sideSlideInAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
+import { ToggleAction } from 'src/app/root-store/modal-store/actions';
+import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors';
 
 @Component({
   selector: 'app-product-list',
@@ -33,7 +34,6 @@ export class ProductListComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private modalHandler: ModalHandlerService,
               private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
     this.isFilterActive = false;
@@ -52,7 +52,7 @@ export class ProductListComponent implements OnInit {
       subscribe(paramArray => {
         this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : paramArray.shift()}));
       });
-    this.filterBox = this.modalHandler.ModalToggeler$.pipe( map(stateStore => stateStore.filterBox));
+    this.filterBox = this.store$.select(selectModalStateByType, {key: 'filterBox'});
     this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
     this.isLoading = this.store$.pipe(map(x => x.product.isLoading));
@@ -62,8 +62,8 @@ export class ProductListComponent implements OnInit {
                               map( (params: Param[]) => params.length !== 0));
   }
 
-  toggleModal(key) {
-    this.modalHandler.toggleModal(key);
+  toggleModal(value) {
+    this.store$.dispatch(ToggleAction({key : value}));
   }
 
 toggleView(event) {

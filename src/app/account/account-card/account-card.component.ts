@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAccount } from '../model';
 import { Router } from '@angular/router';
-import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { SmcAuthService } from '../service/smc-auth.service';
 import { AccountCacheService } from '../service/account-cache.service';
+import { ModalStoreActions, ParamStoreState } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-account-card',
@@ -13,7 +14,7 @@ import { AccountCacheService } from '../service/account-cache.service';
 export class AccountCardComponent implements OnInit {
   account: UserAccount;
   constructor(private router: Router,
-              private modalHandler: ModalHandlerService,
+              private store$: Store<ParamStoreState.State>,
               private authService: SmcAuthService,
               private accountCache: AccountCacheService) { }
 
@@ -23,7 +24,7 @@ export class AccountCardComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-    this.modalHandler.closeAll();
+    this.store$.dispatch(ModalStoreActions.CloseAllAction());
     this.router.navigate(['product/list']);
   }
 

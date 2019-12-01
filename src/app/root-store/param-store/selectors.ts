@@ -33,7 +33,7 @@ export const reducers: ActionReducerMap<State> = {
         return {
           page_number : AllParams.filter(x => x.type === ParamType.PAGE).shift().value,
           count : ProductsCount
-        }
+        };
     }
   );
 
