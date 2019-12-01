@@ -8,15 +8,16 @@
             <header class="form-group__header">
                     <p class="mat-subheading-2  smc-header">PERSONAL INFORMATION</p>
             </header>
-
-            <mat-form-field formGroupName="profile" appearance="fill">
+            <div formGroupName="profile">
+            <mat-form-field  appearance="fill">
                 <mat-label>first name</mat-label>
                     <input required matInput type="text" formControlName="first_name" id="first_name">
             </mat-form-field>                            
-        <mat-form-field formGroupName="profile" appearance="fill">
+        <mat-form-field appearance="fill">
                 <mat-label>last name</mat-label>
                 <input required matInput type="text" formControlName="last_name" id="last_name">
         </mat-form-field>
+            </div>
         <mat-form-field appearance="fill">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country" id="country">
@@ -27,7 +28,7 @@
         </mat-form-field>
         <mat-form-field  appearance="fill">
                 <mat-label>Phone Number</mat-label>
-                <input required matInput autocomplete="tel" type="tel" formControlName="phoneNumber" id="phoneNumber">
+                <input required matInput autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
         </mat-form-field>
   </section>
 
@@ -47,7 +48,7 @@
                     [labelPosition] = "'before'">
                     <span class="mat-subheading-1">Are you professional ?</span>
         </mat-slide-toggle>
-        <mat-form-field formGroupName="profile" 
+        <mat-form-field 
                         appearance="fill">
                 <mat-label>company name</mat-label>
                 <input              
@@ -55,7 +56,7 @@
                 matInput type="text" 
                 formControlName="company_name" id="company_name">
         </mat-form-field>
-        <mat-form-field formGroupName="position" appearance="fill">
+        <mat-form-field appearance="fill">
                 <mat-label>position</mat-label>
                 <input              
                 autocomplete="organization" 
@@ -64,13 +65,13 @@
                 formControlName="position" id="position">
                 <mat-hint> your current position , eg: sales manager </mat-hint>
         </mat-form-field>
-        <mat-form-field formGroupName="activity" appearance="fill">
+        <mat-form-field appearance="fill">
                 <mat-label>activity</mat-label>
                 <input              
                 autocomplete="activity" 
                 matInput type="text" 
                 autocomplete="activity" 
-                formControlName="activity" id="activity">
+                formControlName="activity_field" id="activity_field">
                 <mat-hint> Insert your field of activity , eg: Tourism , Restoration</mat-hint>
         </mat-form-field>
     </section>

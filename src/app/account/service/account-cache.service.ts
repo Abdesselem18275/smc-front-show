@@ -26,6 +26,7 @@ export class AccountCacheService {
       });
       this._account.favorites = this.appStorage.get('favorites') === '' ?
                                     [] : this.appStorage.get('favorites').split(',').map( x => Number(x));
+      this._account.is_professional = this.appStorage.get('is_professional') === 'true';
       this._account.profile = profile;
       this.account$.next(this._account);
   }

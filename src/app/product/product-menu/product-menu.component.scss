@@ -25,6 +25,7 @@ p {
 .nav-tabs__tab {
   display: flex;
   align-items: center;
+  @extend .mat-body-1
 }
 
 
@@ -34,14 +35,18 @@ p {
         transition: 0.2s ease-out;
         font-size: 1.5rem;
       }
-
 }
 
-
-.logo {
-  text-align:center;
+.nav-bar__logo {
+  display: flex;
+  align-items: center;
   color: $mdc-theme-primary;
   cursor: pointer;
+  mat-icon {
+   margin-top: 0.5rem;
+   width: 2.5rem;
+   margin-right: 0.75rem;
+  }
   .header--big {
     font-family: 'Domine', serif;
     font-size: 2.5rem;

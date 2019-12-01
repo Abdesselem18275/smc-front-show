@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ModalHandlerService } from 'src/app/shared/service/modal-handler.service';
 import { AccountFormService } from '../service/account-form.service';
@@ -11,7 +11,7 @@ import { SmcAuthService } from '../service/smc-auth.service';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss']
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit  {
   accountForm: FormGroup;
   countryNames: any[];
   isUpdating: boolean;
@@ -24,19 +24,17 @@ export class EditProfileComponent implements OnInit {
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
     this.countryNames = this.authService.countries;
   }
-
-
   onchanges(val) {
     console.warn(val);
     console.warn(this.accountForm.get('is_professional').value);
     if (!val.checked) {
       this.accountForm.get('company_name').disable();
       this.accountForm.get('position').disable();
-      this.accountForm.get('activity').disable();
+      this.accountForm.get('activity_field').disable();
     } else {
       this.accountForm.get('company_name').enable();
       this.accountForm.get('position').enable();
-      this.accountForm.get('activity').enable();
+      this.accountForm.get('activity_field').enable();
     }
   }
 

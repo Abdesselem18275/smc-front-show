@@ -32,7 +32,7 @@ $smc-show-case-theme: mat-light-theme($smc-show-case-primary, $smc-show-case-acc
 // `headlines` and `body-1` levels
 $custom-typography: mat-typography-config(
   $font-family: 'Roboto, monospace',
-  $subheading-2: mat-typography-level(1rem, 1rem, 500),
+  $subheading-2: mat-typography-level(1.25rem, 1.5rem, 500),
   $subheading-1: mat-typography-level(1rem, 1rem, 400),
   $body-1: mat-typography-level(0.875rem, 1.5rem, 400),
   $body-2: mat-typography-level(0.875em, 1.5rem, 500)

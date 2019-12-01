@@ -45,12 +45,8 @@ section {
     align-items: flex-start;
     grid-area: title-section;
     div {
-      margin-left: 1rem;
       margin-right: auto;
       flex-grow: 1;
-    }
-    .text--grey {
-      color:$color-text-grey; 
     }
   }
 
@@ -89,9 +85,6 @@ section {
     align-items: center;
     button {
       font-size: 2rem;
-      @media only screen and (max-width:960px) { 
-        display: none;
-      }
     }
      .images-container {
       margin : 0 1rem;
@@ -102,6 +95,14 @@ section {
       height: auto;
       max-width: 100%;}
      }
+     @media only screen and (max-width:960px) { 
+       button {
+        display: none;
+       }
+       .images-container {
+        margin : 0;
+       }
+    }
   }
   .images-selector {
     grid-area: images-selector;

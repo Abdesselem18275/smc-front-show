@@ -28,9 +28,9 @@
 
 
 .content__meta-bar {
-  margin-top: 2.5rem;
-  padding: 1rem $global-horizontal-gutter;
-  background-color: $color-light-grey;
+  padding : 1rem $global-horizontal-gutter ;
+  margin: 2.5rem 0;
+  background-color: $mdc-theme-accent--lighter;
   display: flex;
   align-items: center;
   justify-content: space-between;

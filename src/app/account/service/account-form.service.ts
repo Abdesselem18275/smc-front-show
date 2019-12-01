@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
-import { SmcAuthService } from './smc-auth.service';
 import { AccountCacheService } from './account-cache.service';
 
 @Injectable({
@@ -56,10 +55,11 @@ export class AccountFormService {
   createLoadFullAccountForm() {
     const myForm  = this.createAccountForm();
     const account = this.accountCache.account;
-    myForm.addControl('company_name', new FormControl(account.company_name));
-    myForm.addControl('position', new FormControl(account.position));
-    myForm.addControl('activity', new FormControl(account.activity_field));
-    myForm.addControl('phoneNumber', new FormControl(account.phone_number));
+    console.warn(account);
+    myForm.addControl('company_name', new FormControl({value: account.company_name , disabled: !account.is_professional}));
+    myForm.addControl('position', new FormControl({value: account.position , disabled: !account.is_professional}));
+    myForm.addControl('activity_field', new FormControl({value: account.activity_field , disabled: !account.is_professional}));
+    myForm.addControl('phone_number', new FormControl(account.phone_number));
     myForm.setControl('country', new FormControl(account.country));
     myForm.setControl('is_professional', new FormControl(account.is_professional));
     const profile = this.fb.group({
