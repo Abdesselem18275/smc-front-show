@@ -31,6 +31,7 @@
     "@angular/router": "^9.0.0-next.0",
     "@ngrx/effects": "^8.4.0",
     "@ngrx/entity": "^8.4.0",
+    "@ngrx/router-store": "^8.4.0",
     "@ngrx/store": "^8.4.0",
     "classlist.js": "^1.1.20150312",
     "codelyzer": "^5.2.0",

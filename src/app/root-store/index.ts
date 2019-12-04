@@ -4,5 +4,6 @@ export * from './product-store';
 export * from './param-store';
 export * from './modal-store';
 
+
 export { RootStoreState, RootStoreModule};
 

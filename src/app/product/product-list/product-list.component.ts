@@ -11,6 +11,7 @@ import { sideSlideInAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
 import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors';
+import { getRouterInfo } from 'src/app/root-store/router-store/selectors';
 
 @Component({
   selector: 'app-product-list',
@@ -60,6 +61,11 @@ export class ProductListComponent implements OnInit {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
                             pipe(
                               map( (params: Param[]) => params.length !== 0));
+    this.store$.subscribe( x => {
+      console.warn(x);
+    });
+    this.store$.select(getRouterInfo).subscribe( y => console.warn(y));
+
   }
 
   toggleModal(value) {
