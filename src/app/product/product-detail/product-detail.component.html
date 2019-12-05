@@ -10,7 +10,7 @@
       <mat-icon inline="true">keyboard_arrow_left</mat-icon>
     </button>
     <section  class="images-container">
-      <img [id]='image.id' *ngFor="let image of product.images" [src]="image.content">
+      <img [id]="image.id" *ngFor="let image of product.images" [src]="image.content">
     </section>
     <button (click)="stepUpdateImage(1)" mat-icon-button>
         <mat-icon [inline]="true">keyboard_arrow_right</mat-icon>

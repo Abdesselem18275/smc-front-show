@@ -88,10 +88,10 @@ export class ProductLong {
         this.aesthetics = options.aesthetics || '';
         this.areaOfUse = options.areaOfUse || '';
         this.materials = options.materials || '';
-        this.thumbNail = options.thumbNail || new BaseImage({});
+        this.thumbNail = new BaseImage(options.thumbNail) || new BaseImage({});
         this.interiorMaterial = options.interiorMaterial || new Material({});
         this.exteriorMaterial = options.exteriorMaterial || new Material({});
-        this.images = options.images || [];
+        this.images = options.images.length === 0 ?  [this.thumbNail] : options.images.map(x => new BaseImage(x));
         this.variants = options.variants.map(x => new Variant(x)) || [];
         this.categories = options.categories || [];
         this.rootCategory = options.rootCategory || '';
@@ -125,7 +125,7 @@ export class ProductShort {
         this.designation = options.designation || '';
         this.interiorMaterial = options.interiorMaterial || new Material({});
         this.exteriorMaterial = options.exteriorMaterial || new Material({});
-        this.thumbNail = options.thumbNail || new BaseImage({});
+        this.thumbNail = new BaseImage(options.thumbNail) || new BaseImage({});
         this.variants = options.variants || [];
         this.rootCategory = options.rootCategory || '';
         this.collection = options.collection || new ProductCollection({});
@@ -202,18 +202,12 @@ export class Material {
 
 export class BaseImage {
     id: number;
-    designation: string;
     content: any;
-    description: string;
     constructor(options: {
         id?: number,
-        designation?: string,
-        content?: string ,
-        description?: string    } = {}) {
-        this.id = options.id;
-        this.designation = options.designation || '';
+        content?: string   } = {}) {
+        this.id = options.id || 1;
         this.content = options.content || '';
-        this.description = options.description || '';
     }
 
 }

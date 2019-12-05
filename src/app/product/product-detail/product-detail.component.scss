@@ -87,13 +87,16 @@ section {
       font-size: 2rem;
     }
      .images-container {
+      width: 100%;
       margin : 0 1rem;
       overflow: scroll;
       scroll-snap-type: x mandatory;
     img {
       scroll-snap-align: start;
       height: auto;
-      max-width: 100%;}
+      width: 100%;
+      max-width: 100%;
+    }
      }
      @media only screen and (max-width:960px) { 
        button {

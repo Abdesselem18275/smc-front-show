@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterContentInit, Renderer2, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductDataService } from '../service/product-data.service';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductLong, Variant } from '../model';
-import { trigger, transition, style, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,7 +20,7 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
   displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
   componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
 
-  constructor(private route: ActivatedRoute, private _renderer: Renderer2) { }
+  constructor(private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -30,11 +28,14 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
     this.isReady = false;
     this.isImageReady = true;
       this.route.data.subscribe((data: { product: ProductLong }) => {
+        console.warn(data.product);
         this.product = new ProductLong(data.product);
-        this.indexArray = this.product.images === undefined ?  [] :
-        this.product.images.map((x, index) => ({
+        this.indexArray = this.product.images.map((x, index) => ({
           id: x.id,
-          index: index})) ;
+          index: index
+        })) ;
+        console.warn(this.product);
+        console.warn(this.indexArray);
         this.isReady = true;
       });
 
@@ -44,7 +45,6 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
   }
 
   centerImage(index: number) {
-    const el = this.indexArray.filter(x => x.index === index)[0];
     const anchors = document.getElementsByClassName('images-container')[0];
     anchors.scroll({behavior: 'smooth', left: anchors.clientWidth * index});
   }
@@ -63,11 +63,6 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
     }
     this.updateIndex(_index);
 
-  }
-
-
-  private counter() {
-    return new Array(this.product.images === undefined ? 1 : this.product.images.length);
   }
 
 }
