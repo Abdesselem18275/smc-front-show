@@ -203,11 +203,14 @@ export class Material {
 export class BaseImage {
     id: number;
     content: any;
+    designation: string;
     constructor(options: {
         id?: number,
-        content?: string   } = {}) {
+        content?: string,
+        designation?: string} = {}) {
         this.id = options.id || 1;
         this.content = options.content || '';
+        this.designation = options.designation || '';
     }
 
 }

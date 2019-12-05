@@ -28,14 +28,12 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
     this.isReady = false;
     this.isImageReady = true;
       this.route.data.subscribe((data: { product: ProductLong }) => {
-        console.warn(data.product);
         this.product = new ProductLong(data.product);
         this.indexArray = this.product.images.map((x, index) => ({
           id: x.id,
           index: index
         })) ;
-        console.warn(this.product);
-        console.warn(this.indexArray);
+
         this.isReady = true;
       });
 
