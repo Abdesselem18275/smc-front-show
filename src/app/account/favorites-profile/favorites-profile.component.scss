@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     .text--center {
+        padding: 1.5rem;
+        width: 100%;
         align-self: center;
         text-align: center;
     }
