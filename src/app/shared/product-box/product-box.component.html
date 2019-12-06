@@ -16,16 +16,20 @@
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
             </app-category-breadcrumb>
-       <p class="mat-body-strong">{{product.designation}}</p>
+       <p class="smc-title ">{{product.designation}}</p>
        <p class="mat-caption">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
        </p>
    </div>
 
 </section>
-<div *ngIf="(isFavoriteRoute |async)" class="action-container">
-        <button (click)="removeFavorite(product.pk)" mat-icon-button>
+<div  class="action-container">
+        <button *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
         <mat-icon >close</mat-icon>
        </button>
+       <div *ngIf="!(isFavoriteRoute |async)">
+       <mat-icon  [appFavoriteHandler]="product.pk" >favorite</mat-icon>
+       <mat-icon >message</mat-icon>
+       </div>    
     </div>
 </div>
 

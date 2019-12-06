@@ -1,5 +1,11 @@
 @import "src/styles.scss";
 
+.smc-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
 img {
     max-width: 100%;
     width: 100%;
@@ -24,6 +30,12 @@ img {
     }
     .action-container {
         align-self: flex-start;
+        div {
+            mat-icon {
+                margin-left: 1rem;
+            }
+
+        }
     }
 
 }
