@@ -2,17 +2,10 @@
     </mat-progress-bar>
 <section class="product-container">
     <p class="text--center"   *ngIf="favorites?.length < 1"> You dont have favorites</p>
-<div *ngFor='let favorite of favorites' 
+<div *ngFor='let favorite of favorites | async' 
       @myInsertRemoveTrigger
       class="product-box">
-    <app-product-box  
-                       mode="listWithBread" 
-                       [product]="favorite" >
+    <app-product-box  [mode]="'list'" [product]="favorite" >
     </app-product-box>
-    <div class="action-container">
-        <button (click)="removeFavorite(favorite.pk)" mat-icon-button>
-        <mat-icon >close</mat-icon>
-       </button>
-    </div>
 </div>
 </section>

@@ -11,7 +11,6 @@ import { sideSlideInAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
 import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors';
-import { getRouterInfo } from 'src/app/root-store/router-store/selectors';
 
 @Component({
   selector: 'app-product-list',
@@ -34,25 +33,10 @@ export class ProductListComponent implements OnInit {
   modalStateStore = new ModalStateStore();
 
 
-  constructor(private route: ActivatedRoute,
-              private store$: Store<RootStoreState.State>) { }
+  constructor(private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
     this.isFilterActive = false;
     this.isListActive = false;
-    this.route.queryParamMap.pipe(
-        map(params => {
-          const paramsArray = [];
-          params.keys.forEach(key => {
-            paramsArray.push({
-              key : key,
-              value: params.get(key),
-              type : ParamType.CATEGORY
-            });
-              });
-                return paramsArray; })).
-      subscribe(paramArray => {
-        this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : paramArray.shift()}));
-      });
     this.filterBox = this.store$.select(selectModalStateByType, {key: 'filterBox'});
     this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
@@ -61,11 +45,6 @@ export class ProductListComponent implements OnInit {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
                             pipe(
                               map( (params: Param[]) => params.length !== 0));
-    this.store$.subscribe( x => {
-      console.warn(x);
-    });
-    this.store$.select(getRouterInfo).subscribe( y => console.warn(y));
-
   }
 
   toggleModal(value) {

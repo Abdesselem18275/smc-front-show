@@ -7,6 +7,7 @@ import { tap, map } from 'rxjs/operators';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 import { Router } from '@angular/router';
 import { AccountCacheService } from './account-cache.service';
+import { ProductShort } from 'src/app/product/model.js';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -72,7 +73,7 @@ getUserFavorites() {
     this.accountCache.token,
     '/favorites/'
    ].join('');
-   return this.http.get(query, httpOptions).pipe(map((jsonArray: any[]) => jsonArray));
+   return this.http.get(query, httpOptions).pipe(map((jsonArray: ProductShort[]) => jsonArray));
 
 }
 

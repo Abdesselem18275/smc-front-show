@@ -5,7 +5,8 @@ export enum ActionsType {
   UPDATE  = '[Product] Add Or Update',
   UPDATES = '[Product] Multiple Add Or Update',
   CLEAR = '[Product] Clear All',
-  IS_LOADING = '[Product] Is Loading'
+  IS_LOADING = '[Product] Is Loading',
+  REMOVE = '[Product] Remove'
 }
 
 export const AddOrUpdateAction = createAction(
@@ -25,3 +26,5 @@ export const ClearAllAction = createAction(
 export const LoadRequestAction = createAction(
   ActionsType.IS_LOADING,
 );
+
+export const DeleteProduct = createAction(ActionsType.REMOVE, props<{ id: string }>());

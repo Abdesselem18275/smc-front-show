@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction } from "./actions";
 import { Store, select } from "@ngrx/store";
-import { map, tap, debounceTime, switchMap, filter, concatMap, withLatestFrom } from "rxjs/operators";
+import { map, switchMap, filter, concatMap, withLatestFrom } from "rxjs/operators";
 import { State } from "./state";
 import { ParamType } from "src/app/product/model";
 import { selectPageParam , selectAllParams } from "./selectors";
 import { of } from "rxjs";
 import * as ProductStore from '../product-store';
+import { ROUTER_NAVIGATED } from "@ngrx/router-store";
+
 
 @Injectable()
 export class ParamEffects {
@@ -74,7 +76,25 @@ export class ParamEffects {
             )
     ));
 
-    
+    queryParam$ = createEffect(() =>
+    this.actions$.pipe(
+        ofType(ROUTER_NAVIGATED),
+        filter((x: any) =>  (x.payload.event.url).includes('product/list')),
+        map((actions: any) => actions.payload.routerState.queryParams),
+        map((params) => {
+                const paramsArray = [];
+                Object.keys(params).forEach(key => {
+                  paramsArray.push( {
+                    key : key,
+                    value: params[key],
+                    type : ParamType.CATEGORY
+                  });
+                    });
+                return paramsArray.shift();
+            }),
+        map((param) => AddOrUpdateAction({param: param})
+        )));
+
 
 
     constructor(private actions$: Actions,

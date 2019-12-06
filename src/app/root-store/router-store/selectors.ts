@@ -7,7 +7,11 @@ import { featureKey } from "./reducers";
 export const selectReducerState = createFeatureSelector<
   RouterReducerState<RouterStateUrl>>(featureKey);
 
-export const getRouterInfo = createSelector(
+export const selectCurrentRouteState = createSelector(
   selectReducerState,
-  state => state
+  routerReducerState => (routerReducerState.state)
+);
+export const getRouterQueryParams = createSelector(
+  selectReducerState,
+  state => state.state.queryParams
 );

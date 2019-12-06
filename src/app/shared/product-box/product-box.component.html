@@ -1,4 +1,4 @@
-<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--list" *ngIf="mode == 'list' || mode=='listWithBread'">
+<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--list" *ngIf="mode == 'list'">
 <div class='content__thumbnail'>
 
 <img   (load)="onImageLoad($event)" 
@@ -12,7 +12,7 @@
 <section class="content-text">
    <div>
            <app-category-breadcrumb    
-                                    *ngIf="isSearchActive |async" 
+                                    *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" 
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
             </app-category-breadcrumb>
@@ -22,13 +22,18 @@
    </div>
 
 </section>
+<div *ngIf="(isFavoriteRoute |async)" class="action-container">
+        <button (click)="removeFavorite(product.pk)" mat-icon-button>
+        <mat-icon >close</mat-icon>
+       </button>
+    </div>
 </div>
 
 <div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid" *ngIf="mode == 'grid'">
         <section class="content-information">
            <div class="content-information__text">
                 <app-category-breadcrumb    
-                                    *ngIf="isSearchActive |async" 
+                                    *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" 
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
                </app-category-breadcrumb>  

@@ -21,10 +21,9 @@ img {
         display: flex;
         justify-content: space-between;
         flex : 1 1 auto;
-        mat-icon {
-            width: 2rem;
-            align-self: flex-start;
-        }
+    }
+    .action-container {
+        align-self: flex-start;
     }
 
 }

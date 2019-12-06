@@ -3,6 +3,10 @@ import { ProductShort } from 'src/app/product/model';
 import { FavoriteHandlerService } from 'src/app/shared/service/favorite-handler.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SmcAuthService } from '../service/smc-auth.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ProductStoreSelectors, RootStoreState } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-favorites-profile',
@@ -23,20 +27,18 @@ import { SmcAuthService } from '../service/smc-auth.service';
   ]
 })
 export class FavoritesProfileComponent implements OnInit {
-  favorites: ProductShort[];
+  favorites: Observable<ProductShort[]>;
 
-  constructor(private favHandler: FavoriteHandlerService ,
-              private authService: SmcAuthService) { }
+  constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
-    this.authService.getUserFavorites().subscribe(results => {
-      this.favorites = results;
-    });
+    this.favorites = this.store$.select(ProductStoreSelectors.selectAllProducts);
+
   }
 
-  removeFavorite(id) {
-    this.favorites = this.favorites.filter( x => x.pk !== id);
-    this.favHandler.addRemoveFavorites(id);
-  }
+  // removeFavorite(id) {
+  //   this.favorites = this.favorites.filter( x => x.pk !== id);
+  //   this.favHandler.addRemoveFavorites(id);
+  // }
 
 }

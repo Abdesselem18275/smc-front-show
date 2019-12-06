@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductShort, Param, ParamType } from 'src/app/product/model';
 import { Router } from '@angular/router';
-import { RootStoreState, ParamStoreSelectors } from 'src/app/root-store';
+import { RootStoreState, ParamStoreSelectors, ProductStoreActions } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { FavoriteHandlerService } from '../service/favorite-handler.service';
 
 
 @Component({
@@ -19,17 +20,18 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   isLoading: boolean;
   isFetching: boolean;
   isSearchActive: Observable<boolean>;
+  isFavoriteRoute: Observable<boolean>;
   searchTerm: Observable<string>;
   constructor(private router: Router,
+              private favHandler: FavoriteHandlerService,
               private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
-    pipe(
-      map( (params: Param[]) => params.length !== 0));
+    pipe(map( (params: Param[]) => params.length !== 0));
     this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
-      pipe(
-        map( (params: Param[]) => params.length < 1 ? '' : params.shift().value));
+      pipe(map( (params: Param[]) => params.length < 1 ? '' : params.shift().value));
+    this.isFavoriteRoute = this.store$.pipe(map(state => state.router.router.state.url.includes('account/profile')));
     this.isLoading = true;
     this.isFetching = false;
     this.ImageMockup();
@@ -58,6 +60,10 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
 
   ImageMockup() {
     //this.product.thumbNail.content = '/src/assets/images/Pic_1.jpg';
+  }
+  removeFavorite(id) {
+    this.store$.dispatch(ProductStoreActions.DeleteProduct({id: id}));
+    this.favHandler.addRemoveFavorites(id);
   }
 
 

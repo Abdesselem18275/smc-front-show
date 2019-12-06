@@ -25,7 +25,10 @@ const productReducer = createReducer(
         ...state ,
         isLoading : true
       };
-    })
+    }),
+    on(ProductActions.DeleteProduct, (state, { id }) => {
+      return adapter.removeOne(id, state);
+    }),
 );
 
   export function reducer(state: State | undefined, action: Action) {
