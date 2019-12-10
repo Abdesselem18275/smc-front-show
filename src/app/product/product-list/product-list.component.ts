@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
   isSearchActive: Observable<boolean>;
 
   isFilterActive: boolean;
-  isListActive: boolean;
+  isModuleActive: boolean;
   resetFilter: boolean;
   modalStateStore = new ModalStateStore();
 
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
   constructor(private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
     this.isFilterActive = false;
-    this.isListActive = false;
+    this.isModuleActive = false;
     this.filterBox = this.store$.select(selectModalStateByType, {key: 'filterBox'});
     this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.objCount = this.store$.pipe(map(x => x.product.objCount));
@@ -52,7 +52,7 @@ export class ProductListComponent implements OnInit {
   }
 
 toggleView(event) {
-  this.isListActive = event.value === 'list';
+  this.isModuleActive = event.value === 'module';
 }
 
 

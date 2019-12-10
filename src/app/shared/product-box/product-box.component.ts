@@ -16,7 +16,6 @@ import { FavoriteHandlerService } from '../service/favorite-handler.service';
 export class ProductBoxComponent implements OnInit, OnChanges  {
 
   @Input() product: ProductShort;
-  @Input() mode: string;
   isLoading: boolean;
   isFetching: boolean;
   isSearchActive: Observable<boolean>;

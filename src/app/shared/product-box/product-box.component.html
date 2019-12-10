@@ -1,49 +1,20 @@
-<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--list" *ngIf="mode == 'list'">
-<div class='content__thumbnail'>
 
-<img   (load)="onImageLoad($event)" 
-       [style.display]="isLoading ? 'none' : 'block'"   
-        (click)="navigateTo(product.pk)"
-       [src] ="product.thumbNail.content">
-       
-<div  class="loading-placeholder" *ngIf="isLoading"></div>
-</div>
-
-<section class="content-text">
-   <div>
-           <app-category-breadcrumb    
-                                    *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" 
-                                    [currentProduct]="product.rootCategory" 
-                                    class="caption-style">
-            </app-category-breadcrumb>
-       <p class="smc-title ">{{product.designation}}</p>
-       <p class="mat-caption">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
-       </p>
-   </div>
-
-</section>
-<div  class="action-container">
-        <button *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
-        <mat-icon >close</mat-icon>
-       </button>
-       <div *ngIf="!(isFavoriteRoute |async)">
-       <mat-icon  [appFavoriteHandler]="product.pk" >favorite</mat-icon>
-       <mat-icon >message</mat-icon>
-       </div>    
-    </div>
-</div>
-
-<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid" *ngIf="mode == 'grid'">
+<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid">
+                <button id="remove-fav" *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
+                                <mat-icon >close</mat-icon>
+                        </button>
+                <mat-divider *ngIf="(isFavoriteRoute |async)"></mat-divider>
         <section class="content-information">
            <div class="content-information__text">
+                <div class="breadcrumb" *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)">
                 <app-category-breadcrumb    
-                                    *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" 
                                     [currentProduct]="product.rootCategory" 
                                     class="caption-style">
                </app-category-breadcrumb>  
+                </div>
                <p class="mat-subheading-2">{{product.designation}}</p>
-               <p class="mat-body-1">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span>
-               </p>
+               <p class="mat-caption text--grey">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span></p>
+
            </div>
         
 
@@ -56,7 +27,7 @@
         (click)="navigateTo(product.pk)"
         [src] ="product.thumbNail.content">
         </div>
-
+       
 
         <section class="action-container"> 
             <button  [appFavoriteHandler]="product.pk"

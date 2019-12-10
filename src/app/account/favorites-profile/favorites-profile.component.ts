@@ -21,7 +21,7 @@ import { Store } from '@ngrx/store';
                                 opacity: 1})),
       ]),
       transition(':leave', [
-        animate('0.2s', style({ transform: 'translateX(-200%)' }))
+        animate('0.2s', style({ transform: 'translateX(-100vw)' }))
       ])
     ]),
   ]

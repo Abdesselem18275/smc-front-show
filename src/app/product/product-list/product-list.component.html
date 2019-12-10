@@ -26,21 +26,20 @@
           <section   class="content">
 
               <mat-button-toggle-group  class="view-toggeler" (change)="toggleView($event)">
-                  <mat-button-toggle value="box" aria-label="Text align left">
+                  <mat-button-toggle value="module">
                     <mat-icon>view_module</mat-icon>
                   </mat-button-toggle>
-                  <mat-button-toggle value="list" aria-label="Text align center">
-                    <mat-icon>view_list</mat-icon>
+                  <mat-button-toggle [checked]="true" value="stream">
+                    <mat-icon>view_stream</mat-icon>
                   </mat-button-toggle>
                 </mat-button-toggle-group>
 
 
-            <div   [ngClass]="{'content__image-container--list': isListActive , 'content__image-container--grid': !isListActive }">
+            <div [ngClass]="{'content__image-container--grid__module': isModuleActive ,'content__image-container--grid':!isModuleActive }">
 
 
-                <app-product-box class=" product-box"  [mode]="isListActive ? 'list' : 'grid' "  [product]="productShort" *ngFor="let productShort of productShorts | async">
+                <app-product-box  class="product-box" [product]="productShort" *ngFor="let productShort of productShorts | async">
                 </app-product-box>
-                <mat-divider [inset]="true" ></mat-divider>
 
             </div>
 

@@ -1,10 +1,6 @@
 @import "src/styles.scss";
 
-.smc-title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
+
 
 img {
     max-width: 100%;
@@ -14,59 +10,30 @@ img {
     width: 100%;
     background-color: grey;
 }
-.content--list {
-    display: flex;
-    padding: 1rem 1rem 1rem 0 ;
-    margin-bottom: 1rem;
-    .content__thumbnail {
-        width: 25%;
-        max-width: 6rem;
-        margin-right: 1.5rem;
-    }
-    .content-text {
-        display: flex;
-        justify-content: space-between;
-        flex : 1 1 auto;
-    }
-    .action-container {
-        align-self: flex-start;
-        div {
-            mat-icon {
-                margin-left: 1rem;
-            }
-
-        }
-    }
-
+.breadcrumb {
+    margin-bottom: 0.5rem;
 }
-
-
 .content--grid {
     display: flex;
     flex-direction: column;
+    #remove-fav {
+        margin: 0.5rem;
+        align-self: flex-end;
+    }
     .content__thumbnail {
         width: 100%;
     }
     .content-information {
         margin: 1rem;
         display: flex;
-        div {
-            .text--grey {
-                color: $color-text-grey;
-            }
-        }
-        mat-icon {
-            width: 2rem;
-            margin-right: 1rem;
-    
-        }
+        justify-content: space-between;
     }
     .action-container {
+        width: 100%;
         display: flex;
         align-self: flex-start;
-        padding: 1.5rem 1rem;
+        padding: 0.5rem 0;
         button {
-            margin-right: 0.5rem;
             color : $color-text-grey;
         }
     }

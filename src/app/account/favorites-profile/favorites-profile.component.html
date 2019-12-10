@@ -1,11 +1,9 @@
-<mat-progress-bar secondary="true" *ngIf="!favorites">
-    </mat-progress-bar>
-<section class="product-container">
-    <p class="mat-h4 text--center"   *ngIf="(favorites | async).length < 1"> You have no favorites !</p>
-<div *ngFor='let favorite of favorites | async' 
-      @myInsertRemoveTrigger
-      class="product-box">
-    <app-product-box  [mode]="'list'" [product]="favorite" >
+<mat-progress-bar secondary="true" *ngIf="!favorites"></mat-progress-bar>
+<p class="mat-h4 text--center"   *ngIf="(favorites | async).length < 1"> You have no favorites !</p>
+<div class="content__image-container--grid">
+    <app-product-box  
+    class="product-box"
+    *ngFor='let favorite of favorites | async' 
+    @myInsertRemoveTrigger [product]="favorite" >
     </app-product-box>
 </div>
-</section>

@@ -14,7 +14,7 @@ $color-light-grey:whitesmoke;
 $color-border-grey: rgba(30, 30, 30, 0.20);
 
 /* Gutters */
-$global-horizontal-gutter:calc(1.5rem + 1.5vw);
+$global-horizontal-gutter:calc(0.5rem + 1.5vw);
 
 *:focus {
   outline: 0;
@@ -29,6 +29,9 @@ li {
     list-style-type: none;
 }
 
+.text--grey {
+color : $color-text-grey;
+}
 
 .dot {
   height: 0.8rem;
