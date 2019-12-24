@@ -9,14 +9,15 @@
     <button  (click)="stepUpdateImage(-1)" mat-icon-button>
       <mat-icon inline="true">keyboard_arrow_left</mat-icon>
     </button>
-    <section  class="images-container">
+    <section cdkScrollable class="images-container">
       <img [id]="image.id" *ngFor="let image of product.images" [src]="image.content">
     </section>
     <button (click)="stepUpdateImage(1)" mat-icon-button>
         <mat-icon [inline]="true">keyboard_arrow_right</mat-icon>
     </button>  </section>
   <section class='images-selector'>
-      <span (click) = "updateIndex(i)" [style.background-color] = "i == selectedIndex ? 'black' : 'grey' " class="dot" *ngFor='let el of indexArray ;let i = index'>        
+      <span (click) = "updateIndex(i)" [style.background-color] = "i == selectedIndex ? 'black' : 'grey' " class="dot" *ngFor='let el of indexArray ;let i = index'>       
+        {{selectedIndex}} 
       </span>
   </section>
 
