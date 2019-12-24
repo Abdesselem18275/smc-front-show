@@ -92,9 +92,10 @@ section {
       margin : 0 1rem;
       overflow: scroll;
       scroll-snap-type: x mandatory;
+      
     img {
       scroll-snap-align: start;
-      height: auto;
+      height: 100%;
       width: 100%;
       max-width: 100%;
     }

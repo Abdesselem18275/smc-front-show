@@ -17,7 +17,6 @@
     </button>  </section>
   <section class='images-selector'>
       <span (click) = "updateIndex(i)" [style.background-color] = "i == selectedIndex ? 'black' : 'grey' " class="dot" *ngFor='let el of indexArray ;let i = index'>       
-        {{selectedIndex}} 
       </span>
   </section>
 
