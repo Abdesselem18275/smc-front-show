@@ -22,7 +22,7 @@
 
   <section class="title-section">
     <div>
-      <p class="mat-subheading-2">{{product?.designation  | uppercase}}</p>
+      <h4>{{product?.designation  | uppercase}}</h4>
       <p  class="mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
     <button 
@@ -69,9 +69,12 @@
         <figcaption class="mat-caption">{{feature.designation}}</figcaption>
       </figure>
   </section>
-
-  <p class="product-technical__title mat-headline">TECHNICAL DETAILS</p>
+  <h3 class="product-technical__title">TECHNICAL DETAILS</h3>
   <table class="product-dimensions">
+    <caption class="table-title">
+      <h4>Product Variants</h4>
+    </caption>
+
    <tr>
      <th  class="mat-body-strong" *ngFor="let header of displayedColumns">
        {{header}}
@@ -97,7 +100,9 @@
    </tr>
  </table>
   <table  *ngIf="product?.components.length > 0"  class="component-detail">
-      
+      <caption class="table-title">
+          <h4>Componnents Details</h4>
+        </caption>
       <tr>
           <th  class="mat-body-strong" *ngFor="let header of componnentDisplayedColumns">
             {{header}}
@@ -119,7 +124,7 @@
       </tr>
   </table>
 
-  <p class="related-product__title mat-headline">RELATED PRODUCTS</p>
+  <h3 class="related-product__title">RELATED PRODUCTS</h3>
 <section class="related-product">
 
 </section>

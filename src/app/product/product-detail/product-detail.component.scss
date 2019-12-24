@@ -11,7 +11,7 @@
   display: grid;
   padding : 1rem $global-horizontal-gutter ;
   column-gap: 2rem;
-  row-gap: 1rem;
+  row-gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(2rem, auto)  auto;
   grid-template-areas: 
@@ -176,5 +176,14 @@ section {
 }
 #right-arrow {
   grid-area: right-arrow;
+
+}
+.table-title {
+  margin-bottom: 1rem;
+}
+.related-product__title , .product-technical__title {
+  text-decoration-line: underline;
+  text-align: center;
+  line-height: 0.1rem;
 
 }
