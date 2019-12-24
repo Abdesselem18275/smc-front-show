@@ -26,6 +26,7 @@ export class ProductListComponent implements OnInit {
   filterBox: Observable<boolean>;
   filterParamCount: Observable<number>;
   isSearchActive: Observable<boolean>;
+  searchTerm: Observable<string>;
 
   isFilterActive: boolean;
   isModuleActive: boolean;
@@ -45,6 +46,9 @@ export class ProductListComponent implements OnInit {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
                             pipe(
                               map( (params: Param[]) => params.length !== 0));
+    this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(
+      map((params: Param[]) => params.shift().value
+    ));
   }
 
   toggleModal(value) {

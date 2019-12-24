@@ -1,9 +1,14 @@
-
 <div class="content">
-    <p class="smc-title" >Welcome {{account.profile.first_name}}</p>
-    <p class="mat-caption text--grey">{{account.profile.email}}</p>
+    <h3 class="smc-title">Welcome {{account.profile.first_name}}</h3>
+    <h4 class="text--grey">{{account.profile.email}}</h4>
 </div>
 <div class="mat-body content__action">
-        <button (click)="logOut()" mat-button>Log out</button>
-        <button [routerLink]="['/account/profile']" mat-button>My profile</button>
+        <button (click)="logOut()" mat-button>
+            <mat-icon>power_settings_new</mat-icon>
+            Log out
+        </button>
+        <button [routerLink]="['/account/profile']" mat-button>
+            <mat-icon>perm_identity</mat-icon>
+            My profile
+        </button>
 </div>
