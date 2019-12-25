@@ -1,5 +1,5 @@
 <mat-progress-bar secondary="true" *ngIf="!favorites"></mat-progress-bar>
-<p class="mat-h4 text--center"   *ngIf="(favorites | async).length < 1"> You have no favorites !</p>
+<h3 class="text--center"   *ngIf="(favorites | async).length < 1"> You have no favorites !!!</h3>
 <div class="content__image-container--grid">
     <app-product-box  
     class="product-box"

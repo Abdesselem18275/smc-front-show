@@ -1,13 +1,16 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductLong, Variant } from '../model';
+import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
+import { map, throttleTime, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-export class ProductDetailComponent implements OnInit , AfterViewChecked   {
+export class ProductDetailComponent implements OnInit, AfterViewInit    {
+
   product: ProductLong;
   selectedVariant: Variant;
   selectedIndex: number;
@@ -16,11 +19,13 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
   isImageReady: boolean;
   isRightChange: boolean;
   indexArray = [];
+  anchors: Element;
+  @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
 
   displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
   componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private scroll: ScrollDispatcher) { }
 
 
   ngOnInit() {
@@ -35,21 +40,29 @@ export class ProductDetailComponent implements OnInit , AfterViewChecked   {
         })) ;
 
         this.isReady = true;
+
       });
 
   }
-
-  ngAfterViewChecked(): void {
+  ngAfterViewInit() {
+    this.anchors = this.scrollable.getElementRef().nativeElement;
+    this.scrollable.elementScrolled().pipe(debounceTime(200)).subscribe(() => {
+      this.selectedIndex  = this.getIndex(this.anchors.scrollLeft, this.anchors.clientWidth);
+    });
+  }
+ 
+  getIndex(scroll: number, clientWidth: number) {
+    return Math.round(scroll / clientWidth);
   }
 
   centerImage(index: number) {
-    const anchors = document.getElementsByClassName('images-container')[0];
-    anchors.scroll({behavior: 'smooth', left: anchors.clientWidth * index});
+    this.anchors.scroll({behavior: 'smooth', left: this.anchors.clientWidth * index});
   }
   updateIndex(index: number) {
     this.selectedIndex  = index;
     this.centerImage(index);
   }
+
   stepUpdateImage(step) {
     const imagesNumber = this.indexArray.length;
     let _index = this.selectedIndex + step;

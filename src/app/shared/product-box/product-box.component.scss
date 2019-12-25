@@ -18,7 +18,7 @@ img {
     flex-direction: column;
     #remove-fav {
         margin: 0.5rem;
-        align-self: flex-end;
+        float: right;
     }
     .content__thumbnail {
         width: 100%;

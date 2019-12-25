@@ -41,11 +41,11 @@
 
   <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-      <p    (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="mat-subheading-1	 smc-header menu__sub-menu__tab">
+      <p (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="mat-subheading-1	 smc-header menu__sub-menu__tab">
         {{rootCat.designation | uppercase}}
       </p>
       <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
-      <p      (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small mat-body" *ngFor="let childCat of rootCat?.children">
+      <p (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small mat-body" *ngFor="let childCat of rootCat?.children">
           {{childCat.designation | titlecase}}
       </p>
     </div>

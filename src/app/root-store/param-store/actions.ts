@@ -6,7 +6,7 @@ export enum ActionsType {
   UPDATES = '[Param] Multiple Add Or Update',
   DELETE_MANY   = '[Param] Delete',
   NEXT_PAGE = '[Param] Next Page',
-  CLEAR = '[Param] Clear'
+  CLEAR = '[Param] Clear',
 }
 
 

@@ -46,7 +46,8 @@ export class CategoryBreadcrumbComponent implements OnInit {
   setItems(param) {
     if ( param === '' ) {
       this.items.push('Products');
-      return ''; }
+      return '';
+    }
     this.items.push(param);
     return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation));
   }

@@ -34,7 +34,7 @@ export class CreateProfileComponent implements OnInit {
 
 
   cancel() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction);
+    this.store$.dispatch(ModalStoreActions.CloseAllAction());
   }
 
   createProfile() {

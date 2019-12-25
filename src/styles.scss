@@ -55,6 +55,11 @@ color : $color-text-grey;
 h1,h2,h3,h4,h5,h6,p {
   margin-block-start: 0em;
   margin-block-end: 0em;
+
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 500;
+
 }
 
 mat-toolbar-row {

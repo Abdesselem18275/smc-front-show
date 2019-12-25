@@ -1,8 +1,11 @@
 
 <div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid">
-                <button id="remove-fav" *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
-                                <mat-icon >close</mat-icon>
-                        </button>
+        <section>
+                        <button id="remove-fav" *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
+                                        <mat-icon >close</mat-icon>
+                                </button>
+        </section>
+
                 <mat-divider *ngIf="(isFavoriteRoute |async)"></mat-divider>
         <section class="content-information">
            <div class="content-information__text">
@@ -30,7 +33,7 @@
        
 
         <section class="action-container"> 
-            <button  [appFavoriteHandler]="product.pk"
+            <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
                     class="favorites"
                     mat-button>
                     <mat-icon>favorite</mat-icon>

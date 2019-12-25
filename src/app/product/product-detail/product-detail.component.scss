@@ -5,7 +5,6 @@
   padding : 1rem $global-horizontal-gutter ;
   margin: 2.5rem 0;
   background-color: $mdc-theme-accent--lighter;
-
 }
 .main-content {
   display: grid;
@@ -36,7 +35,6 @@
      "related-product related-product";
   }
 }
-
 
 section {
   display: flex;
@@ -88,12 +86,14 @@ section {
     }
      .images-container {
       width: 100%;
+      height : 100%;
       margin : 0 1rem;
       overflow: scroll;
       scroll-snap-type: x mandatory;
+      
     img {
       scroll-snap-align: start;
-      height: auto;
+      height: 100%;
       width: 100%;
       max-width: 100%;
     }
@@ -142,6 +142,7 @@ section {
     grid-area: component-detail;
 
     .componnent-designation__aligned {
+      display: flex;
       align-items: center;
       mat-icon {
         width : 2rem;
@@ -174,5 +175,15 @@ section {
 }
 #right-arrow {
   grid-area: right-arrow;
+
+}
+.table-title {
+  margin-bottom: 1rem;
+}
+.related-product__title , .product-technical__title {
+  margin: 2rem 0;
+  text-decoration-line: underline;
+  text-align: center;
+  line-height: 0.1rem;
 
 }

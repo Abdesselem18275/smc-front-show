@@ -40,7 +40,7 @@ export class SearchBoxComponent implements OnInit {
 }
 
 closePopup() {
+    this.store$.dispatch(ParamStoreActions.ClearAction());
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
-    this.store$.dispatch(ParamStoreActions.DeleteManyAction({ids : ['search']}));
 }
 }
