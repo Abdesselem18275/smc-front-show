@@ -7,19 +7,19 @@
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
-        <p (click)="toggleMenu()" class="nav-tabs__tab">  
+        <h5 (click)="toggleMenu()" class="nav-tabs__tab">  
            PRODUCTS
            <mat-icon inline="true" [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mat-icon> 
-        </p>
-        <p class="nav-tabs__tab">
+        </h5>
+        <h6 class="nav-tabs__tab">
          UTILITY
-        </p>
-        <p class="nav-tabs__tab">
+        </h6>
+        <h4 class="nav-tabs__tab">
          ABOUT US
-        </p>
-        <p class="nav-tabs__tab">
+        </h4>
+        <h4 class="nav-tabs__tab">
          CONTACT US
-        </p>
+        </h4>
      </div>
      <div class="nav-bar__tools">
         <button mat-icon-button  (click)="toggleModal('searchBox')">
