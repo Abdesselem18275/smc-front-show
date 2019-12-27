@@ -3,7 +3,6 @@ import { Category, ProductCollection, NavTree } from '../../model';
 import { CategoryCacheService } from '../../service/category-cache.service';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
-import { CollectionCacheService } from '../../service/collection-cache.service';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
@@ -13,30 +12,7 @@ import { CloseAllAction } from 'src/app/root-store/modal-store/actions';
 @Component({
   selector: 'app-side-nav-menu',
   templateUrl: './side-nav-menu.component.html',
-  styleUrls: ['./side-nav-menu.component.scss'],
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ 'max-height': 0, opacity: 0 }),
-            animate('200ms ease-out',
-                    style({ 'max-height': 200 , opacity: 1 }))
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ 'max-height': 200, opacity: 1 }),
-            animate('200ms ease-in',
-                    style({ 'max-height': 0  , opacity: 0 }))
-          ]
-        )
-      ]
-    )
-  ]
+  styleUrls: ['./side-nav-menu.component.scss']
 })
 export class SideNavMenuComponent implements OnInit {
   isCollectionOpen: Boolean;
@@ -83,47 +59,15 @@ export class SideNavMenuComponent implements OnInit {
   constructor(private router: Router,
               private authService: SmcAuthService,
               private store$: Store<RootStoreState.State>,
-              private ccs: CategoryCacheService,
-              private colcs: CollectionCacheService) { }
+              private ccs: CategoryCacheService) { }
 
   ngOnInit() {
     this.isLogged = this.authService.isLogged();
     this.isCollectionOpen = false;
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
-    this.collectionArray = this.colcs.fetchCachedCollections();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
-  toggleCollection() {
-    this.isCollectionOpen = !this.isCollectionOpen;
-  }
-  toggleCategory() {
-    this.isCategoryOpen = !this.isCategoryOpen;
-  }
+  
 
   closeMenu() {
     this.store$.dispatch(CloseAllAction());
@@ -139,17 +83,4 @@ export class SideNavMenuComponent implements OnInit {
         side: null }}],
         navigationExtras);
   }
-
-  toggleSubMenu(type) {
-    switch (type) {
-      case('collection') : this.isCollectionOpen = !this.isCollectionOpen;
-                           this.isCategoryOpen = false;
-           break;
-      case('category') : this.isCategoryOpen = !this.isCategoryOpen;
-                         this.isCollectionOpen = false;
-           break;
-    }
-  }
-
-
 }
