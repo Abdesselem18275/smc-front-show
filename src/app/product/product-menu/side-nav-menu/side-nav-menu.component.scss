@@ -4,66 +4,24 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width:20rem;
+    width:calc(100vw - 64px);
 }
 
 .card-container {
-    padding: 1rem 1rem 0.75rem 1rem;
-    border-top: 1px solid $color-border-grey;
+    display: flex;
+    padding: 1.5rem 1rem 0.75rem 1rem;
+    border-top: 12px solid $mdc-theme-accent--lighter;
     border-bottom: 1px solid $color-border-grey;
 }
 
-
-
-
-section:first-child {
-    border-top: solid 0.5px $color-border-grey;
-  
-}
-.title {
-    margin-left: 1.5rem;
-    display: flex;
-    align-items: flex-start; 
-    mat-icon {
-        width : 1rem;
-        margin-right:0.5rem;
-    }
-}
-.menu-sub__expandable {
+section {
     display: flex;
     flex-direction: column;
-    ul {
-        padding: 0 1rem;
-        margin-bottom: 0rem;
+    padding: 1rem 0 0.5rem 1rem;
+    border-bottom: 1px solid $color-border-grey;
 
-        height: 100%;
-        li {
-            text-transform: lowercase;
-        }
-        li:last-child {
-            padding-bottom: 0rem;
-
-        }
-
-    }
-
-}
-.menu-sub__header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-section {
-    border-bottom: solid 0.5px $color-border-grey;
-    padding-top : 1rem;
-    ul {
-        margin-top: 0.875rem;
-        margin-bottom:  0.875rem;
-            li {
-                padding: 0 0.875rem 1rem 0 ;
-            }
-
-    
+    li {
+        padding : 0.875rem 1rem 0;
     }
 }
 mat-icon {

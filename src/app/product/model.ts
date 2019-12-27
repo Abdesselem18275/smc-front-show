@@ -312,10 +312,10 @@ export class ProductCollection {
 }
 
 
-export class NavTree extends Category {
+export class NavTree  {
+    designation?: string;
     routerLink?: string;
-    level: number;
-    navChildren?: NavTree[];
+    children?: NavTree[];
 
 }
 export enum ParamType {

@@ -1,100 +1,24 @@
 
-  <mat-toolbar class=" mat-elevation-z2" color="primary">
-      <mat-toolbar-row>
-          <span>Menu</span>
-          <span class="space-divider"></span>
-          <button (click)="closeMenu()" mat-icon-button>
-              <mat-icon>close</mat-icon>
-          </button>
-      </mat-toolbar-row>
-  </mat-toolbar>
-  
 
 <div class="card-container" *ngIf="isLogged">
   <app-account-card></app-account-card>
+  <button (click)="closeMenu()" mat-icon-button>
+    <mat-icon>close</mat-icon>
+</button>
 </div>
 
 <section>
-      <p   class="smc-header title">
-        PRODCUTS
+      <p   class="mat-caption text--grey title">
+        Categories
       </p>
-  <ul>
-  <li class="menu-sub__expandable">
-    <div class="menu-sub__header">
-      <p   >Categories</p>
-      <mat-icon (click)="toggleSubMenu('category')"
-                 [style.transform]="isCategoryOpen ? 'rotate(-90deg)' : ''">
-        expand_more</mat-icon>
-    </div>
-    <ul [@inOutAnimation] *ngIf="isCategoryOpen">
-      <li     
+      <li   class="mat-body-2"
            (click)="navigateTo('categories__designation__in',cat.designation)"
-           *ngFor="let cat of rootCategories">{{cat.designation}}</li>
-    </ul>
-
-  <li class="menu-sub__expandable">
-      <div class="menu-sub__header">
-      <p   class="menu-sub-1">Collections</p>
-      <mat-icon (click)="toggleSubMenu('collection')"
-                [style.transform]="isCollectionOpen ? 'rotate(-90deg)' : ''" >expand_more</mat-icon>
-      </div>
-      <ul [@inOutAnimation] *ngIf="isCollectionOpen">
-        <li    
-            (click)="navigateTo('collection__designation__in',col.designation)"
-            *ngFor="let col of collectionArray">{{col.designation}}</li>
-      </ul>
-    </li>
-    </ul>
-
+           *ngFor="let cat of rootCategories">{{cat.designation |titlecase}}</li>
 </section>
 
-<section>
-    <p   class="smc-header title">
-      COMPANY
-    </p>
-<ul>
-<li>
-  <p   class="menu-sub-1">About us</p>
-</li>
-<li>
-  <p   class="menu-sub-1">Contact us</p>
-</li>
-
-</ul>
-</section>
-
-<section>
-    <p   class=" smc-header title">
-      UTILITY
-    </p>
-<ul>
-<li>
-  <p   class="menu-sub-1">Mainteance tips</p>
-</li>
-<li>
-  <p   class="menu-sub-1">Copper benefits</p>
-</li>
-<li>
-  <p   class="menu-sub-1">Returns</p>
-</li>
-<li>
-  <p   class="menu-sub-1">Paiments Information</p>
-</li>
-
-</ul>
-</section>
-
-<section>
-    <p   class="smc-header title">
-      ACCOUNT
-    </p>
-<ul>
-<li>
-  <p   class="menu-sub-1">Sign in / Register</p>
-</li>
-<li>
-  <p   class="menu-sub-1">Favorites</p>
-</li>
-
-</ul>
+<section *ngFor="let node_ of navMenuData">
+  <p   class="mat-caption text--grey title">
+     {{node_.designation}}
+  </p>
+  <li   class="mat-body-2" *ngFor="let cat_ of node_">{{cat_.designation |titlecase}}</li>
 </section>

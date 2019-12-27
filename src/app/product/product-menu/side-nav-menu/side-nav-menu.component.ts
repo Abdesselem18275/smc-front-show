@@ -43,7 +43,42 @@ export class SideNavMenuComponent implements OnInit {
   isCategoryOpen: Boolean;
   rootCategories: Category[];
   collectionArray: ProductCollection[];
-  navMenuData: NavTree[];
+  navMenuData: NavTree[]  = [
+    {
+      designation : 'company',
+      children : [
+        {
+          designation : 'About us',
+          routerLink : ''
+        },
+        {
+          designation : 'Contact us',
+          routerLink : ''
+        }
+      ]
+    },
+    {
+      designation : 'Utility',
+      children : [
+        {
+          designation : 'Mainteance tips',
+          routerLink : ''
+        },
+        {
+          designation : 'Copper benefits',
+          routerLink : ''
+        },
+        {
+          designation : 'returns',
+          routerLink : ''
+        },
+        {
+          designation : 'Paiments Information',
+          routerLink : ''
+        }
+      ]
+    } 
+  ]
   isLogged: boolean;
   constructor(private router: Router,
               private authService: SmcAuthService,
@@ -57,23 +92,7 @@ export class SideNavMenuComponent implements OnInit {
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
     this.collectionArray = this.colcs.fetchCachedCollections();
-    // this.navMenuData = [
-    //   {
-    //     designation : 'Products',
-    //     level : 1,
-    //     children : [
-    //       {
-    //         designation : 'Categories',
-    //         level : 2,
-    //         children : <NavTree[]>this.rootCategories.map(x => x.level)
-    //       }
 
-    //     ]
-    //   },
-    //   {
-
-    //   }
-    // ]
 
 
 
