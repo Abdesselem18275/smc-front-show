@@ -25,6 +25,7 @@ p {
 .nav-tabs__tab {
   display: flex;
   align-items: center;
+  @extend .mat-body
 }
 
 
