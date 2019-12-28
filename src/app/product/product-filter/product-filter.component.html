@@ -1,23 +1,20 @@
-<mat-toolbar class="mat-elevation-z2" color="primary">
-    <mat-toolbar-row>
-        <span>Filter</span>
-        <span class="space-divider"></span>
+<header class="main-header">
+        <h2>Filter</h2>
         <button (click)="closeMenu()" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
-    </mat-toolbar-row>
-</mat-toolbar>
+</header>
 
-<button (click)="clearFilter()" class="clear-button--centred" color="primary" mat-raised-button> Clear filter</button>
-<mat-divider></mat-divider>
+<!-- <button (click)="clearFilter()" class="clear-button--centred" color="primary" mat-raised-button> Clear filter</button>
+<mat-divider></mat-divider> -->
 
     <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
-            <header   class="text-grey mat-caption" >  
+            <header   class="filter-title text--grey mat-body" >  
                 {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >
-                    <mat-checkbox  *ngFor="let choice of filterCategory.choices" [formControlName]="choice.key" [id]="choice.key" >
+                    <mat-checkbox  class="filter--element" *ngFor="let choice of filterCategory.choices" [formControlName]="choice.key" [id]="choice.key" >
                         <span class="mat-body from-field__label">{{choice.value | titlecase}}</span>
                     </mat-checkbox>
             </div>

@@ -53,18 +53,18 @@ export const centerSlideInAnimation =
       transition(
         ':enter',
         [
-          style({ 'width': '0'}),
-          animate('100ms ease-in',
-            style({'width': '100%'})
+          style({ 'opacity': '0'}),
+          animate('150ms ease-in',
+            style({'opacity': '1'})
                   )
         ]
       ),
       transition(
         ':leave',
         [
-          style({ 'width': '100%' }),
-          animate('100ms ease-in',
-             style({'width': '0'})     )
+          style({ 'opacity': '1' }),
+          animate('150ms ease-in',
+             style({'opacity': '0'})     )
         ]
       )
     ]

@@ -5,12 +5,13 @@
     flex-direction: column;
     justify-content: flex-start;
     width:calc(100vw - 64px);
+    max-width: 320px;
 }
 
 .card-container {
     display: flex;
     padding: 1.5rem 1rem 0.75rem 1rem;
-    border-top: 12px solid $mdc-theme-accent--lighter;
+    border-top: 12px solid $color-border-grey;
     border-bottom: 1px solid $color-border-grey;
 }
 

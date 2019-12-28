@@ -1,5 +1,12 @@
 @import "src/styles.scss";
 
+.side-box {
+  position: fixed;
+  top:0;
+  background-color: white;
+  z-index: 10000;
+}
+
 
 .content {
  margin : 1rem $global-horizontal-gutter;
@@ -48,12 +55,7 @@
     }
   }
 
-  .side-box {
-    position: fixed;
-    top:0;
-    background-color: white;
-    z-index: 10000;
-}
+
 
 .content__image-container--grid__module {
     display: flex;
@@ -87,8 +89,9 @@
   display: block;
 
 }
-.not-available {
+.search-meta {
   align-items: center;
   text-align: center;
+  margin: 2rem 0;
 
 }

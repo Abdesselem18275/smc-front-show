@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction } from "./actions";
 import { Store, select } from "@ngrx/store";
-import { map, switchMap, filter, concatMap, withLatestFrom } from "rxjs/operators";
+import { map, switchMap, filter, concatMap, withLatestFrom, tap } from "rxjs/operators";
 import { State } from "./state";
 import { ParamType } from "src/app/product/model";
 import { selectPageParam , selectAllParams } from "./selectors";
@@ -38,6 +38,7 @@ export class ParamEffects {
     this.actions$.pipe(
         ofType(AddOrUpdateAction),
         concatMap(action => of(action).pipe(withLatestFrom(this.store$.pipe(select(selectAllParams))))),
+        filter(data => data[0].param !== undefined),
         switchMap(data => {
             const action = data[0];
             const allParams = data[1];
@@ -45,7 +46,6 @@ export class ParamEffects {
                 key : 'page',
                 value: '1',
                 type : ParamType.PAGE };
-
             switch (action.param.type) {
                 case ParamType.FILTER:
                 case ParamType.CATEGORY: {

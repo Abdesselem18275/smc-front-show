@@ -40,12 +40,13 @@ p {
 .nav-bar__logo {
   display: flex;
   align-items: center;
-  color: $mdc-theme-primary;
+  color: black;
   cursor: pointer;
   mat-icon {
    margin-top: 0.5rem;
    width: 2.5rem;
    margin-right: 0.75rem;
+   color:black ;
   }
   .header--big {
     font-family: 'Domine', serif;

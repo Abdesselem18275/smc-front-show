@@ -1,39 +1,3 @@
-@import "src/styles.scss";
-
-
-.inline-fields {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  .form__field {
-    width: 47%;
-  }
-}
-.form__field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    label {
-        text-transform: capitalize;
-        margin-bottom: 0.5rem;
-        @extend .mat-body
-    }
-    input,select {
-        height: 2.5rem;
-        font-size: 0.875rem;
-        padding-left: 0.5rem;
-    }
-    .field__note {
-      color: $color-text-deep-grey;
-      @extend .mat-caption
-    }
-  
-  }
-  .alert {
-    color :red;
-    @extend .mat-caption
-  }
-
 
   /* clears the 'X' from Internet Explorer */
 input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }

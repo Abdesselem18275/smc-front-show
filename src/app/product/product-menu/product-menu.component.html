@@ -3,13 +3,12 @@
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo">
-      <mat-icon color="primary" inline="true" svgIcon="logo_2"></mat-icon>
+      <mat-icon  inline="true" svgIcon="logo_2"></mat-icon>
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
         <p (click)="toggleMenu()" class="nav-tabs__tab">  
            PRODUCTS
-           <mat-icon inline="true" [style.transform]="isMenuActive ? 'rotate(-90deg)' : ''" >keyboard_arrow_down</mat-icon> 
         </p>
         <p class="nav-tabs__tab">
          UTILITY
@@ -41,13 +40,13 @@
 
   <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-      <p (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="mat-subheading-1	 smc-header menu__sub-menu__tab">
+      <h3 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
         {{rootCat.designation | uppercase}}
-      </p>
+      </h3>
       <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
-      <p (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small mat-body" *ngFor="let childCat of rootCat?.children">
+      <h4 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
           {{childCat.designation | titlecase}}
-      </p>
+      </h4>
     </div>
   </div>
 
@@ -67,7 +66,7 @@
     </app-create-profile>
 </div>
 
-<div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class=" search-box">
+<div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
     <app-search-box >
     </app-search-box>
 </div>

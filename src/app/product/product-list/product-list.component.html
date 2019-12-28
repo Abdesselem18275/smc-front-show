@@ -1,9 +1,15 @@
 
-<header class="main-header--sticky">
+<div  [@routeAnimations]  *ngIf="(filterBox |async)" class="mat-elevation-z2 side-box">
+  <app-product-filter>
+    </app-product-filter>
+</div>
+
+<section class="side-content">
+<header *ngIf="!(isSearchActive |async)" class="main-header--sticky">
     <div class="content__meta-bar">
         <div class="content__meta-bar-breadcrumb" >
-          <app-category-breadcrumb *ngIf="!(isSearchActive |async)" class="breadcrumb"></app-category-breadcrumb>
-          <p class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
+          <app-category-breadcrumb  class="breadcrumb"></app-category-breadcrumb>
+          <p *ngIf="!(isLoading | async)" class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
         <button class="meta-bar__filter" mat-icon-button >
         <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
@@ -13,10 +19,7 @@
       </div>
 
     </header>
-<div  [@routeAnimations]  *ngIf="(filterBox |async)" class="mat-elevation-z2 side-box">
-    <app-product-filter>
-      </app-product-filter>
-</div>
+
 
     
     <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate">
@@ -33,8 +36,9 @@
                     <mat-icon>view_stream</mat-icon>
                   </mat-button-toggle>
                 </mat-button-toggle-group>
-               <div class="not-available" *ngIf="(isSearchActive | async) && (objCount | async) == 0">
-                      <h2>No products found for "{{searchTerm| async}}"</h2>
+               <div class="search-meta" *ngIf="!(isLoading | async ) && (isSearchActive | async)">
+                      <h2 *ngIf="(objCount | async) == 0">No products found for "{{searchTerm| async}}"</h2>
+                      <h2 *ngIf="!(objCount | async) == 0">We found {{objCount | async }} products for for "{{searchTerm| async}}"</h2>
                </div>
 
             <div [ngClass]="{'content__image-container--grid__module': isModuleActive ,'content__image-container--grid':!isModuleActive }">
@@ -51,3 +55,4 @@
           class='bottom-line'>
           <mat-icon inline="true" *ngIf="isLoading | async" svgIcon="loading_2"></mat-icon>
         </div>
+</section>

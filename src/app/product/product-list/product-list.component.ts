@@ -47,7 +47,16 @@ export class ProductListComponent implements OnInit {
                             pipe(
                               map( (params: Param[]) => params.length !== 0));
     this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(
-      map((params: Param[]) => params.shift().value
+      map((params: Param[]) => {
+        try {
+          return params.shift().value;
+
+        } catch (error) {
+          return '';
+        }
+
+
+      }
     ));
   }
 

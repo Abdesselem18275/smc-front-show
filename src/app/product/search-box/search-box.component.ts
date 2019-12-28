@@ -16,12 +16,11 @@ export class SearchBoxComponent implements OnInit {
   searchTerm: string;
 
 
-  constructor(
-              private router: Router,
+  constructor(private router: Router,
               private store$: Store<ParamStoreState.State>) { }
   ngOnInit() {
   this.searchBar.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(150),
       distinctUntilChanged(),
       tap(term => {
         this.searchTerm = term;

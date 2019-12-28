@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Category } from 'src/app/product/model';
+import { Category, ParamType, Param } from 'src/app/product/model';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { RootStoreState, ParamStoreSelectors } from 'src/app/root-store';
 
 @Component({
   selector: 'app-category-breadcrumb',
@@ -13,43 +16,41 @@ export class CategoryBreadcrumbComponent implements OnInit {
   categories: Category[];
   items: string[];
   isNotEmpty: boolean;
+  breadCrumb$: Observable<String[]>;
   @Input() currentProduct?: string;
 
-  constructor(private route: ActivatedRoute, private categoriesCache: CategoryCacheService) { }
+  constructor(private store$: Store<RootStoreState.State>,
+              private categoriesCache: CategoryCacheService) { }
 
   ngOnInit() {
     this.isNotEmpty = false;
-    this.items = [];
-    this.categories = [];
-      this.route
-      .queryParamMap
-      .pipe(map(params => params.get('categories__designation__in') || ''))
-      .subscribe(param => {
-            this.categories = this.categoriesCache.fetchCachedCategories();
-            this.items = [];
-            if (!this.currentProduct) {
-              this.setItems(param);
-            } else {
-              this.setItems(this.currentProduct);
+    this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.CATEGORY}).
+      subscribe((params: Param[]) => {
+        if (!this.currentProduct) {
+          try {
+            this.items = this.setItems(params.shift().value);
+          } catch (error) {
+            this.items = ['All products'];
+          }
+        } else {
+           this.items = this.setItems(this.currentProduct).filter(x => x !== '');
 
-            }
+        }
 
-          });
+      });
   }
 
 
   getItem(param): Category {
-    return this.categories.filter(category => category.designation === param)[0];
+    return this.categoriesCache.fetchCachedCategories().find(category => category.designation === param);
   }
 
 
-  setItems(param) {
+  setItems(param): string[] {
     if ( param === '' ) {
-      this.items.push('Products');
-      return '';
+      return [];
     }
-    this.items.push(param);
-    return(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation));
+    return([param].concat(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation)));
   }
 
 }
