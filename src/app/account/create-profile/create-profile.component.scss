@@ -25,10 +25,8 @@ form {
 }
 
 .form-group__header {
-    .smc-header {
-        border-right: solid 12px $mdc-theme-primary;
-        padding-right: 0.5rem;
-
+    h2 {
+        margin-bottom: 0.5rem;
     }
     grid-area: group-header;
     display: flex;

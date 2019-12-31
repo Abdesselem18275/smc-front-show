@@ -1,4 +1,4 @@
-<header>
+<header class="upper-menu">
   <h2>
     Menu
   </h2>
@@ -25,15 +25,22 @@
   <p class="mat-caption text--grey title">
      Account
   </p>
-  <li class="mat-body-2" >
+  <ng-container *ngIf="isLogged">
+  <li [routerLink]="['/account/profile']" >
     <mat-icon>person</mat-icon>
-   <span>Profile</span>
+   <h3 >Profile</h3>
   </li>
-  <li class="mat-body-2" >
+  <li (click)="logOut()">
     <mat-icon>power_settings_new</mat-icon>
-   <span>Logout</span>
+   <h3>Logout</h3>
   </li>
-
+  </ng-container>
+  <ng-container *ngIf="!isLogged">
+    <li (click)="login()" class="mat-body-2" >
+      <mat-icon>exit_to_app</mat-icon>
+     <span>sign in / sign up</span>
+    </li>
+    </ng-container>
 </section>
 
 <section *ngFor="let node of navMenuData">

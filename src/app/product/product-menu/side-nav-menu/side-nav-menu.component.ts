@@ -6,7 +6,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
-import { CloseAllAction } from 'src/app/root-store/modal-store/actions';
+import { CloseAllAction, ToggleAction } from 'src/app/root-store/modal-store/actions';
 
 
 @Component({
@@ -67,7 +67,6 @@ export class SideNavMenuComponent implements OnInit {
     this.isCategoryOpen = false;
     this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
   }
-  
 
   closeMenu() {
     this.store$.dispatch(CloseAllAction());
@@ -82,5 +81,12 @@ export class SideNavMenuComponent implements OnInit {
         primary : 'product/list',
         side: null }}],
         navigationExtras);
+  }
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(['product/list']);
+  }
+  login() {
+    this.store$.dispatch(ToggleAction({key: 'loginBox'}));
   }
 }

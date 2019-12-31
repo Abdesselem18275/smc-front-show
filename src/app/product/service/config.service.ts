@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { CategoryCacheService } from './category-cache.service';
 import { tap } from 'rxjs/operators';
-import { ProductDataService } from './product-data.service';
+import { ProductDataService, API_URL } from './product-data.service';
 import { Category, ProductCollection, FilterCategory } from '../model';
 import { CollectionCacheService } from './collection-cache.service';
 import { FilterCacheService } from './filter-cache.service';
@@ -16,8 +16,9 @@ export class ConfigService {
   collections: ProductCollection[];
   productFilters: FilterCategory[];
   icons: any;
-  constructor(private pds: ProductDataService , private _collectionCache: CollectionCacheService
-              , private _categoryCache: CategoryCacheService,
+  constructor( private pds: ProductDataService , private _collectionCache: CollectionCacheService,
+               private _categoryCache: CategoryCacheService,
+               @Inject(API_URL) private apiUrl: string,
                private _filterCache:  FilterCacheService,
                private iconRegistry: MatIconRegistry , private sanitizer: DomSanitizer) { }
 
@@ -62,6 +63,13 @@ export class ConfigService {
       }))
       .toPromise();
   }
+
+  // loadInitials() : Promise<Object> {
+  //   const query: string = [
+  //     this.apiUrl,
+  //     '/init',].join('') ;
+
+  // }
 
 
 }

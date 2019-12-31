@@ -72,9 +72,13 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
-mat-toolbar-row {
-  background-color: white;
-  color: black;
+.upper-menu {
+  padding: 0.5rem 1rem;
+  border-top: 0.875rem solid $color-border-grey;
+  border-bottom: 1px solid $color-border-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .side-window__header {
