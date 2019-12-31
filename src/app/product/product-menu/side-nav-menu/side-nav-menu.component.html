@@ -1,10 +1,15 @@
-
-
-<div class="card-container" *ngIf="isLogged">
-  <app-account-card></app-account-card>
+<header>
+  <h2>
+    Menu
+  </h2>
   <button (click)="closeMenu()" mat-icon-button>
     <mat-icon>close</mat-icon>
 </button>
+</header>
+
+<div class="card-container" *ngIf="isLogged">
+  <app-account-card ></app-account-card>
+
 </div>
 
 <section>
@@ -16,9 +21,25 @@
            *ngFor="let cat of rootCategories">{{cat.designation |titlecase}}</li>
 </section>
 
+<section>
+  <p class="mat-caption text--grey title">
+     Account
+  </p>
+  <li class="mat-body-2" >
+    <mat-icon>person</mat-icon>
+   <span>Profile</span>
+  </li>
+  <li class="mat-body-2" >
+    <mat-icon>power_settings_new</mat-icon>
+   <span>Logout</span>
+  </li>
+
+</section>
+
 <section *ngFor="let node of navMenuData">
   <p class="mat-caption text--grey title">
      {{node.designation}}
   </p>
   <li class="mat-body-2" *ngFor="let cat of node.children">{{cat.designation|titlecase}}</li>
 </section>
+

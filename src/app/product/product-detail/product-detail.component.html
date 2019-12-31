@@ -22,8 +22,8 @@
 
   <section class="title-section">
     <div>
-      <h4>{{product?.designation  | uppercase}}</h4>
-      <p  class="mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+      <h3>{{product?.designation  | uppercase}}</h3>
+      <p  class="text--grey mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }} <span *ngIf="product?.interiorMaterial" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
     <button 
       [appFavoriteHandler]="product.pk" 

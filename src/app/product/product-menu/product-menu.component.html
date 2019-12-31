@@ -1,9 +1,8 @@
-<mat-toolbar  *ngIf="isActive">
-    <mat-toolbar-row class='nav-bar'>
+<nav class='nav-bar' *ngIf="isActive">
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo">
-      <mat-icon  inline="true" svgIcon="logo_2"></mat-icon>
+      <!-- <mat-icon  inline="true" svgIcon="logo_2"></mat-icon> -->
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
@@ -35,8 +34,7 @@
 
         </div>
     </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  </nav>
 
   <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
@@ -55,6 +53,10 @@
 
     <app-account-card>
     </app-account-card>
+</div>
+
+<div    class="mat-elevation-z2 language-panel">
+
 </div>
 
 <div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).createProfileBox" class="mat-elevation-z2 center-box">

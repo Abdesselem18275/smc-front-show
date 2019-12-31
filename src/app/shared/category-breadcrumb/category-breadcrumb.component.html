@@ -1,6 +1,6 @@
 <section class="breadcrumb">
         <ng-container *ngFor="let item of items.reverse(); last as isLast ; first as isFirst">
-            <p class="mat-body-strong" [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: ''}" queryParamsHandling="merge" >
+            <p class="mat-body-strong" [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item}" queryParamsHandling="merge" >
                 {{item | titlecase}}
             </p> 
             <mat-icon inline="true" *ngIf="!isLast">chevron_right</mat-icon>   

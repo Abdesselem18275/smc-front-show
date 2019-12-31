@@ -1,5 +1,13 @@
 @import "src/styles.scss";
+header {
+    padding: 0.5rem 1rem;
+    border-top: 12px solid $color-border-grey;
+    border-bottom: 1px solid $color-border-grey;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 :host {
     display: flex;
     flex-direction: column;
@@ -11,7 +19,6 @@
 .card-container {
     display: flex;
     padding: 1.5rem 1rem 0.75rem 1rem;
-    border-top: 12px solid $color-border-grey;
     border-bottom: 1px solid $color-border-grey;
 }
 
@@ -23,6 +30,13 @@ section {
 
     li {
         padding : 0.875rem 1rem 0;
+        display: flex;
+        mat-icon {
+            margin-right: 1rem;
+        }
+        span {
+            align-self: flex-end;
+        }
     }
 }
 mat-icon {
