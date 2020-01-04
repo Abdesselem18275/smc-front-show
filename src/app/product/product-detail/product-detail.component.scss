@@ -40,6 +40,9 @@ section {
   display: flex;
 }
   .title-section {
+    h3 {
+      margin-bottom: 0.25rem;
+    }
     align-items: flex-start;
     grid-area: title-section;
     div {
