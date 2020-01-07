@@ -11,10 +11,14 @@
           <app-category-breadcrumb  class="breadcrumb"></app-category-breadcrumb>
           <p *ngIf="!(isLoading | async)" class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
-        <button class="meta-bar__filter" mat-icon-button >
-        <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" matBadgeColor="primary" (click)="toggleModal('filterBox')" >
+        <button class="meta-bar__filter" mat-button>
+        <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" 
+                  matBadgeColor="primary" (click)="toggleModal('filterBox')" 
+                  matBadgePosition="above before">
           tune
         </mat-icon>
+        <span class="mat-body-strong">Filter</span>
+
       </button>
       </div>
 
@@ -27,7 +31,7 @@
     </mat-progress-bar>
 
           <section   class="content">
-               
+               <h2>{{activeCategory | async | uppercase}}</h2>
               <mat-button-toggle-group  class="view-toggeler" (change)="toggleView($event)">
                   <mat-button-toggle value="module">
                     <mat-icon>view_module</mat-icon>

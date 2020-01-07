@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
   filterParamCount: Observable<number>;
   isSearchActive: Observable<boolean>;
   searchTerm: Observable<string>;
+  activeCategory: Observable<string>;
 
   isFilterActive: boolean;
   isModuleActive: boolean;
@@ -56,6 +57,16 @@ export class ProductListComponent implements OnInit {
         }
 
 
+      }
+    ));
+    this.activeCategory = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.CATEGORY}).pipe(
+      map((params: Param[]) => {
+        try {
+          return params.shift().value;
+
+        } catch (error) {
+          return '';
+        }
       }
     ));
   }

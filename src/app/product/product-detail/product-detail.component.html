@@ -39,18 +39,18 @@
 
     <section class="description__content">
 <mat-tab-group mat-stretch-tabs [selectedIndex]="0">
-    <mat-tab class="description__text" label="Area of Use">
+    <mat-tab *ngIf="product.areaOfUse != ''" class="description__text" label="Area of Use">
       <p class="mat-body description__text">
           {{product.areaOfUse}}
         </p>
     </mat-tab>
-    <mat-tab  label="Materials">
+    <mat-tab *ngIf="product.materials != ''"  label="Materials">
       <p class="mat-body description__text">
         {{product.materials}}
       </p>
 
     </mat-tab>
-    <mat-tab label="Aesthetics">
+    <mat-tab *ngIf="product.aesthetics != ''"  label="Aesthetics">
       <p class="mat-body description__text">
           {{product.aesthetics}}
 
