@@ -11,9 +11,9 @@
           <app-category-breadcrumb  class="breadcrumb"></app-category-breadcrumb>
           <p *ngIf="!(isLoading | async)" class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
         </div>
-        <button class="meta-bar__filter" mat-button>
+        <button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-button>
         <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" 
-                  matBadgeColor="primary" (click)="toggleModal('filterBox')" 
+                  matBadgeColor="primary"
                   matBadgePosition="above before">
           tune
         </mat-icon>

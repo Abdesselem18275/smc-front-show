@@ -34,6 +34,7 @@ export class ConfigService {
       this._filterCache.filterCategories = jsonsItems['filters'];
       this._collectionCache.collections = jsonsItems['collections'];
       jsonsItems['icons'].forEach(jsonItem => {
+        console.warn(jsonItem.content);
         const safeRessource = this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content);
         this.iconRegistry.addSvgIcon(jsonItem.designation, safeRessource);
       });
