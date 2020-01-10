@@ -10,13 +10,13 @@ export class CollectionCacheService {
   constructor(private pds: ProductDataService) {}
 
   fetchCachedCollections() {
-    if (!this._collections) {
-      this.pds.get_elements({model: 'collection'}).subscribe(
-        jsonItems => {
-          this._collections = jsonItems;
+    // if (!this._collections) {
+    //   this.pds.get_elements({model: 'collection'}).subscribe(
+    //     jsonItems => {
+    //       this._collections = jsonItems;
 
-        });
-    }
+    //     });
+    // }
 
 
 

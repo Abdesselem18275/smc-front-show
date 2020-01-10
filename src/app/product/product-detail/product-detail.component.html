@@ -76,11 +76,11 @@
     </caption>
 
    <tr>
-     <th  class="mat-body-strong" *ngFor="let header of displayedColumns">
-       {{header}}
+     <th *ngFor="let header of displayedColumns">
+       <h4>{{header}}</h4>
      </th>
    </tr>
-   <tr class="mat-body" *ngFor="let variant of product?.variants" >
+   <tr  *ngFor="let variant of product?.variants" >
     <td>
         {{ variant?.designation | uppercase }} /
         <span>{{variant?.reference | uppercase}}</span>
@@ -104,11 +104,11 @@
           <h4>Componnents Details</h4>
         </caption>
       <tr>
-          <th  class="mat-body-strong" *ngFor="let header of componnentDisplayedColumns">
-            {{header}}
+          <th *ngFor="let header of componnentDisplayedColumns">
+            <h4>{{header}}</h4>
           </th>
         </tr>
-      <tr class="mat-body" *ngFor="let component of product?.components">
+      <tr *ngFor="let component of product?.components">
           <td class="componnent-designation__aligned">
               <mat-icon  [svgIcon]="component.svgIcon.designation"></mat-icon>
               {{component.designation}}

@@ -28,19 +28,37 @@
   <ng-container *ngIf="isLogged">
   <li [routerLink]="['/account/profile']" >
     <mat-icon>person</mat-icon>
-   <h3 >Profile</h3>
+   <span class="mat-body-2">Profile</span>
   </li>
   <li (click)="logOut()">
     <mat-icon>power_settings_new</mat-icon>
-   <h3>Logout</h3>
+   <span class="mat-body-2">Logout</span>
   </li>
   </ng-container>
   <ng-container *ngIf="!isLogged">
-    <li (click)="login()" class="mat-body-2" >
+    <li (click)="login()">
       <mat-icon>exit_to_app</mat-icon>
-     <span>sign in / sign up</span>
+     <span class="mat-body-2">sign in / sign up</span>
     </li>
     </ng-container>
+</section>
+
+<section>
+  <p class="mat-caption text--grey title">
+     Language
+  </p>
+  <li >
+    <mat-icon  inline="true" svgIcon="french"></mat-icon>
+    <span class="mat-body-2">French</span>
+  </li>
+  <li >
+    <mat-icon  inline="true" svgIcon="german"></mat-icon>
+    <span class="mat-body-2">German</span>
+  </li> 
+  <li >
+    <mat-icon  inline="true" svgIcon="english"></mat-icon>
+    <span class="mat-body-2">English</span>
+  </li>
 </section>
 
 <section *ngFor="let node of navMenuData">
