@@ -53,8 +53,13 @@ export class SideNavMenuComponent implements OnInit {
           routerLink : ''
         }
       ]
+<<<<<<< HEAD
+    } ,
+  ]
+=======
     }
   ];
+>>>>>>> a46210072401cb815b8f19a2b47bdba4ea583bcb
   isLogged: boolean;
   constructor(private router: Router,
               private authService: SmcAuthService,
