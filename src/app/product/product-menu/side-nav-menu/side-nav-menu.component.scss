@@ -17,7 +17,7 @@
 section {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0 0.5rem 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     border-bottom: 1px solid $color-border-grey;
 
     li {
@@ -34,7 +34,4 @@ section {
 mat-icon {
     transition: 0.3s ease;
 }
-li:hover {
-    background-color: $mdc-theme-accent--lighter;
-    cursor: pointer;
-}
+

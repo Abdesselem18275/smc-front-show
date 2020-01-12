@@ -63,8 +63,9 @@ section {
   }
 
    .feature-container {
-    grid-area: feature-container;
-     justify-content: center;
+     grid-area: feature-container;
+     justify-content: space-evenly;
+     flex-wrap: wrap;
      figure {
        display: flex;
        flex-direction : column;

@@ -8,6 +8,22 @@ import { FilterCacheService } from './filter-cache.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
+import { UserLanguage, LanguageType } from 'src/app/root-store/global-store/state';
+
+export const LANGUAGE_LIST: UserLanguage[] = [
+  {
+    id: 'Fr',
+    LanguageType: LanguageType.FRENCH
+  }, 
+  {
+    id: 'En',
+    LanguageType: LanguageType.ENGLISH
+
+  }, {
+    id: 'Gr',
+    LanguageType: LanguageType.GERMAN 
+  }
+]
 
 @Injectable({
   providedIn: 'root'

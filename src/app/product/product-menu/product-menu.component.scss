@@ -174,7 +174,8 @@ p {
 
 .account-card {
       position: absolute;
-      top: 4rem;
+      min-width : 240px;
+      top: 4.4rem;
       right: 0.5rem;
       color: black;
       z-index: 10000;

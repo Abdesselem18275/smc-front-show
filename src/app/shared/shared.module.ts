@@ -20,6 +20,7 @@ import { AccountCardComponent } from '../account/account-card/account-card.compo
 import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.component';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 import { CreateProfileComponent } from '../account/create-profile/create-profile.component';
+import { LanguageBoxComponent } from './language-box/language-box.component';
 
 @NgModule({
   declarations: [ProductMenuComponent, TreeMenuComponent,
@@ -31,7 +32,7 @@ import { CreateProfileComponent } from '../account/create-profile/create-profile
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 FavoriteHandlerDirective, RouterOutletToggleDirective],
+                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent],
   imports:  [
     CommonModule,
     RouterModule,

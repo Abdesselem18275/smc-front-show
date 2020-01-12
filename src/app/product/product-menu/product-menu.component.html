@@ -26,7 +26,7 @@
         <button mat-icon-button  (click)="toggleUserCard()" id="account-icon">
             <mat-icon>person</mat-icon>
         </button>
-        <button class="language-panel" mat-button>
+        <button  (click)="toggleModal('languageBox')" class="language-panel" mat-button>
           <mat-icon>language</mat-icon>   
           <span class="mat-body">EN</span> 
         </button> 
@@ -48,11 +48,14 @@
     </div>
   </div>
 
-  
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">
 
-    <app-account-card>
+  
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox || (modalStore$ | async).languageBox" class="mat-elevation-z2 account-card">
+
+    <app-account-card *ngIf="(modalStore$ | async).userCardBox">
     </app-account-card>
+    <app-language-box *ngIf="(modalStore$ | async).languageBox">
+    </app-language-box>
 </div>
 
 <div    class="mat-elevation-z2 language-panel">
