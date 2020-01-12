@@ -1,13 +1,11 @@
-<mat-toolbar color="primary">
-        <mat-toolbar-row>
-                <span>Login / Register</span>
+<header class="upper-menu">
+                <h3>Login / Register</h3>
                 <span class="space-divider"></span>
                 <button (click)="cancel()" mat-icon-button>
                         <mat-icon>close</mat-icon>
                 </button>
-        </mat-toolbar-row>
 
-</mat-toolbar>
+</header>
 <mat-progress-bar *ngIf="isChecking" mode="indeterminate">
 
 </mat-progress-bar>
@@ -15,7 +13,7 @@
         <section id="smc-login">
 
                 <header class="form-group__header">
-                        <p class="mat-subheading-2  smc-header">Sign in with SMC</p>
+                        <h3>Sign in with SMC</h3>
                         <p class="text--grey mat-body">Please enter the following informations</p>
                         <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
                                 {{item.value}}
@@ -55,7 +53,7 @@
 
         <section id="google-sign">
                 <header class="form-group__header">
-                        <p class="mat-subheading-2 smc-header">Sign in with google</p>
+                        <h3>Sign in with google</h3>
                         <p class="text--grey mat-body">Create or acces your account by sign in to your google account
                         </p>
 
@@ -65,7 +63,7 @@
         </section>
         <section id="smc-register">
                 <header class="form-group__header">
-                        <p class="mat-subheading-2 smc-header">Register with SMC</p>
+                        <h3>Register with SMC</h3>
                         <p class="text--grey mat-body">Create or acces your account by sign in to your google account
                         </p>
 

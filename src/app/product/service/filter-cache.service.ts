@@ -10,12 +10,12 @@ export class FilterCacheService {
   constructor(private pds: ProductDataService) {}
 
   fetchCachedFilter() {
-    if (!this._filterCategory) {
-      this.pds.get_elements({model: 'filter'}).subscribe(
-        jsonItems => {
-          this._filterCategory = jsonItems;
-        });
-    }
+    // if (!this._filterCategory) {
+    //   this.pds.get_elements({model: 'filter'}).subscribe(
+    //     jsonItems => {
+    //       this._filterCategory = jsonItems;
+    //     });
+    // }
     return this._filterCategory;
   }
 

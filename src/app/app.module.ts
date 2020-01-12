@@ -18,8 +18,8 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 
 
-export function loadCategories(configService: ConfigService) {
-  return () => configService.getCategories();
+export function loadInitData(configService: ConfigService) {
+  return () => configService.loadInitials();
 }
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ export function loadCategories(configService: ConfigService) {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {
       provide: APP_INITIALIZER,
-      useFactory: loadCategories,
+      useFactory: loadInitData,
       deps: [ConfigService],
       multi: true
     }

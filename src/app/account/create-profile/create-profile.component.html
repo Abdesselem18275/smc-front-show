@@ -1,12 +1,10 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-        <span>Create profile</span>
+<nav class="upper-menu">
+        <h3>Create profile</h3>
         <span class="space-divider"></span>
         <button (click)="cancel()" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
-</mat-toolbar-row>
-</mat-toolbar>
+    </nav>
 
     <mat-progress-bar *ngIf="isChecking" mode="indeterminate">
 
@@ -15,7 +13,7 @@
 
             <form [formGroup]="createForm" (ngSubmit)="createProfile()">
                     <header class="form-group__header">
-                            <p class="mat-subheading-2  smc-header">Register your account</p>
+                            <h2>Register your account</h2>
                             <p class="text--grey mat-body">Please enter the following informations</p>
                             <p class="alert" *ngFor="let item of serverError  | keyvalue">
                                     {{item.value}}</p>

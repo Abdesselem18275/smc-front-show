@@ -1,12 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { CategoryCacheService } from './category-cache.service';
 import { tap } from 'rxjs/operators';
-import { ProductDataService } from './product-data.service';
+import { API_URL } from './product-data.service';
 import { Category, ProductCollection, FilterCategory } from '../model';
 import { CollectionCacheService } from './collection-cache.service';
 import { FilterCacheService } from './filter-cache.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { HttpClient } from '@angular/common/http';
+import { UserLanguage, LanguageType } from 'src/app/root-store/global-store/state';
+
+export const LANGUAGE_LIST: UserLanguage[] = [
+  {
+    id: 'Fr',
+    LanguageType: LanguageType.FRENCH
+  }, 
+  {
+    id: 'En',
+    LanguageType: LanguageType.ENGLISH
+
+  }, {
+    id: 'Gr',
+    LanguageType: LanguageType.GERMAN 
+  }
+]
 
 @Injectable({
   providedIn: 'root'
@@ -16,51 +33,29 @@ export class ConfigService {
   collections: ProductCollection[];
   productFilters: FilterCategory[];
   icons: any;
-  constructor(private pds: ProductDataService , private _collectionCache: CollectionCacheService
-              , private _categoryCache: CategoryCacheService,
+  constructor( private _collectionCache: CollectionCacheService,
+               private _categoryCache: CategoryCacheService,
+               private http: HttpClient,
+               @Inject(API_URL) private apiUrl: string,
                private _filterCache:  FilterCacheService,
-               private iconRegistry: MatIconRegistry , private sanitizer: DomSanitizer) { }
+               private iconRegistry: MatIconRegistry ,
+               private sanitizer: DomSanitizer) { }
 
-  getCategories(): Promise<object> {
-    return    this.pds.get_elements({model: 'categorie'}).pipe(
-      tap(jsonItems => {
-        this._categoryCache.categories = jsonItems;
-      }))
-      .toPromise().then(
-        () => this.getCollections().then(
-          () => this.getFilters().then(
-            () => this.loadIconRegistry()
-          )
+  loadInitials(): Promise<Object> {
+    const query: string = [
+      this.apiUrl,
+      '/initData'].join('') ;
+    return this.http.get(query).pipe(tap(jsonsItems => {
+      this._categoryCache.categories = jsonsItems['categories'];
+      this._filterCache.filterCategories = jsonsItems['filters'];
+      this._collectionCache.collections = jsonsItems['collections'];
+      jsonsItems['icons'].forEach(jsonItem => {
+        console.warn(jsonItem.content);
+        const safeRessource = this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content);
+        this.iconRegistry.addSvgIcon(jsonItem.designation, safeRessource);
+      });
+    })).toPromise();
 
-      ));
-  }
-  getCollections(): Promise<object> {
-    return    this.pds.get_elements({model: 'collection'}).pipe(
-      tap(jsonItems => {
-        this._collectionCache.collections = jsonItems;
-      }))
-      .toPromise();
-  }
-  getFilters(): Promise<object> {
-    return    this.pds.get_elements({model: 'filter'}).pipe(
-      tap(jsonItems => {
-        this._filterCache.filterCategories = jsonItems;
-
-      }))
-      .toPromise();
-  }
-
-  loadIconRegistry(): Promise<object> {
-    return    this.pds.get_elements({model: 'icon'}).pipe(
-      tap(jsonItems => {
-        jsonItems.forEach(jsonItem => {
-          const safeRessource = this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content);
-          this.iconRegistry.addSvgIcon(jsonItem.designation, safeRessource);
-        });
-
-
-      }))
-      .toPromise();
   }
 
 

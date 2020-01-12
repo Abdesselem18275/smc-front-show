@@ -1,7 +1,9 @@
 @import "src/styles.scss";
 
 
-
+h3 {
+    margin-bottom: 0.25rem;
+}
 img {
     max-width: 100%;
     width: 100%;
@@ -11,7 +13,7 @@ img {
     background-color: grey;
 }
 .breadcrumb {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 .content--grid {
     display: flex;

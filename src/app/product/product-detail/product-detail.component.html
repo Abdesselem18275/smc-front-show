@@ -22,8 +22,8 @@
 
   <section class="title-section">
     <div>
-      <h4>{{product?.designation  | uppercase}}</h4>
-      <p  class="mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }}<span *ngIf="product?.interiorMaterial.color" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
+      <h3>{{product?.designation  | uppercase}}</h3>
+      <p  class="text--grey mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }} <span *ngIf="product?.interiorMaterial" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
     </div>
     <button 
       [appFavoriteHandler]="product.pk" 
@@ -39,18 +39,18 @@
 
     <section class="description__content">
 <mat-tab-group mat-stretch-tabs [selectedIndex]="0">
-    <mat-tab class="description__text" label="Area of Use">
+    <mat-tab *ngIf="product.areaOfUse != ''" class="description__text" label="Area of Use">
       <p class="mat-body description__text">
           {{product.areaOfUse}}
         </p>
     </mat-tab>
-    <mat-tab  label="Materials">
+    <mat-tab *ngIf="product.materials != ''"  label="Materials">
       <p class="mat-body description__text">
         {{product.materials}}
       </p>
 
     </mat-tab>
-    <mat-tab label="Aesthetics">
+    <mat-tab *ngIf="product.aesthetics != ''"  label="Aesthetics">
       <p class="mat-body description__text">
           {{product.aesthetics}}
 
@@ -76,11 +76,11 @@
     </caption>
 
    <tr>
-     <th  class="mat-body-strong" *ngFor="let header of displayedColumns">
-       {{header}}
+     <th *ngFor="let header of displayedColumns">
+       <h4>{{header}}</h4>
      </th>
    </tr>
-   <tr class="mat-body" *ngFor="let variant of product?.variants" >
+   <tr  *ngFor="let variant of product?.variants" >
     <td>
         {{ variant?.designation | uppercase }} /
         <span>{{variant?.reference | uppercase}}</span>
@@ -104,11 +104,11 @@
           <h4>Componnents Details</h4>
         </caption>
       <tr>
-          <th  class="mat-body-strong" *ngFor="let header of componnentDisplayedColumns">
-            {{header}}
+          <th *ngFor="let header of componnentDisplayedColumns">
+            <h4>{{header}}</h4>
           </th>
         </tr>
-      <tr class="mat-body" *ngFor="let component of product?.components">
+      <tr *ngFor="let component of product?.components">
           <td class="componnent-designation__aligned">
               <mat-icon  [svgIcon]="component.svgIcon.designation"></mat-icon>
               {{component.designation}}

@@ -1,9 +1,8 @@
-<mat-toolbar  *ngIf="isActive">
-    <mat-toolbar-row class='nav-bar'>
+<nav class='upper-menu nav-bar' *ngIf="isActive">
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
 
      <div [routerLink]="['/product/home/']" class="nav-bar__logo">
-      <mat-icon  inline="true" svgIcon="logo_2"></mat-icon>
+      <!-- <mat-icon  inline="true" svgIcon="logo_2"></mat-icon> -->
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
@@ -27,7 +26,7 @@
         <button mat-icon-button  (click)="toggleUserCard()" id="account-icon">
             <mat-icon>person</mat-icon>
         </button>
-        <button class="language-panel" mat-button>
+        <button  (click)="toggleModal('languageBox')" class="language-panel" mat-button>
           <mat-icon>language</mat-icon>   
           <span class="mat-body">EN</span> 
         </button> 
@@ -35,8 +34,7 @@
 
         </div>
     </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  </nav>
 
   <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
@@ -50,11 +48,18 @@
     </div>
   </div>
 
-  
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">
 
-    <app-account-card>
+  
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox || (modalStore$ | async).languageBox" class="mat-elevation-z2 account-card">
+
+    <app-account-card *ngIf="(modalStore$ | async).userCardBox">
     </app-account-card>
+    <app-language-box *ngIf="(modalStore$ | async).languageBox">
+    </app-language-box>
+</div>
+
+<div    class="mat-elevation-z2 language-panel">
+
 </div>
 
 <div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).createProfileBox" class="mat-elevation-z2 center-box">

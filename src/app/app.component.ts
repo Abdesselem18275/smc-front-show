@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
     iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))
                 .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
                 .addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
-                .addSvgIcon('logo_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_2.svg'));
+                .addSvgIcon('logo_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_2.svg'))
+                .addSvgIcon('german', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
+                .addSvgIcon('french', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
+                .addSvgIcon('english', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'));
   }
   ngOnInit() {
     this.modalStore$ = this.store$.select(selectAllModalState);

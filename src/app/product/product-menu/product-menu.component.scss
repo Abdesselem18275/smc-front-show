@@ -11,6 +11,7 @@ p {
     justify-content : space-between;
     align-items : center;
     width: 100%;
+    background-color: white;
 
 }
 
@@ -50,7 +51,7 @@ p {
   }
   .header--big {
     font-family: 'Domine', serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 500;
     letter-spacing: 0.25rem;
   }
@@ -173,7 +174,8 @@ p {
 
 .account-card {
       position: absolute;
-      top: 4rem;
+      min-width : 240px;
+      top: 4.4rem;
       right: 0.5rem;
       color: black;
       z-index: 10000;
@@ -206,5 +208,6 @@ p {
     right: 0;
     margin-left: 0;
     transform: translate(0, 0) ;
+    background-color: white;
 
   }

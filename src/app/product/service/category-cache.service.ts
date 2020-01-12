@@ -11,12 +11,12 @@ export class CategoryCacheService {
   constructor(private pds: ProductDataService) {}
 
   fetchCachedCategories() {
-    if (!this._categories) {
-      this.pds.get_elements({model: 'categorie'}).subscribe(
-        jsonItems => {
-          this._categories = jsonItems;
-        });
-    }
+    // if (!this._categories) {
+    //   this.pds.get_elements({model: 'categorie'}).subscribe(
+    //     jsonItems => {
+    //       this._categories = jsonItems;
+    //     });
+    // }
     return this._categories;
   }
 

@@ -1,10 +1,15 @@
-
-
-<div class="card-container" *ngIf="isLogged">
-  <app-account-card></app-account-card>
+<header class="upper-menu">
+  <h2>
+    Menu
+  </h2>
   <button (click)="closeMenu()" mat-icon-button>
     <mat-icon>close</mat-icon>
 </button>
+</header>
+
+<div class="card-container" *ngIf="isLogged">
+  <app-account-card ></app-account-card>
+
 </div>
 
 <section>
@@ -16,12 +21,44 @@
            *ngFor="let cat of rootCategories">{{cat.designation |titlecase}}</li>
 </section>
 
+<section>
+  <p class="mat-caption text--grey title">
+     Account
+  </p>
+  <ng-container *ngIf="isLogged">
+  <li [routerLink]="['/account/profile']" >
+    <mat-icon>person</mat-icon>
+   <span class="mat-body-2">Profile</span>
+  </li>
+  <li (click)="logOut()">
+    <mat-icon>power_settings_new</mat-icon>
+   <span class="mat-body-2">Logout</span>
+  </li>
+  </ng-container>
+  <ng-container *ngIf="!isLogged">
+    <li (click)="login()">
+      <mat-icon>exit_to_app</mat-icon>
+     <span class="mat-body-2">sign in / sign up</span>
+    </li>
+    </ng-container>
+</section>
+
+<section>
+  <p class="mat-caption text--grey title">
+     Language
+  </p>
+  <app-language-box>
+    
+  </app-language-box>
+</section>
+
 <section *ngFor="let node of navMenuData">
   <p class="mat-caption text--grey title">
      {{node.designation}}
   </p>
   <li class="mat-body-2" *ngFor="let cat of node.children">{{cat.designation|titlecase}}</li>
 </section>
+<<<<<<< HEAD
 <section>
   <p class="mat-caption text--grey title">
     Account
@@ -31,3 +68,6 @@
 
  </ng-container>
 </section>
+=======
+
+>>>>>>> a46210072401cb815b8f19a2b47bdba4ea583bcb

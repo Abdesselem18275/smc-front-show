@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { ToggleUserCard, ToggleAction, CloseAllAction } from "./actions";
 import { SmcAuthService } from "src/app/account/service/smc-auth.service";
 import { ROUTER_NAVIGATION } from "@ngrx/router-store";

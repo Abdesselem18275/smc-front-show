@@ -315,6 +315,7 @@ export class ProductCollection {
 export class NavTree  {
     designation?: string;
     routerLink?: string;
+    svgIcon?: string;
     children?: NavTree[];
 
 }

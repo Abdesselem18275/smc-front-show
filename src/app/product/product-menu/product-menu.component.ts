@@ -10,6 +10,8 @@ import { RootStoreState, ModalStoreState } from 'src/app/root-store';
 import { selectModalStateByType, selectAllModalState } from 'src/app/root-store/modal-store/selectors';
 import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
 import { Observable } from 'rxjs';
+import { LanguageType, UserLanguage } from 'src/app/root-store/global-store/state';
+import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 
 @Component({
   selector: 'app-product-menu',
@@ -30,6 +32,7 @@ export class ProductMenuComponent implements OnInit {
   isReady: boolean;
   isActive: boolean;
   modalStore$: Observable<ModalStoreState.State>;
+  language$: Observable<UserLanguage>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
 
 
@@ -45,6 +48,7 @@ export class ProductMenuComponent implements OnInit {
     this.isSideMenuActive = false;
     this.isRootActive = false;
     this.modalStore$ = this.store$.select(selectAllModalState);
+    this.language$ = this.store$.select(selectLanguage);
 
     this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
     const treeMenu: Category[] = [
