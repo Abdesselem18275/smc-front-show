@@ -47,7 +47,7 @@ export function loadInitData(configService: ConfigService) {
       useFactory: loadInitData,
       deps: [ConfigService],
       multi: true
-    }
+    } 
   ],
   bootstrap: [AppComponent]
 })
