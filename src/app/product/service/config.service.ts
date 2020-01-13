@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { CategoryCacheService } from './category-cache.service';
 import { tap } from 'rxjs/operators';
 import { API_URL } from './product-data.service';
@@ -24,6 +24,12 @@ export const LANGUAGE_LIST: UserLanguage[] = [
     LanguageType: LanguageType.GERMAN 
   }
 ]
+
+export const LANGUAGE_CONFIG = new InjectionToken<UserLanguage[]>('config.service');
+
+export function loadInitData(configService: ConfigService) {
+  return () => configService.loadInitials();
+}
 
 @Injectable({
   providedIn: 'root'

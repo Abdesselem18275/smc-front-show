@@ -6,7 +6,7 @@
         <p class="header--big">SMC</p>
       </div>
      <div class="nav-bar__nav-tab">
-        <p (click)="toggleMenu()" class="nav-tabs__tab">  
+        <p  i18n (click)="toggleMenu()" class="nav-tabs__tab">  
            PRODUCTS
         </p>
         <p class="nav-tabs__tab">
@@ -28,7 +28,7 @@
         </button>
         <button  (click)="toggleModal('languageBox')" class="language-panel" mat-button>
           <mat-icon>language</mat-icon>   
-          <span class="mat-body">EN</span> 
+          <span class="mat-body">{{(language$ | async).id | uppercase}}</span> 
         </button> 
         <div class="language-panel-container">
 

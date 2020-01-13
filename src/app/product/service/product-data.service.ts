@@ -4,8 +4,8 @@ import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-// export const API_URL = 'https://show-case-api.herokuapp.com';
-export const API_URL = 'http://127.0.0.1:8000';
+export const API_URL = 'https://show-case-api.herokuapp.com';
+//export const API_URL = 'http://127.0.0.1:8000';
 
 @Injectable({
   providedIn: 'root'

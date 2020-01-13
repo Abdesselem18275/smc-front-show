@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { LanguageType, UserLanguage } from 'src/app/root-store/global-store/state';
 import { SetLanguageAction } from 'src/app/root-store/global-store/actions';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
+import { LANGUAGE_CONFIG } from 'src/app/product/service/config.service';
 
 @Component({
   selector: 'app-language-box',
@@ -13,9 +14,15 @@ import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 })
 export class LanguageBoxComponent implements OnInit {
   language$: Observable<UserLanguage>;
-  constructor(private store$: Store<RootStoreState.State>) { }
+  languageList: UserLanguage[];
+  constructor(
+    @Inject(LANGUAGE_CONFIG) languageList: UserLanguage[],
+    private store$: Store<RootStoreState.State>) {
+      this.languageList = languageList;
+    }
 
   ngOnInit() {
+    console.warn(this.languageList);
     this.language$ = this.store$.select(selectLanguage);
   }
 
