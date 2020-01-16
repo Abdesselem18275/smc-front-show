@@ -6,10 +6,10 @@
 mat-icon {
     transition: 0.3s ease;
 }
-mdc-list .active__icon {
+ul .active__icon {
     transform: rotate(-90deg)
 }
-app-tree-menu > .mdc-list , app-tree-menu > .mdc-list-item {
+app-tree-menu > .ul , app-tree-menu > .li {
      margin-left : 1rem;
 }
 .list-item__text--spacing {

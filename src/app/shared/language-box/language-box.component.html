@@ -1,21 +1,7 @@
-<!-- <li (click)="setLanguage('French')">
-    <mat-icon  inline="true" svgIcon="french"></mat-icon>
-    <span class="mat-body-2">French</span>
-    <mat-icon *ngIf="(language$ |async) == 'French'" class="check--full-right">check</mat-icon>
-  </li>
-  <li (click)="setLanguage('German')">
-    <mat-icon  inline="true" svgIcon="german"></mat-icon>
-    <span class="mat-body-2">German</span>
-    <mat-icon *ngIf="(language$ |async) == 'German'" class="check--full-right">check</mat-icon>
-  </li> 
-  <li (click)="setLanguage('English')">
-    <mat-icon  inline="true" svgIcon="english"></mat-icon>
-    <span class="mat-body-2">English</span>
-    <mat-icon *ngIf="(language$ |async) == 'English'"  class="check--full-right">check</mat-icon>
-  </li> -->
+
 
   <li *ngFor="let item of languageList" (click)="setLanguage(item)">
     <mat-icon  inline="true" [svgIcon]="(item.LanguageType | lowercase)"></mat-icon>
-    <span class="mat-body-2">French</span>
+    <span class="mat-body-2">{{item.LanguageType}}</span>
     <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
   </li>
