@@ -5,19 +5,19 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "target": "es5",
+    "target": "es2015",
     "downlevelIteration": true,
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "ES2017",
+      "ES2018",
       "dom"
     ]
   }
