@@ -18,7 +18,7 @@ app.use(express.static('./dist/smc-show-case'));
 
 
 app.get('/*', function(req,res) {
-    
+  console.log('%O', req);
 res.sendFile(path.join(__dirname,'/dist/smc-show-case/index.html'));
 });
 
