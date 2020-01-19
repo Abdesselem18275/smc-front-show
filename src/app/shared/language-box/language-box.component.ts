@@ -27,6 +27,7 @@ export class LanguageBoxComponent implements OnInit {
   }
 
   setLanguage(value: UserLanguage) {
+    window.location.href = value.id.toLowerCase() + '/';
     this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }

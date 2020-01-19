@@ -6,11 +6,13 @@ import { RootStoreState, ModalStoreState } from './root-store';
 import { Store } from '@ngrx/store';
 import { selectAllModalState } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
+import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
@@ -18,6 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(
               private store$: Store<RootStoreState.State>,
+              private location: Location,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
@@ -31,6 +34,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.modalStore$ = this.store$.select(selectAllModalState);
+    console.warn(this.location);
 
 }
   prepareRoute(outlet: RouterOutlet) {

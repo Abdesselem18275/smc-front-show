@@ -16,7 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import localeFr from '@angular/common/locales/fr';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
 
 
 
@@ -50,7 +50,7 @@ import { registerLocaleData } from '@angular/common';
       multi: true
     },
     { provide: LANGUAGE_CONFIG, useValue: LANGUAGE_LIST },
- 
+    { provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' },
   ],
   bootstrap: [AppComponent]
 })

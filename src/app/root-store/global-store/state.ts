@@ -1,9 +1,8 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
 export enum LanguageType {
     ENGLISH = 'English',
-    FRENCH = 'French',
-    GERMAN = 'German'
+    FRENCH = 'Francais',
+    GERMAN = 'Deutch'
 }
 export interface UserLanguage {
     id: string;
