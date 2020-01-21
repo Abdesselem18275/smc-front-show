@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/smc-show-case",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,6 +32,27 @@
             "scripts": []
           },
           "configurations": {
+            "dev-fr": {
+              "outputPath": "dist/fr",
+              "baseHref": "/fr/",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr"
+            },
+            "dev-en": {
+              "outputPath": "dist/en",
+              "baseHref": "/en/",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en"
+            },
+            "dev-de": {
+              "outputPath": "dist/de",
+              "baseHref": "/de/",
+              "i18nFile": "src/locale/messages.de.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "de"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -40,7 +61,9 @@
                 }
               ],
               "optimization": true,
+              "outputPath": "dist/en",
               "outputHashing": "all",
+              "baseHref": "/en/",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -65,11 +88,33 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "aot": true,
-              "outputPath": "dist/smc-show-case-fr",
+              "outputPath": "dist/fr",
               "baseHref": "/fr/",
               "i18nFile": "src/locale/messages.fr.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "fr"
+            },
+            "production-de": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "aot": true,
+              "outputPath": "dist/de",
+              "baseHref": "/de/",
+              "i18nFile": "src/locale/messages.de.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "de"
             }
           }
         },
@@ -83,7 +128,7 @@
               "browserTarget": "smc-show-case:build:production"
             },
             "fr": {
-              "browserTarget": "smc-show-case:build:fr"
+              "browserTarget": "smc-show-case:build:production-fr"
             }
           }
         },
@@ -120,6 +165,29 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
           }
         }
       }

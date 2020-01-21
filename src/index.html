@@ -13,13 +13,16 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script type="text/javascript" src="https://apis.google.com/js/platform.js" async defer></script>
   <script>
       if (global === undefined) {
         var global = window;
       }
+      (function() {
+    window['_app_base'] = '/' + window.location.pathname.split('/')[1];
+  })();
   </script>
-    <meta name="google-site-verification" content="-nOQRNxDftiU9a07KSP3SSSdm7I0aKuEZi3VdW5uTfk" />
+    <meta name="google-site-verification" content="-nOQRNxDftiU9a07KSP3SSSdm7I0aKuEZi3VdW5uTfk"/>
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Crimson+Pro|Domine&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
 </head>

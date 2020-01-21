@@ -16,10 +16,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import localeFr from '@angular/common/locales/fr';
-import { registerLocaleData } from '@angular/common';
-
-
-
+import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
+import { LanguageService } from './shared/service/language.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,7 @@ import { registerLocaleData } from '@angular/common';
     PageNotFoundComponent,
       ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     MaterialModule,
     ProductModule,
@@ -49,8 +47,14 @@ import { registerLocaleData } from '@angular/common';
       deps: [ConfigService],
       multi: true
     },
+    LanguageService,
     { provide: LANGUAGE_CONFIG, useValue: LANGUAGE_LIST },
- 
+    { provide: APP_BASE_HREF,
+      useFactory: (languageService: LanguageService) => {
+        return languageService.languageId;
+      },
+      deps : [LanguageService]
+    },
   ],
   bootstrap: [AppComponent]
 })

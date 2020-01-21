@@ -14,14 +14,14 @@ export const LANGUAGE_LIST: UserLanguage[] = [
   {
     id: 'Fr',
     LanguageType: LanguageType.FRENCH
-  }, 
+  },
   {
     id: 'En',
     LanguageType: LanguageType.ENGLISH
 
   }, {
-    id: 'Gr',
-    LanguageType: LanguageType.GERMAN 
+    id: 'De',
+    LanguageType: LanguageType.GERMAN
   }
 ]
 

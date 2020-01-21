@@ -1,7 +1,9 @@
 
+<a *ngFor="let item of languageList" [href]="item.id" (click)="setLanguage(item)">
+  <li>
 
-  <li *ngFor="let item of languageList" (click)="setLanguage(item)">
-    <mat-icon  inline="true" [svgIcon]="(item.LanguageType | lowercase)"></mat-icon>
+    <mat-icon  inline="true" [svgIcon]="(item.LanguageType)"></mat-icon>
     <span class="mat-body-2">{{item.LanguageType}}</span>
     <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
   </li>
+  </a>

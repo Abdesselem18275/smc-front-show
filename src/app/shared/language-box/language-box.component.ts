@@ -6,6 +6,10 @@ import { LanguageType, UserLanguage } from 'src/app/root-store/global-store/stat
 import { SetLanguageAction } from 'src/app/root-store/global-store/actions';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 import { LANGUAGE_CONFIG } from 'src/app/product/service/config.service';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
+import { LanguageService } from '../service/language.service';
 
 @Component({
   selector: 'app-language-box',
@@ -16,6 +20,8 @@ export class LanguageBoxComponent implements OnInit {
   language$: Observable<UserLanguage>;
   languageList: UserLanguage[];
   constructor(
+    @Inject(APP_BASE_HREF) private app_base_href: string,
+    private languageService: LanguageService,
     @Inject(LANGUAGE_CONFIG) languageList: UserLanguage[],
     private store$: Store<RootStoreState.State>) {
       this.languageList = languageList;
@@ -27,6 +33,9 @@ export class LanguageBoxComponent implements OnInit {
   }
 
   setLanguage(value: UserLanguage) {
+    this.languageService.languageId = value.id.toLowerCase() + '/';
+    console.warn(this.languageService.languageId);
+    console.warn(this.app_base_href);
     this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }
