@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { selectAllModalState } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
 import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { LanguageType } from './root-store/global-store/state';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +29,9 @@ export class AppComponent implements OnInit {
                 .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
                 .addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo.svg'))
                 .addSvgIcon('logo_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_2.svg'))
-                .addSvgIcon('german', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
-                .addSvgIcon('french', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
-                .addSvgIcon('english', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'));
+                .addSvgIcon(LanguageType.GERMAN, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
+                .addSvgIcon(LanguageType.FRENCH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
+                .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'));
   }
   ngOnInit() {
     this.modalStore$ = this.store$.select(selectAllModalState);
