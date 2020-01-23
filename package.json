@@ -7,8 +7,8 @@
     "build": "ng build",
     "heroku-postbuild": "npm run build:fr && npm run build:en && npm run build:de",
     "build:fr": "ng build --configuration=production-fr",
-    "build:en": "ng build --configuration=production",
-    "build:de": "ng build --configuration=production-de",
+    "build:en": "ng build --configuration=production-en",
+    "build:de": "ng build --configuration=production-de ",
     "build:dev-en": "ng build --configuration=dev-en --watch",
     "build:dev-fr": "ng build --configuration=dev-fr --watch",
     "build:dev-de": "ng build --configuration=dev-de --watch",
@@ -20,7 +20,11 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run smc-show-case:server:production --bundleDependencies all"
+    "build:i18n-ssr": "npm run build:client-and-server-bundles-i18n && npm run compile:server",
+    "build:i18n-ssr-dev": "npm run build:client-and-server-bundles-i18n-dev && npm run compile:server",
+    "build:client-and-server-bundles": "ng build --prod && ng run smc-show-case:server:production --bundleDependencies all",
+    "build:client-and-server-bundles-i18n": "npm run build:fr && npm run build:en && npm run build:de && ng run smc-show-case:server:production",
+    "build:client-and-server-bundles-i18n-dev": "npm run build:dev-fr && npm run build:dev-en && npm run build:dev-de"
   },
   "engines": {
     "node": "12.4.0",
@@ -35,7 +39,6 @@
     "@angular/compiler": "^9.0.0-next.0",
     "@angular/compiler-cli": "^9.0.0-next.0",
     "@angular/core": "^9.0.0-next.0",
-    "@angular/flex-layout": "^8.0.0-beta.27",
     "@angular/forms": "^9.0.0-next.0",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "^8.2.14",
