@@ -5,14 +5,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export const API_URL = 'https://show-case-api.herokuapp.com';
-//export const API_URL = 'http://127.0.0.1:8000';
+//export const API_URL = 'http://127.0.0.1:8080';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductDataService  {
 
-  private query: string;
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
   }
 

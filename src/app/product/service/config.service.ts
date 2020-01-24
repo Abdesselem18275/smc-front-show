@@ -1,13 +1,13 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { CategoryCacheService } from './category-cache.service';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { API_URL } from './product-data.service';
 import { Category, ProductCollection, FilterCategory } from '../model';
 import { CollectionCacheService } from './collection-cache.service';
 import { FilterCacheService } from './filter-cache.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UserLanguage, LanguageType } from 'src/app/root-store/global-store/state';
 
 export const LANGUAGE_LIST: UserLanguage[] = [
@@ -51,12 +51,16 @@ export class ConfigService {
     const query: string = [
       this.apiUrl,
       '/initData'].join('') ;
-    return this.http.get(query).pipe(tap(jsonsItems => {
+    return this.http.get(query).pipe(
+      catchError(err => {
+        console.error('An error occurred:', err.error);
+        return err;
+      }),
+      tap(jsonsItems => {
       this._categoryCache.categories = jsonsItems['categories'];
       this._filterCache.filterCategories = jsonsItems['filters'];
       this._collectionCache.collections = jsonsItems['collections'];
       jsonsItems['icons'].forEach(jsonItem => {
-        console.warn(jsonItem.content);
         const safeRessource = this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content);
         this.iconRegistry.addSvgIcon(jsonItem.designation, safeRessource);
       });
