@@ -22,7 +22,7 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:i18n-ssr": "npm run build:client-and-server-bundles-i18n && npm run compile:server",
     "build:i18n-ssr-dev": "npm run build:client-and-server-bundles-i18n-dev && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run smc-show-case:server:production --bundleDependencies all",
+    "build:client-and-server-bundles": "ng build --watch && ng run smc-show-case:server --bundleDependencies all",
     "build:client-and-server-bundles-i18n": "npm run build:fr && npm run build:en && npm run build:de && ng run smc-show-case:server:production",
     "build:client-and-server-bundles-i18n-dev": "npm run build:fr"
   },
@@ -51,6 +51,7 @@
     "@ngrx/store": "^8.4.0",
     "@nguniversal/express-engine": "^8.2.6",
     "@nguniversal/module-map-ngfactory-loader": "v8.2.6",
+    "bundle-js": "^1.0.3",
     "classlist.js": "^1.1.20150312",
     "codelyzer": "^5.2.0",
     "core-js": "^2.5.4",
@@ -85,7 +86,7 @@
     "lite-server": "^2.5.4",
     "protractor": "~5.4.0",
     "ts-loader": "^5.2.0",
-    "ts-node": "~7.0.0",
+    "ts-node": "^7.0.1",
     "tslint": "^5.20.1",
     "typescript": "^3.5.3",
     "webpack-cli": "^3.1.0"
