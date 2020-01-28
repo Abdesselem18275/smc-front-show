@@ -20,7 +20,6 @@ export class LanguageBoxComponent implements OnInit {
   language$: Observable<UserLanguage>;
   languageList: UserLanguage[];
   constructor(
-    @Inject(APP_BASE_HREF) private app_base_href: string,
     private languageService: LanguageService,
     @Inject(LANGUAGE_CONFIG) languageList: UserLanguage[],
     private store$: Store<RootStoreState.State>) {
@@ -35,7 +34,6 @@ export class LanguageBoxComponent implements OnInit {
   setLanguage(value: UserLanguage) {
     this.languageService.languageId = value.id.toLowerCase() + '/';
     console.warn(this.languageService.languageId);
-    console.warn(this.app_base_href);
     this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }

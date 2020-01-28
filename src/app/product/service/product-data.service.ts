@@ -16,8 +16,6 @@ export class ProductDataService  {
   constructor(private http: HttpClient , @Inject(API_URL) private apiUrl: string) {
   }
 
-
-
   get_elements(options: {
     model?: string;
     param_key?: Param[] } = {}): Observable<any[]> {
