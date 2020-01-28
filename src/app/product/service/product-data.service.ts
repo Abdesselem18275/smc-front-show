@@ -3,8 +3,9 @@ import { FilterCategory, Param} from '../model';
 import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { API_URL } from 'src/app/injectables.service';
 
-export const API_URL = 'https://show-case-api.herokuapp.com/api';
+//export const API_URL = 'https://show-case-api.herokuapp.com/api';
 //export const API_URL = 'http://127.0.0.1:8080/api';
 
 @Injectable({

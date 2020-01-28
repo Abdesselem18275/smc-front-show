@@ -2,9 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
-import { API_URL } from 'src/app/product/service/product-data.service';
 import { AccountCacheService } from './account-cache.service';
 import { SmcAuthService } from './smc-auth.service';
+import { API_URL } from 'src/app/injectables.service';
 
 declare const gapi: any;
 

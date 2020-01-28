@@ -22,7 +22,7 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:i18n-ssr": "npm run build:client-and-server-bundles-i18n && npm run compile:server",
     "build:i18n-ssr-dev": "npm run build:client-and-server-bundles-i18n-dev && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --watch && ng run smc-show-case:server --bundleDependencies all",
+    "build:client-and-server-bundles": "ng build --watch && ng run smc-show-case:server --bundleDependencies all --watch",
     "build:client-and-server-bundles-i18n": "npm run build:fr && npm run build:en && npm run build:de && ng run smc-show-case:server:production",
     "build:client-and-server-bundles-i18n-dev": "npm run build:fr"
   },

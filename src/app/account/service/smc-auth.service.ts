@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@angular/core';
-import { API_URL } from 'src/app/product/service/product-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import countryNames from '../../../assets/data/world-countries.json';
 import { Observable } from 'rxjs';
@@ -8,6 +7,7 @@ import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage
 import { Router } from '@angular/router';
 import { AccountCacheService } from './account-cache.service';
 import { ProductShort } from 'src/app/product/model.js';
+import { API_URL } from 'src/app/injectables.service.js';
 
 const httpOptions = {
   headers: new HttpHeaders({

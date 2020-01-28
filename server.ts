@@ -25,7 +25,6 @@ import {join} from 'path';
 // Express server
 const app = express();
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
 
@@ -44,7 +43,9 @@ app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);
 
 // Example Express Rest API endpoints
-// app.get('/api/**', (req, res) => { });
+app.get('/api/**', (req, res) => {
+  console.log(req);
+ });
 // Serve static files from /browser
 app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '1y'

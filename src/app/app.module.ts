@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-found.component';
 import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ConfigService, LANGUAGE_CONFIG, LANGUAGE_LIST, loadInitData } from './product/service/config.service';
 import { AccountModule } from './account/account.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
@@ -15,9 +14,9 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import localeFr from '@angular/common/locales/fr';
-import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
 import { LanguageService } from './shared/service/language.service';
+import { InjectablesService, loadInitData } from './injectables.service';
+import { ConfigService } from './product/service/config.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +37,7 @@ import { LanguageService } from './shared/service/language.service';
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
+    InjectablesService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}
     },
@@ -48,13 +48,6 @@ import { LanguageService } from './shared/service/language.service';
       multi: true
     },
     LanguageService,
-    { provide: LANGUAGE_CONFIG, useValue: LANGUAGE_LIST },
-    { provide: APP_BASE_HREF,
-      useFactory: (languageService: LanguageService) => {
-        return languageService.languageId;
-      },
-      deps : [LanguageService]
-    },
   ],
   bootstrap: [AppComponent]
 })

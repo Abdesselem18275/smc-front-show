@@ -1,7 +1,6 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { CategoryCacheService } from './category-cache.service';
 import { tap, catchError } from 'rxjs/operators';
-import { API_URL } from './product-data.service';
 import { Category, ProductCollection, FilterCategory } from '../model';
 import { CollectionCacheService } from './collection-cache.service';
 import { FilterCacheService } from './filter-cache.service';
@@ -9,27 +8,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UserLanguage, LanguageType } from 'src/app/root-store/global-store/state';
+import { API_URL } from 'src/app/injectables.service';
 
-export const LANGUAGE_LIST: UserLanguage[] = [
-  {
-    id: 'Fr',
-    LanguageType: LanguageType.FRENCH
-  },
-  {
-    id: 'En',
-    LanguageType: LanguageType.ENGLISH
 
-  }, {
-    id: 'De',
-    LanguageType: LanguageType.GERMAN
-  }
-]
-
-export const LANGUAGE_CONFIG = new InjectionToken<UserLanguage[]>('config.service');
-
-export function loadInitData(configService: ConfigService) {
-  return () => configService.loadInitials();
-}
 
 @Injectable({
   providedIn: 'root'
