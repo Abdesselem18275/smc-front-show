@@ -210,6 +210,7 @@ export class BaseImage {
         designation?: string} = {}) {
         this.id = options.id || 1;
         this.content = options.content || '';
+        //this.content = '';
         this.designation = options.designation || '';
     }
 

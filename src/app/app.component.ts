@@ -8,6 +8,7 @@ import { selectAllModalState } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
 import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { LanguageType } from './root-store/global-store/state';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.modalStore$ = this.store$.select(selectAllModalState);
     console.warn(this.location);
-
+    this.location.onUrlChange((x)=>{
+      console.warn(x)
+    })
 }
   prepareRoute(outlet: RouterOutlet) {
     const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

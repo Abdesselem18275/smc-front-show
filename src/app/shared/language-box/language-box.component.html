@@ -1,5 +1,5 @@
 
-<a *ngFor="let item of languageList" [href]="item.id" (click)="setLanguage(item)">
+<a *ngFor="let item of languageList" [href]="item.id | lowercase" (click)="setLanguage(item)">
   <li>
 
     <mat-icon  inline="true" [svgIcon]="(item.LanguageType)"></mat-icon>

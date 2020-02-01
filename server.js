@@ -17,16 +17,20 @@ app.use(express.static('./dist/'));
 
 
 app.get('/*', function(req,res) {
-
   const supportedLocales = ['en','fr','de'];
   const defaultLocale = 'en';
-  const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+  //const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+  const matches = req.url.match(/(^\/\w{2})(\/\w{2})*/).map(x => x.toLowerCase().replace('/',''));
+  console.log('url ='+req.url);
+  console.log('matches ='+ matches);
+  console.log('base ='+ req.baseUrl);
+
+  console.log('last ='+ matches[matches.length-1]);
   //check if the requested url has a correct format '/locale' and matches any of the supportedLocales
-  const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
-  console.log(path.join(__dirname,'dist',locale,'index.html'));
-  console.log(req);
-  console.log(req.matches);
-  console.log(req.url);
+  const locale = (matches && supportedLocales.indexOf(matches[matches.length-1]) !== -1) ? 
+                  matches[matches.length-1] : defaultLocale;
+
+  console.warn(locale);
   res.sendFile(path.join(__dirname,'dist',locale,'index.html'));
 });
 

@@ -16,6 +16,7 @@ export class ProductHomeComponent implements OnInit {
 
 
     this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isLeaf);
+    console.warn(this.categories);
   }
 
 }

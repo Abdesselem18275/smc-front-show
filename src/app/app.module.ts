@@ -17,6 +17,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { LanguageService } from './shared/service/language.service';
 import { InjectablesService, loadInitData } from './injectables.service';
 import { ConfigService } from './product/service/config.service';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ConfigService } from './product/service/config.service';
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
+    httpInterceptorProviders,
     InjectablesService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}

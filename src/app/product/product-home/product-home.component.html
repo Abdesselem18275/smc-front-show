@@ -6,8 +6,8 @@
 </div>
 <div class="icons__wrap">
 
-   <figure *ngFor="let category of categories">
-         <mat-icon  inline="true" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  [svgIcon]="category.svgIcon.designation"></mat-icon>
+   <figure  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  *ngFor="let category of categories">
+         <mat-icon  inline="true" [svgIcon]="category.svgIcon?.designation"></mat-icon>
       <figcaption class="figure-caption mat-caption">{{category.designation | titlecase}}</figcaption>
    </figure>
 

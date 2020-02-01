@@ -41,7 +41,7 @@
       <h3 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
         {{rootCat.designation | uppercase}}
       </h3>
-      <img class="sub-menu__column__image" [src]="rootCat.thumbNail.content">
+      <img class="sub-menu__column__image" [src]="rootCat.thumbNail?.content">
       <h4 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
           {{childCat.designation | titlecase}}
       </h4>

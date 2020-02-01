@@ -44,7 +44,7 @@ app.set('views', DIST_FOLDER);
 
 // Example Express Rest API endpoints
 app.get('/api/**', (req, res) => {
-  console.log(req);
+  res.status(404).send('data requests are not supported');
  });
 // Serve static files from /browser
 app.get('*.*', express.static(DIST_FOLDER, {

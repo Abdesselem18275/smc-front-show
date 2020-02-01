@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from "@angular/common";
 
 export enum LanguageType {
     ENGLISH = 'English',
@@ -9,12 +10,27 @@ export interface UserLanguage {
     LanguageType: string;
 }
 
-export interface State  {
+function getType(base:string)  {
+  switch(base) {
+    case 'fr':
+      return LanguageType.FRENCH
+    case 'en':
+      return LanguageType.ENGLISH
+    case 'de':
+      return LanguageType.GERMAN
+    default:
+      return LanguageType.ENGLISH
+
+  }
+}
+export class State  {
   language: UserLanguage;
 }
+
+
 export const initialState: State = {
   language : {
-    id : 'En',
-    LanguageType : LanguageType.ENGLISH }
+    id : APP_BASE_HREF.toString(),
+    LanguageType : getType(APP_BASE_HREF.toString()) }
 };
 
