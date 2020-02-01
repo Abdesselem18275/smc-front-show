@@ -47,7 +47,6 @@ login(credentials: any): Observable<any> {
       '/token-auth/'
        ].join('');
   return this.http.post(query, credentials, httpOptions).pipe( tap(jsonArray => {
-    console.warn(jsonArray);
     this.appStorage.loadLocalStorage(jsonArray);
   }));
 }

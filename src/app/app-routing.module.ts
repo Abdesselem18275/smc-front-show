@@ -13,7 +13,7 @@ const appRoutes: Routes = [
 
   {path : '' , component : ProductComponent},
   {path : 'account' , component : AccountComponent},
-  {path : '**' , component : PageNotFoundComponent}
+  {path : '**' , redirectTo: '/product/home'}
 
 
 ];

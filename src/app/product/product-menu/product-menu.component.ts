@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model';
 import { CategoryCacheService } from '../service/category-cache.service';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
@@ -32,6 +32,7 @@ export class ProductMenuComponent implements OnInit {
   isReady: boolean;
   isActive: boolean;
   modalStore$: Observable<ModalStoreState.State>;
+  isHomeRoute: Observable<boolean>;
   language$: Observable<UserLanguage>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
 
@@ -68,6 +69,8 @@ export class ProductMenuComponent implements OnInit {
       )).subscribe(event => {
         this.isActive = !(event['url'] === '/product/home');
       });
+    this.isHomeRoute = this.store$.pipe(map(state => state.router.router.state.url.includes('product/home')));
+
   }
 
   toggleMenu() {
@@ -82,12 +85,10 @@ export class ProductMenuComponent implements OnInit {
   }
 
   getModalState(value) {
-    console.warn(value);
     return this.store$.select(selectModalStateByType, {key: value});
   }
 
   toggleModal(value) {
-    console.warn('value + toggleModal');
     this.store$.dispatch(ToggleAction({key: value}));
   }
   toggleUserCard() {

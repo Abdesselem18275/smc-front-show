@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet} from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -6,15 +6,15 @@ import { RootStoreState, ModalStoreState } from './root-store';
 import { Store } from '@ngrx/store';
 import { selectAllModalState } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
-import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
-import { LanguageType } from './root-store/global-store/state';
-import { state } from '@angular/animations';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LanguageType, UserLanguage } from './root-store/global-store/state';
+import { SetLanguageAction } from './root-store/global-store/actions';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   constructor(
               private store$: Store<RootStoreState.State>,
-              private location: Location,
+               @Inject('BASE_URL') private baseUrl: string,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
@@ -36,14 +36,29 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.modalStore$ = this.store$.select(selectAllModalState);
-    console.warn(this.location);
-    this.location.onUrlChange((x)=>{
-      console.warn(x)
-    })
+    const language = this.baseUrl.replace(/\//g, '');
+    const value: UserLanguage = {
+      id : language,
+      LanguageType : this.getType(language)
+    };
+    this.store$.dispatch(SetLanguageAction({key: value}));
 }
   prepareRoute(outlet: RouterOutlet) {
     const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
     return res || 'empty';
+  }
+
+  getType(base: string): string {
+    switch (base) {
+      case 'fr':
+        return LanguageType.FRENCH;
+      case 'en':
+        return LanguageType.ENGLISH;
+      case 'de':
+        return LanguageType.GERMAN;
+      default:
+        return LanguageType.ENGLISH;
+    }
   }
 
 }

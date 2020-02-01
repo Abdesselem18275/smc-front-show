@@ -27,13 +27,11 @@ export class LanguageBoxComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.warn(this.languageList);
     this.language$ = this.store$.select(selectLanguage);
   }
 
   setLanguage(value: UserLanguage) {
     this.languageService.languageId = value.id.toLowerCase() + '/';
-    console.warn(this.languageService.languageId);
     this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }

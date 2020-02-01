@@ -29,8 +29,8 @@ app.get('/*', function(req,res) {
   //check if the requested url has a correct format '/locale' and matches any of the supportedLocales
   const locale = (matches && supportedLocales.indexOf(matches[matches.length-1]) !== -1) ? 
                   matches[matches.length-1] : defaultLocale;
-
   console.warn(locale);
+  console.warn(path.join(__dirname,'dist',locale,'index.html'));
   res.sendFile(path.join(__dirname,'dist',locale,'index.html'));
 });
 

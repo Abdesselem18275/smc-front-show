@@ -9,7 +9,6 @@ export const featureKey = 'modal';
 const modalReducer = createReducer(
     initialState,
     on(ModalActions.ToggleAction, (state, { key }) => {
-        console.warn(key);
         return {
             ...initialState ,
             [key] : !state[key]
