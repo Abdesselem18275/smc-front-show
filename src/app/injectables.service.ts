@@ -26,7 +26,7 @@ export const API_URL = new InjectionToken<string>('ApiUrl', {
   factory: SMC_API_URL
 });
 
-function getBaseUrl() {
+export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
 }
 
