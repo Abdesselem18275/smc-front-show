@@ -5,5 +5,5 @@ import { UrlBaseCleaner } from "./url-base-cleaner";
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
-    { provide: HTTP_INTERCEPTORS, useClass: UrlBaseCleaner, multi: true },
+  //{ provide: HTTP_INTERCEPTORS, useClass: UrlBaseCleaner, multi: true },
   ];

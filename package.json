@@ -49,6 +49,7 @@
     "@ngrx/entity": "^8.4.0",
     "@ngrx/router-store": "^8.4.0",
     "@ngrx/store": "^8.4.0",
+    "@ngrx/store-devtools": "^8.4.0",
     "@nguniversal/express-engine": "^8.2.6",
     "@nguniversal/module-map-ngfactory-loader": "v8.2.6",
     "bundle-js": "^1.0.3",

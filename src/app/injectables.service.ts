@@ -28,6 +28,7 @@ export const API_URL = new InjectionToken<string>('ApiUrl', {
 
 export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
+  //return '';
 }
 
 

@@ -64,13 +64,10 @@ export class ProductMenuComponent implements OnInit {
           }
           ];
     this.rootCategories = treeMenu;
-    this.router.events.pipe(filter(x =>
-      x instanceof NavigationEnd
-      )).subscribe(event => {
-        this.isActive = !(event['url'] === '/product/home');
-      });
-    this.isHomeRoute = this.store$.pipe(map(state => state.router.router.state.url.includes('product/home')));
-
+    this.isHomeRoute = this.router.events.pipe(
+      filter(x => x instanceof NavigationEnd),
+      map(event => event['url'] === '/product/home'));
+    this.router.events.subscribe(x => console.warn(x));
   }
 
   toggleMenu() {
