@@ -40,20 +40,19 @@ p {
 
 .nav-bar__logo {
   display: flex;
-  align-items: center;
-  color: black;
   cursor: pointer;
   mat-icon {
-   margin-top: 0.5rem;
-   width: 2.5rem;
-   margin-right: 0.75rem;
-   color:black ;
+   width: 4rem;
   }
-  .header--big {
-    font-family: 'Domine', serif;
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 0.25rem;
+  .header--small {
+    border-left: solid 1px black;
+    width: 5rem;
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+    font-weight: 300;
+    @media only screen and (max-width:1024px) { 
+      display: none;
+    }
   }
 }
 
