@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   constructor(
               private store$: Store<RootStoreState.State>,
-               @Inject('BASE_URL') private baseUrl: string,
+               @Inject('APP_BASE_HREF') private baseUrl: string,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
