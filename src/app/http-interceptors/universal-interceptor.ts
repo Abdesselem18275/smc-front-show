@@ -12,14 +12,14 @@ export class UniversalInterceptor implements HttpInterceptor  {
               @Inject(API_URL) private apiUrl: string) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    let serverReq: HttpRequest<any> = req;
-    if (this.request) {
-      let newUrl = req.url ;
-      if (!req.url.startsWith('/')) {
-        newUrl += '/';
-      }
-      serverReq = req.clone({url: newUrl});
-    }
+    // let serverReq: HttpRequest<any> = req;
+    // if (this.request) {
+    //   let newUrl = req.url ;
+    //   if (!req.url.startsWith('/')) {
+    //     newUrl += '/';
+    //   }
+    //   serverReq = req.clone({url: newUrl});
+    // }
     return next.handle(req);
   }
 }
