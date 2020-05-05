@@ -18,8 +18,7 @@ import { LanguageService } from './shared/service/language.service';
 import { InjectablesService, loadInitData } from './injectables.service';
 import { ConfigService } from './product/service/config.service';
 import { httpInterceptorProviders } from './http-interceptors';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
