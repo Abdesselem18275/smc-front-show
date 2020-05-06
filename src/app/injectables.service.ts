@@ -19,17 +19,17 @@ const LANGUAGE_LIST: UserLanguage[] = [
 ];
 const SMC_API_URL = () => 'https://show-case-api.herokuapp.com/api';
 const LOCAL_API_URL = () => 'http://127.0.0.1:8000/api';
+const getBaseUrl = () => {
+  
+ // return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
+  return '';
+}
 
 
 export const API_URL = new InjectionToken<string>('ApiUrl', {
   providedIn: 'root',
   factory: SMC_API_URL
 });
-
-export function getBaseUrl() {
-  //return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
-  return '';
-}
 
 
 export const LANGUAGE_CONFIG = new InjectionToken<UserLanguage[]>('config.service');
@@ -38,6 +38,6 @@ export function loadInitData(configService: ConfigService) {
 }
 export const InjectablesService: Array<any> = [
   { provide: LANGUAGE_CONFIG, useValue: LANGUAGE_LIST },
-  { provide: 'BASE_URL' , useFactory: getBaseUrl }
+  { provide: 'APP_BASE_HREF' , useFactory: getBaseUrl }
 ];
 

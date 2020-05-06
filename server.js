@@ -20,7 +20,7 @@ app.get('/*', function(req,res) {
   const supportedLocales = ['en','fr','de'];
   const defaultLocale = 'en';
   //const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
-  const matches = req.url.match(/(^\/\w{2})(\/\w{2})*/).map(x => x.toLowerCase().replace('/',''));
+  const matches = req.url.match(/(^\/\w{2})(\/\w{2})*/).filter(x => x !== undefined).map(x => x.toLowerCase().replace('/',''));
   console.log('url ='+req.url);
   console.log('matches ='+ matches);
   console.log('base ='+ req.baseUrl);

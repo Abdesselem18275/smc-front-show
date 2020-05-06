@@ -11,9 +11,9 @@ import { AccountComponent } from './account/account/account.component';
 
 const appRoutes: Routes = [
 
-  {path : '' , component : ProductComponent},
+  {path : 'product' , component : ProductComponent},
   {path : 'account' , component : AccountComponent},
-  {path : '**' , redirectTo: '/product/home'}
+  //{path : '**' , redirectTo: '/product/home'}
 
 
 ];

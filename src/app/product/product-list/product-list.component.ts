@@ -3,7 +3,7 @@ import { ProductShort, ParamType, Param } from '../model';
 import { ActivatedRoute} from '@angular/router';
 import { map} from 'rxjs/operators';
 import { Store} from '@ngrx/store';
-import { ParamStoreActions, ParamStoreSelectors } from 'src/app/root-store/param-store';
+import {  ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
@@ -32,7 +32,6 @@ export class ProductListComponent implements OnInit {
   isFilterActive: boolean;
   isModuleActive: boolean;
   resetFilter: boolean;
-  modalStateStore = new ModalStateStore();
 
 
   constructor(private store$: Store<RootStoreState.State>) { }

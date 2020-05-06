@@ -1,5 +1,3 @@
-import { APP_BASE_HREF, LocationStrategy } from "@angular/common";
-
 
 export enum LanguageType {
     ENGLISH = 'English',

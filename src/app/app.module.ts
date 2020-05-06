@@ -19,6 +19,7 @@ import { InjectablesService, loadInitData } from './injectables.service';
 import { ConfigService } from './product/service/config.service';
 import { httpInterceptorProviders } from './http-interceptors';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,6 @@ import { httpInterceptorProviders } from './http-interceptors';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     MaterialModule,
-    ProductModule,
     AccountModule,
     ReactiveFormsModule,
     SharedModule,
@@ -36,6 +36,8 @@ import { httpInterceptorProviders } from './http-interceptors';
     BrowserAnimationsModule,
     RootStoreModule,
     EffectsModule.forRoot([AppEffects]),
+    ProductModule,
+
   ],
   providers: [
     httpInterceptorProviders,

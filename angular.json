@@ -248,5 +248,8 @@
       }
     }
   },
-  "defaultProject": "smc-show-case"
+  "defaultProject": "smc-show-case",
+  "cli": {
+    "analytics": "d4436812-ae77-4cc7-b841-6ee1fec16334"
+  }
 }
