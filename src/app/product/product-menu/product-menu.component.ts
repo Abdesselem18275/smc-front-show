@@ -12,7 +12,6 @@ import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/act
 import { Observable } from 'rxjs';
 import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
-import { selectSelectedUrl, selectRouter } from 'src/app/root-store/router-store/selectors';
 
 @Component({
   selector: 'app-product-menu',
