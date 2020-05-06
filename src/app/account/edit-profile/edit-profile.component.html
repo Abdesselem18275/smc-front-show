@@ -6,20 +6,20 @@
 
       <section class="section--left">
             <header class="form-group__header">
-                    <h3 class="smc-header">PERSONAL INFORMATION</h3>
+                    <h3 class="smc-header" i18n>PERSONAL INFORMATION</h3>
             </header>
             <div formGroupName="profile">
             <mat-form-field  appearance="fill">
-                <mat-label>first name</mat-label>
+                <mat-label i18n>first name</mat-label>
                     <input required matInput type="text" formControlName="first_name" id="first_name">
             </mat-form-field>                            
         <mat-form-field appearance="fill">
-                <mat-label>last name</mat-label>
+                <mat-label i18n>last name</mat-label>
                 <input required matInput type="text" formControlName="last_name" id="last_name">
         </mat-form-field>
             </div>
         <mat-form-field appearance="fill">
-                <mat-label>Country</mat-label>
+                <mat-label i18n>Country</mat-label>
                 <mat-select formControlName="country" id="country">
                   <mat-option *ngFor="let country of countryNames" [value]="country.val">
                     {{country.val}}
@@ -27,7 +27,7 @@
                 </mat-select>
         </mat-form-field>
         <mat-form-field  appearance="fill">
-                <mat-label>Phone Number</mat-label>
+                <mat-label i18n>Phone Number</mat-label>
                 <input required matInput autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
         </mat-form-field>
   </section>
@@ -35,7 +35,7 @@
     <section   class="section--right">
 
     <header class="form-group__header">
-            <h3 class="smc-header">COMPANY INFORMATIONS</h3>
+            <h3 class="smc-header" i18n>COMPANY INFORMATIONS</h3>
     </header>
 
 
@@ -43,36 +43,36 @@
                     formControlName="is_professional" 
                     (change)="onchanges($event)"
                     [labelPosition] = "'before'">
-                    <span class="mat-subheading-1">Are you professional ?</span>
+                    <span class="mat-subheading-1" i18n>Are you professional ?</span>
         </mat-slide-toggle>
         <mat-form-field appearance="fill">
-                <mat-label>company name</mat-label>
+                <mat-label i18n>company name</mat-label>
                 <input              
                 autocomplete="organization" 
                 matInput type="text" 
                 formControlName="company_name" id="company_name">
         </mat-form-field>
         <mat-form-field appearance="fill">
-                <mat-label>position</mat-label>
+                <mat-label i18n>position</mat-label>
                 <input              
                 autocomplete="organization" 
                 matInput type="text" 
                 autocomplete="organization-title" 
                 formControlName="position" id="position">
-                <mat-hint> your current position , eg: sales manager </mat-hint>
+                <mat-hint i18n> your current position , eg: sales manager </mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-                <mat-label>activity</mat-label>
+                <mat-label i18n>activity</mat-label>
                 <input              
                 autocomplete="activity" 
                 matInput type="text" 
                 autocomplete="activity" 
                 formControlName="activity_field" id="activity_field">
-                <mat-hint> Insert your field of activity , eg: Tourism , Restoration</mat-hint>
+                <mat-hint i18n> Insert your field of activity , eg: Tourism , Restoration</mat-hint>
         </mat-form-field>
     </section>
                     <button class="form__submit-button" type="submit" [disabled]="!accountForm.valid"
-                    mat-raised-button color="primary" primary>Save changes
+                    mat-raised-button color="primary" primary i18n>Save changes
                 </button>
 
   </form>

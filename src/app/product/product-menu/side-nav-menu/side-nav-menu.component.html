@@ -1,5 +1,5 @@
 <header class="upper-menu">
-  <h2>
+  <h2 i18n>
     Menu
   </h2>
   <button (click)="closeMenu()" mat-icon-button>
@@ -13,7 +13,7 @@
 </div>
 
 <section>
-      <p   class="mat-caption text--grey title">
+      <p   class="mat-caption text--grey title" i18n>
         Categories
       </p>
       <li   class="mat-body-2"
@@ -22,29 +22,29 @@
 </section>
 
 <section>
-  <p class="mat-caption text--grey title">
+  <p class="mat-caption text--grey title" i18n>
      Account
   </p>
   <ng-container *ngIf="isLogged">
   <li [routerLink]="['/account/profile']" >
     <mat-icon>person</mat-icon>
-   <span class="mat-body-2">Profile</span>
+   <span class="mat-body-2" i18n>Profile</span>
   </li>
   <li (click)="logOut()">
     <mat-icon>power_settings_new</mat-icon>
-   <span class="mat-body-2">Logout</span>
+   <span class="mat-body-2" i18n>Logout</span>
   </li>
   </ng-container>
   <ng-container *ngIf="!isLogged">
     <li (click)="login()">
       <mat-icon>exit_to_app</mat-icon>
-     <span class="mat-body-2">sign in / sign up</span>
+     <span i18n class="mat-body-2">sign in / sign up</span>
     </li>
     </ng-container>
 </section>
 
 <section>
-  <p class="mat-caption text--grey title">
+  <p i18n class="mat-caption text--grey title">
      Language
   </p>
   <app-language-box>

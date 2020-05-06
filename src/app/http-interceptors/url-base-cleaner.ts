@@ -5,7 +5,7 @@ import {HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders} from '@angular/c
 @Injectable()
 export class UrlBaseCleaner implements HttpInterceptor  {
     intercept(req: HttpRequest<any>, next: HttpHandler)  {
-        console.warn(req.urlWithParams);
+        //console.warn(req.urlWithParams);
         return next.handle(req);
     }
 }

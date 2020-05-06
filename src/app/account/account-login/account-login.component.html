@@ -1,5 +1,5 @@
 <header class="upper-menu">
-                <h3>Login / Register</h3>
+                <h3 i18n>Login / Register</h3>
                 <span class="space-divider"></span>
                 <button (click)="cancel()" mat-icon-button>
                         <mat-icon>close</mat-icon>
@@ -13,8 +13,8 @@
         <section id="smc-login">
 
                 <header class="form-group__header">
-                        <h3>Sign in with SMC</h3>
-                        <p class="text--grey mat-body">Please enter the following informations</p>
+                        <h3 i18n>Sign in with SMC</h3>
+                        <p i18n class="text--grey mat-body">Please enter the following informations</p>
                         <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
                                 {{item.value}}
                         </p>
@@ -24,24 +24,24 @@
 
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                                 <mat-form-field appearance="fill">
-                                        <mat-label>email</mat-label>
+                                        <mat-label i18n>email</mat-label>
                                         <input required matInput type="email" formControlName="email" id="email">
                                         <mat-error
                                                 *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
                                                 {{getEmailErrorMessage()}}</mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
-                                        <mat-label>password</mat-label>
+                                        <mat-label i18n>password</mat-label>
                                         <input required matInput type="password" formControlName="password"
                                                 id="password" placeholder="password">
-                                        <mat-hint>Forget yous password ?</mat-hint>
-                                        <mat-error *ngIf="loginForm.get('password').invalid">
+                                        <mat-hint i18n>Forget yous password ?</mat-hint>
+                                        <mat-error i18n *ngIf="loginForm.get('password').invalid">
                                                 this field is required.
                                         </mat-error>
                                 </mat-form-field>
 
                                 <button class="form__submit-button" type="submit" [disabled]="loginForm.invalid"
-                                        mat-raised-button color="primary" primary>LOGIN
+                                        mat-raised-button color="primary" i18n primary>LOGIN
                                 </button>
 
 

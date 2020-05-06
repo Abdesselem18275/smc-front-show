@@ -35,13 +35,14 @@
         <section class="action-container"> 
             <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
                     class="favorites"
+
                     mat-button>
                     <mat-icon>favorite</mat-icon>
-                    Like
+                    <span i18n>Like</span>
             </button>
             <button mat-button>
-                    <mat-icon >message</mat-icon>
-                    Ask
+                    <mat-icon i18n>message</mat-icon>
+                <span>Ask</span>
             </button>
         </section>
         </div>

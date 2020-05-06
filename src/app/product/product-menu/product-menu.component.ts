@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model';
 import { CategoryCacheService } from '../service/category-cache.service';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
 import { ModalStateStore } from 'src/app/shared/token';
@@ -10,8 +10,9 @@ import { RootStoreState, ModalStoreState } from 'src/app/root-store';
 import { selectModalStateByType, selectAllModalState } from 'src/app/root-store/modal-store/selectors';
 import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
 import { Observable } from 'rxjs';
-import { LanguageType, UserLanguage } from 'src/app/root-store/global-store/state';
+import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
+import { selectSelectedUrl, selectRouter } from 'src/app/root-store/router-store/selectors';
 
 @Component({
   selector: 'app-product-menu',
@@ -64,13 +65,16 @@ export class ProductMenuComponent implements OnInit {
           }
           ];
     this.rootCategories = treeMenu;
-    this.router.events.pipe(filter(x =>
-      x instanceof NavigationEnd
-      )).subscribe(event => {
-        this.isActive = !(event['url'] === '/product/home');
-      });
-    this.isHomeRoute = this.store$.pipe(map(state => state.router.router.state.url.includes('product/home')));
-
+    // this.router.events.pipe(filter(x =>
+    //   x instanceof NavigationEnd
+    //   )).subscribe(event => {
+    //     this.isActive = !(event['url'] === '/product/home');
+    //   });
+    //this.isHomeRoute = this.store$.pipe(map(state => state.router.state.url.includes('product/home')));
+    this.store$.select(selectRouter).subscribe(x =>
+      console.warn(x)
+    );
+    this.store$.subscribe(x => console.warn(x));
   }
 
   toggleMenu() {

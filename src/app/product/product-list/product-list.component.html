@@ -17,7 +17,7 @@
                   matBadgePosition="above before">
           tune
         </mat-icon>
-        <span class="mat-body-strong">Filter</span>
+        <span class="mat-body-strong" i18n>Filter</span>
 
       </button>
       </div>
@@ -41,8 +41,8 @@
                   </mat-button-toggle>
                 </mat-button-toggle-group>
                <div class="search-meta" *ngIf="!(isLoading | async ) && (isSearchActive | async)">
-                      <h2 *ngIf="(objCount | async) == 0">No products found for "{{searchTerm| async}}"</h2>
-                      <h2 *ngIf="!(objCount | async) == 0">We found {{objCount | async }} products for for "{{searchTerm| async}}"</h2>
+                      <h2 i18n *ngIf="(objCount | async) == 0">No products found for "{{searchTerm| async}}"</h2>
+                      <h2 i18n *ngIf="!(objCount | async) == 0">We found {{objCount | async }} products for for "{{searchTerm| async}}"</h2>
                </div>
 
             <div [ngClass]="{'content__image-container--grid__module': isModuleActive ,'content__image-container--grid':!isModuleActive }">
