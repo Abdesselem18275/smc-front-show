@@ -54,7 +54,8 @@
     "dotenv": "^8.2.0",
     "intersection-observer": "^0.10.0",
     "rxjs": "^6.5.5",
-    "zone.js": "^0.10.3"
+    "zone.js": "^0.10.3",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@angular/language-service": "^9.1.4",
@@ -80,7 +81,6 @@
     "protractor": "~5.4.4",
     "ts-loader": "^7.0.2",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3",
     "webpack-cli": "^3.3.11"
   }
 }
