@@ -316,8 +316,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="42b0cf278349e8fde78ae23da6678c52ec73ad45" datatype="html">
-        <source>No products found for &quot;<x id="INTERPOLATION" equiv-text="{{searchTerm| async}}"/>&quot;</source>
-          <target>Aucun produit trouver pour  &quot;<x id="INTERPOLATION" equiv-text="{{searchTerm| async}}"/>&quot;</target>
+        <source>No products found for </source>
+          <target>Aucun produit trouver pour</target>
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
