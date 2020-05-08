@@ -17,10 +17,10 @@ const LANGUAGE_LIST: UserLanguage[] = [
     LanguageType: LanguageType.GERMAN
   }
 ];
-const SMC_API_URL = () => 'https://show-case-api.herokuapp.com/api';
+const SMC_API_URL = () => 'http://ec2-35-180-37-122.eu-west-3.compute.amazonaws.com:8080/api';
 const LOCAL_API_URL = () => 'http://127.0.0.1:8000/api';
 const getBaseUrl = () => {
-  
+
  // return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
   return '';
 }
