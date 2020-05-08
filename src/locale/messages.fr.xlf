@@ -3,7 +3,7 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="2310e1871f9fe8c0b358eac68e8afc92185d786f" datatype="html">
-        <source>  
+        <source>
            PRODUCTS
         </source>
         <target>PRODUITS</target>
@@ -46,6 +46,8 @@
         <source>
     Menu
   </source>
+          <target>Menu</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
           <context context-type="linenumber">2</context>
@@ -55,6 +57,7 @@
         <source>
         Categories
       </source>
+                <target>Categories</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
           <context context-type="linenumber">16</context>
@@ -72,6 +75,7 @@
       </trans-unit>
       <trans-unit id="994363f08f9fbfa3b3994ff7b35c6904fdff18d8" datatype="html">
         <source>Profile</source>
+  <target>Profile</target>
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
@@ -151,6 +155,7 @@
       </trans-unit>
       <trans-unit id="0b15bf6fa1e5bdabc9fde97a14bee63a5d5e62f6" datatype="html">
         <source>email</source>
+        <target>email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
           <context context-type="linenumber">27</context>
@@ -212,6 +217,8 @@
       </trans-unit>
       <trans-unit id="251d02cc82cf40addfc433191c0f3bbe6ec77295" datatype="html">
         <source>message</source>
+        <target>message</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/product-box/product-box.component.html</context>
           <context context-type="linenumber">44</context>
@@ -219,6 +226,8 @@
       </trans-unit>
       <trans-unit id="7265c92e277b4b7522e5ae0e19cd48889acc1903" datatype="html">
         <source>Create profile</source>
+                <target>Creer profile</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">2</context>
@@ -226,6 +235,8 @@
       </trans-unit>
       <trans-unit id="9f192e3341de282f2ce3df60ab00bd278cf8530b" datatype="html">
         <source>Register your account</source>
+                        <target>Enregistrer votre compte</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">16</context>
@@ -233,6 +244,8 @@
       </trans-unit>
       <trans-unit id="e305e7a0ce8c74271556cfe9fed3653befdb231c" datatype="html">
         <source>confirm your password</source>
+        <target>Confirmer mot de passe</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">39</context>
@@ -240,6 +253,7 @@
       </trans-unit>
       <trans-unit id="47dfe78bf9cd27e72ed5072223ed120191589dd1" datatype="html">
         <source>first name</source>
+        <target>Prenom</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">48</context>
@@ -251,6 +265,7 @@
       </trans-unit>
       <trans-unit id="d9fe613f150fdf789a9b67dccec2f6da619101b3" datatype="html">
         <source>last name</source>
+        <target>Nom</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">52</context>
@@ -262,6 +277,7 @@
       </trans-unit>
       <trans-unit id="a43f25a9ac40e8e2441ff0be7a36b8e5d15534df" datatype="html">
         <source>Country</source>
+        <target>Pays</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
           <context context-type="linenumber">56</context>
@@ -273,6 +289,7 @@
       </trans-unit>
       <trans-unit id="3fdc751b264ca9998e1542fcf5794e274cd56344" datatype="html">
         <source>Log out</source>
+        <target>Deconnexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/account-card/account-card.component.html</context>
           <context context-type="linenumber">8</context>
@@ -280,6 +297,7 @@
       </trans-unit>
       <trans-unit id="3ac9a098a34b04923bf20ec0c754bab138750b79" datatype="html">
         <source>My profile</source>
+        <target>Mon profile</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/account/account-card/account-card.component.html</context>
           <context context-type="linenumber">12</context>
@@ -287,6 +305,7 @@
       </trans-unit>
       <trans-unit id="5ca707824ab93066c7d9b44e1b8bf216725c2c22" datatype="html">
         <source>Filter</source>
+        <target>Filtrer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-filter/product-filter.component.html</context>
           <context context-type="linenumber">2</context>
@@ -298,6 +317,8 @@
       </trans-unit>
       <trans-unit id="42b0cf278349e8fde78ae23da6678c52ec73ad45" datatype="html">
         <source>No products found for &quot;<x id="INTERPOLATION" equiv-text="{{searchTerm| async}}"/>&quot;</source>
+          <target>Aucun produit trouver pour  &quot;<x id="INTERPOLATION" equiv-text="{{searchTerm| async}}"/>&quot;</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
           <context context-type="linenumber">44</context>
@@ -305,6 +326,8 @@
       </trans-unit>
       <trans-unit id="a4b77fe60cffad3454cc4dfa49bb92c4a42f0efe" datatype="html">
         <source>We found <x id="INTERPOLATION" equiv-text="{{objCount | async }}"/> products for for &quot;<x id="INTERPOLATION_1" equiv-text="{{searchTerm| async}}"/>&quot;</source>
+        <source>On a trouver <x id="INTERPOLATION" equiv-text="{{objCount | async }}"/> products for for &quot;<x id="INTERPOLATION_1" equiv-text="{{searchTerm| async}}"/>&quot;</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
           <context context-type="linenumber">45</context>

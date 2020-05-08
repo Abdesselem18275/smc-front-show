@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "heroku-postbuild": "npm run build:fr && npm run build:en && npm run build:de",
+    "heroku-postbuild": "npm run build:en",
+    // "heroku-postbuild": "npm run build:fr && npm run build:en && npm run build:de",
+
     "build:fr": "ng build --configuration=production-fr",
     "build:en": "ng build --configuration=production-en",
     "build:de": "ng build --configuration=production-de ",
