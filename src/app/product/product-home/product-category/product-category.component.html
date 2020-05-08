@@ -5,7 +5,7 @@
 </div>
 <section class="image-list--large-screen">
   <article *ngFor="let collection of collections; let i = index">
-    <img   (mouseenter)="toggleCollection(i)" (mouseleave)="toggleCollection(0)" [src]="collection.thumbNail.content">
+    <img   (mouseenter)="toggleCollection(i)" (mouseleave)="toggleCollection(0)" [src]="collection.thumbNail?.content">
     <div class="collection-title" [style.opacity]="i == selectedIndex ? 1 : 0">
       {{collection.designation | uppercase}}
     </div>

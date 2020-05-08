@@ -58,7 +58,7 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   }
 
   ImageMockup() {
-    //this.product.thumbNail.content = '/src/assets/images/Pic_1.jpg';
+    //this.product.thumbNail?.content = '/src/assets/images/Pic_1.jpg';
   }
   removeFavorite(id) {
     this.store$.dispatch(ProductStoreActions.DeleteProduct({id: id}));

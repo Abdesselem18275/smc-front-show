@@ -10,29 +10,29 @@
         <section class="content-information">
            <div class="content-information__text">
                 <div class="breadcrumb" *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)">
-                <app-category-breadcrumb    
-                                    [currentProduct]="product.rootCategory" 
+                <app-category-breadcrumb
+                                    [currentProduct]="product.rootCategory"
                                     class="caption-style">
-               </app-category-breadcrumb>  
+               </app-category-breadcrumb>
                 </div>
                <h3>{{product.designation}}</h3>
                <p class="mat-caption text--grey">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span></p>
 
            </div>
-        
 
-        
+
+
         </section>
         <div class='content__thumbnail'>
-        <img  
-        (load)="onImageLoad($event)" 
-        [style.display]="isLoading ? 'none' : 'block'" 
+        <img
+        (load)="onImageLoad($event)"
+        [style.display]="isLoading ? 'none' : 'block'"
         (click)="navigateTo(product.pk)"
-        [src] ="product.thumbNail.content">
+        [src]="product.thumbNail?.content">
         </div>
-       
 
-        <section class="action-container"> 
+
+        <section class="action-container">
             <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
                     class="favorites"
 
@@ -46,5 +46,5 @@
             </button>
         </section>
         </div>
-        
+
         <app-loading class="center" *ngIf="isFetching"></app-loading>

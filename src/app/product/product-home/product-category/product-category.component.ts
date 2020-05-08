@@ -71,7 +71,7 @@ export class ProductCategoryComponent implements OnInit {
     setTimeout(() => {
       this.isImageReady = true;
       this.hoveredDescription = index === -1 ? '-' : this.collections[index].description;
-      this.selectedImage = index === -1 ? '' : this.collections[index].thumbNail.content;
+      this.selectedImage = index === -1 ? '' : this.collections[index].thumbNail?.content;
     }, 110);
   }
 
