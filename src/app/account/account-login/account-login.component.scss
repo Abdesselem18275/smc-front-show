@@ -1,7 +1,6 @@
 @import "src/styles.scss";
-@import "src/form-styles.scss";
 mat-toolbar-row  {
-    border-bottom: 1px solid $color-border-grey;
+    border-bottom: 1px solid $light-grey-color;
 }
 .forms-container {
     padding : 4rem;
@@ -36,7 +35,7 @@ form,mat-form-field,.form__submit-button {
     margin-bottom: 1.5rem;
     @media only screen and (max-width:1200px) {
         .smc-header {
-            border-right: solid 12px $mdc-theme-primary;
+            border-right: solid 12px mat-color($smc-show-case-primary);
             padding-right: 0.5rem;
     
         }

@@ -13,14 +13,14 @@
 .card-container {
     display: flex;
     padding: 1.5rem 1rem 0.75rem 1rem;
-    border-bottom: 1px solid $color-border-grey;
+    border-bottom: 1px solid $light-grey-color;
 }
 
 section {
     display: flex;
     flex-direction: column;
     padding: 1rem 1rem 0.5rem 1rem;
-    border-bottom: 1px solid $color-border-grey;
+    border-bottom: 1px solid $light-grey-color;
 
     li {
         padding : 0.5rem 1rem;

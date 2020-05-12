@@ -5,12 +5,8 @@
     margin : 1rem 0 2rem 0;
 }
 .tab-group__label {
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-    mat-icon {
-        margin-right: 0.5rem;
-    }
+    @extend .inline--centred;
+    @extend .mr4;
 }
 .container {
     margin: 5rem $global-horizontal-gutter;
