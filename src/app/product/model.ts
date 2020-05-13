@@ -1,4 +1,4 @@
-export class Base {
+export interface Base {
 
 }
 
@@ -249,31 +249,32 @@ export class MeasureUnit {
 }
 
 
-export class Category   {
-    designation?: string;
-    parentCategory?: Category;
-    isRoot?: boolean;
-    isLeaf?: boolean;
-    children?: Category[];
-    thumbNail?: BaseImage;
-    svgIcon?: BaseImage;
-    constructor(options: {
-        designation?: string,
-        parentCategory?: Category,
-        isRoot?: boolean,
-        isLeaf?: boolean,
-        children?: Category[],
-        thumbNail?: BaseImage,
-        svgIcon?: BaseImage } = {}) {
-        this.designation = options.designation || '';
-        this.parentCategory = options.parentCategory || new Category({});
-        this.isRoot = options.isRoot || false;
-        this.isLeaf = options.isLeaf || false;
-        this.children = options.children || [];
-        this.thumbNail = options.thumbNail || new BaseImage({});
-        this.svgIcon = options.svgIcon || new BaseImage({});
+export interface Category   {
+    designation: string;
+    description:string;
+    parentCategory: Category;
+    isRoot: boolean;
+    isLeaf: boolean;
+    children: Category[];
+    thumbNail: BaseImage;
+    svgIcon: BaseImage;
+    // constructor(options: {
+    //     designation?: string,
+    //     parentCategory?: Category,
+    //     isRoot?: boolean,
+    //     isLeaf?: boolean,
+    //     children?: Category[],
+    //     thumbNail?: BaseImage,
+    //     svgIcon?: BaseImage } = {}) {
+    //     this.designation = options.designation || '';
+    //     this.parentCategory = options.parentCategory || new Category({});
+    //     this.isRoot = options.isRoot || false;
+    //     this.isLeaf = options.isLeaf || false;
+    //     this.children = options.children || [];
+    //     this.thumbNail = options.thumbNail || new BaseImage({});
+    //     this.svgIcon = options.svgIcon || new BaseImage({});
 
-    }
+    // }
 
 }
 

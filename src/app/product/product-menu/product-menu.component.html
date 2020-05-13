@@ -1,24 +1,28 @@
-<nav class='upper-menu nav-bar' *ngIf="!(isHomeRoute | async)">
+<nav class='inline--centred nav-bar'>
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
+    
 
-     <div [routerLink]="['/product/home/']" class="nav-bar__logo">
-       <mat-icon  inline="true" svgIcon="logo"></mat-icon> 
-        <!-- <p class="header--big">SMC</p> -->
-        <!-- <p class="header--small">Societe moderne de cuivre</p> -->
+      <div class="nav-bar__logo">
+        <mat-icon 
+        [routerLink]="['/product/home/']" 
+        inline="true" 
+        svgIcon="logo">
+       </mat-icon> 
       </div>
-     <div class="nav-bar__nav-tab">
-        <p  i18n (click)="toggleMenu()" class="nav-tabs__tab">  
-           PRODUCTS
-        </p>
-        <p i18n class="nav-tabs__tab">
-         UTILITY
-        </p>
-        <p i18n class="nav-tabs__tab">
-         ABOUT US
-        </p>
-        <p i18n class="nav-tabs__tab">
-         CONTACT US
-        </p>
+
+     <div class="mat-h3 inline--centred inline--centred nav-tabs__tab">
+        <a i18n (click)="toggleMenu()">  
+           Products
+        </a>
+        <a i18n>
+         Utility
+        </a>
+        <a i18n>
+         About us
+        </a>
+        <a i18n>
+         Contact us
+        </a>
      </div>
      <div class="nav-bar__tools">
         <button mat-icon-button  (click)="toggleModal('searchBox')">

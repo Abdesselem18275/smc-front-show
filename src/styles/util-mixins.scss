@@ -1,4 +1,4 @@
-$sizes: 12;
+$sizes: 24;
 
 @mixin margin-classes {
   @for $i from 1 through $sizes {

@@ -4,56 +4,33 @@ p {
   cursor: pointer;
 }
 
-
 .nav-bar {
-    padding:  0.5rem $global-horizontal-gutter;
-    display : flex;
-    justify-content : space-between;
-    align-items : center;
-    width: 100%;
-    background-color: white;
-
-}
-
-.nav-bar__nav-tab
-{
-    display : flex;
+    padding:  0.5rem 10rem;
+    background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
     justify-content: space-between;
-    width: 50%;
-    max-width: 33rem;
-
+    @media only screen and (max-width:1024px) { 
+      padding:  0.5rem 5rem;
+    }
+    @media only screen and (max-width:600px) { 
+      padding:  0.5rem 2rem;
+    }
 }
+
 .nav-tabs__tab {
-  display: flex;
-  align-items: center;
-  @extend .mat-body
-}
-
-
-.nav-bar__nav-tab > p
-{   
-    mat-icon {
-        transition: 0.2s ease-out;
-        font-size: 1.5rem;
-      }
+  justify-content: space-between;
+  margin-bottom: 0;
+  a {
+    margin: 0 1.5rem;
+    @extend .font-grey;
+    font-weight: 500;
+  }
+  @media only screen and (max-width:1024px) { 
+    display: none;
+  }
 }
 
 .nav-bar__logo {
-  display: flex;
-  cursor: pointer;
-  mat-icon {
-   width: 4rem;
-  }
-  .header--small {
-    border-left: solid 1px black;
-    width: 5rem;
-    margin-left: 1rem;
-    padding-left: 0.5rem;
-    font-weight: 300;
-    @media only screen and (max-width:1024px) { 
-      display: none;
-    }
-  }
+  width: 6rem;
 }
 
 .nav-bar__tools

@@ -16,13 +16,10 @@ li:hover {
   background-color: $light-grey-color;
   cursor: pointer;
 }
-h1,h2,h3,h4,h5,h6,p {
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+p {
+  margin : 0;
 }
-h1,h2,h3,h4,h5,h6 {
-  font-weight: 500;
-}
+
 
 html, body { height: 100%; }
 body { margin: 0; 

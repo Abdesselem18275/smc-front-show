@@ -15,8 +15,7 @@ export class ProductHomeComponent implements OnInit {
   ngOnInit() {
 
 
-    this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isLeaf);
-    console.warn(this.categories);
+    this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isRoot);
   }
 
 }
