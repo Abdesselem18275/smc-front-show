@@ -52,6 +52,9 @@
     }
   }
   .menu--shared-style {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 5.1825rem;
     background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
     padding:  0.5rem 10rem;

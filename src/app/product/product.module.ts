@@ -10,6 +10,7 @@ import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductCategoryComponent } from './product-home/product-category/product-category.component';
 import { SharedModule } from '../shared/shared.module';
+import { CategoryMenuComponent } from './category-menu/category-menu.component';
 
 
 
@@ -19,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent,
-                  ProductDetailComponent, ProductCategoryComponent],
+                  ProductDetailComponent, ProductCategoryComponent, CategoryMenuComponent],
   providers:  [FilterBuilderService, DataInjectablesService ]
 })
 export class ProductModule { }

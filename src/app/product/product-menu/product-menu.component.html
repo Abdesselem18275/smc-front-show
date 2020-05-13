@@ -41,7 +41,7 @@
     </div>
   </nav>
 
-  <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '332px' : '0px'">
+  <!-- <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '500px' : '0px'">
     <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
       <h3 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
         {{rootCat.designation | uppercase}}
@@ -51,7 +51,7 @@
           {{childCat.designation | titlecase}}
       </h4>
     </div>
-  </div>
+  </div> -->
 
 
   
