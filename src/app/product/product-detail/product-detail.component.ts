@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit    {
     this.isReady = false;
     this.isImageReady = true;
       this.route.data.subscribe((data: { product: ProductLong }) => {
-        this.product = new ProductLong(data.product);
+        this.product = data.product;
         this.indexArray = this.product.images.map((x, index) => ({
           id: x.id,
           index: index

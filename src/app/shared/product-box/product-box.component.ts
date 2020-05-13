@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ProductShort, Param, ParamType } from 'src/app/product/model';
 import { Router } from '@angular/router';
 import { RootStoreState, ParamStoreSelectors, ProductStoreActions } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { FavoriteHandlerService } from '../service/favorite-handler.service';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { ProductShort, ParamType, Param } from 'src/app/product/model';
 
 
 @Component({
