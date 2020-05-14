@@ -11,16 +11,15 @@
       </div>
 
      <div class="mat-h3 inline--centred inline--centred nav-tabs__tab">
-        <a i18n (click)="toggleMenu()">  
-           Products
-        </a>
-        <a i18n>
+
+        <app-category-menu></app-category-menu>
+        <a mat-button i18n>
          Utility
         </a>
-        <a i18n>
+        <a mat-button i18n>
          About us
         </a>
-        <a i18n>
+        <a mat-button i18n>
          Contact us
         </a>
      </div>
@@ -28,6 +27,7 @@
         <button mat-icon-button  (click)="toggleModal('searchBox')">
             <mat-icon>search</mat-icon>
         </button>
+
         <button mat-icon-button  (click)="toggleUserCard()" id="account-icon">
             <mat-icon>person</mat-icon>
         </button>
@@ -41,17 +41,6 @@
     </div>
   </nav>
 
-  <!-- <div   class="menu__sub-menu"  [style.height]="isMenuActive ? '500px' : '0px'">
-    <div class="sub-menu__column" *ngFor="let rootCat of rootCategories[0]?.children">
-      <h3 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: rootCat.designation}" [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab">
-        {{rootCat.designation | uppercase}}
-      </h3>
-      <img class="sub-menu__column__image" [src]="rootCat.thumbNail?.content">
-      <h4 (click)="toggleMenu()"  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"  [queryParamsHandling]= "'merge'"  class="menu__sub-menu__tab--small" *ngFor="let childCat of rootCat?.children">
-          {{childCat.designation | titlecase}}
-      </h4>
-    </div>
-  </div> -->
 
 
   

@@ -88,13 +88,13 @@ export interface MeasureUnit {
 
 export interface Category   {
     designation: string;
-    description:string;
-    parentCategory: Category;
-    isRoot: boolean;
-    isLeaf: boolean;
-    children: Category[];
-    thumbNail: BaseImage;
-    svgIcon: BaseImage;
+    description?:string;
+    parentCategory?: Category;
+    isRoot?: boolean;
+    isLeaf?: boolean;
+    children?: Category[];
+    thumbNail?: BaseImage;
+    svgIcon?: BaseImage;
 }
 
 export interface Feature {

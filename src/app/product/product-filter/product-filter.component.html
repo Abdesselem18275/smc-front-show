@@ -10,7 +10,7 @@
 
     <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
-            <header   class="filter-title text--grey mat-body" >  
+            <header   class="filter-title font--grey mat-caption" >  
                 {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >

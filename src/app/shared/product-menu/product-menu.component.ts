@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Category } from '../model';
-import { CategoryCacheService } from '../service/category-cache.service';
 import { filter, map, tap } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
@@ -12,6 +10,8 @@ import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/act
 import { Observable } from 'rxjs';
 import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
+import { Category } from 'src/app/product/model';
+import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 
 @Component({
   selector: 'app-product-menu',

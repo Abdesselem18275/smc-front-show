@@ -19,7 +19,7 @@ p {
 .nav-tabs__tab {
   justify-content: space-between;
   margin-bottom: 0;
-  a {
+  a,app-category-menu {
     margin: 0 1.5rem;
     @extend .font-grey;
     font-weight: 500;
@@ -56,34 +56,13 @@ p {
 
 
 .menu__sub-menu {
-    display: flex;
-    justify-content: space-evenly;
     background-color: white;
     height: 0px;
     overflow: hidden;
     transition: ease  0.3s ;
-    min-width: 100%;
-    padding: 0 3rem;
-    .sub-menu__column{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex : 0 0 20%;
-      margin: 2rem 0;
-      .sub-menu__column__image {
-        max-width: 75%;
-        margin: 0.75rem 0;
-      }
+    position: absolute;
+    top: 5.12rem;
 
-      .menu__sub-menu__tab {
-        display: flex;
-        align-items: flex-end;
-     }
-      .menu__sub-menu__tab--small{
-        margin-bottom: 0.75rem;
-
-      }
-    }
 
 }
 

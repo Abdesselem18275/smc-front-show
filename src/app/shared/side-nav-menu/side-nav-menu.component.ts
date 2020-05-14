@@ -1,12 +1,11 @@
 import { Component, OnInit} from '@angular/core';
-import { Category, ProductCollection, NavTree } from '../../model';
-import { CategoryCacheService } from '../../service/category-cache.service';
-import { trigger, style, transition, animate } from '@angular/animations';
 import { Router, NavigationExtras } from '@angular/router';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { CloseAllAction, ToggleAction } from 'src/app/root-store/modal-store/actions';
+import { Category, ProductCollection, NavTree } from 'src/app/product/model';
+import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 
 
 @Component({
