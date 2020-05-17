@@ -2,12 +2,8 @@
 
 .tab-group {
     border-top: 1px solid rgba(0, 0, 0, 0.12);
-    margin : 1rem 0 2rem 0;
-}
-.tab-group__label {
-    @extend .inline--centred;
-    @extend .mr4;
+    height: 100%;
 }
 .container {
-    margin: 5rem $global-horizontal-gutter;
+    margin: 2rem;
 }

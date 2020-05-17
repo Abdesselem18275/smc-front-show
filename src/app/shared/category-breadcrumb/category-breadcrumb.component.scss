@@ -21,7 +21,7 @@ p:hover {
 
 :host(.caption-style) {
   p  {
-    color : $grey-color;
+    @extend .font--grey;
     @extend .mat-caption 
 
 

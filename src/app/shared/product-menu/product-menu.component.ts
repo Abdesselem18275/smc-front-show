@@ -55,7 +55,7 @@ export class ProductMenuComponent implements OnInit {
     const treeMenu: Category[] = [
       {
         designation: 'Our products',
-        description:'',
+        description: '',
         isLeaf: false,
         isRoot: true,
         children: this.rootCategories,

@@ -2,27 +2,25 @@ import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
-import { AccountCacheService } from './account-cache.service';
 import { SmcAuthService } from './smc-auth.service';
-import { API_URL } from 'src/app/injectables.service';
+import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
+import { Store } from '@ngrx/store';
+import { RootStoreState } from 'src/app/root-store';
+import { UserStoreActions } from 'src/app/root-store/user-store';
+import { stringify } from 'querystring';
+import { Profile } from '../model';
 
 declare const gapi: any;
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/x-www-form-urlencoded'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAuthService {
 
   constructor(private http: HttpClient ,
-              private appStorage: LocalStorageHandlerService,
-              private accountCache: AccountCacheService,
+              private store$: Store<RootStoreState.State>,
               private authService: SmcAuthService,
+              @Inject(TOKEN_KEY) private tokenKey: string,
+              @Inject(PROFILE_ID) private profileId: string,
               @Inject(API_URL) private apiUrl: string) {
     gapi.load('auth2', () => {
       gapi.auth2.init({
@@ -35,7 +33,7 @@ export class GoogleAuthService {
     gapi.signin2.render(elementId, {
       'scope': 'profile email',
       'width' : width,
-      'height' : '56',
+      'height' : '36',
       'theme': 'dark',
       'longtitle': true,
       'onsuccess': param => this.onSignIn(param),
@@ -44,9 +42,12 @@ export class GoogleAuthService {
   }
 
   private onSignIn(googleUser) {
-    this.createOrSignin(googleUser.getAuthResponse().id_token).subscribe(jsonData => {
-      this.appStorage.loadLocalStorage(jsonData);
-      this.accountCache.refreshAccount();
+    this.createOrSignin(googleUser.getAuthResponse().id_token).subscribe((
+      jsonData: {token: string, profile: Profile}) => {
+      console.warn(jsonData);
+      localStorage.setItem(this.tokenKey, jsonData.token);
+      localStorage.setItem(this.profileId, jsonData.profile.id.toString());
+      this.store$.dispatch(UserStoreActions.LoadUserAction({payload: jsonData.profile }));
       this.authService.redirect();
       this.signOut();
     });
@@ -57,13 +58,13 @@ export class GoogleAuthService {
     }
 
   createOrSignin(id_token: string) {
-    const endPoint = '/google-auth/';
+    const endPoint = '/g-auth/';
     const query: string = [
       this.apiUrl,
       endPoint
          ].join('');
     const httpParams = new HttpParams().set('id_token', id_token);
-     return this.http.post(query, httpParams, httpOptions).pipe(map((jsonArray: any[]) => jsonArray));
+     return this.http.post(query, httpParams);
   }
 
   isSignIn(): boolean {

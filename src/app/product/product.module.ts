@@ -8,8 +8,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FilterBuilderService } from './service/filter-builder.service';
 import { DataInjectablesService } from './service/data-injectables.service';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductCategoryComponent } from './product-home/product-category/product-category.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 
 

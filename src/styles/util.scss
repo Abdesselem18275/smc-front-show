@@ -43,13 +43,15 @@
     @extend .column;
     align-items: center;
   }
-  .inline--centred {
+  .inline {
     display: flex;
+
+  }
+  .inline--centred {
     align-items: center;
-    mat-icon {
-      @extend .mr2
-  
-    }
+  }
+  .inline--centred > mat-icon {
+    @extend .mr2
   }
   .menu--shared-style {
     display: flex;
@@ -57,12 +59,6 @@
     justify-content: space-between;
     height: 5.1825rem;
     background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
-    padding:  0.5rem 10rem;
-    @media only screen and (max-width:1024px) { 
-      padding:  0.5rem 5rem;
-    }
-    @media only screen and (max-width:600px) { 
-      padding:  0.5rem 2rem;
-    }
+
 
   }

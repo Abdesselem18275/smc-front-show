@@ -6,6 +6,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { CloseAllAction, ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { Category, ProductCollection, NavTree } from 'src/app/product/model';
 import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
+import { LogoutAction } from 'src/app/root-store/user-store/actions';
 
 
 @Component({
@@ -82,8 +83,7 @@ export class SideNavMenuComponent implements OnInit {
         navigationExtras);
   }
   logOut() {
-    this.authService.logout();
-    this.router.navigate(['product/list']);
+    this.store$.dispatch(LogoutAction());
   }
   login() {
     this.store$.dispatch(ToggleAction({key: 'loginBox'}));

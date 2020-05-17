@@ -19,7 +19,9 @@ li:hover {
 p {
   margin : 0;
 }
-
+.mat-tab-body-wrapper{
+  flex-grow: 1;
+}
 
 html, body { height: 100%; }
 body { margin: 0; 

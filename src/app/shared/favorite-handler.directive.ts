@@ -1,50 +1,51 @@
-import { Directive, ElementRef, AfterViewInit, Input, HostListener } from '@angular/core';
-import { FavoriteHandlerService } from './service/favorite-handler.service';
-import { filter } from 'rxjs/operators';
+import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy } from '@angular/core';
+import { filter, tap, map } from 'rxjs/operators';
 import { SmcAuthService } from '../account/service/smc-auth.service';
-import { AccountCacheService } from '../account/service/account-cache.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
 import { ToggleAction } from '../root-store/modal-store/actions';
+import { selectIsFavorite } from '../root-store/user-store/selectors';
+import { UserStoreActions } from '../root-store/user-store';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appFavoriteHandler]'
 })
-export class FavoriteHandlerDirective implements AfterViewInit {
+export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
   @Input() appFavoriteHandler: number;
+  subscription: Subscription ;
   constructor(private _element: ElementRef ,
-              private accountCache: AccountCacheService,
               private snakBar: MatSnackBar,
               private store$: Store<RootStoreState.State>,
-              private _authService: SmcAuthService ,
-              private _favHandlerService: FavoriteHandlerService) {
+              private _authService: SmcAuthService) {
    }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
 
    ngAfterViewInit() {
-    this.updateIconStyle();
-     this.accountCache.account$.subscribe( x =>  {
-      this.updateIconStyle();
-     });
+    this.subscription = this.store$.select(selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
+      this.updateIconStyle(state);
+    });
   }
 
   @HostListener('click')
   onClick() {
     if (this._authService.isLogged()) {
-      this._favHandlerService.addRemoveFavorites(this.appFavoriteHandler);
+      this.store$.dispatch(UserStoreActions.UserRefreshAction());
+      this.store$.dispatch(UserStoreActions.ToggleFavoriteAction({id: this.appFavoriteHandler}));
     } else {
       this.snakBar.open('You have to login to perform this action', 'Login')
       .onAction().pipe(filter(x => true)).subscribe(() => {
         this.store$.dispatch(ToggleAction({key: 'loginBox'}));
       });
-
-
     }
   }
 
-  updateIconStyle() {
-    this._element.nativeElement.style.color =
-    this._favHandlerService.checkIsFavorites(this.appFavoriteHandler) ? '#ffab00' : 'rgb(68,68,68)';
+  updateIconStyle(state: boolean) {
+    console.warn(state);
+    this._element.nativeElement.style.color = state ? '#ffab00' : 'rgb(68,68,68)';
   }
 }

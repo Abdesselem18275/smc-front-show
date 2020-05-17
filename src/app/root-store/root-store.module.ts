@@ -9,6 +9,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterStoreModule } from './router-store/router-store.module';
 import { CustomSerializer } from './router-store/custom-route-serializer';
 import { GlobalStoreModule } from './global-store/global-store.module';
+import { UserStoreModule } from './user-store/user-store.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { GlobalStoreModule } from './global-store/global-store.module';
     ModalStoreModule,
     RouterStoreModule,
     GlobalStoreModule,
+    UserStoreModule,
   ]
 })
 export class RootStoreModule { }

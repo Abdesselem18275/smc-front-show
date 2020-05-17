@@ -1,8 +1,15 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
 import { SmcAuthService } from '../service/smc-auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, Subscription } from 'rxjs';
+import { ParamStoreState, RootStoreState } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { Profile } from '../model';
+import { filter } from 'rxjs/operators';
+import { countries } from 'src/utils/countries-list';
 
 
 
@@ -11,46 +18,59 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss']
 })
-export class EditProfileComponent implements OnInit  {
+export class EditProfileComponent implements OnInit, OnDestroy  {
   accountForm: FormGroup;
   countryNames: any[];
-  isUpdating: boolean;
-  constructor(private snakBar: MatSnackBar,
-              private accountFormService: AccountFormService ,
-              private authService: SmcAuthService) { }
+  isUpdating$: Observable<boolean>;
+  serverError$: Observable<any>;
+  subscription: Subscription ;
+  constructor(
+              private store$: Store<RootStoreState.State>,
+              private accountFormService: AccountFormService) { }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit() {
-    this.isUpdating = false;
+    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
-    this.countryNames = this.authService.countries;
+    this.countryNames = countries();
+    this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
+      filter(profile => profile !== null)
+    ).subscribe((profile: Profile) => {
+      console.warn(profile);
+      this.accountForm.setValue({
+        first_name: profile.first_name,
+        last_name: profile.last_name,
+        gender: profile.gender,
+        email : profile.email,
+        company_name : profile.company_name,
+        is_professional : profile.is_professional,
+        position: profile.position,
+        activity_field: profile.activity_field,
+        phone_number : profile.phone_number,
+        country : profile.country
+      });
+    });
   }
   onchanges(val) {
     console.warn(val);
-    console.warn(this.accountForm.get('is_professional').value);
-    if (!val.checked) {
-      this.accountForm.get('company_name').disable();
-      this.accountForm.get('position').disable();
-      this.accountForm.get('activity_field').disable();
-    } else {
-      this.accountForm.get('company_name').enable();
-      this.accountForm.get('position').enable();
-      this.accountForm.get('activity_field').enable();
-    }
+    // console.warn(this.accountForm.get('is_professional').value);
+    // if (!val.checked) {
+    //   this.accountForm.get('company_name').disable();
+    //   this.accountForm.get('position').disable();
+    //   this.accountForm.get('activity_field').disable();
+    // } else {
+    //   this.accountForm.get('company_name').enable();
+    //   this.accountForm.get('position').enable();
+    //   this.accountForm.get('activity_field').enable();
+    // }
   }
 
   onSubmit() {
-    this.isUpdating = true;
-    const formData =  JSON.stringify(this.accountForm.value, this.accountFormService.editFormReplacer);
-    this.authService.updateAccount(formData).subscribe(accountData => {
-      this.accountForm = this.accountFormService.createLoadFullAccountForm();
-      this.isUpdating = false;
-      this.snakBar.open('Succefully modified');
-    },
-    error => {
-           this.isUpdating = false;
-           console.warn(error);
-    });
-
+    const payload = this.accountForm.value;
+    this.store$.dispatch(UserStoreActions.UpdateUserAction({payload}));
+    this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
   }
 
 }

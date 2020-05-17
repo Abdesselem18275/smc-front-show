@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAccount } from '../model';
-import { Router } from '@angular/router';
-import { SmcAuthService } from '../service/smc-auth.service';
-import { AccountCacheService } from '../service/account-cache.service';
+import { Profile } from '../model';
 import { ModalStoreActions, ParamStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-account-card',
@@ -12,20 +11,17 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./account-card.component.scss']
 })
 export class AccountCardComponent implements OnInit {
-  account: UserAccount;
-  constructor(private router: Router,
-              private store$: Store<ParamStoreState.State>,
-              private authService: SmcAuthService,
-              private accountCache: AccountCacheService) { }
+  profile$: Observable<Profile>;
+  constructor(private store$: Store<ParamStoreState.State>) { }
 
   ngOnInit() {
-    this.account = this.accountCache.account;
+    this.store$.dispatch(UserStoreActions.UserRefreshAction());
+    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
   }
 
   logOut() {
-    this.authService.logout();
+    this.store$.dispatch(UserStoreActions.LogoutAction());
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
-    this.router.navigate(['product/list']);
   }
 
 }

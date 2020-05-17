@@ -9,16 +9,19 @@ $extreme-light-grey-color : #f2f2f2;
 .font--blue{
   color: blue;
 }
-.font-amber{
+.font--amber {
   color: orange;
 }
-.font-grey {
+.font--grey {
   color:$grey-color ;
 }
-.font-red {
+.font--red {
    color: red;
+}
+.font--white {
+  color: white;
 }
 
 .alert {
-    @extend .font-red
+    @extend .font--red
   }

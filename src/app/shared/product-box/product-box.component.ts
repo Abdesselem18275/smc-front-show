@@ -3,9 +3,9 @@ import { RootStoreState, ParamStoreSelectors, ProductStoreActions } from 'src/ap
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { FavoriteHandlerService } from '../service/favorite-handler.service';
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { ProductShort, ParamType, Param } from 'src/app/product/model';
+import { UserStoreActions } from 'src/app/root-store/user-store';
 
 
 @Component({
@@ -22,7 +22,6 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   isFavoriteRoute: Observable<boolean>;
   searchTerm: Observable<string>;
   constructor(private router: Router,
-              private favHandler: FavoriteHandlerService,
               private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
@@ -61,8 +60,8 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
     //this.product.thumbNail?.content = '/src/assets/images/Pic_1.jpg';
   }
   removeFavorite(id) {
-    this.store$.dispatch(ProductStoreActions.DeleteProduct({id: id}));
-    this.favHandler.addRemoveFavorites(id);
+    this.store$.dispatch(ProductStoreActions.DeleteProduct({id}));
+    this.store$.dispatch(UserStoreActions.ToggleFavoriteAction({id}));
   }
 
 

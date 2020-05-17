@@ -12,9 +12,6 @@ p {
   justify-content: center;
   text-align: center;
 }
-.text--color {
-  color: white;
-}
 @media only screen and (max-width:600px) {
  h1 {
    order: 1;
@@ -29,4 +26,5 @@ p {
 a {
   order: 4;
 }
+
 }

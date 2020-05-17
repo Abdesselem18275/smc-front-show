@@ -1,4 +1,4 @@
-
+@import './colors.scss';
   /* clears the 'X' from Internet Explorer */
 input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
 input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
@@ -8,3 +8,21 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.fieldset-title {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border-bottom: 1px solid $grey-color;
+  border-top: 1px solid $grey-color;
+
+}
+.fields--inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  mat-form-field{
+      min-width: 10rem;
+      width: 45%;
+  }
+}

@@ -28,7 +28,7 @@ export class ProductEffects {
     this.actions$.pipe(
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('account/profile')),
-        switchMap(() => this.authService.getUserFavorites().pipe(
+        switchMap(() => this.authService.getProfileFavorites().pipe(
           concatMap(res => ([
             ProductStoreActions.ClearAllAction(),
             ProductStoreActions.AddOrUpdateManyAction({results : {

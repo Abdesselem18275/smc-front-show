@@ -1,76 +1,64 @@
-<header class="upper-menu">
-                <h3 i18n>Login / Register</h3>
-                <span class="space-divider"></span>
-                <button (click)="cancel()" mat-icon-button>
-                        <mat-icon>close</mat-icon>
-                </button>
+<header class="menu--shared-style">
+        <span></span>
+        <button class="logo--big" [routerLink]="['/product/home/']" mat-icon-button>
+                <mat-icon 
+                inline="true" 
+                svgIcon="logo">
+               </mat-icon> 
+        </button>
 
+       <button (click)="close()" mat-icon-button>
+               <mat-icon>close</mat-icon>
+       </button>
 </header>
-<mat-progress-bar *ngIf="isChecking" mode="indeterminate">
+<mat-progress-bar *ngIf="(isChecking |async)" mode="indeterminate">
 
 </mat-progress-bar>
-<main class="forms-container">
-        <section id="smc-login">
-
-                <header class="form-group__header">
-                        <h3 i18n>Sign in with SMC</h3>
-                        <p i18n class="text--grey mat-body">Please enter the following informations</p>
-                        <p class="alert" *ngFor="let item of auth_non_field_error  | keyvalue">
+<mat-tab-group class="px8 pb8" mat-stretch-tabs>
+        <mat-tab label="Sign in">
+                <header class="column--center">
+                        <h4 i18n>Sign in with SMC</h4>
+                        <p i18n class="font--grey mat-body">Please enter the following informations</p>
+                        <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
                                 {{item.value}}
                         </p>
-
                 </header>
-                <main>
-
-                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                                <mat-form-field appearance="fill">
+                        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <mat-form-field appearance="outline">
+                                        <mat-icon class="mr2" matPrefix>email</mat-icon>
                                         <mat-label i18n>email</mat-label>
                                         <input required matInput type="email" formControlName="email" id="email">
                                         <mat-error
-                                                *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-                                                {{getEmailErrorMessage()}}</mat-error>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                        <mat-label i18n>password</mat-label>
-                                        <input required matInput type="password" formControlName="password"
-                                                id="password" placeholder="password">
-                                        <mat-hint i18n>Forget yous password ?</mat-hint>
-                                        <mat-error i18n *ngIf="loginForm.get('password').invalid">
-                                                this field is required.
+                                                        *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+                                                        {{getEmailErrorMessage()}}
                                         </mat-error>
                                 </mat-form-field>
-
-                                <button class="form__submit-button" type="submit" [disabled]="loginForm.invalid"
-                                        mat-raised-button color="primary" i18n primary>LOGIN
+                                <mat-form-field appearance="outline">
+                                        <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
+                                        <mat-label i18n>password</mat-label>
+                                        <input required matInput type="password" formControlName="password"
+                                                        id="password" placeholder="password">
+                                        <mat-hint i18n>Forget yous password ?</mat-hint>
+                                        <mat-error i18n *ngIf="loginForm.get('password').invalid">
+                                                        this field is required.
+                                        </mat-error>
+                                </mat-form-field>
+        
+                                <button class="form__submit-button mt4" type="submit"
+                                        mat-raised-button color="primary" i18n primary>
+                                        <span class="mat-subheading-2">
+                                                Sign in
+                                        </span>
                                 </button>
-
-
-                        </form>
-
-
-                </main>
-        </section>
-
-        <section id="google-sign">
-                <header class="form-group__header">
-                        <h3>Sign in with google</h3>
-                        <p class="text--grey mat-body">Create or acces your account by sign in to your google account
-                        </p>
-
-                </header>
-                <app-google-sign-in>
-                </app-google-sign-in>
-        </section>
-        <section id="smc-register">
-                <header class="form-group__header">
-                        <h3>Register with SMC</h3>
-                        <p class="text--grey mat-body">Create or acces your account by sign in to your google account
-                        </p>
-
-                </header>
-                <button class="form__submit-button" type="submit" (click)="toggleModal('createProfileBox')"
-                        mat-raised-button color="primary" primary>Register
-                </button>
-        </section>
-
-</main>
+        
+        
+                                </form>
+                                <mat-divider></mat-divider>
+     
+                                        <app-google-sign-in>
+                                        </app-google-sign-in>
+        
+        </mat-tab>
+        <mat-tab label="Register">
+                        <app-create-profile class="column--center"></app-create-profile>
+        </mat-tab>

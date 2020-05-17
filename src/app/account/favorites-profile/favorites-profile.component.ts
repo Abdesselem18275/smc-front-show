@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductShort } from 'src/app/product/model';
-import { FavoriteHandlerService } from 'src/app/shared/service/favorite-handler.service';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { SmcAuthService } from '../service/smc-auth.service';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ProductStoreSelectors, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';

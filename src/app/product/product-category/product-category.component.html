@@ -6,13 +6,15 @@
   <p class="mat-subheading-1">
     {{category.description | lowercase}}
   </p>
-  <a 
-  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
-  class="mt4" 
-  color="primary" 
-  mat-flat-button>
-    <span class="mat-subheading-1 text--color">
+  <a  
+    [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
+    class="mt4 font--white" 
+    mat-flat-button>
+    <span class="mat-subheading-1 font--white">
       Discover our {{category.designation | titlecase}} articles
     </span>
+    <mat-icon class="font--white">
+      arrow_right_alt
+    </mat-icon>
   </a>
 </main>
