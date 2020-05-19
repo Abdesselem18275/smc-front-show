@@ -8,7 +8,6 @@ import { ProductStoreSelectors } from 'src/app/root-store/product-store';
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { sideSlideInAnimation } from 'src/app/animations';
-import { ModalStateStore } from 'src/app/shared/token';
 import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors';
 
@@ -50,12 +49,9 @@ export class ProductListComponent implements OnInit {
       map((params: Param[]) => {
         try {
           return params.shift().value;
-
         } catch (error) {
           return '';
         }
-
-
       }
     ));
     this.activeCategory = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.CATEGORY}).pipe(

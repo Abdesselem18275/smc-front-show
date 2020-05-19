@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { filter, map, tap } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
-import { ModalStateStore } from 'src/app/shared/token';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ModalStoreState } from 'src/app/root-store';
 import { selectModalStateByType, selectAllModalState } from 'src/app/root-store/modal-store/selectors';
@@ -25,7 +24,6 @@ export class ProductMenuComponent implements OnInit {
 
   categories: Category[];
   rootCategories: Category[];
-  modalStateStore = new ModalStateStore();
   isMenuActive: boolean;
   isSideMenuActive: boolean;
   isRootActive: boolean;

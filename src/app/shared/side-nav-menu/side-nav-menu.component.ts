@@ -1,11 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
-import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
-import { CloseAllAction, ToggleAction } from 'src/app/root-store/modal-store/actions';
-import { Category, ProductCollection, MenuTreeData } from 'src/app/product/model';
-import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
+import { ToggleAction } from 'src/app/root-store/modal-store/actions';
+import { MenuTreeData } from 'src/app/product/model';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
 import { Observable } from 'rxjs';
 import { Profile } from 'src/app/account/model';
@@ -36,9 +33,6 @@ export class SideNavMenuComponent implements OnInit {
     this.navMenuData = this.navBuilder.treeMenu;
   }
 
-  closeMenu() {
-    this.store$.dispatch(CloseAllAction());
-  }
   logOut() {
     this.store$.dispatch(LogoutAction());
   }

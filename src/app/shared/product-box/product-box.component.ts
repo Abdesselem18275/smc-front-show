@@ -49,11 +49,11 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   }
 
   navigateTo(id: number) {
-    this.isFetching = true;
-    this.router.navigate([{
-      outlets: {
-        primary : ['product', id],
-        popup: null }}]);
+    // this.isFetching = true;
+    // this.router.navigate([{
+    //   outlets: {
+    //     primary : ['product', id],
+    //     popup: null }}]);
   }
 
   ImageMockup() {

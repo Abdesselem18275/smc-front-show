@@ -1,4 +1,4 @@
-<header class="p4 inline--centred--spaced menu--main-theme">
+<header class="p3 inline--centred--spaced menu--main-theme">
 
   <section *ngIf="isLogged$ |async; else noCard" class="child--align-top column">
     <ng-container *ngIf="profile$ | async as profile; else loading">
@@ -8,11 +8,8 @@
     </ng-container>
   </section>
   <ng-template #noCard>
-    <p class="mat-subheading-1">Menu</p>
+    <h3>MENU</h3>
   </ng-template>
-  <button (click)="closeMenu()" class="child--align-top" mat-icon-button>
-    <mat-icon>close</mat-icon>
-  </button>
 </header>
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>

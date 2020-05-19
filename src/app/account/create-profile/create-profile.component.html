@@ -32,12 +32,12 @@
                     <mat-error *ngIf="createForm.invalid || createForm.get('password').invalid && createForm.get('password').touched">
                             {{getPasswordErrorMessage('confirmPassword')}}</mat-error>
                 </mat-form-field>
-                <p class="fieldset-title inline--centred mat-subheading-1">
-                    <mat-icon>person</mat-icon>
-                    Personal information
-                </p>
-
-
+                <header class="fieldset-title">
+                    <p class="inline--centred mat-subheading-1">
+                        <mat-icon>person</mat-icon>
+                        Personal information
+                    </p>
+                </header>
                 <section class="fields--inline">
                 <mat-form-field  appearance="outline">
                     <mat-label i18n>first name</mat-label>
@@ -51,8 +51,8 @@
             </section>
             <section class="mb4 fields--inline">
                 <div class="radio--container inline--centred">
-                        <mat-label class="mr8" i18n>Gender</mat-label>
-                        <mat-radio-group formControlName="gender" id="gender">
+                        <mat-label class="mat-subheading-1" i18n>Gender</mat-label>
+                        <mat-radio-group class="ml10" formControlName="gender" id="gender">
                           <mat-radio-button value="M">Male</mat-radio-button>
                           <mat-radio-button value="F">Female</mat-radio-button>
                         </mat-radio-group>

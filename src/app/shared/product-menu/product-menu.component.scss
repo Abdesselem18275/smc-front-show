@@ -18,10 +18,9 @@ p {
 .nav-tabs__tab {
   justify-content: space-between;
   margin-bottom: 0;
+  @extend .font--grey;
   a,app-category-menu {
     margin: 0 1.5rem;
-    @extend .font--grey;
-    font-weight: 500;
   }
   @media only screen and (max-width:1024px) { 
     display: none;

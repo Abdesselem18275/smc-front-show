@@ -10,12 +10,15 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .fieldset-title {
+  align-items: flex-start;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 2rem 0;
   width: 100%;
-  border-bottom: 1px solid $grey-color;
-  border-top: 1px solid $grey-color;
-
+  color: $dark-grey;
+  border-bottom: 1px solid $light-grey-color;
+}
+.fieldset-title mat-icon {
+  margin-right: 1rem;
 }
 .fields--inline {
   display: flex;
@@ -36,9 +39,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     mat-form-field,.radio--container,mat-slide-toggle{
        min-width: 5rem;
         width: 100%;
+        margin: 0.75rem 0;
+
     }
     .radio--container,mat-slide-toggle {
-      margin: 0.5rem 0;
     }
   
   }

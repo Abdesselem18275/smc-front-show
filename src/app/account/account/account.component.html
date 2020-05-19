@@ -1,10 +1,10 @@
 
 
-<mat-tab-group mat-stretch-tabs class="tab-group" color="primary">
+<mat-tab-group mat-stretch-tabs class="mt4 tab-group" color="primary">
     <mat-tab>
         <ng-template  mat-tab-label>
-          <div class="py8 column--center">
-            <mat-icon >account_circle</mat-icon>
+          <div class="inline--centred">
+            <mat-icon class="mr6" >account_circle</mat-icon>
             <p i18n>Profile</p>
           </div>
           </ng-template>
@@ -13,7 +13,7 @@
         <app-edit-profile></app-edit-profile>
         </div>
     </mat-tab>
-    <mat-tab class="tab-group__element"  label="Favorite">
+    <!-- <mat-tab class="tab-group__element"  label="Favorite">
         <ng-template mat-tab-label>
             <div class="tab-group__label">
               <mat-icon >favorite</mat-icon>
@@ -25,11 +25,11 @@
         <app-favorites-profile></app-favorites-profile>
       </div>
       </ng-template>
-    </mat-tab>
+    </mat-tab> -->
     <mat-tab class="tab-group__element"  label="Message">
         <ng-template mat-tab-label>
-            <div class="tab-group__label">
-              <mat-icon >message</mat-icon>
+            <div class="inline--centred">
+              <mat-icon class="mr6" >message</mat-icon>
               <p i18n>Messages</p>
             </div>
             </ng-template>
