@@ -2,13 +2,14 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet} from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
-import { RootStoreState, ModalStoreState } from './root-store';
+import { RootStoreState, ModalStoreState, ModalStoreActions } from './root-store';
 import { Store } from '@ngrx/store';
-import { selectAllModalState } from './root-store/modal-store/selectors';
+import { selectAllModalState, selectOverlayedModal } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LanguageType, UserLanguage } from './root-store/global-store/state';
 import { SetLanguageAction } from './root-store/global-store/actions';
+import { TOKEN_KEY } from './injectables.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { SetLanguageAction } from './root-store/global-store/actions';
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
-  modalStore$: Observable<ModalStoreState.State>;
+  isOverlay$: Observable<boolean>;
 
   constructor(
               private store$: Store<RootStoreState.State>,
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
                 .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'));
   }
   ngOnInit() {
-    this.modalStore$ = this.store$.select(selectAllModalState);
+    this.isOverlay$ = this.store$.select(selectOverlayedModal);
     const language = this.baseUrl.replace(/\//g, '');
     const value: UserLanguage = {
       id : language,
@@ -60,5 +61,5 @@ export class AppComponent implements OnInit {
         return LanguageType.ENGLISH;
     }
   }
-
+  closeAllModal = () => (this.store$.dispatch(ModalStoreActions.CloseAllAction()))
 }

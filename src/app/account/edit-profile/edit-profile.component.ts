@@ -53,21 +53,15 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       });
     });
   }
-  onchanges(val) {
-    console.warn(val);
-    // console.warn(this.accountForm.get('is_professional').value);
-    // if (!val.checked) {
-    //   this.accountForm.get('company_name').disable();
-    //   this.accountForm.get('position').disable();
-    //   this.accountForm.get('activity_field').disable();
-    // } else {
-    //   this.accountForm.get('company_name').enable();
-    //   this.accountForm.get('position').enable();
-    //   this.accountForm.get('activity_field').enable();
-    // }
-  }
 
   onSubmit() {
+    if (!this.accountForm.get('is_professional').value) {
+      this.accountForm.setValue({
+        company_name : null,
+        position: null,
+        activity_field: null,
+      });
+    }
     const payload = this.accountForm.value;
     this.store$.dispatch(UserStoreActions.UpdateUserAction({payload}));
     this.serverError$ = this.store$.select(UserStoreSelectors.selectError);

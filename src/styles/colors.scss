@@ -1,4 +1,4 @@
-$dark-grey : rgba(0,0,0,0.65);
+$dark-grey : rgba(0,0,0,0.87);
 $grey-color : rgba(0,0,0,0.54);
 $light-grey-color : rgba(0,0,0,.12);
 $extreme-light-grey-color : #f2f2f2;
@@ -14,6 +14,9 @@ $extreme-light-grey-color : #f2f2f2;
 }
 .font--grey {
   color:$grey-color ;
+}
+.font--dark-grey {
+  color:$dark-grey ;
 }
 .font--red {
    color: red;

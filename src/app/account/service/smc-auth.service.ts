@@ -27,9 +27,7 @@ export class SmcAuthService {
               @Inject(PROFILE_ID) private profileId: string) {
                }
 
-
 createProfile(payload): Observable<any> {
-
     const query: string = [
       this.apiUrl,
       '/profiles/',
@@ -47,7 +45,6 @@ login(credentials: any): Observable<any> {
 }
 
 updateProfile(payload): Observable<any> {
-
   const query: string = [
     this.apiUrl,
     '/profile/',
@@ -84,6 +81,11 @@ redirect() {
     this.router.navigateByUrl(redirect);
   }
 }
+getInitialState = () => ({
+    isLoading: false,
+    isAuthenticated: this.isLogged(),
+    errorMessage: null,
+    user: null })
 
 
 

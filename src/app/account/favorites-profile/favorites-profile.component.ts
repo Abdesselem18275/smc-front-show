@@ -12,13 +12,11 @@ import { Store } from '@ngrx/store';
   animations: [
     trigger('myInsertRemoveTrigger', [
       transition(':enter', [
-        style({ transform: 'translateX(0)',
-                opacity: 0 }),
-        animate('0.2s', style({
-                                opacity: 1})),
+        style({opacity: 0 }),
+        animate('0.2s', style({ opacity: 1}))
       ]),
       transition(':leave', [
-        animate('0.2s', style({ transform: 'translateX(-100vw)' }))
+        animate('0.1s', style({ opacity: 0}))
       ])
     ]),
   ]
@@ -32,10 +30,4 @@ export class FavoritesProfileComponent implements OnInit {
     this.favorites = this.store$.select(ProductStoreSelectors.selectAllProducts);
 
   }
-
-  // removeFavorite(id) {
-  //   this.favorites = this.favorites.filter( x => x.pk !== id);
-  //   this.favHandler.addRemoveFavorites(id);
-  // }
-
 }

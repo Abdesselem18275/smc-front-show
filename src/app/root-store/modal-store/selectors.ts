@@ -17,3 +17,7 @@ export const selectModalStateByType = createSelector(
     selectModalState,
     (modalState) => modalState
   );
+  export const selectOverlayedModal = createSelector(
+    selectModalState,
+    (modalState) => modalState.loginBox || modalState.sideMenuBox
+  );

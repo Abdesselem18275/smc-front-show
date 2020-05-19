@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RootStoreState } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { UserStoreSelectors } from 'src/app/root-store/user-store';
 
 @Component({
   selector: 'app-account',
@@ -7,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
   tabs: any[];
-  activeLink:string;
+  activeLink: string;
+  isUpdating$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private store$: Store<RootStoreState.State>,) { }
 
   ngOnInit() {
+    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.tabs = [
       { label: 'Informations', icon: 'account_circle' , path: 'profile' },
       { label: 'Favorites', icon: 'favorite' , path: 'favorites' },

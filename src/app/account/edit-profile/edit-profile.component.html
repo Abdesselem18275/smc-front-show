@@ -1,5 +1,4 @@
-      <mat-progress-bar mode="indeterminate" *ngIf="isUpdating$ |async">
-      </mat-progress-bar>
+
         <h3>Your profile informations</h3>
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
         <p class="fieldset-title inline--centred mat-subheading-1">
@@ -32,23 +31,25 @@
                         </mat-select>
                 </mat-form-field>
          </section>
-         <div class="inline mb4">
-                <mat-label class="mr10" i18n>Gender :</mat-label>
-                <mat-radio-group class="column" formControlName="gender" id="gender">
-                  <mat-radio-button class="mb4" value="M">Male</mat-radio-button>
-                  <mat-radio-button value="F">Female</mat-radio-button>
-                </mat-radio-group>
+         <section class="mb4 fields--inline">
+                <div class="radio--container inline--centred">
+                        <mat-label class="mr10" i18n>Gender :</mat-label>
+                        <mat-radio-group class="inline--centred" formControlName="gender" id="gender">
+                          <mat-radio-button class="mr4" value="M">Male</mat-radio-button>
+                          <mat-radio-button value="F">Female</mat-radio-button>
+                        </mat-radio-group>
                 </div>
-
-
-        <mat-slide-toggle  class="mb4" 
-                    formControlName="is_professional" 
-                    (change)="onchanges($event)"
-                    [labelPosition] = "'before'">
-                    <span class="mat-subheading-2" i18n>Are you professional ?</span>
-        </mat-slide-toggle>
+        
+        
+                <mat-slide-toggle 
+                            formControlName="is_professional" 
+                            [labelPosition] = "'before'">
+                            <span class="mat-subheading-2 mr8" i18n>Are you professional ?</span>
+                </mat-slide-toggle>
+         </section>
+    
         <section *ngIf="accountForm.get('is_professional').value">
-                <p class="fieldset-title inline--centred mat-subheading-1">
+                <p class="fieldset-title mt4 inline--centred mat-subheading-1">
                         <mat-icon>work</mat-icon>
                         Professional information
                     </p>

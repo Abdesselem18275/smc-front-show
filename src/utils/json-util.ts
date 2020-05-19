@@ -1,6 +1,5 @@
 export function editFormReplacer(key, value) {
     // Filtering out properties
-    console.warn(key);
     if ( key === 'email') {
       return undefined;
     }

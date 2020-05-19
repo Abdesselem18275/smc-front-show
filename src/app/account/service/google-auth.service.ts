@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SmcAuthService } from './smc-auth.service';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import { Store } from '@ngrx/store';

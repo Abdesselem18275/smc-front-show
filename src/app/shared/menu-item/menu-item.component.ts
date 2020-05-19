@@ -7,12 +7,9 @@ import { Router } from '@angular/router';
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss']
 })
-export class MenuItemComponent implements AfterViewInit {
+export class MenuItemComponent  {
   @Input() items: Category[];
   @ViewChild('buildMenu', {static: true}) public buildMenu;
   constructor(public router: Router) { }
-  ngAfterViewInit(): void {
-    console.warn(this.buildMenu);
-  }
 
 }

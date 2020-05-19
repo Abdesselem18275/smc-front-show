@@ -15,7 +15,6 @@ export class AccountCardComponent implements OnInit {
   constructor(private store$: Store<ParamStoreState.State>) { }
 
   ngOnInit() {
-    this.store$.dispatch(UserStoreActions.UserRefreshAction());
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
   }
 

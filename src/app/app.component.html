@@ -1,12 +1,9 @@
       <header>
             <app-product-menu></app-product-menu>
       </header>
-
-<div>
       <router-outlet></router-outlet>
-      <div class='overlay' *ngIf="(modalStore$ | async).sideMenuBox">
-</div>
-      
+      <div class='overlay' (click)="closeAllModal() "*ngIf="isOverlay$|async">
+      </div>
 
 
 

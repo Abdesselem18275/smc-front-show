@@ -4,17 +4,17 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    z-index: 50000000;
+    z-index: 4;
   }
   .overlay {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2000;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
   } 
 
   .dot {
@@ -48,17 +48,26 @@
 
   }
   .inline--centred {
-    align-items: center;
-  }
-  .inline--centred > mat-icon {
-    @extend .mr2
-  }
-  .menu--shared-style {
     display: flex;
     align-items: center;
+  }
+  .inline--centred--spaced {
+    @extend .inline--centred;
     justify-content: space-between;
-    height: 5.1825rem;
-    background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
+  }
 
+  .menu--shared-style {
+    @extend .inline--centred--spaced;
+    @extend .menu--main-theme;
+
+    height: 5.1825rem;
+  }
+  .child--align-top {
+    align-self: start;
+  }
+
+
+  .menu--main-theme {
+    background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
 
   }

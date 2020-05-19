@@ -5,11 +5,12 @@ import { map, switchMap, catchError, withLatestFrom, filter, tap } from 'rxjs/op
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import * as UsersActions from './actions';
-import { selectUser } from './selectors';
+import { selectUser, selectIsAuthentificated } from './selectors';
 import { Profile } from 'src/app/account/model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
+import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 
 
 @Injectable()
@@ -40,14 +41,14 @@ export class UserEffects {
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
           }))
     )));
+
     refreshUser$  = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.UserRefreshAction),
-      withLatestFrom(this.store$.select(selectUser)),
-      filter(content => (content[1] === null && this.as.isLogged())),
+      withLatestFrom(this.store$.select(selectIsAuthentificated)),
+      filter(content => (content[1])),
       switchMap(()  =>
         this.as.profileRefresh().pipe(
-          // delay(5000),
           map(payload => {
             return UsersActions.LoadUserAction({payload});
           }),
@@ -73,7 +74,6 @@ export class UserEffects {
         switchMap((payload)  =>
           this.as.createProfile(payload).pipe(
             map((response: any) => {
-
               localStorage.setItem(this.tokenKey, response.token);
               localStorage.setItem(this.profileId, response.profile.id);
               this.as.redirect();
@@ -103,7 +103,33 @@ export class UserEffects {
         withLatestFrom(this.store$.select(selectUser)),
         map(content => content[1]),
         filter(payload => payload !== null),
-        tap(() => this.snakBar.open('Successfully market as favroite')),
         map(payload => UsersActions.UpdateUserAction({payload}))));
 
+      userRefrechTrigger$  = createEffect(() =>
+        this.actions$.pipe(
+          ofType(ModalStoreActions.ToggleAction, ROUTER_NAVIGATION,UsersActions.TriggerFavoriteAction),
+          withLatestFrom(this.store$.select(selectIsAuthentificated)),
+          withLatestFrom(this.store$.select(selectUser)),
+          filter(content => content[0][1] && content[1] === null),
+          map(() => UsersActions.UserRefreshAction())));
+        
+      favoriteTrigger$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(UsersActions.TriggerFavoriteAction),
+        withLatestFrom(this.store$.select(selectIsAuthentificated)),
+        withLatestFrom(this.store$.select(selectUser)),
+        map(content => {
+          const profile = content[1]
+          const isAuth = content[0][1]
+          const favId = content[0][0].id
+          if (isAuth) {
+            console.warn(favId)
+            return UsersActions.ToggleFavoriteAction({id:favId})
+          }
+          else {
+            this.snakBar.open('You have to login to perform this action')
+            return ModalStoreActions.ToggleAction({key: 'loginBox'})
+          }
+
+        })))
   }

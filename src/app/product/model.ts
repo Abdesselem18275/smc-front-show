@@ -20,8 +20,6 @@ export interface Choice {
     value: string;
     checked: boolean;
 }
-
-
 export interface ProductShort {
     pk: number;
     designation: string;
@@ -88,7 +86,7 @@ export interface MeasureUnit {
 
 export interface Category   {
     designation: string;
-    description?:string;
+    description?: string;
     parentCategory?: Category;
     isRoot?: boolean;
     isLeaf?: boolean;
@@ -110,14 +108,6 @@ export interface ProductCollection {
     svgIcon: BaseImage;
 }
 
-
-export interface NavTree  {
-    designation?: string;
-    routerLink?: string;
-    svgIcon?: string;
-    children?: NavTree[];
-
-}
 export enum ParamType {
     PAGE = 'Page',
     FILTER = 'Filter',
@@ -130,8 +120,12 @@ export interface Param {
     type: ParamType;
 }
 
-
-
+export interface MenuTreeData {
+    designation: string;
+    routerLink?: any;
+    icon?: string ;
+    children?: MenuTreeData[];
+  }
 
 
 

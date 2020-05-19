@@ -100,7 +100,7 @@ p {
         position: fixed;
         top:0;
         background-color: white;
-        z-index: 10000;
+        z-index: 3;
     }
 
 .account-card {
@@ -109,7 +109,7 @@ p {
       top: 4.44rem;
       right: 0.5rem;
       color: black;
-      z-index: 10000;
+      z-index: 3;
       padding: 1rem;
       background-color: white;
       border-radius: 10px;
@@ -122,8 +122,8 @@ p {
       transform: translate(-50%, 0%) ;
       background-color: white;
       min-height: 60%;
-      z-index: 10000;
-      max-width: 30rem;
+      z-index: 3;
+      max-width: 35rem;
   }
   .search-box {
     position: absolute;

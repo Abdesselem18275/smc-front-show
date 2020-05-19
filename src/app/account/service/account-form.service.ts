@@ -12,18 +12,6 @@ export class AccountFormService {
   constructor(private fb: FormBuilder) {
    }
 
-  createShortAccountForm(): FormGroup {
-    const  form = this.fb.group({
-        email : ['', [Validators.email, Validators.required]],
-        password : ['', Validators.required],
-        confirmPassword : ['', Validators.required],
-        first_name : ['', Validators.required],
-        last_name : ['', Validators.required],
-        gender : ['M', Validators.required],
-
-    } , { validators: this.passwordConfirmedValidator });
-    return form;
-  }
 
   createAccountForm(): FormGroup {
     const  form = this.fb.group({
@@ -32,7 +20,7 @@ export class AccountFormService {
         confirmPassword : ['', Validators.required],
         first_name : ['', Validators.required],
         last_name : ['', Validators.required],
-        country : ['', Validators.required],
+        gender : ['M', Validators.required],
         is_professional : [false]
     } , { validators: this.passwordConfirmedValidator });
     return form;
@@ -47,13 +35,12 @@ export class AccountFormService {
   }
 
   createLoadFullAccountForm() {
-    const myForm  = this.createShortAccountForm();
+    const myForm  = this.createAccountForm();
     myForm.addControl('company_name', new FormControl());
     myForm.addControl('position', new FormControl());
     myForm.addControl('activity_field', new FormControl());
     myForm.addControl('phone_number', new FormControl());
     myForm.addControl('country', new FormControl());
-    myForm.addControl('is_professional', new FormControl());
     myForm.removeControl('password');
     myForm.removeControl('confirmPassword');
     return myForm;

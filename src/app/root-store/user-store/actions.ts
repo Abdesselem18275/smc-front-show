@@ -3,12 +3,13 @@ import { createAction, props } from '@ngrx/store';
 export enum ActionsType {
   LOGIN     = '[User] Login a user',
   FAILURE = '[User] Request Failure',
-  LOAD_USER = '[User] Load User',
+  LOAD_USER = '[User] Load User to store',
   LOGOUT    = '[User] Logout a  user',
-  REFRECH   =  '[User] user Refresh',
+  REFRECH   =  '[User] Refrech User',
   CREATE = '[User] Create new user',
   UPDATE = '[User] Update user',
   TOGGLE_FAVORITE = '[User] Toggle favorite',
+  TRIGGER_FAVORITE = '[User] Trigger favorite'
 
 }
 export const LoginAction = createAction(
@@ -41,4 +42,7 @@ export const ToggleFavoriteAction = createAction(
   ActionsType.TOGGLE_FAVORITE,
   props<{ id: number}>()
 );
-
+export const TriggerFavoriteAction = createAction(
+  ActionsType.TRIGGER_FAVORITE,
+  props<{ id: number}>()
+);

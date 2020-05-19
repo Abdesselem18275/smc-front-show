@@ -1,13 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
+import { RootStoreState, ModalStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
-import { LanguageType, UserLanguage } from 'src/app/root-store/global-store/state';
+import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { SetLanguageAction } from 'src/app/root-store/global-store/actions';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
-import { Router } from '@angular/router';
-import { inject } from '@angular/core/testing';
-import { LanguageService } from '../service/language.service';
+
 import { LANGUAGE_CONFIG } from 'src/app/injectables.service';
 
 @Component({
@@ -18,8 +16,8 @@ import { LANGUAGE_CONFIG } from 'src/app/injectables.service';
 export class LanguageBoxComponent implements OnInit {
   language$: Observable<UserLanguage>;
   languageList: UserLanguage[];
+  isSideNav$: Observable<boolean>;
   constructor(
-    private languageService: LanguageService,
     @Inject(LANGUAGE_CONFIG) languageList: UserLanguage[],
     private store$: Store<RootStoreState.State>) {
       this.languageList = languageList;
@@ -27,10 +25,11 @@ export class LanguageBoxComponent implements OnInit {
 
   ngOnInit() {
     this.language$ = this.store$.select(selectLanguage);
+    this.isSideNav$ = this.store$.select(ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'})
   }
 
   setLanguage(value: UserLanguage) {
-    this.languageService.languageId = value.id.toLowerCase() + '/';
+    //this.languageService.languageId = value.id.toLowerCase() + '/';
     this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }

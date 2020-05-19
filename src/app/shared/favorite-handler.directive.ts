@@ -16,9 +16,7 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
   @Input() appFavoriteHandler: number;
   subscription: Subscription ;
   constructor(private _element: ElementRef ,
-              private snakBar: MatSnackBar,
-              private store$: Store<RootStoreState.State>,
-              private _authService: SmcAuthService) {
+              private store$: Store<RootStoreState.State>) {
    }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -33,19 +31,10 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
 
   @HostListener('click')
   onClick() {
-    if (this._authService.isLogged()) {
-      this.store$.dispatch(UserStoreActions.UserRefreshAction());
-      this.store$.dispatch(UserStoreActions.ToggleFavoriteAction({id: this.appFavoriteHandler}));
-    } else {
-      this.snakBar.open('You have to login to perform this action', 'Login')
-      .onAction().pipe(filter(x => true)).subscribe(() => {
-        this.store$.dispatch(ToggleAction({key: 'loginBox'}));
-      });
-    }
+    this.store$.dispatch(UserStoreActions.TriggerFavoriteAction({id: this.appFavoriteHandler}));
   }
 
   updateIconStyle(state: boolean) {
-    console.warn(state);
     this._element.nativeElement.style.color = state ? '#ffab00' : 'rgb(68,68,68)';
   }
 }

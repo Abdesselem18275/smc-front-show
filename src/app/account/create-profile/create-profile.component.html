@@ -49,13 +49,22 @@
                 </mat-form-field>
 
             </section>
-            <div class="inline mb4">
-                <mat-label class="mr10" i18n>Gender</mat-label>
-                <mat-radio-group class="column" formControlName="gender" id="gender">
-                  <mat-radio-button class="mb4" value="M">Male</mat-radio-button>
-                  <mat-radio-button value="F">Female</mat-radio-button>
-                </mat-radio-group>
+            <section class="mb4 fields--inline">
+                <div class="radio--container inline--centred">
+                        <mat-label class="mr8" i18n>Gender</mat-label>
+                        <mat-radio-group formControlName="gender" id="gender">
+                          <mat-radio-button value="M">Male</mat-radio-button>
+                          <mat-radio-button value="F">Female</mat-radio-button>
+                        </mat-radio-group>
                 </div>
+        
+        
+                <mat-slide-toggle 
+                            formControlName="is_professional" 
+                            [labelPosition] = "'before'">
+                            <span class="mat-subheading-2 mr8" i18n>Professional ?</span>
+                </mat-slide-toggle>
+         </section>
             <button class="form__submit-button" type="submit"
             mat-raised-button color="primary" i18n primary>
             <span class="mat-subheading-2">

@@ -9,12 +9,11 @@
                 <mat-divider *ngIf="(isFavoriteRoute |async)"></mat-divider>
         <section class="content-information">
            <div class="content-information__text">
-                <div class="breadcrumb" *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)">
                 <app-category-breadcrumb
+                *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)"
                                     [currentProduct]="product.rootCategory"
-                                    class="caption-style">
+                                    class="mb4 caption-style">
                </app-category-breadcrumb>
-                </div>
                <h3>{{product.designation}}</h3>
                <p class="mat-caption text--grey">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span></p>
 

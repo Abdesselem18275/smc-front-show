@@ -4,9 +4,14 @@ import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { CloseAllAction, ToggleAction } from 'src/app/root-store/modal-store/actions';
-import { Category, ProductCollection, NavTree } from 'src/app/product/model';
+import { Category, ProductCollection, MenuTreeData } from 'src/app/product/model';
 import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
+import { Observable } from 'rxjs';
+import { Profile } from 'src/app/account/model';
+import { UserStoreSelectors } from 'src/app/root-store/user-store';
+import { LanguageType } from 'src/app/root-store/global-store/state';
+import { MenuDataBuilderService } from '../service/menu-data-builder.service';
 
 
 @Component({
@@ -15,72 +20,24 @@ import { LogoutAction } from 'src/app/root-store/user-store/actions';
   styleUrls: ['./side-nav-menu.component.scss']
 })
 export class SideNavMenuComponent implements OnInit {
-  isCollectionOpen: Boolean;
-  isCategoryOpen: Boolean;
-  rootCategories: Category[];
-  collectionArray: ProductCollection[];
-  navMenuData: NavTree[]  = [
-    {
-      designation : 'company',
-      children : [
-        {
-          designation : 'About us',
-          routerLink : ''
-        },
-        {
-          designation : 'Contact us',
-          routerLink : ''
-        }
-      ]
-    },
-    {
-      designation : 'Utility',
-      children : [
-        {
-          designation : 'Mainteance tips',
-          routerLink : ''
-        },
-        {
-          designation : 'Copper benefits',
-          routerLink : ''
-        },
-        {
-          designation : 'returns',
-          routerLink : ''
-        },
-        {
-          designation : 'Paiments Information',
-          routerLink : ''
-        }
-      ]
-    }
-  ]
-  isLogged: boolean;
-  constructor(private router: Router,
-              private authService: SmcAuthService,
+  profile$: Observable<Profile>;
+  isLoading$: Observable<boolean>;
+  navMenuData: MenuTreeData[];
+  isLogged$: Observable<boolean>;
+  languageType: LanguageType;
+  constructor(
               private store$: Store<RootStoreState.State>,
-              private ccs: CategoryCacheService) { }
+              private navBuilder: MenuDataBuilderService) { }
 
   ngOnInit() {
-    this.isLogged = this.authService.isLogged();
-    this.isCollectionOpen = false;
-    this.isCategoryOpen = false;
-    this.rootCategories = this.ccs.fetchCachedCategories().filter(cat => cat.isRoot);
+    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
+    this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+    this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
+    this.navMenuData = this.navBuilder.treeMenu;
   }
 
   closeMenu() {
     this.store$.dispatch(CloseAllAction());
-  }
-  navigateTo(param_key: string, val: string) {
-    const navigationExtras: NavigationExtras = {
-      queryParams: { [param_key]: val },
-      queryParamsHandling: 'merge'
-    };
-    this.router.navigate([{
-      outlets: {
-        primary : 'product/list',
-        side: null }}],
-        navigationExtras);
   }
   logOut() {
     this.store$.dispatch(LogoutAction());

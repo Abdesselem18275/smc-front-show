@@ -20,12 +20,12 @@ import { CreateProfileComponent } from '../account/create-profile/create-profile
 import { LanguageBoxComponent } from './language-box/language-box.component';
 import { CategoryMenuComponent } from './category-menu/category-menu.component';
 import { ProductMenuComponent } from './product-menu/product-menu.component';
-import { TreeMenuComponent } from './tree-menu/tree-menu.component';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
 
 @NgModule({
-  declarations: [ProductMenuComponent, TreeMenuComponent,
+  declarations: [ProductMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
                  AccountLoginComponent,
                  CreateProfileComponent,
@@ -34,7 +34,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent],
+                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -43,7 +43,6 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
   ],
   exports: [
     ProductMenuComponent,
-    TreeMenuComponent,
     SideNavMenuComponent,
     SearchBoxComponent,
     ReactiveFormsModule,

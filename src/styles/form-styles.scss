@@ -21,8 +21,25 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  mat-form-field{
+  mat-form-field,.radio--container,mat-slide-toggle{
       min-width: 10rem;
       width: 45%;
+  }
+
+}
+
+@media only screen and (max-width:600px) { 
+  .fields--inline {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    mat-form-field,.radio--container,mat-slide-toggle{
+       min-width: 5rem;
+        width: 100%;
+    }
+    .radio--container,mat-slide-toggle {
+      margin: 0.5rem 0;
+    }
+  
   }
 }

@@ -10,6 +10,7 @@ const userReducer = createReducer(
       const newState = {
         ...state ,
         isLoading : false,
+        isAuthenticated: true,
         user: payload
       };
       console.warn(newState);
@@ -41,6 +42,7 @@ const userReducer = createReducer(
       const newState = {
         ...state ,
         isLoading : false,
+        isAuthenticated: false,
         errorMessage: null,
         user: null
       };
@@ -63,7 +65,6 @@ const userReducer = createReducer(
           favorites
         }
       };
-      console.warn(newState);
       return newState;
     }),
 );

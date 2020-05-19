@@ -17,3 +17,22 @@ button {
         color: white;
     }
   }
+
+  mat-radio-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    mat-radio-button {
+        margin: 0.5rem 0 ;
+
+    }
+    @media only screen and (max-width:600px) { 
+        margin-bottom: 0.5rem;
+        flex-direction: row;
+        mat-radio-button {
+            margin: 0 0.5rem ;
+        }
+
+    }
+
+}

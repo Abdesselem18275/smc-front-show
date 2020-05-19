@@ -9,6 +9,7 @@
   <a  
     [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
     class="mt4 font--white" 
+    color="primary"
     mat-flat-button>
     <span class="mat-subheading-1 font--white">
       Discover our {{category.designation | titlecase}} articles
