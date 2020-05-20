@@ -1,25 +1,17 @@
 @import "src/styles.scss";
 :host {
-    @extend .column--center;
-
-}
-header {
-    width: 100%;
-    padding:  0.5rem 1rem;
-    .logo--big {
-        width: 4rem;
-    }
+    @extend .column--centred;
 }
 
-
+h4 {
+    text-transform: uppercase;
+}
 form,mat-form-field,.form__submit-button {
     width: 100%;
     max-width: 100%;
    }
 
-mat-divider {
-    margin: 2rem 0;
-}
+
 button {
     span {
         color: white;

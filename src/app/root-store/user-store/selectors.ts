@@ -28,17 +28,23 @@ export const selectIsLoading = createSelector(
         }
       );
 
-export const selectIsUserRefreshed = createSelector(
+export const selectIsUserLoaded = createSelector(
   selectUser,
   (user: Profile) => (user !== null)
   );
 
 export const selectIsFavorite = createSelector(
   selectUser,
-  selectIsUserRefreshed,
-  (user: Profile,isRefreshed, prop: {id: number}) => (isRefreshed ? user.favorites.includes(prop.id):isRefreshed)
+  selectIsUserLoaded,
+  (user: Profile,isLoaded, prop: {id: number}) => (isLoaded ? user.favorites.includes(prop.id):false)
   );
-  export const selectIsAuthentificated = createSelector(
+
+export const selectIsAuthentificated = createSelector(
     selectModalState,
     (state) => (state.isAuthenticated)
     );
+export const selectFavoritesCount = createSelector(
+  selectUser,
+  selectIsUserLoaded,
+  (user: Profile,isLoaded, ) => (isLoaded ? user.favorites.length : -1)
+  );

@@ -1,0 +1,37 @@
+@import "src/styles.scss";
+
+main {
+    border-bottom: 1px solid $light-grey-color;
+    border-top: 1px solid $light-grey-color;
+    @extend .inline--centred--spaced;
+}
+.search-meta {
+    text-align: center;
+}
+.breadcrumb--centred {
+    display: none;
+}
+@media only screen and (max-width:800px) { 
+    main {
+        flex-direction: column;
+        align-items: center;
+        border : none;
+        .action-container {
+            border-bottom: 1px solid $light-grey-color;
+            border-top: 1px solid $light-grey-color;
+            width: 100%;
+            padding: 1rem 0;
+            order: 2 ;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        app-category-breadcrumb {
+            order: 1;
+
+        }
+        p {
+            order: 3;
+
+        }
+    }
+}

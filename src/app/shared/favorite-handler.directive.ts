@@ -1,22 +1,25 @@
-import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy } from '@angular/core';
-import { filter, tap, map } from 'rxjs/operators';
-import { SmcAuthService } from '../account/service/smc-auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy, ViewChild, ContentChildren, QueryList, Renderer2 } from '@angular/core';
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
-import { ToggleAction } from '../root-store/modal-store/actions';
 import { selectIsFavorite } from '../root-store/user-store/selectors';
 import { UserStoreActions } from '../root-store/user-store';
 import { Subscription } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
 
 @Directive({
   selector: '[appFavoriteHandler]'
 })
 export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
-  @Input() appFavoriteHandler: number;
+  @Input() 
+  appFavoriteHandler: number;
   subscription: Subscription ;
-  constructor(private _element: ElementRef ,
-              private store$: Store<RootStoreState.State>) {
+  @ContentChildren('favIcon') 
+  matIconList :  QueryList<MatIcon> ;
+  matIcon : HTMLElement;
+
+  constructor(
+    private renderer: Renderer2,
+    private store$: Store<RootStoreState.State>) {
    }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -24,6 +27,8 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
 
 
    ngAfterViewInit() {
+    this.matIcon = this.matIconList.first._elementRef.nativeElement
+    console.warn(this.matIcon);
     this.subscription = this.store$.select(selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
     });
@@ -33,8 +38,11 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
   onClick() {
     this.store$.dispatch(UserStoreActions.TriggerFavoriteAction({id: this.appFavoriteHandler}));
   }
-
   updateIconStyle(state: boolean) {
-    this._element.nativeElement.style.color = state ? '#ffab00' : 'rgb(68,68,68)';
+    this.renderer.removeClass(this.matIcon,'font--primary')
+    const favClass = state ? 'font--primary' : 'font--dark-grey';
+    const property = state ? 'favorite' : 'favorite_border';
+    this.renderer.addClass(this.matIcon,favClass)
+    this.renderer.setProperty(this.matIcon,'innerHTML',property);
   }
 }

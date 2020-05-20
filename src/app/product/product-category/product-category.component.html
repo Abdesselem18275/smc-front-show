@@ -1,4 +1,4 @@
-<main class="column--center">
+<main class="column--centred">
   <img [src]="category.thumbNail.content" class="root-category">
   <h1>
     DISCOVER THE PLEASURE OF COOKING
@@ -8,14 +8,11 @@
   </p>
   <a  
     [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
-    class="mt4 font--white" 
+    class="mt4" 
     color="primary"
-    mat-flat-button>
-    <span class="mat-subheading-1 font--white">
+    mat-stroked-button>
+    <span class="mat-h3">
       Discover our {{category.designation | titlecase}} articles
     </span>
-    <mat-icon class="font--white">
-      arrow_right_alt
-    </mat-icon>
   </a>
 </main>

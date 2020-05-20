@@ -36,11 +36,17 @@ export const reducers: ActionReducerMap<State> = {
         };
     }
   );
+  
+  export const selectAllParamsByTypeCount = createSelector(
+    selectAllParamsByType,
+    (allEntities) => {
+        return allEntities.length;
+    }
+  );
 
-  export const selectFilterPramCount = createSelector(
-    selectParamState,
-    selectAllParams,
-    (x, allEntities) => {
-        return allEntities.filter( x => x.type === ParamType.FILTER && x.value !== '').length;
+  export const selectIsParamExist= createSelector(
+    selectAllParamsByType,
+    (allEntities) => {
+        return allEntities.length > 0;
     }
   );

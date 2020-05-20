@@ -1,6 +1,8 @@
 @import "src/styles.scss";
 
-
+.breadcrumb-container {
+    background-color: $extreme-light-grey-color;
+}
 
 .loading-placeholder {
     width: 100%;
@@ -8,12 +10,15 @@
 }
 .content--grid {
     display: flex;
+    background-color: white;
+
     flex-direction: column;
     #remove-fav {
         margin: 0.5rem;
         float: right;
     }
     .content__thumbnail {
+        position: relative;
         width: 100%;
     }
     .content-information {
@@ -21,16 +26,25 @@
         display: flex;
         justify-content: space-between;
     }
-    .action-container {
-        width: 100%;
-        display: flex;
-        align-self: flex-start;
-        padding: 0.5rem 0;
-        button {
-            color : $grey-color;
-        }
+}
+
+.icon-container--hanging {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    button {
+        opacity: 0.7;
+    }
+    button:hover {
+        opacity: 1;
     }
 }
-mat-icon {
-    margin-right: 0.5rem;
+.mat-icon--full-right {
+    margin-left: auto;
+}
+.action-container--background-color {
+    background-color: mat-color($smc-show-case-primary,lighter);
+}
+.mat-h4 {
+    margin: 0 0 0;
 }

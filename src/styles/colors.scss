@@ -1,7 +1,10 @@
-$dark-grey : rgba(0,0,0,0.87);
+@import '../app-custom-themes.scss';
+
+
+$dark-grey : rgba(0,0,0,0.70);
 $grey-color : rgba(0,0,0,0.54);
 $light-grey-color : rgba(0,0,0,.12);
-$extreme-light-grey-color : #f2f2f2;
+$extreme-light-grey-color : rgba(0,0,0,.03);
 
 .font--green {
     color: green;
@@ -23,6 +26,10 @@ $extreme-light-grey-color : #f2f2f2;
 }
 .font--white {
   color: white;
+}
+
+.font--primary {
+  color: mat-color($smc-show-case-primary);
 }
 
 .alert {

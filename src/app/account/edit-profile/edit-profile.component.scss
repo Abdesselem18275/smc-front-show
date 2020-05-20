@@ -1,6 +1,6 @@
 @import "src/styles.scss";
 :host,header {
-    @extend .column--center;
+    @extend .column--centred;
 }
 form {
     width: 70%;

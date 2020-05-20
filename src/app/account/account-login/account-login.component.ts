@@ -8,12 +8,6 @@ import { Observable } from 'rxjs';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 
 
-interface CustomClasses {
-  classes: string | string[];
-  actionClasses: string | string[];
-  dismissClasses: string | string[];
-}
-
 declare const gapi: any;
 
 @Component({
@@ -22,13 +16,8 @@ declare const gapi: any;
   styleUrls: ['./account-login.component.scss']
 })
 export class AccountLoginComponent implements OnInit   {
-  email: string;
-  account: string;
   auth_non_field_error: Observable<string>;
-  fieldError:  string;
-  createForm: FormGroup;
   loginForm: FormGroup;
-  countryNames: any;
   isChecking: Observable<boolean>;
   constructor(
               private accountFormService: AccountFormService,
@@ -43,21 +32,13 @@ export class AccountLoginComponent implements OnInit   {
     const credentials = this.loginForm.value;
     this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
     this.auth_non_field_error = this.store$.select(UserStoreSelectors.selectError);
-
   }
 
 
-  close() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-  }
+
   getEmailErrorMessage() {
     return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
         this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
             '';
   }
-
-  toggleModal(value) {
-    this.store$.dispatch(ModalStoreActions.ToggleAction({key: value}));
-  }
-
 }

@@ -11,6 +11,8 @@ import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 import { Category } from 'src/app/product/model';
 import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
+import { RouterStoreSelectors } from 'src/app/root-store/router-store';
+import { UserStoreSelectors } from 'src/app/root-store/user-store';
 
 @Component({
   selector: 'app-product-menu',
@@ -22,67 +24,21 @@ import { CategoryCacheService } from 'src/app/product/service/category-cache.ser
 })
 export class ProductMenuComponent implements OnInit {
 
-  categories: Category[];
-  rootCategories: Category[];
-  isMenuActive: boolean;
-  isSideMenuActive: boolean;
-  isRootActive: boolean;
-  isReady: boolean;
-  isActive: boolean;
   modalStore$: Observable<ModalStoreState.State>;
-  isHomeRoute: Observable<boolean>;
-  language$: Observable<UserLanguage>;
+  isHomeRoute$: Observable<boolean>;
+  favoritesCount$ : Observable<number>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
-
-
   constructor( private router: Router,
-               private categoriesCache: CategoryCacheService,
                private store$: Store<RootStoreState.State>) {
 
 
   }
   ngOnInit() {
-    this.isActive = true;
-    this.isMenuActive = false;
-    this.isSideMenuActive = false;
-    this.isRootActive = false;
     this.modalStore$ = this.store$.select(selectAllModalState);
-    this.language$ = this.store$.select(selectLanguage);
-
-    this.rootCategories  = this.categoriesCache.fetchCachedCategories().filter(category => category.isRoot);
-    const treeMenu: Category[] = [
-      {
-        designation: 'Our products',
-        description: '',
-        isLeaf: false,
-        isRoot: true,
-        children: this.rootCategories,
-        thumbNail : null,
-        parentCategory : null,
-        svgIcon : null
-          }
-          ];
-    this.rootCategories = treeMenu;
-
-    this.isHomeRoute = this.router.events.pipe(
+    this.isHomeRoute$ = this.router.events.pipe(
       filter(x => x instanceof NavigationEnd),
       map(event => event['url'] === '/product/home'));
-    this.router.events.subscribe(x => console.warn(x));
-  }
-
-  toggleMenu() {
-    this.isMenuActive = !this.isMenuActive;
-  }
-  toggleSideMenu() {
-    this.isSideMenuActive = !this.isSideMenuActive;
-    this.isSideMenuActiveEvent.emit(this.isSideMenuActive);
-  }
-  toggleRoot() {
-    this.isRootActive = !this.isRootActive;
-  }
-
-  getModalState(value) {
-    return this.store$.select(selectModalStateByType, {key: value});
+    this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount)
   }
 
   toggleModal(value) {

@@ -1,7 +1,5 @@
-<nav class='inline--centred nav-bar'>
+<nav [class.menu--main-theme]="isHomeRoute$ |async" class='font--dark-grey global--gutters inline--centred--spaced nav-bar'>
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
-    
-
       <div class="nav-bar__logo">
         <mat-icon 
         [routerLink]="['/product/home/']" 
@@ -28,8 +26,8 @@
             <mat-icon>search</mat-icon>
         </button>
 
-        <button mat-icon-button  (click)="toggleUserCard()" id="account-icon">
-            <mat-icon>person</mat-icon>
+        <button class="mx2" mat-icon-button   (click)="toggleUserCard()" id="account-icon">
+            <mat-icon matBadgePosition="before" [matBadge]="(favoritesCount$ | async) != -1 ? (favoritesCount$ | async) : ''">person</mat-icon>
         </button>
         <app-language-box class="language-panel">
         </app-language-box>
@@ -55,8 +53,8 @@
 
 <div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).createProfileBox" class="mat-elevation-z2 center-box">
 
-    <app-account-login *ngIf="(modalStore$ | async).loginBox" >
-    </app-account-login>
+    <app-authentification-card *ngIf="(modalStore$ | async).loginBox">
+    </app-authentification-card>
     <app-create-profile *ngIf="(modalStore$ | async).createProfileBox">
 
     </app-create-profile>

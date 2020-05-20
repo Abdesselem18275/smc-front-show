@@ -2,7 +2,7 @@
 <ng-container *ngIf="!(isSideNav$ | async) else side">
 
   <button [matMenuTriggerFor]="lang" mat-icon-button>
-    <mat-icon>language</mat-icon>   
+    <mat-icon [svgIcon]="(language$ |async).LanguageType"></mat-icon>   
   </button> 
 
   <mat-menu #lang="matMenu">

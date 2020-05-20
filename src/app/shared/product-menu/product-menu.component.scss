@@ -4,21 +4,9 @@ p {
   cursor: pointer;
 }
 
-.nav-bar {
-    @extend .menu--shared-style;
-    padding:  0.5rem 10rem;
-    @media only screen and (max-width:1024px) { 
-      padding:  0.5rem 5rem;
-    }
-    @media only screen and (max-width:600px) { 
-      padding:  0.5rem 2rem;
-    }
-}
-
 .nav-tabs__tab {
   justify-content: space-between;
   margin-bottom: 0;
-  @extend .font--grey;
   a,app-category-menu {
     margin: 0 1.5rem;
   }
@@ -28,7 +16,7 @@ p {
 }
 
 .nav-bar__logo {
-  width: 6rem;
+  width: 4rem;
 }
 
 .nav-bar__tools

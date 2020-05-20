@@ -3,47 +3,17 @@
   <app-product-filter>
     </app-product-filter>
 </div>
-
-<section class="side-content">
-<header *ngIf="!(isSearchActive |async)" class="main-header--sticky">
-    <div class="content__meta-bar">
-        <div class="content__meta-bar-breadcrumb" >
-          <app-category-breadcrumb  class="breadcrumb"></app-category-breadcrumb>
-          <p *ngIf="!(isLoading | async)" class="content__objects-count mat-body-1">{{objCount | async}} selected products</p>
-        </div>
-        <button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-button>
-        <mat-icon [matBadge]="(filterParamCount | async) != 0 ? (filterParamCount | async) : ''" 
-                  matBadgeColor="primary"
-                  matBadgePosition="above before">
-          tune
-        </mat-icon>
-        <span class="mat-body-strong" i18n>Filter</span>
-
-      </button>
-      </div>
-
-    </header>
-
+<div class="mt8">
+<app-list-meta></app-list-meta>
+</div>
 
     
-    <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate">
+    <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate">
 
     </mat-progress-bar>
 
-          <section   class="content">
-               <h2>{{activeCategory | async | uppercase}}</h2>
-              <mat-button-toggle-group  class="view-toggeler" (change)="toggleView($event)">
-                  <mat-button-toggle value="module">
-                    <mat-icon>view_module</mat-icon>
-                  </mat-button-toggle>
-                  <mat-button-toggle [checked]="true" value="stream">
-                    <mat-icon>view_stream</mat-icon>
-                  </mat-button-toggle>
-                </mat-button-toggle-group>
-               <div class="search-meta" *ngIf="!(isLoading | async ) && (isSearchActive | async)">
-                      <h2 i18n *ngIf="(objCount | async) == 0">No products found for "{{searchTerm| async}}"</h2>
-                      <h2 i18n *ngIf="!((objCount | async) == 0)">We found {{objCount | async }} products for for "{{searchTerm| async}}"</h2>
-               </div>
+          <section   class="pt10 content global--gutters column">
+
 
             <div [ngClass]="{'content__image-container--grid__module': isModuleActive ,'content__image-container--grid':!isModuleActive }">
 
@@ -58,4 +28,3 @@
           class='bottom-line'>
           <mat-icon inline="true" *ngIf="isLoading | async" svgIcon="loading_2"></mat-icon>
         </div>
-</section>

@@ -23,11 +23,13 @@ import { ProductMenuComponent } from './product-menu/product-menu.component';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
+import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
 
 @NgModule({
   declarations: [ProductMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
                  AccountLoginComponent,
+                 AuthentificationCardComponent,
                  CreateProfileComponent,
                  GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
@@ -57,6 +59,7 @@ import { CategoriesTreeComponent } from './categories-tree/categories-tree.compo
     CreateProfileComponent,
     AccountCardComponent,
     ProductFilterComponent,
+    AuthentificationCardComponent,
     CommonModule,
 
   ]

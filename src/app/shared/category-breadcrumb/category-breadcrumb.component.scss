@@ -4,28 +4,10 @@ section
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+}
 
-}
-p {
-  text-transform: capitalize;
-}
-mat-icon {
-  width: 2rem;
-}
+
 p:hover {
   cursor: pointer;
   text-decoration: underline;
-}
-
-
-
-:host(.caption-style) {
-  p  {
-    @extend .font--grey;
-    @extend .mat-caption 
-
-
-  }
-  
-
 }

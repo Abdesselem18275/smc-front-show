@@ -1,0 +1,26 @@
+
+<main class="global--gutters">
+<p *ngIf="!(isLoading$ | async)" class="mat-subheading-1">{{objCount$ | async}} <span>selected</span> products</p>
+<app-category-breadcrumb  class="mat-subheading-1"></app-category-breadcrumb>
+
+<section class="action-container inline--centred">
+<button  class="mr4" mat-stroked-button>
+<mat-icon >view_module
+</mat-icon>
+<span class="ml2" i18n>GRID</span>
+</button>
+<button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
+<mat-icon [matBadge]="(filterParamCount$ | async) != 0 ? (filterParamCount$ | async) : ''" 
+          matBadgeColor="primary"
+          matBadgePosition="above before">tune
+</mat-icon>
+<span class="ml2" i18n>FILTER</span>
+</button>
+</section>
+</main>
+
+
+<div class="search-meta mt8" *ngIf="!(isLoading$ | async ) && (isSearchActive$ | async)">
+  <p class="mat-h2" i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
+  <p class="mat-h2" i18n *ngIf="!((objCount$ | async) == 0)">We found {{objCount$ | async }} products for "{{searchTerm$| async}}"</p>
+</div>

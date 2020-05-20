@@ -1,31 +1,12 @@
-<header class="menu--shared-style">
-        <span></span>
-        <button class="logo--big" [routerLink]="['/product/home/']" mat-icon-button>
-                <mat-icon 
-                inline="true" 
-                svgIcon="logo">
-               </mat-icon> 
-        </button>
-
-       <button (click)="close()" mat-icon-button>
-               <mat-icon>close</mat-icon>
-       </button>
-</header>
-<mat-progress-bar *ngIf="(isChecking |async)" mode="indeterminate">
-
-</mat-progress-bar>
-<mat-tab-group class="px8 pb8" mat-stretch-tabs>
-        <mat-tab label="Sign in">
-                <header class="column--center">
-                        <h4 i18n>Sign in with SMC</h4>
-                        <p i18n class="font--grey mat-body">Please enter the following informations</p>
-                        <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
-                                {{item.value}}
-                        </p>
-                </header>
-                        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                                <mat-form-field appearance="outline">
-                                        <mat-icon class="mr2" matPrefix>email</mat-icon>
+<header class="column--centred">
+        <p i18n class="font--grey mat-body">Please enter the following informations</p>
+        <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
+                {{item.value}}
+        </p>
+        </header>
+        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                        <mat-icon class="mr2" matPrefix>email</mat-icon>
                                         <mat-label i18n>email</mat-label>
                                         <input required matInput type="email" formControlName="email" id="email">
                                         <mat-error
@@ -46,19 +27,10 @@
         
                                 <button class="form__submit-button mt4" type="submit"
                                         mat-raised-button color="primary" i18n primary>
-                                        <span class="mat-subheading-2">
-                                                Sign in
+                                        <span>
+                                                Sign in with SMC
                                         </span>
                                 </button>
         
         
                                 </form>
-                                <mat-divider></mat-divider>
-     
-                                        <app-google-sign-in>
-                                        </app-google-sign-in>
-        
-        </mat-tab>
-        <mat-tab label="Register">
-                        <app-create-profile class="column--center"></app-create-profile>
-        </mat-tab>
