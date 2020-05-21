@@ -17,7 +17,7 @@ const LANGUAGE_LIST: UserLanguage[] = [
     LanguageType: LanguageType.GERMAN
   }
 ];
-const SMC_API_URL = () => 'http://ec2-15-236-55-71.eu-west-3.compute.amazonaws.com/api';
+const SMC_API_URL = () => 'https://ec2-15-236-55-71.eu-west-3.compute.amazonaws.com/api';
 const LOCAL_API_URL = () => 'http://127.0.0.1:8000/api';
 const getBaseUrl = () => {
 
