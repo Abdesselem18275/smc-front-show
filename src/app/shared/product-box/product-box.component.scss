@@ -11,12 +11,7 @@
 .content--grid {
     display: flex;
     background-color: white;
-
     flex-direction: column;
-    #remove-fav {
-        margin: 0.5rem;
-        float: right;
-    }
     .content__thumbnail {
         position: relative;
         width: 100%;

@@ -5,14 +5,14 @@
 <ng-container *ngIf="!(isLoading$ | async) else loading">
     <ng-container *ngIf="isSideNav$| async ; else card">
         <header class="inline--centred--spaced">
-            <section *ngIf="isLogged$ |async; else noCard" class="p3 column">
+            <section *ngIf="isLogged$ |async; else noCard" class=" column">
                 <mat-icon id="account-avatar" (click)="navToProfile()">account_circle</mat-icon>
                 <p class="mat-body-2">{{(profile$ |async).email}}</p>
                 <p class="mat-body-1 font--dark-grey">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
-                <div class="font--dark-accent mt4">
-               <button class="mr4" mat-stroked-button>
+                <div class="font--dark-accent action-container mt4">
+               <button class="mr3" mat-stroked-button>
                    <mat-icon class="mr2">favorite</mat-icon>
-                   <span>Favorites</span>
+                   <span class="mat-caption">Favorites</span>
                </button>
                <button (click)="logOut()"  mat-stroked-button>
                 <mat-icon class="mr2">exit_to_app</mat-icon>
