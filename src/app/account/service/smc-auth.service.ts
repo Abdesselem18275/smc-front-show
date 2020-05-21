@@ -88,10 +88,6 @@ getInitialState = () => ({
     user: null })
 
 
-
-
-
-
 isLogged(): boolean {
   return localStorage.getItem(this.tokenKey) !== null;
 }
