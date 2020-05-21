@@ -1,7 +1,7 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="mat-tree">
     <!-- This is the tree node template for leaf nodes -->
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-      <li class="mat-tree-node">
+      <li matRipple class="mat-tree-node">
         <!-- use a disabled button to provide padding for tree leaf -->
         <ng-container *ngTemplateOutlet="node.icon ? icon : noIcon;context:iconContext(node)">
         </ng-container>

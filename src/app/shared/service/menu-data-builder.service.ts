@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuTreeData } from 'src/app/product/model';
+import { MenuTreeData, Category } from 'src/app/product/model';
 import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 import { NavigationExtras } from '@angular/router';
 
@@ -60,16 +60,12 @@ export class MenuDataBuilderService {
 
   constructor(private ccs: CategoryCacheService) { 
     this._treeMenu = NAV_TREE_DATA.map((cat: MenuTreeData)  => {
-      console.warn(this.ccs.fetchCachedCategories());
       if (cat.designation === 'products') {
         return {
           ...cat,
           children : this.ccs.fetchCachedCategories()
-            .map(proCat => ({
-              ...proCat,
-              routerLink : this.categoryRouterLink(proCat.designation)
-            }))
             .filter(proCat => proCat.isRoot)
+            .map(proCat => (this.setCatRouterLink(proCat)))
         };
       }
       return cat;
@@ -81,8 +77,17 @@ export class MenuDataBuilderService {
   get treeMenu() {
     return this._treeMenu;
   }
-  categoryRouterLink(designation:string) {
-    console.warn(designation);
+  
+  setCatRouterLink(cat : Category) {
+    const newCat = {
+      ...cat,
+      routerLink :this.generateCatRouterLink(cat.designation),
+      children: cat.isLeaf ? [] :cat.children.map(cat =>this.setCatRouterLink(cat) )
+    }
+    return newCat;
+  }
+
+  generateCatRouterLink(designation:string) {
     let navigationExtras: NavigationExtras = {
       queryParams: { 'categories__designation__in': designation },  
       queryParamsHandling : 'merge'

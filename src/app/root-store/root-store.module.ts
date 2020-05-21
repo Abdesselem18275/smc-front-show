@@ -5,9 +5,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ParamStoreModule } from './param-store/param-store.module';
 import { ModalStoreModule } from './modal-store/modal-store.module';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { RouterStoreModule } from './router-store/router-store.module';
-import { CustomSerializer } from './router-store/custom-route-serializer';
 import { GlobalStoreModule } from './global-store/global-store.module';
 import { UserStoreModule } from './user-store/user-store.module';
 
@@ -26,14 +23,10 @@ import { UserStoreModule } from './user-store/user-store.module';
         strictStateSerializability: true,
       },
     }),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer
-    }),
-    EffectsModule.forRoot([]),
     ModalStoreModule,
-    RouterStoreModule,
     GlobalStoreModule,
     UserStoreModule,
+    EffectsModule.forRoot([]),
   ]
 })
 export class RootStoreModule { }

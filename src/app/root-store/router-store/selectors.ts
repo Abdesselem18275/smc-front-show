@@ -1,19 +1,17 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { RouterReducerState } from "@ngrx/router-store";
-import { RouterStateUrl } from "./custom-route-serializer";
-import { featureKey } from "./reducers";
 import { State } from "./state";
+import * as fromRouter from '@ngrx/router-store';
 
-export const selectReducerState = createFeatureSelector<
-  State,
-  RouterReducerState<RouterStateUrl>>(featureKey);
+export const selectRouter = createFeatureSelector< State, fromRouter.RouterReducerState<any>>('router');
 
 
-export const selectCurrentRouteState = createSelector(
-  selectReducerState,
-  routerReducerState => (routerReducerState.state)
-);
-export const getRouterQueryParams = createSelector(
-  selectReducerState,
-  state => state.state.queryParams
-);
+export const {
+    selectCurrentRoute,   // select the current route
+    selectQueryParams,    // select the current route query params
+    selectQueryParam,     // factory function to select a query param
+    selectRouteParams,    // select the current route params
+    selectRouteParam,     // factory function to select a route param
+    selectRouteData,      // select the current route data
+    selectUrl,            // select the current url
+  } = fromRouter.getSelectors(selectRouter);
+

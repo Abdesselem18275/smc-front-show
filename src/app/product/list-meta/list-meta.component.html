@@ -1,7 +1,9 @@
 
 <main class="global--gutters">
 <p *ngIf="!(isLoading$ | async)" class="mat-subheading-1">{{objCount$ | async}} <span>selected</span> products</p>
-<app-category-breadcrumb  class="mat-subheading-1"></app-category-breadcrumb>
+<ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else search">
+  <app-category-breadcrumb   class="mat-subheading-1"></app-category-breadcrumb>
+</ng-container>
 
 <section class="action-container inline--centred">
 <button  class="mr4" mat-stroked-button>
@@ -19,8 +21,16 @@
 </section>
 </main>
 
+<ng-template #search>
+  <ng-container *ngIf="(isSearchActive$ | async)" >
+    <p class="mat-subheading-1" i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
+    <p class="mat-subheading-1" i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
+    </ng-container>
+    <ng-container *ngIf="(isFavoriteActive$ | async)" #favorites>
+      <p class="mat-subheading-1" i18n *ngIf="(favoritesCount$ | async) == -1 else">You have no favorite product "{{searchTerm$| async}}"</p>
+      <p class="mat-subheading-1" i18n *ngIf="!((favoritesCount$ | async) != -1)">Your favroites"</p>
+    </ng-container>
+</ng-template>
 
-<div class="search-meta mt8" *ngIf="!(isLoading$ | async ) && (isSearchActive$ | async)">
-  <p class="mat-h2" i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
-  <p class="mat-h2" i18n *ngIf="!((objCount$ | async) == 0)">We found {{objCount$ | async }} products for "{{searchTerm$| async}}"</p>
-</div>
+
+

@@ -27,7 +27,7 @@ export class ProductEffects {
     favoritesFetch$ = createEffect(() =>
     this.actions$.pipe(
         ofType(ROUTER_NAVIGATED),
-        filter((x: any) =>  (x.payload.event.url).includes('account/profile')),
+        filter((x: any) =>  (x.payload.event.url).includes('product/favorites')),
         switchMap(() => this.authService.getProfileFavorites().pipe(
           concatMap(res => ([
             ProductStoreActions.ClearAllAction(),

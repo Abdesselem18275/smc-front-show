@@ -28,7 +28,6 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
 
    ngAfterViewInit() {
     this.matIcon = this.matIconList.first._elementRef.nativeElement
-    console.warn(this.matIcon);
     this.subscription = this.store$.select(selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
     });

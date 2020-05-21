@@ -19,6 +19,8 @@ import { ConfigService } from './product/service/config.service';
 import { httpInterceptorProviders } from './http-interceptors';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -39,7 +41,10 @@ import { environment } from '../environments/environment';
     EffectsModule.forRoot([AppEffects]),
     ProductModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-
+    RouterModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      routerState : RouterState.Minimal
+    })
   ],
   providers: [
     httpInterceptorProviders,

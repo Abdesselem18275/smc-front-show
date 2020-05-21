@@ -28,6 +28,5 @@ export class FavoritesProfileComponent implements OnInit {
 
   ngOnInit() {
     this.favorites = this.store$.select(ProductStoreSelectors.selectAllProducts);
-
   }
 }
