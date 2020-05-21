@@ -80,8 +80,7 @@ export class ParamEffects {
     this.actions$.pipe(
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/list')),
-        tap((actions: any) => console.warn(actions)),
-        map((actions: any) => actions.payload.routerState.root.queryParams),
+        map((actions: any) => actions.payload.routerState.queryParams),
         filter(param => param !== undefined),
         map((params) => {
                 const paramsArray = [];

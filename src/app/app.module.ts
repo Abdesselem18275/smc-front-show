@@ -20,7 +20,8 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterState, RouterStateSerializer } from '@ngrx/router-store';
+import { CustomSerializer } from './root-store/router-store/custom-route-serializer';
 
 
 @NgModule({
@@ -42,9 +43,9 @@ import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
     ProductModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     RouterModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot({
-      routerState : RouterState.Minimal
-    })
+    // StoreRouterConnectingModule.forRoot({
+    //   serializer: CustomSerializer
+    // })
   ],
   providers: [
     httpInterceptorProviders,

@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { ProductShort, ParamType, Param } from 'src/app/product/model';
 import { UserStoreActions } from 'src/app/root-store/user-store';
+import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 
 
 @Component({
@@ -19,17 +20,20 @@ export class ProductBoxComponent implements OnInit, OnChanges  {
   isLoading: boolean;
   isFetching: boolean;
   isSearchActive: Observable<boolean>;
-  isFavoriteRoute: Observable<boolean>;
+  isFavoriteRoute: Observable<any>;
   searchTerm: Observable<string>;
   constructor(private router: Router,
-              private store$: Store<RootStoreState.State>) { }
+              private store$: Store<any>) { }
 
   ngOnInit() {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
     pipe(map( (params: Param[]) => params.length !== 0));
     this.searchTerm = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
       pipe(map( (params: Param[]) => params.length < 1 ? '' : params.shift().value));
-    this.isFavoriteRoute = this.store$.pipe(map(state => state.router.router.state.url.includes('account/profile')));
+    this.isFavoriteRoute  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
+    this.store$.select(RouterStoreSelectors.selectUrl).subscribe(x => {
+      console.warn(x)
+    })
     this.isLoading = true;
     this.isFetching = false;
     this.ImageMockup();

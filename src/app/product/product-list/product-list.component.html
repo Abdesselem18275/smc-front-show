@@ -3,11 +3,11 @@
   <app-product-filter>
     </app-product-filter>
 </div>
-<div class="mt8">
-<!-- <app-list-meta></app-list-meta> -->
+<div class="mt4">
+<app-list-meta></app-list-meta>
 </div>
 
-    
+
     <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate">
 
     </mat-progress-bar>
@@ -24,7 +24,7 @@
             </div>
 
           </section>
-          <div  appScrollPaginator 
+          <div  appScrollPaginator
           class='bottom-line'>
           <mat-icon inline="true" *ngIf="isLoading | async" svgIcon="loading_2"></mat-icon>
         </div>

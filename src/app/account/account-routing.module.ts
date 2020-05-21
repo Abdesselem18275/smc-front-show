@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './auth.guard';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { FavoritesProfileComponent } from './favorites-profile/favorites-profile.component';
 
 const routes: Routes = [
   { path : 'account',
@@ -16,14 +15,6 @@ const routes: Routes = [
         {
           path : 'profile',
           component : EditProfileComponent
-        },
-        {
-          path : 'favorites',
-          component : FavoritesProfileComponent
-        },
-        {
-          path : 'messages',
-          component : FavoritesProfileComponent
         }
        ]
      }

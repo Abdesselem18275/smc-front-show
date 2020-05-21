@@ -1,7 +1,7 @@
 
 <div  class=" mat-elevation-z2 content--grid">
         <div class="p2 inline--centred">
-                <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
+                <button [appFavoriteHandler]="product.pk"
                 mat-icon-button>
                <mat-icon #favIcon>favorite</mat-icon>
                </button>
@@ -12,7 +12,7 @@
                </section>
                <button  class="font--dark-grey mat-icon--full-right" mat-icon-button>
                 <mat-icon i18n>message</mat-icon>
-        </button>  
+        </button>
 
         </div>
         <mat-divider></mat-divider>
@@ -23,20 +23,7 @@
                 [style.display]="isLoading ? 'none' : 'block'"
                 (click)="navigateTo(product.pk)"
                 [src]="product.thumbNail?.content">
-                <section class="icon-container--hanging font--grey">
-
-                      
-                </section>
-
         </div>
-        <section>
-                        <button id="remove-fav" *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
-                                        <mat-icon >close</mat-icon>
-                                </button>
-
-        </section>
-
-                <mat-divider *ngIf="(isFavoriteRoute |async)"></mat-divider>
         <section class="content-information">
            <div class="content-information__text">
 

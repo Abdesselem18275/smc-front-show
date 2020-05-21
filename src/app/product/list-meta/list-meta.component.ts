@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RootStoreState, ProductStoreSelectors, ModalStoreActions, ParamStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 import { ParamType, Param } from '../model';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { Router, NavigationEnd } from '@angular/router';
@@ -22,17 +22,15 @@ export class ListMetaComponent implements OnInit {
   searchTerm$: Observable<string>;
   favoritesCount$ : Observable<number>;
 
-  constructor(private router: Router,private store$: Store<RootStoreState.State>) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit(): void {
     this.objCount$ = this.store$.select(ProductStoreSelectors.selectProductsCount);
     this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
     this.filterParamCount$ = this.store$.select(ParamStoreSelectors.selectAllParamsByTypeCount,{type:ParamType.FILTER})
     this.isSearchActive$ = this.store$.select(ParamStoreSelectors.selectIsParamExist, { type: ParamType.SEARCH})
-    this.isFavoriteActive$  = this.router.events.pipe(
-      filter(x => x instanceof NavigationEnd),
-      map(event => event['url'] === '/product/favorites'));
-
+    this.isFavoriteActive$  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
+    this.isFavoriteActive$.subscribe(x => console.warn(x));
     this.searchTerm$ = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(
       map((params: Param[]) => {
         try {

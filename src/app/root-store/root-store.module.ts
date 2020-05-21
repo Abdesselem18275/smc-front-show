@@ -7,6 +7,7 @@ import { ParamStoreModule } from './param-store/param-store.module';
 import { ModalStoreModule } from './modal-store/modal-store.module';
 import { GlobalStoreModule } from './global-store/global-store.module';
 import { UserStoreModule } from './user-store/user-store.module';
+import { RouterStoreModule } from './router-store';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { UserStoreModule } from './user-store/user-store.module';
     CommonModule,
     ProductStoreModule,
     ParamStoreModule,
+    RouterStoreModule,
     StoreModule.forRoot({},
       {
       runtimeChecks: {

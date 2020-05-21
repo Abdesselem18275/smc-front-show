@@ -1,8 +1,0 @@
-<h3 class="text--center" i18n   *ngIf="(favorites | async).length < 1"> You have no favorites !!!</h3>
-<div class="content__image-container--grid">
-    <app-product-box  
-        class="product-box"
-        *ngFor='let favorite of favorites | async' 
-        @myInsertRemoveTrigger [product]="favorite" >
-    </app-product-box>
-</div>
