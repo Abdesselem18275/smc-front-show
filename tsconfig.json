@@ -13,6 +13,9 @@
     "esModuleInterop": true,
     "target": "es2015",
     "downlevelIteration": true,
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],

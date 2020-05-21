@@ -5,6 +5,7 @@ import { ProductHomeComponent } from './product-home/product-home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductDetailResolverService } from './service/product-detail-resolver.service';
+import { AuthGuard } from '../account/auth.guard';
 
 const productRoutes: Routes = [
   { path : 'product',
@@ -13,6 +14,11 @@ const productRoutes: Routes = [
       {
         path : 'home',
         component : ProductHomeComponent
+      },
+      {
+        path : 'favorites',
+        component : ProductListComponent,
+        canActivate: [AuthGuard],
       },
       {
         path : 'list',

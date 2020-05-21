@@ -1,49 +1,66 @@
 
-<div [appTextHightlight]="searchTerm | async" class=" mat-elevation-z2 content--grid">
+<div  class=" mat-elevation-z2 content--grid">
+        <div class="p2 inline--centred">
+                <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
+                mat-icon-button>
+               <mat-icon #favIcon>favorite</mat-icon>
+               </button>
+                <section>
+                <p class="mat-h4">{{product.designation | uppercase}}</p>
+                <app-category-breadcrumb *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption" [currentProduct]="product.rootCategory">
+               </app-category-breadcrumb>
+               </section>
+               <button  class="font--dark-grey mat-icon--full-right" mat-icon-button>
+                <mat-icon i18n>message</mat-icon>
+        </button>  
+
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class='content__thumbnail'>
+                <img
+                (load)="onImageLoad($event)"
+                [style.display]="isLoading ? 'none' : 'block'"
+                (click)="navigateTo(product.pk)"
+                [src]="product.thumbNail?.content">
+                <section class="icon-container--hanging font--grey">
+
+                      
+                </section>
+
+        </div>
         <section>
                         <button id="remove-fav" *ngIf="(isFavoriteRoute |async)" (click)="removeFavorite(product.pk)" mat-icon-button>
                                         <mat-icon >close</mat-icon>
                                 </button>
+
         </section>
 
                 <mat-divider *ngIf="(isFavoriteRoute |async)"></mat-divider>
         <section class="content-information">
            <div class="content-information__text">
-                <div class="breadcrumb" *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)">
-                <app-category-breadcrumb
-                                    [currentProduct]="product.rootCategory"
-                                    class="caption-style">
-               </app-category-breadcrumb>
-                </div>
-               <h3>{{product.designation}}</h3>
-               <p class="mat-caption text--grey">{{product.exteriorMaterial.designation}}  <span>- {{product.interiorMaterial.designation}}</span></p>
+
+               <p class="mat-caption font--dark-grey">Perfect for serving soup, stew or couscous on table.</p>
 
            </div>
-
-
-
         </section>
-        <div class='content__thumbnail'>
-        <img
-        (load)="onImageLoad($event)"
-        [style.display]="isLoading ? 'none' : 'block'"
-        (click)="navigateTo(product.pk)"
-        [src]="product.thumbNail?.content">
-        </div>
 
 
-        <section class="action-container">
-            <button *ngIf="!(isFavoriteRoute |async)" [appFavoriteHandler]="product.pk"
-                    class="favorites"
-
-                    mat-button>
-                    <mat-icon>favorite</mat-icon>
-                    <span i18n>Like</span>
+<mat-divider></mat-divider>
+        <section class="p4 inline--centred">
+            <button color="primary" class="mr4" mat-stroked-button>
+                <span>Materials</span>
+                <mat-icon>
+                        keyboard_arrow_down
+                </mat-icon>
             </button>
-            <button mat-button>
-                    <mat-icon i18n>message</mat-icon>
-                <span>Ask</span>
+            <button color="primary" mat-stroked-button>
+                <span>Dimensions</span>
+                <mat-icon>
+                        keyboard_arrow_down
+                </mat-icon>
             </button>
+
         </section>
         </div>
 

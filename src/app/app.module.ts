@@ -14,10 +14,13 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { LanguageService } from './shared/service/language.service';
 import { InjectablesService, loadInitData } from './injectables.service';
 import { ConfigService } from './product/service/config.service';
 import { httpInterceptorProviders } from './http-interceptors';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -37,7 +40,11 @@ import { httpInterceptorProviders } from './http-interceptors';
     RootStoreModule,
     EffectsModule.forRoot([AppEffects]),
     ProductModule,
-
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    RouterModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      routerState : RouterState.Minimal
+    })
   ],
   providers: [
     httpInterceptorProviders,
@@ -51,7 +58,6 @@ import { httpInterceptorProviders } from './http-interceptors';
       deps: [ConfigService],
       multi: true
     },
-    LanguageService,
   ],
   bootstrap: [AppComponent]
 })

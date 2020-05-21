@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ProductMenuComponent } from '../product/product-menu/product-menu.component';
-import { TreeMenuComponent } from '../product/product-menu/tree-menu/tree-menu.component';
-import { SideNavMenuComponent } from '../product/product-menu/side-nav-menu/side-nav-menu.component';
 import { SearchBoxComponent } from '../product/search-box/search-box.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material';
@@ -21,18 +18,25 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 import { CreateProfileComponent } from '../account/create-profile/create-profile.component';
 import { LanguageBoxComponent } from './language-box/language-box.component';
+import { CategoryMenuComponent } from './category-menu/category-menu.component';
+import { ProductMenuComponent } from './product-menu/product-menu.component';
+import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
+import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
 
 @NgModule({
-  declarations: [ProductMenuComponent, TreeMenuComponent,
+  declarations: [ProductMenuComponent,
                  SideNavMenuComponent, SearchBoxComponent,
                  AccountLoginComponent,
+                 AuthentificationCardComponent,
                  CreateProfileComponent,
                  GoogleSignInComponent,
                  ProductBoxComponent, CategoryBreadcrumbComponent,
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent],
+                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -41,7 +45,6 @@ import { LanguageBoxComponent } from './language-box/language-box.component';
   ],
   exports: [
     ProductMenuComponent,
-    TreeMenuComponent,
     SideNavMenuComponent,
     SearchBoxComponent,
     ReactiveFormsModule,
@@ -56,6 +59,7 @@ import { LanguageBoxComponent } from './language-box/language-box.component';
     CreateProfileComponent,
     AccountCardComponent,
     ProductFilterComponent,
+    AuthentificationCardComponent,
     CommonModule,
 
   ]

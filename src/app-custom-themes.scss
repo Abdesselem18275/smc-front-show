@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$smc-show-case-primary: mat-palette($mat-orange, 300);
-$smc-show-case-accent: mat-palette($mat-amber, A200, 100, A700);
+$smc-show-case-primary: mat-palette($mat-orange, 600,50,900);
+$smc-show-case-accent: mat-palette($mat-blue-grey, 200, 50, 700);
 
 // The warn palette is optional (defaults to red).
 $smc-show-case-warn: mat-palette($mat-red);
@@ -31,10 +31,7 @@ $smc-show-case-theme: mat-light-theme($smc-show-case-primary, $smc-show-case-acc
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels
 $custom-typography: mat-typography-config(
-  $font-family: 'Roboto, monospace',
-  $subheading-2: mat-typography-level(1.25rem, 1rem, 500),
-  $subheading-1: mat-typography-level(1rem, 1rem, 400),
-
+  $font-family: 'Roboto, monospace'
 );
 
 @include mat-base-typography($custom-typography);

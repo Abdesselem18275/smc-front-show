@@ -1,61 +1,19 @@
 @import "src/styles.scss";
-@import "src/form-styles.scss";
-mat-toolbar-row  {
-    border-bottom: 1px solid $color-border-grey;
-}
-.forms-container {
-    padding : 4rem;
-    display: grid; 
-    grid-template-columns : 1fr 1fr;
-    grid-auto-rows: minmax(2.5rem, auto);
-    column-gap: 4rem;
-    row-gap: 4rem;
-    grid-template-areas: 
-    "smc-login google-signin"
-    "smc-login smc-register";
-    @media only screen and (max-width:1200px) {
-        grid-template-rows : auto;
-        grid-template-areas: 
-        "smc-login smc-login"
-        "google-signin google-signin"
-        "smc-register smc-register";
-    }
+:host {
+    @extend .column--centred;
 }
 
+h4 {
+    text-transform: uppercase;
+}
 form,mat-form-field,.form__submit-button {
     width: 100%;
-   }
-   mat-form-field {
-     margin-bottom: 1.35rem;
+    max-width: 100%;
    }
 
 
-
-.form-group__header {
-    text-align: start;
-    margin-bottom: 1.5rem;
-    @media only screen and (max-width:1200px) {
-        .smc-header {
-            border-right: solid 12px $mdc-theme-primary;
-            padding-right: 0.5rem;
-    
-        }
-        grid-area: group-header;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    
+button {
+    span {
+        color: white;
     }
-}
-
-
-
-#smc-login {
-    grid-area: smc-login
-}
-#smc-register {
-    grid-area: smc-register
-}
-#google-sign {
-    grid-area: google-signin
-}
+  }

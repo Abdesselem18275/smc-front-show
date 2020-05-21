@@ -1,79 +1,77 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import countryNames from '../../../assets/data/world-countries.json';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
-import { LocalStorageHandlerService } from 'src/app/shared/service/local-storage-handler.service';
 import { Router } from '@angular/router';
-import { AccountCacheService } from './account-cache.service';
 import { ProductShort } from 'src/app/product/model.js';
-import { API_URL } from 'src/app/injectables.service.js';
+import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
+import { Profile } from '../model';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class SmcAuthService {
-
-  _countries: any[];
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Cache-Control':  'no-cache',
+    })
+  };
   redirectUrl: string;
 
 
-  constructor(private appStorage: LocalStorageHandlerService,
+  constructor(
               private http: HttpClient,
               private router: Router,
-              private accountCache: AccountCacheService,
-              @Inject(API_URL) private apiUrl: string) {
+              @Inject(API_URL) private apiUrl: string,
+              @Inject(TOKEN_KEY) private tokenKey: string,
+              @Inject(PROFILE_ID) private profileId: string) {
                }
 
-
-createAccount(jsonData): Observable<any> {
-
+createProfile(payload): Observable<any> {
     const query: string = [
       this.apiUrl,
-      '/accounts/',
+      '/profiles/',
      ].join('');
-  return this.http.post(query, jsonData, httpOptions) ;
+  return this.http.post<Profile>(query, payload) ;
 }
 
 login(credentials: any): Observable<any> {
+  console.warn(credentials);
   const query: string = [
       this.apiUrl,
-      '/token-auth/'
+      '/s-auth/'
        ].join('');
-  return this.http.post(query, credentials, httpOptions).pipe( tap(jsonArray => {
-    this.appStorage.loadLocalStorage(jsonArray);
-  }));
+  return this.http.post<Profile>(query, credentials);
 }
 
-updateAccount(jsonData): Observable<any> {
-
+updateProfile(payload): Observable<any> {
   const query: string = [
     this.apiUrl,
-    '/account/',
-    this.accountCache.token,
+    '/profile/',
+    this.getProfileId(),
     '/'
    ].join('');
-return this.http.patch(query, jsonData, httpOptions).pipe( tap(jsonArray => {
-  this.appStorage.loadLocalStorage(jsonArray);
-  this.accountCache.refreshAccount();
-})) ;
+return this.http.patch<Profile>(query, payload);
 }
 
-getUserFavorites() {
+getProfileFavorites() {
   const query: string = [
     this.apiUrl,
-    '/account/',
-    this.accountCache.token,
+    '/profile/',
+    this.getProfileId(),
     '/favorites/'
    ].join('');
-   return this.http.get(query, httpOptions).pipe(map((jsonArray: ProductShort[]) => jsonArray));
+   return this.http.get<ProductShort[]>(query);
+}
 
+profileRefresh(): Observable<any> {
+  const query: string = [
+    this.apiUrl,
+    '/profile/',
+    this.getProfileId(),
+    '/'
+   ].join('');
+  return this.http.get<Profile>(query);
 }
 
 redirect() {
@@ -83,49 +81,25 @@ redirect() {
     this.router.navigateByUrl(redirect);
   }
 }
+getInitialState = () => ({
+    isLoading: false,
+    isAuthenticated: this.isLogged(),
+    errorMessage: null,
+    user: null })
 
 
 
-get countries() {
-  if (!this._countries) {
-    let countryArray = [];
-    Object.keys(countryNames).forEach( x => {
-      const item = {
-        key : x ,
-        val : countryNames[x]
-      };
-      countryArray.push(item);
-    });
-    this._countries = countryArray.sort(function(a, b) {
-      const nameA = a.val.toUpperCase();
-      const nameB = b.val.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
-    this._countries.unshift({
-      key: '',
-      val: '',
-      disabled: false
-    });
 
 
-  }
-  return <any[]> this._countries;
-}
-
-
-logout(): void {
-  this.appStorage.deleteAll();
-}
 
 isLogged(): boolean {
-  return this.appStorage.check('token');
+  return localStorage.getItem(this.tokenKey) !== null;
 }
-
+getToken(): string {
+  return localStorage.getItem(this.tokenKey);
+}
+getProfileId(): string {
+  return localStorage.getItem(this.profileId);
+}
 
 }

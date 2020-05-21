@@ -1,5 +1,5 @@
-<header class="upper-menu">
-        <h3 i18n>Filter</h3>
+<header class="px4 menu--shared-style">
+        <p class="mat-subheading-1" i18n>FILTER</p>
         <button (click)="closeMenu()" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
@@ -10,7 +10,7 @@
 
     <form  [formGroup]="filterForm">
     <div  class="form-group" *ngFor="let filterCategory of filterCategories">
-            <header   class="filter-title text--grey mat-body" >  
+            <header class="filter-title font--grey mat-caption" >  
                 {{filterCategory.value | titlecase }} 
             </header>
             <div class="form__group-content" [formGroupName]="filterCategory.key" >

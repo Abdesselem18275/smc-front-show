@@ -2,16 +2,8 @@
 
 .tab-group {
     border-top: 1px solid rgba(0, 0, 0, 0.12);
-    margin : 1rem 0 2rem 0;
-}
-.tab-group__label {
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-    mat-icon {
-        margin-right: 0.5rem;
-    }
+    height: 100%;
 }
 .container {
-    margin: 5rem $global-horizontal-gutter;
+    margin: 2rem;
 }

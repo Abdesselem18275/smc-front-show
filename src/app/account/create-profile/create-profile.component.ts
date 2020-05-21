@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AccountFormService } from '../service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { SmcAuthService } from '../service/smc-auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-profile',
@@ -14,22 +15,21 @@ import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
 export class CreateProfileComponent implements OnInit {
   createForm: FormGroup;
   countryNames: any;
-  isChecking: boolean;
-  serverError: any;
+  isChecking$: Observable<boolean>;
+  serverError$: Observable<string>;
 
 
 
   constructor(
-              private authService: SmcAuthService,
               private store$: Store<ParamStoreState.State>,
               private accountFormService: AccountFormService,
     ) { }
 
   ngOnInit() {
-    this.isChecking = false;
-    this.createForm = this.accountFormService.createShortAccountForm();
-    this.countryNames = this.authService.countries;
-
+    this.isChecking$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+    this.isChecking$.subscribe(x => console.warn(x));
+    this.createForm = this.accountFormService.createAccountForm();
+    console.warn(this.createForm);
   }
 
 
@@ -38,34 +38,18 @@ export class CreateProfileComponent implements OnInit {
   }
 
   createProfile() {
-    this.isChecking = true;
-    const jsonData = JSON.stringify(this.createForm.value);
-
-    this.authService.createAccount(jsonData).subscribe(x => {
-      const cred = JSON.stringify({
-        email : this.createForm.get('profile.email').value,
-        password : this.createForm.get('profile.password').value
-      });
-      this.authService.login(cred).subscribe(() => {
-        this.authService.redirect();
-        this.isChecking = false;
-        });
-    },
-    error => {
-      this.isChecking = false;
-      if (error instanceof HttpErrorResponse) {
-        this.serverError = this.accountFormService.flatten(error.error) || '';
-        }
-    });
+    const payload = this.createForm.value;
+    this.store$.dispatch(UserStoreActions.CreateUserAction({payload}));
+    this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
   }
 
   getEmailErrorMessage() {
-    return this.createForm.get('profile.email').hasError('required') ? 'You must enter a value' :
-        this.createForm.get('profile.email').hasError('email') ? 'Not a valid email' :
+    return this.createForm.get('email').hasError('required') ? 'You must enter a value' :
+        this.createForm.get('email').hasError('email') ? 'Not a valid email' :
             '';
   }
   getPasswordErrorMessage(controlName: string) {
-    return this.createForm.get('profile.' + controlName).hasError('required') ? 'You must enter a value' :
+    return this.createForm.get(controlName).hasError('required') ? 'You must enter a value' :
         this.createForm.hasError('passwordNotConfirmed') ? 'Password must be equals' :
             '';
   }

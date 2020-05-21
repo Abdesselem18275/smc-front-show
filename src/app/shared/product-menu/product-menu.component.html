@@ -1,0 +1,75 @@
+<nav [class.menu--main-theme]="isHomeRoute$ |async" class='font--dark-grey global--gutters inline--centred--spaced nav-bar'>
+      <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
+      <div class="nav-bar__logo">
+        <mat-icon 
+        [routerLink]="['/product/home/']" 
+        inline="true" 
+        svgIcon="logo">
+       </mat-icon> 
+      </div>
+
+     <div class="mat-h3 inline--centred nav-tabs__tab">
+
+        <app-category-menu></app-category-menu>
+        <a mat-button i18n>
+         Utility
+        </a>
+        <a mat-button i18n>
+         About us
+        </a>
+        <a mat-button i18n>
+         Contact us
+        </a>
+     </div>
+     <div class="nav-bar__tools">
+        <button mat-icon-button  (click)="toggleModal('searchBox')">
+            <mat-icon>search</mat-icon>
+        </button>
+
+        <button class="mx2" mat-icon-button   (click)="toggleUserCard()" id="account-icon">
+            <mat-icon matBadgePosition="before" [matBadge]="(favoritesCount$ | async) != -1 ? (favoritesCount$ | async) : ''">person</mat-icon>
+        </button>
+        <app-language-box class="language-panel">
+        </app-language-box>
+        <div class="language-panel-container">
+
+        </div>
+    </div>
+  </nav>
+
+
+
+  
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox || (modalStore$ | async).languageBox" class="mat-elevation-z2 account-card">
+
+    <app-account-card *ngIf="(modalStore$ | async).userCardBox">
+    </app-account-card>
+
+</div>
+
+<div    class="mat-elevation-z2 language-panel">
+
+</div>
+
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).createProfileBox" class="mat-elevation-z2 center-box">
+
+    <app-authentification-card *ngIf="(modalStore$ | async).loginBox">
+    </app-authentification-card>
+    <app-create-profile *ngIf="(modalStore$ | async).createProfileBox">
+
+    </app-create-profile>
+</div>
+
+<div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
+    <app-search-box >
+    </app-search-box>
+</div>
+
+
+<div  [@routeAnimations]  *ngIf="(modalStore$ | async).sideMenuBox || (modalStore$ | async).filterBox" class="mat-elevation-z2 side-box">
+    <app-side-nav-menu *ngIf="(modalStore$ | async).sideMenuBox" >
+    </app-side-nav-menu>
+
+</div>
+
+  

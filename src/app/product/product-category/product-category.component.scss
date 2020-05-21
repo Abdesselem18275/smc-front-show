@@ -1,0 +1,30 @@
+@import "src/styles.scss";
+
+img {
+  max-width: 100%;
+}
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+p {
+  color: $dark-grey;
+  justify-content: center;
+  text-align: center;
+}
+@media only screen and (max-width:600px) {
+ h1 {
+   order: 1;
+ }
+ img {
+  order: 2;
+}
+p {
+  order: 3;
+  padding: 1rem;
+}
+a {
+  order: 4;
+}
+
+}

@@ -4,7 +4,7 @@
 .list-header {
   padding : 1rem $global-horizontal-gutter ;
   margin: 2.5rem 0;
-  background-color:$color-border-grey;
+  background-color:$light-grey-color;
 }
 .main-content {
   display: grid;
@@ -126,18 +126,18 @@ section {
 }
   table {
   border-collapse: collapse;
-  border: 1px solid $color-border-grey;  
+  border: 1px solid $light-grey-color;  
 
     th,td {
       padding:  1rem;
       text-align: left;
     }     
     tr:first  {
-      border-top: 1px solid $color-border-grey;  
-      border-bottom: 1px solid $color-border-grey;  
+      border-top: 1px solid $light-grey-color;  
+      border-bottom: 1px solid $light-grey-color;  
     }
     tr  {
-      border-bottom: 1px solid $color-border-grey;  
+      border-bottom: 1px solid $light-grey-color;  
       font-weight: 400;
       @extend h4
     }

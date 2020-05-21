@@ -57,9 +57,7 @@ export class ProductDataService  {
     const query: string = [
       this.apiUrl,
       '/filters'].join('');
-     return this.http.get(query).pipe(map((jsonArray: any[]) => jsonArray.map(jsonItem =>
-             new FilterCategory(jsonItem)) ));
-
+     return this.http.get(query).pipe()
   }
 
   getMenu() {

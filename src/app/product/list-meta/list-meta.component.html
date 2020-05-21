@@ -1,0 +1,36 @@
+
+<main class="global--gutters">
+<p *ngIf="!(isLoading$ | async)" class="mat-subheading-1">{{objCount$ | async}} <span>selected</span> products</p>
+<ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else search">
+  <app-category-breadcrumb   class="mat-subheading-1"></app-category-breadcrumb>
+</ng-container>
+
+<section class="action-container inline--centred">
+<button  class="mr4" mat-stroked-button>
+<mat-icon >view_module
+</mat-icon>
+<span class="ml2" i18n>GRID</span>
+</button>
+<button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
+<mat-icon [matBadge]="(filterParamCount$ | async) != 0 ? (filterParamCount$ | async) : ''" 
+          matBadgeColor="primary"
+          matBadgePosition="above before">tune
+</mat-icon>
+<span class="ml2" i18n>FILTER</span>
+</button>
+</section>
+</main>
+
+<ng-template #search>
+  <ng-container *ngIf="(isSearchActive$ | async)" >
+    <p class="mat-subheading-1" i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
+    <p class="mat-subheading-1" i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
+    </ng-container>
+    <ng-container *ngIf="(isFavoriteActive$ | async)" #favorites>
+      <p class="mat-subheading-1" i18n *ngIf="(favoritesCount$ | async) == -1 else">You have no favorite product "{{searchTerm$| async}}"</p>
+      <p class="mat-subheading-1" i18n *ngIf="!((favoritesCount$ | async) != -1)">Your favroites"</p>
+    </ng-container>
+</ng-template>
+
+
+

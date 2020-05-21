@@ -1,6 +1,11 @@
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+
+<ng-container *ngIf="profile$ | async as profile; else loading">
 <div class="content">
-    <h3 class="smc-title">Welcome {{account.profile.first_name}}</h3>
-    <h4 class="text--grey">{{account.profile.email}}</h4>
+    <h3 class="smc-title">Welcome {{profile.first_name}}</h3>
+    <h4 class="text--grey">{{profile.email}}</h4>
 </div>
 <div class="mat-body content__action">
         <button (click)="logOut()" mat-button>
@@ -12,3 +17,4 @@
             <span i18n>My profile</span>
         </button>
 </div>
+</ng-container>

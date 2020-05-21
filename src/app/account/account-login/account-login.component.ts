@@ -4,13 +4,9 @@ import { AccountFormService } from '../service/account-form.service';
 import { SmcAuthService } from '../service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { ParamStoreState, ModalStoreActions } from 'src/app/root-store';
+import { Observable } from 'rxjs';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 
-
-interface CustomClasses {
-  classes: string | string[];
-  actionClasses: string | string[];
-  dismissClasses: string | string[];
-}
 
 declare const gapi: any;
 
@@ -20,56 +16,29 @@ declare const gapi: any;
   styleUrls: ['./account-login.component.scss']
 })
 export class AccountLoginComponent implements OnInit   {
-  email: string;
-  account: string;
-  auth_non_field_error: any;
-  creation_non_field_error: any;
-  fieldError:  string;
-  createForm: FormGroup;
+  auth_non_field_error: Observable<string>;
   loginForm: FormGroup;
-  countryNames: any;
-  isChecking: boolean;
+  isChecking: Observable<boolean>;
   constructor(
-              private authService: SmcAuthService,
               private accountFormService: AccountFormService,
               private store$: Store<ParamStoreState.State>) {
   }
    ngOnInit() {
-    this.isChecking = false;
-    this.createForm = this.accountFormService.createShortAccountForm();
+    this.isChecking = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.loginForm = this.accountFormService.createAuthForm();
-    this.countryNames = this.authService.countries;
   }
 
   onSubmit() {
-    this.isChecking = true;
     const credentials = this.loginForm.value;
-    this.auth_non_field_error = '';
-    if (this.loginForm.valid) {
-      this.authService.login(JSON.stringify(credentials)).subscribe(() => {
-      this.authService.redirect();
-      this.isChecking = false;
-      },
-      error => {
-        this.isChecking = false;
-        this.auth_non_field_error  = JSON.parse(JSON.stringify(error.error));
-        console.warn(this.auth_non_field_error);
-      });
-    }
+    this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
+    this.auth_non_field_error = this.store$.select(UserStoreSelectors.selectError);
   }
 
 
-  cancel() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-  }
+
   getEmailErrorMessage() {
     return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
         this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
             '';
   }
-
-  toggleModal(value) {
-    this.store$.dispatch(ModalStoreActions.ToggleAction({key: value}));
-  }
-
 }

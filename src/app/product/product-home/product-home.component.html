@@ -1,23 +1,19 @@
-<section class="landing-page">
-<main color="primary">
-   <div class="upper-text">
-<p class="header--big">SMC</p>
-<p class="sentence--small">sweat for you</p>
-</div>
-<div class="icons__wrap">
+<section class="hero-image">
+</section>
+<main>
 
-   <figure  [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}"  *ngFor="let category of categories">
-         <mat-icon  inline="true" [svgIcon]="category.svgIcon?.designation"></mat-icon>
-      <figcaption class="figure-caption mat-caption">{{category.designation | titlecase}}</figcaption>
-   </figure>
-
-
-</div>
-</main>
+<section class="welcome-text">
+   <h1>
+      The Modern Handmade Copperware
+   </h1>
+<p>
+   &Tradition bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
+</p>
 </section>
 
-<!-- <section class="category-page">
+<section class="categories-container">
 
-<app-product-category></app-product-category> 
+<app-product-category class="category-container" [category]="category"   *ngFor="let category of categories"></app-product-category> 
 
-</section> -->
+</section>
+</main>

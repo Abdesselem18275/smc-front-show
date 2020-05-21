@@ -4,6 +4,7 @@ import { map, tap } from "rxjs/operators";
 import { ToggleUserCard, ToggleAction, CloseAllAction } from "./actions";
 import { SmcAuthService } from "src/app/account/service/smc-auth.service";
 import { ROUTER_NAVIGATION } from "@ngrx/router-store";
+import { UserStoreActions } from "../user-store";
 
 @Injectable()
 export class ModalEffects {
@@ -13,6 +14,7 @@ export class ModalEffects {
         ofType(ToggleUserCard),
         map(() =>
             ToggleAction({key : this.authService.isLogged() ? 'userCardBox' : 'loginBox'}))));
+
     routerNavigationAction$ = createEffect(() =>
         this.actions$.pipe(
                 ofType(ROUTER_NAVIGATION),

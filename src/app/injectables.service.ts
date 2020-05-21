@@ -19,18 +19,28 @@ const LANGUAGE_LIST: UserLanguage[] = [
 ];
 const SMC_API_URL = () => 'https://ec2-15-236-55-71.eu-west-3.compute.amazonaws.com/api';
 const LOCAL_API_URL = () => 'http://127.0.0.1:8000/api';
+
 const getBaseUrl = () => {
 
  // return document.getElementsByTagName('base')[0].href.match(/\/\w{2}\//).pop();
   return '';
 }
+const APP_TOKEN_KEY = () => 'smcToken';
+const APP_PROFILE_ID = () => 'smcId';
 
 
 export const API_URL = new InjectionToken<string>('ApiUrl', {
   providedIn: 'root',
   factory: SMC_API_URL
 });
-
+export const TOKEN_KEY = new InjectionToken<string>('TokenKey', {
+  providedIn: 'root',
+  factory: APP_TOKEN_KEY
+});
+export const PROFILE_ID = new InjectionToken<string>('ProfileId', {
+  providedIn: 'root',
+  factory: APP_PROFILE_ID
+});
 
 export const LANGUAGE_CONFIG = new InjectionToken<UserLanguage[]>('config.service');
 export function loadInitData(configService: ConfigService) {
