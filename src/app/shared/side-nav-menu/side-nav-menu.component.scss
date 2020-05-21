@@ -11,7 +11,5 @@
 header {
     border-bottom: 2px solid mat-color($smc-show-case-primary,darker);
 }
-#account-avatar {
-    @include  md-icon-size(4rem);
-}
+
 

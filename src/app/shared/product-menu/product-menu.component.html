@@ -40,24 +40,19 @@
 
 
   
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox || (modalStore$ | async).languageBox" class="mat-elevation-z2 account-card">
-
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">
     <app-account-card *ngIf="(modalStore$ | async).userCardBox">
     </app-account-card>
-
 </div>
 
 <div    class="mat-elevation-z2 language-panel">
 
 </div>
 
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).createProfileBox" class="mat-elevation-z2 center-box">
+<div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox" class="mat-elevation-z2 center-box">
 
     <app-authentification-card *ngIf="(modalStore$ | async).loginBox">
     </app-authentification-card>
-    <app-create-profile *ngIf="(modalStore$ | async).createProfileBox">
-
-    </app-create-profile>
 </div>
 
 <div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
@@ -69,7 +64,6 @@
 <div  [@routeAnimations]  *ngIf="(modalStore$ | async).sideMenuBox || (modalStore$ | async).filterBox" class="mat-elevation-z2 side-box">
     <app-side-nav-menu *ngIf="(modalStore$ | async).sideMenuBox" >
     </app-side-nav-menu>
-
 </div>
 
   

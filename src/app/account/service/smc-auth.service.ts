@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ProductShort } from 'src/app/product/model.js';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
 import { Profile } from '../model';
+import { Store } from '@ngrx/store';
+import { ModalStoreActions } from 'src/app/root-store';
 
 
 @Injectable({
@@ -22,6 +24,7 @@ export class SmcAuthService {
   constructor(
               private http: HttpClient,
               private router: Router,
+              private store$: Store<any>,
               @Inject(API_URL) private apiUrl: string,
               @Inject(TOKEN_KEY) private tokenKey: string,
               @Inject(PROFILE_ID) private profileId: string) {
@@ -78,6 +81,9 @@ redirect() {
   if (this.isLogged()) {
     const redirect = this.redirectUrl ?
     this.router.parseUrl(this.redirectUrl) : '/account/profile';
+    this.router.navigateByUrl(redirect);
+  } else {
+    const redirect = '/product/list'
     this.router.navigateByUrl(redirect);
   }
 }

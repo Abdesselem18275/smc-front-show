@@ -1,47 +1,15 @@
-<header class="p3 inline--centred--spaced menu--main-theme">
-
-  <section *ngIf="isLogged$ |async; else noCard" class="child--align-top column">
-    <ng-container *ngIf="profile$ | async as profile; else loading">
-      <mat-icon id="account-avatar" class="font--dark-grey">account_circle</mat-icon>
-      <p class="mat-body-2">{{profile.email}}</p>
-      <p class="mat-body-1 font--dark-grey">{{profile.first_name}} {{profile.last_name}}</p>
-    </ng-container>
-  </section>
-  <ng-template #noCard>
-    <h3>MENU</h3>
-  </ng-template>
+<header class="menu--main-theme p4">
+<app-account-card ></app-account-card>
 </header>
-<ng-template #loading>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
-<app-categories-tree class="px4 py4" [treeData]="navMenuData"></app-categories-tree>
-
-<mat-divider></mat-divider>
-<mat-nav-list >
-  <div mat-subheader>Profile</div>
-  <ng-container  *ngIf="(isLogged$ |async) else anonymous">
-
-  <mat-list-item>
-    <mat-icon mat-list-icon>person</mat-icon>
-    <div mat-line>Profile informations</div>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-icon mat-list-icon>favorite</mat-icon>
-    <div mat-line>Your favorites</div>
-  </mat-list-item>
-  <mat-list-item (click)="logOut()">
-    <mat-icon mat-list-icon>exit_to_app</mat-icon>
-    <div mat-line>logout</div>
-  </mat-list-item>
-</ng-container>
-
-</mat-nav-list>
-<mat-divider></mat-divider>
-<app-language-box></app-language-box>
-
-<ng-template  #anonymous>
-  <mat-list-item (click)="login()">
-    <mat-icon mat-list-icon>person_add</mat-icon>
-    <div mat-line>Login/Register</div>
-  </mat-list-item>
-</ng-template>
+<main class="p4">
+  <app-categories-tree [treeData]="navMenuData"></app-categories-tree>
+  <mat-divider></mat-divider>
+    <app-language-box></app-language-box>
+    <mat-divider></mat-divider>
+    <mat-nav-list *ngIf="!(isLogged$ | async)">
+      <mat-list-item (click)="login()">
+        <mat-icon mat-list-icon>person_add</mat-icon>
+        <div mat-line>Login/Register</div>
+      </mat-list-item>
+    </mat-nav-list>
+</main>

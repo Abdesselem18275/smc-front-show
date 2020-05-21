@@ -11,11 +11,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
+import { RouterStateSnapshot, Router } from '@angular/router';
 
 
 @Injectable()
 export class UserEffects {
      constructor(
+      private router: Router,
        private actions$: Actions ,
        private as: SmcAuthService,
        private snakBar: MatSnackBar,
@@ -65,7 +67,8 @@ export class UserEffects {
         localStorage.removeItem(this.tokenKey);
         localStorage.removeItem(this.profileId);
         this.as.redirect();
-      })), {dispatch : false});
+        return ModalStoreActions.CloseAllAction();
+      })));
 
     createUser$  = createEffect(() =>
     this.actions$.pipe(
@@ -123,11 +126,11 @@ export class UserEffects {
           const isAuth = content[0][1]
           const favId = content[0][0].id
           if (isAuth) {
-            console.warn(favId)
             return UsersActions.ToggleFavoriteAction({id:favId})
           }
           else {
-            this.snakBar.open('You have to login to perform this action')
+            this.snakBar.open('You :have to login to perform this action')
+            this.as.redirectUrl = this.router.routerState.snapshot.url;
             return ModalStoreActions.ToggleAction({key: 'loginBox'})
           }
 

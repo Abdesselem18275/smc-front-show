@@ -1,7 +1,7 @@
 
-<main class="global--gutters">
-<p *ngIf="!(isLoading$ | async)" class="mat-subheading-1">{{objCount$ | async}} <span>selected</span> products</p>
-  <div   class="list-title mat-h2">
+<main class="global--gutters mat-h3">
+<p *ngIf="!(isLoading$ | async)">{{objCount$ | async}} <span>selected</span> products</p>
+  <div   class="list-title">
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else search">
 
     <app-category-breadcrumb ></app-category-breadcrumb>
@@ -25,12 +25,12 @@
 </section>
 </main>
 
-<ng-template #search>
-  <ng-container *ngIf="(isSearchActive$ | async)" >
+<ng-template  #search>
+  <ng-container  *ngIf="(isSearchActive$ | async)" >
     <p i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
     <p i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
     </ng-container>
-    <ng-container *ngIf="(isFavoriteActive$ | async)">
+    <ng-container  *ngIf="(isFavoriteActive$ | async)">
       <p i18n *ngIf="(favoritesCount$ | async) == -1">You have no favorite product "{{searchTerm$| async}}"</p>
       <p i18n *ngIf="(favoritesCount$ | async) != -1 ">Your favroites</p>
     </ng-container>

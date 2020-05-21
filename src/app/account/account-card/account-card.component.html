@@ -2,19 +2,51 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
 
-<ng-container *ngIf="profile$ | async as profile; else loading">
-<div class="content">
-    <h3 class="smc-title">Welcome {{profile.first_name}}</h3>
-    <h4 class="text--grey">{{profile.email}}</h4>
-</div>
-<div class="mat-body content__action">
-        <button (click)="logOut()" mat-button>
-            <mat-icon>power_settings_new</mat-icon>
-            <span i18n>Log out</span>
-        </button>
-        <button [routerLink]="['/account/profile']" mat-button>
-            <mat-icon>perm_identity</mat-icon>
-            <span i18n>My profile</span>
-        </button>
-</div>
+<ng-container *ngIf="!(isLoading$ | async) else loading">
+    <ng-container *ngIf="isSideNav$| async ; else card">
+        <header class="inline--centred--spaced">
+            <section *ngIf="isLogged$ |async; else noCard" class="p3 column">
+                <mat-icon id="account-avatar" (click)="navToProfile()">account_circle</mat-icon>
+                <p class="mat-body-2">{{(profile$ |async).email}}</p>
+                <p class="mat-body-1 font--dark-grey">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
+                <div class="font--dark-accent mt4">
+               <button class="mr4" mat-stroked-button>
+                   <mat-icon class="mr2">favorite</mat-icon>
+                   <span>Favorites</span>
+               </button>
+               <button (click)="logOut()"  mat-stroked-button>
+                <mat-icon class="mr2">exit_to_app</mat-icon>
+                <span class="mat-caption">Log out</span>
+            </button>
+                </div>
+            </section>
+            <ng-template #noCard>
+              <p class="mat-h3">MENU</p>
+            </ng-template>
+          </header>
+    </ng-container>
+    <ng-template #card>
+        <header class="p10 column--centred">
+            <mat-icon (click)="navToProfile()" id="account-avatar" >account_circle</mat-icon>
+
+                <p>welcome</p>
+                <p class="mat-h2">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
+                <p class="font--grey">{{(profile$ |async).email}}</p>
+                <mat-nav-list dense class="nav-list font--primary nav-list--full-width">
+                    <mat-list-item routerLink="/product/favorites">
+                        <mat-icon matListIcon>favorite </mat-icon>
+                        <div matLine>Favorites</div>
+                    </mat-list-item>
+                    <mat-list-item routerLink="/account/profile">
+                        <mat-icon matListIcon>person </mat-icon>
+                        <div matLine>Profile</div>
+                    </mat-list-item>
+                    <mat-list-item (click)="logOut()">
+                        <mat-icon matListIcon>exit_to_app </mat-icon>
+                        <div matLine>Log out</div>
+                    </mat-list-item>
+                </mat-nav-list>
+          </header>
+    </ng-template>
 </ng-container>
+
