@@ -40,6 +40,7 @@ export class ParamEffects {
         concatMap(action => of(action).pipe(withLatestFrom(this.store$.pipe(select(selectAllParams))))),
         filter(data => data[0].param !== undefined),
         switchMap(data => {
+
             const action = data[0];
             const allParams = data[1];
             const pageInit = {
@@ -81,7 +82,7 @@ export class ParamEffects {
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/list')),
         map((actions: any) => actions.payload.routerState.queryParams),
-        filter(param => param !== undefined),
+        map(param => Object.keys(param).length === 0 ? {dummyKey: "dummyValue"} :param),
         map((params) => {
                 const paramsArray = [];
                 Object.keys(params).forEach(key => {
@@ -89,8 +90,7 @@ export class ParamEffects {
                     key : key,
                     value: params[key],
                     type : ParamType.CATEGORY
-                  });
-                    });
+                  })});
                 return paramsArray.shift();
             }),
         map((param) => AddOrUpdateAction({param: param})

@@ -36,8 +36,8 @@ export class UserEffects {
             localStorage.setItem(this.profileId, payload.profile.id);
             this.as.redirect();
             return [
-              ModalStoreActions.CloseAllAction(),
-              UsersActions.LoadUserAction({payload})];
+              UsersActions.LoadUserAction({payload}),
+              ModalStoreActions.CloseAllAction()];
           }),
           catchError(async (err) =>  {
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });

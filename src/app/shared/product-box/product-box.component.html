@@ -1,35 +1,25 @@
 
-<div  class=" mat-elevation-z2 content--grid">
+<div  class="content--grid">
         <div class="p2 inline--centred">
-                <button class="mr2" [appFavoriteHandler]="product.pk"
-                mat-icon-button>
-               <mat-icon #favIcon>favorite</mat-icon>
-               </button>
+                <button class="mr2" [appFavoriteHandler]="product.pk" mat-icon-button>
+                        <mat-icon #favIcon>favorite</mat-icon>
+                </button>
                 <section>
-                <p class="mat-h4">{{product.designation | uppercase}}</p>
-                <app-category-breadcrumb *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption" [currentProduct]="product.rootCategory">
-               </app-category-breadcrumb>
+                        <p class="mat-h4">{{product.designation | uppercase}}</p>
+                        <app-category-breadcrumb *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption" [currentProduct]="product.rootCategory">
+                        </app-category-breadcrumb>
                </section>
                <button  class="font--dark-grey mat-icon--full-right" mat-icon-button>
-                <mat-icon i18n>message</mat-icon>
-        </button>
-
+                        <mat-icon i18n>message</mat-icon>
+                </button>
         </div>
         <mat-divider></mat-divider>
 
         <div class='content__thumbnail'>
-                <img
-                (load)="onImageLoad($event)"
-                [style.display]="isLoading ? 'none' : 'block'"
-                (click)="navigateTo(product.pk)"
-                [src]="product.thumbNail?.content">
+                <img [src]="product.thumbNail?.content">
         </div>
         <section class="content-information">
-           <div class="content-information__text">
-
                <p class="mat-caption font--dark-grey">Perfect for serving soup, stew or couscous on table.</p>
-
-           </div>
         </section>
 
 
@@ -50,5 +40,3 @@
 
         </section>
         </div>
-
-        <app-loading class="center" *ngIf="isFetching"></app-loading>

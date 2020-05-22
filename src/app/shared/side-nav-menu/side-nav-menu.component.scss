@@ -8,8 +8,10 @@
     max-width: 340px;
     overflow: auto;
 }
-header {
-    border-bottom: 2px solid mat-color($smc-show-case-primary,darker);
+
+.mat-list-icon {
+    @extend .font--dark-grey;
 }
-
-
+.mat-list-icon {
+    padding: 0 ;
+}

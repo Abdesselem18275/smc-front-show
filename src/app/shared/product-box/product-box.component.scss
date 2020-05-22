@@ -13,8 +13,8 @@
     background-color: white;
     flex-direction: column;
     .content__thumbnail {
-        position: relative;
         width: 100%;
+        max-width: 100%;
     }
     .content-information {
         margin: 1rem;
@@ -22,23 +22,8 @@
         justify-content: space-between;
     }
 }
-
-.icon-container--hanging {
-    position: absolute;
-    top: 0.25rem;
-    left: 0.25rem;
-    button {
-        opacity: 0.7;
-    }
-    button:hover {
-        opacity: 1;
-    }
-}
 .mat-icon--full-right {
     margin-left: auto;
-}
-.action-container--background-color {
-    background-color: mat-color($smc-show-case-primary,lighter);
 }
 .mat-h4 {
     margin: 0 0 0;

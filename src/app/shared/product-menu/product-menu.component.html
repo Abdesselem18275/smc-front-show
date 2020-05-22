@@ -1,4 +1,6 @@
-<nav [class.menu--main-theme]="isHomeRoute$ |async" class='font--dark-grey global--gutters inline--centred--spaced nav-bar'>
+<nav 
+    [ngClass]="{'menu--main-theme':isHomeRoute$ |async,'global__header__border':!(isHomeRoute$ |async) }" 
+    class='font--dark-grey global--gutters menu--shared-style '>
       <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon">menu</mat-icon>
       <div class="nav-bar__logo">
         <mat-icon 

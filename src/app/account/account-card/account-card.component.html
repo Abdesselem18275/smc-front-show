@@ -10,8 +10,8 @@
                 <p class="mat-body-2">{{(profile$ |async).email}}</p>
                 <p class="mat-body-1 font--dark-grey">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
                 <div class="font--dark-accent action-container mt4">
-               <button class="mr3" mat-stroked-button>
-                   <mat-icon class="mr2">favorite</mat-icon>
+               <button routerLink="/product/favorites" class="mr3" mat-stroked-button>
+                   <mat-icon class="mr2" >favorite</mat-icon>
                    <span class="mat-caption">Favorites</span>
                </button>
                <button (click)="logOut()"  mat-stroked-button>

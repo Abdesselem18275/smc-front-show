@@ -19,6 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatRippleModule} from '@angular/material/core';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,11 +30,11 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
             MatTabsModule, MatBadgeModule , MatInputModule, MatIconModule , MatToolbarModule,
             MatSnackBarModule, MatSelectModule,  ScrollingModule, MatFormFieldModule, 
             MatButtonToggleModule, MatTreeModule,MatRippleModule, MatRadioModule,MatProgressBarModule, 
-            MatSlideToggleModule, MatListModule,MatMenuModule],
+            MatSlideToggleModule, MatChipsModule, MatListModule,MatMenuModule],
 
   exports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule, MatSelectModule , MatIconModule , MatInputModule, MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, MatFormFieldModule, ScrollingModule, MatButtonToggleModule, 
-            MatProgressBarModule, MatRadioModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
+            MatProgressBarModule, MatChipsModule, MatTreeModule, MatRadioModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
 })
 export class MaterialModule {}

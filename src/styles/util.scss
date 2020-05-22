@@ -17,21 +17,7 @@
     z-index: 2;
   } 
 
-  // .dot {
-  //   height: 0.8rem;
-  //   width: 0.8rem;
-  //   background-color: black;
-  //   border-radius: 50%;
-  //   display: inline-block;
-  //   transition: 0.2s;
-  //   cursor: pointer;
-  // }
-  // .dot:hover {
-  //   transform: scale(1.25);
-  // }
-  // .dot:not(:first-child) {
-  //   margin-left: 1em;
-  // }
+
 
 
   .space-divider {
@@ -79,4 +65,8 @@
     @media only screen and (max-width:600px) { 
       padding:  1rem 2rem;
     }
+  }
+
+  .global__header__border {
+    border-bottom: 2px solid mat-color($smc-show-case-primary,darker);
   }
