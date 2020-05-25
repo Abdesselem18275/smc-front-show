@@ -6,8 +6,11 @@
                 </button>
                 <section>
                         <p >{{product.designation | uppercase}}</p>
-                        <app-category-breadcrumb class="mat-caption" *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption" [currentProduct]="product">
-                        </app-category-breadcrumb>
+                        <p class="mat-caption" 
+                        [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
+                        *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
+                                {{product.rootCategory}}
+                        </p>
                </section>
                <button *ngIf="isBigSize$ |async"   class="font--dark-grey mat-icon--full-right" mat-icon-button>
                         <mat-icon i18n>message</mat-icon>

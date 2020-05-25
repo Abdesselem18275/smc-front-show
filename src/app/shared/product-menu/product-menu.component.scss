@@ -43,17 +43,28 @@ p {
 }
 
 
-.nav-bar__menu-icon {
-    display: none;
+
+.nav-bar__left-content {
+  display: none;
 }
-    @media only screen and (max-width:1024px) {
+@media only screen and (max-width:1024px) {
         .nav-bar__nav-tab {
           display: none;
           position: absolute;
         }
-        .nav-bar__menu-icon
+        .nav-bar__left-content
         {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            order: 1;
+        }
+        .nav-bar__tools {
+          order:3
+
+        }
+        .nav-bar__logo {
+          order:2
+
         }
       }
 

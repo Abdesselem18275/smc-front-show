@@ -1,15 +1,20 @@
 <nav 
     [ngClass]="{'menu--main-theme':isHomeRoute$ |async,'global__header__border':!(isHomeRoute$ |async) }" 
-    class='font--dark-grey global--gutters menu--shared-style '>
-      <div class="inline--centred">
-        <mat-icon (click)="toggleModal('sideMenuBox')" class="nav-bar__menu-icon mr4">menu</mat-icon>
-        <mat-icon 
-        [routerLink]="['/product/home/']" 
-        class="nav-bar__logo"
-        inline="true" 
-        svgIcon="logo">
-       </mat-icon> 
+    class='font--dark-grey global--gutters menu--shared-style'>
+      <div class="nav-bar__left-content">
+        <mat-icon (click)="toggleModal('sideMenuBox')" class="mr4">menu</mat-icon>
+        <app-language-box>
+        </app-language-box>
       </div>
+
+
+      <mat-icon 
+      [routerLink]="['/product/home/']" 
+      class="nav-bar__logo"
+      inline="true" 
+      svgIcon="logo">
+     </mat-icon> 
+
 
      <div class="mat-h3 inline--centred nav-tabs__tab">
 
@@ -35,9 +40,10 @@
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>
             <!-- <mat-icon matBadgeColor="accent"  matBadgePosition="before" [matBadge]="(favoritesCount$ | async) != -1 ? (favoritesCount$ | async) : ''">favorite_border</mat-icon> -->
             <mat-icon>favorite_border</mat-icon>
-        </button>        
-        <app-language-box class="language-panel">
-        </app-language-box>
+        </button>  
+            <app-language-box>
+            </app-language-box>
+
     </div>
   </nav>
 

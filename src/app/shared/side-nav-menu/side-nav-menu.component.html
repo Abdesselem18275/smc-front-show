@@ -6,8 +6,6 @@
     <app-categories-tree [treeData]="navMenuData$ |async"></app-categories-tree>
   </div>
   <mat-divider class="my4"></mat-divider>
-  <app-language-box></app-language-box>
-  <mat-divider></mat-divider>
     <mat-nav-list *ngIf="!(isLogged$ | async)">
       <mat-list-item  (click)="login()">
         <mat-icon mat-list-icon>person_add</mat-icon>

@@ -1,6 +1,4 @@
 
-<ng-container *ngIf="!(isSideNav$ | async) else side">
-
   <button [matMenuTriggerFor]="lang" mat-icon-button>
     <mat-icon [svgIcon]="(language$ |async).LanguageType"></mat-icon>   
   </button> 
@@ -12,24 +10,4 @@
         <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
     </a>
   </mat-menu>
-</ng-container>
 
-  <ng-template #side>
-    <!-- <p class="font--dark-grey mat-h4">Language</p>
-    <mat-chip-list aria-label="Language selection">
-      <mat-chip [selected]="(language$ |async).LanguageType == item.LanguageType" *ngFor="let item of languageList">
-        <mat-icon class="mr2" [svgIcon]="(item.LanguageType)"></mat-icon>
-        {{item.id}}</mat-chip>
-    </mat-chip-list> -->
-    <mat-nav-list >
-      <div mat-subheader>Language</div>
-      <mat-list-item  *ngFor="let item of languageList">
-        <mat-icon [svgIcon]="(item.LanguageType)" mat-list-icon>
-        </mat-icon>
-        <div mat-line>
-          {{item.LanguageType}}
-        </div>
-        <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
-      </mat-list-item>
-    </mat-nav-list>
-   </ng-template>
