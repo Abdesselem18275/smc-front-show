@@ -1,6 +1,6 @@
 
 <div  class="content--grid">
-        <div [class]="(isBigSize$ |async) ? 'mat-h4':'mat-h6'" class="p2 inline--centred">
+        <div [class]="(isBigSize$ |async) ? 'mat-h4':'mat-h5'" class="p2 inline--centred">
                 <button [appFavoriteHandler]="product.pk" mat-icon-button>
                         <mat-icon [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>

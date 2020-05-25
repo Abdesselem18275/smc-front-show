@@ -32,8 +32,8 @@
                 <p>welcome</p>
                 <p class="mat-h2">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
                 <p class="font--grey">{{(profile$ |async).email}}</p>
-                <mat-nav-list dense class="nav-list font--primary nav-list--full-width">
-                    <mat-list-item routerLink="/product/favorites">
+                <mat-nav-list dense class="nav-list nav-list--full-width">
+                    <mat-list-item class="font--dark-grey" routerLink="/product/favorites">
                         <mat-icon matListIcon>favorite </mat-icon>
                         <div matLine>Favorites</div>
                     </mat-list-item>
