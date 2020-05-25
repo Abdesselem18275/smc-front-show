@@ -13,8 +13,7 @@ export class FavoriteHandlerDirective implements AfterViewInit,OnDestroy {
   @Input() 
   appFavoriteHandler: number;
   subscription: Subscription ;
-  @ContentChildren('favIcon') 
-  matIconList :  QueryList<MatIcon> ;
+  @ContentChildren('favIcon') matIconList :  QueryList<MatIcon> ;
   matIcon : HTMLElement;
 
   constructor(

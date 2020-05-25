@@ -1,12 +1,6 @@
-<header class="main-header inline--centred--spaced">
-    <span></span>
-    <button class="logo--big" [routerLink]="['/product/home/']" mat-icon-button>
-            <mat-icon 
-            inline="true" 
-            svgIcon="logo">
-           </mat-icon> 
-    </button>
-
+<header class="main-header global__header__border inline--centred--spaced">
+   <p class="mat-h2">Authentification</p>
+    
    <button (click)="close()" mat-icon-button>
            <mat-icon>close</mat-icon>
    </button>
@@ -14,14 +8,20 @@
 <mat-progress-bar *ngIf="(isChecking |async)" mode="indeterminate">
 
 </mat-progress-bar>
-<mat-tab-group class="px8 pb8" mat-stretch-tabs>
-    <mat-tab class="column--centred" label="Sign in">
+<mat-tab-group class="px8 pb8 pt4" mat-stretch-tabs>
+    <mat-tab class="column--centred">
+        <ng-template  mat-tab-label>
+              <p class="mat-h3" i18n>Sign in</p>
+            </ng-template>
         <app-account-login class="my8"></app-account-login>
         <mat-divider></mat-divider>
         <app-google-sign-in>
         </app-google-sign-in>
     </mat-tab>
-    <mat-tab label="Register">
+    <mat-tab>
+        <ng-template  mat-tab-label>
+            <p class="mat-h3" i18n>Register</p>
+          </ng-template>
         <app-create-profile class="mt8 column--centred"></app-create-profile>
     </mat-tab>
 </mat-tab-group>

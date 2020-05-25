@@ -1,23 +1,53 @@
+<header class="global--gutters inline--centred--spaced">
+  <img src="../../../assets/images/Kichen.jpg">
 
-<main class="global--gutters mat-h3">
-<p *ngIf="!(isLoading$ | async)">{{objCount$ | async}} <span>selected</span> products</p>
-  <div   class="list-title">
-    <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else search">
+  <section class=" column--centred">
+    <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
+      <ng-container *ngIf="(activeCategory$ | async) as category else allProducts">
+        <section class="column--centred">
+          <mat-icon *ngIf="category.svgIcon" class="font--dark-grey mb8" id="category-icon--big" [svgIcon]="category.svgIcon.designation"></mat-icon>
+          <p class="mat-h1">{{category.designation | uppercase}}</p>
+          <p class="description-container mat-body-1 font--dark-accent">{{category.description}}</p>
+        </section>
 
-    <app-category-breadcrumb ></app-category-breadcrumb>
+        <section *ngIf="category.children" class="children-container font--dark-accent mt4 inline--centred">
+          <ng-container *ngFor="let item of category.children; last as isLast">
+            <button  
+            [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge"
+             mat-button>
+                <span>{{item.designation | uppercase}}</span>
+            </button>
+            <span class="mb1" *ngIf="!isLast">|</span>   
+          </ng-container>
+        </section>
+
+      </ng-container>
+      <ng-template #allProducts>
+        <p class="mat-h1">ALL PRODUCTS</p>
+      </ng-template>
   </ng-container>
+</section>
+<img src="../../../assets/images/Kichen.jpg">
 
-  </div>
+</header>
+
+
+
+
+
+
+<main class="inline--centred--spaced global--gutters mat-subheading-1">
+<p class="font--thin" *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
+
 
 <section class="action-container inline--centred">
-<button  class="mr4" mat-stroked-button>
-<mat-icon >view_module
-</mat-icon>
-<span class="ml2" i18n>GRID</span>
+<button  class="mr4" appBoxSizeToggeler mat-stroked-button>
+  <mat-icon #boxSizeIcon>view_module</mat-icon>
+  <span #boxSizeText class="ml2" i18n>SMALL</span>
 </button>
 <button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
 <mat-icon [matBadge]="(filterParamCount$ | async) != 0 ? (filterParamCount$ | async) : ''"
-          matBadgeColor="primary"
+          matBadgeColor="accent"
           matBadgePosition="above before">tune
 </mat-icon>
 <span class="ml2" i18n>FILTER</span>
@@ -25,14 +55,14 @@
 </section>
 </main>
 
-<ng-template  #search>
+<ng-template #others>
   <ng-container  *ngIf="(isSearchActive$ | async)" >
-    <p i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
-    <p i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
+    <p class="mat-h1"  i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
+    <p class="mat-h1"  i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
     </ng-container>
     <ng-container  *ngIf="(isFavoriteActive$ | async)">
-      <p i18n *ngIf="(favoritesCount$ | async) == -1">You have no favorite product "{{searchTerm$| async}}"</p>
-      <p i18n *ngIf="(favoritesCount$ | async) != -1 ">Your favroites</p>
+      <p class="mat-h1"  i18n *ngIf="(favoritesCount$ | async) == -1">You have no favorite product "{{searchTerm$| async}}"</p>
+      <p class="mat-h1"  i18n *ngIf="(favoritesCount$ | async) != -1 ">Your favroites</p>
     </ng-container>
 </ng-template>
 

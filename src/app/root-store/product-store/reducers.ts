@@ -29,6 +29,12 @@ const productReducer = createReducer(
     on(ProductActions.DeleteProduct, (state, { id }) => {
       return adapter.removeOne(id, state);
     }),
+    on(ProductActions.ToggleBoxSizeAction, (state) => {
+      return {
+        ...state ,
+        isBigBox : !state.isBigBox
+      };
+    }),
 );
 
   export function reducer(state: State | undefined, action: Action) {

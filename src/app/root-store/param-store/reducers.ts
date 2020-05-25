@@ -8,9 +8,12 @@ export const featureKey = 'param';
 
 const paramReducer = createReducer(
     initialState,
-    // on(ParamActions.AddOrUpdateAction, (state, { param }) => {
-    //   return adapter.upsertOne(param, state);
-    // }),
+    on(ParamActions.LoadActiveCategoryAction, (state, { payload }) => {
+      return {
+        ...state, 
+        activeCategory : payload
+      }
+    }),
     on(ParamActions.AddOrUpdateManyAction, (state, { params }) => {
       return adapter.upsertMany(params, state);
     }),

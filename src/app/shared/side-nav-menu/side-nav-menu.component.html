@@ -1,11 +1,13 @@
 <header class="p4 global__header__border">
-<app-account-card ></app-account-card>
+<app-account-card></app-account-card>
 </header>
 <main class="p4">
-  <app-categories-tree [treeData]="navMenuData"></app-categories-tree>
+  <div class="pl4">
+    <app-categories-tree [treeData]="navMenuData$ |async"></app-categories-tree>
+  </div>
   <mat-divider class="my4"></mat-divider>
   <app-language-box></app-language-box>
-  <mat-divider class="mt4"></mat-divider>
+  <mat-divider></mat-divider>
     <mat-nav-list *ngIf="!(isLogged$ | async)">
       <mat-list-item  (click)="login()">
         <mat-icon mat-list-icon>person_add</mat-icon>

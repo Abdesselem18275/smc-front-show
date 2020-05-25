@@ -1,12 +1,7 @@
 @import "src/styles.scss";
-section
-{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+section {
+  flex-wrap: wrap;
 }
-
-
 p:hover {
   cursor: pointer;
   text-decoration: underline;

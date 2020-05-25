@@ -13,7 +13,6 @@ const userReducer = createReducer(
         isAuthenticated: true,
         user: payload
       };
-      console.warn(newState);
       return newState;
     }),
     on(UsersActions.LoginAction, (state) => {

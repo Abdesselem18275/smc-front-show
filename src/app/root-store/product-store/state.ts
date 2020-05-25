@@ -4,6 +4,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 export interface State extends EntityState<ProductShort> {
   isLoading: boolean;
   objCount: number;
+  isBigBox: boolean;
 
 }
 
@@ -21,5 +22,6 @@ export const adapter: EntityAdapter<ProductShort> = createEntityAdapter<ProductS
 
 export const initialState: State = adapter.getInitialState({
   isLoading : true,
-  objCount : 0
+  objCount : 0,
+  isBigBox : true
 });

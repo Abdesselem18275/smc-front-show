@@ -5,13 +5,11 @@ import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountLoginComponent } from '../account/account-login/account-login.component';
-import { ProductBoxComponent } from './product-box/product-box.component';
 import { CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
 import { LoadingComponent } from './loading/loading.component';
 
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
 import { TextHightlightDirective } from './text-hightlight.directive';
-import { FavoriteHandlerDirective } from './favorite-handler.directive';
 import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 import { AccountCardComponent } from '../account/account-card/account-card.component';
 import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.component';
@@ -32,11 +30,11 @@ import { AuthentificationCardComponent } from '../account/authentification-card/
                  AuthentificationCardComponent,
                  CreateProfileComponent,
                  GoogleSignInComponent,
-                 ProductBoxComponent, CategoryBreadcrumbComponent,
+                 CategoryBreadcrumbComponent,
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 FavoriteHandlerDirective, RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent],
+                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -50,10 +48,8 @@ import { AuthentificationCardComponent } from '../account/authentification-card/
     ReactiveFormsModule,
     MaterialModule,
     AccountLoginComponent,
-    ProductBoxComponent,
     CategoryBreadcrumbComponent,
     ScrollPaginatorDirective,
-    FavoriteHandlerDirective,
     LoadingComponent,
     GoogleSignInComponent,
     CreateProfileComponent,

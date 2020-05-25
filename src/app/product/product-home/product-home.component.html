@@ -13,7 +13,7 @@
 
 <section class="categories-container">
 
-<app-product-category class="category-container" [category]="category"   *ngFor="let category of categories"></app-product-category> 
+<app-product-category class="category-container" [category]="category"   *ngFor="let category of categories$ |async"></app-product-category> 
 
 </section>
 </main>

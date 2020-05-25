@@ -109,10 +109,10 @@ export interface ProductCollection {
 }
 
 export enum ParamType {
-    PAGE = 'Page',
-    FILTER = 'Filter',
-    CATEGORY = 'Category',
-    SEARCH = 'Search',
+    PAGE = "Page",
+    FILTER = "Filter",
+    CATEGORY = "Category",
+    SEARCH = "Search",
 }
 export interface Param {
     key: string;

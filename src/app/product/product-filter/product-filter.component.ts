@@ -1,12 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup} from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { AddOrUpdateAction } from 'src/app/root-store/param-store/actions';
 import { ParamStoreState } from 'src/app/root-store/param-store';
-import { FilterCategory, ParamType } from '../model';
-import { FilterBuilderService } from '../service/filter-builder.service';
+import { FilterCategory } from '../model';
 import { ModalStoreActions } from 'src/app/root-store';
+import { Observable } from 'rxjs';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 
 
@@ -17,52 +16,50 @@ import { ModalStoreActions } from 'src/app/root-store';
 })
 export class ProductFilterComponent implements OnInit {
 
-  filterForm: FormGroup;
-  filterCategories: FilterCategory[] ;
+  filterForm$: Observable<FormGroup>;
+  filterCategories$: Observable<FilterCategory[]> ;
   selectedFilter = '';
   isScrollOver: boolean;
   isScrollable: boolean;
   isActive: boolean;
 
-  constructor(private fbs: FilterBuilderService,
-              private store$: Store<ParamStoreState.State>,
-    ) {
+  constructor(private store$: Store<ParamStoreState.State>) {
    }
 
   ngOnInit() {
-        this.filterForm = this.fbs.filterForm;
-        this.filterCategories = this.fbs.filterCategories;
-        this.onChanges();
+        this.filterForm$ = this.store$.select(GlobalStoreSelectors.selectFilterForm)
+        this.filterCategories$ = this.store$.select(GlobalStoreSelectors.selectFilters)
+        // this.onChanges();
   }
 
 
-  onChanges(): void {
-    Object.keys(this.filterForm.controls).forEach(key => {
-      this.filterForm.get(key).valueChanges.pipe(
-        debounceTime(1000)).subscribe( tempForm  => {
-          const reqArray = [];
-          for (const property in tempForm) {
-            if (tempForm[property]) {
-              reqArray.push(property.substr(property.lastIndexOf('_') + 1));
-            }
-          }
-        const param = {
-           key: key,
-           value: reqArray.join(','),
-           type : ParamType.FILTER
-         };
-        this.store$.dispatch(AddOrUpdateAction({param : param}));
-    });
-  }) ;
-  this.fbs.filterForm = this.filterForm;
-}
+//   onChanges(): void {
+//     Object.keys(this.filterForm.controls).forEach(key => {
+//       this.filterForm.get(key).valueChanges.pipe(
+//         debounceTime(1000)).subscribe( tempForm  => {
+//           const reqArray = [];
+//           for (const property in tempForm) {
+//             if (tempForm[property]) {
+//               reqArray.push(property.substr(property.lastIndexOf('_') + 1));
+//             }
+//           }
+//         const param = {
+//            key: key,
+//            value: reqArray.join(','),
+//            type : ParamType.FILTER
+//          };
+//         this.store$.dispatch(AddOrUpdateAction({param : param}));
+//     });
+//   }) ;
+//   this.fbs.filterForm = this.filterForm;
+// }
 
-  clearFilter() {
-    Object.keys(this.filterForm.controls).forEach( (key: string) => {
-      const tempForm_ = <FormGroup>this.filterForm.get(key);
-       Object.keys(tempForm_.controls).filter(y =>  tempForm_.get(y).setValue(false) );
-    });
-  }
+  // clearFilter() {
+  //   Object.keys(this.filterForm.controls).forEach( (key: string) => {
+  //     const tempForm_ = <FormGroup>this.filterForm.get(key);
+  //      Object.keys(tempForm_.controls).filter(y =>  tempForm_.get(y).setValue(false) );
+  //   });
+  // }
   toggleFilter(i) {
     this.selectedFilter === i ? this.selectedFilter = '' : this.selectedFilter = i;
   }

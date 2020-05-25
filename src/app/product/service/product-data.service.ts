@@ -59,7 +59,13 @@ export class ProductDataService  {
       '/filters'].join('');
      return this.http.get(query).pipe()
   }
-
+  
+  getInitData() {
+    const query: string = [
+      this.apiUrl,
+      '/initData'].join('') ;
+    return this.http.get(query)
+  }
   getMenu() {
     const treeMenu: any[] = [
       {

@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Category, ParamType, Param } from 'src/app/product/model';
-import { ActivatedRoute } from '@angular/router';
-import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
-import { map, tap } from 'rxjs/operators';
+import { Category, ParamType, Param, ProductShort } from 'src/app/product/model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ParamStoreSelectors } from 'src/app/root-store';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 @Component({
   selector: 'app-category-breadcrumb',
@@ -16,41 +14,16 @@ export class CategoryBreadcrumbComponent implements OnInit {
   categories: Category[];
   items: string[];
   isNotEmpty: boolean;
-  breadCrumb$: Observable<String[]>;
-  @Input() currentProduct?: string;
+  breadCrumb$: Observable<Category[]>;
+  @Input() currentProduct?: ProductShort;
 
-  constructor(private store$: Store<RootStoreState.State>,
-              private categoriesCache: CategoryCacheService) { }
+  constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
-    this.isNotEmpty = false;
-    this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.CATEGORY}).
-      subscribe((params: Param[]) => {
-        if (!this.currentProduct) {
-          try {
-            this.items = this.setItems(params.shift().value);
-          } catch (error) {
-            this.items = ['All products'];
-          }
-        } else {
-           this.items = this.setItems(this.currentProduct).filter(x => x !== '');
-
-        }
-
-      });
+    this.breadCrumb$ = this.store$.select(GlobalStoreSelectors.selectBreadcrumbArray ,{product : this.currentProduct})
+    this.breadCrumb$.subscribe(x => console.warn(x))
   }
 
 
-  getItem(param): Category {
-    return this.categoriesCache.fetchCachedCategories().find(category => category.designation === param);
-  }
-
-
-  setItems(param): string[] {
-    if ( param === '' ) {
-      return [];
-    }
-    return([param].concat(this.setItems(this.getItem(param).isRoot ? '' : this.getItem(param).parentCategory.designation)));
-  }
 
 }

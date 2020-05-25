@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 import { Category } from 'src/app/product/model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { RootStoreState } from 'src/app/root-store';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 @Component({
   selector: 'app-category-menu',
@@ -8,15 +11,11 @@ import { Category } from 'src/app/product/model';
   styleUrls: ['./category-menu.component.scss']
 })
 export class CategoryMenuComponent implements OnInit {
-  rootCategories : Category[];
-  constructor(private cs : CategoryCacheService) { }
+  rootCategories$ : Observable<Category[]>;
+  constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit(): void {
-    let Customarray = this.cs.fetchCachedCategories().filter(cat => cat.isRoot);
-    // Customarray.push({
-    //   designation:'Products'
-    // });
-    this.rootCategories = Customarray;
+    this.rootCategories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
   }
 
 }

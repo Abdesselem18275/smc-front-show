@@ -6,7 +6,8 @@ export enum ActionsType {
   UPDATES = '[Product] Multiple Add Or Update',
   CLEAR = '[Product] Clear All',
   IS_LOADING = '[Product] Is Loading',
-  REMOVE = '[Product] Remove'
+  REMOVE = '[Product] Remove',
+  TOGGLE_BOX_SIZE = '[Product] Toggle box size'
 }
 
 export const AddOrUpdateAction = createAction(
@@ -25,6 +26,10 @@ export const ClearAllAction = createAction(
 
 export const LoadRequestAction = createAction(
   ActionsType.IS_LOADING,
+);
+
+export const ToggleBoxSizeAction = createAction(
+  ActionsType.TOGGLE_BOX_SIZE,
 );
 
 export const DeleteProduct = createAction(ActionsType.REMOVE, props<{ id: string }>());

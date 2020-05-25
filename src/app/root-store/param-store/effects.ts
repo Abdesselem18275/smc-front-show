@@ -1,14 +1,15 @@
 import { Injectable } from "@angular/core";
-import { createEffect, Actions, ofType } from "@ngrx/effects";
-import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction } from "./actions";
+import { createEffect, Actions, ofType, ROOT_EFFECTS_INIT } from "@ngrx/effects";
+import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction, LoadActiveCategoryAction } from "./actions";
 import { Store, select } from "@ngrx/store";
-import { map, switchMap, filter, concatMap, withLatestFrom, tap } from "rxjs/operators";
+import { map, switchMap, filter, concatMap, withLatestFrom, tap, exhaustMap } from "rxjs/operators";
 import { State } from "./state";
-import { ParamType } from "src/app/product/model";
+import { ParamType, Param, Category } from "src/app/product/model";
 import { selectPageParam , selectAllParams } from "./selectors";
 import { of } from "rxjs";
 import * as ProductStore from '../product-store';
 import { ROUTER_NAVIGATED } from "@ngrx/router-store";
+import { GlobalStoreSelectors } from "../global-store";
 
 
 @Injectable()
@@ -54,7 +55,7 @@ export class ParamEffects {
                         ProductStore.ProductStoreActions.ClearAllAction(),
                         DeleteManyAction(
                             {ids :
-                                allParams.filter(param => param.type === ParamType.SEARCH).
+                                allParams.filter(param => (param.type === ParamType.SEARCH || param.type === ParamType.CATEGORY  ) ).
                                 map(param => param.key)
                             }),
                         AddOrUpdateManyAction({params : [action.param , pageInit]}) ,
@@ -82,7 +83,7 @@ export class ParamEffects {
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/list')),
         map((actions: any) => actions.payload.routerState.queryParams),
-        map(param => Object.keys(param).length === 0 ? {dummyKey: "dummyValue"} :param),
+        map(param => Object.keys(param).length === 0 ? {dummyKey: ""} :param),
         map((params) => {
                 const paramsArray = [];
                 Object.keys(params).forEach(key => {
@@ -93,7 +94,11 @@ export class ParamEffects {
                   })});
                 return paramsArray.shift();
             }),
-        map((param) => AddOrUpdateAction({param: param})
+        withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),
+        switchMap(([param,categories] : [Param,Category[]]) => [
+            LoadActiveCategoryAction({ payload: categories.filter(cat => cat.designation === param.value).shift() }),
+            AddOrUpdateAction({ param: param })
+        ]
         )));
 
 

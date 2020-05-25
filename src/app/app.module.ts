@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootStoreModule } from './root-store/root-store.module';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { InjectablesService, loadInitData } from './injectables.service';
 import { ConfigService } from './product/service/config.service';
@@ -20,9 +19,7 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { StoreRouterConnectingModule, RouterState, RouterStateSerializer } from '@ngrx/router-store';
-import { CustomSerializer } from './root-store/router-store/custom-route-serializer';
-
+import { RootEffects } from './root-store/effects';
 
 @NgModule({
   declarations: [
@@ -39,13 +36,10 @@ import { CustomSerializer } from './root-store/router-store/custom-route-seriali
     AppRoutingModule,
     BrowserAnimationsModule,
     RootStoreModule,
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([RootEffects]),
     ProductModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     RouterModule.forRoot([]),
-    // StoreRouterConnectingModule.forRoot({
-    //   serializer: CustomSerializer
-    // })
   ],
   providers: [
     httpInterceptorProviders,

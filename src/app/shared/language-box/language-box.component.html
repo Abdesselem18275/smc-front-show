@@ -5,7 +5,7 @@
     <mat-icon [svgIcon]="(language$ |async).LanguageType"></mat-icon>   
   </button> 
 
-  <mat-menu #lang="matMenu">
+  <mat-menu  #lang="matMenu">
     <a class="inline--centred" mat-menu-item *ngFor="let item of languageList" [href]="item.id | lowercase" (click)="setLanguage(item)" >
         <mat-icon [svgIcon]="(item.LanguageType)"></mat-icon>
         <span class="mat-body-2">{{item.LanguageType}}</span>
@@ -15,15 +15,15 @@
 </ng-container>
 
   <ng-template #side>
-    <p class="font--dark-grey mat-h4">Language</p>
+    <!-- <p class="font--dark-grey mat-h4">Language</p>
     <mat-chip-list aria-label="Language selection">
       <mat-chip [selected]="(language$ |async).LanguageType == item.LanguageType" *ngFor="let item of languageList">
         <mat-icon class="mr2" [svgIcon]="(item.LanguageType)"></mat-icon>
         {{item.id}}</mat-chip>
-    </mat-chip-list>
-    <!-- <mat-nav-list >
+    </mat-chip-list> -->
+    <mat-nav-list >
       <div mat-subheader>Language</div>
-      <mat-list-item *ngFor="let item of languageList">
+      <mat-list-item  *ngFor="let item of languageList">
         <mat-icon [svgIcon]="(item.LanguageType)" mat-list-icon>
         </mat-icon>
         <div mat-line>
@@ -31,5 +31,5 @@
         </div>
         <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
       </mat-list-item>
-    </mat-nav-list> -->
+    </mat-nav-list>
    </ng-template>

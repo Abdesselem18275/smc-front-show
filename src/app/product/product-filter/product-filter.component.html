@@ -8,8 +8,8 @@
 <!-- <button (click)="clearFilter()" class="clear-button--centred" color="primary" mat-raised-button> Clear filter</button>
 <mat-divider></mat-divider> -->
 
-    <form  [formGroup]="filterForm">
-    <div  class="form-group" *ngFor="let filterCategory of filterCategories">
+    <form  [formGroup]="filterForm$ | async">
+    <div  class="form-group" *ngFor="let filterCategory of filterCategories$ | async">
             <header class="filter-title font--grey mat-caption" >  
                 {{filterCategory.value | titlecase }} 
             </header>

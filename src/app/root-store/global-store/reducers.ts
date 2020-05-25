@@ -12,7 +12,16 @@ const globalReducer = createReducer(
             ...state ,
             language : key
           };
-    })
+    }),
+    on(GlobalActions.LoadInitDataAction, (state, { payload }) => {
+      console.warn(payload['navMenuTree']);
+      return {
+          ...state ,
+          categories : payload['categories'],
+          filters : payload['filters'],
+          navMenuTree : payload['navMenuTree']
+        };
+  }),
 );
 
 

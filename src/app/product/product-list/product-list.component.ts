@@ -1,14 +1,11 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import { ProductShort, ParamType, Param } from '../model';
-import { ActivatedRoute} from '@angular/router';
-import { map} from 'rxjs/operators';
+import { ProductShort, ParamType, Param, Category } from '../model';
 import { Store} from '@ngrx/store';
 import {  ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';
 import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { sideSlideInAnimation } from 'src/app/animations';
-import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors';
 
 @Component({
@@ -19,43 +16,19 @@ import { selectModalStateByType } from 'src/app/root-store/modal-store/selectors
 })
 export class ProductListComponent implements OnInit {
 
-  productShorts: Observable<ProductShort[]>;
+  productShorts$: Observable<ProductShort[]>;
   isLoading: Observable<boolean>;
-  filterBox: Observable<boolean>;
-  filterParamCount: Observable<number>;
-  isSearchActive: Observable<boolean>;
-  searchTerm: Observable<string>;
-  activeCategory: Observable<string>;
+  filterBox$: Observable<boolean>;
   isLoading$:Observable<boolean>;
-  isFilterActive: boolean;
-  isModuleActive: boolean;
-  resetFilter: boolean;
-
-
+  isBigSize$:Observable<boolean>;
   constructor(private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
-    this.isFilterActive = false;
-    this.isModuleActive = false;
-    this.filterBox = this.store$.select(selectModalStateByType, {key: 'filterBox'});
-    this.productShorts =  this.store$.select(ProductStoreSelectors.selectAllProducts);
+    this.filterBox$ = this.store$.select(selectModalStateByType, {key: 'filterBox'});
+    this.productShorts$ =  this.store$.select(ProductStoreSelectors.selectAllProducts);
     this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
+    this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize);
 
-
-    this.activeCategory = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.CATEGORY}).pipe(
-      map((params: Param[]) => {
-        try {
-          return params.shift().value;
-        } catch (error) {
-          return '';
-        }
-      }
-    ));
   }
-
-
-toggleView(event) {
-  this.isModuleActive = event.value === 'module';
-}
 
 
 

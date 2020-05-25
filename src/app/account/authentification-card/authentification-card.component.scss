@@ -1,10 +1,13 @@
 .main-header {
     width: 100%;
-    padding:  2rem 1rem;
+    padding:  1rem 1rem 1rem 2rem;
     .logo--big {
         width: 6rem;
     }
 }   
+.mat-h2 {
+    margin: 0;
+}
 
 mat-divider {
     margin: 2rem 0;

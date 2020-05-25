@@ -4,14 +4,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { centerSlideInAnimation, sideSlideInAnimation, expandAnimation } from 'src/app/animations';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ModalStoreState } from 'src/app/root-store';
-import { selectModalStateByType, selectAllModalState } from 'src/app/root-store/modal-store/selectors';
+import { selectAllModalState } from 'src/app/root-store/modal-store/selectors';
 import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
-import { Observable } from 'rxjs';
-import { UserLanguage } from 'src/app/root-store/global-store/state';
-import { selectLanguage } from 'src/app/root-store/global-store/selectors';
-import { Category } from 'src/app/product/model';
-import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
-import { RouterStoreSelectors } from 'src/app/root-store/router-store';
+import { Observable } from 'rxjs';;
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 
 @Component({

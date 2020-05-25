@@ -1,7 +1,17 @@
 
-
+<!-- 
   
   <button mat-button [matMenuTriggerFor]="menu.buildMenu">
     Product
   </button>
-  <app-menu-item #menu [items]="rootCategories"></app-menu-item>
+
+  <app-menu-item #menu [items]="rootCategories$ | async"></app-menu-item> -->
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    Product
+  </button>
+  <mat-menu #menu>
+    <button *ngFor="let item of rootCategories$ | async" color="accent" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}" [queryParamsHandling]= "'merge'">
+      {{item.designation}}
+    </button>
+  </mat-menu>

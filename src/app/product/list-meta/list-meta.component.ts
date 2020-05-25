@@ -3,10 +3,11 @@ import { RootStoreState, ProductStoreSelectors, ModalStoreActions, ParamStoreSel
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, filter, tap } from 'rxjs/operators';
-import { ParamType, Param } from '../model';
+import { ParamType, Param, Category } from '../model';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 @Component({
   selector: 'app-list-meta',
@@ -21,6 +22,7 @@ export class ListMetaComponent implements OnInit {
   isFavoriteActive$ : Observable<boolean>;
   searchTerm$: Observable<string>;
   favoritesCount$ : Observable<number>;
+  activeCategory$: Observable<Category>
 
   constructor(private store$: Store<any>) { }
 
@@ -30,7 +32,7 @@ export class ListMetaComponent implements OnInit {
     this.filterParamCount$ = this.store$.select(ParamStoreSelectors.selectAllParamsByTypeCount,{type:ParamType.FILTER})
     this.isSearchActive$ = this.store$.select(ParamStoreSelectors.selectIsParamExist, { type: ParamType.SEARCH})
     this.isFavoriteActive$  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
-    this.isFavoriteActive$.subscribe(x => console.warn(x));
+    this.activeCategory$ = this.store$.select(GlobalStoreSelectors.selectCategoryQueryParam);
     this.searchTerm$ = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(
       map((params: Param[]) => {
         try {

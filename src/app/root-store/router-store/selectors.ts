@@ -9,7 +9,6 @@ export const selectRouter = createFeatureSelector<State,RouterReducerState<Route
 
 export const {
     selectCurrentRoute,   // select the current route
-    selectQueryParams,    // select the current route query params
     selectQueryParam,     // factory function to select a query param
     selectRouteParams,    // select the current route params
     selectRouteParam,     // factory function to select a route param
@@ -23,4 +22,8 @@ export const {
   export const isCrrentUrl = createSelector(
     selectUrl,
     (url:string,props) => (url.includes(props.url))
+  );
+  export const selectQueryParams = createSelector(
+    selectRouter,
+    (state:any) => (state && state.router.state.queryParams)
   );

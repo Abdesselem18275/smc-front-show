@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MenuTreeData, Category } from 'src/app/product/model';
-import { CategoryCacheService } from 'src/app/product/service/category-cache.service';
 import { NavigationExtras } from '@angular/router';
 
-const NAV_TREE_DATA: MenuTreeData[]  = [
+const INIT_NAV_TREE_DATA: MenuTreeData[]  = [
   {
     designation : 'products',
     icon : 'category',
@@ -57,25 +56,21 @@ const NAV_TREE_DATA: MenuTreeData[]  = [
 export class MenuDataBuilderService {
   _treeMenu : MenuTreeData[];
 
+  get treeMenu() {
+    return this._treeMenu;
+  }
 
-  constructor(private ccs: CategoryCacheService) { 
-    this._treeMenu = NAV_TREE_DATA.map((cat: MenuTreeData)  => {
+  buildMenuTree = (rootCategories: Category[]) => {
+    return INIT_NAV_TREE_DATA.map((cat: MenuTreeData)  => {
       if (cat.designation === 'products') {
         return {
           ...cat,
-          children : this.ccs.fetchCachedCategories()
-            .filter(proCat => proCat.isRoot)
-            .map(proCat => (this.setCatRouterLink(proCat)))
+          children : rootCategories.map(proCat => (this.setCatRouterLink(proCat)))
         };
       }
       return cat;
     });
-    console.warn(this._treeMenu)
-  }
 
-
-  get treeMenu() {
-    return this._treeMenu;
   }
   
   setCatRouterLink(cat : Category) {

@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductCollection, Category } from '../model';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { CollectionCacheService } from '../service/collection-cache.service';
-import { CategoryCacheService } from '../service/category-cache.service';
+import { Category } from '../model';
+
 
 @Component({
   selector: 'app-product-category',

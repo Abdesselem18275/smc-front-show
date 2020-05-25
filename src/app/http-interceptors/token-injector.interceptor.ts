@@ -18,6 +18,9 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token: string = localStorage.getItem(this.tokenKey);
+    if (request.url.includes('smc-static-media')) {
+      return next.handle(request);
+    }
     request = request.url.includes('g-auth') ?
     request.clone({
       setHeaders: {

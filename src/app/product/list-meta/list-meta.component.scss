@@ -1,37 +1,47 @@
 @import "src/styles.scss";
 
 main {
-    border-bottom: 1px solid $light-grey-color;
-    border-top: 1px solid $light-grey-color;
-    @extend .inline--centred--spaced;
+    background-color:$extreme-light-grey-color;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
-.breadcrumb--centred {
-    display: none;
-}
-@media only screen and (max-width:800px) {
-    main {
+
+header {
+    img {
+        width: 25%;
+
+    }
+    @media only screen and (max-width:1000px) {
+        margin-top: 2rem;
+        img {
+            display: none;
+        }
         flex-direction: column;
-        align-items: center;
-        border : none;
-        .action-container {
-            border-bottom: 1px solid $light-grey-color;
-            border-top: 1px solid $light-grey-color;
-            width: 100%;
-            padding: 1rem 0;
-            order: 2 ;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        .list-title {
-            order: 1;
-
-        }
-        p {
-            order: 3;
-
+      }
+}
+.description-container {
+    min-width: 300px;
+    text-align: center;
+}
+.mat-h3{
+  margin: 0;
+}
+.action-container {
+    button {
+        span {
+            @media only screen and (max-width:500px) {
+                display: none;
+              }
         }
     }
 }
-.mat-h3 {
-  margin: 0;
+.children-container {
+    justify-content: center;
+}
+
+#category-icon--big {
+    @include md-icon-size(5rem)
 }

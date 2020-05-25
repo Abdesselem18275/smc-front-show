@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { Category } from '../model';
-import { CategoryCacheService } from '../service/category-cache.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { RootStoreState } from 'src/app/root-store';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 
 @Component({
@@ -9,13 +12,13 @@ import { CategoryCacheService } from '../service/category-cache.service';
   styleUrls: ['./product-home.component.scss']
 })
 export class ProductHomeComponent implements OnInit {
-  categories: Category[];
+  categories$: Observable<Category[]>;
 
-  constructor(private categoryCache: CategoryCacheService) { }
+  constructor(private store$: Store<RootStoreState.State>) { }
   ngOnInit() {
 
 
-    this.categories = this.categoryCache.fetchCachedCategories().filter(category => category.isRoot);
+    this.categories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
   }
 
 }

@@ -9,6 +9,7 @@ import { Profile } from 'src/app/account/model';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
 import { MenuDataBuilderService } from '../service/menu-data-builder.service';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 
 @Component({
@@ -19,18 +20,17 @@ import { MenuDataBuilderService } from '../service/menu-data-builder.service';
 export class SideNavMenuComponent implements OnInit {
   profile$: Observable<Profile>;
   isLoading$: Observable<boolean>;
-  navMenuData: MenuTreeData[];
+  navMenuData$: Observable<MenuTreeData[]>;
   isLogged$: Observable<boolean>;
   languageType: LanguageType;
   constructor(
-              private store$: Store<RootStoreState.State>,
-              private navBuilder: MenuDataBuilderService) { }
+              private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-    this.navMenuData = this.navBuilder.treeMenu;
+    this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree)
   }
 
   logOut() {

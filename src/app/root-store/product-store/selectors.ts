@@ -26,3 +26,5 @@ export interface State {
     (productState) => productState.isLoading
   );
 
+export const selectIsBigBoxSize = createSelector(selectProductState,(state)=>state.isBigBox)
+

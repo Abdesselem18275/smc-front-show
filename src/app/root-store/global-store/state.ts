@@ -1,3 +1,4 @@
+import { Category, FilterCategory, MenuTreeData } from "src/app/product/model";
 
 export enum LanguageType {
     ENGLISH = 'English',
@@ -12,12 +13,18 @@ export interface UserLanguage {
 
 export class State  {
   language: UserLanguage;
+  categories: Category[];
+  filters: FilterCategory[];
+  navMenuTree: MenuTreeData[];
 }
 
 
 export const initialState: State = {
   language : {
     id : 'en',
-    LanguageType : LanguageType.ENGLISH }
+    LanguageType : LanguageType.ENGLISH },
+  categories: [],
+  filters: [],
+  navMenuTree: [],
 };
 
