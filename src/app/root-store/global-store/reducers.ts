@@ -14,7 +14,6 @@ const globalReducer = createReducer(
           };
     }),
     on(GlobalActions.LoadInitDataAction, (state, { payload }) => {
-      console.warn(payload['navMenuTree']);
       return {
           ...state ,
           categories : payload['categories'],

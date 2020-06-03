@@ -38,7 +38,6 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
     this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
-      console.warn(profile);
       this.accountForm.setValue({
         first_name: profile.first_name,
         last_name: profile.last_name,

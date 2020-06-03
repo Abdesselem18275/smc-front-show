@@ -1,0 +1,15 @@
+@import "src/styles.scss";
+
+img {
+    max-width: 24px;
+}
+img:hover {
+    cursor: pointer;
+    @extend .mat-elevation-z2;
+    transform: scale(1.05);
+    transition: ease-in  0.05s ;
+}
+.img--bordered {
+    border: solid 1px mat-color($smc-show-case-primary,darker);
+    padding: 1px;
+}

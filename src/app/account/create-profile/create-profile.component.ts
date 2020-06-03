@@ -27,9 +27,7 @@ export class CreateProfileComponent implements OnInit {
 
   ngOnInit() {
     this.isChecking$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.isChecking$.subscribe(x => console.warn(x));
     this.createForm = this.accountFormService.createAccountForm();
-    console.warn(this.createForm);
   }
 
 

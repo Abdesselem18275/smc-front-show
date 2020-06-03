@@ -1,7 +1,7 @@
 import * as fromGlobalReducer from './reducers';
 import { createFeatureSelector, createSelector, props } from '@ngrx/store';
 import { State } from './state';
-import { Category,ProductLong, ProductShort, FilterCategory } from 'src/app/product/model';
+import { Category,ProductShort, FilterCategory } from 'src/app/product/model';
 import { RouterStoreSelectors } from '../router-store';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -22,7 +22,7 @@ export const selectCategoryQueryParam = createSelector(
     RouterStoreSelectors.selectQueryParams,
     (categories,queryParams) => 
     {
-      return queryParams['categories__designation__in'] && queryParams['categories__designation__in'] !== '' ?
+      return queryParams['categories__designation__in'] !== '' && queryParams['categories__designation__in'] ?
       categories.filter(cat => cat.designation === queryParams['categories__designation__in']).shift():
       {
         designation : 'All products',
@@ -34,11 +34,10 @@ export const selectCategoryQueryParam = createSelector(
   export const selectBreadcrumbArray = createSelector(
     selectCategories,
     selectCategoryQueryParam,
-    (categories:Category[],category:Category,props : {product : ProductLong | ProductShort}) => {
-      // console.warn(props.product ?props.product:null)
-      // console.warn(category ?category:null)
-      return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
-      category ? setItems(categories,category).reverse():null
+    (categories:Category[],category:Category,props : {product : ProductShort}) => {
+      // return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
+      // category ? setItems(categories,category).reverse():null
+      return category ? setItems(categories,category).reverse():null
     })
 
   export const selectFilterForm = createSelector(
@@ -46,20 +45,17 @@ export const selectCategoryQueryParam = createSelector(
     (filters: FilterCategory[]) => toFormGroup(filters)
   )
 
-
-
-
-  const getItem = (categories,designation:string): Category => {
-    return categories.find(category => category.designation === designation);
+  const getItem = (categories,key:number): Category => {
+    return categories.find(category =>  category.id === key);
   }
 
   const setItems = (categories,param:Category): Category[] => {
-    console.warn(param);
     if (param === undefined || param.designation==="All products") {
       return [];
     }
-    const cat = getItem(categories,param.designation)
-    return([param].concat(setItems(categories,cat.isRoot ? undefined : cat.parentCategory)));
+    const cat = getItem(categories,param.id)
+    const parentCategory = getItem(categories,param.parentCategory)
+    return([param].concat(setItems(categories,cat.isRoot ? undefined : parentCategory)));
   }
 
 

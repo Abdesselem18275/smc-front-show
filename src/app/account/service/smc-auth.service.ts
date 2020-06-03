@@ -39,7 +39,6 @@ createProfile(payload): Observable<any> {
 }
 
 login(credentials: any): Observable<any> {
-  console.warn(credentials);
   const query: string = [
       this.apiUrl,
       '/s-auth/'

@@ -1,10 +1,10 @@
 import { Router } from '@angular/router';
 import { RootStoreState, ParamStoreSelectors, ProductStoreActions, ProductStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { ProductShort, ParamType, Param } from 'src/app/product/model';
+import { ProductShort, ParamType, Param, AppearanceVariant } from 'src/app/product/model';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 
@@ -20,6 +20,7 @@ export class ProductBoxComponent implements OnInit  {
   isSearchActive: Observable<boolean>;
   isFavoriteRoute: Observable<any>;
   isBigSize$: Observable<boolean>;
+  public selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
   constructor(private store$: Store<any>) { }
 
   ngOnInit() {
@@ -27,7 +28,9 @@ export class ProductBoxComponent implements OnInit  {
     this.isFavoriteRoute  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
     this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize)
   }
-
+  setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
+    this.selectedAppearanceVariant$.next(appearanceVariant);
+  }
 
 
 }

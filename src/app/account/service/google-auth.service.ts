@@ -43,7 +43,6 @@ export class GoogleAuthService {
   private onSignIn(googleUser) {
     this.createOrSignin(googleUser.getAuthResponse().id_token).subscribe((
       jsonData: {token: string, profile: Profile}) => {
-      console.warn(jsonData);
       localStorage.setItem(this.tokenKey, jsonData.token);
       localStorage.setItem(this.profileId, jsonData.profile.id.toString());
       this.store$.dispatch(UserStoreActions.LoadUserAction({payload: jsonData.profile }));

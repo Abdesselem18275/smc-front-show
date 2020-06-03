@@ -17,7 +17,6 @@
         max-width: 100%;
     }
     .content-information {
-        margin: 1rem;
         display: flex;
         justify-content: space-between;
     }
@@ -30,4 +29,7 @@
 }
 app-category-breadcrumb {
     text-transform: lowercase;
+}
+app-appearance-selector {
+    width: 100%;
 }

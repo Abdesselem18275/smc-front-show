@@ -10,7 +10,7 @@ export interface State extends EntityState<ProductShort> {
 
 
 export function selectParamKey(a: ProductShort): number {
-  return a.pk;
+  return a.id;
 }
 export function sortByName(a: ProductShort, b: ProductShort): number {
   return a.designation.localeCompare(b.designation);

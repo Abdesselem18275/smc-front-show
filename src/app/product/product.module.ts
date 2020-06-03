@@ -13,8 +13,9 @@ import { ListMetaComponent } from './list-meta/list-meta.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { BoxSizeToggelerDirective } from './box-size-toggeler.directive';
 import { FavoriteHandlerDirective } from './favorite-handler.directive';
+import { AppearanceSelectorComponent } from './appearance-selector/appearance-selector.component';
 
-
+ 
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { FavoriteHandlerDirective } from './favorite-handler.directive';
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent,FavoriteHandlerDirective,
-                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective],
+                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent],
   providers:  [DataInjectablesService ]
 })
 export class ProductModule { }

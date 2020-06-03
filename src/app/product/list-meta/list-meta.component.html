@@ -1,5 +1,5 @@
 <header class="global--gutters inline--centred--spaced">
-  <img src="../../../assets/images/Kichen.jpg">
+  <img [src]="(activeCategory$ | async)?.thumbNailAux">
 
   <section class=" column--centred">
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
@@ -27,7 +27,7 @@
       </ng-template>
   </ng-container>
 </section>
-<img src="../../../assets/images/Kichen.jpg">
+<img [src]="(activeCategory$ | async)?.thumbNailAux">
 
 </header>
 

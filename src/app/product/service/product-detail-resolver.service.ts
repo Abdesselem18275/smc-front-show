@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { ProductLong } from '../model';
+import { ProductShort } from '../model';
 import { Observable, of, EMPTY  } from 'rxjs';
 import { ProductDataService } from './product-data.service';
 import { mergeMap, take } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { mergeMap, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductDetailResolverService implements Resolve<ProductLong> {
+export class ProductDetailResolverService implements Resolve<ProductShort> {
 
   constructor(private pds: ProductDataService, private router: Router) {
 
@@ -19,7 +19,7 @@ export class ProductDetailResolverService implements Resolve<ProductLong> {
     let id = route.paramMap.get('id');
     return this.pds.get_element({value: id, model: 'product'}).pipe(
       take(1),
-      mergeMap((product: ProductLong) => {
+      mergeMap((product: ProductShort) => {
         if (product) {
           return of(product);
         } else {
