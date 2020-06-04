@@ -21,7 +21,6 @@ export class CategoryBreadcrumbComponent implements OnInit {
 
   ngOnInit() {
     this.breadCrumb$ = this.store$.select(GlobalStoreSelectors.selectBreadcrumbArray ,{product : this.currentProduct})
-    this.breadCrumb$.subscribe(x => console.warn(x))
   }
 
 

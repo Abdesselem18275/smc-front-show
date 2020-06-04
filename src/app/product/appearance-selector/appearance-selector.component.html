@@ -1,13 +1,16 @@
 <p *ngIf="appearanceVariants.length > 1 ;else oneVariant" class="mat-caption">{{appearanceVariants.length}} available looks</p>
 <ng-template #oneVariant>
-    <p class="mat-caption">
+    <p #text class="mat-caption">
       One available look
     </p>
 </ng-template>
 <mat-divider class="my2"></mat-divider>
-<img 
-    class="mr4"  
-    [class.img--bordered]="_selectedAppearanceVariant == item"
+<section class="inline--centred">
+  <div  *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
+    <img class="mb1"
     [src]="item.look.thumbNail" 
-    (click)="setAppearanceVariant(item)"
-    *ngFor="let item of appearanceVariants">
+    (click)="setAppearanceVariant(item)">
+    <span     *ngIf="_selectedAppearanceVariant == item"></span>
+  </div>
+
+</section>

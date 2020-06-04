@@ -1,17 +1,17 @@
 
-<div  class="content--grid">
-        <div class="mat-h4 p2 inline--centred">
+<div appImagePlaceholder class="content--grid">
+        <div  class="mat-h4 p2 inline--centred">
                 <button [appFavoriteHandler]="product.id" mat-icon-button>
                         <mat-icon [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>
-                <section>
-                        <p >{{product.designation | uppercase}}</p>
-                        <p class="mat-caption font--dark-grey">
+                <section #text>
+                        <p  >{{product.designation | uppercase}}</p>
+                        <p  class="mat-caption font--dark-grey">
                                 <span class="mat-caption" 
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                         {{product.rootCategory}} /
-                        </span>
+                        </span >
                                 {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
 
 
@@ -20,21 +20,22 @@
                         <mat-icon i18n>message</mat-icon>
                 </button>
         </div>
+        <div #image>
+        <img  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+        </div>
 
-                <img class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
-                
-        <section *ngIf="isBigSize$ |async" class="py2 px4 content-information">
+        <section #text *ngIf="isBigSize$ |async" class="my2 mx4 content-information">
                <p class="mat-body font--dark-grey">{{product.shortDescription}}</p>
         </section>
 
-        <section class="p4 inline--centred">
+        <section #text class="p4 inline--centred">
                 
                 <app-appearance-selector 
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section *ngIf="isBigSize$ |async" class="p4 inline--centred">
+        <section #text *ngIf="isBigSize$ |async" class="p4 inline--centred">
             <button color="primary" class="mr4" mat-stroked-button>
                 <span>Materials</span>
                 <mat-icon>

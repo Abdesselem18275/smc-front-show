@@ -74,3 +74,25 @@
   .font--thin {
     font-weight: 300;
   }
+
+
+  .thumbnail__loading--box {
+    width: 367px;
+    height: calc(367px * 0.666);
+    animation: pulse 1s infinite ease-in-out;
+  }
+  .loading--box {
+    animation: pulse 1s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: rgba(165, 165, 165, 0.1);
+    }
+    50% {
+      background-color: rgba(165, 165, 165, 0.3);
+    }
+    100% {
+      background-color: rgba(165, 165, 165, 0.1);
+    }
+  }

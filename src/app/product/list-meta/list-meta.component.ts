@@ -43,7 +43,6 @@ export class ListMetaComponent implements OnInit {
       }
     ));
     this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount)
-    this.activeCategory$.subscribe(x => console.warn(x));
     }
 
   toggleModal(value) {
