@@ -1,13 +1,14 @@
 
 <div appImagePlaceholder class="content--grid">
+        <ng-container *ngIf="(isBigSize$ |async) else smallBox" >
         <div  class="mat-h4 p2 inline--centred">
                 <button [appFavoriteHandler]="product.id" mat-icon-button>
-                        <mat-icon [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
+                        <mat-icon  [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>
-                <section #text>
-                        <p  >{{product.designation | uppercase}}</p>
-                        <p  class="mat-caption font--dark-grey">
-                                <span class="mat-caption" 
+                <section >
+                        <p #loadingText>{{product.designation | uppercase}}</p>
+                        <p #loadingText class="mat-caption font--dark-grey">
+                                <span #loadingText class="mat-caption" 
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                         {{product.rootCategory}} /
@@ -16,26 +17,26 @@
 
 
                </section>
-               <button *ngIf="isBigSize$ |async"   class="font--dark-grey mat-icon--full-right" mat-icon-button>
+               <button class="font--dark-grey mat-icon--full-right" mat-icon-button>
                         <mat-icon i18n>message</mat-icon>
                 </button>
         </div>
-        <div #image>
-        <img  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+        <div #loadingImage>
+        <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
         </div>
 
-        <section #text *ngIf="isBigSize$ |async" class="my2 mx4 content-information">
-               <p class="mat-body font--dark-grey">{{product.shortDescription}}</p>
+        <section class="my2 mx4 content-information">
+               <p #loadingText class="mat-body font--dark-grey">{{product.shortDescription}}</p>
         </section>
 
-        <section #text class="p4 inline--centred">
+        <section  #toHideLoading  class="my4 px4  inline--centred">
                 
                 <app-appearance-selector 
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section #text *ngIf="isBigSize$ |async" class="p4 inline--centred">
+        <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
             <button color="primary" class="mr4" mat-stroked-button>
                 <span>Materials</span>
                 <mat-icon>
@@ -50,5 +51,33 @@
             </button>
 
         </section>
-        </div>
+</ng-container>
+</div>
 
+
+
+
+<ng-template #smallBox>
+        <div #loadingImage>
+                <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+        </div>
+        <section class="mx4">
+                <p class="mat-body"  #loadingText>{{product.designation | uppercase}}</p>
+                <p #loadingText class="mat-caption font--grey">
+                        <span #loadingText class="mat-caption" 
+                        [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
+                        *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
+                                {{product.rootCategory}} /
+                </span >
+                        {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
+
+         </section>
+         <mat-divider class="my2"></mat-divider>
+         <section  #toHideLoading  class="px4 mb2 inline--centred">
+                
+                <app-appearance-selector 
+                        (selectedAppearanceVariant) = "setAppearanceVariant($event)"
+                        [appearanceVariants]="product.appearanceVariants">
+                </app-appearance-selector>
+        </section>
+</ng-template>

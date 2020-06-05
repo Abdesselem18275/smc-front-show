@@ -34,6 +34,9 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
 .font--dark-accent {
   color: mat-color($smc-show-case-accent,darker);
 }
+.font--transparent {
+  color: transparent;
+}
 
 .alert {
     @extend .font--red

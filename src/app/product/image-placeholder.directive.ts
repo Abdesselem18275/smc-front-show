@@ -5,58 +5,74 @@ import { fromEvent, Subscription } from 'rxjs';
   selector: '[appImagePlaceholder]'
 })
 export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
-  @ContentChildren('image') imageList :  QueryList<ElementRef> ;
-  @ContentChildren('text',{descendants: true}) pragraphList :  QueryList<ElementRef> ;
-  imageEl : HTMLElement;
+  @ContentChildren('targetImage',{descendants: true}) imageQueryList :  QueryList<ElementRef> ;
+  @ContentChildren('loadingText',{descendants: true}) pragraphList :  QueryList<ElementRef> ;
+  @ContentChildren('loadingImage',{descendants: true}) imageList :  QueryList<ElementRef> ;
+  @ContentChildren('toHideLoading',{descendants: true}) toHideList :  QueryList<ElementRef> ;
+
+  
+  targetImage : HTMLElement;
   imageElContainer:  HTMLElement;
-  isLoading : boolean;
   subscribtion : Subscription
   constructor( private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
-    this.imageElContainer = this.imageList.first.nativeElement
-    this.imageEl= <HTMLElement>this.imageElContainer.childNodes[0]
-    this.isLoading = true;
-    this._setLoadingStyle(true)
-    this.subscribtion= fromEvent(this.imageEl,'load').subscribe(x => this._setLoadingStyle(false))
+    this.targetImage = this.imageQueryList.first.nativeElement
+    this._setTextLoading()
+    this._setImageloading()
+    this._setHideEffect()
+    this.subscribtion= fromEvent(this.targetImage,'load').subscribe(x => {
+     this._unsetHideEffect()
+     this._unsetImageloading()
+     this._unsetTextLoading()
+    });
   }
   ngOnDestroy(): void {
     this.subscribtion.unsubscribe()
   }
-  _setLoadingStyle(isLoading:boolean) {
-    if(isLoading) {
-      this.pragraphList.forEach((el:ElementRef) => {
-            this._setParaLoadingStyle(el)
-      })
-      this.renderer.addClass(this.imageElContainer,'thumbnail__loading--box')
-      this.renderer.setStyle(this.imageEl,'visibility','hidden');
-    } else {
-      this.pragraphList.forEach((el:ElementRef) => {
-        this._unSetParaLoadingStyle(el)
-      })
-      this.renderer.removeClass(this.imageElContainer,'thumbnail__loading--box')
-      this.renderer.setStyle(this.imageEl,'visibility','visible');
-    }
+
+  _setHideEffect() {
+    this.toHideList.forEach(el => {
+      const native = <HTMLElement>el.nativeElement
+      this.renderer.setStyle(native,'display','none');
+    })
   }
-  _setParaLoadingStyle(el:ElementRef) {
-    console.warn(el)
-    let paraEl = el.nativeElement
-    const paraElCon = el.nativeElement.querySelectorAll("p , img , mat-button,span")
-    for (let el of paraElCon) {
-       this.renderer.setStyle(el,'visibility','hidden')
-    }
-    const width = paraEl.clientWidth
-    const height = paraEl.clientHeight
-    this.renderer.setStyle(paraEl,'width',width)
-    this.renderer.setStyle(paraEl,'height',10)
-    this.renderer.addClass(paraEl,'loading--box')
+  _unsetHideEffect() {
+    this.toHideList.forEach(el => {
+      const native = <HTMLElement>el.nativeElement
+      this.renderer.setStyle(native,'display','block');
+    })
   }
-  _unSetParaLoadingStyle(el:ElementRef) {
-    let paraEl = el.nativeElement
-    const paraElCon = el.nativeElement.querySelectorAll("p , img , mat-button,span")
-    for (let el of paraElCon) {
-      this.renderer.setStyle(el,'visibility','visible')
-    }
-    this.renderer.removeClass(paraEl,'loading--box')
+  _setImageloading() {
+    this.imageList.forEach(el => {
+      const native = <HTMLElement>el.nativeElement
+      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0]
+      this.renderer.addClass(native,'thumbnail__loading--box')
+      this.renderer.setStyle(imgEl,'visibility','hidden');
+    })
   }
+  _unsetImageloading() {
+    this.imageList.forEach(el => {
+      const native = <HTMLElement>el.nativeElement
+      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0]
+      this.renderer.removeClass(native,'thumbnail__loading--box')
+      this.renderer.setStyle(imgEl,'visibility','visible');
+    })
+  }
+  _setTextLoading() {
+      this.pragraphList.forEach(el => {
+        const native = el.nativeElement
+        this.renderer.addClass(native,'font--transparent')
+        this.renderer.addClass(native,'loading--box')})
+      }
+
+  _unsetTextLoading() {
+    this.pragraphList.forEach(el => {
+      const native = el.nativeElement
+      this.renderer.removeClass(native,'font--transparent')
+      this.renderer.removeClass(native,'loading--box')
+    })}
+
+  _setImageLoading() {
 }
+ }
