@@ -10,10 +10,6 @@
 img {
     max-width: 100%;
 }
-img:hover {
-    cursor: pointer;
-    @extend .mat-elevation-z2;
-}
 .img--bordered {
     border: solid 1px mat-color($smc-show-case-primary,darker);
     padding: 1px;

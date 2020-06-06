@@ -36,6 +36,9 @@
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
+        <section *ngIf="isDimensionOpen" class="product-details-container">
+                <app-product-dimensions></app-product-dimensions>
+        </section>
         <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
             <button color="primary" class="mr4" mat-stroked-button>
                 <span>Materials</span>
@@ -43,7 +46,7 @@
                         keyboard_arrow_down
                 </mat-icon>
             </button>
-            <button color="primary" mat-stroked-button>
+            <button (click)="toggleDimension()" color="primary" mat-stroked-button>
                 <span>Dimensions</span>
                 <mat-icon>
                         keyboard_arrow_down
@@ -51,6 +54,7 @@
             </button>
 
         </section>
+
 </ng-container>
 </div>
 

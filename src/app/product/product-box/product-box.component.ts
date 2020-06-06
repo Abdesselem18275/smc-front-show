@@ -20,6 +20,7 @@ export class ProductBoxComponent implements OnInit  {
   isSearchActive: Observable<boolean>;
   isFavoriteRoute: Observable<any>;
   isBigSize$: Observable<boolean>;
+  isDimensionOpen: boolean;
   public selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
   constructor(private store$: Store<any>) { }
 
@@ -30,6 +31,9 @@ export class ProductBoxComponent implements OnInit  {
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);
+  }
+  toggleDimension() {
+    this.isDimensionOpen = !this.isDimensionOpen
   }
 
 
