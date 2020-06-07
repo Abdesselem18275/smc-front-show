@@ -1,1 +1,36 @@
-<p>product-dimensions works!</p>
+<!-- <table>
+  <caption class="mat-body font--grey mb2">6 dimensions variants</caption>
+  <thead>
+    <tr>
+      <th  class="p4 mat-body" scope="col">N</th>
+        <th class="p4 mat-body-2" *ngFor="let item of headersList" >{{item.designation | titlecase}} <br>({{item.unit}})
+        </th>
+    </tr>
+</thead>
+<tbody >
+   <tr   *ngFor="let item of dimensionsMatrix();let i = index">
+     <th class="p4 mat-body" scope="row">{{i+1}}</th>
+        <th class="p4 mat-body" *ngFor="let value of item">
+             {{value}}
+        </th>
+   </tr>
+</tbody>
+</table> -->
+<mat-list dense>
+  <p matSubheader *ngIf=" variantsNumber() > 1 ;else oneVariant" class="mat-caption">{{variantsNumber()}} Dimension variants</p>
+<ng-template #oneVariant>
+    <p  matSubheader>
+      One Dimension variant
+    </p>
+</ng-template>
+  <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
+    <mat-divider></mat-divider>
+    <div mat-line>{{item.measureType.designation | titlecase}} ({{item.measureType.unit}})</div>
+<div mat-line class="mat-caption font--dark-grey">
+  <span *ngFor="let measure of item.measures ; first as isFirst">
+    <span *ngIf="!isFirst">/</span>
+    {{measure}}
+  </span>
+</div>
+  </mat-list-item>
+</mat-list>

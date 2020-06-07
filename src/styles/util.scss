@@ -15,7 +15,7 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.4);
     z-index: 2;
-  } 
+  }
 
 
 
@@ -59,10 +59,10 @@
   }
   .global--gutters {
     padding:  1rem 5rem;
-    @media only screen and (max-width:1024px) { 
+    @media only screen and (max-width:1024px) {
       padding:  1rem 3rem;
     }
-    @media only screen and (max-width:600px) { 
+    @media only screen and (max-width:600px) {
       padding:  1rem 1rem;
     }
   }

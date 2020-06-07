@@ -8,7 +8,7 @@
                 <section >
                         <p #loadingText>{{product.designation | uppercase}}</p>
                         <p #loadingText class="mat-caption font--dark-grey">
-                                <span #loadingText class="mat-caption" 
+                                <span #loadingText class="mat-caption"
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                         {{product.rootCategory}} /
@@ -30,23 +30,23 @@
         </section>
 
         <section  #toHideLoading  class="my4 px4  inline--centred">
-                
-                <app-appearance-selector 
+
+                <app-appearance-selector
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section *ngIf="isDimensionOpen" class="product-details-container">
-                <app-product-dimensions></app-product-dimensions>
+        <section *ngIf="isDimensionOpen" class=" product-details-container">
+                <app-product-dimensions  [productDimensions]="product.dimensionsSpecifications"></app-product-dimensions>
         </section>
         <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
-            <button color="primary" class="mr4" mat-stroked-button>
+            <button color="primary" class="mr4" mat-flat-button>
                 <span>Materials</span>
                 <mat-icon>
                         keyboard_arrow_down
                 </mat-icon>
             </button>
-            <button (click)="toggleDimension()" color="primary" mat-stroked-button>
+            <button (click)="toggleDimension()" color="primary" mat-flat-button>
                 <span>Dimensions</span>
                 <mat-icon>
                         keyboard_arrow_down
@@ -68,7 +68,7 @@
         <section class="mx4">
                 <p class="mat-body"  #loadingText>{{product.designation | uppercase}}</p>
                 <p #loadingText class="mat-caption font--grey">
-                        <span #loadingText class="mat-caption" 
+                        <span #loadingText class="mat-caption"
                         [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                         *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                 {{product.rootCategory}} /
@@ -78,8 +78,8 @@
          </section>
          <mat-divider class="my2"></mat-divider>
          <section  #toHideLoading  class="px4 mb2 inline--centred">
-                
-                <app-appearance-selector 
+
+                <app-appearance-selector
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>

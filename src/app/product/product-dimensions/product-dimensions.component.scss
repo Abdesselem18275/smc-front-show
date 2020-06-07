@@ -1,0 +1,12 @@
+@import "src/styles.scss";
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+th,td {
+  border-top: 1px solid $light-grey-color;
+}
+th {
+  word-break: keep-all;}
+
