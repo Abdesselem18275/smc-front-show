@@ -48,8 +48,13 @@ export class BoxSizeToggelerDirective implements AfterViewInit ,OnDestroy{
   updateButtonContent(payload) {
     const innerWidth = payload[1]
     const isBig = payload[0]
+    let IconName = !isBig ? 'view_module':'view_comfy'
+
+    if ( innerWidth < 850) {
+      IconName = !isBig ? 'view_stream':'view_module'
+    }
+
     const spanText = isBig ? 'SMALL': 'BIG';
-    const IconName = !isBig ? 'view_stream':'view_module'
     this.renderer.setProperty(this.spanEl,'innerHTML',spanText);
     this.renderer.setProperty(this.matIcon,'innerHTML',IconName);
 
