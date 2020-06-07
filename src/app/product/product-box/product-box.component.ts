@@ -7,12 +7,15 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/cor
 import { ProductShort, ParamType, Param, AppearanceVariant } from 'src/app/product/model';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
+import { verticalAccordionAnimation } from 'src/app/animations';
 
 
 @Component({
   selector: 'app-product-box',
   templateUrl: './product-box.component.html',
-  styleUrls: ['./product-box.component.scss']
+  styleUrls: ['./product-box.component.scss'],
+  animations: [verticalAccordionAnimation]
+
 })
 export class ProductBoxComponent implements OnInit  {
 

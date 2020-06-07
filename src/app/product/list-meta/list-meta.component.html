@@ -1,7 +1,7 @@
-<header class="global--gutters inline--centred--spaced">
+<header class=" inline--centred--spaced">
   <img [src]="(activeCategory$ | async)?.thumbNailAux">
 
-  <section class=" column--centred">
+  <section class="px8 py4 column--centred">
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
       <ng-container *ngIf="(activeCategory$ | async) as category else allProducts">
         <section class="column--centred">
@@ -10,7 +10,7 @@
           <p class="description-container mat-body-1 font--dark-accent">{{category.description}}</p>
         </section>
 
-        <section *ngIf="category.children" class="children-container font--dark-accent mt4 inline--centred">
+        <section *ngIf="category.children" class="category-children-container font--dark-accent mt4 inline--centred">
           <ng-container *ngFor="let item of category.children; last as isLast">
             <button  
             [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge"

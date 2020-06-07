@@ -38,8 +38,9 @@ header {
         }
     }
 }
-.children-container {
+.category-children-container {
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #category-icon--big {

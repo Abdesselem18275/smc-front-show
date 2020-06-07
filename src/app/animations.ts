@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate } from "@angular/animations";
+import { trigger, transition, style, animate, animation, useAnimation } from "@angular/animations";
 
 
 export const sideSlideInAnimation =
@@ -69,7 +69,41 @@ export const centerSlideInAnimation =
       )
     ]
   );
+  export const accordionTransAnimationIn = animation([
+    style({
+      height: '0px',
+      opacity: 0,
+    }),
+    animate('90ms ease-in',            
+      style({'height': '{{ height }}',
+      opacity : 1})
+    )
+  ],{params: {height: '280px'}});
 
-
-
+  export const verticalAccordionAnimation =
+  trigger(
+    'verticalAccordionAnimation',
+    [
+      transition(
+        ':enter',
+        [
+          useAnimation(accordionTransAnimationIn,{
+            params: {
+              height: '280px'
+            }
+          })
+        ]
+      ),
+      transition(
+        ':leave',
+        [
+          style({ 'height': '280px',
+                   opacity : 1 }),
+          animate('90ms ease-in',
+             style({'height': '0px',
+            opacity: 0})     )
+        ]
+      )
+    ]
+  );
 

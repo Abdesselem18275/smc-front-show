@@ -1,5 +1,7 @@
 @import "src/styles.scss";
-
+:host {
+    transition: ease-in 0.3s;
+}
 .breadcrumb-container {
     background-color: $extreme-light-grey-color;
 }

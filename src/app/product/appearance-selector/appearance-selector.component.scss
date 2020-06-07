@@ -1,7 +1,7 @@
 @import "src/styles.scss";
 
 .appearance-box {
-    max-width: 32px;
+    max-width: 2rem;
     span {
         border: solid 1px mat-color($smc-show-case-primary);
         width: 100%;
@@ -10,7 +10,7 @@
 }
 img {
     max-width: 100%;
-    border-radius: 24px;
+    border-radius: 2rem;
 }
 .img--bordered {
     border: solid 1px mat-color($smc-show-case-primary,darker);

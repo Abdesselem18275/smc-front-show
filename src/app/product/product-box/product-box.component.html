@@ -36,9 +36,6 @@
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section *ngIf="isDimensionOpen" class=" product-details-container">
-                <app-product-dimensions  [productDimensions]="product.dimensionsSpecifications"></app-product-dimensions>
-        </section>
         <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
             <button color="primary" class="mr4" mat-flat-button>
                 <span>Materials</span>
@@ -54,7 +51,14 @@
             </button>
 
         </section>
-
+        <section                 
+        [@verticalAccordionAnimation] 
+        *ngIf="isDimensionOpen"   >
+        <app-product-dimensions 
+                class="pb4 product-details-container"  
+                [productDimensions]="product.dimensionsSpecifications">
+        </app-product-dimensions>
+</section>
 </ng-container>
 </div>
 
@@ -67,7 +71,7 @@
         </div>
         <section class="mx4">
                 <p class="mat-body"  #loadingText>{{product.designation | uppercase}}</p>
-                <p #loadingText class="mat-caption font--grey">
+                <p #loadingText class="mat-caption font--dark-grey">
                         <span #loadingText class="mat-caption"
                         [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                         *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
