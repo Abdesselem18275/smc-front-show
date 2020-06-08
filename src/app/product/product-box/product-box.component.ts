@@ -24,6 +24,8 @@ export class ProductBoxComponent implements OnInit  {
   isFavoriteRoute: Observable<any>;
   isBigSize$: Observable<boolean>;
   isDimensionOpen: boolean;
+  isMaterialOpen: boolean;
+
   public selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
   constructor(private store$: Store<any>) { }
 
@@ -36,8 +38,13 @@ export class ProductBoxComponent implements OnInit  {
     this.selectedAppearanceVariant$.next(appearanceVariant);
   }
   toggleDimension() {
+    this.isMaterialOpen = false
     this.isDimensionOpen = !this.isDimensionOpen
   }
+  toggleMaterial() {
+    this.isDimensionOpen = false
+    this.isMaterialOpen = !this.isMaterialOpen
 
+  }
 
 }

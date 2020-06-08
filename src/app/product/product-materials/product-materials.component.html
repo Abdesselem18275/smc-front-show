@@ -1,0 +1,56 @@
+<mat-list dense>
+    <p matSubheader >Materials</p>
+    <mat-list-item>
+      <div mat-line>
+          <p class="mat-body-2">
+            Available raw materials
+          </p>
+        </div>
+      <div mat-line class="mat-caption">
+        <span *ngFor="let rawMat of product?.rawMaterials ; first as isFirst">
+          <span *ngIf="!isFirst">/</span>
+          {{rawMat}}
+        </span>
+      </div>    
+    </mat-list-item>
+    <mat-list-item>
+        <div mat-line>
+            <p class="mat-body-2">
+                Available interior coatings
+            </p></div>
+        <div mat-line class="mat-caption">
+          <span *ngFor="let intCoat of product?.interiorCoatings ; first as isFirst">
+            <span *ngIf="!isFirst">/</span>
+            {{intCoat}}
+          </span>
+        </div>    
+      </mat-list-item>
+    <ng-container *ngIf="product.componentsSpecifications.length > 0">
+        <mat-divider></mat-divider>
+    <p matSubheader >Componnents</p>
+    <mat-list-item *ngFor="let component of product.componentsSpecifications">
+        <mat-icon [svgIcon]="component.component.svgIcon.designation" matListIcon>folder</mat-icon>
+
+        <div mat-line>
+            <p class="mat-body-2">
+              {{component.component.designation}}
+            </p>
+          </div>
+        <div mat-line class="mat-caption">
+
+            <span class="text--bold">Available raw materials : </span>
+          <span *ngFor="let rawMat of component.rawMaterials ; first as isFirst">
+            <span *ngIf="!isFirst">/</span>
+            {{rawMat}}
+          </span>
+        </div>  
+        <div mat-line class="mat-caption">
+            <span class="text--bold" >Available {{component.component.measureType.designation}} ({{component.component.measureType.unit}}) : </span>
+          <span *ngFor="let measure of component.measures ; first as isFirst">
+            <span *ngIf="!isFirst">/</span>
+            {{measure}}
+          </span>
+        </div>   
+      </mat-list-item>
+    </ng-container>
+</mat-list>

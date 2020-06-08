@@ -24,7 +24,6 @@
     </p>
 </ng-template>
   <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
-    <mat-divider></mat-divider>
     <div mat-line>
       <p class="mat-body-2">
         {{item.measureType.designation | titlecase}} ({{item.measureType.unit}})

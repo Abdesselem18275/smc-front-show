@@ -16,6 +16,7 @@ import { FavoriteHandlerDirective } from './favorite-handler.directive';
 import { AppearanceSelectorComponent } from './appearance-selector/appearance-selector.component';
 import { ImagePlaceholderDirective } from './image-placeholder.directive';
 import { ProductDimensionsComponent } from './product-dimensions/product-dimensions.component';
+import { ProductMaterialsComponent } from './product-materials/product-materials.component';
 
  
 
@@ -25,7 +26,7 @@ import { ProductDimensionsComponent } from './product-dimensions/product-dimensi
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent,FavoriteHandlerDirective,
-                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective, ProductDimensionsComponent],
+                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective, ProductDimensionsComponent, ProductMaterialsComponent],
   providers:  [DataInjectablesService ]
 })
 export class ProductModule { }

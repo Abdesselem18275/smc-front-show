@@ -36,8 +36,10 @@ app-appearance-selector {
     width: 100%;
 }
 
-.product-details-container {
-
+.icon--rotate {
+    transform: rotate(-90deg)
 }
 
-
+mat-icon {
+    transition: ease-out 0.2s;
+}

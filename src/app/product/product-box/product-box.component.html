@@ -37,27 +37,34 @@
                 </app-appearance-selector>
         </section>
         <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
-            <button color="primary" class="mr4" mat-flat-button>
+            <button (click)="toggleMaterial()" color="primary" class="mr4" mat-flat-button>
                 <span>Materials</span>
-                <mat-icon>
+                <mat-icon [class.icon--rotate]="isMaterialOpen">
                         keyboard_arrow_down
                 </mat-icon>
             </button>
             <button (click)="toggleDimension()" color="primary" mat-flat-button>
                 <span>Dimensions</span>
-                <mat-icon>
+                <mat-icon [class.icon--rotate]="isDimensionOpen">
                         keyboard_arrow_down
                 </mat-icon>
             </button>
 
         </section>
         <section                 
-        [@verticalAccordionAnimation] 
-        *ngIf="isDimensionOpen"   >
-        <app-product-dimensions 
-                class="pb4 product-details-container"  
-                [productDimensions]="product.dimensionsSpecifications">
-        </app-product-dimensions>
+                [@verticalAccordionAnimation] 
+                class="pb2"
+                *ngIf="(isDimensionOpen || isMaterialOpen)">
+                <mat-divider></mat-divider>
+                <app-product-dimensions 
+                        *ngIf="isDimensionOpen"
+                        class="pb4 product-details-container"  
+                        [productDimensions]="product.dimensionsSpecifications">
+                </app-product-dimensions>
+                <app-product-materials 
+                        [product]="product"               
+                        *ngIf="isMaterialOpen">
+                </app-product-materials>
 </section>
 </ng-container>
 </div>
