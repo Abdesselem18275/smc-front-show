@@ -26,7 +26,7 @@ export class ProductBoxComponent implements OnInit  {
   isDimensionOpen: boolean;
   isMaterialOpen: boolean;
 
-  public selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
+  selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
   constructor(private store$: Store<any>) { }
 
   ngOnInit() {

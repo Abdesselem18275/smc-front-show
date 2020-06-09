@@ -1,14 +1,13 @@
 <ng-container *ngIf="isBigSize$ | async">
-<p #loadingText *ngIf="appearanceVariants.length > 1 ;else oneVariant" class="mat-caption">{{appearanceVariants.length}} available looks</p>
+<p #pulsingText *ngIf="appearanceVariants.length > 1 ;else oneVariant" class="mat-body">{{appearanceVariants.length}} available looks</p>
 <ng-template #oneVariant>
-    <p #loadingText class="mat-caption">
+    <p #pulsingText class="mat-body">
       One available look
     </p>
 </ng-template>
-<mat-divider class="my2"></mat-divider>
 </ng-container>
 
-<section class="inline--centred">
+<section class="mt2 inline--centred">
   <div #loadingImage  *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
     <img  class="mb1"
     [src]="item.look.thumbNail" 

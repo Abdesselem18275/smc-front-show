@@ -2,13 +2,13 @@
 <div appImagePlaceholder class="content--grid">
         <ng-container *ngIf="(isBigSize$ |async) else smallBox" >
         <div  class="mat-h4 p2 inline--centred">
-                <button [appFavoriteHandler]="product.id" mat-icon-button>
+                <button #pulsingButton [appFavoriteHandler]="product.id" mat-icon-button>
                         <mat-icon  [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>
                 <section >
-                        <p #loadingText>{{product.designation | uppercase}}</p>
-                        <p #loadingText class="mat-caption font--dark-grey">
-                                <span #loadingText class="mat-caption"
+                        <p #pulsingText>{{product.designation | uppercase}}</p>
+                        <p #pulsingText class="mat-caption font--dark-grey">
+                                <span #pulsingText class="mat-caption"
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                         {{product.rootCategory}} /
@@ -17,16 +17,16 @@
 
 
                </section>
-               <button class="font--dark-grey mat-icon--full-right" mat-icon-button>
+               <button #pulsingButton class="font--dark-grey mat-icon--full-right" mat-icon-button>
                         <mat-icon i18n>message</mat-icon>
                 </button>
         </div>
-        <div #loadingImage>
+        <a #loadingImage [routerLink]="['/product', product.id]">
         <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
-        </div>
+        </a>
 
         <section class="my2 mx4 content-information">
-               <p #loadingText class="mat-body font--dark-grey">{{product.shortDescription}}</p>
+               <p #pulsingText class="mat-body font--dark-grey">{{product.shortDescription}}</p>
         </section>
 
         <section  #toHideLoading  class="my4 px4  inline--centred">
@@ -37,13 +37,13 @@
                 </app-appearance-selector>
         </section>
         <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
-            <button (click)="toggleMaterial()" color="primary" class="mr4" mat-flat-button>
+            <button #pulsingButton (click)="toggleMaterial()" color="primary" class="mr4" mat-flat-button>
                 <span>Materials</span>
                 <mat-icon [class.icon--rotate]="isMaterialOpen">
                         keyboard_arrow_down
                 </mat-icon>
             </button>
-            <button (click)="toggleDimension()" color="primary" mat-flat-button>
+            <button #pulsingButton  (click)="toggleDimension()" color="primary" mat-flat-button>
                 <span>Dimensions</span>
                 <mat-icon [class.icon--rotate]="isDimensionOpen">
                         keyboard_arrow_down
@@ -73,13 +73,13 @@
 
 
 <ng-template #smallBox>
-        <div #loadingImage>
+        <a #loadingImage [routerLink]="['/product', product.id]">
                 <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
-        </div>
+        </a>
         <section class="mx4">
-                <p class="mat-body"  #loadingText>{{product.designation | uppercase}}</p>
-                <p #loadingText class="mat-caption font--dark-grey">
-                        <span #loadingText class="mat-caption"
+                <p class="mat-body"  #pulsingText>{{product.designation | uppercase}}</p>
+                <p #pulsingText class="mat-caption font--dark-grey">
+                        <span #pulsingText class="mat-caption"
                         [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                         *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                 {{product.rootCategory}} /

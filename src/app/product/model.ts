@@ -22,12 +22,14 @@ export interface ProductShort {
     designation: string;
     shortDescription: string
     interiorCoatings: string[];
+    longDescription: string;
     rawMaterials: string[];
     rootCategory: string;
     dimensionsSpecifications: DimensionsSpecification[];
     appearanceVariants : AppearanceVariant[];
     componentsSpecifications: ComponentsSpecification[]
 }
+
 
 export interface DimensionsSpecification {
     measures: number[];

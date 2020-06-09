@@ -1,131 +1,26 @@
-<!-- 
-
-<section  class="list-header">
-    <app-category-breadcrumb [currentProduct]="product.rootCategory" class="body-style breadcrumb"></app-category-breadcrumb>
-</section>
-
-<section class="main-content" >
-  <section class="main-image">
-    <button  (click)="stepUpdateImage(-1)" mat-icon-button>
-      <mat-icon inline="true">keyboard_arrow_left</mat-icon>
-    </button>
-    <section cdkScrollable class="images-container">
-      <img [id]="image.id" *ngFor="let image of product.images" [src]="image.content">
-    </section>
-    <button (click)="stepUpdateImage(1)" mat-icon-button>
-        <mat-icon [inline]="true">keyboard_arrow_right</mat-icon>
-    </button>  </section>
-  <section class='images-selector'>
-      <span (click) = "updateIndex(i)" [style.background-color] = "i == selectedIndex ? 'black' : 'grey' " class="dot" *ngFor='let el of indexArray ;let i = index'>       
-      </span>
+<main class="global--gutters">
+  <aside class="left-aside">
+    <p class="mat-h2">{{(product$ |async).designation | uppercase}}</p>
+    <p class="font--grey mb8 mat-caption">{{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
+    <app-appearance-selector
+    (selectedAppearanceVariant) = "setAppearanceVariant($event)"
+    [appearanceVariants]="(product$ |async).appearanceVariants">
+   </app-appearance-selector>
+   <p class="mt8">Description</p>
+   <p class="mt4">{{(product$ |async).longDescription}}</p>
+  </aside>
+  <section class="center-section" >
+    <img  [src]="(selectedAppearanceVariant$|async)?.thumbNail">
   </section>
-
-  <section class="title-section">
-    <div>
-      <h3>{{product?.designation  | uppercase}}</h3>
-      <p  class="text--grey mat-body-1" > {{ product?.exteriorMaterial.designation | lowercase }} <span *ngIf="product?.interiorMaterial" >-</span> {{ product?.interiorMaterial.designation | lowercase }}</p>
-    </div>
-    <button 
-      [appFavoriteHandler]="product.pk" 
-      class="text--grey"
-      mat-icon-button >
-    <mat-icon>favorite</mat-icon>
-    </button>
-    <button class="text--grey"  mat-icon-button>
-     <mat-icon>message</mat-icon>
-</button>
-
-  </section>
-
-    <section class="description__content">
-<mat-tab-group mat-stretch-tabs [selectedIndex]="0">
-    <mat-tab *ngIf="product.areaOfUse != ''" class="description__text" label="Area of Use">
-      <p class="mat-body description__text">
-          {{product.areaOfUse}}
-        </p>
-    </mat-tab>
-    <mat-tab *ngIf="product.materials != ''"  label="Materials">
-      <p class="mat-body description__text">
-        {{product.materials}}
-      </p>
-
-    </mat-tab>
-    <mat-tab *ngIf="product.aesthetics != ''"  label="Aesthetics">
-      <p class="mat-body description__text">
-          {{product.aesthetics}}
-
-      </p>
-
-
-    </mat-tab>
-
-
-  </mat-tab-group>
-  </section>
-
-  <section *ngIf="product.features" class="feature-container">
-      <figure *ngFor="let feature of product.features" >
-        <mat-icon class="feature-icon-button--large" [svgIcon]="feature.svgIcon.designation"></mat-icon>
-        <figcaption class="mat-caption">{{feature.designation}}</figcaption>
-      </figure>
-  </section>
-  <h2 class="product-technical__title" i18n>TECHNICAL DETAILS</h2>
-  <table class="product-dimensions">
-    <caption class="table-title">
-      <h4 i18n>Product Variants</h4>
-    </caption>
-
-   <tr>
-     <th *ngFor="let header of displayedColumns">
-       <h4>{{header}}</h4>
-     </th>
-   </tr>
-   <tr  *ngFor="let variant of product?.variants" >
-    <td>
-        {{ variant?.designation | uppercase }} /
-        <span>{{variant?.reference | uppercase}}</span>
-    </td>
-      <td>
-          {{variant.height.to_string()}}
-        </td>
-    <td>
-      {{variant.capacity.to_string()}}
-    </td>
-    <td>
-      {{variant.thickness.to_string()}}
-    </td>
-    <td>
-      {{variant.diameter.to_string()}}  
-    </td>
-   </tr>
- </table>
-  <table  *ngIf="product?.components.length > 0"  class="component-detail">
-      <caption class="table-title">
-          <h4 i18n>Componnents Details</h4>
-        </caption>
-      <tr>
-          <th *ngFor="let header of componnentDisplayedColumns">
-            <h4>{{header}}</h4>
-          </th>
-        </tr>
-      <tr *ngFor="let component of product?.components">
-          <td class="componnent-designation__aligned">
-              <mat-icon  [svgIcon]="component.svgIcon.designation"></mat-icon>
-              {{component.designation}}
-
-          </td>
-          <td>
-              {{component.measure_type}} : {{component.measure_min.to_string()}} <span> &nbsp; -> &nbsp;{{component.measure_max.to_string()}}</span>
-
-          </td>
-          <td>
-              {{component.material.to_string()}}
-          </td>
-      </tr>
-  </table>
-
-  <h2 class="related-product__title" i18n>RELATED PRODUCTS</h2>
-<section class="related-product">
-
-</section>
-</section> -->
+  <aside class="right-aside">
+    <p>
+      Technical Details
+    </p>
+    <app-product-dimensions 
+    [productDimensions]="(product$ |async).dimensionsSpecifications">
+    </app-product-dimensions>
+    <app-product-materials 
+    [product]="(product$ |async)">
+</app-product-materials>
+  </aside>
+</main>

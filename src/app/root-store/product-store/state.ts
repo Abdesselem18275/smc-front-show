@@ -5,7 +5,6 @@ export interface State extends EntityState<ProductShort> {
   isLoading: boolean;
   objCount: number;
   isBigBox: boolean;
-
 }
 
 

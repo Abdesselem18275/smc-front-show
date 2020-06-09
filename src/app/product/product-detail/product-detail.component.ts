@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component ,ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
-import { map, throttleTime, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { ProductShort, AppearanceVariant } from '../model';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,69 +12,62 @@ import { map, throttleTime, distinctUntilChanged, debounceTime } from 'rxjs/oper
 })
 export class ProductDetailComponent    {
 
-  // product: ProductShort;
-  // selectedVariant: Variant;
-  // selectedIndex: number;
-  // offSetNumber: number;
-  // isReady: boolean;
-  // isImageReady: boolean;
-  // isRightChange: boolean;
-  // indexArray = [];
-  // anchors: Element;
-  // @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
+  product$: Observable<ProductShort>;
+  selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
 
-  // displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
-  // componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
+  selectedIndex: number;
+  offSetNumber: number;
+  isReady: boolean;
+  isImageReady: boolean;
+  isRightChange: boolean;
+  indexArray = [];
+  anchors: Element;
+  @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
 
-  // constructor(private route: ActivatedRoute, private scroll: ScrollDispatcher) { }
+  displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
+  componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
+
+  constructor(private route: ActivatedRoute, private scroll: ScrollDispatcher) { }
 
 
-  // ngOnInit() {
-  //   this.selectedIndex = 0;
-  //   this.isReady = false;
-  //   this.isImageReady = true;
-  //     this.route.data.subscribe((data: { product: ProductShort }) => {
-  //       this.product = data.product;
-  //       this.indexArray = this.product.images.map((x, index) => ({
-  //         id: x.id,
-  //         index: index
-  //       })) ;
-
-  //       this.isReady = true;
-
-  //     });
-
-  // }
-  // ngAfterViewInit() {
-  //   this.anchors = this.scrollable.getElementRef().nativeElement;
-  //   this.scrollable.elementScrolled().pipe(debounceTime(200)).subscribe(() => {
-  //     this.selectedIndex  = this.getIndex(this.anchors.scrollLeft, this.anchors.clientWidth);
-  //   });
-  // }
+  ngOnInit() {
+    this.selectedIndex = 0;
+    this.isReady = false;
+    this.isImageReady = true;
+    this.product$ =   this.route.data.pipe(map(data => data.product))
+  }
+  ngAfterViewInit() {
+    // this.anchors = this.scrollable.getElementRef().nativeElement;
+    // this.scrollable.elementScrolled().pipe(debounceTime(200)).subscribe(() => {
+    //   this.selectedIndex  = this.getIndex(this.anchors.scrollLeft, this.anchors.clientWidth);
+    // });
+  }
  
-  // getIndex(scroll: number, clientWidth: number) {
-  //   return Math.round(scroll / clientWidth);
-  // }
+  getIndex(scroll: number, clientWidth: number) {
+    return Math.round(scroll / clientWidth);
+  }
+  setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
+    this.selectedAppearanceVariant$.next(appearanceVariant);
+  }
+  centerImage(index: number) {
+    // this.anchors.scroll({behavior: 'smooth', left: this.anchors.clientWidth * index});
+  }
+  updateIndex(index: number) {
+    this.selectedIndex  = index;
+    this.centerImage(index);
+  }
 
-  // centerImage(index: number) {
-  //   this.anchors.scroll({behavior: 'smooth', left: this.anchors.clientWidth * index});
-  // }
-  // updateIndex(index: number) {
-  //   this.selectedIndex  = index;
-  //   this.centerImage(index);
-  // }
+  stepUpdateImage(step) {
+    const imagesNumber = this.indexArray.length;
+    let _index = this.selectedIndex + step;
+    if ( _index >= imagesNumber  ) {
+      _index = 0;
+    }
+    if ( _index < 0  ) {
+      _index = imagesNumber - 1;
+    }
+    this.updateIndex(_index);
 
-  // stepUpdateImage(step) {
-  //   const imagesNumber = this.indexArray.length;
-  //   let _index = this.selectedIndex + step;
-  //   if ( _index >= imagesNumber  ) {
-  //     _index = 0;
-  //   }
-  //   if ( _index < 0  ) {
-  //     _index = imagesNumber - 1;
-  //   }
-  //   this.updateIndex(_index);
-
-  // }
+  }
 
 }

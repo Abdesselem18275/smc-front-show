@@ -1,5 +1,4 @@
 <mat-list dense>
-    <p matSubheader >Materials</p>
     <mat-list-item>
       <div mat-line>
           <p class="mat-body-2">
@@ -27,6 +26,7 @@
       </mat-list-item>
     <ng-container *ngIf="product.componentsSpecifications.length > 0">
         <mat-divider></mat-divider>
+
     <p matSubheader >Componnents</p>
     <mat-list-item *ngFor="let component of product.componentsSpecifications">
         <mat-icon [svgIcon]="component.component.svgIcon.designation" matListIcon>folder</mat-icon>
@@ -45,10 +45,10 @@
           </span>
         </div>  
         <div mat-line class="mat-caption">
-            <span class="text--bold" >Available {{component.component.measureType.designation}} ({{component.component.measureType.unit}}) : </span>
+            <span class="text--bold" >Available {{component.component.measureType.designation}} : </span>
           <span *ngFor="let measure of component.measures ; first as isFirst">
             <span *ngIf="!isFirst">/</span>
-            {{measure}}
+            {{measure}} {{component.component.measureType.unit}}
           </span>
         </div>   
       </mat-list-item>
