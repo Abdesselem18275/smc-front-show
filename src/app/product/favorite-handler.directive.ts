@@ -2,7 +2,7 @@ import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy, V
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
 import { selectIsFavorite } from '../root-store/user-store/selectors';
-import { UserStoreActions } from '../root-store/user-store';
+import { UserStoreActions, UserStoreSelectors } from '../root-store/user-store';
 import { Subscription } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
 
@@ -10,7 +10,7 @@ import { MatIcon } from '@angular/material/icon';
   selector: '[appFavoriteHandler]'
 })
 export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
-  @Input() 
+  @Input()
   appFavoriteHandler: number;
   subscription: Subscription ;
   @ContentChildren('favIcon') matIconList :  QueryList<MatIcon> ;
@@ -27,7 +27,7 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
 
   ngAfterViewChecked() {
     this.matIcon = this.matIconList.first._elementRef.nativeElement
-    this.subscription = this.store$.select(selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
+    this.subscription = this.store$.select(UserStoreSelectors.selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
     });
   }

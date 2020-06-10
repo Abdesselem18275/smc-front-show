@@ -75,11 +75,13 @@
     font-weight: 300;
   }
 
+  .element--hidden {
+    display: none;
+  }
 
   .image--pulsing {
-    width: 367px;
-    height: calc(367px * 0.666);
     animation: pulse 1s infinite ease-in-out;
+    height: 250px;
   }
   .pragraph--pulsing {
     animation: pulse 1s infinite ease-in-out;

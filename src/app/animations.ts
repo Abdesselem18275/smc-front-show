@@ -74,11 +74,11 @@ export const centerSlideInAnimation =
       height: '0px',
       opacity: 0,
     }),
-    animate('90ms ease-in',            
+    animate('90ms ease-in',
       style({'height': '{{ height }}',
       opacity : 1})
     )
-  ],{params: {height: '280px'}});
+  ],{params: {height: '320px'}});
 
   export const verticalAccordionAnimation =
   trigger(
@@ -89,7 +89,7 @@ export const centerSlideInAnimation =
         [
           useAnimation(accordionTransAnimationIn,{
             params: {
-              height: '280px'
+              height: '320px'
             }
           })
         ]
@@ -97,7 +97,7 @@ export const centerSlideInAnimation =
       transition(
         ':leave',
         [
-          style({ 'height': '280px',
+          style({ 'height': '320px',
                    opacity : 1 }),
           animate('90ms ease-in',
              style({'height': '0px',

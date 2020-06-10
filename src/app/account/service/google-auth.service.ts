@@ -52,7 +52,6 @@ export class GoogleAuthService {
      }
 
   private onFailure() {
-      console.warn('failure');
     }
 
   createOrSignin(id_token: string) {

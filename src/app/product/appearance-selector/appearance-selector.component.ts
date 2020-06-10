@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./appearance-selector.component.scss']
 })
 export class AppearanceSelectorComponent implements OnInit {
-  @Input() appearanceVariants : AppearanceVariant[] 
+  @Input() appearanceVariants : AppearanceVariant[]
   @Output() selectedAppearanceVariant : EventEmitter<AppearanceVariant> = new EventEmitter();
   private _selectedAppearanceVariant :AppearanceVariant
   isBigSize$: Observable<boolean>;

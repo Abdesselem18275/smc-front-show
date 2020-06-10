@@ -20,7 +20,6 @@ export class ProductEffects {
           concatMap(action => of(action).pipe(
             withLatestFrom(this.store$.pipe(
             select(selectAllParams))))),
-            tap(([action, params]) => console.warn(params)),
           switchMap(([action, params])  => this.pds.get_elements({model: 'product', param_key : params}).pipe(
            map(results => (ProductStoreActions.AddOrUpdateManyAction({results : results})))))));
 

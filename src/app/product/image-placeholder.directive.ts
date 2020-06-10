@@ -1,4 +1,4 @@
-import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, HostListener, OnDestroy } from '@angular/core';
+import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 
@@ -11,28 +11,28 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   @ContentChildren('loadingImage',{descendants: true}) imageList :  QueryList<ElementRef> ;
   @ContentChildren('toHideLoading',{descendants: true}) toHideList :  QueryList<ElementRef> ;
   @ContentChildren('pulsingButton',{descendants: true}) buttonsList :  QueryList<MatButton> ;
-
-  
   targetImage : HTMLElement;
   imageElContainer:  HTMLElement;
   subscribtion : Subscription
-  constructor( private renderer: Renderer2) { }
+  constructor( private renderer: Renderer2,private ref: ChangeDetectorRef,) { }
 
   ngAfterViewInit(): void {
-    this.targetImage = this.imageQueryList.first.nativeElement
-    console.warn('UnLoaded')
-
     this._setTextLoading()
     this._setImageloading()
     this._setHideEffect()
     this._setButtonLoading()
-    this.subscribtion= fromEvent(this.targetImage,'load').subscribe(x => {
-    console.warn('Loaded')
-     this._unsetHideEffect()
-     this._unsetImageloading()
-     this._unsetTextLoading()
-     this._unSetButtonLoading()
-    });
+    try {
+      this.targetImage = this.imageQueryList.first.nativeElement
+      this.subscribtion= fromEvent(this.targetImage,'load').subscribe(x => {
+        this._unsetHideEffect()
+        this._unsetImageloading()
+        this._unsetTextLoading()
+        this._unSetButtonLoading()
+       });
+    } catch(error) {
+      console.error(error)
+    }
+
   }
   ngOnDestroy(): void {
     this.subscribtion.unsubscribe()
@@ -41,13 +41,13 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   _setHideEffect() {
     this.toHideList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
-      this.renderer.setStyle(native,'display','none');
+      this.renderer.addClass(native,'element--hidden')
     })
   }
   _unsetHideEffect() {
     this.toHideList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
-      this.renderer.setStyle(native,'display','block');
+      this.renderer.removeClass(native,'element--hidden')
     })
   }
   _setImageloading() {
@@ -80,7 +80,6 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
 
   _setButtonLoading() {
     this.buttonsList.forEach(el => {
-      console.warn(el)
       const native = el._elementRef.nativeElement
       this.renderer.addClass(native,'button--pulsing')});
  }

@@ -1,8 +1,9 @@
 <mat-list dense>
+  <p matSubheader >Materials</p>
     <mat-list-item>
       <div mat-line>
           <p class="mat-body-2">
-            Available raw materials
+            Raw materials
           </p>
         </div>
       <div mat-line class="mat-caption">
@@ -10,19 +11,19 @@
           <span *ngIf="!isFirst">/</span>
           {{rawMat}}
         </span>
-      </div>    
+      </div>
     </mat-list-item>
     <mat-list-item>
         <div mat-line>
             <p class="mat-body-2">
-                Available interior coatings
+                Interior coatings
             </p></div>
         <div mat-line class="mat-caption">
           <span *ngFor="let intCoat of product?.interiorCoatings ; first as isFirst">
             <span *ngIf="!isFirst">/</span>
             {{intCoat}}
           </span>
-        </div>    
+        </div>
       </mat-list-item>
     <ng-container *ngIf="product.componentsSpecifications.length > 0">
         <mat-divider></mat-divider>
@@ -43,14 +44,14 @@
             <span *ngIf="!isFirst">/</span>
             {{rawMat}}
           </span>
-        </div>  
+        </div>
         <div mat-line class="mat-caption">
             <span class="text--bold" >Available {{component.component.measureType.designation}} : </span>
           <span *ngFor="let measure of component.measures ; first as isFirst">
             <span *ngIf="!isFirst">/</span>
             {{measure}} {{component.component.measureType.unit}}
           </span>
-        </div>   
+        </div>
       </mat-list-item>
     </ng-container>
 </mat-list>

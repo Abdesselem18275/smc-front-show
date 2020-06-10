@@ -22,6 +22,7 @@ import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
 import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
+import { CustomPluralPipe } from './custom-plural.pipe';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -34,7 +35,7 @@ import { AuthentificationCardComponent } from '../account/authentification-card/
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent],
+                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe],
   imports:  [
     CommonModule,
     RouterModule,
