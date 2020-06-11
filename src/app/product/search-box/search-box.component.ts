@@ -32,7 +32,10 @@ export class SearchBoxComponent implements OnInit {
           type : ParamType.SEARCH
         };
        this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : param}));
-       this.router.navigate(['product/list']);
+       if(!this.router.url.includes('product/list')) {
+        this.router.navigate(['product/list']);
+
+       }
 
       });
 

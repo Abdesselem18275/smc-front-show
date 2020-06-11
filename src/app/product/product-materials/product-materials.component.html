@@ -3,21 +3,24 @@
     <mat-list-item>
       <div mat-line>
           <p class="mat-body-2">
-            Raw materials
+           {{product?.rawMaterials.length | customPlural:' available raw material'}}
+
           </p>
         </div>
       <div mat-line class="mat-caption">
         <span *ngFor="let rawMat of product?.rawMaterials ; first as isFirst">
-          <span *ngIf="!isFirst">/</span>
+          <span *ngIf="!isFirst">,</span>
           {{rawMat}}
         </span>
       </div>
     </mat-list-item>
     <mat-list-item>
         <div mat-line>
-            <p class="mat-body-2">
-                Interior coatings
-            </p></div>
+          <p class="mat-body-2">
+            {{product?.interiorCoatings.length | customPlural:' available interior coating'}}
+
+          </p>
+        </div>
         <div mat-line class="mat-caption">
           <span *ngFor="let intCoat of product?.interiorCoatings ; first as isFirst">
             <span *ngIf="!isFirst">/</span>
@@ -39,17 +42,22 @@
           </div>
         <div mat-line class="mat-caption">
 
-            <span class="text--bold">Available raw materials : </span>
+            <span class="text--bold">
+              {{component.rawMaterials.length | customPlural:'available raw material'}} :
+            </span>
           <span *ngFor="let rawMat of component.rawMaterials ; first as isFirst">
-            <span *ngIf="!isFirst">/</span>
+            <span *ngIf="!isFirst">,</span>
             {{rawMat}}
           </span>
         </div>
         <div mat-line class="mat-caption">
-            <span class="text--bold" >Available {{component.component.measureType.designation}} : </span>
+            <span class="text--bold" >
+              {{component.measures.length | customPlural:'available '+(component.component.measureType.designation | lowercase)}}
+              ({{component.component.measureType.unit}}) :
+            </span>
           <span *ngFor="let measure of component.measures ; first as isFirst">
-            <span *ngIf="!isFirst">/</span>
-            {{measure}} {{component.component.measureType.unit}}
+            <span *ngIf="!isFirst">,</span>
+            {{measure}}
           </span>
         </div>
       </mat-list-item>

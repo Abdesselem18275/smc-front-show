@@ -5,19 +5,19 @@
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
       <ng-container *ngIf="(activeCategory$ | async) as category else allProducts">
         <section class="column--centred">
-          <mat-icon *ngIf="category.svgIcon" class="font--dark-grey mb8" id="category-icon--big" [svgIcon]="category.svgIcon.designation"></mat-icon>
+          <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon.designation"></mat-icon>
           <p class="mat-h1">{{category.designation | uppercase}}</p>
           <p class="description-container mat-body-1 font--dark-accent">{{category.description}}</p>
         </section>
 
         <section *ngIf="category.children" class="category-children-container font--dark-accent mt4 inline--centred">
-          <ng-container *ngFor="let item of category.children; last as isLast">
-            <button  
-            [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge"
-             mat-button>
+          <ng-container *ngFor="let item of category.children">
+            <button
+            class="m2"
+            [routerLink]="['/product/list']" color="accent"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge"
+             mat-flat-button>
                 <span>{{item.designation | uppercase}}</span>
             </button>
-            <span class="mb1" *ngIf="!isLast">|</span>   
           </ng-container>
         </section>
 

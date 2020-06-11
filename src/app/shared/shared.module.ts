@@ -57,6 +57,7 @@ import { CustomPluralPipe } from './custom-plural.pipe';
     AccountCardComponent,
     ProductFilterComponent,
     AuthentificationCardComponent,
+    CustomPluralPipe,
     CommonModule,
 
   ]

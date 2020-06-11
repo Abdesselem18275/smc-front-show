@@ -17,12 +17,7 @@
 </tbody>
 </table> -->
 <mat-list dense>
-  <p matSubheader *ngIf=" variantsNumber() > 1 ;else oneVariant">{{variantsNumber()}} Dimension variants</p>
-<ng-template #oneVariant>
-    <p  matSubheader>
-      One Dimension variant
-    </p>
-</ng-template>
+  <p matSubheader>{{variantsNumber() | customPlural:'Dimension variant'}}</p>
   <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
     <div mat-line>
       <p class="mat-body-2">
@@ -30,7 +25,7 @@
       </p></div>
 <div mat-line class="mat-caption">
   <span *ngFor="let measure of item.measures ; first as isFirst">
-    <span *ngIf="!isFirst">/</span>
+    <span *ngIf="!isFirst">,</span>
     {{measure}}
   </span>
 </div>
