@@ -4,8 +4,7 @@ import { ProductShort } from '../model';
 @Component({
   selector: 'app-product-materials',
   changeDetection : ChangeDetectionStrategy.OnPush,
-  templateUrl: './product-materials.component.html',
-  styleUrls: ['./product-materials.component.scss']
+  templateUrl: './product-materials.component.html'
 })
 export class ProductMaterialsComponent  {
   @Input() product : ProductShort;

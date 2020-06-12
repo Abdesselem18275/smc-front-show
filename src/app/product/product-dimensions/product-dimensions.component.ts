@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DimensionsSpecification, MeasureType } from '../model';
 import {transpose} from '../../../utils/util-functions';
 @Component({
   selector: 'app-product-dimensions',
   templateUrl: './product-dimensions.component.html',
-  styleUrls: ['./product-dimensions.component.scss']
+  changeDetection : ChangeDetectionStrategy.OnPush,
 })
 export class ProductDimensionsComponent implements OnInit {
   @Input() productDimensions : DimensionsSpecification[]
