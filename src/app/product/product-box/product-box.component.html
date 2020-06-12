@@ -44,20 +44,27 @@
                 </mat-icon>
             </button>
         </section>
-        <section
+        <section class="p4 details-container"
                 [@verticalAccordionAnimation]
-                class="p4"
                 *ngIf="isDimensionOpen">
-                <app-product-dimensions
-                        class="pb4 product-details-container"
-                        [productDimensions]="product.dimensionsSpecifications">
-                </app-product-dimensions>
-                <app-product-materials
-                        [product]="product">
-                </app-product-materials>
-                <app-product-component [componentsSpecs]="product.componentsSpecifications">
+                <section>
+                  <app-product-dimensions
+                  [productDimensions]="product.dimensionsSpecifications">
+          </app-product-dimensions>
+                </section>
 
-                </app-product-component>
+                <section>
+                  <app-product-materials
+                  [product]="product">
+          </app-product-materials>
+                </section>
+
+                <section>
+                  <app-product-component [componentsSpecs]="product.componentsSpecifications">
+
+                  </app-product-component>
+                </section>
+
 </section>
 </ng-container>
 </div>

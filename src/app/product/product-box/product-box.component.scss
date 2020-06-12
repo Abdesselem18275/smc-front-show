@@ -43,3 +43,9 @@ app-appearance-selector {
 mat-icon {
     transition: ease-out 0.2s;
 }
+.details-container  {
+  * {
+    margin: 1rem 0;
+
+  }
+}
