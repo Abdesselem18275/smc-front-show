@@ -3,6 +3,9 @@
   @extend .column;
   justify-content: start;
 }
+.image--single {
+  max-width: 100%;
+}
 .images-selector {
     justify-content: center;
     span {
