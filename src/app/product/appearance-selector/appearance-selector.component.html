@@ -1,6 +1,7 @@
-
-<p *ngIf="isBigSize$ | async" class="mat-h3  font--dark-grey">{{appearanceVariants.length | customPlural:'available look' | titlecase}}</p>
-<mat-divider></mat-divider>
+<ng-container *ngIf="isBigSize$ | async">
+  <p  class="mat-h3  font--dark-grey">{{appearanceVariants.length | customPlural:'available look' | titlecase}}</p>
+  <mat-divider></mat-divider>
+</ng-container>
 <section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">
   <div #loadingImage  (mouseover)="setHoveredAppearance(item)" *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
     <img  class="mb1"
