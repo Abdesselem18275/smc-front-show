@@ -1,0 +1,35 @@
+  <ng-container *ngIf="componentsSpecs.length > 0">
+  <p class="mat-h3 font--dark-grey pt6">Components</p>
+  <mat-divider></mat-divider>
+  <mat-list dense>
+<mat-list-item *ngFor="let componentSpec of componentsSpecs">
+  <mat-icon [svgIcon]="componentSpec.component.svgIcon.designation" matListIcon></mat-icon>
+
+  <div mat-line>
+      <p class="mat-body-2">
+        {{componentSpec.component.designation}}
+      </p>
+    </div>
+  <div mat-line class="mat-caption">
+
+      <span >
+        Raw materials:
+      </span>
+    <span *ngFor="let rawMat of componentSpec.rawMaterials ; first as isFirst">
+      <span *ngIf="!isFirst">,</span>
+      {{rawMat}}
+    </span>
+  </div>
+  <div mat-line class="mat-caption">
+      <span >
+        {{(componentSpec.component.measureType.designation | lowercase)}}
+        ({{componentSpec.component.measureType.unit}}) :
+      </span>
+    <span *ngFor="let measure of componentSpec.measures ; first as isFirst">
+      <span *ngIf="!isFirst">,</span>
+      {{measure}}
+    </span>
+  </div>
+</mat-list-item>
+</mat-list>
+</ng-container>

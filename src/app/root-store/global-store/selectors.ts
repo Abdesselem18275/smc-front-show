@@ -20,7 +20,7 @@ export const selectNavMenuTree =  createSelector(selectGlobalState,(state) =>sta
 export const selectCategoryQueryParam = createSelector(
     selectCategories,
     RouterStoreSelectors.selectQueryParams,
-    (categories,queryParams) => 
+    (categories,queryParams) =>
     {
       return queryParams['categories__designation__in'] !== '' && queryParams['categories__designation__in'] ?
       categories.filter(cat => cat.designation === queryParams['categories__designation__in']).shift():
@@ -35,9 +35,9 @@ export const selectCategoryQueryParam = createSelector(
     selectCategories,
     selectCategoryQueryParam,
     (categories:Category[],category:Category,props : {product : ProductShort}) => {
-      // return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
-      // category ? setItems(categories,category).reverse():null
-      return category ? setItems(categories,category).reverse():null
+      return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
+      category ? setItems(categories,category).reverse():null
+      //return category ? setItems(categories,category).reverse():null
     })
 
   export const selectFilterForm = createSelector(

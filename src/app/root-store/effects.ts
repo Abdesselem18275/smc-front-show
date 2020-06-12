@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ROOT_EFFECTS_INIT, ofType } from '@ngrx/effects';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { ProductDataService } from '../product/service/product-data.service';
 import { GlobalStoreActions } from './global-store';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from '../shared/service/menu-data-builder.service';
 import { Category } from '../product/model';
+import { response } from 'express';
 
 @Injectable()
 export class RootEffects {
-  paramInit$ = createEffect(() => 
+  paramInit$ = createEffect(() =>
   this.actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
       switchMap(() => this.pds.getInitData().pipe(
-          map(response => {
+          tap(response => {
             response['icons'].forEach(jsonItem => {
-                this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
-              }); 
-              response["navMenuTree"] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))             
+              this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
+            });
+            console.warn(this.iconRegistry)
+
+          }),
+          map(response => {
+              response["navMenuTree"] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))
             return GlobalStoreActions.LoadInitDataAction({payload:response})
                     })
                     ))))
@@ -29,5 +34,5 @@ export class RootEffects {
     private sanitizer: DomSanitizer,
     private mdbs: MenuDataBuilderService,
     private pds :ProductDataService ) {}
-  
+
 }

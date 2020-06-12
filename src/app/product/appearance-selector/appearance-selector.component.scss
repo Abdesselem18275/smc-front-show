@@ -8,6 +8,9 @@
 
     }
 }
+.appearance-box:hover {
+  cursor: pointer;
+}
 img {
     max-width: 100%;
     border-radius: 2rem;
@@ -15,4 +18,7 @@ img {
 .img--bordered {
     border: solid 1px mat-color($smc-show-case-primary,darker);
     padding: 1px;
+}
+p {
+  min-height: 24px;
 }

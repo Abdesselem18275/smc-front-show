@@ -17,8 +17,11 @@ import { AppearanceSelectorComponent } from './appearance-selector/appearance-se
 import { ImagePlaceholderDirective } from './image-placeholder.directive';
 import { ProductDimensionsComponent } from './product-dimensions/product-dimensions.component';
 import { ProductMaterialsComponent } from './product-materials/product-materials.component';
+import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
+import { ProductFeaturesComponent } from './product-features/product-features.component';
+import { ProductComponentComponent } from './product-component/product-component.component';
 
- 
+
 
 @NgModule({
   imports: [
@@ -26,7 +29,7 @@ import { ProductMaterialsComponent } from './product-materials/product-materials
     ProductRoutingModule,
   ],
   declarations: [ProductComponent , ProductHomeComponent, ProductListComponent,FavoriteHandlerDirective,
-                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective, ProductDimensionsComponent, ProductMaterialsComponent],
+                  ProductDetailComponent, ProductBoxComponent,  ProductCategoryComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective, ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent, ProductFeaturesComponent, ProductComponentComponent],
   providers:  [DataInjectablesService ]
 })
 export class ProductModule { }

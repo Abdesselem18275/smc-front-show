@@ -1,26 +1,45 @@
+<section class="global--gutters mat-body-1 font--dark-accent">
+  <app-category-breadcrumb class="breadcrumb" [currentProduct]="product$ |async"></app-category-breadcrumb>
+</section>
+
 <main class="global--gutters">
   <aside class="left-aside">
-    <p class="mat-h2">{{(product$ |async).designation | uppercase}}</p>
-    <p class="font--grey mb8 mat-caption">{{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
+    <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
+    <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
     <app-appearance-selector
     (selectedAppearanceVariant) = "setAppearanceVariant($event)"
     [appearanceVariants]="(product$ |async).appearanceVariants">
    </app-appearance-selector>
-   <p class="mt8">Description</p>
-   <p class="mt4">{{(product$ |async).longDescription}}</p>
+
+   <p class="mat-h3 font--dark-grey pt6">Description</p>
+   <mat-divider></mat-divider>
+   <p class="mt4 mb8 mat-body-1 description-text font--dark-accent" >
+    Its hand-hammered finish and shine-polished Brass casted Handle make it strikingly beautiful to serve in or to decorate the kitchen.The Copper main core provides an excellent heat conduction and distribution around the entire surface of the cookware, while the tin hand-coated interior allows healthy cooking and non reactivity with acidic foods.
+   </p>
+
+   <app-product-features [features]="(product$ |async).features"></app-product-features>
   </aside>
   <section class="center-section" >
-    <img  [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+    <app-image-carousel [appearanceVariant]="selectedAppearanceVariant$|async"></app-image-carousel>
   </section>
   <aside class="right-aside">
-    <p>
+    <!-- <p class="mat-h2">
       Technical Details
-    </p>
-    <app-product-dimensions 
-    [productDimensions]="(product$ |async).dimensionsSpecifications">
-    </app-product-dimensions>
-    <app-product-materials 
-    [product]="(product$ |async)">
-</app-product-materials>
+    </p> -->
+    <section class="mt8">
+      <app-product-dimensions
+      [productDimensions]="(product$ |async).dimensionsSpecifications">
+      </app-product-dimensions>
+      <app-product-materials
+      [product]="(product$ |async)">
+  </app-product-materials>
+  <app-product-component [componentsSpecs]="(product$ |async).componentsSpecifications">
+
+  </app-product-component>
+    </section>
+
   </aside>
 </main>
+<section class="global--gutters related-products">
+<p class="mat-h2 font--dark-grey">Related products</p>
+</section>

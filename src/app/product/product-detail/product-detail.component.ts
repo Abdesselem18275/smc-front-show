@@ -1,8 +1,8 @@
-import { Component ,ViewChild } from '@angular/core';
+import { Component ,ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
 import { map } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { ProductShort, AppearanceVariant } from '../model';
 
 @Component({
@@ -10,39 +10,29 @@ import { ProductShort, AppearanceVariant } from '../model';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-export class ProductDetailComponent    {
+export class ProductDetailComponent implements OnInit   {
 
   product$: Observable<ProductShort>;
-  selectedAppearanceVariant$ = new Subject<AppearanceVariant>() ;
-
+  selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
   selectedIndex: number;
   offSetNumber: number;
-  isReady: boolean;
   isImageReady: boolean;
   isRightChange: boolean;
   indexArray = [];
   anchors: Element;
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
 
-  displayedColumns: string[] = ['Reference', 'Height', 'Capacity', 'Thickness', 'Diameter'];
-  componnentDisplayedColumns: string[] = ['Componnent' , 'Measure', 'Material'];
-
   constructor(private route: ActivatedRoute, private scroll: ScrollDispatcher) { }
 
 
   ngOnInit() {
     this.selectedIndex = 0;
-    this.isReady = false;
     this.isImageReady = true;
     this.product$ =   this.route.data.pipe(map(data => data.product))
+
   }
-  ngAfterViewInit() {
-    // this.anchors = this.scrollable.getElementRef().nativeElement;
-    // this.scrollable.elementScrolled().pipe(debounceTime(200)).subscribe(() => {
-    //   this.selectedIndex  = this.getIndex(this.anchors.scrollLeft, this.anchors.clientWidth);
-    // });
-  }
- 
+
+
   getIndex(scroll: number, clientWidth: number) {
     return Math.round(scroll / clientWidth);
   }
@@ -67,7 +57,6 @@ export class ProductDetailComponent    {
       _index = imagesNumber - 1;
     }
     this.updateIndex(_index);
-
   }
 
 }

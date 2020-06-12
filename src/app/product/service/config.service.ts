@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { merge } from 'rxjs/operators';
+import { merge, of, interval, Subject } from 'rxjs';
+import { take, filter, tap } from 'rxjs/operators';
+import { MatIconRegistry } from '@angular/material/icon';
 
 
 
@@ -10,14 +12,18 @@ import { merge } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ConfigService {
-  constructor(private store$: Store<any> ) { }
+  constructor(private iconRegistry: MatIconRegistry ,private store$: Store<any> ) { }
 
-  loadInitials(): Promise<Object> {
-    return new Promise(resolve => {
-      
-      resolve(true); // Some http to get data and then resolve
-   })
-    // return this.store$.select(GlobalStoreSelectors.selectCategories).pipe(
-    //   merge(this.store$.select(GlobalStoreSelectors.selectFilters))).toPromise();
+  loadInitials(): Promise<void| Object> {
+
+    return this.store$.select(GlobalStoreSelectors.selectCategories).pipe(
+             tap(x => console.warn(x)),
+             take(2)
+           )
+           .toPromise().then(
+             ()  => console.warn('hello 2')
+           )
+    //return interval(1000).pipe(take(1)).toPromise(); // this
+
   }
 }

@@ -13,6 +13,7 @@ export class AppearanceSelectorComponent implements OnInit {
   @Input() appearanceVariants : AppearanceVariant[]
   @Output() selectedAppearanceVariant : EventEmitter<AppearanceVariant> = new EventEmitter();
   private _selectedAppearanceVariant :AppearanceVariant
+  hoveredAppearanceVariant: AppearanceVariant
   isBigSize$: Observable<boolean>;
 
   constructor(private store$: Store<any>) { }
@@ -25,6 +26,10 @@ export class AppearanceSelectorComponent implements OnInit {
   setAppearanceVariant(appearanceVariant:AppearanceVariant) {
     this._selectedAppearanceVariant = appearanceVariant
     this.selectedAppearanceVariant.emit(appearanceVariant);
+  }
+  setHoveredAppearance(appearanceVariant:AppearanceVariant) {
+    this.hoveredAppearanceVariant = appearanceVariant
+
   }
 
 }

@@ -29,41 +29,35 @@
                <p #pulsingText class="mat-body font--dark-grey">{{product.shortDescription}}</p>
         </section>
 
-        <section  #toHideLoading  class="my4 px4  inline--centred">
+        <section  #toHideLoading  class="mt4 px4  inline--centred">
 
                 <app-appearance-selector
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section  *ngIf="isBigSize$ |async" class="p4 inline--centred">
+        <section  *ngIf="isBigSize$ |async" class="p4  inline--centred">
             <button #pulsingButton (click)="toggleDimension()" color="primary" class="mr4" mat-flat-button>
                 <span>Technical details</span>
                 <mat-icon [class.icon--rotate]="isDimensionOpen">
                         keyboard_arrow_down
                 </mat-icon>
             </button>
-            <!-- <button #pulsingButton  (click)="toggleDimension()" color="primary" mat-flat-button>
-                <span>Dimensions</span>
-                <mat-icon [class.icon--rotate]="isDimensionOpen">
-                        keyboard_arrow_down
-                </mat-icon>
-            </button> -->
-
         </section>
         <section
                 [@verticalAccordionAnimation]
-                class="pb2"
+                class="p4"
                 *ngIf="isDimensionOpen">
-                <mat-divider></mat-divider>
                 <app-product-dimensions
                         class="pb4 product-details-container"
                         [productDimensions]="product.dimensionsSpecifications">
                 </app-product-dimensions>
-                <mat-divider></mat-divider>
                 <app-product-materials
                         [product]="product">
                 </app-product-materials>
+                <app-product-component [componentsSpecs]="product.componentsSpecifications">
+
+                </app-product-component>
 </section>
 </ng-container>
 </div>

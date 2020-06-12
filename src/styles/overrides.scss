@@ -15,10 +15,10 @@ p {
 .mat-tab-body-wrapper{
   flex-grow: 1;
 }
-img {
-  max-width: 100%;
-  width: 100%;
-}
+// img {
+//   max-width: 100%;
+//   width: 100%;
+// }
 a {
   color: black;
   text-decoration: none;
@@ -47,7 +47,7 @@ a {
 
 
 html, body { height: 100%; }
-body { margin: 0; 
+body { margin: 0;
        font-family: Roboto, "Helvetica Neue", sans-serif;}
 @media only screen and (max-width:720px)  {
         html {

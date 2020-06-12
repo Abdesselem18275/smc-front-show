@@ -24,10 +24,12 @@ export interface ProductShort {
     interiorCoatings: string[];
     longDescription: string;
     rawMaterials: string[];
-    rootCategory: string;
+    rootCategory: number;
     dimensionsSpecifications: DimensionsSpecification[];
     appearanceVariants : AppearanceVariant[];
     componentsSpecifications: ComponentsSpecification[]
+    features: Feature[]
+
 }
 
 
@@ -37,33 +39,33 @@ export interface DimensionsSpecification {
 }
 export interface MeasureType {
    designation : string
-   unit: string  
+   unit: string
 }
 export interface AppearanceVariant {
-    id:number;
-    thumbNail:string;
-    images: BaseImage[];
-    look: Look;
+    id?:number;
+    thumbNail?:string;
+    images?: BaseImage[];
+    look?: Look;
 }
 export interface Look {
     thumbNail : string;
     material: string;
-    texture: string; 
+    texture: string;
  }
 export interface ComponentsSpecification {
-    component : Component;
+    component : ProductComponent;
     measures : number[];
     rawMaterials: string[];
 }
 
-export interface Component  {
+export interface ProductComponent  {
     designation: string;
     measureType: MeasureType;
     svgIcon: BaseImage;
 }
 export interface BaseImage {
     id: number;
-    content: any;
+    content: string;
     designation: string;
 }
 

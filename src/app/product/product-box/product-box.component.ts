@@ -26,7 +26,7 @@ export class ProductBoxComponent implements OnInit  {
   isMaterialOpen: boolean;
 
   selectedAppearanceVariant$ : BehaviorSubject<AppearanceVariant> ;
-  constructor(private ref: ChangeDetectorRef, private store$: Store<any>) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit() {
     this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(map( (params: Param[]) => params.length !== 0));

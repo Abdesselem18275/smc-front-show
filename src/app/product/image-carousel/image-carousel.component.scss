@@ -1,0 +1,34 @@
+@import "src/styles.scss";
+:host {
+  @extend .column;
+  justify-content: start;
+}
+.images-selector {
+    justify-content: center;
+    span {
+      width: 16px;
+      height: 16px;
+      border-radius: 16px;
+    }
+}
+.images-container {
+  align-items: start;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  max-width: 100%;
+  img {
+    scroll-snap-align: start;
+    max-width: 100%;
+    min-width:100% ;
+  }
+}
+.dot--selected {
+  background-color: mat-color($smc-show-case-accent);
+}
+.dot--unSelected {
+  background-color: mat-color($smc-show-case-accent,lighter);
+}
+button mat-icon {
+  @include  md-icon-size(2rem);
+
+}

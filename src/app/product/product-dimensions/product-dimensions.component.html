@@ -16,8 +16,10 @@
    </tr>
 </tbody>
 </table> -->
+<p class="mat-h3 font--dark-grey pt6">Dimensions</p>
+<mat-divider></mat-divider>
 <mat-list dense>
-  <p matSubheader>{{variantsNumber() | customPlural:'Dimension variant'}}</p>
+  <p matSubheader>{{variantsNumber() | customPlural:'Dimension variant' | titlecase}}</p>
   <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
     <div mat-line>
       <p class="mat-body-2">

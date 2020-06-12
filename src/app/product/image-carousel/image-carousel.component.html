@@ -1,0 +1,16 @@
+
+<div  cdkScrollable class="inline--centred images-container">
+  <img *ngFor="let item of imagesArray" [src]="item">
+</div>
+<footer *ngIf="imagesArray.length > 1" class="mt4 inline--centred--spaced">
+<button (click)="byStepIndex(-1)" mat-icon-button>
+<mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<div class="mt4 images-selector inline--centred">
+<span [class]="i === selectedIndex ? 'dot--selected' :  'dot--unSelected'" class="mx2" (click)="selectImage(i)"  *ngFor="let item of imagesArray; index as i">
+  </span>
+</div>
+<button (click)="byStepIndex(1)" mat-icon-button>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</footer>

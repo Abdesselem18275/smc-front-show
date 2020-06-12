@@ -1,7 +1,8 @@
 
-<p *ngIf="isBigSize$ | async" class="mat-body">{{appearanceVariants.length | customPlural:'available look'}}</p>
-<section class="mt2 inline--centred">
-  <div #loadingImage  *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
+<p *ngIf="isBigSize$ | async" class="mat-h3 font--dark-grey pt6 font--dark-grey">{{appearanceVariants.length | customPlural:'available look' | titlecase}}</p>
+<mat-divider></mat-divider>
+<section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">
+  <div #loadingImage  (mouseover)="setHoveredAppearance(item)" *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
     <img  class="mb1"
     [src]="item.look.thumbNail"
     (click)="setAppearanceVariant(item)">
@@ -9,3 +10,6 @@
   </div>
 
 </section>
+<p class="mt2 mat-caption">
+  {{hoveredAppearanceVariant ? hoveredAppearanceVariant?.look.texture +' '+ hoveredAppearanceVariant?.look.material : ' '}}
+</p>
