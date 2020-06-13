@@ -94,6 +94,10 @@ export enum ParamType {
     CATEGORY = "Category",
     SEARCH = "Search",
 }
+export enum AppSelectorMode {
+    Minimal = "MINIMAL",
+    Full = "FULL",
+}
 export interface Param {
     key: string;
     value: string;

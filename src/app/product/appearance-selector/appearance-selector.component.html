@@ -1,4 +1,4 @@
-<ng-container *ngIf="isBigSize$ | async">
+<ng-container *ngIf="mode === 'FULL'">
   <p  class="mat-h3  font--dark-grey">{{appearanceVariants.length | customPlural:'available look' | titlecase}}</p>
   <mat-divider></mat-divider>
 </ng-container>
@@ -11,6 +11,6 @@
   </div>
 
 </section>
-<p class="mt2 mat-caption">
+<p *ngIf="mode === 'FULL'" class="mt2 mat-caption">
   {{hoveredAppearanceVariant ? hoveredAppearanceVariant?.look.texture +' '+ hoveredAppearanceVariant?.look.material : ' '}}
 </p>

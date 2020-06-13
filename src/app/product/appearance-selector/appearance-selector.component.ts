@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AppearanceVariant } from '../model';
+import { AppearanceVariant, AppSelectorMode } from '../model';
 import { Observable } from 'rxjs';
 import { ProductStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
+
 
 @Component({
   selector: 'app-appearance-selector',
@@ -11,6 +12,7 @@ import { Store } from '@ngrx/store';
 })
 export class AppearanceSelectorComponent implements OnInit {
   @Input() appearanceVariants : AppearanceVariant[]
+  @Input() mode? : AppSelectorMode = AppSelectorMode.Full
   @Output() selectedAppearanceVariant : EventEmitter<AppearanceVariant> = new EventEmitter();
   private _selectedAppearanceVariant :AppearanceVariant
   hoveredAppearanceVariant: AppearanceVariant
