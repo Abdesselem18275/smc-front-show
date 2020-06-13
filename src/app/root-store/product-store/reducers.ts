@@ -35,6 +35,13 @@ const productReducer = createReducer(
         isBigBox : !state.isBigBox
       };
     }),
+    on(ProductActions.LoadProductAction, (state, { product }) => {
+      return {
+        ...state ,
+        selectedProduct : product,
+        isLoading : false
+      };
+    }),
 );
 
   export function reducer(state: State | undefined, action: Action) {

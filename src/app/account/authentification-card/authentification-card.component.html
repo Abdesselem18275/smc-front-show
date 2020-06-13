@@ -1,6 +1,6 @@
-<header class="main-header global__header__border inline--centred--spaced">
-   <p class="mat-h2">Authentification</p>
-    
+<header class="main-header  inline--centred--spaced">
+   <!-- <p class="mat-h1">AUTHENTIFICATION</p> -->
+    <span></span>
    <button (click)="close()" mat-icon-button>
            <mat-icon>close</mat-icon>
    </button>
@@ -11,7 +11,8 @@
 <mat-tab-group class="px8 pb8 pt4" mat-stretch-tabs>
     <mat-tab class="column--centred">
         <ng-template  mat-tab-label>
-              <p class="mat-h3" i18n>Sign in</p>
+            <mat-icon class="mr2">login</mat-icon>
+              <p class="mat-h2" i18n>SIGN IN</p>
             </ng-template>
         <app-account-login class="my8"></app-account-login>
         <mat-divider></mat-divider>
@@ -20,7 +21,8 @@
     </mat-tab>
     <mat-tab>
         <ng-template  mat-tab-label>
-            <p class="mat-h3" i18n>Register</p>
+            <mat-icon class="mr2">person_add</mat-icon>
+            <p class="mat-h2" i18n>REGISTER</p>
           </ng-template>
         <app-create-profile class="mt8 column--centred"></app-create-profile>
     </mat-tab>

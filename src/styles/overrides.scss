@@ -43,7 +43,9 @@ a {
 .button--pulsing.mat-icon-button {
   animation: pulse 1s infinite ease-in-out;
 }
-
+.mat-tab-label {
+  color: black;
+}
 
 
 html, body { height: 100%; }

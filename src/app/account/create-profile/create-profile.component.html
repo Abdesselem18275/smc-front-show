@@ -4,7 +4,7 @@
     </mat-progress-bar>
             <form [formGroup]="createForm" (ngSubmit)="createProfile()">
                     <header class="column--centred">
-                        <p class="font--grey mat-body">Please fill the following information
+                        <p class="mat-subheading-2">Please fill the following information
                         </p>
                         <p class="alert mat-caption" *ngFor="let item of serverError$ | async  | keyvalue">
                             {{item.value}}</p>

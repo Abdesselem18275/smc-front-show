@@ -26,10 +26,10 @@
   }
 }
 .dot--selected {
-  background-color: mat-color($smc-show-case-accent);
+  background-color: mat-color($smc-show-case-accent,darker);
 }
 .dot--unSelected {
-  background-color: mat-color($smc-show-case-accent,lighter);
+  background-color: $grey-color;
 }
 button mat-icon {
   @include  md-icon-size(2rem);

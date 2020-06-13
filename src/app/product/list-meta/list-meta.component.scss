@@ -46,3 +46,7 @@ header {
 #category-icon--big {
     @include md-icon-size(5rem)
 }
+.mat-h1 {
+    font-size: 2rem;
+    font-weight: 500 ;
+}
