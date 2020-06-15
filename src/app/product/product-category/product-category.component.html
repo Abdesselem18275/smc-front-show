@@ -10,8 +10,8 @@
     [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
     class="mt4" 
     color="primary"
-    mat-raised-button>
-    <span class="mat-h3">
+    mat-stroked-button>
+    <span class="mat-h2">
       Discover our {{category.designation | titlecase}} articles
     </span>
   </a>
