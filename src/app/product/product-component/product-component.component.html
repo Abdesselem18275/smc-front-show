@@ -26,7 +26,7 @@
         ({{componentSpec.component.measureType.unit}}) :
       </span>
     <span *ngFor="let measure of componentSpec.measures ; first as isFirst">
-      <span *ngIf="!isFirst">,</span>
+      <span *ngIf="!isFirst">&nbsp;-&nbsp;</span>
       {{measure}}
     </span>
   </div>

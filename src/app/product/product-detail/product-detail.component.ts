@@ -22,41 +22,14 @@ export class ProductDetailComponent implements OnInit   {
   anchors: Element;
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
 
-  constructor(private route: ActivatedRoute, private scroll: ScrollDispatcher) { }
-
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.selectedIndex = 0;
     this.isImageReady = true;
     this.product$ =   this.route.data.pipe(map(data => data.product))
-
-  }
-
-
-  getIndex(scroll: number, clientWidth: number) {
-    return Math.round(scroll / clientWidth);
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);
   }
-  centerImage(index: number) {
-    // this.anchors.scroll({behavior: 'smooth', left: this.anchors.clientWidth * index});
-  }
-  updateIndex(index: number) {
-    this.selectedIndex  = index;
-    this.centerImage(index);
-  }
-
-  stepUpdateImage(step) {
-    const imagesNumber = this.indexArray.length;
-    let _index = this.selectedIndex + step;
-    if ( _index >= imagesNumber  ) {
-      _index = 0;
-    }
-    if ( _index < 0  ) {
-      _index = imagesNumber - 1;
-    }
-    this.updateIndex(_index);
-  }
-
 }

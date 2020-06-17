@@ -10,7 +10,7 @@
       </p></div>
 <div mat-line class="mat-caption">
   <span *ngFor="let measure of item.measures ; first as isFirst">
-    <span *ngIf="!isFirst">,</span>
+    <span *ngIf="!isFirst"> &nbsp;-&nbsp; </span>
     {{measure}}
   </span>
 </div>

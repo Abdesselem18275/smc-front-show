@@ -30,6 +30,6 @@ export class LanguageBoxComponent implements OnInit {
 
   setLanguage(value: UserLanguage) {
     //this.languageService.languageId = value.id.toLowerCase() + '/';
-    this.store$.dispatch(SetLanguageAction({key: value}));
+    //this.store$.dispatch(SetLanguageAction({key: value}));
   }
 }
