@@ -1,35 +1,27 @@
-import { Component ,ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component , OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
 import { map } from 'rxjs/operators';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ProductShort, AppearanceVariant } from '../model';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit   {
 
   product$: Observable<ProductShort>;
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
-  selectedIndex: number;
-  offSetNumber: number;
-  isImageReady: boolean;
-  isRightChange: boolean;
-  indexArray = [];
-  anchors: Element;
-  @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private cdr: ChangeDetectorRef,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.selectedIndex = 0;
-    this.isImageReady = true;
-    this.product$ =   this.route.data.pipe(map(data => data.product))
+    this.product$ = this.route.data.pipe(map(data => data.product))
+    this.selectedAppearanceVariant$.subscribe(x => console.warn(x))
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);
+    this.cdr.detectChanges()
   }
 }

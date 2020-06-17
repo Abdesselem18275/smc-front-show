@@ -6,7 +6,7 @@
   <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
     <div mat-line>
       <p class="mat-body-2">
-        {{item.measureType.designation | titlecase}} ({{item.measureType.unit}})
+        {{item.measureType?.designation | titlecase}} ({{item.measureType?.unit}})
       </p></div>
 <div mat-line class="mat-caption">
   <span *ngFor="let measure of item.measures ; first as isFirst">

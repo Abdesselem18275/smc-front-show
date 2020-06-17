@@ -12,6 +12,7 @@ export class ProductDimensionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.productDimensions = this.productDimensions.filter(x => x.measures.length > 0)
     this.headersList = this.productDimensions.map(x => x.measureType)
   }
 
