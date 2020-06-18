@@ -41,7 +41,7 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       this.accountForm.setValue({
         first_name: profile.first_name,
         last_name: profile.last_name,
-        gender: profile.gender,
+        civility: profile.civility,
         email : profile.email,
         company_name : profile.company_name,
         is_professional : profile.is_professional,

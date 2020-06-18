@@ -4,35 +4,24 @@ header {
     padding:  0.5rem 1rem;
 }
 
-mat-form-field,.form__submit-button {
+.form__field,.form__submit-button {
     width: 100%;
 }
-mat-icon {
-    @extend .font--grey;
+.form__field {
+    margin: 1rem 0;
+    input {
+        width: 100%;
+        height: 2.5rem;
+    }
+    label {
+        margin-bottom:0.5rem ;
+        @extend .mat-body;
+        text-transform: capitalize;
+    }
 }
-
 
 button {
     span {
         color: white;
     }
   }
-
-  mat-radio-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    mat-radio-button {
-        margin: 0.5rem 0 ;
-
-    }
-    @media only screen and (max-width:600px) { 
-        margin-bottom: 0.5rem;
-        flex-direction: row;
-        mat-radio-button {
-            margin: 0 0.5rem ;
-        }
-
-    }
-
-}

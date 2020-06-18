@@ -10,27 +10,31 @@
                             {{item.value}}</p>
                 </header>
 
-                <mat-form-field  appearance="outline">
-                    <mat-icon class="mr2" matPrefix>email</mat-icon>
-                    <mat-label i18n>email</mat-label>
-                    <input required matInput type="email" formControlName="email" id="email">
+                <div class="form__field">
+                    <label for="email" class="inline--centred" i18n>
+                        <mat-icon class="mr2">email</mat-icon>
+                        Email
+                    </label>
+                    <input required  type="email" formControlName="email" id="email">
                     <mat-error
                         *ngIf="createForm.get('email').invalid && createForm.get('email').touched">
                         {{getEmailErrorMessage()}}</mat-error>
-                </mat-form-field>
-                <mat-form-field  appearance="outline">
-                    <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
-                    <mat-label i18n>password</mat-label>
-                    <input required matInput autocomplete="new-password" type="password" formControlName="password" id="password">
+                </div>
+                <div class="form__field">
+                    <label for="password" class="inline--centred" i18n>
+                        <mat-icon class="mr2">vpn_key</mat-icon>
+                        password</label>
+                    <input required  autocomplete="new-password" type="password" formControlName="password" id="password">
                     <mat-error *ngIf="createForm.get('password').invalid && createForm.get('password').touched">
                     {{getPasswordErrorMessage('password')}}</mat-error>
-                </mat-form-field>
-                <mat-form-field  appearance="outline">
-                    <mat-label i18n>confirm your password</mat-label>
-                    <input required matInput autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
+                </div>
+                <div class="form__field">
+                    <label class="inline--centred" i18n>confirm your password</label>
+                    <input required  autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
                     <mat-error *ngIf="createForm.invalid || createForm.get('password').invalid && createForm.get('password').touched">
                             {{getPasswordErrorMessage('confirmPassword')}}</mat-error>
-                </mat-form-field>
+                </div>
+
                 <header class="fieldset-title">
                     <p class="inline--centred mat-subheading-1">
                         <mat-icon>person</mat-icon>
@@ -38,24 +42,25 @@
                     </p>
                 </header>
                 <section class="fields--inline">
-                <mat-form-field  appearance="outline">
-                    <mat-label i18n>first name</mat-label>
-                    <input required matInput type="text" formControlName="first_name" id="first_name">
-                </mat-form-field>
-                <mat-form-field  appearance="outline">
-                    <mat-label i18n>last name</mat-label>
-                    <input required matInput type="text" formControlName="last_name" id="last_name">
-                </mat-form-field>
-
-            </section>
-            <section class="mb4 fields--inline">
-                <div class="radio--container inline--centred">
-                        <mat-label class="mat-subheading-1" i18n>Gender</mat-label>
-                        <mat-radio-group class="ml10" formControlName="gender" id="gender">
-                          <mat-radio-button value="M">Male</mat-radio-button>
-                          <mat-radio-button value="F">Female</mat-radio-button>
-                        </mat-radio-group>
+                    <div class="form__field">
+                        <label class="inline--centred"  for ="civility" i18n>Civility</label>
+                        <select name="civility" formControlName="civility" id="civility">
+                            <option selected value="Mr">Mr.</option>
+                            <option value="Mme">Mme.</option>
+                        </select> 
+                    </div>
+                <div class="mx4 form__field">
+                    <label for ="first_name" i18n>First name</label>
+                    <input required type="text" formControlName="first_name" id="first_name">
                 </div>
+                <div class="form__field">
+                <label for ="last_name" i18n>Last name</label>
+                <input required type="text" formControlName="last_name" id="last_name">
+            </div>
+            </section>
+
+            <section class="mb4 fields--inline">
+
         
         
                 <mat-slide-toggle 

@@ -95,7 +95,9 @@ p {
       background-color: white;
       min-height: 60%;
       z-index: 3;
-      max-width: 35rem;
+      width: 90vw;
+      min-width: 320px;
+      max-width: 640px;
   }
   .search-box {
     position: absolute;

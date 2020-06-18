@@ -13,5 +13,5 @@ export interface Profile {
     activity_field: string;
     company_name: string;
     favorites: number[];
-    gender: string;
+    civility: string;
 }

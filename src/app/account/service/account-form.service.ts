@@ -20,7 +20,7 @@ export class AccountFormService {
         confirmPassword : ['', Validators.required],
         first_name : ['', Validators.required],
         last_name : ['', Validators.required],
-        gender : ['M', Validators.required],
+        civility : ['Mr', Validators.required],
         is_professional : [false]
     } , { validators: this.passwordConfirmedValidator });
     return form;

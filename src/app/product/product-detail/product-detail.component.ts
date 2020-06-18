@@ -18,7 +18,6 @@ export class ProductDetailComponent implements OnInit   {
 
   ngOnInit() {
     this.product$ = this.route.data.pipe(map(data => data.product))
-    this.selectedAppearanceVariant$.subscribe(x => console.warn(x))
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);
