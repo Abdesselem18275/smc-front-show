@@ -33,12 +33,4 @@ export class AccountLoginComponent implements OnInit   {
     this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
     this.auth_non_field_error = this.store$.select(UserStoreSelectors.selectError);
   }
-
-
-
-  getEmailErrorMessage() {
-    return this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
-        this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
-            '';
-  }
 }

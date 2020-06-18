@@ -23,6 +23,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
 import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
 import { CustomPluralPipe } from './custom-plural.pipe';
+import { ControlValidatorMessageDirective } from '../account/control-validator-message.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -35,7 +36,7 @@ import { CustomPluralPipe } from './custom-plural.pipe';
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe],
+                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,ControlValidatorMessageDirective, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe],
   imports:  [
     CommonModule,
     RouterModule,
@@ -57,6 +58,7 @@ import { CustomPluralPipe } from './custom-plural.pipe';
     AccountCardComponent,
     ProductFilterComponent,
     AuthentificationCardComponent,
+    ControlValidatorMessageDirective,
     CustomPluralPipe,
     CommonModule,
 

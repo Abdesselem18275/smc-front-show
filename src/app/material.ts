@@ -10,13 +10,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatRadioModule} from '@angular/material/radio';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatRippleModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
@@ -27,14 +23,14 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatBadgeModule , MatInputModule, MatIconModule , MatToolbarModule,
-            MatSnackBarModule, MatSelectModule,  ScrollingModule, MatFormFieldModule, 
-            MatButtonToggleModule, MatTreeModule,MatRippleModule, MatRadioModule,MatProgressBarModule, 
+            MatTabsModule, MatBadgeModule , MatIconModule , MatToolbarModule,
+            MatSnackBarModule,  ScrollingModule,
+            MatButtonToggleModule, MatTreeModule,MatRippleModule,MatProgressBarModule,
             MatSlideToggleModule, MatChipsModule, MatListModule,MatMenuModule],
 
   exports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatSelectModule , MatIconModule , MatInputModule, MatBadgeModule, MatToolbarModule,
-            MatSnackBarModule, MatFormFieldModule, ScrollingModule, MatButtonToggleModule, 
-            MatProgressBarModule, MatChipsModule, MatTreeModule, MatRadioModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
+            MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
+            MatSnackBarModule, ScrollingModule, MatButtonToggleModule,
+            MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
 })
 export class MaterialModule {}

@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Observable } from 'rxjs';
+import { format } from 'path';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-profile',
@@ -29,27 +31,16 @@ export class CreateProfileComponent implements OnInit {
     this.isChecking$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.createForm = this.accountFormService.createAccountForm();
   }
-
-
   cancel() {
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
   }
-
-  createProfile() {
-    const payload = this.createForm.value;
-    this.store$.dispatch(UserStoreActions.CreateUserAction({payload}));
-    this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
-  }
-
-  getEmailErrorMessage() {
-    return this.createForm.get('email').hasError('required') ? 'You must enter a value' :
-        this.createForm.get('email').hasError('email') ? 'Not a valid email' :
-            '';
-  }
-  getPasswordErrorMessage(controlName: string) {
-    return this.createForm.get(controlName).hasError('required') ? 'You must enter a value' :
-        this.createForm.hasError('passwordNotConfirmed') ? 'Password must be equals' :
-            '';
+  onSubmit() {
+    this.createForm.enable()
+    if(this.createForm.valid) {
+      const payload = this.createForm.value;
+      this.store$.dispatch(UserStoreActions.CreateUserAction({payload}));
+      this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
+    }
   }
 
 }

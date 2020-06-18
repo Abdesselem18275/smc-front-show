@@ -2,18 +2,7 @@
 :host {
     @extend .column--centred;
 }
-
-h4 {
-    text-transform: uppercase;
+form {
+  max-width: 540px;
+  width: 100%;
 }
-form,mat-form-field,.form__submit-button {
-    width: 100%;
-    max-width: 100%;
-   }
-
-
-button {
-    span {
-        color: white;
-    }
-  }

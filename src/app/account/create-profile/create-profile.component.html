@@ -1,38 +1,32 @@
 
     <mat-progress-bar *ngIf="isChecking$ | async" mode="indeterminate">
-
     </mat-progress-bar>
-            <form [formGroup]="createForm" (ngSubmit)="createProfile()">
+            <form
+            [formGroup]="createForm" (ngSubmit)="onSubmit()">
                     <header class="column--centred">
-                        <p class="mat-subheading-2">Please fill the following information
+                        <p class="font--dark-grey mat-subheading-2">Please fill the following information
                         </p>
                         <p class="alert mat-caption" *ngFor="let item of serverError$ | async  | keyvalue">
                             {{item.value}}</p>
                 </header>
 
                 <div class="form__field">
-                    <label for="email" class="inline--centred" i18n>
+                    <label for="email" i18n>
                         <mat-icon class="mr2">email</mat-icon>
                         Email
                     </label>
-                    <input required  type="email" formControlName="email" id="email">
-                    <mat-error
-                        *ngIf="createForm.get('email').invalid && createForm.get('email').touched">
-                        {{getEmailErrorMessage()}}</mat-error>
+                    <input appControlValidatorMessage  required  type="email" formControlName="email" id="email">
+
                 </div>
                 <div class="form__field">
-                    <label for="password" class="inline--centred" i18n>
+                    <label for="password"  i18n>
                         <mat-icon class="mr2">vpn_key</mat-icon>
                         password</label>
-                    <input required  autocomplete="new-password" type="password" formControlName="password" id="password">
-                    <mat-error *ngIf="createForm.get('password').invalid && createForm.get('password').touched">
-                    {{getPasswordErrorMessage('password')}}</mat-error>
+                    <input appControlValidatorMessage required  autocomplete="new-password" type="password" formControlName="password" id="password">
                 </div>
                 <div class="form__field">
-                    <label class="inline--centred" i18n>confirm your password</label>
-                    <input required  autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
-                    <mat-error *ngIf="createForm.invalid || createForm.get('password').invalid && createForm.get('password').touched">
-                            {{getPasswordErrorMessage('confirmPassword')}}</mat-error>
+                    <label i18n>confirm your password</label>
+                    <input required appControlValidatorMessage  autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
                 </div>
 
                 <header class="fieldset-title">
@@ -41,34 +35,27 @@
                         Personal information
                     </p>
                 </header>
-                <section class="fields--inline">
                     <div class="form__field">
-                        <label class="inline--centred"  for ="civility" i18n>Civility</label>
+                        <label   for ="civility" i18n>Civility</label>
                         <select name="civility" formControlName="civility" id="civility">
                             <option selected value="Mr">Mr.</option>
                             <option value="Mme">Mme.</option>
-                        </select> 
+                        </select>
                     </div>
-                <div class="mx4 form__field">
-                    <label for ="first_name" i18n>First name</label>
-                    <input required type="text" formControlName="first_name" id="first_name">
+                <div class="form__field">
+                    <label  for ="first_name" i18n>First name</label>
+                    <input appControlValidatorMessage required type="text" formControlName="first_name" id="first_name">
                 </div>
                 <div class="form__field">
                 <label for ="last_name" i18n>Last name</label>
-                <input required type="text" formControlName="last_name" id="last_name">
+                <input appControlValidatorMessage required type="text" formControlName="last_name" id="last_name">
             </div>
-            </section>
 
-            <section class="mb4 fields--inline">
+            <div class="my4 inline--centred">
+              <input  formControlName="is_professional" type="checkbox" id="is_professional">
+              <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
+            </div>
 
-        
-        
-                <mat-slide-toggle 
-                            formControlName="is_professional" 
-                            [labelPosition] = "'before'">
-                            <span class="mat-subheading-2 mr8" i18n>Professional ?</span>
-                </mat-slide-toggle>
-         </section>
             <button class="form__submit-button" type="submit"
             mat-raised-button color="primary" i18n primary>
             <span class="mat-subheading-2">

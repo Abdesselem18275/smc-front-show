@@ -3,34 +3,29 @@
         <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
                 {{item.value}}
         </p>
-        </header>
+</header>
         <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline">
-                        <mat-icon class="mr2" matPrefix>email</mat-icon>
-                                        <mat-label i18n>email</mat-label>
-                                        <input required matInput type="email" formControlName="email" id="email">
-                                        <mat-error
-                                                        *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-                                                        {{getEmailErrorMessage()}}
-                                        </mat-error>
-                                </mat-form-field>
-                                <mat-form-field appearance="outline">
-                                        <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
-                                        <mat-label i18n>password</mat-label>
-                                        <input required matInput type="password" formControlName="password"
-                                                        id="password" placeholder="password">
-                                        <mat-hint i18n>Forget yous password ?</mat-hint>
-                                        <mat-error i18n *ngIf="loginForm.get('password').invalid">
-                                                        this field is required.
-                                        </mat-error>
-                                </mat-form-field>
-        
+          <div class="form__field">
+            <label for="email" i18n>
+                <mat-icon class="mr2">email</mat-icon>
+                Email
+            </label>
+            <input appControlValidatorMessage required  type="email" formControlName="email" id="email">
+        </div>
+        <div class="form__field">
+          <label for="email" i18n>
+              <mat-icon class="mr2">vpn_key</mat-icon>
+              password
+          </label>
+          <input appControlValidatorMessage required  type="password" formControlName="password" id="password">
+          <p class="mat-caption font--dark-grey" i18n>Forget yous password ?</p>
+      </div>
                                 <button class="form__submit-button mt4" type="submit"
                                         mat-raised-button color="primary" i18n primary>
                                         <span>
                                                 Sign in with SMC
                                         </span>
                                 </button>
-        
-        
+
+
                                 </form>

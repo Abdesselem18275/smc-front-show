@@ -6,50 +6,42 @@
                         Personal information
                     </p>
         </header>
-
-        <section class="fields--inline">
-                <mat-form-field  appearance="outline">
-                    <mat-label i18n>first name</mat-label>
-                    <input required matInput type="text" formControlName="first_name" id="first_name">
-                </mat-form-field>
-                <mat-form-field  appearance="outline">
-                    <mat-label i18n>last name</mat-label>
-                    <input required matInput type="text" formControlName="last_name" id="last_name">
-                </mat-form-field>
-        </section>
-        <section class="fields--inline">
-                <mat-form-field  appearance="outline">
-                        <mat-label i18n>Phone Number</mat-label>
-                        <input matInput autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                        <mat-label i18n>Country</mat-label>
-                        <mat-select formControlName="country" id="country">
-                          <mat-option 
-                          *ngFor="let country of countryNames" 
+        <div class="form__field">
+          <label   for ="civility" i18n>Civility</label>
+          <select name="civility" formControlName="civility" id="civility">
+              <option selected value="Mr">Mr.</option>
+              <option value="Mme">Mme.</option>
+          </select>
+      </div>
+                <div class="form__field">
+                    <label i18n>first name</label>
+                    <input required  appControlValidatorMessage type="text" formControlName="first_name" id="first_name">
+                </div>
+                <div class="form__field">
+                    <label i18n>last name</label>
+                    <input required  appControlValidatorMessage type="text" formControlName="last_name" id="last_name">
+                </div>
+                <div class="form__field">
+                        <label i18n>Phone Number</label>
+                        <input  appControlValidatorMessage autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
+                </div>
+                <div class="form__field" >
+                        <label i18n>Country</label>
+                        <select class="input--large-width" formControlName="country" id="country">
+                          <option
+                          *ngFor="let country of countryNames"
                           [value]="country.val">
                             {{country.val}}
-                          </mat-option>
-                        </mat-select>
-                </mat-form-field>
-         </section>
-         <section class="mb4 fields--inline">
-                <div class="radio--container inline--centred">
-                        <mat-label class="mat-subheading-1" i18n>Civility</mat-label>
-                        <mat-radio-group class=" ml10 inline--centred" formControlName="civility" id="civility">
-                          <mat-radio-button class="mr4" value="M">Male</mat-radio-button>
-                          <mat-radio-button value="F">Female</mat-radio-button>
-                        </mat-radio-group>
+                          </option>
+                        </select>
                 </div>
-        
-        
-                <mat-slide-toggle 
-                            formControlName="is_professional" 
-                            [labelPosition] = "'before'">
-                            <span class="mat-subheading-2 mr8" i18n>Are you professional ?</span>
-                </mat-slide-toggle>
-         </section>
-    
+
+
+                <div class="my4 inline--centred">
+                  <input  formControlName="is_professional" type="checkbox" id="is_professional">
+                  <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
+                </div>
+
         <section *ngIf="accountForm.get('is_professional').value">
                 <header class="fieldset-title">
                         <p class="inline--centred mat-subheading-1">
@@ -58,39 +50,39 @@
                             </p>
                 </header>
 
-                <mat-form-field appearance="outline">
-                        <mat-label i18n>company name</mat-label>
-                        <input              
-                        autocomplete="organization" 
-                        matInput type="text" 
+                <div class="form__field" >
+                        <label i18n>company name</label>
+                        <input
+                        autocomplete="organization"
+                         appControlValidatorMessage type="text"
                         formControlName="company_name" id="company_name">
-                </mat-form-field>
-                <section class="fields--inline">
-                        <mat-form-field appearance="outline">
-                                <mat-label i18n>position</mat-label>
-                                <input              
-                                autocomplete="organization" 
-                                matInput type="text" 
-                                autocomplete="organization-title" 
+                </div>
+                        <div class="form__field" >
+                                <label i18n>position</label>
+                                <input
+                                autocomplete="organization"
+                                 appControlValidatorMessage type="text"
+                                autocomplete="organization-title"
                                 formControlName="position" id="position">
-                                <mat-hint i18n> eg: sales manager </mat-hint>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                                <mat-label i18n>activity field</mat-label>
-                                <input              
-                                autocomplete="activity" 
-                                matInput type="text" 
-                                autocomplete="activity" 
+                                <p class="form__field__hint" i18n> eg: sales manager </p>
+                        </div>
+                        <div class="form__field" >
+                                <label i18n>activity field</label>
+                                <input
+                                autocomplete="activity"
+                                 appControlValidatorMessage type="text"
+                                autocomplete="activity"
                                 formControlName="activity_field" id="activity_field">
-                                <mat-hint i18n>eg: Tourism , Restoration</mat-hint>
-                        </mat-form-field>
+                                <p class="form__field__hint" i18n>eg: Tourism , Restoration</p>
+                        </div>
                 </section>
 
-        </section>
-
                 <button type="submit"
-                mat-raised-button color="primary" i18n primary>
-                <span class="mat-subheading-2">
+                         mat-raised-button
+                         class="form__submit-button my4"
+                         color="primary"
+                         i18n primary>
+                <span>
                         Save changes
                 </span>
                 </button>
