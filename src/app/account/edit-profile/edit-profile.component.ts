@@ -39,26 +39,26 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
       this.accountForm.setValue({
-        first_name: profile.first_name,
-        last_name: profile.last_name,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
         civility: profile.civility,
         email : profile.email,
-        company_name : profile.company_name,
-        is_professional : profile.is_professional,
+        companyName : profile.companyName,
+        isProfessional : profile.isProfessional,
         position: profile.position,
-        activity_field: profile.activity_field,
-        phone_number : profile.phone_number,
+        activityField: profile.activityField,
+        phoneNumber : profile.phoneNumber,
         country : profile.country
       });
     });
   }
 
   onSubmit() {
-    if (!this.accountForm.get('is_professional').value) {
+    if (!this.accountForm.get('isProfessional').value) {
       this.accountForm.setValue({
-        company_name : null,
+        companyName : null,
         position: null,
-        activity_field: null,
+        activityField: null,
       });
     }
     const payload = this.accountForm.value;

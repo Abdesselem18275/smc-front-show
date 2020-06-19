@@ -15,15 +15,15 @@
       </div>
                 <div class="form__field">
                     <label i18n>first name</label>
-                    <input required  appControlValidatorMessage type="text" formControlName="first_name" id="first_name">
+                    <input required  appControlValidatorMessage type="text" formControlName="firstName" id="firstName">
                 </div>
                 <div class="form__field">
                     <label i18n>last name</label>
-                    <input required  appControlValidatorMessage type="text" formControlName="last_name" id="last_name">
+                    <input required  appControlValidatorMessage type="text" formControlName="lastName" id="lastName">
                 </div>
                 <div class="form__field">
                         <label i18n>Phone Number</label>
-                        <input  appControlValidatorMessage autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
+                        <input  appControlValidatorMessage autocomplete="tel" type="tel" formControlName="phoneNumber" id="phoneNumber">
                 </div>
                 <div class="form__field" >
                         <label i18n>Country</label>
@@ -38,11 +38,11 @@
 
 
                 <div class="my4 inline--centred">
-                  <input  formControlName="is_professional" type="checkbox" id="is_professional">
-                  <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
+                  <input  formControlName="isProfessional" type="checkbox" id="isProfessional">
+                  <label class="mat-body ml4" for="isProfessional">Are you a professional ?</label>
                 </div>
 
-        <section *ngIf="accountForm.get('is_professional').value">
+        <section *ngIf="accountForm.get('isProfessional').value">
                 <header class="fieldset-title">
                         <p class="inline--centred mat-subheading-1">
                                 <mat-icon>work</mat-icon>
@@ -55,7 +55,7 @@
                         <input
                         autocomplete="organization"
                          appControlValidatorMessage type="text"
-                        formControlName="company_name" id="company_name">
+                        formControlName="companyName" id="companyName">
                 </div>
                         <div class="form__field" >
                                 <label i18n>position</label>
@@ -72,7 +72,7 @@
                                 autocomplete="activity"
                                  appControlValidatorMessage type="text"
                                 autocomplete="activity"
-                                formControlName="activity_field" id="activity_field">
+                                formControlName="activityField" id="activityField">
                                 <p class="form__field__hint" i18n>eg: Tourism , Restoration</p>
                         </div>
                 </section>

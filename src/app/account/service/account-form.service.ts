@@ -18,10 +18,10 @@ export class AccountFormService {
         email : ['', [Validators.email, Validators.required]],
         password : ['', Validators.required],
         confirmPassword : ['', Validators.required],
-        first_name : ['', Validators.required],
-        last_name : ['', Validators.required],
+        firstName : ['', Validators.required],
+        lastName : ['', Validators.required],
         civility : ['Mr', Validators.required],
-        is_professional : [false]
+        isProfessional : [false]
     } , { validators: this.passwordConfirmedValidator });
     return form;
   }
@@ -36,10 +36,10 @@ export class AccountFormService {
 
   createLoadFullAccountForm() {
     const myForm  = this.createAccountForm();
-    myForm.addControl('company_name', new FormControl());
+    myForm.addControl('companyName', new FormControl());
     myForm.addControl('position', new FormControl());
-    myForm.addControl('activity_field', new FormControl());
-    myForm.addControl('phone_number', new FormControl());
+    myForm.addControl('activityField', new FormControl());
+    myForm.addControl('phoneNumber', new FormControl());
     myForm.addControl('country', new FormControl());
     myForm.removeControl('password');
     myForm.removeControl('confirmPassword');
