@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { AppearanceVariant } from '../model';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { debounceTime, throttleTime, throttle, bufferWhen, bufferCount, tap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
   imagesArray : string[];
   selectedIndex: number = 0;
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
-  constructor(private scroll: ScrollDispatcher) { }
+  constructor(private scroll: ScrollDispatcher,private cdr: ChangeDetectorRef) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.ngOnInit()
   }
@@ -25,6 +25,7 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
     this.imagesArray = []
     this.imagesArray.push(this.appearanceVariant.thumbNail)
     this.imagesArray = this.imagesArray.concat(this.appearanceVariant.images.map(image => image.content))
+    this.cdr.detectChanges()
   }
   getImages() {
     let imagesArray : string[]
@@ -41,25 +42,17 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
     fromEvent(this.anchors,'touchmove').
     pipe(
       throttle(x => merge(fromEvent(this.anchors,'touchend'),fromEvent(this.anchors,'touchstart')),throttleConfig),
-      tap(x => console.warn(x)),
       bufferCount(2)
     ).
     subscribe((x:TouchEvent[]) => {
       x.map((x:TouchEvent) => x.touches[0].clientX).reduce(touchReducer) < 0 ? this.byStepIndex(-1) : this.byStepIndex(1)
     });
-    this.scrollable.elementScrolled().pipe(debounceTime(200)).subscribe(() => {
-      this.selectedIndex = this.getIndex(this.anchors.scrollLeft,this.anchors.clientWidth)
-    });
-  }
-
-  getIndex(scroll: number, clientWidth: number) {
-    console.warn('scroll = '+scroll+' clientWidth = '+clientWidth)
-    return Math.round(scroll / clientWidth);
   }
 
   selectImage(index: number) {
     this.selectedIndex = index;
     this.anchors.scroll({behavior: 'smooth', left: this.anchors.clientWidth * index});
+    this.cdr.detectChanges()
   }
   byStepIndex(step) {
     const imagesNumber = this.imagesArray.length;
