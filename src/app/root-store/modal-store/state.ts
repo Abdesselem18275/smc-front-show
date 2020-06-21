@@ -6,6 +6,7 @@ export interface State {
     filterBox: boolean;
     userCardBox: boolean;
     languageBox: boolean;
+    userRequestBox: boolean;
 }
 export const initialState: State = {
     searchBox: false,
@@ -14,5 +15,6 @@ export const initialState: State = {
     createProfileBox: false,
     filterBox: false,
     userCardBox: false,
-    languageBox: false
+    languageBox: false,
+    userRequestBox: false
   };

@@ -1,5 +1,9 @@
-export interface Base {
-
+export interface MinimalProduct {
+  id: number;
+  designation: string;
+  shortDescription: string
+  appearanceVariants:string;
+  isFavorite: boolean;
 }
 export interface FilterCategory {
     controlType: string;

@@ -46,6 +46,14 @@ export class AccountFormService {
     return myForm;
   }
 
+  createUserRequestForm() {
+    const   form = this.fb.group({
+      subjects : ['', Validators.required],
+      related_products : ['', Validators.required],
+      text_content : [''],
+    });
+    return form;
+  }
   passwordConfirmedValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');

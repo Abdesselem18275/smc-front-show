@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory, Param} from '../model';
+import { FilterCategory, Param, MinimalProduct} from '../model';
 import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -59,12 +59,18 @@ export class ProductDataService  {
       '/filters'].join('');
      return this.http.get(query).pipe()
   }
-  
+
   getInitData() {
     const query: string = [
       this.apiUrl,
       '/initData'].join('') ;
     return this.http.get(query)
+  }
+  getForListProducts() {
+    const query: string = [
+      this.apiUrl,
+      '/for_list_products'].join('') ;
+    return this.http.get<MinimalProduct[]>(query)
   }
   getMenu() {
     const treeMenu: any[] = [

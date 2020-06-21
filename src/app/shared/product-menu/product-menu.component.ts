@@ -13,9 +13,6 @@ import { UserStoreSelectors } from 'src/app/root-store/user-store';
   selector: 'app-product-menu',
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
-  animations: [centerSlideInAnimation,
-    expandAnimation,
-    sideSlideInAnimation]
 })
 export class ProductMenuComponent implements OnInit {
 

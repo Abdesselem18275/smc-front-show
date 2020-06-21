@@ -33,13 +33,6 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
         'Content-Type':  'application/json'
       }
     });
-    // if (token === null) {
-    //     request = request.clone({
-    //       setHeaders: {
-    //         'Content-Type':  'application/json'
-    //       }
-    //     });
-    // }
     return next.handle(request);
   }
 }

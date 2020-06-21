@@ -1,0 +1,54 @@
+<header class="main-header inline--centred--spaced">
+ <p class="mat-h2">Enter your specific request</p>
+  <button (click)="close()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+  </button>
+</header>
+<main>
+  <form [formGroup]="requestForm">
+    <div class="form__field">
+      <header class="inline--centred--spaced" i18n>
+        <p>Request subjects</p>
+        <button mat-icon-button>
+          <mat-icon>
+            expand_less
+          </mat-icon>
+        </button>
+      </header>
+      <mat-divider></mat-divider>
+      <mat-selection-list name="subjects" formControlName="subjects" id="subjects">
+        <mat-list-option value="item.id" *ngFor="let item of subjects$ | async">
+          <div mat-line>
+            {{item.designation}}
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+  </div>
+  <div class="form__field">
+    <header class="inline--centred--spaced" i18n>
+      <p>Request related products</p>
+      <button mat-icon-button>
+        <mat-icon>
+          expand_less
+        </mat-icon>
+      </button>
+    </header>
+    <mat-divider></mat-divider>
+    <mat-selection-list name="related_products" formControlName="related_products" id="related_products">
+      <mat-list-option value="item.id" *ngFor="let item of forListProducts$ | async">
+        <img matListAvatar [src]="item.appearanceVariants">
+        <div mat-line>
+          {{item.designation}}
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+</div>
+  <div class="form__field">
+    <header class="inline--centred--spaced" i18n>
+      <p>Your message</p>
+    </header>
+    <textarea placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
+      </textarea>
+</div>
+  </form>
+</main>

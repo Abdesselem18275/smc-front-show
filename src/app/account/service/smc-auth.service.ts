@@ -6,7 +6,6 @@ import { ProductShort } from 'src/app/product/model.js';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
 import { Profile } from '../model';
 import { Store } from '@ngrx/store';
-import { ModalStoreActions } from 'src/app/root-store';
 
 
 @Injectable({

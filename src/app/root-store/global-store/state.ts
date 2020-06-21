@@ -16,6 +16,7 @@ export class State  {
   categories: Category[];
   filters: FilterCategory[];
   navMenuTree: MenuTreeData[];
+  requestSubjects : {id: number, designation:string}[]
 }
 
 
@@ -26,5 +27,6 @@ export const initialState: State = {
   categories: [],
   filters: [],
   navMenuTree: [],
+  requestSubjects: []
 };
 

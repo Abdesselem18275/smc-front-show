@@ -18,7 +18,8 @@ const globalReducer = createReducer(
           ...state ,
           categories : payload['categories'],
           filters : payload['filters'],
-          navMenuTree : payload['navMenuTree']
+          navMenuTree : payload['navMenuTree'],
+          requestSubjects : payload['subjects']
         };
   }),
 );

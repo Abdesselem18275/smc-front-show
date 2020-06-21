@@ -1,4 +1,4 @@
-import { ParamStoreSelectors, ProductStoreSelectors } from 'src/app/root-store';
+import { ParamStoreSelectors, ProductStoreSelectors, ModalStoreActions, ProductStoreActions } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -45,6 +45,10 @@ export class ProductBoxComponent implements OnInit  {
     this.isDimensionOpen = false
     this.isMaterialOpen = !this.isMaterialOpen
 
+  }
+  toggleModal(value) {
+    this.store$.dispatch(ProductStoreActions.LoadProductAction({product:this.product}))
+    this.store$.dispatch(ModalStoreActions.ToggleAction({key: value}));
   }
 
 }

@@ -30,7 +30,7 @@ export const selectCategoryQueryParam = createSelector(
         children : categories.filter(cat => cat.isRoot)
       }
     })
-
+  export const selectRequestSubjects = createSelector(selectGlobalState,(state) => state.requestSubjects);
   export const selectBreadcrumbArray = createSelector(
     selectCategories,
     selectCategoryQueryParam,

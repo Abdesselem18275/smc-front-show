@@ -10,7 +10,7 @@ p {
   a,app-category-menu {
     margin: 0 1.5rem;
   }
-  @media only screen and (max-width:1024px) { 
+  @media only screen and (max-width:1024px) {
     display: none;
   }
 }
@@ -27,7 +27,7 @@ p {
       display: none;
     }
 
-      @media only screen and (max-width:1024px) { 
+      @media only screen and (max-width:1024px) {
         #account-icon {
           display: none;
         }
@@ -38,7 +38,7 @@ p {
           display: none;
 
         }
-      
+
     }
 }
 
@@ -67,45 +67,3 @@ p {
 
         }
       }
-
-.side-box {
-        position: fixed;
-        top:0;
-        background-color: white;
-        z-index: 3;
-        height: 100vh;
-    }
-
-.account-card {
-      position: absolute;
-      min-width : 240px;
-      top: 5.5rem;
-      right: 0.5rem;
-      color: black;
-      z-index: 3;
-      background-color: white;
-      border-radius: 10px;
-    }
-.center-box {
-      position: absolute;
-      top: 5%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, 0%) ;
-      background-color: white;
-      min-height: 60%;
-      z-index: 3;
-      width: 90vw;
-      min-width: 320px;
-      max-width: 640px;
-  }
-  .search-box {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    right: 0;
-    margin-left: 0;
-    transform: translate(0, 0) ;
-    background-color: white;
-
-  }

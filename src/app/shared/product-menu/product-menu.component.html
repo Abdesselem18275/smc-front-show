@@ -1,4 +1,4 @@
-<nav 
+<nav
     [class]="(isHomeRoute$ |async) ? 'menu--main-theme' : 'global__header__border'"
     class='font--dark-grey global--gutters menu--shared-style'>
       <div class="nav-bar__left-content">
@@ -8,12 +8,12 @@
       </div>
 
 
-      <mat-icon 
-      [routerLink]="['/product/home/']" 
+      <mat-icon
+      [routerLink]="['/product/home/']"
       class="nav-bar__logo"
-      inline="true" 
+      inline="true"
       svgIcon="logo">
-     </mat-icon> 
+     </mat-icon>
 
 
      <div class="mat-h3 inline--centred nav-tabs__tab">
@@ -40,7 +40,7 @@
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>
             <!-- <mat-icon matBadgeColor="accent"  matBadgePosition="before" [matBadge]="(favoritesCount$ | async) != -1 ? (favoritesCount$ | async) : ''">favorite_border</mat-icon> -->
             <mat-icon>favorite_border</mat-icon>
-        </button>  
+        </button>
             <app-language-box>
             </app-language-box>
 
@@ -49,31 +49,4 @@
 
 
 
-  
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">
-    <app-account-card *ngIf="(modalStore$ | async).userCardBox">
-    </app-account-card>
-</div>
 
-<div    class="mat-elevation-z2 language-panel">
-
-</div>
-
-<div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox" class="mat-elevation-z2 center-box">
-
-    <app-authentification-card *ngIf="(modalStore$ | async).loginBox">
-    </app-authentification-card>
-</div>
-
-<div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
-    <app-search-box >
-    </app-search-box>
-</div>
-
-
-<div  [@routeAnimations]  *ngIf="(modalStore$ | async).sideMenuBox || (modalStore$ | async).filterBox" class="mat-elevation-z2 side-box">
-    <app-side-nav-menu *ngIf="(modalStore$ | async).sideMenuBox" >
-    </app-side-nav-menu>
-</div>
-
-  

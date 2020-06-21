@@ -9,17 +9,21 @@ import { Observable } from 'rxjs';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LanguageType, UserLanguage } from './root-store/global-store/state';
 import { SetLanguageAction } from './root-store/global-store/actions';
-import { TOKEN_KEY } from './injectables.service';
+import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [centerSlideInAnimation,
+    expandAnimation,
+    sideSlideInAnimation]
 })
 export class AppComponent implements OnInit {
   isSideMenuActive: boolean;
   isOverlay$: Observable<boolean>;
+  modalStore$: Observable<ModalStoreState.State>;
 
   constructor(
               private store$: Store<RootStoreState.State>,
@@ -43,6 +47,8 @@ export class AppComponent implements OnInit {
       LanguageType : this.getType(language)
     };
     this.store$.dispatch(SetLanguageAction({key: value}));
+    this.modalStore$ = this.store$.select(selectAllModalState);
+
 }
   prepareRoute(outlet: RouterOutlet) {
     const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
