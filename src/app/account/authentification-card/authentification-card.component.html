@@ -8,11 +8,11 @@
 <mat-progress-bar *ngIf="(isChecking |async)" mode="indeterminate">
 
 </mat-progress-bar>
-<mat-tab-group class="px8 pb8 pt4" mat-stretch-tabs>
+<mat-tab-group class="px4 pb8 pt4" mat-stretch-tabs>
     <mat-tab class="column--centred">
         <ng-template  mat-tab-label>
             <mat-icon class="mr2">login</mat-icon>
-              <p class="mat-h2" i18n>SIGN IN</p>
+              <p class="mat-h3" i18n>SIGN IN</p>
             </ng-template>
         <app-account-login class="my8"></app-account-login>
         <mat-divider></mat-divider>
@@ -22,7 +22,7 @@
     <mat-tab>
         <ng-template  mat-tab-label>
             <mat-icon class="mr2">person_add</mat-icon>
-            <p class="mat-h2" i18n>REGISTER</p>
+            <p class="mat-h3" i18n>REGISTER</p>
           </ng-template>
         <app-create-profile class="mt8 column--centred"></app-create-profile>
     </mat-tab>

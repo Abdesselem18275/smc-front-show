@@ -78,7 +78,7 @@ profileRefresh(): Observable<any> {
 redirect() {
   if (this.isLogged()) {
     const redirect = this.redirectUrl ?
-    this.router.parseUrl(this.redirectUrl) : '/account/profile';
+    this.router.parseUrl(this.redirectUrl) : this.router.routerState.snapshot.url;
     this.router.navigateByUrl(redirect);
   } else {
     const redirect = '/product/list'

@@ -1,10 +1,8 @@
       <header>
             <app-product-menu></app-product-menu>
       </header>
-      <router-outlet></router-outlet>
       <div class='overlay' (click)="closeAllModal() "*ngIf="isOverlay$|async">
       </div>
-
 
       <div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">
         <app-account-card *ngIf="(modalStore$ | async).userCardBox">
@@ -31,5 +29,5 @@
         </app-side-nav-menu>
     </div>
 
-
+<router-outlet></router-outlet>
 

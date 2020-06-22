@@ -1,5 +1,5 @@
 <header class="main-header inline--centred--spaced">
- <p class="mat-h2">Enter your specific request</p>
+ <p class="mat-h2">Enter your request</p>
   <button (click)="close()" mat-icon-button>
           <mat-icon>close</mat-icon>
   </button>
@@ -8,16 +8,20 @@
   <form [formGroup]="requestForm">
     <div class="form__field">
       <header class="inline--centred--spaced" i18n>
-        <p>Request subjects</p>
-        <button mat-icon-button>
+        <p class="inline--centred">
+          <mat-icon class="mr2">subject</mat-icon>
+          Subjects
+          <span class="ml2 mat-caption font--grey">(2 selected)</span>
+        </p>
+        <button (click)="toggle()" mat-icon-button>
           <mat-icon>
             expand_less
           </mat-icon>
         </button>
       </header>
       <mat-divider></mat-divider>
-      <mat-selection-list name="subjects" formControlName="subjects" id="subjects">
-        <mat-list-option value="item.id" *ngFor="let item of subjects$ | async">
+      <mat-selection-list  *ngIf="isSubjectsContainerOpen" class="subjects-container" name="subjects" formControlName="subjects" id="subjects">
+        <mat-list-option [value]="item.id" *ngFor="let item of subjects$ | async">
           <div mat-line>
             {{item.designation}}
           </div>
@@ -26,16 +30,20 @@
   </div>
   <div class="form__field">
     <header class="inline--centred--spaced" i18n>
-      <p>Request related products</p>
-      <button mat-icon-button>
+      <p class="inline--centred">
+        <mat-icon class="mr2">favorite</mat-icon>
+        Attach products from your favorites
+      <span class="ml2 mat-caption font--grey">(2 selected)</span>
+    </p>
+      <button (click)="toggle()" mat-icon-button>
         <mat-icon>
           expand_less
         </mat-icon>
       </button>
     </header>
     <mat-divider></mat-divider>
-    <mat-selection-list name="related_products" formControlName="related_products" id="related_products">
-      <mat-list-option value="item.id" *ngFor="let item of forListProducts$ | async">
+    <mat-selection-list  *ngIf="!isSubjectsContainerOpen" class="products-container" name="related_products" formControlName="related_products" id="related_products">
+      <mat-list-option [value]="item.id" *ngFor="let item of forListProducts$ | async">
         <img matListAvatar [src]="item.appearanceVariants">
         <div mat-line>
           {{item.designation}}
@@ -45,10 +53,11 @@
 </div>
   <div class="form__field">
     <header class="inline--centred--spaced" i18n>
-      <p>Your message</p>
+      <p>Message</p>
     </header>
-    <textarea placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
+    <textarea rows=5 placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
       </textarea>
 </div>
+<button mat-flat-button class="form__submit-button" color="primary"><span>Send request</span></button>
   </form>
 </main>

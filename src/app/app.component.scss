@@ -1,4 +1,8 @@
 
+.modal-container {
+  overflow: hidden;
+}
+
 .side-box {
   position: fixed;
   top:0;
@@ -18,7 +22,7 @@ background-color: white;
 border-radius: 10px;
 }
 .center-box {
-position: absolute;
+position: fixed;
 top: 5%;
 left: 50%;
 margin-right: -50%;

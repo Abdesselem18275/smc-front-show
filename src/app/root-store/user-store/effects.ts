@@ -36,8 +36,9 @@ export class UserEffects {
             localStorage.setItem(this.profileId, payload.profile.id);
             this.as.redirect();
             return [
-              UsersActions.LoadUserAction({payload}),
-              ModalStoreActions.CloseAllAction()];
+              ModalStoreActions.CloseAllAction(),
+              UsersActions.LoadUserAction({payload})
+            ];
           }),
           catchError(async (err) =>  {
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
@@ -130,7 +131,6 @@ export class UserEffects {
           }
           else {
             this.snakBar.open('You :have to login to perform this action')
-            this.as.redirectUrl = this.router.routerState.snapshot.url;
             return ModalStoreActions.ToggleAction({key: 'loginBox'})
           }
 

@@ -1,7 +1,25 @@
 
 <p class="mat-h3 font--dark-grey">Dimensions</p>
 <mat-divider></mat-divider>
-<mat-list dense>
+<table>
+  <caption class="mat-caption p1">{{variantsNumber() | customPlural:'Variant' | titlecase}}</caption>
+  <tbody>
+    <tr>
+      <th class="p1 mat-body-2" *ngFor="let item of headersList" scope="col">
+        {{item | titlecase}}
+      </th>
+    </tr>
+    <tr class="main-body mat-body"  *ngFor="let item of dimensionsMatrix;index as i">
+      <td class="p1">
+          {{i +1}}
+      </td>
+        <td class="p1" *ngFor="let measure of item">
+              {{measure[0]}} {{measure[1]}}
+        </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <mat-list dense>
   <p matSubheader>{{variantsNumber() | customPlural:'Dimension variant' | titlecase}}</p>
   <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
     <div mat-line>
@@ -15,4 +33,4 @@
   </span>
 </div>
   </mat-list-item>
-</mat-list>
+</mat-list> -->

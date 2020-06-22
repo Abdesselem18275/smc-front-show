@@ -5,19 +5,21 @@ import {transpose} from '../../../utils/util-functions';
   selector: 'app-product-dimensions',
   templateUrl: './product-dimensions.component.html',
   changeDetection : ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./product-dimensions.component.scss'],
 })
 export class ProductDimensionsComponent implements OnInit {
   @Input() productDimensions : DimensionsSpecification[]
-  headersList : MeasureType[]
+  headersList : string[]
+  dimensionsMatrix : number[][]
   constructor() { }
 
   ngOnInit(): void {
-    this.productDimensions = this.productDimensions.filter(x => x.measures.length > 0)
-    this.headersList = this.productDimensions.map(x => x.measureType)
+    this.headersList = this.productDimensions.map(x => x.measureType.designation)
+    this.headersList.unshift('n°')
+    this.dimensionsMatrix = transpose(this.productDimensions.
+      map(x => 
+      x.measures.map(y => [y,x.measureType.unit])))
   }
-
-  dimensionsMatrix()  {
-    return transpose(this.productDimensions.map(x => x.measures))}
   variantsNumber() {
       return this.productDimensions[0].measures.length
     }

@@ -4,10 +4,18 @@
   padding:  0.5rem 1.5rem;
 }
 main {
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
 .form__field {
+  margin-bottom: 1.5rem;
   textarea {
-   width: 100%;
- }
+   margin-top: 1rem;
+   width: 100%; }
+}
+.products-container {
+  max-height: 10rem;
+  overflow-y: scroll;
+}
+.mat-h2 {
+  margin: 0;
 }

@@ -47,8 +47,8 @@ export class ProductBoxComponent implements OnInit  {
 
   }
   toggleModal(value) {
-    this.store$.dispatch(ProductStoreActions.LoadProductAction({product:this.product}))
-    this.store$.dispatch(ModalStoreActions.ToggleAction({key: value}));
+    // this.store$.dispatch(ProductStoreActions.LoadProductAction({product:this.product}))
+    // this.store$.dispatch(ModalStoreActions.ToggleWithAuth({key: value}));
   }
 
 }
