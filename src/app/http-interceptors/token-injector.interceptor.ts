@@ -21,6 +21,7 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
     if (request.url.includes('smc-static-media')) {
       return next.handle(request);
     }
+    
     request = request.url.includes('g-auth') ?
     request.clone({
       setHeaders: {

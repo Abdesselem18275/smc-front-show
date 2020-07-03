@@ -11,11 +11,11 @@
         <p class="inline--centred">
           <mat-icon class="mr2">subject</mat-icon>
           Subjects
-          <span class="ml2 mat-caption font--grey">(2 selected)</span>
+          <span *ngIf="selectedSubjectsCount && selectedSubjectsCount > 0" class="ml2 mat-caption font--grey">({{selectedSubjectsCount}} selected)</span>
         </p>
         <button (click)="toggle()" mat-icon-button>
           <mat-icon>
-            expand_less
+            {{isSubjectsContainerOpen ? "expand_less":"expand_more"}}
           </mat-icon>
         </button>
       </header>
@@ -33,20 +33,20 @@
       <p class="inline--centred">
         <mat-icon class="mr2">favorite</mat-icon>
         Attach products from your favorites
-      <span class="ml2 mat-caption font--grey">(2 selected)</span>
+      <span *ngIf="selectedProductsCount && selectedProductsCount > 0" class="ml2 mat-caption font--grey">({{selectedProductsCount}} selected)</span>
     </p>
       <button (click)="toggle()" mat-icon-button>
         <mat-icon>
-          expand_less
+          {{!isSubjectsContainerOpen ? "expand_less":"expand_more"}}
         </mat-icon>
       </button>
     </header>
     <mat-divider></mat-divider>
-    <mat-selection-list  *ngIf="!isSubjectsContainerOpen" class="products-container" name="related_products" formControlName="related_products" id="related_products">
-      <mat-list-option [value]="item.id" *ngFor="let item of forListProducts$ | async">
+    <mat-selection-list  [hidden]="!isSubjectsContainerOpen" class="products-container" name="related_products" formControlName="related_products" id="related_products">
+      <mat-list-option [value]="item?.id" *ngFor="let item of forListProducts$ | async">
         <img matListAvatar [src]="item.appearanceVariants  | mergeSizeQs:100 ">
-        <div mat-line>
-          {{item.designation}}
+        <div>
+          {{item?.designation}}
         </div>
       </mat-list-option>
     </mat-selection-list>

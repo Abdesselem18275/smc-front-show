@@ -1,9 +1,7 @@
 export interface MinimalProduct {
   id: number;
   designation: string;
-  shortDescription: string
   appearanceVariants:string;
-  isFavorite: boolean;
 }
 export interface FilterCategory {
     controlType: string;
@@ -84,7 +82,7 @@ export interface Category   {
     children?: Category[];
     thumbNail?: string;
     thumbNailAux?:string;
-    svgIcon?: BaseImage;
+    svgIcon?: string;
 }
 
 export interface Feature {

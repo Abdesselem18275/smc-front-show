@@ -21,6 +21,9 @@ export class UserRequestComponent implements OnInit {
   forListProducts$ : Observable<MinimalProduct[]>
   selectedProduct$ : Observable<any>
   isSubjectsContainerOpen : boolean;
+  selectedProductsCount : number = 0;
+  selectedSubjectsCount : number = 0;
+
   constructor(
     private pds: ProductDataService,
     private accountFormService: AccountFormService,
@@ -34,10 +37,12 @@ export class UserRequestComponent implements OnInit {
     this.store$.select(ProductStoreSelectors.selectSelectedProduct).pipe(
       take(1),
       tap((product) => {
-        console.warn(product)
         this.requestForm.get('related_products').setValue(product.id)
       })).subscribe(x => console.warn(x))
-    this.requestForm.valueChanges.subscribe(x => console.warn(x))
+    this.requestForm.valueChanges.subscribe(x => {
+      this.selectedProductsCount = x.related_products.length
+      this.selectedSubjectsCount = x.subjects.length
+    })
   }
   close() {
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
