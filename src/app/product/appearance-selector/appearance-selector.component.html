@@ -5,7 +5,7 @@
 <section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">
   <div #loadingImage  (mouseover)="setHoveredAppearance(item)" *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
     <img  class="mb1"
-    [src]="item.look.thumbNail"
+    [src]="item.look.thumbNail  | mergeSizeQs:50"
     (click)="setAppearanceVariant(item)">
     <span     *ngIf="_selectedAppearanceVariant == item"></span>
   </div>

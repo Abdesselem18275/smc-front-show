@@ -44,7 +44,7 @@
     <mat-divider></mat-divider>
     <mat-selection-list  *ngIf="!isSubjectsContainerOpen" class="products-container" name="related_products" formControlName="related_products" id="related_products">
       <mat-list-option [value]="item.id" *ngFor="let item of forListProducts$ | async">
-        <img matListAvatar [src]="item.appearanceVariants">
+        <img matListAvatar [src]="item.appearanceVariants  | mergeSizeQs:100 ">
         <div mat-line>
           {{item.designation}}
         </div>

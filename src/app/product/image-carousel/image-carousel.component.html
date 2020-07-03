@@ -1,6 +1,6 @@
 
 <div  cdkScrollable class="inline--centred images-container">
-  <img *ngFor="let item of imagesArray" [src]="item">
+  <img *ngFor="let item of imagesArray" [src]="item  | mergeSizeQs:1200">
 </div>
 <footer *ngIf="imagesArray.length > 1" class="mt4 inline--centred--spaced">
 <button (click)="byStepIndex(-1)" mat-icon-button>

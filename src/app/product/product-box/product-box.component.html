@@ -22,7 +22,7 @@
                 </button>
         </div>
         <a #loadingImage [routerLink]="['/product', product.id]">
-        <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+        <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:400">
         </a>
 
         <section class="my2 mx4 content-information">
@@ -74,7 +74,7 @@
 
 <ng-template #smallBox>
         <a #loadingImage [routerLink]="['/product', product.id]">
-                <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail">
+                <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:400">
         </a>
         <section class="mx4">
                 <p class="mat-body"  #pulsingText>{{product.designation | uppercase}}</p>

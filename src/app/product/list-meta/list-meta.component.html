@@ -5,7 +5,7 @@
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
       <ng-container *ngIf="(activeCategory$ | async) as category else allProducts">
         <section class="column--centred">
-          <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon.designation"></mat-icon>
+          <!-- <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon.designation"></mat-icon> -->
           <p class="mat-h1">{{category.designation | uppercase}}</p>
           <p class="description-container mat-body-1 font--dark-accent">{{category.description}}</p>
         </section>
