@@ -66,6 +66,5 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
     return this.selectImage(_index);
   }
   imageSlide(event) {
-    console.warn(event);
   }
  }

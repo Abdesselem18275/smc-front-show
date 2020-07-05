@@ -3,6 +3,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-account',
@@ -13,7 +14,6 @@ export class AccountComponent implements OnInit {
   tabs: any[];
   activeLink: string;
   isUpdating$: Observable<boolean>;
-
   constructor(private store$: Store<RootStoreState.State>,) { }
 
   ngOnInit() {

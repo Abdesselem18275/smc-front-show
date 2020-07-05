@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_URL, TOKEN_KEY } from '../injectables.service';
+import { S3HandlerService } from '../shared/service/s3-handler.service';
 
 @Injectable()
 export class TokenInjectorInterceptor implements HttpInterceptor {

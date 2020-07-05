@@ -19,7 +19,9 @@ main {
 
 aside {
   max-height: 80vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  padding-right: 4px;
 }
 aside > * {
   margin: 1rem 0;

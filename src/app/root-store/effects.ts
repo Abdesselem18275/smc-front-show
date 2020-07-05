@@ -19,7 +19,6 @@ export class RootEffects {
             response['icons'].forEach(jsonItem => {
               this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
             });
-            console.warn(this.iconRegistry)
 
           }),
           map(response => {

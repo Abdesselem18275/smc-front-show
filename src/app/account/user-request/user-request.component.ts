@@ -34,10 +34,8 @@ export class UserRequestComponent implements OnInit {
     this.store$.select(ProductStoreSelectors.selectSelectedProduct).pipe(
       take(1),
       tap((product) => {
-        console.warn(product)
         this.requestForm.get('related_products').setValue(product.id)
-      })).subscribe(x => console.warn(x))
-    this.requestForm.valueChanges.subscribe(x => console.warn(x))
+      }))
   }
   close() {
     this.store$.dispatch(ModalStoreActions.CloseAllAction());

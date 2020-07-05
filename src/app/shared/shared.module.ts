@@ -24,6 +24,7 @@ import { CategoriesTreeComponent } from './categories-tree/categories-tree.compo
 import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
 import { CustomPluralPipe } from './custom-plural.pipe';
 import { ControlValidatorMessageDirective } from '../account/control-validator-message.directive';
+import { S3MediaComponent } from './s3-media/s3-media.component';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -36,7 +37,7 @@ import { ControlValidatorMessageDirective } from '../account/control-validator-m
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,ControlValidatorMessageDirective, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe],
+                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,ControlValidatorMessageDirective, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, S3MediaComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -60,6 +61,7 @@ import { ControlValidatorMessageDirective } from '../account/control-validator-m
     AuthentificationCardComponent,
     ControlValidatorMessageDirective,
     CustomPluralPipe,
+    S3MediaComponent,
     CommonModule,
 
   ]

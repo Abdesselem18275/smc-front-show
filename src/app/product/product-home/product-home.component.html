@@ -1,6 +1,8 @@
 <section class="hero-image">
 </section>
 <main>
+  <app-s3-media uri="/media/2_Tier_serving_stand_didon__thumbNail.jpg?d=1000x1000"></app-s3-media>
+  <!-- <app-s3-media uri="media/2_Tier_serving_stand_didon__thumbNail.jpg"></app-s3-media> -->
 
 <section class="welcome-text">
    <h1>
@@ -13,7 +15,7 @@
 
 <section class="categories-container">
 
-<app-product-category class="category-container" [category]="category"   *ngFor="let category of categories$ |async"></app-product-category> 
+<app-product-category class="category-container" [category]="category"   *ngFor="let category of categories$ |async"></app-product-category>
 
 </section>
 </main>

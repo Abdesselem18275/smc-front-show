@@ -17,12 +17,9 @@ export class ConfigService {
   loadInitials(): Promise<void| Object> {
 
     return this.store$.select(GlobalStoreSelectors.selectCategories).pipe(
-             tap(x => console.warn(x)),
              take(2)
            )
-           .toPromise().then(
-             ()  => console.warn('hello 2')
-           )
+           .toPromise().then()
     //return interval(1000).pipe(take(1)).toPromise(); // this
 
   }

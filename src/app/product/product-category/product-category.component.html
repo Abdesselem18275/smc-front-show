@@ -1,14 +1,14 @@
 <main class="column--centred">
-  <img [src]="category.thumbNail" class="root-category">
+  <!-- <img [src]="category.thumbNail" class="root-category"> -->
   <h1>
     DISCOVER THE PLEASURE OF COOKING
   </h1>
   <p class="mat-subheading-1">
     {{category.description | lowercase}}
   </p>
-  <a  
+  <a
     [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
-    class="mt4" 
+    class="mt4"
     color="primary"
     mat-stroked-button>
     <span class="mat-h2">

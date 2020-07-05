@@ -43,7 +43,6 @@ export const PROFILE_ID = new InjectionToken<string>('ProfileId', {
 
 export const LANGUAGE_CONFIG = new InjectionToken<UserLanguage[]>('config.service');
 export function loadInitData(configService: ConfigService) {
-  console.warn('hello')
   return () => configService.loadInitials();
 }
 export const InjectablesService: Array<any> = [
