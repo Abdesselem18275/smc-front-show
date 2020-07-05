@@ -52,11 +52,10 @@
     "@ngrx/router-store": "^9.1.1",
     "@ngrx/store": "^9.1.1",
     "@ngrx/store-devtools": "^9.0.0",
-    "aws-sdk": "^2.702.0",
     "dotenv": "^8.2.0",
     "intersection-observer": "^0.10.0",
     "rxjs": "^6.5.5",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.6",
     "zone.js": "^0.10.3"
   },
   "devDependencies": {

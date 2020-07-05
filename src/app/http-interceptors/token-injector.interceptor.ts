@@ -7,7 +7,6 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_URL, TOKEN_KEY } from '../injectables.service';
-import { S3HandlerService } from '../shared/service/s3-handler.service';
 
 @Injectable()
 export class TokenInjectorInterceptor implements HttpInterceptor {
@@ -22,7 +21,7 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
     if (request.url.includes('smc-static-media')) {
       return next.handle(request);
     }
-    
+
     request = request.url.includes('g-auth') ?
     request.clone({
       setHeaders: {
