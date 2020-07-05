@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
-import { RouterStateSnapshot, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -90,11 +90,11 @@ export class UserEffects {
       updateUser$  = createEffect(() =>
       this.actions$.pipe(
         ofType(UsersActions.UpdateUserAction),
-        map((action: any ) => JSON.stringify(action.payload, editFormReplacer)),
+        map((action:any) => [JSON.stringify(action.payload, editFormReplacer),action.message]),
         switchMap((payload)  =>
-          this.as.updateProfile(payload).pipe(
+          this.as.updateProfile(payload[0]).pipe(
             map((profile: Profile) => {
-              this.snakBar.open('Profile informations successfully updated');
+              this.snakBar.open(payload[1]);
               return UsersActions.LoadUserAction({payload: profile});
             }),
             catchError(async (err) =>  {
@@ -107,7 +107,7 @@ export class UserEffects {
         withLatestFrom(this.store$.select(selectUser)),
         map(content => content[1]),
         filter(payload => payload !== null),
-        map(payload => UsersActions.UpdateUserAction({payload}))));
+        map(payload => UsersActions.UpdateUserAction({message:'Your favorites list was successfully updated',payload}))));
 
       userRefrechTrigger$  = createEffect(() =>
         this.actions$.pipe(

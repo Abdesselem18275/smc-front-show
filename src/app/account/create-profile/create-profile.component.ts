@@ -38,7 +38,8 @@ export class CreateProfileComponent implements OnInit {
     this.createForm.enable()
     if(this.createForm.valid) {
       const payload = this.createForm.value;
-      this.store$.dispatch(UserStoreActions.CreateUserAction({payload}));
+      this.store$.dispatch(UserStoreActions.CreateUserAction({
+        payload}));
       this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
     }
   }

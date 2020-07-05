@@ -36,7 +36,9 @@ export const CreateUserAction = createAction(
 );
 export const UpdateUserAction = createAction(
   ActionsType.UPDATE,
-  props<{ payload: any}>()
+  props<{ 
+    message?:string
+    payload: any}>()
 );
 export const ToggleFavoriteAction = createAction(
   ActionsType.TOGGLE_FAVORITE,

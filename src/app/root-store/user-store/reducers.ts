@@ -51,7 +51,7 @@ const userReducer = createReducer(
       if (state.user == null) {
         return state;
       }
-      let favorites = Object.assign([], state.user.favorites);
+      let favorites = Object.assign([], state.user.favorites.map(fav => fav.id));
       if (favorites.includes(id)) {
           favorites = favorites.filter( x => x !== id );
       } else {

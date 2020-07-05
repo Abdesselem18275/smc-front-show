@@ -1,3 +1,4 @@
+import { MinimalProduct } from "../product/model";
 
 export interface Profile {
     id: number;
@@ -12,6 +13,6 @@ export interface Profile {
     position: string;
     activityField: string;
     companyName: string;
-    favorites: number[];
+    favorites: MinimalProduct[];
     civility: string;
 }

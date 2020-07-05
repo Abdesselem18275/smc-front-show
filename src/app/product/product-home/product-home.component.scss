@@ -2,10 +2,16 @@
 
 
 .hero-image {
-  background-image: url('../../../assets/images/main_hero_image.jpg');
+  background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=2000x2000');
   background-size: cover;
   background-position: top;
   height: 100vh;
+  @media only screen and (max-width:1024px) {
+    background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=1200x1200');
+  }
+  @media only screen and (max-width:600px) {
+    background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=800x800');
+  }
 }
 .welcome-text {
   padding: 4rem 1rem;

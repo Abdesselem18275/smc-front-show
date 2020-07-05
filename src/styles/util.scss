@@ -81,7 +81,7 @@
 
   .image--pulsing {
     animation: pulse 1s infinite ease-in-out;
-    height: 250px;
+    min-height: 250px;
   }
   .pragraph--pulsing {
     animation: pulse 1s infinite ease-in-out;

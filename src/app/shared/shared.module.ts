@@ -24,7 +24,7 @@ import { CategoriesTreeComponent } from './categories-tree/categories-tree.compo
 import { AuthentificationCardComponent } from '../account/authentification-card/authentification-card.component';
 import { CustomPluralPipe } from './custom-plural.pipe';
 import { ControlValidatorMessageDirective } from '../account/control-validator-message.directive';
-import { S3MediaComponent } from './s3-media/s3-media.component';
+import { MergeSizeQsPipe } from './merge-size-qs.pipe';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -37,7 +37,8 @@ import { S3MediaComponent } from './s3-media/s3-media.component';
                  ProductFilterComponent,
                  AccountCardComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,ControlValidatorMessageDirective, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, S3MediaComponent],
+
+                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,ControlValidatorMessageDirective, MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, MergeSizeQsPipe],
   imports:  [
     CommonModule,
     RouterModule,
@@ -61,7 +62,7 @@ import { S3MediaComponent } from './s3-media/s3-media.component';
     AuthentificationCardComponent,
     ControlValidatorMessageDirective,
     CustomPluralPipe,
-    S3MediaComponent,
+    MergeSizeQsPipe,
     CommonModule,
 
   ]
