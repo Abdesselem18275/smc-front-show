@@ -62,7 +62,9 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       });
     }
     const payload = this.accountForm.value;
-    this.store$.dispatch(UserStoreActions.UpdateUserAction({payload}));
+    this.store$.dispatch(UserStoreActions.UpdateUserAction({
+      message:'Your profile informations was successfully updated',
+      payload}));
     this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
   }
 

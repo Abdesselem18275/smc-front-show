@@ -23,7 +23,6 @@ export class SmcAuthService {
   constructor(
               private http: HttpClient,
               private router: Router,
-              private store$: Store<any>,
               @Inject(API_URL) private apiUrl: string,
               @Inject(TOKEN_KEY) private tokenKey: string,
               @Inject(PROFILE_ID) private profileId: string) {
@@ -73,6 +72,15 @@ profileRefresh(): Observable<any> {
     '/'
    ].join('');
   return this.http.get<Profile>(query);
+}
+PutUserRequest(payload:any): Observable<any> {
+  const query: string = [
+    this.apiUrl,
+    '/profile/',
+    this.getProfileId(),
+    '/requests/'
+   ].join('');
+return this.http.post(query, payload);
 }
 
 redirect() {

@@ -1,11 +1,13 @@
 <header class="main-header inline--centred--spaced">
- <p class="mat-h2">Enter your request</p>
+ <p class="mat-h2">Please ask your question</p>
   <button (click)="close()" mat-icon-button>
           <mat-icon>close</mat-icon>
   </button>
 </header>
 <main>
-  <form [formGroup]="requestForm">
+  <form 
+  (ngSubmit)="submit()"
+  [formGroup]="requestForm">
     <div class="form__field">
       <header class="inline--centred--spaced" i18n>
         <p class="inline--centred">
@@ -13,14 +15,14 @@
           Subjects
           <span *ngIf="selectedSubjectsCount && selectedSubjectsCount > 0" class="ml2 mat-caption font--grey">({{selectedSubjectsCount}} selected)</span>
         </p>
-        <button (click)="toggle()" mat-icon-button>
+        <button (click)="toggle('isSubjectsContainerOpen')" mat-icon-button>
           <mat-icon>
-            {{isSubjectsContainerOpen ? "expand_less":"expand_more"}}
+            {{formContainerState['isSubjectsContainerOpen'] ? "expand_less":"expand_more"}}
           </mat-icon>
         </button>
       </header>
       <mat-divider></mat-divider>
-      <mat-selection-list  *ngIf="isSubjectsContainerOpen" class="subjects-container" name="subjects" formControlName="subjects" id="subjects">
+      <mat-selection-list    *ngIf="formContainerState['isSubjectsContainerOpen']" class="subjects-container" name="subjects" formControlName="subjects" id="subjects">
         <mat-list-option [value]="item.id" *ngFor="let item of subjects$ | async">
           <div mat-line>
             {{item.designation}}
@@ -35,29 +37,39 @@
         Attach products from your favorites
       <span *ngIf="selectedProductsCount && selectedProductsCount > 0" class="ml2 mat-caption font--grey">({{selectedProductsCount}} selected)</span>
     </p>
-      <button (click)="toggle()" mat-icon-button>
+      <button (click)="toggle('isProductListContainerOpen')" mat-icon-button>
         <mat-icon>
-          {{!isSubjectsContainerOpen ? "expand_less":"expand_more"}}
+          {{formContainerState['isProductListContainerOpen'] ? "expand_less":"expand_more"}}
         </mat-icon>
       </button>
     </header>
     <mat-divider></mat-divider>
-    <mat-selection-list  [hidden]="!isSubjectsContainerOpen" class="products-container" name="related_products" formControlName="related_products" id="related_products">
-      <mat-list-option [value]="item?.id" *ngFor="let item of forListProducts$ | async">
-        <img matListAvatar [src]="item.appearanceVariants  | mergeSizeQs:100 ">
-        <div>
-          {{item?.designation}}
-        </div>
-      </mat-list-option>
+    <mat-selection-list   *ngIf="formContainerState['isProductListContainerOpen']" class="products-container" name="related_products" formControlName="related_products" id="related_products">
+        <mat-list-option [selected]="item.id === (selectedProduct$ | async).id " *ngFor="let item of (forListProducts$ | async)"  [value]="item?.id">
+          <img matListAvatar [src]="item.appearanceVariants  | mergeSizeQs:100 ">
+          <div>
+            {{item?.designation}}
+          </div>
+        </mat-list-option>
     </mat-selection-list>
+
 </div>
   <div class="form__field">
     <header class="inline--centred--spaced" i18n>
-      <p>Message</p>
+      <p class="inline--centred">
+        <mat-icon class="mr2">message</mat-icon>
+      Message
+      </p>
+      <button (click)="toggle('isTextContainerOpen')" mat-icon-button>
+        <mat-icon >
+          {{formContainerState['isTextContainerOpen'] ? "expand_less":"expand_more"}}
+        </mat-icon>
+      </button>
+
     </header>
-    <textarea rows=5 placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
+    <textarea *ngIf="formContainerState['isTextContainerOpen']" rows=5 placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
       </textarea>
 </div>
-<button mat-flat-button class="form__submit-button" color="primary"><span>Send request</span></button>
+<button type="submit" mat-flat-button class="form__submit-button" color="primary"><span>Send request</span></button>
   </form>
 </main>
