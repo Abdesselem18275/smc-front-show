@@ -38,6 +38,7 @@
     "@angular/cli": "^10.0.1",
     "@angular/common": "^10.0.2",
     "@angular/compiler": "^10.0.2",
+    "@angular/compiler-cli": "^10.0.2",
     "@angular/core": "^10.0.2",
     "@angular/forms": "^10.0.2",
     "@angular/localize": "^10.0.2",
@@ -51,6 +52,8 @@
     "@ngrx/router-store": "^9.1.1",
     "@ngrx/store": "^9.1.1",
     "@ngrx/store-devtools": "^9.0.0",
+    "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
     "intersection-observer": "^0.10.0",
     "rxjs": "^6.6.0",
     "tslib": "^2.0.0",
@@ -58,7 +61,6 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^10.0.2",
     "@angular/language-service": "^10.0.2",
     "@ngrx/store-devtools": "^9.1.1",
     "@types/express": "^4.17.6",
