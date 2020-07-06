@@ -1,11 +1,12 @@
 import { ParamStoreSelectors, ProductStoreSelectors, ModalStoreActions, ProductStoreActions } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ProductShort, ParamType, Param, AppearanceVariant } from 'src/app/product/model';
+import { ProductShort, ParamType, Param, AppearanceVariant, Category } from 'src/app/product/model';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { verticalAccordionAnimation } from 'src/app/animations';
+import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ProductBoxComponent implements OnInit  {
   isSearchActive: Observable<boolean>;
   isFavoriteRoute: Observable<any>;
   isBigSize$: Observable<boolean>;
+  rootCat$ :Observable<Category>;
   isDimensionOpen: boolean;
   isMaterialOpen: boolean;
 
@@ -33,6 +35,7 @@ export class ProductBoxComponent implements OnInit  {
     this.isFavoriteRoute  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
     this.selectedAppearanceVariant$  = new BehaviorSubject<AppearanceVariant>(this.product.appearanceVariants[0])
     this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize)
+    this.rootCat$ = this.store$.select(GlobalStoreSelectors.selectCategoryById,{id:this.product.rootCategory}).pipe(take(1))
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);

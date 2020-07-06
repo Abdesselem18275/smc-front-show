@@ -39,7 +39,8 @@ export const selectCategoryQueryParam = createSelector(
       category ? setItems(categories,category).reverse():null
       //return category ? setItems(categories,category).reverse():null
     })
-
+  export const selectCategoryById = createSelector(selectCategories,
+    (categories:Category[],props: {id:number}) => getItem(categories,props.id))
   export const selectFilterForm = createSelector(
     selectFilters,
     (filters: FilterCategory[]) => toFormGroup(filters)

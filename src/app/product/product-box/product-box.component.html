@@ -11,7 +11,7 @@
                                 <span  #toHideLoading  class="mat-caption"
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
-                                        {{product.rootCategory}} /
+                                        {{(rootCat$ |async)?.designation}} /
                         </span >
                                 {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
 

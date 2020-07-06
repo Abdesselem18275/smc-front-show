@@ -4,15 +4,15 @@ export interface Profile {
     id: number;
     email: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     profile: Profile;
-    isProfessional: boolean;
+    is_professional: boolean;
     country: string;
-    phoneNumber: string;
+    phone_number: string;
     position: string;
-    activityField: string;
-    companyName: string;
+    activity_field: string;
+    company_name: string;
     favorites: MinimalProduct[];
     civility: string;
 }

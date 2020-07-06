@@ -23,7 +23,8 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
     this._setButtonLoading()
     try {
       this.targetImage = this.imageQueryList.first.nativeElement
-      this.subscribtion= fromEvent(this.targetImage,'load').subscribe(x => {
+      this.subscribtion= fromEvent(this.targetImage,'load').
+      subscribe(x => {
         this._unsetHideEffect()
         this._unsetImageloading()
         this._unsetTextLoading()

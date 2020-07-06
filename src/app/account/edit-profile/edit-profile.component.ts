@@ -1,8 +1,6 @@
 import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
-import { SmcAuthService } from '../service/smc-auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
 import { ParamStoreState, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
@@ -39,26 +37,26 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
       this.accountForm.setValue({
-        firstName: profile.firstName,
-        lastName: profile.lastName,
+        first_name: profile.first_name,
+        last_name: profile.last_name,
         civility: profile.civility,
         email : profile.email,
-        companyName : profile.companyName,
-        isProfessional : profile.isProfessional,
+        company_name : profile.company_name,
+        is_professional : profile.is_professional,
         position: profile.position,
-        activityField: profile.activityField,
-        phoneNumber : profile.phoneNumber,
+        activity_field: profile.activity_field,
+        phone_number : profile.phone_number,
         country : profile.country
       });
     });
   }
 
   onSubmit() {
-    if (!this.accountForm.get('isProfessional').value) {
+    if (!this.accountForm.get('is_professional').value) {
       this.accountForm.setValue({
-        companyName : null,
+        company_name : null,
         position: null,
-        activityField: null,
+        activity_field: null,
       });
     }
     const payload = this.accountForm.value;

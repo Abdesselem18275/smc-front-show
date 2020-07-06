@@ -8,7 +8,7 @@
             <section *ngIf="isLogged$ |async; else noCard" class=" column">
                 <mat-icon id="account-avatar" (click)="navToProfile()">account_circle</mat-icon>
                 <p class="mat-body-2">{{(profile$ |async).email}}</p>
-                <p class="mat-body-1 font--dark-grey">{{(profile$ |async).firstName}} {{(profile$ |async).lastName}}</p>
+                <p class="mat-body-1 font--dark-grey">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
                 <div class="font--dark-accent action-container mt4">
                <button routerLink="/product/favorites" class="mr3" mat-stroked-button>
                    <mat-icon class="mr2" >favorite</mat-icon>
@@ -30,7 +30,7 @@
             <mat-icon (click)="navToProfile()" id="account-avatar" >account_circle</mat-icon>
 
                 <p>welcome</p>
-                <p class="mat-h2">{{(profile$ |async).firstName}} {{(profile$ |async).lastName}}</p>
+                <p class="mat-h2">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
                 <p class="font--grey">{{(profile$ |async).email}}</p>
                 <mat-nav-list dense class="nav-list nav-list--full-width">
                     <mat-list-item class="font--dark-grey" routerLink="/product/favorites">
