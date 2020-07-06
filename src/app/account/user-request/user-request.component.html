@@ -5,8 +5,8 @@
   </button>
 </header>
 <main>
-  <form 
-  (ngSubmit)="submit()"
+  <form
+  class="column--centred"
   [formGroup]="requestForm">
     <div class="form__field">
       <header class="inline--centred--spaced" i18n>
@@ -22,7 +22,7 @@
         </button>
       </header>
       <mat-divider></mat-divider>
-      <mat-selection-list    *ngIf="formContainerState['isSubjectsContainerOpen']" class="subjects-container" name="subjects" formControlName="subjects" id="subjects">
+      <mat-selection-list *ngIf="formContainerState['isSubjectsContainerOpen']" class="subjects-container" formControlName="subjects" id="subjects">
         <mat-list-option [value]="item.id" *ngFor="let item of subjects$ | async">
           <div mat-line>
             {{item.designation}}
@@ -44,7 +44,7 @@
       </button>
     </header>
     <mat-divider></mat-divider>
-    <mat-selection-list   *ngIf="formContainerState['isProductListContainerOpen']" class="products-container" name="related_products" formControlName="related_products" id="related_products">
+    <mat-selection-list   *ngIf="formContainerState['isProductListContainerOpen']" class="products-container" formControlName="related_products" id="related_products">
         <mat-list-option [selected]="item.id === (selectedProduct$ | async).id " *ngFor="let item of (forListProducts$ | async)"  [value]="item?.id">
           <img matListAvatar [src]="item.appearanceVariants  | mergeSizeQs:100 ">
           <div>
@@ -58,18 +58,24 @@
     <header class="inline--centred--spaced" i18n>
       <p class="inline--centred">
         <mat-icon class="mr2">message</mat-icon>
-      Message
+      Add your test message
       </p>
       <button (click)="toggle('isTextContainerOpen')" mat-icon-button>
         <mat-icon >
           {{formContainerState['isTextContainerOpen'] ? "expand_less":"expand_more"}}
         </mat-icon>
       </button>
-
     </header>
+    <mat-divider></mat-divider>
     <textarea *ngIf="formContainerState['isTextContainerOpen']" rows=5 placeholder="Tape your message" name="text_content" formControlName="text_content" id="text_content">
       </textarea>
 </div>
-<button type="submit" mat-flat-button class="form__submit-button" color="primary"><span>Send request</span></button>
+<button
+mat-flat-button
+(click)="submit()"
+
+[disabled]="!requestForm.valid"
+class="my4 form__submit-button"
+color="primary"><span>Send request</span></button>
   </form>
 </main>

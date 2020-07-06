@@ -57,14 +57,15 @@ export class UserRequestComponent implements OnInit {
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
   }
   toggle(key) {
-    this.formContainerState[key] = !this.formContainerState[key]
+    Object.keys(this.formContainerState).forEach(x => {
+      this.formContainerState[x] =  x === key ? !this.formContainerState[x] : false
+    })
   }
   submit() {
     this.sas.PutUserRequest(JSON.stringify(this.requestForm.value)).subscribe(
       x => {
         this.store$.dispatch(ModalStoreActions.CloseAllAction())
         this.snakBar.open('your request was successfully submitted . You will soon soon answer you via your email adress')
-
       },
       err => console.warn(err)
     )

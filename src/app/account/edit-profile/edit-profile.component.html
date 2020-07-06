@@ -13,19 +13,24 @@
               <option value="Mme">Mme.</option>
           </select>
       </div>
-                <div class="form__field">
+      <section class="inline--centred--spaced">
+
+                <div class="form__field mr2">
                     <label i18n>first name</label>
-                    <input required  appControlValidatorMessage type="text" formControlName="firstName" id="firstName">
+                    <input required  appControlValidatorMessage type="text" formControlName="first_name" id="first_name">
                 </div>
-                <div class="form__field">
+                <div class="form__field ml2">
                     <label i18n>last name</label>
-                    <input required  appControlValidatorMessage type="text" formControlName="lastName" id="lastName">
+                    <input required  appControlValidatorMessage type="text" formControlName="last_name" id="last_name">
                 </div>
-                <div class="form__field">
+              </section>
+
+              <section class="inline--centred--spaced">
+                <div class="form__field mr2">
                         <label i18n>Phone Number</label>
-                        <input  appControlValidatorMessage autocomplete="tel" type="tel" formControlName="phoneNumber" id="phoneNumber">
+                        <input  appControlValidatorMessage autocomplete="tel" type="tel" formControlName="phone_number" id="phone_number">
                 </div>
-                <div class="form__field" >
+                <div class="form__field ml2" >
                         <label i18n>Country</label>
                         <select class="input--large-width" formControlName="country" id="country">
                           <option
@@ -35,14 +40,15 @@
                           </option>
                         </select>
                 </div>
+              </section>
 
 
                 <div class="my4 inline--centred">
-                  <input  formControlName="isProfessional" type="checkbox" id="isProfessional">
-                  <label class="mat-body ml4" for="isProfessional">Are you a professional ?</label>
+                  <input  formControlName="is_professional" type="checkbox" id="is_professional">
+                  <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
                 </div>
 
-        <section *ngIf="accountForm.get('isProfessional').value">
+        <section *ngIf="accountForm.get('is_professional').value">
                 <header class="fieldset-title">
                         <p class="inline--centred mat-subheading-1">
                                 <mat-icon>work</mat-icon>
@@ -50,14 +56,16 @@
                             </p>
                 </header>
 
-                <div class="form__field" >
+                <div class="form__field">
                         <label i18n>company name</label>
                         <input
                         autocomplete="organization"
                          appControlValidatorMessage type="text"
-                        formControlName="companyName" id="companyName">
+                        formControlName="company_name" id="company_name">
                 </div>
-                        <div class="form__field" >
+                <section class="inline--centred--spaced">
+
+                        <div class="form__field mr2" >
                                 <label i18n>position</label>
                                 <input
                                 autocomplete="organization"
@@ -66,15 +74,17 @@
                                 formControlName="position" id="position">
                                 <p class="form__field__hint" i18n> eg: sales manager </p>
                         </div>
-                        <div class="form__field" >
+                        <div class="form__field ml2" >
                                 <label i18n>activity field</label>
                                 <input
                                 autocomplete="activity"
                                  appControlValidatorMessage type="text"
                                 autocomplete="activity"
-                                formControlName="activityField" id="activityField">
+                                formControlName="activity_field" id="activity_field">
                                 <p class="form__field__hint" i18n>eg: Tourism , Restoration</p>
                         </div>
+                      </section>
+
                 </section>
 
                 <button type="submit"

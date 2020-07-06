@@ -1,5 +1,5 @@
 <nav
-    [class]="(isHomeRoute$ |async) ? 'menu--main-theme' : 'global__header__border'"
+    [class.menu--main-theme]="(isHomeRoute$ |async)"
     class='font--dark-grey global--gutters menu--shared-style'>
       <div class="nav-bar__left-content">
         <mat-icon (click)="toggleModal('sideMenuBox')" class="mr4">menu</mat-icon>
