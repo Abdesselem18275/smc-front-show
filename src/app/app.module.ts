@@ -45,7 +45,7 @@ import { RootEffects } from './root-store/effects';
     httpInterceptorProviders,
     InjectablesService,
     {
-      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}
     },
     {
       provide: APP_INITIALIZER,

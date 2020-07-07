@@ -9,7 +9,9 @@ export enum ActionsType {
   CREATE = '[User] Create new user',
   UPDATE = '[User] Update user',
   TOGGLE_FAVORITE = '[User] Toggle favorite',
-  TRIGGER_FAVORITE = '[User] Trigger favorite'
+  TRIGGER_FAVORITE = '[User] Trigger favorite',
+  FETCH_USER_REQUESTS = '[User] Fetch User Request',
+  LOAD_USER_REQUESTS = '[User] Fetch User Request'
 
 }
 export const LoginAction = createAction(
@@ -48,3 +50,8 @@ export const TriggerFavoriteAction = createAction(
   ActionsType.TRIGGER_FAVORITE,
   props<{ id: number}>()
 );
+export const FetchUserRequestsAction = createAction(
+  ActionsType.FETCH_USER_REQUESTS);
+export const LoadUserRequestsAction = createAction(
+  ActionsType.LOAD_USER_REQUESTS,
+  props<{payload:any}>());

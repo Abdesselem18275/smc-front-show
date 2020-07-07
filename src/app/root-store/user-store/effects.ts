@@ -12,6 +12,7 @@ import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Router } from '@angular/router';
+import { FetchUserRequestsAction, LoadUserRequestsAction } from './actions';
 
 
 @Injectable()
@@ -116,7 +117,7 @@ export class UserEffects {
           withLatestFrom(this.store$.select(selectUser)),
           filter(content => content[0][1] && content[1] === null),
           map(() => UsersActions.UserRefreshAction())));
-        
+      
       favoriteTrigger$ = createEffect(() =>
       this.actions$.pipe(
         ofType(UsersActions.TriggerFavoriteAction),
@@ -130,9 +131,8 @@ export class UserEffects {
             return UsersActions.ToggleFavoriteAction({id:favId})
           }
           else {
-            this.snakBar.open('You :have to login to perform this action')
+            this.snakBar.open('You have to login to perform this action')
             return ModalStoreActions.ToggleAction({key: 'loginBox'})
           }
-
         })))
   }

@@ -6,23 +6,23 @@ import { Profile } from 'src/app/account/model';
 
 
 
-export const selectModalState = createFeatureSelector<State>(fromUserReducer.featureKey);
+export const selectUserState = createFeatureSelector<State>(fromUserReducer.featureKey);
 
 
 export const selectUser = createSelector(
-  selectModalState,
+  selectUserState,
     (state) => {
-        return state.user;
+        return state.profile;
     }
   );
 export const selectError = createSelector(
-    selectModalState,
+    selectUserState,
       (state) => {
           return state.errorMessage;
       }
     );
 export const selectIsLoading = createSelector(
-      selectModalState,
+      selectUserState,
         (state) => {
             return state.isLoading;
         }
@@ -40,7 +40,7 @@ export const selectIsFavorite = createSelector(
   );
 
 export const selectIsAuthentificated = createSelector(
-    selectModalState,
+    selectUserState,
     (state) => (state.isAuthenticated)
     );
 export const selectFavoritesCount = createSelector(

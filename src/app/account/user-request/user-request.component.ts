@@ -65,7 +65,7 @@ export class UserRequestComponent implements OnInit {
     this.sas.PutUserRequest(JSON.stringify(this.requestForm.value)).subscribe(
       x => {
         this.store$.dispatch(ModalStoreActions.CloseAllAction())
-        this.snakBar.open('your request was successfully submitted . You will soon soon answer you via your email adress')
+        this.snakBar.open('your request was successfully submitted . We will soon answer you via your email adress')
       },
       err => console.warn(err)
     )

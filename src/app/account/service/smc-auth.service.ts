@@ -82,6 +82,15 @@ PutUserRequest(payload:any): Observable<any> {
    ].join('');
 return this.http.post(query, payload);
 }
+listUserRequest(): Observable<any> {
+  const query: string = [
+    this.apiUrl,
+    '/profile/',
+    this.getProfileId(),
+    '/requests/'
+   ].join('');
+  return this.http.get(query);
+}
 
 redirect() {
   if (this.isLogged()) {
@@ -97,7 +106,8 @@ getInitialState = () => ({
     isLoading: false,
     isAuthenticated: this.isLogged(),
     errorMessage: null,
-    user: null })
+    profile: null ,
+  })
 
 
 isLogged(): boolean {

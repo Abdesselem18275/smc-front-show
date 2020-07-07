@@ -6,10 +6,12 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthentificationCardComponent } from './authentification-card/authentification-card.component';
 import { ControlValidatorMessageDirective } from './control-validator-message.directive';
 import { UserRequestComponent } from './user-request/user-request.component';
+import { UserRequestListComponent } from './user-request-list/user-request-list.component';
 @NgModule({
   declarations: [AccountComponent,
                  EditProfileComponent,
-                 UserRequestComponent],
+                 UserRequestComponent,
+                 UserRequestListComponent],
   imports: [
     SharedModule,
     AccountRoutingModule

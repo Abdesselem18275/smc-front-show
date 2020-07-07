@@ -11,7 +11,7 @@ const userReducer = createReducer(
         ...state ,
         isLoading : false,
         isAuthenticated: true,
-        user: payload
+        profile: payload
       };
       return newState;
     }),
@@ -43,15 +43,15 @@ const userReducer = createReducer(
         isLoading : false,
         isAuthenticated: false,
         errorMessage: null,
-        user: null
+        profile: null
       };
       return newState;
     }),
     on(UsersActions.ToggleFavoriteAction, (state, { id }) => {
-      if (state.user == null) {
+      if (state.profile == null) {
         return state;
       }
-      let favorites = Object.assign([], state.user.favorites.map(fav => fav.id));
+      let favorites = Object.assign([], state.profile.favorites.map(fav => fav.id));
       if (favorites.includes(id)) {
           favorites = favorites.filter( x => x !== id );
       } else {
@@ -59,8 +59,8 @@ const userReducer = createReducer(
       }
       const newState = {
         ...state,
-        user: {
-          ...state.user,
+        profile: {
+          ...state.profile,
           favorites
         }
       };

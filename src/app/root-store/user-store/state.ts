@@ -1,16 +1,16 @@
-import { Profile } from "src/app/account/model";
-import { TOKEN_KEY } from "src/app/injectables.service";
+import { Profile, UserRequest } from "src/app/account/model";
 
 
 export interface State {
     isLoading: boolean;
     isAuthenticated: boolean;
     errorMessage: any;
-    user: Profile;
+    profile: Profile;
   }
 
 export const initialState: State = {
   isLoading: false,
   isAuthenticated: false,
   errorMessage: null,
-  user: null };
+  profile: null ,
+};

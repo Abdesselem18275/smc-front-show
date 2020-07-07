@@ -6,7 +6,6 @@ export interface Profile {
     password: string;
     first_name: string;
     last_name: string;
-    profile: Profile;
     is_professional: boolean;
     country: string;
     phone_number: string;
@@ -15,4 +14,14 @@ export interface Profile {
     company_name: string;
     favorites: MinimalProduct[];
     civility: string;
+    sended_requests:  UserRequest[]
+}
+export interface UserRequest {
+    id :number;
+    subjects : string[];
+    status: string;
+    related_products: string[];
+    text_content: string;
+    updated: string;
+    added: string;
 }
