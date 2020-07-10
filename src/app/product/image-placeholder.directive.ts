@@ -14,7 +14,7 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   targetImage : HTMLElement;
   imageElContainer:  HTMLElement;
   subscribtion : Subscription
-  constructor( private renderer: Renderer2,private ref: ChangeDetectorRef,) { }
+  constructor( private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
     this._setTextLoading()
@@ -54,7 +54,7 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   _setImageloading() {
     this.imageList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
-      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0]
+      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0] ? <HTMLElement>native.getElementsByTagName('img')[0] : native
       this.renderer.addClass(native,'image--pulsing')
       this.renderer.setStyle(imgEl,'visibility','hidden');
     })
@@ -62,17 +62,18 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   _unsetImageloading() {
     this.imageList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
-      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0]
+      const imgEl = <HTMLElement>native.getElementsByTagName('img')[0] ? <HTMLElement>native.getElementsByTagName('img')[0] : native
       this.renderer.removeClass(native,'image--pulsing')
       this.renderer.setStyle(imgEl,'visibility','visible');
     })
   }
   _setTextLoading() {
-      this.pragraphList.forEach(el => {
-        const native = el.nativeElement
-        this.renderer.addClass(native,'pragraph--pulsing')})
+      if(this.pragraphList.length > 0) {
+        this.pragraphList.forEach(el => {
+          const native = el.nativeElement
+          this.renderer.addClass(native,'pragraph--pulsing')})
+        }
       }
-
   _unsetTextLoading() {
     this.pragraphList.forEach(el => {
       const native = el.nativeElement
