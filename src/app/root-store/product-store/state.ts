@@ -21,7 +21,7 @@ export const adapter: EntityAdapter<ProductShort> = createEntityAdapter<ProductS
 });
 
 export const initialState: State = adapter.getInitialState({
-  isLoading : true,
+  isLoading : false,
   objCount : 0,
   isBigBox : true,
   selectedProduct : null,

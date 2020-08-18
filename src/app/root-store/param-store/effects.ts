@@ -6,7 +6,7 @@ import { map, switchMap, filter, concatMap, withLatestFrom, tap, exhaustMap } fr
 import { State } from "./state";
 import { ParamType, Param, Category } from "src/app/models/product.models";
 import { selectPageParam , selectAllParams } from "./selectors";
-import { of } from "rxjs";
+import { Observable, of } from "rxjs";
 import * as ProductStore from '../product-store';
 import { ROUTER_NAVIGATED } from "@ngrx/router-store";
 import { GlobalStoreSelectors } from "../global-store";
@@ -52,8 +52,8 @@ export class ParamEffects {
                 case ParamType.FILTER:
                 case ParamType.CATEGORY: {
                     return [
-                        ProductStore.ProductStoreActions.ClearAllAction(),
-                        DeleteManyAction(
+                      ProductStore.ProductStoreActions.ClearAllAction(),
+                      DeleteManyAction(
                             {ids :
                                 allParams.filter(param => (param.type === ParamType.SEARCH || param.type === ParamType.CATEGORY  ) ).
                                 map(param => param.key)
@@ -83,17 +83,18 @@ export class ParamEffects {
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/list')),
         map((actions: any) => actions.payload.routerState.queryParams),
-        map(param => Object.keys(param).length === 0 ? {dummyKey: ""} :param),
+        filter(param => Object.keys(param).length !== 0),
+        //map(param => Object.keys(param).length === 0 ? {dummyKey: ""} :param),
         map((params) => {
-                const paramsArray = [];
-                Object.keys(params).forEach(key => {
-                  paramsArray.push( {
-                    key : key,
-                    value: params[key],
-                    type : ParamType.CATEGORY
+          const paramsArray = [];
+          Object.keys(params).forEach(key => {
+            paramsArray.push( {
+              key : key,
+              value: params[key],
+              type : ParamType.CATEGORY
                   })});
                 return paramsArray.shift();
-            }),
+          }),
         withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),
         switchMap(([param,categories] : [Param,Category[]]) => [
             LoadActiveCategoryAction({ payload: categories.filter(cat => cat.designation === param.value).shift() }),

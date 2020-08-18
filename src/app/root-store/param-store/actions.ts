@@ -4,7 +4,7 @@ import { Param, Category } from 'src/app/models/product.models';
 export enum ActionsType {
   UPDATE     = '[Param] Add Or Update',
   UPDATES = '[Param] Multiple Add Or Update',
-  DELETE_MANY   = '[Param] Delete',
+  DELETE_MANY   = '[Param] Delete many',
   NEXT_PAGE = '[Param] Next Page',
   CLEAR = '[Param] Clear',
   LOAD_ACTIVE_CATEGORY = '[Param] Load active category'

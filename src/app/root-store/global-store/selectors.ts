@@ -25,7 +25,7 @@ export const selectCategoryQueryParam = createSelector(
       return queryParams['categories__designation__in'] !== '' && queryParams['categories__designation__in'] ?
       categories.filter(cat => cat.designation === queryParams['categories__designation__in']).shift():
       {
-        designation : 'All products',
+        designation : 'All Cateogries',
         isRoot: true,
         children : categories.filter(cat => cat.isRoot)
       }

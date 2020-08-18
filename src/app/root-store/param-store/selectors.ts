@@ -27,8 +27,9 @@ export const reducers: ActionReducerMap<State> = {
     selectAllParams,
     selectProductsCount,
     (AllParams , ProductsCount) => {
+      const page_number = AllParams.filter(x => x.type === ParamType.PAGE).shift();
         return {
-          page_number : AllParams.filter(x => x.type === ParamType.PAGE).shift().value,
+          page_number : page_number ? page_number.value : '1',
           count : ProductsCount
         };
     }
