@@ -19,11 +19,16 @@
   overflow: hidden;
   scroll-snap-type: x mandatory;
   max-width: 100%;
-  img {
+  div {
     scroll-snap-align: start;
     max-width: 100%;
     min-width:100% ;
+    img {
+      max-width: 100%;
+      min-width:100% ;
+    }
   }
+
 }
 .dot--selected {
   background-color: mat-color($smc-show-case-accent,darker);
