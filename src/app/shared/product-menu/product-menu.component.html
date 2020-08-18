@@ -1,6 +1,4 @@
-<nav
-    [class.menu--main-theme]="(isHomeRoute$ |async)"
-    class='font--dark-grey global--gutters menu--shared-style'>
+<nav class='font--dark-grey global--gutters menu--shared-style'>
       <div class="nav-bar__left-content">
         <mat-icon (click)="toggleModal('sideMenuBox')" class="mr4">menu</mat-icon>
         <app-language-box>
@@ -29,6 +27,7 @@
          Contact us
         </a>
      </div>
+     <span class="space-divider"></span>
      <div class="nav-bar__tools">
         <button mat-icon-button  (click)="toggleModal('searchBox')">
             <mat-icon>search</mat-icon>

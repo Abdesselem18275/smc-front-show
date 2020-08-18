@@ -1,37 +1,18 @@
 @import "src/styles.scss";
-
+main {
+  padding: 2rem;
+  transition: 0.3s ease-in-out;
+}
+main:hover {
+  @extend .mat-elevation-z6;
+}
 img {
   max-width: 100%;
+  width: 100%;
 }
 h1 {
-  text-align: center;
-  margin-top: 2rem;
-}
-p {
-  color: $dark-grey;
-  justify-content: center;
-  text-align: center;
-}
-@media only screen and (max-width:600px) {
- h1 {
-   order: 1;
- }
- img {
-  order: 2;
-}
-p {
-  order: 3;
-  padding: 1rem;
+  font-size: max(2vw, 24px);
 }
 a {
-  order: 4;
-}
 
-}
-header {
-  text-align: center;
-}
-
-.mat-h2 {
-  padding: 1rem;
 }

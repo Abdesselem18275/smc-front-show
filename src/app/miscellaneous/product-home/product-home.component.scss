@@ -1,6 +1,8 @@
 @import "src/styles.scss";
-
-img {
+main {
+  @extend .global--gutters;
+}
+.hero-image {
   content:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=2000x2000');
   max-width: 100%;
   @media only screen and (max-width:1024px) {
@@ -10,53 +12,45 @@ img {
     content: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=800x800');
   }
 }
+
 .welcome-text {
-  padding: 4rem 1rem;
+  min-height: 60vh;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+  .text-container,.illustration-container {
+    flex: 0 0 calc(50% - 1rem);
+  }
   h1 {
-    text-align: center;
-    font-size: 4rem;
-    margin-bottom: 3rem;
-    @media only screen and (max-width:1024px) {
-      font-size: 3rem;
+    font-size: max(4vw,24px);
+  }
+  mat-icon {
+    width: 100%;
+  }
+  @media only screen and (max-width:1024px) {
+    flex-direction: column;
+    .text-container,.illustration-container {
+      max-width: 100%;
     }
-    @media only screen and (max-width:600px) {
-      font-size: 2rem;
-      padding: 3rem 1rem;
-
+    .illustration-container {
+      order : 1;
+    }
+    .text-container {
+      order : 2;
     }
   }
-  p {
-    color:$dark-grey ;
-    justify-content: center;
-    text-align: center;
-    max-width: 750px;
-    margin: 0 auto;
-    font-weight: 500;
-    font-size: 1.25rem;
-  }
-
 }
 .categories-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  @media only screen and (max-width:1024px) {
-    flex-direction: column;
-    align-items: center;
-  }
 }
-main {
-  background: radial-gradient(271.21% 255.36% at 47.15% 0%, #DFE6F0 0%, rgba(255, 254, 254, 0) 100%);
-}
-.category-container {
-  margin: 2rem 4vw;
-  max-width: 35vw;
-  @media only screen and (max-width:1024px) {
-    max-width: 30rem;
-  }
-  @media only screen and (max-width:600px) {
-    max-width: 30rem;
-    margin: 2rem 0;
 
+.category-container {
+  width: 33.33%;
+  @media only screen and (max-width:1024px) {
+    width: 49%;
+  }
+  @media only screen and (max-width:1024px) {
+    width: 100%;
   }
 }

@@ -7,8 +7,9 @@ p {
 .nav-tabs__tab {
   justify-content: space-between;
   margin-bottom: 0;
+  margin-left: 1rem;
   a,app-category-menu {
-    margin: 0 1.5rem;
+    margin: 0 1rem;
   }
   @media only screen and (max-width:1024px) {
     display: none;
@@ -48,6 +49,9 @@ p {
   display: none;
 }
 @media only screen and (max-width:1024px) {
+  .space-divider {
+    display: none;
+  }
         .nav-bar__nav-tab {
           display: none;
           position: absolute;

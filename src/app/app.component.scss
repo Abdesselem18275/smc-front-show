@@ -1,4 +1,10 @@
-
+header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 4;
+  background-color: white;
+}
 .modal-container {
   overflow: hidden;
 }

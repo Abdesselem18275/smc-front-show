@@ -1,20 +1,26 @@
-<!-- <section class="hero-image">
-</section> -->
-  <img>
-
-<section class="welcome-text">
-   <h1>
-      The Modern Handmade Copperware
-   </h1>
-<p>
-   &Tradition bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
-</p>
-</section>
 <main>
 
-<section class="categories-container">
+<section class="inline welcome-text">
+<div class="text-container">
+  <h1>
+    The Modern Handmade Copperware
+ </h1>
+ <p class="mat-subheading-1">
+  SMC bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
+</p>
+</div>
+<div class="illustration-container">
+  <mat-icon inline="true" svgIcon="landing-page-illustration"></mat-icon>
+</div>
+</section>
 
+  <p class="mat-h1 mb8 text--centred  font--dark-grey"> OUR CATEGORIES</p>
+
+<section class="categories-container">
 <app-product-category class="category-container" [category]="category"   *ngFor="let category of categories$ |async"></app-product-category>
 
 </section>
+
+<img class="hero-image mt16">
+
 </main>

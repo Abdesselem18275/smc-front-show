@@ -1,19 +1,11 @@
-<main class="column--centred">
-
+<main class="column">
+  <a [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'">
   <img [src]="category.thumbNail | mergeSizeQs:600" class="root-category">
-  <h1>
+  <h1 class="mt4">
     DISCOVER THE PLEASURE OF COOKING
   </h1>
-  <p class="mat-subheading-1">
+  <p class="mat-subheading-1 font--grey">
     {{category.description | lowercase}}
   </p>
-  <a
-    [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'"
-    class="mt4"
-    color="primary"
-    mat-flat-button>
-    <span class="mat-h2">
-      Discover our {{category.designation | titlecase}} articles
-    </span>
-  </a>
+</a>
 </main>
