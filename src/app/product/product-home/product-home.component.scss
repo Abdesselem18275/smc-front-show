@@ -1,16 +1,13 @@
 @import "src/styles.scss";
 
-
-.hero-image {
-  background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=2000x2000');
-  background-size: cover;
-  background-position: top;
-  height: 100vh;
+img {
+  content:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=2000x2000');
+  max-width: 100%;
   @media only screen and (max-width:1024px) {
-    background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=1200x1200');
+    content: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=1200x1200');
   }
   @media only screen and (max-width:600px) {
-    background-image: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=800x800');
+    content: url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=800x800');
   }
 }
 .welcome-text {
@@ -19,10 +16,10 @@
     text-align: center;
     font-size: 4rem;
     margin-bottom: 3rem;
-    @media only screen and (max-width:1024px) { 
+    @media only screen and (max-width:1024px) {
       font-size: 3rem;
     }
-    @media only screen and (max-width:600px) { 
+    @media only screen and (max-width:600px) {
       font-size: 2rem;
       padding: 3rem 1rem;
 

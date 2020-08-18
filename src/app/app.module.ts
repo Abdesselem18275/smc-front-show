@@ -27,7 +27,7 @@ import { RootEffects } from './root-store/effects';
     PageNotFoundComponent,
       ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     HttpClientModule,
     MaterialModule,
     AccountModule,

@@ -12,7 +12,10 @@ import { AccountComponent } from './account/account/account.component';
 const appRoutes: Routes = [
 
   {path : 'product' , component : ProductComponent},
-  {path : 'account' , component : AccountComponent},
+  {
+    path : 'account' ,
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+},
   // {path : '**' , redirectTo: '/product/home'}
 
 
