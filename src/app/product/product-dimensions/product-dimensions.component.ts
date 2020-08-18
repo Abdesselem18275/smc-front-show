@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DimensionsSpecification, MeasureType } from '../model';
+import { DimensionsSpecification, MeasureType } from '../../models/product.models';
 import {transpose} from '../../../utils/util-functions';
 @Component({
   selector: 'app-product-dimensions',
@@ -17,7 +17,7 @@ export class ProductDimensionsComponent implements OnInit {
     this.headersList = this.productDimensions.map(x => x.measureType.designation)
     this.headersList.unshift('n°')
     this.dimensionsMatrix = transpose(this.productDimensions.
-      map(x => 
+      map(x =>
       x.measures.map(y => [y,x.measureType.unit])))
   }
   variantsNumber() {

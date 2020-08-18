@@ -8,6 +8,7 @@ import { selectAllModalState } from 'src/app/root-store/modal-store/selectors';
 import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
 import { Observable } from 'rxjs';;
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
+import { ModalRoute } from 'src/app/models/shared.models';
 
 @Component({
   selector: 'app-product-menu',
@@ -15,7 +16,7 @@ import { UserStoreSelectors } from 'src/app/root-store/user-store';
   styleUrls: ['./product-menu.component.scss'],
 })
 export class ProductMenuComponent implements OnInit {
-
+  modalRoute = ModalRoute;
   modalStore$: Observable<ModalStoreState.State>;
   isHomeRoute$: Observable<boolean>;
   favoritesCount$ : Observable<number>;
@@ -29,7 +30,7 @@ export class ProductMenuComponent implements OnInit {
     this.modalStore$ = this.store$.select(selectAllModalState);
     this.isHomeRoute$ = this.router.events.pipe(
       filter(x => x instanceof NavigationEnd),
-      map(event => event['url'] === '/product/home'));
+      map(event => event['url'] === '/miscellaneous/home'));
     this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount)
   }
 

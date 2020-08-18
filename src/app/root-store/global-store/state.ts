@@ -1,4 +1,4 @@
-import { Category, FilterCategory, MenuTreeData } from "src/app/product/model";
+import { Category, FilterCategory, MenuTreeData } from "src/app/models/product.models";
 
 export enum LanguageType {
     ENGLISH = 'English',

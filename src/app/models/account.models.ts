@@ -1,4 +1,4 @@
-import { MinimalProduct } from "../product/model";
+import { MinimalProduct } from "./product.models";
 
 export interface Profile {
     id: number;

@@ -2,7 +2,7 @@ import { Component , OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { ProductShort, AppearanceVariant } from '../model';
+import { ProductShort, AppearanceVariant } from '../../models/product.models';
 
 @Component({
   selector: 'app-product-detail',

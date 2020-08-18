@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UserRequest, Profile } from '../model';
+import { UserRequest, Profile } from '../../models/account.models';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { map, filter } from 'rxjs/operators';
 

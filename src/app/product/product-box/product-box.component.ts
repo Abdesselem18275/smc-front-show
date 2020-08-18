@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { map, tap, take } from 'rxjs/operators';
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ProductShort, ParamType, Param, AppearanceVariant, Category } from 'src/app/product/model';
+import { ProductShort, ParamType, Param, AppearanceVariant, Category } from 'src/app/models/product.models';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { verticalAccordionAnimation } from 'src/app/animations';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';

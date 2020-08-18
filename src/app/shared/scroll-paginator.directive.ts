@@ -6,7 +6,7 @@ import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
 import { selectPageParam } from '../root-store/param-store/selectors';
 import  * as ParamStore from '../root-store/param-store';
-import { ParamType } from '../product/model';
+import { ParamType } from '../models/product.models';
 import { AddOrUpdateAction } from '../root-store/param-store/actions';
 import { LoadRequestAction } from '../root-store/product-store/actions';
 

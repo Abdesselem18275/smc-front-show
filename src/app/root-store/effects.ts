@@ -6,7 +6,7 @@ import { GlobalStoreActions } from './global-store';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from '../shared/service/menu-data-builder.service';
-import { Category } from '../product/model';
+import { Category } from '../models/product.models';
 @Injectable()
 export class RootEffects {
   paramInit$ = createEffect(() =>

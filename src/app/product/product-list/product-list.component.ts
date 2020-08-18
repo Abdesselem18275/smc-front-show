@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import { ProductShort, ParamType, Param, Category } from '../model';
+import { ProductShort, ParamType, Param, Category } from '../../models/product.models';
 import { Store} from '@ngrx/store';
 import {  ParamStoreSelectors } from 'src/app/root-store/param-store';
 import { ProductStoreSelectors } from 'src/app/root-store/product-store';

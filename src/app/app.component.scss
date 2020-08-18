@@ -44,3 +44,13 @@ transform: translate(0, 0) ;
 background-color: white;
 
 }
+.modal--fixed {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 0%) ;
+  background-color: white;
+  min-height: 60%;
+  z-index: 3;
+}

@@ -9,7 +9,7 @@
 
 
       <mat-icon
-      [routerLink]="['/product/home/']"
+      [routerLink]="['/miscellaneous/home/']"
       class="nav-bar__logo"
       inline="true"
       svgIcon="logo">
@@ -34,7 +34,8 @@
             <mat-icon>search</mat-icon>
         </button>
 
-        <button class="mx1" mat-icon-button   (click)="toggleUserCard()" id="account-icon">
+        <button
+         class="mx1"  mat-icon-button   (click)="toggleUserCard()" id="account-icon">
             <mat-icon>person</mat-icon>
         </button>
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>

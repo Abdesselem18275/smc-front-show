@@ -14,8 +14,8 @@ export class ModalEffects {
         ofType(ToggleUserCard),
         map(() =>
             ToggleAction({key : this.authService.isLogged() ? 'userCardBox' : 'loginBox'}))));
-    
-    modalToggleAuthorization = createEffect(() => 
+
+    modalToggleAuthorization = createEffect(() =>
     this.actions$.pipe(
         ofType(ToggleWithAuth),
         map(payload => {

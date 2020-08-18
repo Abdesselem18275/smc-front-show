@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { FilterCategory, Param, MinimalProduct} from '../model';
+import { FilterCategory, Param, MinimalProduct} from '../../models/product.models';
 import { Observable, from, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';

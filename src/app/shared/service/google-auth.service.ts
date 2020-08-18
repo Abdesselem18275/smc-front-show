@@ -1,13 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SmcAuthService } from './smc-auth.service';
+import { SmcAuthService } from '../../account/service/smc-auth.service';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { UserStoreActions } from 'src/app/root-store/user-store';
-import { stringify } from 'querystring';
-import { Profile } from '../model';
+import { Profile } from '../../models/account.models';
 
 declare const gapi: any;
 @Injectable({

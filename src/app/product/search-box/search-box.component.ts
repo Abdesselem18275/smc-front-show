@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
-import { ParamType } from '../model';
+import { ParamType } from '../../models/product.models';
 import { Store } from '@ngrx/store';
 import { ParamStoreState, ParamStoreActions , ModalStoreActions } from 'src/app/root-store';
 import { Router } from '@angular/router';

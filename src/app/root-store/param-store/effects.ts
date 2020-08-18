@@ -4,7 +4,7 @@ import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAct
 import { Store, select } from "@ngrx/store";
 import { map, switchMap, filter, concatMap, withLatestFrom, tap, exhaustMap } from "rxjs/operators";
 import { State } from "./state";
-import { ParamType, Param, Category } from "src/app/product/model";
+import { ParamType, Param, Category } from "src/app/models/product.models";
 import { selectPageParam , selectAllParams } from "./selectors";
 import { of } from "rxjs";
 import * as ProductStore from '../product-store';

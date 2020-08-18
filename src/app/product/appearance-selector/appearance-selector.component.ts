@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AppearanceVariant, AppSelectorMode } from '../model';
+import { AppearanceVariant, AppSelectorMode } from '../../models/product.models';
 import { Observable } from 'rxjs';
 import { ProductStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';

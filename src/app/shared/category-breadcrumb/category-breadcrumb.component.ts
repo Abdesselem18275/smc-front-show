@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Category, ParamType, Param, ProductShort } from 'src/app/product/model';
+import { Category, ParamType, Param, ProductShort } from 'src/app/models/product.models';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ParamStoreSelectors } from 'src/app/root-store';

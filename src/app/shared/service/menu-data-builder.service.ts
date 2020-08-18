@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuTreeData, Category } from 'src/app/product/model';
+import { MenuTreeData, Category } from 'src/app/models/product.models';
 import { NavigationExtras } from '@angular/router';
 
 const INIT_NAV_TREE_DATA: MenuTreeData[]  = [
@@ -72,7 +72,7 @@ export class MenuDataBuilderService {
     });
 
   }
-  
+
   setCatRouterLink(cat : Category) {
     const newCat = {
       ...cat,
@@ -84,7 +84,7 @@ export class MenuDataBuilderService {
 
   generateCatRouterLink(designation:string) {
     let navigationExtras: NavigationExtras = {
-      queryParams: { 'categories__designation__in': designation },  
+      queryParams: { 'categories__designation__in': designation },
       queryParamsHandling : 'merge'
     };
     return ['/product/list',navigationExtras]

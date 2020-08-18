@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserStoreSelectors, UserStoreActions } from 'src/app/root-store/user-store';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Profile } from '../model';
+import { Profile } from '../../models/account.models';
 
 @Component({
   selector: 'app-account',
@@ -12,22 +12,9 @@ import { Profile } from '../model';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  tabs: any[];
-  activeLink: string;
-  isUpdating$: Observable<boolean>;
-  profile$: Observable<Profile>;
-  constructor(private store$: Store<RootStoreState.State>,) { }
+  constructor() { }
 
   ngOnInit() {
-    this.store$.dispatch(UserStoreActions.UserRefreshAction())
-    this.profile$ = this.store$.select(UserStoreSelectors.selectUser)
-    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.tabs = [
-      { label: 'Informations', icon: 'account_circle' , path: 'profile' },
-      { label: 'Favorites', icon: 'favorite' , path: 'favorites' },
-      { label: 'Messages', icon: 'message', path: 'messages' }
-    ];
-    this.activeLink = this.tabs[0].label;
   }
 
 }

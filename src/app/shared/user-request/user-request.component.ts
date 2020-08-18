@@ -5,13 +5,11 @@ import { AccountFormService } from '../service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { MinimalProduct } from 'src/app/product/model';
-import { ProductDataService } from 'src/app/product/service/product-data.service';
-import { take, map, tap } from 'rxjs/operators';
-import { verticalAccordionAnimation } from 'src/app/animations';
-import { UserStoreSelectors } from 'src/app/root-store/user-store';
-import { SmcAuthService } from '../service/smc-auth.service';
+import { MinimalProduct } from 'src/app/models/product.models';
+import { map } from 'rxjs/operators';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 export interface FormContainerState {
   isSubjectsContainerOpen :boolean
   isProductListContainerOpen:boolean
@@ -38,7 +36,6 @@ export class UserRequestComponent implements OnInit {
 
   constructor(
     private snakBar: MatSnackBar,
-    private sas :SmcAuthService,
     private accountFormService: AccountFormService,
     private store$: Store<RootStoreState.State>) { }
 
@@ -62,12 +59,6 @@ export class UserRequestComponent implements OnInit {
     })
   }
   submit() {
-    this.sas.PutUserRequest(JSON.stringify(this.requestForm.value)).subscribe(
-      x => {
-        this.store$.dispatch(ModalStoreActions.CloseAllAction())
-        this.snakBar.open('your request was successfully submitted . We will soon answer you via your email adress')
-      },
-      err => console.warn(err)
-    )
+    this.store$.dispatch(UserStoreActions.LoadUserRequestsAction({payload : this.requestForm.getRawValue()}))
   }
 }

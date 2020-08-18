@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
-import { Category } from 'src/app/product/model';
+import { Category } from 'src/app/models/product.models';
 import { Router } from '@angular/router';
 
 @Component({

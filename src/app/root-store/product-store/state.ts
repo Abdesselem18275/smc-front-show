@@ -1,4 +1,4 @@
-import { ProductShort } from 'src/app/product/model';
+import { ProductShort } from 'src/app/models/product.models';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface State extends EntityState<ProductShort> {

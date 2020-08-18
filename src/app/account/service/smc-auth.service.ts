@@ -2,9 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ProductShort } from 'src/app/product/model.js';
+import { ProductShort } from 'src/app/models/product.models.js';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
-import { Profile } from '../model';
+import { Profile } from '../../models/account.models';
 import { Store } from '@ngrx/store';
 
 

@@ -1,4 +1,4 @@
-import { Param, Category } from 'src/app/product/model';
+import { Param, Category } from 'src/app/models/product.models';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface State extends EntityState<Param> {

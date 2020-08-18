@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ProductShort } from '../model';
+import { ProductShort } from '../../models/product.models';
 
 @Component({
   selector: 'app-product-materials',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
-import { AppearanceVariant } from '../model';
+import { AppearanceVariant } from '../../models/product.models';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { debounceTime, throttleTime, throttle, bufferWhen, bufferCount, tap } from 'rxjs/operators';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';

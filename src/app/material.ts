@@ -18,17 +18,10 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 
 
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
-  imports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule, MatBadgeModule , MatIconModule , MatToolbarModule,
-            MatSnackBarModule,  ScrollingModule,
-            MatButtonToggleModule, MatTreeModule,MatRippleModule,MatProgressBarModule,
-            MatSlideToggleModule, MatChipsModule, MatListModule,MatMenuModule],
-
-  exports: [BrowserAnimationsModule, MatCheckboxModule, MatButtonModule, MatDividerModule,
+  exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,
             MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],

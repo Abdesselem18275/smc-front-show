@@ -1,4 +1,4 @@
-import { Profile, UserRequest } from "src/app/account/model";
+import { Profile, UserRequest } from "src/app/models/account.models";
 
 
 export interface State {

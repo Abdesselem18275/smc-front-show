@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {RouterModule , Routes} from '@angular/router';
 
 
-import { PageNotFoundComponent} from './page-not-found/page-not-found/page-not-found.component';
 import { ProductComponent } from './product/product/product.component';
-import { AccountComponent } from './account/account/account.component';
+import { AccountCardComponent } from './shared/account-card/account-card.component';
 
 
 
 const appRoutes: Routes = [
-
-  {path : 'product' , component : ProductComponent},
-  {
-    path : 'account' ,
-    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-},
-  // {path : '**' , redirectTo: '/product/home'}
+  {path : 'product' , loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},
+  {path : 'account' , loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
+  {path: 'miscellaneous', loadChildren: () => import('./miscellaneous/miscellaneous.module').then(m => m.MiscellaneousModule) },
+  {path : '' , redirectTo: '', pathMatch: 'full'}
 
 
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing : true,
                                       anchorScrolling: 'enabled',
                                       scrollPositionRestoration: 'enabled'

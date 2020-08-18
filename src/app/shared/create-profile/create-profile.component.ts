@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountFormService } from '../service/account-form.service';
+import { AccountFormService } from '../../shared/service/account-form.service';
 import { FormGroup } from '@angular/forms';
-import { SmcAuthService } from '../service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Observable } from 'rxjs';
-import { format } from 'path';
-import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-profile',

@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './product/product.component';
-import { ProductHomeComponent } from './product-home/product-home.component';
+import { ProductHomeComponent } from '../miscellaneous/product-home/product-home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductDetailResolverService } from './service/product-detail-resolver.service';
 import { AuthGuard } from '../account/auth.guard';
 
 const productRoutes: Routes = [
-  { path : 'product',
+  { path : '',
     component : ProductComponent,
     children : [
-      {
-        path : 'home',
-        component : ProductHomeComponent
-      },
+
       {
         path : 'favorites',
         component : ProductListComponent,

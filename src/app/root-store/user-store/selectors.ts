@@ -1,7 +1,7 @@
 import * as fromUserReducer from './reducers';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './state';
-import { Profile } from 'src/app/account/model';
+import { Profile } from 'src/app/models/account.models';
 
 
 

@@ -1,5 +1,5 @@
 import { createAction, props, Action } from '@ngrx/store';
-import { ProductShort } from 'src/app/product/model';
+import { ProductShort } from 'src/app/models/product.models';
 
 export enum ActionsType {
   UPDATE  = '[Product] Add Or Update',

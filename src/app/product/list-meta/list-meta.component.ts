@@ -3,7 +3,7 @@ import { RootStoreState, ProductStoreSelectors, ModalStoreActions, ParamStoreSel
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, filter, tap } from 'rxjs/operators';
-import { ParamType, Param, Category } from '../model';
+import { ParamType, Param, Category } from '../../models/product.models';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';

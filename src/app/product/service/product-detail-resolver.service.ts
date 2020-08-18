@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { ProductShort } from '../model';
+import { ProductShort } from '../../models/product.models';
 import { Observable, of, EMPTY  } from 'rxjs';
 import { ProductDataService } from './product-data.service';
 import { mergeMap, take } from 'rxjs/operators';

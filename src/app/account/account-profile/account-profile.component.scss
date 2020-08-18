@@ -1,0 +1,41 @@
+@import "src/styles.scss";
+
+.main-header {
+    background-color: mat-color($smc-show-case-primary,lighter);
+    color: mat-color($smc-show-case-accent,darker);
+}
+
+.tab-group {
+    margin-top: 1rem;
+    min-height: 100%;
+    display: none;
+
+}
+
+.container--large-screen {
+    display: flex;
+    align-items: flex-start;
+    .profile-container,.message-container {
+        flex: 1 1 50%;
+        padding: 1.5rem;
+        .mat-h1 {
+            padding-bottom: 1rem;
+            text-align: center;
+            border-bottom: 1px solid mat-color($smc-show-case-primary,darker);
+
+        }
+    }
+}
+.mat-h2 {
+    margin: 0;
+}
+
+
+@media only screen and (max-width:750px)  {
+    .tab-group {
+        display: block;
+    }
+    .container--large-screen {
+        display: none;
+    }
+}

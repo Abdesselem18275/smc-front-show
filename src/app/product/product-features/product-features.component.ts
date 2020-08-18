@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ProductShort, Feature } from '../model';
+import { ProductShort, Feature } from '../../models/product.models';
 
 @Component({
   selector: 'app-product-features',

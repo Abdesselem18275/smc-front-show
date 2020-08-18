@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AccountFormService } from '../service/account-form.service';
+import { AccountFormService } from '../../shared/service/account-form.service';
 import { Observable, Subscription } from 'rxjs';
 import { ParamStoreState, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
-import { Profile } from '../model';
+import { Profile } from '../../models/account.models';
 import { filter } from 'rxjs/operators';
 import { countries } from 'src/utils/countries-list';
 

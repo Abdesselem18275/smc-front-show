@@ -6,7 +6,7 @@ import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import * as UsersActions from './actions';
 import { selectUser, selectIsAuthentificated } from './selectors';
-import { Profile } from 'src/app/account/model';
+import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
@@ -40,6 +40,21 @@ export class UserEffects {
               ModalStoreActions.CloseAllAction(),
               UsersActions.LoadUserAction({payload})
             ];
+          }),
+          catchError(async (err) =>  {
+            return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
+          }))
+    )));
+
+    LoadUserRequestEffect$  = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.LoadUserRequestsAction),
+      map((action: any ) => JSON.stringify(action.payload)),
+      switchMap((payload)  =>
+        this.as.PutUserRequest(payload).pipe(
+          map(() => {
+            this.snakBar.open('your request was successfully submitted . We will soon answer you via your email adress')
+            return ModalStoreActions.CloseAllAction()
           }),
           catchError(async (err) =>  {
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
@@ -117,7 +132,7 @@ export class UserEffects {
           withLatestFrom(this.store$.select(selectUser)),
           filter(content => content[0][1] && content[1] === null),
           map(() => UsersActions.UserRefreshAction())));
-      
+
       favoriteTrigger$ = createEffect(() =>
       this.actions$.pipe(
         ofType(UsersActions.TriggerFavoriteAction),

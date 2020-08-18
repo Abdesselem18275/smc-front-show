@@ -3,7 +3,7 @@ import * as fromParamReducer from './reducers';
 
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectProductsCount } from '../product-store/selectors';
-import { ParamType, Param } from 'src/app/product/model';
+import { ParamType, Param } from 'src/app/models/product.models';
 
 export interface State {
     param: fromParamState.State;
@@ -33,7 +33,7 @@ export const reducers: ActionReducerMap<State> = {
         };
     }
   );
-  
+
   export const selectAllParamsByTypeCount = createSelector(
     selectAllParamsByType,
     (allEntities) => {

@@ -3,7 +3,7 @@ import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, For
 import { RootStoreConfig, Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { UserStoreSelectors, UserStoreActions } from 'src/app/root-store/user-store';
-import { Profile } from '../model';
+import { Profile } from '../../models/account.models';
 
 @Injectable({
   providedIn: 'root'
