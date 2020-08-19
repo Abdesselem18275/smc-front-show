@@ -21,7 +21,7 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
     this._setImageloading()
     this._setHideEffect()
     this._setButtonLoading()
-    try {
+    if(this.imageQueryList.first) {
       this.targetImage = this.imageQueryList.first.nativeElement
       this.subscribtion= fromEvent(this.targetImage,'load').
       subscribe(x => {
@@ -30,13 +30,13 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
         this._unsetTextLoading()
         this._unSetButtonLoading()
        });
-    } catch(error) {
-      console.error(error)
     }
-
   }
   ngOnDestroy(): void {
-    this.subscribtion.unsubscribe()
+    if (this.subscribtion) {
+      this.subscribtion.unsubscribe()
+
+    }
   }
 
   _setHideEffect() {

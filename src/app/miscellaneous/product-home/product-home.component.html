@@ -2,7 +2,7 @@
 </div>
 <div class="hero-text column--centred">
   <h1 class="text--centred">SMC</h1>
-  <a mat-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: 'dummy'}" [queryParamsHandling]= "'merge'">
+  <a mat-button [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}" [queryParamsHandling]= "'merge'">
       Discover our products
   </a>
 </div>
@@ -23,14 +23,14 @@
 </div>
 </section>
 
-  <p class="mat-h1 mb8 text--centred  font--dark-grey"> OUR CATEGORIES</p>
+  <p class="mat-h1 my8 text--centred  font--dark-grey"> OUR CATEGORIES</p>
 
 <section class="categories-container">
 <app-product-category class="category-container" [category]="category"   *ngFor="let category of categories$ |async"></app-product-category>
 
 </section>
 
-<p class="mat-h1 mb8 text--centred  font--dark-grey"> OUR KNOW-HOW</p>
+<p class="mat-h1 my8 text--centred  font--dark-grey"> OUR KNOW-HOW</p>
 
 
 </main>

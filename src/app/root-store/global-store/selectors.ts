@@ -51,7 +51,7 @@ export const selectCategoryQueryParam = createSelector(
   }
 
   const setItems = (categories,param:Category): Category[] => {
-    if (param === undefined || param.designation==="All products") {
+    if (param === undefined || param.designation==="All Cateogries") {
       return [];
     }
     const cat = getItem(categories,param.id)
