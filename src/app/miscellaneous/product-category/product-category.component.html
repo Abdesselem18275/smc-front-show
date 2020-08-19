@@ -1,11 +1,21 @@
 <main class="column">
   <a [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'">
   <img [src]="category.thumbNail | mergeSizeQs:600" class="root-category">
-  <h1 class="mt4">
+  <p class="mat-h1 mt4">
+    {{category.designation | uppercase}}
+  </p>
+  <p  class="mat-h3 mt4">
     DISCOVER THE PLEASURE OF COOKING
-  </h1>
-  <p class="mat-subheading-1 font--grey">
+  </p>
+  <p class="mat-subheading-1 font--grey pb4">
     {{category.description | lowercase}}
   </p>
 </a>
+  <mat-chip-list >
+    <mat-chip
+    [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}" [queryParamsHandling]= "'merge'"
+     color="primary" *ngFor="let childCat of category.children">
+         {{childCat.designation}}
+    </mat-chip>
+  </mat-chip-list>
 </main>
