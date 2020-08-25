@@ -18,7 +18,7 @@ header {
 }
 
 .account-card {
-position: absolute;
+position: fixed;
 min-width : 240px;
 top: 5.5rem;
 right: 0.5rem;
@@ -29,7 +29,7 @@ border-radius: 10px;
 }
 .center-box {
 position: fixed;
-top: 5%;
+top: 6rem;
 left: 50%;
 margin-right: -50%;
 transform: translate(-50%, 0%) ;
@@ -41,7 +41,7 @@ min-width: 320px;
 max-width: 640px;
 }
 .search-box {
-position: absolute;
+position: fixed;
 width: 100%;
 top: 0;
 right: 0;

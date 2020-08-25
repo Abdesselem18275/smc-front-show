@@ -24,16 +24,21 @@ main {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0, 0.2); /* Black w/opacity/see-through */
   h1 {
-    font-size :max(10vw,64px);
-    margin: 1rem 0;
+    font-size :max(10vw,96px);
+    margin: 0;
+  }
+  p {
+    font-size :max(1.5vw,12px);
+    margin: 0 0 2rem 0;
   }
   a {
     text-transform: uppercase;
     color: white;
-    background-color: mat-color($smc-show-case-primary);
-    padding: 1.5rem;
-    font-size :max(1.5vw,12px);
-    border-radius:2rem;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    font-size :max(1.25vw,12px);
+    border-radius:3rem;
+    border : 1px solid white
   }
 
 }
