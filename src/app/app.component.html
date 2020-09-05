@@ -1,7 +1,7 @@
       <header class="mat-elevation-z4">
             <app-product-menu></app-product-menu>
       </header>
-      <div class='overlay' (click)="closeAllModal() "*ngIf="isOverlay$|async">
+      <div class='overlay' appModalClose *ngIf="isOverlay$|async">
       </div>
 
       <div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="mat-elevation-z2 account-card">

@@ -66,8 +66,4 @@ export class ProductFilterComponent implements OnInit {
   toggleActive() {
     this.isActive = !this.isActive;
   }
-  closeMenu() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-
-  }
 }

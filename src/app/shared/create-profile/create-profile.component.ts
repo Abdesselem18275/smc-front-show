@@ -28,9 +28,6 @@ export class CreateProfileComponent implements OnInit {
     this.isChecking$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.createForm = this.accountFormService.createAccountForm();
   }
-  cancel() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-  }
   onSubmit() {
     this.createForm.enable()
     if(this.createForm.valid) {

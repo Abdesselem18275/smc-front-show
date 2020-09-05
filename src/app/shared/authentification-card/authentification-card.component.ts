@@ -18,7 +18,4 @@ export class AuthentificationCardComponent implements OnInit {
     this.isChecking = this.store$.select(UserStoreSelectors.selectIsLoading);
 
   }
-  close() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-  }
 }

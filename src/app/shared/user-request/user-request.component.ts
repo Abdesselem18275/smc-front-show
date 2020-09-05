@@ -50,9 +50,7 @@ export class UserRequestComponent implements OnInit {
       this.selectedSubjectsCount = x.subjects.length
     })
   }
-  close() {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
-  }
+
   toggle(key) {
     Object.keys(this.formContainerState).forEach(x => {
       this.formContainerState[x] =  x === key ? !this.formContainerState[x] : false

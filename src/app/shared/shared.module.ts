@@ -25,6 +25,7 @@ import { GoogleSignInComponent } from '../account/google-sign-in/google-sign-in.
 import { AuthentificationCardComponent } from './authentification-card/authentification-card.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { AccountLoginComponent } from './account-login/account-login.component';
+import { ModalCloseDirective } from './modal-close.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -37,7 +38,7 @@ import { AccountLoginComponent } from './account-login/account-login.component';
                  ProductFilterComponent,AccountCardComponent,UserRequestComponent,
                  LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
                  RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,
-                 MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, MergeSizeQsPipe],
+                 MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, MergeSizeQsPipe, ModalCloseDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -59,6 +60,7 @@ import { AccountLoginComponent } from './account-login/account-login.component';
     ProductFilterComponent,
     CustomPluralPipe,
     MergeSizeQsPipe,
+    ModalCloseDirective
   ]
 })
 export class SharedModule { }

@@ -70,5 +70,4 @@ export class AppComponent implements OnInit {
         return LanguageType.ENGLISH;
     }
   }
-  closeAllModal = () => (this.store$.dispatch(ModalStoreActions.CloseAllAction()))
 }
