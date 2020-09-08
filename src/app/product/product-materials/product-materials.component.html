@@ -1,11 +1,10 @@
-<p class="mat-h3 font--dark-grey">Materials</p>
+<p i18n class="mat-h3 font--dark-grey">Materials</p>
 <mat-divider></mat-divider>
 <mat-list dense>
     <mat-list-item>
       <div mat-line>
-          <p class="mat-body-2">
-           {{product?.rawMaterials.length | customPlural:'raw material variant'}}
-
+          <p i18n class="mat-body-2">
+            {product?.rawMaterials.length,plural,=1 {one raw material variant} other {{{product?.rawMaterials.length}} raw material variants }    }
           </p>
         </div>
       <div mat-line class="mat-caption">
@@ -17,9 +16,8 @@
     </mat-list-item>
     <mat-list-item>
         <div mat-line>
-          <p class="mat-body-2">
-            {{product?.interiorCoatings.length | customPlural:'interior coating variant'}}
-
+          <p i18n class="mat-body-2">
+            {product?.interiorCoatings.length,plural,=1 {one interior coating variant} other {{{product?.interiorCoatings.length}} interior coating variants }    }
           </p>
         </div>
         <div mat-line >

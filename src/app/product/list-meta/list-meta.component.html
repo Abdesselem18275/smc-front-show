@@ -23,7 +23,7 @@
 
       </ng-container>
       <ng-template #allProducts>
-        <p class="mat-h1">ALL PRODUCTS</p>
+        <p i18n  class="mat-h1">ALL PRODUCTS</p>
       </ng-template>
   </ng-container>
 </section>
@@ -37,7 +37,7 @@
 
 
 <main class="inline--centred--spaced global--gutters mat-subheading-1">
-<p class="font--thin" *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
+<p class="font--thin" i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
 
 
 <section class="action-container inline--centred">
@@ -57,12 +57,14 @@
 
 <ng-template #others>
   <ng-container  *ngIf="(isSearchActive$ | async)" >
-    <p class="mat-h1"  i18n *ngIf="(objCount$ | async) == 0">No products found for "{{searchTerm$| async}}"</p>
-    <p class="mat-h1"  i18n *ngIf="!((objCount$ | async) == 0)">Search results for "{{searchTerm$| async}}"</p>
-    </ng-container>
+    <p class="mat-h1"  i18n>
+      {objCount$ | async,plural, =0 { No products found for "{{searchTerm$| async}}"} other {Search results for "{{searchTerm$| async}}"}}
+    </p>
+  </ng-container>
     <ng-container  *ngIf="(isFavoriteActive$ | async)">
-      <p class="mat-h1"  i18n *ngIf="(favoritesCount$ | async) == -1">You have no favorite product "{{searchTerm$| async}}"</p>
-      <p class="mat-h1"  i18n *ngIf="(favoritesCount$ | async) != -1 ">Your favroites</p>
+      <p class="mat-h1 text--centred"  i18n>
+        {favoritesCount$ | async,plural, =0 { You have not yet selected a product as a favorite } other {You have {{favoritesCount$ | async}} favorites }}
+      </p>
     </ng-container>
 </ng-template>
 

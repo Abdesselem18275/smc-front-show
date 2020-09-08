@@ -8,6 +8,13 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr-FR": "src/locale/messages.fr.xlf",
+          "de-DE": "src/locale/messages.de.xlf"
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
@@ -18,6 +25,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/browser",
+            "aot": true,
+            "localize": true,
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,27 +41,6 @@
             "scripts": []
           },
           "configurations": {
-            "dev-fr": {
-              "outputPath": "dist/fr",
-              "baseHref": "/fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "fr"
-            },
-            "dev-en": {
-              "outputPath": "dist/en",
-              "baseHref": "/en/",
-              "i18nFile": "src/locale/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en"
-            },
-            "dev-de": {
-              "outputPath": "dist/de",
-              "baseHref": "/de/",
-              "i18nFile": "src/locale/messages.de.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "de"
-            },
             "production": {
               "fileReplacements": [
                 {
@@ -70,71 +58,15 @@
               "vendorChunk": false,
               "buildOptimizer": true
             },
-            "production-en": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputPath": "dist/en",
-              "outputHashing": "all",
-              "baseHref": "/en/",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "i18nFile": "src/locale/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en"
+            "fr": {
+              "localize": [
+                "fr-FR"
+              ]
             },
-            "production-fr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "aot": true,
-              "outputPath": "dist/fr",
-              "baseHref": "/fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "fr"
-            },
-            "production-de": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "aot": true,
-              "outputPath": "dist/de",
-              "baseHref": "/de/",
-              "i18nFile": "src/locale/messages.de.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "de"
+            "de": {
+              "localize": [
+                "de-DE"
+              ]
             }
           }
         },
@@ -148,7 +80,10 @@
               "browserTarget": "smc-show-case:build:production"
             },
             "fr": {
-              "browserTarget": "smc-show-case:build:production-fr"
+              "browserTarget": "smc-show-case:build:fr"
+            },
+            "de": {
+              "browserTarget": "smc-show-case:build:de"
             }
           }
         },
@@ -187,35 +122,13 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "./tsconfig.app.json",
-              "./tsconfig.spec.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "./tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
-            }
           }
         }
       }

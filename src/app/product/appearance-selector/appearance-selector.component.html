@@ -1,5 +1,7 @@
 <ng-container *ngIf="mode === 'FULL'">
-  <p  class="mat-h3  font--dark-grey">{{appearanceVariants.length | customPlural:'available look' | titlecase}}</p>
+  <p  class="mat-h3  font--dark-grey">
+    {appearanceVariants.length, plural, =0 {No} =1 {One} other { {{appearanceVariants.length}} } } available look
+  </p>
   <mat-divider></mat-divider>
 </ng-container>
 <section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">

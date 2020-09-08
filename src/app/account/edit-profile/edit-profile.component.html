@@ -1,7 +1,7 @@
 
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
         <header class="fieldset-title">
-                <p class="inline--centred mat-subheading-1">
+                <p i18n class="inline--centred mat-subheading-1">
                         <mat-icon>person</mat-icon>
                         Personal information
                     </p>
@@ -9,8 +9,8 @@
         <div class="form__field">
           <label   for ="civility" i18n>Civility</label>
           <select name="civility" formControlName="civility" id="civility">
-              <option selected value="Mr">Mr.</option>
-              <option value="Mme">Mme.</option>
+              <option i18n selected value="Mr">Mr.</option>
+              <option i18n value="Mme">Mme.</option>
           </select>
       </div>
       <section class="inline--centred--spaced">
@@ -45,14 +45,14 @@
 
                 <div class="my4 inline--centred">
                   <input  formControlName="is_professional" type="checkbox" id="is_professional">
-                  <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
+                  <label i18n class="mat-body ml4" for="is_professional">Are you a professional ?</label>
                 </div>
 
         <section *ngIf="accountForm.get('is_professional').value">
                 <header class="fieldset-title">
-                        <p class="inline--centred mat-subheading-1">
+                        <p  class="inline--centred mat-subheading-1">
                                 <mat-icon>work</mat-icon>
-                                Professional information
+                                <span i18n>Professional information</span>
                             </p>
                 </header>
 
@@ -91,8 +91,8 @@
                          mat-raised-button
                          class="form__submit-button my4"
                          color="primary"
-                         i18n primary>
-                <span>
+                          primary>
+                <span i18n>
                         Save changes
                 </span>
                 </button>

@@ -1,12 +1,12 @@
 <header class="global--gutters main-header">
-  <p class="mat-h2">Welcome {{(profile$ | async)?.first_name}} </p>
+  <p i18n class="mat-h2">Welcome {{(profile$ | async)?.first_name}} </p>
   <p class="mat-body-1">{{(profile$ | async)?.email}} </p>
 </header>
 <mat-tab-group mat-stretch-tabs class="tab-group" color="primary">
     <mat-tab>
         <ng-template  mat-tab-label>
           <div class="inline--centred">
-            <mat-icon class="mr4" >account_circle</mat-icon>
+            <mat-icon class="mr4">account_circle</mat-icon>
             <p class="mat-h3" i18n>PROFILE</p>
           </div>
           </ng-template>
@@ -15,7 +15,7 @@
         <app-edit-profile></app-edit-profile>
         </div>
     </mat-tab>
-    <mat-tab class="tab-group__element"  label="Message">
+    <mat-tab class="tab-group__element" i18n-label label="Message">
         <ng-template mat-tab-label>
             <div class="inline--centred">
               <mat-icon class="mr4" >message</mat-icon>
@@ -31,13 +31,13 @@
   </mat-tab-group>
 <main class="container--large-screen">
   <section class="profile-container">
-    <p class="mat-h1">
+    <p i18n class="mat-h1">
       Profile Informations
     </p>
     <app-edit-profile ></app-edit-profile>
   </section>
   <section class="message-container">
-    <p class="mat-h1">
+    <p i18n class="mat-h1">
       Your Requests
     </p>
     <app-user-request-list ></app-user-request-list>

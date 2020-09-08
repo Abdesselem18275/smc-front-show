@@ -12,16 +12,16 @@
                 <div class="font--dark-accent action-container mt4">
                <button routerLink="/product/favorites" class="mr3" mat-stroked-button>
                    <mat-icon class="mr2" >favorite</mat-icon>
-                   <span class="mat-caption">Favorites</span>
+                   <span i18n class="mat-caption">Favorites</span>
                </button>
                <button (click)="logOut()"  mat-stroked-button>
                 <mat-icon class="mr2">exit_to_app</mat-icon>
-                <span class="mat-caption">Log out</span>
+                <span i18n class="mat-caption">Log out</span>
             </button>
                 </div>
             </section>
             <ng-template #noCard>
-              <p class="mat-h3">MENU</p>
+              <p i18n class="mat-h3">MENU</p>
             </ng-template>
           </header>
           <button appModalClose class="icon--full-right" mat-icon-button><mat-icon>close</mat-icon></button>
@@ -31,21 +31,21 @@
         <header class="p10 column--centred">
             <mat-icon (click)="navToProfile()" id="account-avatar" >account_circle</mat-icon>
 
-                <p>welcome</p>
+                <p i18n>welcome</p>
                 <p class="mat-h2">{{(profile$ |async).first_name}} {{(profile$ |async).last_name}}</p>
                 <p class="font--grey">{{(profile$ |async).email}}</p>
                 <mat-nav-list dense class="nav-list nav-list--full-width">
                     <mat-list-item class="font--dark-grey" routerLink="/product/favorites">
                         <mat-icon matListIcon>favorite </mat-icon>
-                        <div matLine>Favorites</div>
+                        <div i18n matLine>Favorites</div>
                     </mat-list-item>
                     <mat-list-item routerLink="/account/profile">
                         <mat-icon matListIcon>person </mat-icon>
-                        <div matLine>Profile</div>
+                        <div i18n matLine>Profile</div>
                     </mat-list-item>
                     <mat-list-item (click)="logOut()">
                         <mat-icon matListIcon>exit_to_app </mat-icon>
-                        <div matLine>Log out</div>
+                        <div  i18n matLine>Log out</div>
                     </mat-list-item>
                 </mat-nav-list>
           </header>

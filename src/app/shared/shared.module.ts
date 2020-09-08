@@ -17,7 +17,6 @@ import { ProductMenuComponent } from './product-menu/product-menu.component';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
-import { CustomPluralPipe } from './custom-plural.pipe';
 import { MergeSizeQsPipe } from './merge-size-qs.pipe';
 import { AccountCardComponent } from './account-card/account-card.component';
 import { UserRequestComponent } from './user-request/user-request.component';
@@ -29,16 +28,11 @@ import { ModalCloseDirective } from './modal-close.directive';
 
 @NgModule({
   declarations: [ProductMenuComponent,
-                 SideNavMenuComponent, SearchBoxComponent,
-                 CategoryBreadcrumbComponent,
-                 AuthentificationCardComponent,
-                 GoogleSignInComponent,
-                 AccountLoginComponent,
-                 CreateProfileComponent,
-                 ProductFilterComponent,AccountCardComponent,UserRequestComponent,
-                 LoadingComponent, ScrollPaginatorDirective, TextHightlightDirective,
-                 RouterOutletToggleDirective, LanguageBoxComponent, CategoryMenuComponent,
-                 MenuItemComponent, CategoriesTreeComponent, CustomPluralPipe, MergeSizeQsPipe, ModalCloseDirective],
+    SideNavMenuComponent,SearchBoxComponent,CategoryBreadcrumbComponent,AuthentificationCardComponent,
+    GoogleSignInComponent,AccountLoginComponent,CreateProfileComponent,ProductFilterComponent,
+    AccountCardComponent,UserRequestComponent,LoadingComponent,ScrollPaginatorDirective,
+    TextHightlightDirective,RouterOutletToggleDirective, LanguageBoxComponent,CategoryMenuComponent,
+    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -58,7 +52,6 @@ import { ModalCloseDirective } from './modal-close.directive';
     ScrollPaginatorDirective,
     LoadingComponent,
     ProductFilterComponent,
-    CustomPluralPipe,
     MergeSizeQsPipe,
     ModalCloseDirective
   ]

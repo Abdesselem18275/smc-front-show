@@ -6,23 +6,23 @@
 </header>
         <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form__field">
-            <label for="email" i18n>
+            <label for="email">
                 <mat-icon class="mr2">email</mat-icon>
-                Email
+                <span i18n>Email </span>
             </label>
             <input appControlValidatorMessage required  type="email" formControlName="email" id="email">
         </div>
         <div class="form__field">
-          <label for="email" i18n>
+          <label for="email">
               <mat-icon class="mr2">vpn_key</mat-icon>
-              password
+              <span i18n> password </span>
           </label>
           <input appControlValidatorMessage required  type="password" formControlName="password" id="password">
           <p class="mat-caption font--dark-grey" i18n>Forget yous password ?</p>
       </div>
                                 <button class="form__submit-button mt4" type="submit"
-                                        mat-raised-button color="primary" i18n primary>
-                                        <span>
+                                        mat-raised-button color="primary" primary>
+                                        <span i18n>
                                                 Sign in with SMC
                                         </span>
                                 </button>

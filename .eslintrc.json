@@ -1,23 +1,30 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es2021": true
     },
     "extends": [
-        "google"
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking"
+
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": ["./tsconfig.app.json","./tsconfig.spec.json"]
+        // "include": [
+        //   "src/**/*.ts",
+        //   // etc
+        //   "src/*.ts",
+        //   // if you have a mixed JS/TS codebase, don't forget to include your JS files
+        //   "src/**/*.js"
+        // ]
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
-    }
+  }
 }

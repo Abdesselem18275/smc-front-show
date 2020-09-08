@@ -19,7 +19,7 @@ export interface State {
   );
   export const selectProductsCount = createSelector(
     selectProductState,
-    (productState) => productState.objCount
+    (productState) => {return productState.objCount}
   );
   export const selectIsLoading = createSelector(
     selectProductState,

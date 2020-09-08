@@ -19,7 +19,6 @@ export class ProductMenuComponent implements OnInit {
   modalRoute = ModalRoute;
   modalStore$: Observable<ModalStoreState.State>;
   isHomeRoute$: Observable<boolean>;
-  favoritesCount$ : Observable<number>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter();
   constructor( private router: Router,
                private store$: Store<RootStoreState.State>) {
@@ -31,7 +30,6 @@ export class ProductMenuComponent implements OnInit {
     this.isHomeRoute$ = this.router.events.pipe(
       filter(x => x instanceof NavigationEnd),
       map(event => event['url'] === '/miscellaneous/home'));
-    this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount)
   }
 
   toggleModal(value) {

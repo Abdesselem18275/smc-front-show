@@ -4,24 +4,25 @@
             <form
             [formGroup]="createForm" (ngSubmit)="onSubmit()">
                     <header class="column--centred">
-                        <p class="font--dark-grey mat-subheading-2">Please fill the following information
+                        <p i18n class="font--dark-grey mat-subheading-2">Please fill the following information
                         </p>
                         <p class="alert mat-caption" *ngFor="let item of serverError$ | async  | keyvalue">
                             {{item.value}}</p>
                 </header>
 
                 <div class="form__field">
-                    <label for="email" i18n>
+                    <label for="email">
                         <mat-icon class="mr2">email</mat-icon>
-                        Email
+                        <span i18n>Email</span>
                     </label>
                     <input appControlValidatorMessage  required  type="email" formControlName="email" id="email">
 
                 </div>
                 <div class="form__field">
-                    <label for="password"  i18n>
+                    <label for="password">
                         <mat-icon class="mr2">vpn_key</mat-icon>
-                        password</label>
+                        <span i18n>password</span>
+                      </label>
                     <input appControlValidatorMessage required  autocomplete="new-password" type="password" formControlName="password" id="password">
                 </div>
                 <div class="form__field">
@@ -32,14 +33,14 @@
                 <header class="fieldset-title">
                     <p class="inline--centred mat-subheading-1">
                         <mat-icon>person</mat-icon>
-                        Personal information
+                       <span>Personal information </span>
                     </p>
                 </header>
                     <div class="form__field">
                         <label   for ="civility" i18n>Civility</label>
                         <select name="civility" formControlName="civility" id="civility">
-                            <option selected value="Mr">Mr.</option>
-                            <option value="Mme">Mme.</option>
+                            <option i18n selected value="Mr">Gentelman</option>
+                            <option i18n value="Mme">Madam</option>
                         </select>
                     </div>
                 <div class="form__field">
@@ -53,12 +54,12 @@
 
             <div class="my4 inline--centred">
               <input  formControlName="is_professional" type="checkbox" id="is_professional">
-              <label class="mat-body ml4" for="is_professional">Are you a professional ?</label>
+              <label class="mat-body ml4" i18n for="is_professional">Are you a professional ?</label>
             </div>
 
             <button class="form__submit-button" type="submit"
-            mat-raised-button color="primary" i18n primary>
-            <span class="mat-subheading-2">
+            mat-raised-button color="primary" primary>
+            <span i18n class="mat-subheading-2">
                 Register
             </span>
             </button>

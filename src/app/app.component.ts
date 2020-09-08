@@ -1,12 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RouterOutlet} from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
-import { RootStoreState, ModalStoreState, ModalStoreActions } from './root-store';
+import { RootStoreState, ModalStoreState } from './root-store';
 import { Store } from '@ngrx/store';
 import { selectAllModalState, selectOverlayedModal } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LanguageType, UserLanguage } from './root-store/global-store/state';
 import { SetLanguageAction } from './root-store/global-store/actions';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
@@ -42,7 +40,7 @@ export class AppComponent implements OnInit {
 
 
   }
-  ngOnInit() {
+  ngOnInit():void {
     this.isOverlay$ = this.store$.select(selectOverlayedModal);
     const language = this.baseUrl.replace(/\//g, '');
     const value: UserLanguage = {
@@ -53,11 +51,6 @@ export class AppComponent implements OnInit {
     this.modalStore$ = this.store$.select(selectAllModalState);
 
 }
-  prepareRoute(outlet: RouterOutlet) {
-    const res = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-    return res || 'empty';
-  }
-
   getType(base: string): string {
     switch (base) {
       case 'fr':

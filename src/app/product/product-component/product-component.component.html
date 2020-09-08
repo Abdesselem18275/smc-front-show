@@ -1,5 +1,5 @@
   <ng-container *ngIf="componentsSpecs.length > 0">
-  <p class="mat-h3 font--dark-grey">Components</p>
+  <p i18n class="mat-h3 font--dark-grey">Components</p>
   <mat-divider></mat-divider>
   <mat-list dense>
 <mat-list-item *ngFor="let componentSpec of componentsSpecs">
@@ -12,7 +12,7 @@
     </div>
   <div mat-line class="mat-caption">
 
-      <span >
+      <span i18n>
         Raw materials:
       </span>
     <span *ngFor="let rawMat of componentSpec.rawMaterials ; first as isFirst">

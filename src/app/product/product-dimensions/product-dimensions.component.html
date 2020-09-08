@@ -1,8 +1,8 @@
 
-<p class="mat-h3 font--dark-grey">Dimensions</p>
+<p i18n class="mat-h3 font--dark-grey">Dimensions</p>
 <mat-divider></mat-divider>
 <table>
-  <caption class="mat-caption p1">{{variantsNumber() | customPlural:'Variant' | titlecase}}</caption>
+  <caption class="mat-caption p1">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
   <tbody>
     <tr>
       <th class="p1 mat-body-2" *ngFor="let item of headersList" scope="col">
@@ -19,18 +19,3 @@
     </tr>
   </tbody>
 </table>
-<!-- <mat-list dense>
-  <p matSubheader>{{variantsNumber() | customPlural:'Dimension variant' | titlecase}}</p>
-  <mat-list-item *ngFor="let item of productDimensions ; first as isFirstMeasure">
-    <div mat-line>
-      <p class="mat-body-2">
-        {{item.measureType?.designation | titlecase}} ({{item.measureType?.unit}})
-      </p></div>
-<div mat-line class="mat-caption">
-  <span *ngFor="let measure of item.measures ; first as isFirst">
-    <span *ngIf="!isFirst"> &nbsp;-&nbsp; </span>
-    {{measure}}
-  </span>
-</div>
-  </mat-list-item>
-</mat-list> -->

@@ -38,7 +38,7 @@
         </section>
         <section  *ngIf="isBigSize$ |async" class="p4  inline--centred">
             <button #pulsingButton (click)="toggleDimension()" color="primary" class="mr4" mat-flat-button>
-                <span>Technical details</span>
+                <span i18n>Technical details</span>
                 <mat-icon [class.icon--rotate]="isDimensionOpen">
                         keyboard_arrow_down
                 </mat-icon>

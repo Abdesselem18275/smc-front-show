@@ -1,409 +1,457 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
-    <body>
-      <trans-unit id="2310e1871f9fe8c0b358eac68e8afc92185d786f" datatype="html">
-        <source>  
-           PRODUCTS
-        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/product-menu.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4797170da6a7d08a372d63b13ce1d39e592f18cd" datatype="html">
-        <source>
-         UTILITY
-        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/product-menu.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="66e1db622f0c769381502093f0d37b8e211f2761" datatype="html">
-        <source>
-         ABOUT US
-        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/product-menu.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cf19876e108b1733200f4fb12e3eeed678d1b8d5" datatype="html">
-        <source>
-         CONTACT US
-        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/product-menu.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0500287fbb0bfe409ed8999ef7bcff3f8218c678" datatype="html">
-        <source>
-    Menu
-  </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="bde11086f28a64696b413c48e723c7a388ec4785" datatype="html">
-        <source>
-        Categories
-      </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0fcd9579d1daec69c0500ee9af7392c80c82f1dd" datatype="html">
-        <source>
-     Account
-  </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="994363f08f9fbfa3b3994ff7b35c6904fdff18d8" datatype="html">
-        <source>Profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account/account.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
-        <source>Logout</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3efe9b704b89b2c8ad2708fd2b9a599bb6e6c7b2" datatype="html">
-        <source>sign in / sign up</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0d7b7d929b5fd8b5cf576a4e61cfca020893c918" datatype="html">
-        <source>
-     Language
-  </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/side-nav-menu/side-nav-menu.component.html</context>
-          <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6bec7734cb3740b324966b003c0f45f0148a70e8" datatype="html">
-        <source>search</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/search-box/search-box.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9f34a3979f79e1f9a65320a29c4def27d24939f0" datatype="html">
-        <source>Login / Register</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ddc775f595ecb470b77d6f04be7bb2783b80f56d" datatype="html">
-        <source>Sign in with SMC</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="97a6279e6a79199e8333ab51d1c744c160dae7b8" datatype="html">
-        <source>Please enter the following informations</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0b15bf6fa1e5bdabc9fde97a14bee63a5d5e62f6" datatype="html">
-        <source>email</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
-        <source>password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8ab923304164b0f0885082dc992666c114bbb2b7" datatype="html">
-        <source>Forget yous password ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">37</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c7d95233319919fc15e5baab00dd2c06198ac92a" datatype="html">
-        <source>
-                                                this field is required.
-                                        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="69868467d8194ff75950f4a32ce29bbfdd3e36a3" datatype="html">
-        <source>LOGIN
-                                </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-login/account-login.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3230f6602c82e020cb18cce2b32952d75869a5d5" datatype="html">
-        <source>Like</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/product-box/product-box.component.html</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="251d02cc82cf40addfc433191c0f3bbe6ec77295" datatype="html">
-        <source>message</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/product-box/product-box.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7265c92e277b4b7522e5ae0e19cd48889acc1903" datatype="html">
-        <source>Create profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9f192e3341de282f2ce3df60ab00bd278cf8530b" datatype="html">
-        <source>Register your account</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e305e7a0ce8c74271556cfe9fed3653befdb231c" datatype="html">
-        <source>confirm your password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="47dfe78bf9cd27e72ed5072223ed120191589dd1" datatype="html">
-        <source>first name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d9fe613f150fdf789a9b67dccec2f6da619101b3" datatype="html">
-        <source>last name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a43f25a9ac40e8e2441ff0be7a36b8e5d15534df" datatype="html">
-        <source>Country</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/create-profile/create-profile.component.html</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3fdc751b264ca9998e1542fcf5794e274cd56344" datatype="html">
-        <source>Log out</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-card/account-card.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3ac9a098a34b04923bf20ec0c754bab138750b79" datatype="html">
-        <source>My profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account-card/account-card.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5ca707824ab93066c7d9b44e1b8bf216725c2c22" datatype="html">
-        <source>Filter</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-filter/product-filter.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="42b0cf278349e8fde78ae23da6678c52ec73ad45" datatype="html">
-        <source>No products found for &quot;<x id="INTERPOLATION" equiv-text="{{searchTerm| async}}"/>&quot;</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a4b77fe60cffad3454cc4dfa49bb92c4a42f0efe" datatype="html">
-        <source>We found <x id="INTERPOLATION" equiv-text="{{objCount | async }}"/> products for for &quot;<x id="INTERPOLATION_1" equiv-text="{{searchTerm| async}}"/>&quot;</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-list/product-list.component.html</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="de434882450ee5a1709939263f4730dd50f5120d" datatype="html">
-        <source>TECHNICAL DETAILS</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-detail/product-detail.component.html</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="78784c8d657865068d4e67e83c239fead63c1374" datatype="html">
-        <source>Product Variants</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-detail/product-detail.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f45972499ac334cdf8e86c7bfedc552d1057c9e6" datatype="html">
-        <source>Componnents Details</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-detail/product-detail.component.html</context>
-          <context context-type="linenumber">104</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="dc249c7d8aa35c17370d4efaa431cfd7825a59d3" datatype="html">
-        <source>RELATED PRODUCTS</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-detail/product-detail.component.html</context>
-          <context context-type="linenumber">127</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0add707baf7b167d0c0e9cdeb80f946aa1bd2223" datatype="html">
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
+  <file id="ngi18n" original="ng.template">
+    <unit id="9139716695145155852">
+      <segment>
+        <source> Utility </source>
+      </segment>
+    </unit>
+    <unit id="6741651427255495666">
+      <segment>
+        <source> About us </source>
+      </segment>
+    </unit>
+    <unit id="1346759478528616099">
+      <segment>
+        <source> Contact us </source>
+      </segment>
+    </unit>
+    <unit id="4085930761302974863">
+      <segment>
         <source>Favorites</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account/account.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ea965d544a7dfd8185064c52cdfff553cf94d585" datatype="html">
-        <source>Messages</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/account/account.component.html</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="616df8fa79e9196ca1e01c057da4b8e7da613a01" datatype="html">
-        <source>PERSONAL INFORMATION</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="db654f91d847f34e71ffb99268ff3a1807913421" datatype="html">
+      </segment>
+    </unit>
+    <unit id="7507948636555938109">
+      <segment>
+        <source>Log out</source>
+      </segment>
+    </unit>
+    <unit id="454031185450713879">
+      <segment>
+        <source>MENU</source>
+      </segment>
+    </unit>
+    <unit id="8458066817967456480">
+      <segment>
+        <source>welcome</source>
+      </segment>
+    </unit>
+    <unit id="4915431133669985304">
+      <segment>
+        <source>Profile</source>
+      </segment>
+    </unit>
+    <unit id="3096892796350245141">
+      <segment>
+        <source>SIGN IN</source>
+      </segment>
+    </unit>
+    <unit id="3866977477834057134">
+      <segment>
+        <source>REGISTER</source>
+      </segment>
+    </unit>
+    <unit id="1045128721639512860">
+      <segment>
+        <source>Please ask your question</source>
+      </segment>
+    </unit>
+    <unit id="3867819108808485103">
+      <segment>
+        <source>Choose your subjects</source>
+      </segment>
+    </unit>
+    <unit id="2412629961687832567">
+      <segment>
+        <source>Attach products from your favorites</source>
+      </segment>
+    </unit>
+    <unit id="5025751325187694226">
+      <segment>
+        <source> your message</source>
+      </segment>
+    </unit>
+    <unit id="736940570258467336">
+      <segment>
+        <source>Send request</source>
+      </segment>
+    </unit>
+    <unit id="7158592746571420879">
+      <segment>
+        <source>search</source>
+      </segment>
+    </unit>
+    <unit id="8225355642353524911">
+      <segment>
+        <source>Login/Register</source>
+      </segment>
+    </unit>
+    <unit id="3066408174056591397">
+      <segment>
+        <source> ALL PRODUCTS </source>
+      </segment>
+    </unit>
+    <unit id="4227569225812043576">
+      <segment>
+        <source>FILTER</source>
+      </segment>
+    </unit>
+    <unit id="7616770651914901276">
+      <segment>
+        <source>Product</source>
+      </segment>
+    </unit>
+    <unit id="7629225395326189728">
+      <segment>
+        <source>Please fill the following information </source>
+      </segment>
+    </unit>
+    <unit id="4768749765465246664">
+      <segment>
+        <source>Email</source>
+      </segment>
+    </unit>
+    <unit id="4809196861118879526">
+      <segment>
+        <source>password</source>
+      </segment>
+    </unit>
+    <unit id="1031041577835378237">
+      <segment>
+        <source>confirm your password</source>
+      </segment>
+    </unit>
+    <unit id="3051927361274397878">
+      <segment>
+        <source>Civility</source>
+      </segment>
+    </unit>
+    <unit id="187688740537730372">
+      <segment>
+        <source>Gentelman</source>
+      </segment>
+    </unit>
+    <unit id="1072634814519105140">
+      <segment>
+        <source>Madam</source>
+      </segment>
+    </unit>
+    <unit id="5342432350421167093">
+      <segment>
+        <source>First name</source>
+      </segment>
+    </unit>
+    <unit id="3586674587150281199">
+      <segment>
+        <source>Last name</source>
+      </segment>
+    </unit>
+    <unit id="5797787770208246715">
+      <segment>
+        <source>Are you a professional ?</source>
+      </segment>
+    </unit>
+    <unit id="2393574738849179510">
+      <segment>
+        <source> Register </source>
+      </segment>
+    </unit>
+    <unit id="4362053696554819369">
+      <segment>
+        <source>Please enter the following informations</source>
+      </segment>
+    </unit>
+    <unit id="2944449439955980766">
+      <segment>
+        <source>Email </source>
+      </segment>
+    </unit>
+    <unit id="3283490177394438339">
+      <segment>
+        <source> password </source>
+      </segment>
+    </unit>
+    <unit id="4811723261154882190">
+      <segment>
+        <source>Forget yous password ?</source>
+      </segment>
+    </unit>
+    <unit id="3052790463288062211">
+      <segment>
+        <source> Sign in with SMC </source>
+      </segment>
+    </unit>
+    <unit id="5513764066173641158">
+      <segment>
+        <source>SMC</source>
+      </segment>
+    </unit>
+    <unit id="5073604223890380566">
+      <segment>
+        <source> Sublimating Copper Since 1986</source>
+      </segment>
+    </unit>
+    <unit id="280217758265870391">
+      <segment>
+        <source> The Modern Handmade Copperware </source>
+      </segment>
+    </unit>
+    <unit id="7680556457489839994">
+      <segment>
+        <source> SMC bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
+</source>
+      </segment>
+    </unit>
+    <unit id="1183646771102415722">
+      <segment>
+        <source> OUR CATEGORIES</source>
+      </segment>
+    </unit>
+    <unit id="3189123750559729829">
+      <segment>
+        <source> OUR KNOW-HOW</source>
+      </segment>
+    </unit>
+    <unit id="5954044698103590130">
+      <segment>
+        <source> DISCOVER THE PLEASURE OF COOKING </source>
+      </segment>
+    </unit>
+    <unit id="7482733407740928201">
+      <segment>
+        <source>Welcome <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="8066608938393600549">
+      <segment>
+        <source>Message</source>
+      </segment>
+    </unit>
+    <unit id="1292177079651428710">
+      <segment>
+        <source> Profile Informations </source>
+      </segment>
+    </unit>
+    <unit id="4613647131378415508">
+      <segment>
+        <source> Your Requests </source>
+      </segment>
+    </unit>
+    <unit id="5875525404461726515">
+      <segment>
+        <source>PROFILE</source>
+      </segment>
+    </unit>
+    <unit id="5342826438055391471">
+      <segment>
+        <source>REQUESTS</source>
+      </segment>
+    </unit>
+    <unit id="6638671241331103220">
+      <segment>
+        <source> All your requests will be answered on the following email : <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/>
+</source>
+      </segment>
+    </unit>
+    <unit id="1750029796261545784">
+      <segment>
+        <source> Message : <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="5083499271877261179">
+      <segment>
+        <source> Created on <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="8369895168227967318">
+      <segment>
+        <source> Answered on <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="3229189813360551857">
+      <segment>
+        <source> Not yet answered</source>
+      </segment>
+    </unit>
+    <unit id="725128956279423640">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" dispStart="&quot;\uFFFD#4\uFFFD&quot;" dispEnd="&quot;\uFFFD/#4\uFFFD&quot;">person</pc> Personal information </source>
+      </segment>
+    </unit>
+    <unit id="1790016378034710289">
+      <segment>
+        <source>Mr.</source>
+      </segment>
+    </unit>
+    <unit id="6927322229847511070">
+      <segment>
+        <source>Mme.</source>
+      </segment>
+    </unit>
+    <unit id="8937807138271380445">
+      <segment>
+        <source>first name</source>
+      </segment>
+    </unit>
+    <unit id="2099761169117730626">
+      <segment>
+        <source>last name</source>
+      </segment>
+    </unit>
+    <unit id="8194554728555410336">
+      <segment>
         <source>Phone Number</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d9e047f23f89af7fba3c44ca2e03c3cfef45a7cf" datatype="html">
-        <source>COMPANY INFORMATIONS</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8c3ef8291ae2bb1842112608084cda95b880da6c" datatype="html">
-        <source>Are you professional ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">46</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="df8f2753587cf173252f5a80910d6ea1d63bdc8b" datatype="html">
+      </segment>
+    </unit>
+    <unit id="516176798986294299">
+      <segment>
+        <source>Country</source>
+      </segment>
+    </unit>
+    <unit id="2047820352953221577">
+      <segment>
+        <source> Save changes </source>
+      </segment>
+    </unit>
+    <unit id="9198832758813280253">
+      <segment>
+        <source>Professional information</source>
+      </segment>
+    </unit>
+    <unit id="6110672344694523278">
+      <segment>
         <source>company name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="22c90cf64e23c4e2d54f0c3563f530317543ee0c" datatype="html">
+      </segment>
+    </unit>
+    <unit id="6507617224204550830">
+      <segment>
         <source>position</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="935b002bea436ed558b76f2c7242f580b8816e8c" datatype="html">
-        <source> your current position , eg: sales manager </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="04eb86beb4f6214011f54cff0ceecd7b32647fec" datatype="html">
-        <source>activity</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="62559974b6ffd195edba3401851b2ae45a987bdb" datatype="html">
-        <source> Insert your field of activity , eg: Tourism , Restoration</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">71</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="88a1fcf61acf5d2eed9d2c9f9495a2767e999d04" datatype="html">
-        <source>Save changes
-                </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/edit-profile/edit-profile.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="747cf9b4875e7aff8017f78776b92b9cbc3fd569" datatype="html">
-        <source> You have no favorites !!!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/account/favorites-profile/favorites-profile.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-    </body>
+      </segment>
+    </unit>
+    <unit id="6164693653548984591">
+      <segment>
+        <source> eg: sales manager </source>
+      </segment>
+    </unit>
+    <unit id="2884051027395465826">
+      <segment>
+        <source>activity field</source>
+      </segment>
+    </unit>
+    <unit id="2697506357026997291">
+      <segment>
+        <source>eg: Tourism , Restoration</source>
+      </segment>
+    </unit>
+    <unit id="3392114061661490939">
+      <segment>
+        <source>Dimensions</source>
+      </segment>
+    </unit>
+    <unit id="2690480251835175953">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one dimension variant} other {<ph id="0" equiv="INTERPOLATION"/> dimension variants}}</source>
+      </segment>
+    </unit>
+    <unit id="7964866832792067585">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {No} =1 {One} other {<ph id="0" equiv="INTERPOLATION"/> }}</source>
+      </segment>
+    </unit>
+    <unit id="2154216727411550160">
+      <segment>
+        <source>message</source>
+      </segment>
+    </unit>
+    <unit id="3008670307707760482">
+      <segment>
+        <source>Technical details</source>
+      </segment>
+    </unit>
+    <unit id="330662604566220639">
+      <segment>
+        <source>SMALL</source>
+      </segment>
+    </unit>
+    <unit id="456519411406166687">
+      <segment>
+        <source>ALL PRODUCTS</source>
+      </segment>
+    </unit>
+    <unit id="4037732456156957951">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> selected products</source>
+      </segment>
+    </unit>
+    <unit id="3053657172021902430">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {No products found for &quot;<ph id="0" equiv="INTERPOLATION"/>&quot;} other {Search results for &quot;<ph id="1" equiv="INTERPOLATION"/>&quot;}}</source>
+      </segment>
+    </unit>
+    <unit id="4199296561201404039">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_11"/> </source>
+      </segment>
+    </unit>
+    <unit id="3690065248815312847">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {You have not yet selected a product as a favorite } other {You have <ph id="0" equiv="INTERPOLATION"/> favorites }}</source>
+      </segment>
+    </unit>
+    <unit id="7481319085635669447">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_15"/> </source>
+      </segment>
+    </unit>
+    <unit id="4902817035128594900">
+      <segment>
+        <source>Description</source>
+      </segment>
+    </unit>
+    <unit id="4232918316867565098">
+      <segment>
+        <source>Related products</source>
+      </segment>
+    </unit>
+    <unit id="1831139682192909712">
+      <segment>
+        <source>Components</source>
+      </segment>
+    </unit>
+    <unit id="8899479047523663523">
+      <segment>
+        <source> Raw materials: </source>
+      </segment>
+    </unit>
+    <unit id="847271058018568411">
+      <segment>
+        <source>Additional informations</source>
+      </segment>
+    </unit>
+    <unit id="8202823632549406810">
+      <segment>
+        <source>Materials</source>
+      </segment>
+    </unit>
+    <unit id="633024908412746114">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one raw material variant} other {<ph id="0" equiv="INTERPOLATION"/> raw material variants }}</source>
+      </segment>
+    </unit>
+    <unit id="3281096078123181989">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_3"/> </source>
+      </segment>
+    </unit>
+    <unit id="7474640318391283382">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one interior coating variant} other {<ph id="0" equiv="INTERPOLATION"/> interior coating variants }}</source>
+      </segment>
+    </unit>
+    <unit id="1086787901265261142">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_7"/> </source>
+      </segment>
+    </unit>
   </file>
 </xliff>

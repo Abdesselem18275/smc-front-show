@@ -45,6 +45,5 @@ export const selectIsAuthentificated = createSelector(
     );
 export const selectFavoritesCount = createSelector(
   selectUser,
-  selectIsUserLoaded,
-  (user: Profile,isLoaded, ) => (isLoaded ? user.favorites.length : -1)
+  (user: Profile) => (user ? user.favorites.length : -1)
   );

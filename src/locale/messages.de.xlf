@@ -1,19 +1,466 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
-    <body>
-      <trans-unit id="2310e1871f9fe8c0b358eac68e8afc92185d786f" datatype="html">
-        <source>  
-           PRODUCTS
-        </source>
-        <target>
-           PRODUKTE
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/product/product-menu/product-menu.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-    </body>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
+  <file id="ngi18n" original="ng.template">
+    <unit id="9139716695145155852">
+      <segment>
+        <source> Utility </source>
+        <target>Dienstprogramme</target>
+      </segment>
+    </unit>
+    <unit id="6741651427255495666">
+      <segment>
+        <source> About us </source>
+        <target>Über uns</target>
+      </segment>
+    </unit>
+    <unit id="1346759478528616099">
+      <segment>
+        <source> Contact us </source>
+        <target>Kontaktiere uns</target>
+      </segment>
+    </unit>
+    <unit id="4085930761302974863">
+      <segment>
+        <source>Favorites</source>
+        <target>Favoriten</target>
+      </segment>
+    </unit>
+    <unit id="7507948636555938109">
+      <segment>
+        <source>Log out</source>
+        <target>Se deconnecter</target>
+      </segment>
+    </unit>
+    <unit id="454031185450713879">
+      <segment>
+        <source>MENU</source>
+        <target>MENU</target>
+      </segment>
+    </unit>
+    <unit id="8458066817967456480">
+      <segment>
+        <source>welcome</source>
+      </segment>
+    </unit>
+    <unit id="4915431133669985304">
+      <segment>
+        <source>Profile</source>
+      </segment>
+    </unit>
+    <unit id="3096892796350245141">
+      <segment>
+        <source>SIGN IN</source>
+      </segment>
+    </unit>
+    <unit id="3866977477834057134">
+      <segment>
+        <source>REGISTER</source>
+      </segment>
+    </unit>
+    <unit id="1045128721639512860">
+      <segment>
+        <source>Please ask your question</source>
+      </segment>
+    </unit>
+    <unit id="3867819108808485103">
+      <segment>
+        <source>Choose your subjects</source>
+      </segment>
+    </unit>
+    <unit id="2412629961687832567">
+      <segment>
+        <source>Attach products from your favorites</source>
+      </segment>
+    </unit>
+    <unit id="5025751325187694226">
+      <segment>
+        <source> your message</source>
+      </segment>
+    </unit>
+    <unit id="736940570258467336">
+      <segment>
+        <source>Send request</source>
+      </segment>
+    </unit>
+    <unit id="7158592746571420879">
+      <segment>
+        <source>search</source>
+      </segment>
+    </unit>
+    <unit id="8225355642353524911">
+      <segment>
+        <source>Login/Register</source>
+      </segment>
+    </unit>
+    <unit id="3066408174056591397">
+      <segment>
+        <source> ALL PRODUCTS </source>
+      </segment>
+    </unit>
+    <unit id="4227569225812043576">
+      <segment>
+        <source>FILTER</source>
+      </segment>
+    </unit>
+    <unit id="7616770651914901276">
+      <segment>
+        <source>Product</source>
+      </segment>
+    </unit>
+    <unit id="7629225395326189728">
+      <segment>
+        <source>Please fill the following information </source>
+      </segment>
+    </unit>
+    <unit id="4768749765465246664">
+      <segment>
+        <source>Email</source>
+      </segment>
+    </unit>
+    <unit id="4809196861118879526">
+      <segment>
+        <source>password</source>
+      </segment>
+    </unit>
+    <unit id="1031041577835378237">
+      <segment>
+        <source>confirm your password</source>
+      </segment>
+    </unit>
+    <unit id="3051927361274397878">
+      <segment>
+        <source>Civility</source>
+      </segment>
+    </unit>
+    <unit id="187688740537730372">
+      <segment>
+        <source>Gentelman</source>
+      </segment>
+    </unit>
+    <unit id="1072634814519105140">
+      <segment>
+        <source>Madam</source>
+      </segment>
+    </unit>
+    <unit id="5342432350421167093">
+      <segment>
+        <source>First name</source>
+      </segment>
+    </unit>
+    <unit id="3586674587150281199">
+      <segment>
+        <source>Last name</source>
+      </segment>
+    </unit>
+    <unit id="5797787770208246715">
+      <segment>
+        <source>Are you a professional ?</source>
+      </segment>
+    </unit>
+    <unit id="2393574738849179510">
+      <segment>
+        <source> Register </source>
+      </segment>
+    </unit>
+    <unit id="4362053696554819369">
+      <segment>
+        <source>Please enter the following informations</source>
+      </segment>
+    </unit>
+    <unit id="2944449439955980766">
+      <segment>
+        <source>Email </source>
+      </segment>
+    </unit>
+    <unit id="3283490177394438339">
+      <segment>
+        <source> password </source>
+      </segment>
+    </unit>
+    <unit id="4811723261154882190">
+      <segment>
+        <source>Forget yous password ?</source>
+      </segment>
+    </unit>
+    <unit id="3052790463288062211">
+      <segment>
+        <source> Sign in with SMC </source>
+      </segment>
+    </unit>
+    <unit id="5513764066173641158">
+      <segment>
+        <source>SMC</source>
+      </segment>
+    </unit>
+    <unit id="5073604223890380566">
+      <segment>
+        <source> Sublimating Copper Since 1986</source>
+      </segment>
+    </unit>
+    <unit id="280217758265870391">
+      <segment>
+        <source> The Modern Handmade Copperware </source>
+      </segment>
+    </unit>
+    <unit id="7680556457489839994">
+      <segment>
+        <source> SMC bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
+</source>
+      </segment>
+    </unit>
+    <unit id="1183646771102415722">
+      <segment>
+        <source> OUR CATEGORIES</source>
+      </segment>
+    </unit>
+    <unit id="3189123750559729829">
+      <segment>
+        <source> OUR KNOW-HOW</source>
+      </segment>
+    </unit>
+    <unit id="5954044698103590130">
+      <segment>
+        <source> DISCOVER THE PLEASURE OF COOKING </source>
+      </segment>
+    </unit>
+    <unit id="7482733407740928201">
+      <segment>
+        <source>Welcome <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="8066608938393600549">
+      <segment>
+        <source>Message</source>
+      </segment>
+    </unit>
+    <unit id="1292177079651428710">
+      <segment>
+        <source> Profile Informations </source>
+      </segment>
+    </unit>
+    <unit id="4613647131378415508">
+      <segment>
+        <source> Your Requests </source>
+      </segment>
+    </unit>
+    <unit id="5875525404461726515">
+      <segment>
+        <source>PROFILE</source>
+      </segment>
+    </unit>
+    <unit id="5342826438055391471">
+      <segment>
+        <source>REQUESTS</source>
+      </segment>
+    </unit>
+    <unit id="6638671241331103220">
+      <segment>
+        <source> All your requests will be answered on the following email : <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/>
+</source>
+      </segment>
+    </unit>
+    <unit id="1750029796261545784">
+      <segment>
+        <source> Message : <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="5083499271877261179">
+      <segment>
+        <source> Created on <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="8369895168227967318">
+      <segment>
+        <source> Answered on <ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> </source>
+      </segment>
+    </unit>
+    <unit id="3229189813360551857">
+      <segment>
+        <source> Not yet answered</source>
+      </segment>
+    </unit>
+    <unit id="725128956279423640">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" dispStart="&quot;\uFFFD#4\uFFFD&quot;" dispEnd="&quot;\uFFFD/#4\uFFFD&quot;">person</pc> Personal information </source>
+      </segment>
+    </unit>
+    <unit id="1790016378034710289">
+      <segment>
+        <source>Mr.</source>
+      </segment>
+    </unit>
+    <unit id="6927322229847511070">
+      <segment>
+        <source>Mme.</source>
+      </segment>
+    </unit>
+    <unit id="8937807138271380445">
+      <segment>
+        <source>first name</source>
+      </segment>
+    </unit>
+    <unit id="2099761169117730626">
+      <segment>
+        <source>last name</source>
+      </segment>
+    </unit>
+    <unit id="8194554728555410336">
+      <segment>
+        <source>Phone Number</source>
+      </segment>
+    </unit>
+    <unit id="516176798986294299">
+      <segment>
+        <source>Country</source>
+      </segment>
+    </unit>
+    <unit id="2047820352953221577">
+      <segment>
+        <source> Save changes </source>
+      </segment>
+    </unit>
+    <unit id="9198832758813280253">
+      <segment>
+        <source>Professional information</source>
+      </segment>
+    </unit>
+    <unit id="6110672344694523278">
+      <segment>
+        <source>company name</source>
+      </segment>
+    </unit>
+    <unit id="6507617224204550830">
+      <segment>
+        <source>position</source>
+      </segment>
+    </unit>
+    <unit id="6164693653548984591">
+      <segment>
+        <source> eg: sales manager </source>
+      </segment>
+    </unit>
+    <unit id="2884051027395465826">
+      <segment>
+        <source>activity field</source>
+      </segment>
+    </unit>
+    <unit id="2697506357026997291">
+      <segment>
+        <source>eg: Tourism , Restoration</source>
+      </segment>
+    </unit>
+    <unit id="3392114061661490939">
+      <segment>
+        <source>Dimensions</source>
+      </segment>
+    </unit>
+    <unit id="2690480251835175953">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one dimension variant} other {<ph id="0" equiv="INTERPOLATION"/> dimension variants}}</source>
+        <target>{VAR_PLURAL, plural, =1 {Une seule variante de dimension} other {<ph id="0" equiv="INTERPOLATION"/> variante de dimension}}</target>
+
+      </segment>
+    </unit>
+    <unit id="7964866832792067585">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {No} =1 {One} other {<ph id="0" equiv="INTERPOLATION"/> }}</source>
+        <target>{VAR_PLURAL, plural, =0 {Pas de} =1 {Une} other {<ph id="0" equiv="INTERPOLATION"/> }}</target>
+      </segment>
+    </unit>
+    <unit id="2154216727411550160">
+      <segment>
+        <source>message</source>
+      </segment>
+    </unit>
+    <unit id="3008670307707760482">
+      <segment>
+        <source>Technical details</source>
+      </segment>
+    </unit>
+    <unit id="330662604566220639">
+      <segment>
+        <source>SMALL</source>
+      </segment>
+    </unit>
+    <unit id="456519411406166687">
+      <segment>
+        <source>ALL PRODUCTS</source>
+      </segment>
+    </unit>
+    <unit id="4037732456156957951">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="&quot;\uFFFD0\uFFFD&quot;"/> selected products</source>
+      </segment>
+    </unit>
+    <unit id="3053657172021902430">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {No products found for &quot;<ph id="0" equiv="INTERPOLATION"/>&quot;} other {Search results for &quot;<ph id="1" equiv="INTERPOLATION"/>&quot;}}</source>
+      </segment>
+    </unit>
+    <unit id="4199296561201404039">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_11"/> </source>
+      </segment>
+    </unit>
+    <unit id="3690065248815312847">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {You have not yet selected a product as a favorite } other {You have <ph id="0" equiv="INTERPOLATION"/> favorites }}</source>
+      </segment>
+    </unit>
+    <unit id="7481319085635669447">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_15"/> </source>
+      </segment>
+    </unit>
+    <unit id="4902817035128594900">
+      <segment>
+        <source>Description</source>
+      </segment>
+    </unit>
+    <unit id="4232918316867565098">
+      <segment>
+        <source>Related products</source>
+      </segment>
+    </unit>
+    <unit id="1831139682192909712">
+      <segment>
+        <source>Components</source>
+      </segment>
+    </unit>
+    <unit id="8899479047523663523">
+      <segment>
+        <source> Raw materials: </source>
+      </segment>
+    </unit>
+    <unit id="847271058018568411">
+      <segment>
+        <source>Additional informations</source>
+      </segment>
+    </unit>
+    <unit id="8202823632549406810">
+      <segment>
+        <source>Materials</source>
+      </segment>
+    </unit>
+    <unit id="633024908412746114">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one raw material variant} other {<ph id="0" equiv="INTERPOLATION"/> raw material variants }}</source>
+      </segment>
+    </unit>
+    <unit id="3281096078123181989">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_3"/> </source>
+      </segment>
+    </unit>
+    <unit id="7474640318391283382">
+      <segment>
+        <source>{VAR_PLURAL, plural, =1 {one interior coating variant} other {<ph id="0" equiv="INTERPOLATION"/> interior coating variants }}</source>
+      </segment>
+    </unit>
+    <unit id="1086787901265261142">
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="i18n_7"/> </source>
+      </segment>
+    </unit>
   </file>
 </xliff>

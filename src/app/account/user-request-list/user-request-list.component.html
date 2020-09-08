@@ -1,4 +1,4 @@
-<p class="my8 helper-text mat-body font--dark-grey">
+<p i18n class="my8 helper-text mat-body font--dark-grey">
     All your requests will be answered on the following email : {{(userRequests$ |async)?.email}}
 </p>
     <article class="inline--centred my8" *ngFor="let request of (userRequests$ |async)?.sended_requests">
@@ -7,33 +7,33 @@
             </mat-icon>
         <section class="request__text mx6">
             <div class="mat-body-2">
-                <span *ngFor="let item of request.subjects">            
+                <span *ngFor="let item of request.subjects">
                     {{item}}
-                </span> 
+                </span>
             </div>
             <div class="mat-caption font--dark-grey">
-                <span>            
+                <span>
                     {{request.related_products[0]}}
                 </span>
                 <span *ngIf="request.related_products.length > 1">
                     ...
                 </span>
             </div>
-    
-            <div class="mat-caption font--dark-grey">
+
+            <div i18n class="mat-caption font--dark-grey">
                    Message : {{request.text_content}}
            </div>
         </section>
         <section class="request__meta mat-caption">
            <div>
-            <p>
+            <p i18n>
                 Created on {{request.added | date:'shortDate'}}
              </p>
-             <p *ngIf="request.status == 'T'" >
+             <p i18n *ngIf="request.status == 'T'" >
                  Answered on {{request.updated | date:'shortDate'}}
               </p>
-              <ng-template #answered>
-                    Not yet answered
+              <ng-template  #answered>
+                  <span i18n>  Not yet answered</span>
               </ng-template>
            </div>
 
