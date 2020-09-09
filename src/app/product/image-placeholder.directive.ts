@@ -1,4 +1,4 @@
-import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, HostListener, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 
@@ -22,9 +22,9 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
     this._setHideEffect()
     this._setButtonLoading()
     if(this.imageQueryList.first) {
-      this.targetImage = this.imageQueryList.first.nativeElement
+      this.targetImage = <HTMLElement>this.imageQueryList.first.nativeElement
       this.subscribtion= fromEvent(this.targetImage,'load').
-      subscribe(x => {
+      subscribe(() => {
         this._unsetHideEffect()
         this._unsetImageloading()
         this._unsetTextLoading()
@@ -39,19 +39,19 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
     }
   }
 
-  _setHideEffect() {
+  _setHideEffect():void {
     this.toHideList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
       this.renderer.addClass(native,'element--hidden')
     })
   }
-  _unsetHideEffect() {
+  _unsetHideEffect():void {
     this.toHideList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
       this.renderer.removeClass(native,'element--hidden')
     })
   }
-  _setImageloading() {
+  _setImageloading():void {
     this.imageList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
       const imgEl = <HTMLElement>native.getElementsByTagName('img')[0] ? <HTMLElement>native.getElementsByTagName('img')[0] : native
@@ -59,7 +59,7 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
       this.renderer.setStyle(imgEl,'visibility','hidden');
     })
   }
-  _unsetImageloading() {
+  _unsetImageloading():void {
     this.imageList.forEach(el => {
       const native = <HTMLElement>el.nativeElement
       const imgEl = <HTMLElement>native.getElementsByTagName('img')[0] ? <HTMLElement>native.getElementsByTagName('img')[0] : native
@@ -67,27 +67,23 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
       this.renderer.setStyle(imgEl,'visibility','visible');
     })
   }
-  _setTextLoading() {
+  _setTextLoading():void {
       if(this.pragraphList.length > 0) {
         this.pragraphList.forEach(el => {
-          const native = el.nativeElement
-          this.renderer.addClass(native,'pragraph--pulsing')})
+          this.renderer.addClass(el.nativeElement,'pragraph--pulsing')})
         }
       }
-  _unsetTextLoading() {
+  _unsetTextLoading():void {
     this.pragraphList.forEach(el => {
-      const native = el.nativeElement
-      this.renderer.removeClass(native,'pragraph--pulsing')
+      this.renderer.removeClass(el.nativeElement,'pragraph--pulsing')
     })}
 
-  _setButtonLoading() {
+  _setButtonLoading():void {
     this.buttonsList.forEach(el => {
-      const native = el._elementRef.nativeElement
-      this.renderer.addClass(native,'button--pulsing')});
+      this.renderer.addClass(el._elementRef.nativeElement,'button--pulsing')});
  }
- _unSetButtonLoading() {
+ _unSetButtonLoading():void {
   this.buttonsList.forEach(el => {
-    const native = el._elementRef.nativeElement
-    this.renderer.removeClass(native,'button--pulsing')});
+    this.renderer.removeClass(el._elementRef.nativeElement,'button--pulsing')});
 }
 }

@@ -9,7 +9,6 @@ import { LoadingComponent } from './loading/loading.component';
 
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
 import { TextHightlightDirective } from './text-hightlight.directive';
-import { RouterOutletToggleDirective } from './router-outlet-toggle.directive';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 import { LanguageBoxComponent } from './language-box/language-box.component';
 import { CategoryMenuComponent } from './category-menu/category-menu.component';
@@ -31,7 +30,7 @@ import { ModalCloseDirective } from './modal-close.directive';
     SideNavMenuComponent,SearchBoxComponent,CategoryBreadcrumbComponent,AuthentificationCardComponent,
     GoogleSignInComponent,AccountLoginComponent,CreateProfileComponent,ProductFilterComponent,
     AccountCardComponent,UserRequestComponent,LoadingComponent,ScrollPaginatorDirective,
-    TextHightlightDirective,RouterOutletToggleDirective, LanguageBoxComponent,CategoryMenuComponent,
+    TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective],
   imports:  [
     CommonModule,

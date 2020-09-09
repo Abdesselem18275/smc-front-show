@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MenuTreeData, Category } from 'src/app/models/product.models';
-import { NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router, UrlTree } from '@angular/router';
 
 const INIT_NAV_TREE_DATA: MenuTreeData[]  = [
   {
@@ -54,13 +54,12 @@ const INIT_NAV_TREE_DATA: MenuTreeData[]  = [
   providedIn: 'root'
 })
 export class MenuDataBuilderService {
-  _treeMenu : MenuTreeData[];
 
-  get treeMenu() {
-    return this._treeMenu;
+  constructor(private router: Router) {
+
   }
 
-  buildMenuTree = (rootCategories: Category[]) => {
+  buildMenuTree = (rootCategories: Category[]):MenuTreeData[] => {
     return INIT_NAV_TREE_DATA.map((cat: MenuTreeData)  => {
       if (cat.designation === 'products') {
         return {
@@ -73,7 +72,7 @@ export class MenuDataBuilderService {
 
   }
 
-  setCatRouterLink(cat : Category) {
+  setCatRouterLink(cat : Category):Category & {routerLink: UrlTree } {
     const newCat = {
       ...cat,
       routerLink :this.generateCatRouterLink(cat.designation),
@@ -82,11 +81,11 @@ export class MenuDataBuilderService {
     return newCat;
   }
 
-  generateCatRouterLink(designation:string) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'categories__designation__in': designation },
+  generateCatRouterLink(designation:string): UrlTree {
+    const navigationExtras: NavigationExtras = {
+      queryParams: { categories__designation__in: designation },
       queryParamsHandling : 'merge'
     };
-    return ['/product/list',navigationExtras]
+    return this.router.createUrlTree(['/product/list'],navigationExtras)
   }
 }

@@ -12,9 +12,8 @@ import { Store } from '@ngrx/store';
 })
 export class AppearanceSelectorComponent implements OnInit {
   @Input() appearanceVariants : AppearanceVariant[]
-  @Input() mode? : AppSelectorMode = AppSelectorMode.Full
+  @Input() mode? : 'MINIMAL'|'FULL'
   @Output() selectedAppearanceVariant : EventEmitter<AppearanceVariant> = new EventEmitter();
-  private _selectedAppearanceVariant :AppearanceVariant
   hoveredAppearanceVariant: AppearanceVariant
   isBigSize$: Observable<boolean>;
 
@@ -26,7 +25,6 @@ export class AppearanceSelectorComponent implements OnInit {
 
   }
   setAppearanceVariant(appearanceVariant:AppearanceVariant) {
-    this._selectedAppearanceVariant = appearanceVariant
     this.selectedAppearanceVariant.emit(appearanceVariant);
   }
   setHoveredAppearance(appearanceVariant:AppearanceVariant) {

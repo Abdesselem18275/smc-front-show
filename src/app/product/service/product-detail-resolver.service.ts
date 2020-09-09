@@ -18,7 +18,7 @@ export class ProductDetailResolverService implements Resolve<ProductShort> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> |
   Observable<never> {
     this.store$.dispatch(ProductStoreActions.LoadRequestAction())
-    let id = route.paramMap.get('id');
+    const id = route.paramMap.get('id');
     return this.pds.get_element({value: id, model: 'product'}).pipe(
       take(1),
       mergeMap((product: ProductShort) => {

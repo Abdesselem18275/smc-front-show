@@ -14,7 +14,7 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
   @Input() appearanceVariant : AppearanceVariant
   anchors: Element;
   imagesArray : string[];
-  selectedIndex: number = 0;
+  selectedIndex = 0;
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
   constructor(private scroll: ScrollDispatcher,private cdr: ChangeDetectorRef) { }
   ngOnChanges(changes: SimpleChanges): void {

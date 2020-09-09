@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListMetaComponent } from './list-meta.component';
 
@@ -6,7 +6,7 @@ describe('ListMetaComponent', () => {
   let component: ListMetaComponent;
   let fixture: ComponentFixture<ListMetaComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ListMetaComponent ]
     })

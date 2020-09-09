@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { createEffect, Actions, ofType, ROOT_EFFECTS_INIT } from "@ngrx/effects";
-import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction, DeleteManyAction, ClearAction, LoadActiveCategoryAction } from "./actions";
-import { Store, select } from "@ngrx/store";
-import { map, switchMap, filter, concatMap, withLatestFrom, tap, exhaustMap } from "rxjs/operators";
-import { State } from "./state";
-import { ParamType, Param, Category } from "src/app/models/product.models";
-import { selectPageParam , selectAllParams } from "./selectors";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { NextPageAction, AddOrUpdateAction, AddOrUpdateManyAction,
+  DeleteManyAction, ClearAction, LoadActiveCategoryAction } from './actions';
+import { Store, select } from '@ngrx/store';
+import { map, switchMap, filter, concatMap, withLatestFrom, tap, exhaustMap } from 'rxjs/operators';
+import { State } from './state';
+import { ParamType, Param, Category } from 'src/app/models/product.models';
+import { selectPageParam , selectAllParams } from './selectors';
+import { Observable, of } from 'rxjs';
 import * as ProductStore from '../product-store';
-import { ROUTER_NAVIGATED } from "@ngrx/router-store";
-import { GlobalStoreSelectors } from "../global-store";
+import { ROUTER_NAVIGATED } from '@ngrx/router-store';
+import { GlobalStoreSelectors } from '../global-store';
 
 
 @Injectable()

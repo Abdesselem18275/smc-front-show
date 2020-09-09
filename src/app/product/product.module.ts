@@ -28,5 +28,8 @@ import { CommonModule } from '@angular/common';
     ProductRoutingModule,
   ],
   declarations: [ProductComponent, ProductListComponent,FavoriteHandlerDirective,
-                  ProductDetailComponent, ProductBoxComponent, ListMetaComponent, BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective, ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent, ProductFeaturesComponent, ProductComponentComponent],})
+                  ProductDetailComponent, ProductBoxComponent, ListMetaComponent,
+                  BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
+                  ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
+                  ProductFeaturesComponent, ProductComponentComponent],})
 export class ProductModule { }

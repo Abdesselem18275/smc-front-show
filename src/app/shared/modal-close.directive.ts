@@ -9,7 +9,7 @@ export class ModalCloseDirective {
 
   constructor(private store$: Store<ParamStoreState.State>,private _element: ElementRef ) { }
   @HostListener('click')
-  onClick() {
+  onClick():void {
     this.store$.dispatch(ModalStoreActions.CloseAllAction());
   }
 

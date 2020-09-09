@@ -1,9 +1,6 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { Injectable } from '@angular/core';
 import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
-import { RootStoreConfig, Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { UserStoreSelectors, UserStoreActions } from 'src/app/root-store/user-store';
-import { Profile } from '../../models/account.models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +12,7 @@ export class AccountFormService {
 
   createAccountForm(): FormGroup {
     const  form = this.fb.group({
-        email : ['', [Validators.email, Validators.required]],
+        email : ['', [ Validators.email, Validators.required ]],
         password : ['', Validators.required],
         confirmPassword : ['', Validators.required],
         first_name : ['', Validators.required],
@@ -27,14 +24,14 @@ export class AccountFormService {
   }
 
   createAuthForm(): FormGroup {
-    const   form = this.fb.group({
+    const form = this.fb.group({
       email : ['', [Validators.required, Validators.email]],
       password : ['', Validators.required],
     });
     return form;
   }
 
-  createLoadFullAccountForm() {
+  createLoadFullAccountForm(): FormGroup {
     const myForm  = this.createAccountForm();
     myForm.addControl('company_name', new FormControl());
     myForm.addControl('position', new FormControl());
@@ -46,7 +43,7 @@ export class AccountFormService {
     return myForm;
   }
 
-  createUserRequestForm() {
+  createUserRequestForm(): FormGroup {
     const   form = this.fb.group({
       subjects : ['', Validators.required],
       related_products : ['', Validators.required],
@@ -61,8 +58,8 @@ export class AccountFormService {
       return null;
     }
     if (control.get('confirmPassword')) {
-      control.get('confirmPassword').setErrors({'passwordNotConfirmed': true});
+      control.get('confirmPassword').setErrors({passwordNotConfirmed: true});
     }
-    return { 'passwordNotConfirmed': true } ;
+    return { passwordNotConfirmed: true } ;
   }
 }

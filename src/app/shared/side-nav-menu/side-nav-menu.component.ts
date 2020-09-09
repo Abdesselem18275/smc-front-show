@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { Profile } from 'src/app/models/account.models';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
-import { MenuDataBuilderService } from '../service/menu-data-builder.service';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
 
@@ -26,17 +25,17 @@ export class SideNavMenuComponent implements OnInit {
   constructor(
               private store$: Store<RootStoreState.State>) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
     this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree)
   }
 
-  logOut() {
+  logOut(): void {
     this.store$.dispatch(LogoutAction());
   }
-  login() {
+  login(): void {
     this.store$.dispatch(ToggleAction({key: 'loginBox'}));
   }
 }

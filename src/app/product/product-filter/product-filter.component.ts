@@ -3,7 +3,6 @@ import { FormGroup} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ParamStoreState } from 'src/app/root-store/param-store';
 import { FilterCategory } from '../../models/product.models';
-import { ModalStoreActions } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 
@@ -26,7 +25,7 @@ export class ProductFilterComponent implements OnInit {
   constructor(private store$: Store<ParamStoreState.State>) {
    }
 
-  ngOnInit() {
+  ngOnInit():void {
         this.filterForm$ = this.store$.select(GlobalStoreSelectors.selectFilterForm)
         this.filterCategories$ = this.store$.select(GlobalStoreSelectors.selectFilters)
         // this.onChanges();
@@ -60,10 +59,10 @@ export class ProductFilterComponent implements OnInit {
   //      Object.keys(tempForm_.controls).filter(y =>  tempForm_.get(y).setValue(false) );
   //   });
   // }
-  toggleFilter(i) {
+  toggleFilter(i:string):void {
     this.selectedFilter === i ? this.selectedFilter = '' : this.selectedFilter = i;
   }
-  toggleActive() {
+  toggleActive():void {
     this.isActive = !this.isActive;
   }
 }

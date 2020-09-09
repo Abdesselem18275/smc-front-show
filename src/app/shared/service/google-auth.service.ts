@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Injectable, Inject } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SmcAuthService } from '../../account/service/smc-auth.service';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
@@ -7,7 +8,9 @@ import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { Profile } from '../../models/account.models';
+import { Observable } from 'rxjs';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const gapi: any;
 @Injectable({
   providedIn: 'root'
@@ -20,6 +23,7 @@ export class GoogleAuthService {
               @Inject(TOKEN_KEY) private tokenKey: string,
               @Inject(PROFILE_ID) private profileId: string,
               @Inject(API_URL) private apiUrl: string) {
+
     gapi.load('auth2', () => {
       gapi.auth2.init({
         client_id: '541271383309-k3e64igmtqkenbosdl6mm7uo7og3jggg.apps.googleusercontent.com'
@@ -27,16 +31,19 @@ export class GoogleAuthService {
         });
   }
 
-  buttonRender(elementId: string , width: number) {
+  buttonRender(elementId: string , width: number):void {
     gapi.signin2.render(elementId, {
-      'scope': 'profile email',
-      'width' : width,
-      'height' : '36',
-      'theme': 'dark',
-      'longtitle': true,
-      'onsuccess': param => this.onSignIn(param),
-      'onfailure': this.onFailure()
+      scope: 'profile email',
+      width : width,
+      height : '36',
+      theme: 'dark',
+      longtitle: true,
+      onsuccess: param => this.onSignIn(param),
+      onfailure: this.onFailure()
     });
+  }
+  private onFailure():void {
+    console.error('failed')
   }
 
   private onSignIn(googleUser) {
@@ -50,10 +57,8 @@ export class GoogleAuthService {
     });
      }
 
-  private onFailure() {
-    }
 
-  createOrSignin(id_token: string) {
+  createOrSignin(id_token: string):Observable<any> {
     const endPoint = '/g-auth/';
     const query: string = [
       this.apiUrl,

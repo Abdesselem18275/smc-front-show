@@ -1,10 +1,10 @@
-import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from "@ngrx/effects";
-import { Injectable } from "@angular/core";
-import { map, tap } from "rxjs/operators";
-import { ToggleUserCard, ToggleAction, CloseAllAction, ToggleWithAuth } from "./actions";
-import { SmcAuthService } from "src/app/account/service/smc-auth.service";
-import { ROUTER_NAVIGATION } from "@ngrx/router-store";
-import { Router } from "@angular/router";
+import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
+import { ToggleUserCard, ToggleAction, CloseAllAction, ToggleWithAuth } from './actions';
+import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
+import { ROUTER_NAVIGATION } from '@ngrx/router-store';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ModalEffects {

@@ -19,7 +19,7 @@ export class RootEffects {
             });
           }),
           map(response => {
-              response["navMenuTree"] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))
+              response['navMenuTree'] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))
             return GlobalStoreActions.LoadInitDataAction({payload:response})
                     })))))
 

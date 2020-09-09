@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Category } from 'src/app/models/product.models';
 import { Router } from '@angular/router';
 

@@ -3,8 +3,15 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns":true,
+    "noFallthroughCasesInSwitch":true,
     "outDir": "./out-tsc/app",
     "types": []
+  },
+  "angularCompilerOptions": {
+    "strictTemplates":true,
+    "strictInjectionParameters":true,
   },
   "files": [
     "src/main.ts",

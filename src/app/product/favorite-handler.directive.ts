@@ -1,7 +1,6 @@
-import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy, ViewChild, ContentChildren, QueryList, Renderer2, AfterViewChecked } from '@angular/core';
+import { Directive, Input, HostListener, OnDestroy, ContentChildren, QueryList, Renderer2, AfterViewChecked } from '@angular/core';
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
-import { selectIsFavorite } from '../root-store/user-store/selectors';
 import { UserStoreActions, UserStoreSelectors } from '../root-store/user-store';
 import { Subscription } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
@@ -25,18 +24,18 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
   }
 
 
-  ngAfterViewChecked() {
-    this.matIcon = this.matIconList.first._elementRef.nativeElement
+  ngAfterViewChecked():void {
+    this.matIcon = <HTMLElement>this.matIconList.first._elementRef.nativeElement
     this.subscription = this.store$.select(UserStoreSelectors.selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
     });
   }
 
   @HostListener('click')
-  onClick() {
+  onClick():void {
     this.store$.dispatch(UserStoreActions.TriggerFavoriteAction({id: this.appFavoriteHandler}));
   }
-  updateIconStyle(state: boolean) {
+  updateIconStyle(state: boolean):void {
     this.renderer.removeClass(this.matIcon,'font--primary')
     const favClass = state ? 'font--primary' : 'font--dark-grey';
     const property = state ? 'favorite' : 'favorite_border';

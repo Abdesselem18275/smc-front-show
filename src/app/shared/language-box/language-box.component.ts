@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { RootStoreState, ModalStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { UserLanguage } from 'src/app/root-store/global-store/state';
-import { SetLanguageAction } from 'src/app/root-store/global-store/actions';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 
 import { LANGUAGE_CONFIG } from 'src/app/injectables.service';
@@ -23,12 +22,14 @@ export class LanguageBoxComponent implements OnInit {
       this.languageList = languageList;
     }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.language$ = this.store$.select(selectLanguage);
-    this.isSideNav$ = this.store$.select(ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'})
+    this.isSideNav$ = this.store$.select<boolean>(
+      ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'}
+      )
   }
 
-  setLanguage(value: UserLanguage) {
+  setLanguage(value: UserLanguage):void {
     //this.languageService.languageId = value.id.toLowerCase() + '/';
     //this.store$.dispatch(SetLanguageAction({key: value}));
   }

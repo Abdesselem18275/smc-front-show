@@ -11,8 +11,12 @@ import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-st
   styleUrls: ['./account-profile.component.scss']
 })
 export class AccountProfileComponent implements OnInit {
-  tabs: any[];
-  activeLink: string;
+  tabs = [
+    { label: 'Informations', icon: 'account_circle' , path: 'profile' },
+    { label: 'Favorites', icon: 'favorite' , path: 'favorites' },
+    { label: 'Messages', icon: 'message', path: 'messages' }
+  ];
+  activeLink=this.tabs[0].label;
   isUpdating$: Observable<boolean>;
   profile$: Observable<Profile>;
   constructor(private store$: Store<RootStoreState.State>) { }
@@ -21,12 +25,6 @@ export class AccountProfileComponent implements OnInit {
     this.store$.dispatch(UserStoreActions.UserRefreshAction())
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser)
     this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.tabs = [
-      { label: 'Informations', icon: 'account_circle' , path: 'profile' },
-      { label: 'Favorites', icon: 'favorite' , path: 'favorites' },
-      { label: 'Messages', icon: 'message', path: 'messages' }
-    ];
-    this.activeLink = this.tabs[0].label;
   }
 
 }

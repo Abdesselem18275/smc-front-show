@@ -1,3 +1,5 @@
+import { UrlTree } from '@angular/router';
+
 export interface MinimalProduct {
   id: number;
   designation: string;
@@ -90,14 +92,14 @@ export interface Feature {
     svgIcon: BaseImage;
 }
 export enum ParamType {
-    PAGE = "Page",
-    FILTER = "Filter",
-    CATEGORY = "Category",
-    SEARCH = "Search",
+    PAGE = 'Page',
+    FILTER = 'Filter',
+    CATEGORY = 'Category',
+    SEARCH = 'Search',
 }
 export enum AppSelectorMode {
-    Minimal = "MINIMAL",
-    Full = "FULL",
+    Minimal = 'MINIMAL',
+    Full = 'FULL',
 }
 export interface Param {
     key: string;
@@ -106,7 +108,7 @@ export interface Param {
 }
 export interface MenuTreeData {
     designation: string;
-    routerLink?: any;
+    routerLink?: UrlTree | string;
     icon?: string ;
     children?: MenuTreeData[];
   }

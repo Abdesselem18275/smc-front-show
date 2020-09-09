@@ -5,7 +5,7 @@
         <!-- use a disabled button to provide padding for tree leaf -->
         <ng-container *ngTemplateOutlet="node.icon ? icon : noIcon;context:iconContext(node)">
         </ng-container>
-        <span (click)="navigateTo(node)" class="pl2 font--dark-grey mat-subheading-1">{{node.designation | titlecase}}</span>
+        <span (click)="navigateTo(node)" [routerLink]="" class="pl2 font--dark-grey mat-subheading-1">{{node.designation | titlecase}}</span>
       </li>
     </mat-tree-node>
     <!-- This is the tree node template for expandable nodes -->

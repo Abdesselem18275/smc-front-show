@@ -31,7 +31,8 @@ export class ProductBoxComponent implements OnInit  {
   constructor(private store$: Store<any>) { }
 
   ngOnInit() {
-    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).pipe(map( (params: Param[]) => params.length !== 0));
+    this.isSearchActive = this.store$.select(ParamStoreSelectors.selectAllParamsByType, { type: ParamType.SEARCH}).
+    pipe(map( (params: Param[]) => params.length !== 0));
     this.isFavoriteRoute  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
     this.selectedAppearanceVariant$  = new BehaviorSubject<AppearanceVariant>(this.product.appearanceVariants[0])
     this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize)

@@ -10,25 +10,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories-tree.component.scss']
 })
 export class CategoriesTreeComponent implements OnInit {
-  @Input() treeData: [];
-  treeControl: any;
-  dataSource: any;
+  @Input() treeData= [];
+  treeControl = new NestedTreeControl<MenuTreeData>(node => node.children);
+  dataSource= new MatTreeNestedDataSource<MenuTreeData>();
   constructor(private router:Router) {}
 
   ngOnInit(): void {
-    this.treeControl = new NestedTreeControl<MenuTreeData>(node => node.children);
-    this.dataSource = new MatTreeNestedDataSource<MenuTreeData>();
     this.dataSource.data = this.treeData;
   }
-  hasChild = (_: number, node: MenuTreeData) => !!node.children && node.children.length > 0;
-  iconContext = (node:MenuTreeData) => ({ iconName: node.icon ? node.icon : ''});
+  hasChild = (_: number, node: MenuTreeData):boolean => !!node.children && node.children.length > 0;
+  iconContext = (node:MenuTreeData):{iconName:string} => ({ iconName: node.icon ? node.icon : ''});
 
-  navigateTo(node:MenuTreeData) {
+  navigateTo(node:MenuTreeData):void {
     if (node.routerLink) {
       if(Array.isArray(node.routerLink)) {
-        this.router.navigate([node.routerLink[0]],node.routerLink[1]);
+        void this.router.navigate([node.routerLink[0]],node.routerLink[1]);
       } else {
-        this.router.navigate([node.routerLink])
+        void this.router.navigate([node.routerLink])
       }
     }
   }

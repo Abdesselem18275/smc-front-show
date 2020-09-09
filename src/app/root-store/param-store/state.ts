@@ -1,8 +1,7 @@
 import { Param, Category } from 'src/app/models/product.models';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-export interface State extends EntityState<Param> {
-  }
+export type State = EntityState<Param>
 
 
 export function selectParamKey(a: Param): string {

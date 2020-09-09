@@ -1,7 +1,7 @@
 // Work around for https://github.com/angular/angular-cli/issues/7200
 
-const path = require('path');
-const webpack = require('webpack');
+path = require('path');
+webpack = require('webpack');
 module.exports = {
   mode: 'none',
   entry: {

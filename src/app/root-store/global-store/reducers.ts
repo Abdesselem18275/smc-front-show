@@ -1,5 +1,5 @@
-import { createReducer, on, Action } from "@ngrx/store";
-import { initialState, State } from "./state";
+import { createReducer, on, Action } from '@ngrx/store';
+import { initialState, State } from './state';
 import * as GlobalActions from './actions';
 
 export const featureKey = 'global';

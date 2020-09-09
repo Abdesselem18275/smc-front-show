@@ -1,5 +1,5 @@
 import * as fromGlobalReducer from './reducers';
-import { createFeatureSelector, createSelector, props } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './state';
 import { Category,ProductShort, FilterCategory } from 'src/app/models/product.models';
 import { RouterStoreSelectors } from '../router-store';
@@ -51,7 +51,7 @@ export const selectCategoryQueryParam = createSelector(
   }
 
   const setItems = (categories,param:Category): Category[] => {
-    if (param === undefined || param.designation==="All Cateogries") {
+    if (param === undefined || param.designation==='All Cateogries') {
       return [];
     }
     const cat = getItem(categories,param.id)

@@ -24,6 +24,7 @@ import {MatChipsModule} from '@angular/material/chips';
   exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,
-            MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule, MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
+            MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule,
+            MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
 })
 export class MaterialModule {}

@@ -35,8 +35,8 @@
                         <select class="input--large-width" formControlName="country" id="country">
                           <option
                           *ngFor="let country of countryNames"
-                          [value]="country.val">
-                            {{country.val}}
+                          [value]="country[1]">
+                            {{country[1]}}
                           </option>
                         </select>
                 </div>

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LanguageBoxComponent } from './language-box.component';
 
@@ -6,8 +6,8 @@ describe('LanguageBoxComponent', () => {
   let component: LanguageBoxComponent;
   let fixture: ComponentFixture<LanguageBoxComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    void TestBed.configureTestingModule({
       declarations: [ LanguageBoxComponent ]
     })
     .compileComponents();

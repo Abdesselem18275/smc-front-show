@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountFormService } from '../../shared/service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ParamStoreState , ModalStoreActions } from 'src/app/root-store';
+import { ParamStoreState  } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 })
 export class CreateProfileComponent implements OnInit {
   createForm: FormGroup;
-  countryNames: any;
   isChecking$: Observable<boolean>;
   serverError$: Observable<string>;
 
@@ -24,16 +23,17 @@ export class CreateProfileComponent implements OnInit {
               private accountFormService: AccountFormService,
     ) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.isChecking$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.createForm = this.accountFormService.createAccountForm();
   }
-  onSubmit() {
+  onSubmit():void {
     this.createForm.enable()
     if(this.createForm.valid) {
-      const payload = this.createForm.value;
       this.store$.dispatch(UserStoreActions.CreateUserAction({
-        payload}));
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        payload : this.createForm.value}));
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
     }
   }

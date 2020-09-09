@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MergeSizeQsPipe implements PipeTransform {
 
   transform(value: string,width?:number): unknown {
-    return value ? value.concat('?d='+width+'x'+width) : ''
+    return value ? `${value}?d=${width}x${width}` : ''
   }
 
 }

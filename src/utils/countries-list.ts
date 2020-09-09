@@ -277,5 +277,5 @@ export function countries() : string[][] {
       //   val: '',
       //   disabled: false
       // });
-    return Object.entries(COUNTRY_NAMES);
+    return Object.entries<string>(COUNTRY_NAMES);
   }

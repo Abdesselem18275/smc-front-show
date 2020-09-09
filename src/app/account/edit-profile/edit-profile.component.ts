@@ -18,21 +18,24 @@ import { countries } from 'src/utils/countries-list';
 })
 export class EditProfileComponent implements OnInit, OnDestroy  {
   accountForm: FormGroup;
-  countryNames: any[];
+  countryNames= countries();
   isUpdating$: Observable<boolean>;
   serverError$: Observable<any>;
   subscription: Subscription ;
-  constructor(
-              private store$: Store<RootStoreState.State>,
-              private accountFormService: AccountFormService) { }
+  constructor(private store$: Store,
+              private accountFormService: AccountFormService)
+              {
+    this.accountForm = this.accountFormService.createLoadFullAccountForm();
+    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+               }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  ngOnInit() {
-    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.accountForm = this.accountFormService.createLoadFullAccountForm();
-    this.countryNames = countries();
+  ngOnInit():void {
+    console.warn(countries())
+
+
     this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
@@ -52,7 +55,7 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
     });
   }
 
-  onSubmit() {
+  onSubmit():void {
     if (!this.accountForm.get('is_professional').value) {
       this.accountForm.setValue({
         company_name : null,
