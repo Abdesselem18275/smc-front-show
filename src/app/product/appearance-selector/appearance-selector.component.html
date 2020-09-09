@@ -9,6 +9,7 @@
     <img  class="mb1"
     [src]="item.look.thumbNail  | mergeSizeQs:50"
     (click)="setAppearanceVariant(item)">
+    <span *ngIf="(selectedAppearanceVariant$ | async) == item"></span>
   </div>
 
 </section>
