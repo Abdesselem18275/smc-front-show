@@ -3,7 +3,6 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-found.component';
-import {ProductModule} from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
@@ -18,7 +17,7 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { RootEffects } from './root-store/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { CommonModule, APP_BASE_HREF, PlatformLocation } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,7 @@ import { CommonModule } from '@angular/common';
       useFactory: loadInitData,
       deps: [ConfigService],
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

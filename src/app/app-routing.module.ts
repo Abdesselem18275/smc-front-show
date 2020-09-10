@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   },
   {path : 'account' , loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
   {path: 'miscellaneous', loadChildren: () => import('./miscellaneous/miscellaneous.module').then(m => m.MiscellaneousModule) },
-  {path : '' , redirectTo: '', pathMatch: 'full'}
+  {path : '' , redirectTo: '/miscellaneous/home', pathMatch: 'full'}
 
 
 ];

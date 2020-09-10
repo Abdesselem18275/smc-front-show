@@ -21,9 +21,7 @@ export class State  {
 
 
 export const initialState: State = {
-  language : {
-    id : 'en',
-    LanguageType : LanguageType.ENGLISH },
+  language : null,
   categories: [],
   filters: [],
   navMenuTree: [],

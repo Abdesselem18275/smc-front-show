@@ -52,7 +52,7 @@ import { ModalCloseDirective } from './modal-close.directive';
     LoadingComponent,
     ProductFilterComponent,
     MergeSizeQsPipe,
-    ModalCloseDirective
+    ModalCloseDirective,
   ]
 })
 export class SharedModule { }

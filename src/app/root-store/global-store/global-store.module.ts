@@ -1,15 +1,32 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, StoreConfig } from '@ngrx/store';
 import { featureKey, reducer } from './reducers';
+import { State } from './state';
+import {GlobalConfigService} from 'src/app/shared/service/global-config.service';
 
 
+export const GLOBAL_CONFIG_TOKEN = new InjectionToken<StoreConfig<State>>('Global Config');
+export function getConfig(gf: GlobalConfigService): StoreConfig<State> {
+  // return the config synchronously.
+  return {
+    initialState: gf.getInitialGlobalConfig(
+    ),
+  };
+}
 
 @NgModule({
   declarations: [],
   imports: [
-    StoreModule.forFeature(featureKey, reducer),
+    StoreModule.forFeature(featureKey, reducer,GLOBAL_CONFIG_TOKEN),
     CommonModule
-  ]
+  ],
+  providers: [
+    {
+      provide: GLOBAL_CONFIG_TOKEN,
+      deps: [GlobalConfigService],
+      useFactory: getConfig,
+    },
+  ],
 })
 export class GlobalStoreModule { }

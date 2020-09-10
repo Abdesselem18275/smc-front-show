@@ -5,8 +5,7 @@ import { RootStoreState, ModalStoreState } from './root-store';
 import { Store } from '@ngrx/store';
 import { selectAllModalState, selectOverlayedModal } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
-import { LanguageType, UserLanguage } from './root-store/global-store/state';
-import { SetLanguageAction } from './root-store/global-store/actions';
+import { LanguageType} from './root-store/global-store/state';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
 
 
@@ -18,7 +17,7 @@ import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from '.
     expandAnimation,
     sideSlideInAnimation]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   isSideMenuActive: boolean;
   isOverlay$: Observable<boolean>;
   modalStore$: Observable<ModalStoreState.State>;
@@ -38,30 +37,9 @@ export class AppComponent implements OnInit {
                 .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'))
                 .addSvgIcon('landing-page-illustration', sanitizer.
                 bypassSecurityTrustResourceUrl('./assets/icons/Illustration-landing-page.svg'));
+                this.isOverlay$ = this.store$.select(selectOverlayedModal);
+                //this.store$.dispatch(SetLanguageAction({key: value}));
+                this.modalStore$ = this.store$.select(selectAllModalState);
 
-
-  }
-  ngOnInit():void {
-    this.isOverlay$ = this.store$.select(selectOverlayedModal);
-    const language = this.baseUrl.replace(/\//g, '');
-    const value: UserLanguage = {
-      id : language,
-      LanguageType : this.getType(language)
-    };
-    this.store$.dispatch(SetLanguageAction({key: value}));
-    this.modalStore$ = this.store$.select(selectAllModalState);
-
-}
-  getType(base: string): string {
-    switch (base) {
-      case 'fr':
-        return LanguageType.FRENCH;
-      case 'en':
-        return LanguageType.ENGLISH;
-      case 'de':
-        return LanguageType.GERMAN;
-      default:
-        return LanguageType.ENGLISH;
-    }
   }
 }
