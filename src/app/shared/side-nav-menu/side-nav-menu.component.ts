@@ -16,20 +16,17 @@ import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
   templateUrl: './side-nav-menu.component.html',
   styleUrls: ['./side-nav-menu.component.scss']
 })
-export class SideNavMenuComponent implements OnInit {
+export class SideNavMenuComponent {
   profile$: Observable<Profile>;
   isLoading$: Observable<boolean>;
   navMenuData$: Observable<MenuTreeData[]>;
   isLogged$: Observable<boolean>;
   languageType: LanguageType;
-  constructor(
-              private store$: Store<RootStoreState.State>) { }
-
-  ngOnInit(): void {
-    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
-    this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-    this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree)
+  constructor(private store$: Store<RootStoreState.State>) {
+                this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
+                this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+                this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
+                this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree)
   }
 
   logOut(): void {

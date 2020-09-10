@@ -22,12 +22,6 @@ export class CategoriesTreeComponent implements OnInit {
   iconContext = (node:MenuTreeData):{iconName:string} => ({ iconName: node.icon ? node.icon : ''});
 
   navigateTo(node:MenuTreeData):void {
-    if (node.routerLink) {
-      if(Array.isArray(node.routerLink)) {
-        void this.router.navigate([node.routerLink[0]],node.routerLink[1]);
-      } else {
-        void this.router.navigate([node.routerLink])
-      }
-    }
+    this.router.navigateByUrl(node.routerLink);
   }
 }
