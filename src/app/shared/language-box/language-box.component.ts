@@ -25,4 +25,7 @@ export class LanguageBoxComponent {
         ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'}
         )
     }
+  getHref(localId:string) {
+    return '/'+localId
+  }
 }

@@ -4,7 +4,7 @@
   </button>
 
   <mat-menu  #lang="matMenu">
-    <a class="inline--centred" [href]="item.id" mat-menu-item *ngFor="let item of languageList" >
+    <a class="inline--centred" [href]="getHref(item.id)" mat-menu-item *ngFor="let item of languageList" >
         <mat-icon [svgIcon]="(item.LanguageType)"></mat-icon>
         <span class="mat-body-2">{{item.LanguageType}}</span>
         <mat-icon *ngIf="(language$ |async).LanguageType == item.LanguageType" class="check--full-right">check</mat-icon>
