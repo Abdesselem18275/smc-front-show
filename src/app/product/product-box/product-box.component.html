@@ -44,16 +44,16 @@
                 </mat-icon>
             </button>
         </section>
-        <section class="p4 details-container"
+        <section class="py2 px4 details-container"
                 [@verticalAccordionAnimation]
                 *ngIf="isDimensionOpen">
-                <section>
-                  <app-product-dimensions
+                <section >
+          <app-product-dimensions
                   [productDimensions]="product.dimensionsSpecifications">
           </app-product-dimensions>
                 </section>
 
-                <section>
+                <section class="my4">
                   <app-product-materials
                   [product]="product">
           </app-product-materials>

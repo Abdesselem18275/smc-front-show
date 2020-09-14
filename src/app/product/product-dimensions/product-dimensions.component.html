@@ -1,21 +1,16 @@
 
 <p i18n class="mat-h3 font--dark-grey">Dimensions</p>
 <mat-divider></mat-divider>
-<table>
-  <caption class="mat-caption p1">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
-  <tbody>
-    <tr>
-      <th class="p1 mat-body-2" *ngFor="let item of headersList" scope="col">
-        {{item | titlecase}}
-      </th>
-    </tr>
-    <tr class="main-body mat-body"  *ngFor="let item of dimensionsMatrix;index as i">
-      <td class="p1">
-          {{i +1}}
-      </td>
-        <td class="p1" *ngFor="let measure of item">
-              {{measure[0]}} {{measure[1]}}
-        </td>
-    </tr>
-  </tbody>
+<section class="table-container">
+<table [style.width]="tableWidth()" mat-table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container [sticky]="i==0" *ngFor="let columnName of displayedColumns ; index as i"  [matColumnDef]="columnName">
+    <th mat-header-cell *matHeaderCellDef> {{columnName | titlecase}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[columnName]}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</section>

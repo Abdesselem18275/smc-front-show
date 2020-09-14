@@ -1,7 +1,10 @@
 @import "src/styles.scss";
-caption {
-    text-align: start;
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
 }
 table {
-    border-spacing: 0;
+  min-width: 300px;
+  width: 100%;
 }

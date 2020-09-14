@@ -16,6 +16,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatRippleModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -25,6 +26,6 @@ import {MatChipsModule} from '@angular/material/chips';
             MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,
             MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule,
-            MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule],
+            MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule,MatTableModule],
 })
 export class MaterialModule {}

@@ -19,12 +19,16 @@ main {
 
 aside {
   max-height: 80vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: none;
   scrollbar-width: thin;
   padding-right: 4px;
 }
 aside > * {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+}
+aside::-webkit-scrollbar {
+  width: 4px;
 }
 .mat-h1 {
   margin: 0;
@@ -34,9 +38,7 @@ aside > * {
   justify-content: center;
   text-align: justify;
 }
-::-webkit-scrollbar {
-  width: 5px;
-}
+
 @media only screen and (max-width:1200px) {
   .left-aside {
     grid-column: 1 / 6;
@@ -76,5 +78,8 @@ aside > * {
     order: 3;
     margin: 0;
 
+  }
+  .right-aside > * {
+    margin: 0 0 3rem 0;
   }
 }

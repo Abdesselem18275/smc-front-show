@@ -1,6 +1,12 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DimensionsSpecification, MeasureType } from '../../models/product.models';
+import { DimensionsSpecification } from '../../models/product.models';
 import {transpose} from '../../../utils/util-functions';
+import { MatTableDataSource } from '@angular/material/table';
+
+interface dimensionElement {
+  [key: string]: string;
+}
+
 @Component({
   selector: 'app-product-dimensions',
   templateUrl: './product-dimensions.component.html',
@@ -9,19 +15,31 @@ import {transpose} from '../../../utils/util-functions';
 })
 export class ProductDimensionsComponent implements OnInit {
   @Input() productDimensions : DimensionsSpecification[]
-  headersList : string[]
+  displayedColumns : string[]
   dimensionsMatrix : number[][]
+  dataSource : MatTableDataSource<dimensionElement>;
   constructor() { }
 
   ngOnInit(): void {
-    this.headersList = this.productDimensions.map(x => x.measureType.designation)
-    this.headersList.unshift('n°')
-    this.dimensionsMatrix = transpose(this.productDimensions.
-      map(x =>
-      x.measures.map(y => [y,x.measureType.unit])))
+
+    const  dimMap :dimensionElement[] = Array.from(
+      this.productDimensions.reduce((accumulator:Map<number,any>, currentValue: DimensionsSpecification,currentIndex) => {
+        currentValue.measures.forEach((value,index) => {
+          accumulator.set(index,{
+            ...accumulator.get(index),
+            [currentValue.measureType.designation]:`${value} ${currentValue.measureType.unit}`,
+            'no.':index
+          })
+      })
+      return accumulator }, new Map<number,any>()).values())
+    this.dataSource = new MatTableDataSource<dimensionElement>(dimMap)
+    this.displayedColumns = this.productDimensions.map(x => x.measureType.designation)
+    this.displayedColumns.unshift('no.')
   }
   variantsNumber() {
       return this.productDimensions[0].measures.length
     }
-
+  tableWidth() {
+    return `${this.displayedColumns.length * 80}px`
+  }
 }
