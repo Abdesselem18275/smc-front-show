@@ -1,11 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DimensionsSpecification } from '../../models/product.models';
-import {transpose} from '../../../utils/util-functions';
+import { DimensionsSpecification, DimensionElement } from '../../models/product.models';
 import { MatTableDataSource } from '@angular/material/table';
-
-interface dimensionElement {
-  [key: string]: string;
-}
+import { HelperService} from '../../shared/service/helper.service';
 
 @Component({
   selector: 'app-product-dimensions',
@@ -16,23 +12,11 @@ interface dimensionElement {
 export class ProductDimensionsComponent implements OnInit {
   @Input() productDimensions : DimensionsSpecification[]
   displayedColumns : string[]
-  dimensionsMatrix : number[][]
-  dataSource : MatTableDataSource<dimensionElement>;
-  constructor() { }
+  dataSource : MatTableDataSource<DimensionElement>;
+  constructor(private helperS:HelperService) { }
 
   ngOnInit(): void {
-
-    const  dimMap :dimensionElement[] = Array.from(
-      this.productDimensions.reduce((accumulator:Map<number,any>, currentValue: DimensionsSpecification,currentIndex) => {
-        currentValue.measures.forEach((value,index) => {
-          accumulator.set(index,{
-            ...accumulator.get(index),
-            [currentValue.measureType.designation]:`${value} ${currentValue.measureType.unit}`,
-            'no.':index
-          })
-      })
-      return accumulator }, new Map<number,any>()).values())
-    this.dataSource = new MatTableDataSource<dimensionElement>(dimMap)
+    this.dataSource = new MatTableDataSource<DimensionElement>(this.helperS.toDimensionArray(this.productDimensions))
     this.displayedColumns = this.productDimensions.map(x => x.measureType.designation)
     this.displayedColumns.unshift('no.')
   }

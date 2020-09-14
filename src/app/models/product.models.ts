@@ -114,6 +114,8 @@ export interface MenuTreeData {
   }
 
 
-
+  export interface DimensionElement {
+    [key: string]: string;
+  }
 
 
