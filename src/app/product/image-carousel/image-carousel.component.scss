@@ -15,6 +15,7 @@
     }
 }
 .images-container {
+  transition: 0.8 ease-in;
   align-items: start;
   overflow: hidden;
   scroll-snap-type: x mandatory;
@@ -31,12 +32,13 @@
 
 }
 .dot--selected {
-  background-color: mat-color($smc-show-case-accent,darker);
+  background-color: mat-color($smc-show-case-primary);
 }
 .dot--unSelected {
-  background-color: $grey-color;
+  background-color:  mat-color($smc-show-case-accent);
 }
+
 button mat-icon {
-  @include  md-icon-size(2rem);
+  @include  md-icon-size(2.5rem);
 
 }

@@ -1,18 +1,21 @@
-  <div appImagePlaceholder cdkScrollable class="inline--centred images-container">
+<header *ngIf="imagesArray.length > 1" class="mb4 inline--centred--spaced">
+  <button (click)="byStepIndex(-1)" mat-icon-button>
+  <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <div class="images-selector inline--centred">
+  <span [class]="i === selectedIndex ? 'dot--selected' :  'dot--unSelected'" class="mx2" (click)="selectImage(i)"  *ngFor="let item of imagesArray; index as i">
+    </span>
+  </div>
+  <button (click)="byStepIndex(1)" mat-icon-button>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</header>
+
+
+
+<div appImagePlaceholder cdkScrollable class="inline--centred images-container">
     <div class="image-container" #loadingImage *ngFor="let item of imagesArray">
       <img  #targetImage  [src]="item  | mergeSizeQs:1200">
     </div>
   </div>
 
-<footer *ngIf="imagesArray.length > 1" class="mt4 inline--centred--spaced">
-<button (click)="byStepIndex(-1)" mat-icon-button>
-<mat-icon>keyboard_arrow_left</mat-icon>
-</button>
-<div class="mt4 images-selector inline--centred">
-<span [class]="i === selectedIndex ? 'dot--selected' :  'dot--unSelected'" class="mx2" (click)="selectImage(i)"  *ngFor="let item of imagesArray; index as i">
-  </span>
-</div>
-<button (click)="byStepIndex(1)" mat-icon-button>
-  <mat-icon>keyboard_arrow_right</mat-icon>
-  </button>
-</footer>

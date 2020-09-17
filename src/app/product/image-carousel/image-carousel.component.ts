@@ -1,22 +1,25 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef, OnDestroy, ContentChildren, QueryList, ElementRef, ViewChildren } from '@angular/core';
 import { AppearanceVariant } from '../../models/product.models';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
-import { debounceTime, throttleTime, throttle, bufferWhen, bufferCount, tap } from 'rxjs/operators';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { fromEvent, merge } from 'rxjs';
+import { throttle, bufferCount} from 'rxjs/operators';
+import { fromEvent, merge, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.scss']
 })
-export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
+export class ImageCarouselComponent implements OnDestroy,OnInit,AfterViewInit,OnChanges{
   @Input() appearanceVariant : AppearanceVariant
   anchors: Element;
   imagesArray : string[];
   selectedIndex = 0;
+  private subscription : Subscription
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
   constructor(private scroll: ScrollDispatcher,private cdr: ChangeDetectorRef) { }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
   ngOnChanges(changes: SimpleChanges): void {
     this.ngOnInit()
   }
@@ -27,11 +30,6 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
     this.imagesArray = this.imagesArray.concat(this.appearanceVariant.images.map(image => image.content))
     this.cdr.detectChanges()
   }
-  getImages() {
-    let imagesArray : string[]
-
-    return imagesArray
-  }
   ngAfterViewInit() {
     this.anchors = this.scrollable.getElementRef().nativeElement;
     const throttleConfig = {
@@ -39,7 +37,7 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
       trailing: true
     }
     const touchReducer = (accumulator, currentValue) => accumulator - currentValue;
-    fromEvent(this.anchors,'touchmove').
+    this.subscription = fromEvent(this.anchors,'touchmove').
     pipe(
       throttle(x => merge(fromEvent(this.anchors,'touchend'),fromEvent(this.anchors,'touchstart')),throttleConfig),
       bufferCount(2)
@@ -64,7 +62,5 @@ export class ImageCarouselComponent implements OnInit,AfterViewInit,OnChanges{
       _index = imagesNumber - 1;
     }
     return this.selectImage(_index);
-  }
-  imageSlide(event) {
   }
  }
