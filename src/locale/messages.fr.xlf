@@ -357,7 +357,7 @@
     <unit id="2690480251835175953">
       <segment>
         <source>{VAR_PLURAL, plural, =1 {one dimension variant} other {<ph id="0" equiv="INTERPOLATION"/> dimension variants}}</source>
-        <target>{VAR_PLURAL, plural, =1 {Une seule variante de dimension} other {<ph id="0" equiv="INTERPOLATION"/> variante de dimension}}</target>
+        <target>{VAR_PLURAL, plural, =1 {Une seule variante de dimension} other {<ph id="0" equiv="INTERPOLATION"/> variantes de dimension}}</target>
 
       </segment>
     </unit>
