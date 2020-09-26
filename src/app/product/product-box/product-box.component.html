@@ -36,36 +36,35 @@
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section  *ngIf="isBigSize$ |async" class="p4  inline--centred">
-            <button #pulsingButton (click)="toggleDimension()" color="primary" class="mr4" mat-flat-button>
-                <span i18n>Technical details</span>
-                <mat-icon [class.icon--rotate]="isDimensionOpen">
-                        keyboard_arrow_down
-                </mat-icon>
-            </button>
+        <section   [class.section--toggeled]="isDimensionOpen" *ngIf="isBigSize$ |async" class="details-container px4 column">
+            <section (click)="toggleDimension()" matRipple class="p4 details-toggeler font--grey inline--centred--spaced">
+              <span i18n class="mat-body-strong">Technical details</span>
+              <mat-icon [style.transform]="isDimensionOpen ? 'rotateX(180deg)' :''" >expand_more</mat-icon>
+            </section>
+            <section
+            class="mt4"
+            [@verticalAccordionAnimation]
+            *ngIf="isDimensionOpen">
+            <section >
+      <app-product-dimensions
+              [productDimensions]="product.dimensionsSpecifications">
+      </app-product-dimensions>
+            </section>
+
+            <section class="my8">
+              <app-product-materials
+              [product]="product">
+      </app-product-materials>
+            </section>
+
+            <section class="my8">
+              <app-product-component [componentsSpecs]="product.componentsSpecifications">
+
+              </app-product-component>
+            </section>
+           </section>
         </section>
-        <section class="py2 px4 details-container"
-                [@verticalAccordionAnimation]
-                *ngIf="isDimensionOpen">
-                <section >
-          <app-product-dimensions
-                  [productDimensions]="product.dimensionsSpecifications">
-          </app-product-dimensions>
-                </section>
 
-                <section class="my4">
-                  <app-product-materials
-                  [product]="product">
-          </app-product-materials>
-                </section>
-
-                <section>
-                  <app-product-component [componentsSpecs]="product.componentsSpecifications">
-
-                  </app-product-component>
-                </section>
-
-</section>
 </ng-container>
 </div>
 
