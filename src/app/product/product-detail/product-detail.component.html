@@ -3,18 +3,18 @@
 </section>
 
 <main class="global--gutters ">
-    <section class="main-title">
-      <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
-      <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
-    </section>
-    <section class="appearance-selector">
-      <app-appearance-selector
-      (selectedAppearanceVariant) = "setAppearanceVariant($event)"
-      [appearanceVariants]="(product$ |async).appearanceVariants">
-     </app-appearance-selector>
-    </section>
-
-<section class="text-description">
+  <section class="product-title">
+    <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
+    <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
+  </section>
+  <aside class="left-aside column">
+<section>
+    <app-appearance-selector
+    (selectedAppearanceVariant) = "setAppearanceVariant($event)"
+    [appearanceVariants]="(product$ |async).appearanceVariants">
+   </app-appearance-selector>
+  </section>
+<section>
   <p i18n class="mat-h3 font--dark-grey">Description</p>
   <mat-divider></mat-divider>
   <p class="mt4 mat-body-1 description-text font--dark-accent" >
@@ -25,13 +25,15 @@
   <app-product-features [features]="(product$ |async).features"></app-product-features>
 
 </section>
+</aside>
   <section class="images-carousel" >
     <app-image-carousel [appearanceVariant]="selectedAppearanceVariant$|async"></app-image-carousel>
   </section>
-  <p class="mat-h2 technical-details__title">
-      Technical details
-  </p>
-    <section class="dimension">
+
+  <p class="technical-details-title mat-h2">Technical Details</p>
+
+  <aside class="right-aside">
+    <section>
       <app-product-dimensions
       [productDimensions]="(product$ |async).dimensionsSpecifications">
       </app-product-dimensions>
@@ -46,6 +48,7 @@
   </app-product-component>
 
 </section>
+</aside>
 </main>
 <footer class="global--gutters related-products">
 <p i18n class="mat-h2 font--dark-grey">Related products</p>

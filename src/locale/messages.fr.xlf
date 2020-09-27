@@ -363,8 +363,8 @@
     </unit>
     <unit id="7964866832792067585">
       <segment>
-        <source>{VAR_PLURAL, plural, =0 {No} =1 {One} other {<ph id="0" equiv="INTERPOLATION"/> }}</source>
-        <target>{VAR_PLURAL, plural, =0 {Pas de} =1 {Une} other {<ph id="0" equiv="INTERPOLATION"/> }}</target>
+        <source>{VAR_PLURAL, plural, =0 {No} =1 {One} other {<ph id="0" equiv="INTERPOLATION"/> available look}}</source>
+        <target>{VAR_PLURAL, plural, =0 {Pas de} =1 {Un} other {<ph id="0" equiv="INTERPOLATION"/> seul look disponible }}</target>
       </segment>
     </unit>
     <unit id="2154216727411550160">
