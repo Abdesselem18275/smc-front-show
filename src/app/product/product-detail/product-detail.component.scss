@@ -1,20 +1,28 @@
 @import "src/styles.scss";
 main {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-row: auto;
-  column-gap: 1.5rem;
-  row-gap: 2rem;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: minmax(2rem,4rem) auto;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  grid-template-areas:
+  "product-title center-section technical-title"
+  "left-aside center-section right-aside";
+}
+.product-title {
+  grid-area: product-title;
 }
 .left-aside {
-  grid-column: 1 / 4;
+  grid-area: left-aside;
 }
-
+.technical-details-title {
+  grid-area: technical-title;
+}
 .center-section{
-  grid-column: 4 / 10;
+  grid-area: center-section;
 }
 .right-aside {
-  grid-column: 10 / 13;
+  grid-area: right-aside;
 }
 
 aside {
@@ -24,15 +32,14 @@ aside {
   scrollbar-width: thin;
   padding-right: 4px;
 }
-aside > * {
-  margin: 1.5rem 0;
+aside section {
+  margin: 1rem 0;
 }
 aside::-webkit-scrollbar {
   width: 4px;
 }
-.mat-h1 {
+.mat-h1,.mat-h2 {
   margin: 0;
-  font-weight: 500;
 }
 .description-text {
   justify-content: center;
@@ -40,20 +47,17 @@ aside::-webkit-scrollbar {
 }
 
 @media only screen and (max-width:1200px) {
-  .left-aside {
-    grid-column: 1 / 6;
-    grid-row: 2;
-  }
-
-  .center-section{
-    grid-column: 1 / 13;
-    grid-row: 1;
-
-  }
-  .right-aside {
-    margin-top: 5rem;
-    grid-column: 7 / 13;
-    grid-row: 2;
+  main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    column-gap: 1.5rem;
+    row-gap: 2rem;
+    grid-template-areas:
+    "product-title product-title"
+    "center-section center-section"
+    "technical-title technical-title"
+    "left-aside right-aside";
   }
   aside {
     max-height: 100%;
@@ -62,24 +66,20 @@ aside::-webkit-scrollbar {
 }
 @media only screen and (max-width:750px) {
   main {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+    grid-template-areas:
+    "product-title"
+    "center-section"
+    "left-aside"
+    "technical-title"
+    "right-aside";
   }
-  .left-aside {
-    order: 2;
-  }
-
-  .center-section{
-    order: 1;
+  aside section:first {
     margin-bottom: 2rem;
-
   }
-  .right-aside {
-    order: 3;
-    margin: 0;
-
-  }
-  .right-aside > * {
-    margin: 0 0 3rem 0;
+  aside section:not(:first-child) {
+    margin: 2rem 0;
   }
 }

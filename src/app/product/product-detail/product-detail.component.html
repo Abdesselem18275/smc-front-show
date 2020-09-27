@@ -3,15 +3,17 @@
 </section>
 
 <main class="global--gutters ">
+  <section class="product-title">
+    <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
+    <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
+  </section>
   <aside class="left-aside column">
-    <section>
-      <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
-      <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
-    </section>
+<section>
     <app-appearance-selector
     (selectedAppearanceVariant) = "setAppearanceVariant($event)"
     [appearanceVariants]="(product$ |async).appearanceVariants">
    </app-appearance-selector>
+  </section>
 <section>
   <p i18n class="mat-h3 font--dark-grey">Description</p>
   <mat-divider></mat-divider>
@@ -24,6 +26,8 @@
   <section class="center-section" >
     <app-image-carousel [appearanceVariant]="selectedAppearanceVariant$|async"></app-image-carousel>
   </section>
+  <p class="technical-details-title mat-h2">Technical Details</p>
+
   <aside class="right-aside">
     <section>
       <app-product-dimensions
