@@ -1,7 +1,7 @@
 
-<p i18n class="mat-h3 font--dark-grey">Dimensions</p>
+<span i18n class="mat-h3 font--dark-grey">Dimensions</span>
+<caption class="font--dark-grey mat-caption">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
 <mat-divider></mat-divider>
-<caption class="font--dark-grey mat-caption mt2">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
 <section class="table-container">
 <table [style.width]="tableWidth()" mat-table [dataSource]="dataSource">
   <!-- Position Column -->

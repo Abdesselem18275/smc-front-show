@@ -36,13 +36,13 @@
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section   [class.section--toggeled]="isDimensionOpen" *ngIf="isBigSize$ |async" class="details-container px4 column">
-            <section (click)="toggleDimension()" matRipple class="p4 details-toggeler font--grey inline--centred--spaced">
+        <section   [class.section--toggeled]="isDimensionOpen" *ngIf="isBigSize$ |async" class="details-container column">
+            <section (click)="toggleDimension()" class="p4 details-toggeler font--grey inline--centred--spaced">
               <span i18n class="mat-body-strong">Technical details</span>
               <mat-icon [style.transform]="isDimensionOpen ? 'rotateX(180deg)' :''" >expand_more</mat-icon>
             </section>
             <section
-            class="mt4"
+            class="p4"
             [@verticalAccordionAnimation]
             *ngIf="isDimensionOpen">
             <section >

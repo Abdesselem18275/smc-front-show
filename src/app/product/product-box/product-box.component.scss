@@ -54,7 +54,8 @@ mat-icon {
 }
 .details-toggeler:hover {
   cursor: pointer;
+  background-color: $extreme-light-grey-color;
 }
 .section--toggeled {
-   @extend .mat-elevation-z4
+   @extend .mat-elevation-z6
 }
