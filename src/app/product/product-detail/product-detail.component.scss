@@ -1,85 +1,125 @@
-@import "src/styles.scss";
 main {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-row: auto;
-  column-gap: 1.5rem;
-  row-gap: 2rem;
+  grid-template-columns:1fr 2fr 1fr;
+  grid-template-rows: minmax(3rem,4rem) minmax(5rem,10rem) minmax(5rem) minmax(5rem);
+  column-gap: 1rem;
+  row-gap: 1rem;
+  grid-template-areas:
+  "main-title images-carousel technical-title "
+  "appearance-selector  images-carousel materials"
+  "text-description images-carousel componnents  "
+  "features  images-carousel dimension "
+  "features images-carousel dimension" ;
 }
-.left-aside {
-  grid-column: 1 / 4;
+.main-title {
+  grid-area: main-title ;
 }
+.appearance-selector {
+  grid-area: appearance-selector;
+}
+.text-description {
+  grid-area: text-description;
+}
+.features {
+  grid-area: features;
+}
+.images-carousel {
+  grid-area: images-carousel;
+}
+.technical-details__title {
+  grid-area: technical-title;
 
-.center-section{
-  grid-column: 4 / 10;
 }
-.right-aside {
-  grid-column: 10 / 13;
+.dimension {
+  grid-area: dimension;
+  overflow-x: hidden;
 }
-
-aside {
-  max-height: 80vh;
-  overflow-y: auto;
-  overflow-x: none;
-  scrollbar-width: thin;
-  padding-right: 4px;
+.materials {
+  grid-area: materials;
 }
-aside > * {
-  margin: 1.5rem 0;
-}
-aside::-webkit-scrollbar {
-  width: 4px;
+.componnents {
+  grid-area: componnents;
 }
 .mat-h1 {
+  margin: 0 0 0.5rem;
+}
+.mat-h2 {
   margin: 0;
-  font-weight: 500;
 }
-.description-text {
-  justify-content: center;
-  text-align: justify;
-}
+// .left-aside {
+//   grid-column: 1 / 4;
+// }
 
-@media only screen and (max-width:1200px) {
-  .left-aside {
-    grid-column: 1 / 6;
-    grid-row: 2;
-  }
+// .center-section{
+//   grid-column: 4 / 10;
+// }
+// .right-aside {
+//   grid-column: 10 / 13;
+// }
 
-  .center-section{
-    grid-column: 1 / 13;
-    grid-row: 1;
+// aside {
+//   max-height: 80vh;
+//   overflow-y: auto;
+//   overflow-x: none;
+//   scrollbar-width: thin;
+//   padding-right: 4px;
+// }
+// aside > * {
+//   margin: 1.5rem 0;
+// }
+// aside::-webkit-scrollbar {
+//   width: 4px;
+// }
+// .mat-h1 {
+//   margin: 0;
+//   font-weight: 500;
+// }
+// .description-text {
+//   justify-content: center;
+//   text-align: justify;
+// }
 
-  }
-  .right-aside {
-    margin-top: 5rem;
-    grid-column: 7 / 13;
-    grid-row: 2;
-  }
-  aside {
-    max-height: 100%;
-    overflow: hidden;
-  }
-}
-@media only screen and (max-width:750px) {
-  main {
-    display: flex;
-    flex-direction: column;
-  }
-  .left-aside {
-    order: 2;
-  }
+// @media only screen and (max-width:1200px) {
+//   .left-aside {
+//     grid-column: 1 / 6;
+//     grid-row: 2;
+//   }
 
-  .center-section{
-    order: 1;
-    margin-bottom: 2rem;
+//   .center-section{
+//     grid-column: 1 / 13;
+//     grid-row: 1;
 
-  }
-  .right-aside {
-    order: 3;
-    margin: 0;
+//   }
+//   .right-aside {
+//     margin-top: 5rem;
+//     grid-column: 7 / 13;
+//     grid-row: 2;
+//   }
+//   aside {
+//     max-height: 100%;
+//     overflow: hidden;
+//   }
+// }
+// @media only screen and (max-width:750px) {
+//   main {
+//     display: flex;
+//     flex-direction: column;
+//   }
+//   .left-aside {
+//     order: 2;
+//   }
 
-  }
-  .right-aside > * {
-    margin: 0 0 3rem 0;
-  }
-}
+//   .center-section{
+//     order: 1;
+//     margin-bottom: 2rem;
+
+//   }
+//   .right-aside {
+//     order: 3;
+//     margin: 0;
+
+//   }
+//   .right-aside > * {
+//     margin: 0 0 3rem 0;
+//   }
+// }

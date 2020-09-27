@@ -3,47 +3,50 @@
 </section>
 
 <main class="global--gutters ">
-  <aside class="left-aside column">
-    <section>
+    <section class="main-title">
       <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
       <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
     </section>
-    <app-appearance-selector
-    (selectedAppearanceVariant) = "setAppearanceVariant($event)"
-    [appearanceVariants]="(product$ |async).appearanceVariants">
-   </app-appearance-selector>
-<section>
+    <section class="appearance-selector">
+      <app-appearance-selector
+      (selectedAppearanceVariant) = "setAppearanceVariant($event)"
+      [appearanceVariants]="(product$ |async).appearanceVariants">
+     </app-appearance-selector>
+    </section>
+
+<section class="text-description">
   <p i18n class="mat-h3 font--dark-grey">Description</p>
   <mat-divider></mat-divider>
   <p class="mt4 mat-body-1 description-text font--dark-accent" >
    Its hand-hammered finish and shine-polished Brass casted Handle make it strikingly beautiful to serve in or to decorate the kitchen.The Copper main core provides an excellent heat conduction and distribution around the entire surface of the cookware.
   </p>
 </section>
-   <app-product-features [features]="(product$ |async).features"></app-product-features>
-  </aside>
-  <section class="center-section" >
+<section class="features">
+  <app-product-features [features]="(product$ |async).features"></app-product-features>
+
+</section>
+  <section class="images-carousel" >
     <app-image-carousel [appearanceVariant]="selectedAppearanceVariant$|async"></app-image-carousel>
   </section>
-  <aside class="right-aside">
-    <section>
+  <p class="mat-h2 technical-details__title">
+      Technical details
+  </p>
+    <section class="dimension">
       <app-product-dimensions
       [productDimensions]="(product$ |async).dimensionsSpecifications">
       </app-product-dimensions>
     </section>
-    <section>
+    <section class="materials">
       <app-product-materials
       [product]="(product$ |async)">
   </app-product-materials>
     </section>
-<section>
+<section class="componnents">
   <app-product-component [componentsSpecs]="(product$ |async).componentsSpecifications">
   </app-product-component>
 
 </section>
-
-
-  </aside>
 </main>
-<section class="global--gutters related-products">
+<footer class="global--gutters related-products">
 <p i18n class="mat-h2 font--dark-grey">Related products</p>
-</section>
+</footer>
