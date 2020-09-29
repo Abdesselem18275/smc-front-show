@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef, OnDestroy, ContentChildren, QueryList, ElementRef, ViewChildren } from '@angular/core';
-import { AppearanceVariant } from '../../models/product.models';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { throttle, bufferCount} from 'rxjs/operators';
 import { fromEvent, merge, Subscription } from 'rxjs';
@@ -9,10 +8,9 @@ import { fromEvent, merge, Subscription } from 'rxjs';
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.scss']
 })
-export class ImageCarouselComponent implements OnDestroy,OnInit,AfterViewInit,OnChanges{
-  @Input() appearanceVariant : AppearanceVariant
+export class ImageCarouselComponent implements OnDestroy,AfterViewInit{
+  @Input() images : string[]
   anchors: Element;
-  imagesArray : string[];
   selectedIndex = 0;
   private subscription : Subscription
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
@@ -20,16 +18,7 @@ export class ImageCarouselComponent implements OnDestroy,OnInit,AfterViewInit,On
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.ngOnInit()
-  }
 
-  ngOnInit(): void {
-    this.imagesArray = []
-    this.imagesArray.push(this.appearanceVariant.thumbNail)
-    this.imagesArray = this.imagesArray.concat(this.appearanceVariant.images.map(image => image.content))
-    this.cdr.detectChanges()
-  }
   ngAfterViewInit() {
     this.anchors = this.scrollable.getElementRef().nativeElement;
     const throttleConfig = {
@@ -53,7 +42,7 @@ export class ImageCarouselComponent implements OnDestroy,OnInit,AfterViewInit,On
     this.cdr.detectChanges()
   }
   byStepIndex(step) {
-    const imagesNumber = this.imagesArray.length;
+    const imagesNumber = this.images.length;
     let _index = this.selectedIndex + step;
     if ( _index >= imagesNumber  ) {
       _index = 0;

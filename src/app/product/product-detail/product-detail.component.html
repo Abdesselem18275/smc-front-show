@@ -1,7 +1,6 @@
 <section class="global--gutters">
   <app-category-breadcrumb class="mat-body-2 font--dark-grey breadcrumb" [currentProduct]="product$ |async"></app-category-breadcrumb>
 </section>
-
 <main class="global--gutters ">
   <section class="product-title">
     <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
@@ -26,10 +25,12 @@
 
 </section>
 </aside>
-  <section class="images-carousel" >
-    <app-image-carousel [appearanceVariant]="selectedAppearanceVariant$|async"></app-image-carousel>
+  <section class="column images-container" >
+    <app-image-carousel *ngIf="isSmallScreen$ | async else verticalImages" [images]="images|async"></app-image-carousel>
+    <ng-template #verticalImages>
+    <img class="my2" [src]="image | mergeSizeQs:1200" *ngFor="let image of images | async">
+    </ng-template>
   </section>
-
   <p class="technical-details-title mat-h2">Technical Details</p>
 
   <aside class="right-aside">

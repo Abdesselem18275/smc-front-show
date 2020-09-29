@@ -1,7 +1,9 @@
-@import "src/styles.scss";
+@import "../../../styles/util-mixins.scss";
+@import "../../../styles/colors.scss";
 :host {
-  @extend .column;
-  justify-content: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .image--single {
   max-width: 100%;

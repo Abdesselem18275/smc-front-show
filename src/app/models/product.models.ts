@@ -36,6 +36,10 @@ export interface ProductShort {
 
 }
 
+export interface ProductLong extends ProductShort {
+  longDescription : string;
+}
+
 export interface DimensionsSpecification {
     measures: number[];
     measureType : MeasureType
