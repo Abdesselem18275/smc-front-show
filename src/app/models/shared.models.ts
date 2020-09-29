@@ -4,3 +4,4 @@ export enum ModalRoute {
   CATEGORY = 'Category',
   SEARCH = 'Search',
 }
+export type CarouselMode = 'vertical' | 'horizontal'

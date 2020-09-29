@@ -1,9 +1,9 @@
 //Install express server
-const compression = require('compression')
-const express = require('express');
-const path = require('path');
+var compression = require('compression')
+var express = require('express');
+var path = require('path');
 
-const app = express();
+var app = express();
 app.use(compression())
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
@@ -14,10 +14,10 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.static('./dist/browser/'));
 
 app.get('/*', function(req,res) {
-  const supportedLocales = ['fr-FR','de-DE','en-US'];
-  const defaultLocale = 'en-US'
-  const matches = req.url.match(new RegExp(supportedLocales.join('|'),"g"));
-  const urlLocalChunk = matches ? matches[matches.length-1] : defaultLocale
+  var supportedLocales = ['fr-FR','de-DE','en-US'];
+  var defaultLocale = 'en-US'
+  var matches = req.url.match(new RegExp(supportedLocales.join('|'),"g"));
+  var urlLocalChunk = matches ? matches[matches.length-1] : defaultLocale
   res.sendFile(path.join(__dirname,'dist','browser',urlLocalChunk,'index.html'));
 });
 

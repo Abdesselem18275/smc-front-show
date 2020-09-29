@@ -17,6 +17,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatRippleModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTableModule} from '@angular/material/table';
+import {LayoutModule} from '@angular/cdk/layout';
 
 
 
@@ -24,7 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 @NgModule({
   exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
-            MatSnackBarModule, ScrollingModule, MatButtonToggleModule,
+            MatSnackBarModule, ScrollingModule, MatButtonToggleModule,LayoutModule,
             MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule,
             MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule,MatTableModule],
 })
