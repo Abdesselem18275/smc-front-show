@@ -3,7 +3,7 @@
   <mat-divider></mat-divider>
   <mat-list dense>
 <mat-list-item *ngFor="let componentSpec of componentsSpecs">
-  <mat-icon [svgIcon]="componentSpec.component.svgIcon.designation" matListIcon></mat-icon>
+  <mat-icon [svgIcon]="componentSpec.component?.svgIcon?.designation" matListIcon></mat-icon>
 
   <div mat-line>
       <p class="mat-body-2">
