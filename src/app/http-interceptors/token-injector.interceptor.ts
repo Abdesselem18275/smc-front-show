@@ -35,7 +35,7 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
           setHeaders: {
             Authorization: 'Token ' + token,
             'Content-Type':  'application/json',
-            'Content-Language':lang.id
+            'Accept-Language':lang.id
           }
         })))
       )
