@@ -55,6 +55,9 @@ aside section {
 
 
 @media only screen and (max-width:1200px) {
+  .right-aside,.images-container,.left-aside {
+    max-height: 100%;
+  }
   main {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -76,7 +79,7 @@ aside section {
   main {
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 2rem;
+    row-gap: 1.5rem;
     grid-template-areas:
     "product-title"
     "center-section"
