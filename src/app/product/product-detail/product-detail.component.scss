@@ -30,6 +30,9 @@ main {
   grid-area: technical-title;
 
 }
+.description-text {
+  text-align: justify;
+}
 .right-aside,.images-container,.left-aside {
   max-height: 80vh;
   overflow-y: scroll;

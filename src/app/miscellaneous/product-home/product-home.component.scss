@@ -7,8 +7,12 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=2500x2500');
+  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=3000x3000');
   max-width: 100%;
+  @media only screen and (max-width:720px) {
+    background-image:url('https://smc-static-media.s3.eu-west-3.amazonaws.com/media/main_hero_cropped.jpg?d=1200x1200');
+
+  }
 }
 .hero-text {
   position: absolute;
