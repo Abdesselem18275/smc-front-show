@@ -5,7 +5,7 @@
       <header class="column">
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
-          <span class="mat-h2">Menu </span>
+          <span *ngIf="!(isLogged$ |async) && (isSideNav$| async)" class="mat-h2">Menu </span>
           <button appModalClose class="icon--full-right" mat-icon-button><mat-icon>close</mat-icon>
           </button>
         </section>
