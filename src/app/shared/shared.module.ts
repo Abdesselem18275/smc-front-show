@@ -24,6 +24,7 @@ import { AuthentificationCardComponent } from './authentification-card/authentif
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { AccountLoginComponent } from './account-login/account-login.component';
 import { ModalCloseDirective } from './modal-close.directive';
+import { InitialsIconComponent } from './initials-icon/initials-icon.component';
 
 @NgModule({
   declarations: [ProductMenuComponent,
@@ -31,7 +32,7 @@ import { ModalCloseDirective } from './modal-close.directive';
     GoogleSignInComponent,AccountLoginComponent,CreateProfileComponent,ProductFilterComponent,
     AccountCardComponent,UserRequestComponent,LoadingComponent,ScrollPaginatorDirective,
     TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
-    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective],
+    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, InitialsIconComponent],
   imports:  [
     CommonModule,
     RouterModule,

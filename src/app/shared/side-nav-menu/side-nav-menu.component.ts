@@ -32,7 +32,5 @@ export class SideNavMenuComponent {
   logOut(): void {
     this.store$.dispatch(LogoutAction());
   }
-  login(): void {
-    this.store$.dispatch(ToggleAction({key: 'loginBox'}));
-  }
+
 }

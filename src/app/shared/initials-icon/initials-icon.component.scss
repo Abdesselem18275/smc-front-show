@@ -1,0 +1,7 @@
+@import '../../../styles/colors.scss';
+.mat-h1 {
+  fill : mat-color($smc-show-case-primary);
+}
+.circle {
+  fill : mat-color($smc-show-case-accent);
+}

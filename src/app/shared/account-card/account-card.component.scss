@@ -1,18 +1,19 @@
-@import "src/styles.scss";
+@import "../../../styles/colors.scss";
 
-#account-avatar {
-    @include  md-icon-size(5rem);
-    color: mat-color($smc-show-case-accent);
-    margin-bottom: 0.5rem;
+
+.main-header {
+  width: 100%;
+
 }
-#account-avatar:hover {
-    cursor: pointer;
-}
-.mat-h2 {
+.mat-h1,.mat-h3,.mat-h2 {
     margin: 0;
 }
 .nav-list--full-width {
     width: 100%;
+}
+.login-button {
+  margin: 1rem 0;
+  width: 100%;
 }
 .nav-list {
  margin-top:1.5rem ;
@@ -22,16 +23,16 @@
 .mat-list-icon {
 @extend .font--grey;
 }
-.action-container {
-    @media only screen and (max-width:330px)  {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        button {
-            margin: 0.5rem 0;
-        }
-      }
-}
+
 .icon--full-right {
   margin-left: auto;
+}
+.action-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  button {
+    border: solid 1px mat-color($smc-show-case-accent);
+    background-color: white;
+  }
 }

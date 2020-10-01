@@ -5,13 +5,7 @@
   <div class="pl4">
     <app-categories-tree [treeData]="navMenuData$ |async"></app-categories-tree>
   </div>
-  <mat-divider class="my4"></mat-divider>
-    <mat-nav-list *ngIf="!(isLogged$ | async)">
-      <mat-list-item  (click)="login()">
-        <mat-icon mat-list-icon>person_add</mat-icon>
-        <div i18n mat-line>Login/Register</div>
-      </mat-list-item>
-    </mat-nav-list>
+
 
 
 </main>
