@@ -12,7 +12,7 @@ export class HelperService {
         currentValue.measures.forEach((value,index) => {
           accumulator.set(index,{
             ...accumulator.get(index),
-            [currentValue.measureType.designation]:`${value} ${currentValue.measureType.unit}`,
+            [currentValue.measureType.designation]:`${value.toFixed(1)} ${currentValue.measureType.unit}`,
             'no.':index+1
           })
       })

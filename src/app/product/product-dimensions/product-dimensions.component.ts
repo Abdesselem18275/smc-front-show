@@ -19,6 +19,7 @@ export class ProductDimensionsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<DimensionElement>(this.helperS.toDimensionArray(this.productDimensions))
     this.displayedColumns = this.productDimensions.map(x => x.measureType.designation)
     this.displayedColumns.unshift('no.')
+    console.warn(this.productDimensions)
   }
   variantsNumber() {
       return this.productDimensions[0].measures.length
