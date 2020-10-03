@@ -36,7 +36,7 @@
 
 
 
-<main class="inline--centred--spaced global--gutters mat-subheading-1">
+<main class="list__meta__bar inline--centred--spaced global--gutters mat-subheading-1">
 <p class="font--thin" i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
 
 
@@ -45,13 +45,13 @@
   <mat-icon #boxSizeIcon>view_module</mat-icon>
   <span #boxSizeText class="ml2" i18n>SMALL</span>
 </button>
-<button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
+<!-- <button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
 <mat-icon [matBadge]="(filterParamCount$ | async) != 0 ? (filterParamCount$ | async) : ''"
           matBadgeColor="accent"
           matBadgePosition="above before">tune
 </mat-icon>
 <span class="ml2" i18n>FILTER</span>
-</button>
+</button> -->
 </section>
 </main>
 

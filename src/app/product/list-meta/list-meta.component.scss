@@ -1,12 +1,7 @@
 @import "src/styles.scss";
 
-main {
+.list__meta__bar {
     background-color:$extreme-light-grey-color;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    left: 0;
-    z-index: 2;
 }
 
 header {
