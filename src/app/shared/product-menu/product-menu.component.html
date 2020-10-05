@@ -1,9 +1,7 @@
-<nav class='font--dark-grey global--gutters menu--shared-style'>
-      <div class="nav-bar__left-content">
-        <mat-icon (click)="toggleModal('sideMenuBox')" class="mr4">menu</mat-icon>
-        <app-language-box>
-        </app-language-box>
-      </div>
+<nav class='nav-bar font--dark-grey global--gutters menu--shared-style'>
+      <button mat-icon-button class="nav-bar__left-content mr2">
+        <mat-icon (click)="toggleModal('sideMenuBox')">menu</mat-icon>
+      </button>
 
 
       <mat-icon
@@ -33,8 +31,7 @@
             <mat-icon>search</mat-icon>
         </button>
 
-        <button
-         class="mx1"  mat-icon-button   (click)="toggleUserCard()" id="account-icon">
+        <button mat-icon-button   (click)="toggleUserCard()" id="account-icon">
             <mat-icon>person</mat-icon>
         </button>
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>

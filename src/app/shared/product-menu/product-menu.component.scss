@@ -17,7 +17,7 @@ p {
 }
 
 .nav-bar__logo {
-  max-width: 9rem;
+  max-width: 6rem;
 }
 
 .nav-bar__tools
@@ -29,20 +29,21 @@ p {
     }
 
       @media only screen and (max-width:1024px) {
+        margin-left: auto;
         #account-icon {
           display: none;
         }
         #favorite-icon {
           display: inline-block;
         }
-        app-language-box {
-          display: none;
-
-        }
 
     }
 }
-
+.nav-bar {
+  @media only screen and (max-width:1024px) {
+   justify-content: flex-start;
+  }
+}
 
 
 .nav-bar__left-content {
@@ -58,16 +59,7 @@ p {
         }
         .nav-bar__left-content
         {
-            display: flex;
-            align-items: center;
-            order: 1;
+            display: block;
         }
-        .nav-bar__tools {
-          order:3
 
-        }
-        .nav-bar__logo {
-          order:2
-
-        }
       }

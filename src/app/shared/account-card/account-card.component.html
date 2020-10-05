@@ -5,13 +5,15 @@
       <header class="column">
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
-          <span *ngIf="!(isLogged$ |async) && (isSideNav$| async)" class="mat-h2">Menu </span>
-          <button appModalClose class="icon--full-right" mat-icon-button><mat-icon>close</mat-icon>
+          <button color="accent" class="login-button" *ngIf="!(isLogged$ |async) && (isSideNav$| async)"
+          mat-stroked-button (click)="login()">
+          <mat-icon class="mr4">account_box</mat-icon>
+            <span i18n>WELCOME , SIGN IN</span>
+          </button>
+          <button  appModalClose class="icon--full-right" mat-icon-button><mat-icon>close</mat-icon>
           </button>
         </section>
-        <button class="login-button" *ngIf="!(isLogged$ |async) && (isSideNav$| async)" mat-stroked-button (click)="login()">
-          <span i18n>LOGIN / REGISTER</span>
-        </button>
+
       </section>
             <section *ngIf="isLogged$ |async" class="column--centred">
                 <app-initials-icon [size]="72" class="mb4" (click)="navToProfile()" [initials]="initials$ | async"></app-initials-icon>
