@@ -1,7 +1,7 @@
 .mat-tree-invisible {
     display: none;
   }
-  
+
   .mat-tree ul,
   .mat-tree li {
     margin-top: 0;
@@ -13,4 +13,7 @@
   }
   span:hover {
     cursor: pointer;
+  }
+  .mat-subheading-2 {
+    margin: 0;
   }

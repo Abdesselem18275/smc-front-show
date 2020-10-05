@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
+import { RootStoreState, ModalStoreSelectors } from 'src/app/root-store';
 import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { MenuTreeData } from 'src/app/models/product.models';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
@@ -22,11 +22,14 @@ export class SideNavMenuComponent {
   navMenuData$: Observable<MenuTreeData[]>;
   isLogged$: Observable<boolean>;
   languageType: LanguageType;
+  isSideNav$: Observable<boolean>;
   constructor(private store$: Store<RootStoreState.State>) {
                 this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
                 this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
                 this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-                this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree)
+                this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree);
+                this.isSideNav$ = this.store$.select(ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'})
+
   }
 
   logOut(): void {
