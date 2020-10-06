@@ -36,6 +36,7 @@
   <aside class="right-aside">
     <section class="dimension">
       <app-product-dimensions
+      *ngIf="(product$ |async).dimensionsSpecifications.length > 0"
       [productDimensions]="(product$ |async).dimensionsSpecifications">
       </app-product-dimensions>
     </section>
@@ -45,7 +46,9 @@
   </app-product-materials>
     </section>
 <section class="componnents">
-  <app-product-component [componentsSpecs]="(product$ |async).componentsSpecifications">
+  <app-product-component
+  *ngIf="(product$ |async).componentsSpecifications.length > 0"
+  [componentsSpecs]="(product$ |async).componentsSpecifications">
   </app-product-component>
 
 </section>

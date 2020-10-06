@@ -47,6 +47,7 @@
             *ngIf="isDimensionOpen">
             <section >
       <app-product-dimensions
+              *ngIf="product.dimensionsSpecifications.length > 0"
               [productDimensions]="product.dimensionsSpecifications">
       </app-product-dimensions>
             </section>
@@ -58,7 +59,9 @@
             </section>
 
             <section class="my8">
-              <app-product-component [componentsSpecs]="product.componentsSpecifications">
+              <app-product-component
+              *ngIf="product.componentsSpecifications.length > 0"
+               [componentsSpecs]="product.componentsSpecifications">
 
               </app-product-component>
             </section>
