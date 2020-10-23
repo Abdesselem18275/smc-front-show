@@ -1,11 +1,11 @@
-import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
+import { Directive, ContentChildren, QueryList, ElementRef, AfterViewInit, Renderer2, OnDestroy, AfterContentInit } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 
 @Directive({
   selector: '[appImagePlaceholder]'
 })
-export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
+export class ImagePlaceholderDirective implements AfterContentInit,OnDestroy {
   @ContentChildren('targetImage',{descendants: true}) imageQueryList :  QueryList<ElementRef> ;
   @ContentChildren('pulsingText',{descendants: true}) pragraphList :  QueryList<ElementRef> ;
   @ContentChildren('loadingImage',{descendants: true}) imageList :  QueryList<ElementRef> ;
@@ -16,23 +16,25 @@ export class ImagePlaceholderDirective implements AfterViewInit,OnDestroy {
   subscribtion : Subscription
   constructor( private renderer: Renderer2) { }
 
-  ngAfterViewInit(): void {
-    this._setTextLoading()
-    this._setImageloading()
-    this._setHideEffect()
-    this._setButtonLoading()
-    if(this.imageQueryList.first) {
+  ngAfterContentInit(): void {
+    this.pragraphList ? this._setTextLoading() : null
+    this.imageList ? this._setImageloading() : null
+    this.toHideList ? this._setHideEffect() : null
+    this.buttonsList ? this._setButtonLoading() : null
+    if(this.imageQueryList && this.imageQueryList.first) {
       this.targetImage = <HTMLElement>this.imageQueryList.first.nativeElement
       this.subscribtion= fromEvent(this.targetImage,'load').
-      subscribe(() => {
-        this._unsetHideEffect()
-        this._unsetImageloading()
-        this._unsetTextLoading()
-        this._unSetButtonLoading()
+      subscribe((event) => {
+        console.warn(event)
+        this.pragraphList ? this._unsetTextLoading() : null
+        this.imageList ? this._unsetImageloading() : null
+        this.toHideList ? this._unsetHideEffect() : null
+        this.buttonsList ? this._unSetButtonLoading() : null
        });
     }
   }
   ngOnDestroy(): void {
+    console.warn('Unsubscribe')
     if (this.subscribtion) {
       this.subscribtion.unsubscribe()
 

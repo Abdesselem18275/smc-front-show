@@ -27,19 +27,7 @@ a {
   margin: 0;
 }
 
-.button--pulsing {
-  span,mat-icon {
-    color: transparent;
-  }
-}
 
-.button--pulsing.mat-flat-button.mat-primary {
-  animation: pulse 1s infinite ease-in-out;
-}
-
-.button--pulsing.mat-icon-button {
-  animation: pulse 1s infinite ease-in-out;
-}
 .mat-tab-label {
   color: black;
 }

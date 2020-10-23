@@ -1,6 +1,6 @@
 
-<div appImagePlaceholder class="content--grid">
-        <ng-container *ngIf="(isBigSize$ |async) else smallBox" >
+<div  class="content--grid">
+        <ng-container appImagePlaceholder *ngIf="(isBigSize$ |async) else smallBox" >
         <div  class="mat-h4 p2 inline--centred">
                 <button  #pulsingButton [appFavoriteHandler]="product?.id" mat-icon-button>
                         <mat-icon  [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
@@ -8,12 +8,13 @@
                 <section >
                         <p #pulsingText>{{product.designation | uppercase}}</p>
                         <p #pulsingText class="mat-caption font--dark-grey">
-                                <span  #toHideLoading  class="mat-caption"
+                                <!-- <span  #toHideLoading  class="mat-caption"
                                 [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
                                 *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                                         {{(rootCat$ |async)?.designation}} /
-                        </span >
-                                {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
+                        </span> -->
+                                {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}
+                        </p>
 
 
                </section>
@@ -74,7 +75,8 @@
 
 
 
-<ng-template #smallBox>
+<ng-template  #smallBox>
+        <ng-container appImagePlaceholder>
         <a #loadingImage [routerLink]="['/product', product.id]">
                 <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:400">
         </a>
@@ -98,4 +100,5 @@
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
+</ng-container>
 </ng-template>

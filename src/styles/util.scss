@@ -90,9 +90,21 @@
     animation: pulse 1s infinite ease-in-out;
     height: 10px;
     margin: 8px;
-    color: transparent;
+    color: transparent!important;
   }
-
+  .button--pulsing {
+    span,mat-icon {
+      color: transparent!important;
+    }
+  }
+  
+  .button--pulsing.mat-flat-button.mat-primary {
+    animation: pulse 1s infinite ease-in-out;
+  }
+  
+  .button--pulsing.mat-icon-button {
+    animation: pulse 1s infinite ease-in-out;
+  }
   @keyframes pulse {
     0% {
       background-color: rgba(165, 165, 165, 0.1);
