@@ -1,3 +1,4 @@
+import { Navigation, UrlTree } from '@angular/router';
 import { Profile, UserRequest } from 'src/app/models/account.models';
 
 
@@ -6,6 +7,7 @@ export interface State {
     isAuthenticated: boolean;
     errorMessage: any;
     profile: Profile;
+    redirectNavigation: Navigation;
   }
 
 export const initialState: State = {
@@ -13,4 +15,5 @@ export const initialState: State = {
   isAuthenticated: false,
   errorMessage: null,
   profile: null ,
+  redirectNavigation:null
 };

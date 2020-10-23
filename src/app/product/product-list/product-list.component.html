@@ -1,7 +1,7 @@
 
-<div  [@routeAnimations]  *ngIf="(filterBox$ |async)" class="mat-elevation-z2 side-box">
-    <app-product-filter>
-    </app-product-filter>
+<div *ngIf="(filterBox$ |async)" class="mat-elevation-z2 side-box">
+    <!-- <app-product-filter>
+    </app-product-filter> -->
 </div>
 <div class="global--gutters font--dark-grey mat-body-2">
   <app-category-breadcrumb ></app-category-breadcrumb>

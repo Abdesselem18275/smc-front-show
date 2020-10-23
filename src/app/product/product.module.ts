@@ -1,6 +1,3 @@
-import { NgModule } from '@angular/core';
-
-
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -18,18 +15,21 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { ProductFeaturesComponent } from './product-features/product-features.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
 import { CommonModule } from '@angular/common';
-
-
+import {CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
+
+  declarations: [ ProductComponent,CategoryBreadcrumbComponent, 
+                  ProductListComponent,FavoriteHandlerDirective,, ProductBoxComponent, 
+                  ListMetaComponent,ProductDetailComponent,
+                  BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
+                  ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
+                  ProductFeaturesComponent, ProductComponentComponent],
   imports: [
     CommonModule,
     SharedModule,
     ProductRoutingModule,
-  ],
-  declarations: [ProductComponent, ProductListComponent,FavoriteHandlerDirective,
-                  ProductDetailComponent, ProductBoxComponent, ListMetaComponent,
-                  BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
-                  ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
-                  ProductFeaturesComponent, ProductComponentComponent],})
+  ]
+                })
 export class ProductModule { }

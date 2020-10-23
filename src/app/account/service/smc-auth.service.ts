@@ -107,6 +107,7 @@ getInitialState = () => ({
     isAuthenticated: this.isLogged(),
     errorMessage: null,
     profile: null ,
+    redirectNavigation:null
   })
 
 

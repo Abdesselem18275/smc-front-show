@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import { GoogleAuthService } from '../../shared/service/google-auth.service';
-
+import {GoogleAuthService} from '../service/google-auth.service';
 declare const gapi: any;
 
 @Component({

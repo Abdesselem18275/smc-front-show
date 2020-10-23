@@ -1,7 +1,9 @@
       <header class="mat-elevation-z4">
             <app-product-menu></app-product-menu>
       </header>
-      <div class='overlay' appModalClose *ngIf="isOverlay$|async">
+      <router-outlet></router-outlet>
+
+      <!-- <div class='overlay' appModalClose *ngIf="isOverlay$|async">
       </div>
 
       <div  [@inOutAnimation] *ngIf="(modalStore$ | async).userCardBox" class="p4 mat-elevation-z2 account-card">
@@ -9,14 +11,6 @@
         </app-account-card>
     </div>
 
-
-    <div  [@inOutAnimation] *ngIf="(modalStore$ | async).loginBox || (modalStore$ | async).userRequestBox" class="mat-elevation-z2 center-box">
-
-        <app-authentification-card *ngIf="(modalStore$ | async).loginBox">
-        </app-authentification-card>
-        <app-user-request *ngIf="(modalStore$ | async).userRequestBox">
-        </app-user-request>
-    </div>
 
     <div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
         <app-search-box >
@@ -27,7 +21,6 @@
     <div  [@routeAnimations]  *ngIf="(modalStore$ | async).sideMenuBox || (modalStore$ | async).filterBox" class="mat-elevation-z2 side-box">
         <app-side-nav-menu *ngIf="(modalStore$ | async).sideMenuBox" >
         </app-side-nav-menu>
-    </div>
+    </div> -->
 
-<router-outlet></router-outlet>
 

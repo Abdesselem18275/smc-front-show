@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
 import { ParamType } from '../../models/product.models';
 import { Store } from '@ngrx/store';
-import { ParamStoreState, ParamStoreActions , ModalStoreActions } from 'src/app/root-store';
+import { ParamStoreState, ParamStoreActions , ModalStoreActions } from '../../../app/root-store';
 import { Router } from '@angular/router';
 
 @Component({

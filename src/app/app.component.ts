@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { RootStoreState, ModalStoreState } from './root-store';
@@ -24,7 +24,6 @@ export class AppComponent {
 
   constructor(
               private store$: Store<RootStoreState.State>,
-               @Inject('APP_BASE_HREF') private baseUrl: string,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
@@ -38,7 +37,6 @@ export class AppComponent {
                 .addSvgIcon('landing-page-illustration', sanitizer.
                 bypassSecurityTrustResourceUrl('./assets/icons/Illustration-landing-page.svg'));
                 this.isOverlay$ = this.store$.select(selectOverlayedModal);
-                //this.store$.dispatch(SetLanguageAction({key: value}));
                 this.modalStore$ = this.store$.select(selectAllModalState);
 
   }

@@ -47,3 +47,9 @@ export const selectFavoritesCount = createSelector(
   selectUser,
   (user: Profile) => (user ? user.favorites.length : -1)
   );
+export const selectRedirectNavigation = createSelector(
+  selectUserState,
+    (state) => {
+        return state.redirectNavigation;
+    }
+)

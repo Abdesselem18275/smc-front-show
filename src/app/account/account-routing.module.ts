@@ -3,8 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './auth.guard';
-import { AuthentificationCardComponent } from '../shared/authentification-card/authentification-card.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { AuthentificationCardComponent } from './authentification-card/authentification-card.component';
 
 const routes: Routes = [
   { path : '',

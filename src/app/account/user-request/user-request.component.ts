@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RootStoreState, ProductStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
-import { AccountFormService } from '../service/account-form.service';
+import { AccountFormService } from '../../account/service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';

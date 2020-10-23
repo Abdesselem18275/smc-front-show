@@ -5,11 +5,7 @@ import {RouterModule , Routes} from '@angular/router';
 
 
 const appRoutes: Routes = [
-  {path : 'product' , loadChildren: async () => {
-    const productModule = await import('./product/product.module')
-    return productModule.ProductModule;
-  }
-  },
+  {path : 'product' , loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},
   {path : 'account' , loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
   {path: 'miscellaneous', loadChildren: () => import('./miscellaneous/miscellaneous.module').then(m => m.MiscellaneousModule) },
   {path : '' , redirectTo: '/miscellaneous/home', pathMatch: 'full'}

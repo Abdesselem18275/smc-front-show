@@ -47,6 +47,12 @@ const userReducer = createReducer(
       };
       return newState;
     }),
+    on(UsersActions.RedirectForAuthentification,(state,{ payload }) => {
+      return {
+        ...state,
+        redirectNavigation:payload
+      }
+    }),
     on(UsersActions.ToggleFavoriteAction, (state, { id }) => {
       if (state.profile == null) {
         return state;

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountFormService } from '../../shared/service/account-form.service';
+import { AccountFormService } from '../service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ParamStoreState  } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Observable } from 'rxjs';
+import { ParamStoreState } from 'src/app/root-store/param-store';
 
 @Component({
   selector: 'app-create-profile',
