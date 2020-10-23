@@ -1,96 +1,64 @@
-main {
+.main-container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: minmax(2rem,3.5rem) auto;
+  grid-template-columns: repeat(5,minmax(0,1fr));
   column-gap: 1rem;
-  row-gap: 1rem;
-  grid-template-areas:
-  "product-title center-section technical-title"
-  "left-aside center-section right-aside";
+  grid-template-rows: 2.5rem auto;
+  row-gap: 2rem;
+  grid-template-areas: 
+  "title title images images images"
+  "gen-desc gen-desc images images images"
+  "tech-title tech-title tech-title tech-title tech-title"
+  "dimension dimension dimension materials materials"
+  "features features features componnents componnents";
+  @media only screen and (max-width:1000px) {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-areas: 
+    "title title"
+    "images images"
+    "gen-desc gen-desc"
+    "tech-title tech-title"
+    "dimension dimension"
+    "componnents materials"
+    "features features";
+  }
+  @media only screen and (max-width:600px) {
+    grid-template-areas: 
+    "title title"
+    "images images"
+    "gen-desc gen-desc"
+    "tech-title tech-title"
+    "dimension dimension"
+    "materials materials"
+    "componnents componnents"
+    "features features";
+  }
 }
 .product-title {
-  grid-area: product-title;
+  grid-area: title;
 }
-.left-aside {
-  grid-area: left-aside;
+.general-description {
+  grid-area: gen-desc;
+}
+.images-container {
+  grid-area: images;
+
 }
 .technical-details-title {
-  grid-area: technical-title;
+  grid-area: tech-title;
 }
-.images-container{
-  grid-area: center-section;
-  img {
-    max-width: 100%;
-  }
-}
-.right-aside {
-  grid-area: right-aside;
-}
-.technical-details__title {
-  grid-area: technical-title;
+.features {
+  grid-area: features;
 
 }
-.description-text {
-  text-align: justify;
+.dimension {
+  grid-area: dimension;
 }
-.right-aside,.images-container,.left-aside {
-  max-height: 85vh;
-  overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.materials {
+  grid-area: materials;
 }
-.right-aside::-webkit-scrollbar,.images-container::-webkit-scrollbar,.left-aside::-webkit-scrollbar {
-  display: none;
-
+.componnents {
+  grid-area: componnents;
 }
-aside section {
-  margin: 1rem 0;
-}
-.mat-h1,.mat-h2 {
+.mat-h1 {
   margin: 0;
-}
-.mat-h2 {
-  margin: 0;
-}
-
-
-@media only screen and (max-width:1200px) {
-  .right-aside,.images-container,.left-aside {
-    max-height: 100%;
-  }
-  main {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto;
-    column-gap: 1.5rem;
-    row-gap: 2rem;
-    grid-template-areas:
-    "product-title product-title"
-    "center-section center-section"
-    "technical-title technical-title"
-    "left-aside right-aside";
-  }
-  aside {
-    max-height: 100%;
-    overflow: hidden;
-  }
-}
-@media only screen and (max-width:750px) {
-  main {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1.5rem;
-    grid-template-areas:
-    "product-title"
-    "center-section"
-    "left-aside"
-    "technical-title"
-    "right-aside";
-  }
-  aside section:first {
-    margin-bottom: 2rem;
-  }
-  aside section:not(:first-child) {
-    margin: 2rem 0;
-  }
 }

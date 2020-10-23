@@ -1,8 +1,9 @@
 <ng-container *ngIf="features.length > 0">
+<section >
 
 <p i18n class="mat-h3 font--dark-grey">Additional informations</p>
 <mat-divider></mat-divider>
-<mat-list dense>
+<mat-list [class.horizontal]="align === 'horizontal'" dense>
 
 <mat-list-item *ngFor="let item of features">
   <mat-icon [svgIcon]="item.svgIcon.designation" matListIcon></mat-icon>
@@ -19,4 +20,6 @@
 </div>
 </mat-list-item>
 </mat-list>
+</section>
+
 </ng-container>

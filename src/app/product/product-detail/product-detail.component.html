@@ -1,13 +1,12 @@
-<ng-container appImagePlaceholder>
 <section class="global--gutters">
   <app-category-breadcrumb class="mat-body-2 font--dark-grey breadcrumb" [currentProduct]="product$ |async"></app-category-breadcrumb>
 </section>
-<main class="global--gutters ">
+<main class="main-container global--gutters ">
   <section class="product-title">
-    <p class="mat-h1">{{(product$ |async)?.designation | uppercase}}</p>
+    <h1 class="mat-h1">{{(product$ |async)?.designation | uppercase}}</h1>
     <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
   </section>
-  <aside class="left-aside column">
+  <aside class="general-description column">
 <section>
     <app-appearance-selector
     (selectedAppearanceVariant) = "setAppearanceVariant($event)"
@@ -21,20 +20,18 @@
     {{(product$ |async).longDescription}}
   </p>
 </section>
-<section class="features">
-  <app-product-features [features]="(product$ |async).features"></app-product-features>
-
-</section>
 </aside>
   <section class="column images-container" >
-    <app-image-carousel *ngIf="isSmallScreen$ | async else verticalImages" [images]="images|async"></app-image-carousel>
+    <app-image-carousel [images]="images|async"></app-image-carousel>
     <ng-template #verticalImages>
     <img class="my2" [src]="image | mergeSizeQs:1200" *ngFor="let image of images | async">
     </ng-template>
   </section>
-  <p class="technical-details-title mat-h2">Technical Details</p>
-
-  <aside class="right-aside">
+  <h1 class="font--dark-grey technical-details-title mat-h1">TECHNICAL DETAILS</h1>
+  <section class="features">
+    <app-product-features align="horizontal" [features]="(product$ |async).features"></app-product-features>
+  
+  </section>
     <section class="dimension">
       <app-product-dimensions
       *ngIf="(product$ |async).dimensionsSpecifications.length > 0"
@@ -53,9 +50,7 @@
   </app-product-component>
 
 </section>
-</aside>
 </main>
 <footer class="global--gutters related-products">
-<p i18n class="mat-h2 font--dark-grey">Related products</p>
+<h1 i18n class="mat-h1 font--dark-grey">RELATED PRODUCTS</h1>
 </footer>
-</ng-container>

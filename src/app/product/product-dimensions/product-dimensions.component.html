@@ -1,8 +1,8 @@
 
 <span i18n class="mat-h3 font--dark-grey">Dimensions</span>
-<caption class="font--dark-grey mat-caption">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
 <mat-divider></mat-divider>
 <section class="table-container">
+  <caption class="pt2 font--dark-grey mat-caption">{variantsNumber(),plural,=1 {one dimension variant} other { {{variantsNumber()}} dimension variants}  }</caption>
 <table [style.width]="tableWidth()" mat-table [dataSource]="dataSource">
   <!-- Position Column -->
   <ng-container [sticky]="i==0" *ngFor="let columnName of displayedColumns ; index as i"  [matColumnDef]="columnName">
