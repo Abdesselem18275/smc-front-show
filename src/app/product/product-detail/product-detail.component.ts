@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ProductShort, AppearanceVariant } from '../../models/product.models';
 import { BreakpointObserver } from '@angular/cdk/layout';
-
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',

@@ -4,7 +4,6 @@ import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
-
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
 import { TextHightlightDirective } from './text-hightlight.directive';
 import { LanguageBoxComponent } from './language-box/language-box.component';
@@ -31,11 +30,11 @@ import {SearchBoxComponent } from './search-box/search-box.component';
     ReactiveFormsModule,
   ],
   exports: [
+    MaterialModule,
     ProductMenuComponent,
     AccountCardComponent,
     SideNavMenuComponent,
     ReactiveFormsModule,
-    MaterialModule,
     ScrollPaginatorDirective,
     LoadingComponent,
     MergeSizeQsPipe,

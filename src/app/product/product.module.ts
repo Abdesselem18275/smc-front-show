@@ -1,8 +1,10 @@
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { SharedModule } from '../shared/shared.module';
 import { ListMetaComponent } from './list-meta/list-meta.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { BoxSizeToggelerDirective } from './box-size-toggeler.directive';
@@ -14,22 +16,24 @@ import { ProductMaterialsComponent } from './product-materials/product-materials
 import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
 import { ProductFeaturesComponent } from './product-features/product-features.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
-import { CommonModule } from '@angular/common';
 import {CategoryBreadcrumbComponent } from './category-breadcrumb/category-breadcrumb.component';
-import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 
-  declarations: [ ProductComponent,CategoryBreadcrumbComponent, 
-                  ProductListComponent,FavoriteHandlerDirective,, ProductBoxComponent, 
-                  ListMetaComponent,ProductDetailComponent,
-                  BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
-                  ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
-                  ProductFeaturesComponent, ProductComponentComponent],
+  declarations: [ ProductComponent,
+                  // CategoryBreadcrumbComponent, 
+                  // ProductListComponent,
+                  //FavoriteHandlerDirective,
+                  //ProductBoxComponent, 
+                  // ListMetaComponent,ProductDetailComponent,BoxSizeToggelerDirective, 
+                  // AppearanceSelectorComponent, ImagePlaceholderDirective,ProductDimensionsComponent,
+                  // ProductMaterialsComponent, ImageCarouselComponent,ProductFeaturesComponent, ProductComponentComponent
+                ],
   imports: [
     CommonModule,
     SharedModule,
     ProductRoutingModule,
   ]
-                })
+})
 export class ProductModule { }

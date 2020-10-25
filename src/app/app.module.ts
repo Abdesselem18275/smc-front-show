@@ -28,7 +28,6 @@ import { CommonModule, APP_BASE_HREF, PlatformLocation } from '@angular/common';
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule,
     SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,

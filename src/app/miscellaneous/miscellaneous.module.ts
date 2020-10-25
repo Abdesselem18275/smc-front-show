@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { MiscellaneousRoutingModule } from './miscellaneous-routing.module';
 import { MiscellaneousComponent } from './miscellaneous/miscellaneous.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
