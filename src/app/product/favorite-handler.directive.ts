@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from '../root-store/user-store';
 import { Subscription } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
+import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Directive({
   selector: '[appFavoriteHandler]'
@@ -16,6 +18,7 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
   matIcon : HTMLElement;
 
   constructor(
+    private router : Router,
     private renderer: Renderer2,
     private store$: Store<RootStoreState.State>) {
    }
@@ -33,8 +36,12 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
 
   @HostListener('click')
   onClick():void {
-    this.store$.dispatch(UserStoreActions.TriggerFavoriteAction({id: this.appFavoriteHandler}));
-  }
+    this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
+      take(1),
+    ).subscribe((isAuth) => {
+      isAuth ? this.store$.dispatch(UserStoreActions.ToggleFavoriteAction({id: this.appFavoriteHandler}))
+        : this.store$.dispatch(UserStoreActions.RedirectForAuthentification({payload:this.router.getCurrentNavigation()}))
+    })  }
   updateIconStyle(state: boolean):void {
     this.renderer.removeClass(this.matIcon,'font--primary')
     const favClass = state ? 'font--primary' : 'font--dark-grey';

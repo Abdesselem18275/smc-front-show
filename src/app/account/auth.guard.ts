@@ -5,6 +5,7 @@ import { SmcAuthService } from './service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { State } from '../root-store/state';
 import { ModalStoreActions } from '../root-store';
+import { UserStoreActions } from '../root-store/user-store';
 
 
 @Injectable({
@@ -35,7 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.store$.dispatch(ModalStoreActions.ToggleAction({key: 'loginBox'}));
+    this.store$.dispatch(UserStoreActions.RedirectForAuthentification({payload:}));
     return false;
   }
 }

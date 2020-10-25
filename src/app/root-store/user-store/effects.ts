@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, catchError, withLatestFrom, filter, tap } from 'rxjs/operators';
+import { map, switchMap, catchError, withLatestFrom, filter, tap, take } from 'rxjs/operators';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import * as UsersActions from './actions';
@@ -12,7 +12,6 @@ import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Router } from '@angular/router';
-import { FetchUserRequestsAction, LoadUserRequestsAction } from './actions';
 
 
 @Injectable()
@@ -127,27 +126,24 @@ export class UserEffects {
 
       userRefrechTrigger$  = createEffect(() =>
         this.actions$.pipe(
-          ofType(ModalStoreActions.ToggleAction, ROUTER_NAVIGATION,UsersActions.TriggerFavoriteAction),
+          ofType(ModalStoreActions.ToggleAction, ROUTER_NAVIGATION),
           withLatestFrom(this.store$.select(selectIsAuthentificated)),
           withLatestFrom(this.store$.select(selectUser)),
           filter(content => content[0][1] && content[1] === null),
           map(() => UsersActions.UserRefreshAction())));
-
-      favoriteTrigger$ = createEffect(() =>
+      
+      redirectForAuthEffect$ = createEffect(() =>
       this.actions$.pipe(
-        ofType(UsersActions.TriggerFavoriteAction),
-        withLatestFrom(this.store$.select(selectIsAuthentificated)),
-        withLatestFrom(this.store$.select(selectUser)),
-        map(content => {
-          const profile = content[1]
-          const isAuth = content[0][1]
-          const favId = content[0][0].id
-          if (isAuth) {
-            return UsersActions.ToggleFavoriteAction({id:favId})
-          }
-          else {
-            this.snakBar.open('You have to login to perform this action')
-            return ModalStoreActions.ToggleAction({key: 'loginBox'})
-          }
-        })))
+        ofType(UsersActions.RedirectForAuthentification),
+        map(() => {
+          this.snakBar.open('You have to login to perform this action','Login').onAction().pipe(
+            take(1)
+          ).subscribe(() => {
+            this.router.navigate(['/account/authentification'])
+          })})
+        
+        
+        ),{dispatch:false});
+        
+
   }
