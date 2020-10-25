@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
-import { SmcAuthService } from '../../account/service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { ParamStoreState, ModalStoreActions } from 'src/app/root-store';
 import { Observable } from 'rxjs';

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AccountFormService } from '../../shared/service/account-form.service';
+import { AccountFormService } from '../service/account-form.service';
 import { Observable, Subscription } from 'rxjs';
 import { ParamStoreState, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';

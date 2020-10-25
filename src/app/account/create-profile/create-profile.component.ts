@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountFormService } from '../../shared/service/account-form.service';
+import { AccountFormService } from '../service/account-form.service';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ParamStoreState  } from 'src/app/root-store';

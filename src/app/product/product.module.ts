@@ -18,7 +18,7 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { ProductFeaturesComponent } from './product-features/product-features.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
 import { CommonModule } from '@angular/common';
-
+import {CategoryBreadcrumbComponent} from './category-breadcrumb/category-breadcrumb.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
     SharedModule,
     ProductRoutingModule,
   ],
-  declarations: [ProductComponent, ProductListComponent,FavoriteHandlerDirective,
+  declarations: [ProductComponent, CategoryBreadcrumbComponent,ProductListComponent,FavoriteHandlerDirective,
                   ProductDetailComponent, ProductBoxComponent, ListMetaComponent,
                   BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
                   ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
