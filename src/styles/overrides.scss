@@ -9,9 +9,6 @@ $global-horizontal-gutter:calc(0.5rem + 1.5vw);
     box-sizing: border-box;
   }
 
-p {
-  margin : 0;
-}
 .mat-tab-body-wrapper{
   flex-grow: 1;
 }
@@ -19,12 +16,6 @@ p {
 a {
   color: black;
   text-decoration: none;
-}
-.mat-subheading-1 {
-  margin: 0;
-}
-.mat-h3 {
-  margin: 0;
 }
 
 

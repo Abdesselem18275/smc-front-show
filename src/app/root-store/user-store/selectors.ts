@@ -2,6 +2,7 @@ import * as fromUserReducer from './reducers';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './state';
 import { Profile } from 'src/app/models/account.models';
+import { RedirectDataType } from 'src/app/models/shared.models';
 
 
 
@@ -46,4 +47,9 @@ export const selectIsAuthentificated = createSelector(
 export const selectFavoritesCount = createSelector(
   selectUser,
   (user: Profile) => (user ? user.favorites.length : -1)
+  );
+
+export const selectRedirectNavigation = createSelector(
+  selectUserState,
+  (state) => (state.redirectUrl)
   );

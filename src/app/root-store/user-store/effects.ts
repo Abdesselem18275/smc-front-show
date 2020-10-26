@@ -5,7 +5,7 @@ import { map, switchMap, catchError, withLatestFrom, filter, tap, take } from 'r
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import * as UsersActions from './actions';
-import { selectUser, selectIsAuthentificated } from './selectors';
+import { selectUser, selectIsAuthentificated, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
@@ -28,13 +28,14 @@ export class UserEffects {
     login$  = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.LoginAction),
-      map((action: any ) => JSON.stringify(action.credentials)),
-      switchMap((credentials)  =>
-        this.as.login(credentials).pipe(
+      withLatestFrom(this.store$.select(selectRedirectNavigation)),
+      map((content:any) => JSON.stringify(content[0].credentials)),
+      switchMap((content:any)  =>
+        this.as.login( JSON.stringify(content[0].credentials)).pipe(
           switchMap(payload => {
             localStorage.setItem(this.tokenKey, payload.token);
             localStorage.setItem(this.profileId, payload.profile.id);
-            this.as.redirect();
+            this.as.redirect(content[1]);
             return [
               ModalStoreActions.CloseAllAction(),
               UsersActions.LoadUserAction({payload})

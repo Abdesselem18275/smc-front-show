@@ -1,5 +1,6 @@
-import { Navigation } from '@angular/router';
-import { Profile, UserRequest } from 'src/app/models/account.models';
+import { ActivatedRouteSnapshot, Params } from '@angular/router';
+import { Profile } from 'src/app/models/account.models';
+import { Param } from 'src/app/models/product.models';
 
 
 export interface State {
@@ -7,7 +8,7 @@ export interface State {
     isAuthenticated: boolean;
     errorMessage: any;
     profile: Profile;
-    redirectNavigation: Navigation;
+    redirectUrl: string;
 
   }
 
@@ -16,5 +17,5 @@ export const initialState: State = {
   isAuthenticated: false,
   errorMessage: null,
   profile: null ,
-  redirectNavigation:null
+  redirectUrl:null
 };

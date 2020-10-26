@@ -17,11 +17,14 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CategoriesTreeComponent } from './categories-tree/categories-tree.component';
 import { MergeSizeQsPipe } from './merge-size-qs.pipe';
 import { ModalCloseDirective } from './modal-close.directive';
+import { InitialsIconComponent } from './initials-icon/initials-icon.component';
+import { AccountCardComponent } from './account-card/account-card.component';
 
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,ProductFilterComponent,
-    LoadingComponent,ScrollPaginatorDirective,
+    LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
+    AccountCardComponent,
     TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective],
   imports:  [
@@ -36,6 +39,8 @@ import { ModalCloseDirective } from './modal-close.directive';
     SearchBoxComponent,
     ReactiveFormsModule,
     MaterialModule,
+    AccountCardComponent,
+    InitialsIconComponent,
     ScrollPaginatorDirective,
     LoadingComponent,
     ProductFilterComponent,

@@ -1,3 +1,5 @@
+import { Params } from '@angular/router'
+
 export enum ModalRoute {
   LOGIN = '[\'/account\',{ outlets: { modal: [\'login\'] } }]',
   FILTER = 'Filter',
@@ -5,3 +7,4 @@ export enum ModalRoute {
   SEARCH = 'Search',
 }
 export type CarouselMode = 'vertical' | 'horizontal'
+export type RedirectDataType = {redirectUrl:string,params:Params}

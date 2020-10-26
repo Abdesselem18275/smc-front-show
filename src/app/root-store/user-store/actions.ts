@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Navigation, RouterStateSnapshot, ActivatedRouteSnapshot, Params } from '@angular/router';
 
 export enum ActionsType {
   LOGIN     = '[User] Login a user',
@@ -56,4 +57,4 @@ export const LoadUserRequestsAction = createAction(
   props<{payload:any}>());
 
 export const RedirectForAuthentification = createAction(
-    ActionsType.AUTH_REDIRECT,props<{payload:any}>());
+    ActionsType.AUTH_REDIRECT,props<{redirectUrl?:string}>());

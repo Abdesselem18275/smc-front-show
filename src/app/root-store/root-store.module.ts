@@ -23,6 +23,7 @@ import { RouterStoreModule } from './router-store';
         strictStateImmutability: true,
         strictActionImmutability: true,
         strictStateSerializability: true,
+        strictActionSerializability: true,
       },
     }),
     ModalStoreModule,

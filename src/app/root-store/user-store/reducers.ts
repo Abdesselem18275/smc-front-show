@@ -47,10 +47,11 @@ const userReducer = createReducer(
       };
       return newState;
     }),
-    on(UsersActions.RedirectForAuthentification,(state,{ payload }) => {
+    on(UsersActions.RedirectForAuthentification,(state,{ redirectUrl }) => {
+      console.warn(redirectUrl)
       return {
         ...state,
-        redirectNavigation:payload
+        redirectUrl:redirectUrl ? redirectUrl : state.redirectUrl
       }
     }),
     on(UsersActions.ToggleFavoriteAction, (state, { id }) => {

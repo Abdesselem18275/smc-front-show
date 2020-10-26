@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, NgZone } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SmcAuthService } from '../../account/service/smc-auth.service';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
-import { UserStoreActions } from 'src/app/root-store/user-store';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Profile } from '../../models/account.models';
 import { Observable } from 'rxjs';
+import { take, switchMap, withLatestFrom } from 'rxjs/operators';
+import { Navigation, ActivatedRouteSnapshot } from '@angular/router';
+import { RedirectDataType } from 'src/app/models/shared.models';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const gapi: any;
@@ -19,6 +22,7 @@ export class GoogleAuthService {
 
   constructor(private http: HttpClient ,
               private store$: Store<RootStoreState.State>,
+              private ngZone: NgZone,
               private authService: SmcAuthService,
               @Inject(TOKEN_KEY) private tokenKey: string,
               @Inject(PROFILE_ID) private profileId: string,
@@ -47,14 +51,20 @@ export class GoogleAuthService {
   }
 
   private onSignIn(googleUser) {
-    this.createOrSignin(googleUser.getAuthResponse().id_token).subscribe((
-      jsonData: {token: string, profile: Profile}) => {
+    this.ngZone.runOutsideAngular(() => {this.createOrSignin(googleUser.getAuthResponse().id_token).pipe(take(1),withLatestFrom(
+      this.store$.select(UserStoreSelectors.selectRedirectNavigation))).
+      subscribe(
+        (data : [{token: string, profile: Profile} ,string] ) => 
+        {
+      console.warn(data)
+      
+      const jsonData = data[0];
       localStorage.setItem(this.tokenKey, jsonData.token);
       localStorage.setItem(this.profileId, jsonData.profile.id.toString());
       this.store$.dispatch(UserStoreActions.LoadUserAction({payload: jsonData.profile }));
-      this.authService.redirect();
+      this.ngZone.run(() => {this.authService.redirect(data[1]);});
       this.signOut();
-    });
+    })});
      }
 
 

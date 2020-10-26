@@ -18,15 +18,17 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTableModule} from '@angular/material/table';
 import {LayoutModule} from '@angular/cdk/layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 
 
 @NgModule({
   exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
-            MatTabsModule , MatIconModule , MatBadgeModule, MatToolbarModule,
+            MatTabsModule , MatInputModule,MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,LayoutModule,
-            MatProgressBarModule, MatChipsModule, MatTreeModule,MatRippleModule,
+            MatProgressBarModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
             MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule,MatTableModule],
 })
 export class MaterialModule {}

@@ -25,7 +25,7 @@ export class ProductDetailComponent    {
     this.cdr.detectChanges()
   }
   get images() : Observable<string[]> {
-    return this.selectedAppearanceVariant$.asObservable().pipe(
+    return this.selectedAppearanceVariant$ && this.selectedAppearanceVariant$.asObservable().pipe(
       map(appVariance => appVariance.images.map(image => image.content).concat(appVariance.thumbNail).reverse())
     )
   }

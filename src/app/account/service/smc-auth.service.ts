@@ -1,11 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, Navigation, NavigationExtras, UrlTree, ActivatedRouteSnapshot, UrlSegment } from '@angular/router';
 import { ProductShort } from 'src/app/models/product.models.js';
 import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
 import { Profile } from '../../models/account.models';
 import { Store } from '@ngrx/store';
+import { RedirectDataType } from 'src/app/models/shared.models';
 
 
 @Injectable({
@@ -17,7 +18,6 @@ export class SmcAuthService {
       'Cache-Control':  'no-cache',
     })
   };
-  redirectUrl: string;
 
 
   constructor(
@@ -92,14 +92,12 @@ listUserRequest(): Observable<any> {
   return this.http.get(query);
 }
 
-redirect() {
+redirect(redirectUrl?:string) {
+  console.warn(this.isLogged(),redirectUrl)
   if (this.isLogged()) {
-    const redirect = this.redirectUrl ?
-    this.router.parseUrl(this.redirectUrl) : this.router.routerState.snapshot.url;
-    this.router.navigateByUrl(redirect);
+    this.router.navigateByUrl(redirectUrl ? redirectUrl : '/product/list')
   } else {
-    const redirect = '/product/list'
-    this.router.navigateByUrl(redirect);
+    this.router.navigateByUrl('product/list',{skipLocationChange:false});
   }
 }
 getInitialState = () => ({
@@ -107,6 +105,7 @@ getInitialState = () => ({
     isAuthenticated: this.isLogged(),
     errorMessage: null,
     profile: null ,
+    redirectUrl:this.router.url
   })
 
 

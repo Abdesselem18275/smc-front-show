@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, Navigation } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SmcAuthService } from './service/smc-auth.service';
 import { Store } from '@ngrx/store';
@@ -19,9 +19,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const url: string = state.url;
 
-    return this.checkLogin(url);
+    return this.checkLogin(this.router.url);
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
@@ -29,14 +28,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.canActivate(next, state);
   }
 
-  checkLogin(url: string): boolean {
+  checkLogin(redirectUrl: string): boolean {
     if (this.authService.isLogged()) { return true; }
 
     // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.store$.dispatch(UserStoreActions.RedirectForAuthentification({payload:}));
+    this.store$.dispatch(
+      UserStoreActions.RedirectForAuthentification({redirectUrl:redirectUrl}));
     return false;
   }
 }

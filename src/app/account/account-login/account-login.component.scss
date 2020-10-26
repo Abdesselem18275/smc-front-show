@@ -1,9 +1,6 @@
-@import "src/styles.scss";
-:host {
-    @extend .column--centred;
+button {
+  max-width: 15rem;
 }
-form {
-  max-width: 540px;
+form * {
   width: 100%;
-
 }

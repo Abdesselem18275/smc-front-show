@@ -7,6 +7,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from '../shared/service/menu-data-builder.service';
 import { Category } from '../models/product.models';
+import { UserStoreActions } from './user-store';
 @Injectable()
 export class RootEffects {
   paramInit$ = createEffect(() =>
@@ -18,9 +19,9 @@ export class RootEffects {
               this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
             });
           }),
-          map(response => {
+          switchMap(response => {
               response['navMenuTree'] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))
-            return GlobalStoreActions.LoadInitDataAction({payload:response})
+            return [GlobalStoreActions.LoadInitDataAction({payload:response}),UserStoreActions.UserRefreshAction()]
                     })))))
 
   constructor(

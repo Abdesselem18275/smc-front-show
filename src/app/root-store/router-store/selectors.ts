@@ -17,11 +17,11 @@ export const {
 
   export const selectUrl = createSelector(
     selectRouter,
-    (state:any) => (state && state.router.state.url)
+    (state:any) => (state && state.router && state.router.state.url)
   );
   export const isCrrentUrl = createSelector(
     selectUrl,
-    (url:string,props) => (url.includes(props.url))
+    (url:string,props) => (url && url.includes(props.url))
   );
   export const selectQueryParams = createSelector(
     selectRouter,

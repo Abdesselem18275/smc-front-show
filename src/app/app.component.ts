@@ -7,6 +7,8 @@ import { selectAllModalState, selectOverlayedModal } from './root-store/modal-st
 import { Observable } from 'rxjs';
 import { LanguageType} from './root-store/global-store/state';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
+import { RouterStoreSelectors } from 'src/app/root-store/router-store';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -21,8 +23,9 @@ export class AppComponent {
   isSideMenuActive: boolean;
   isOverlay$: Observable<boolean>;
   modalStore$: Observable<ModalStoreState.State>;
-
+  isLoginPageActive$ :Observable<boolean>;
   constructor(
+              private route : ActivatedRoute,
               private store$: Store<RootStoreState.State>,
                @Inject('APP_BASE_HREF') private baseUrl: string,
               iconRegistry: MatIconRegistry,
@@ -35,11 +38,15 @@ export class AppComponent {
                 .addSvgIcon(LanguageType.GERMAN, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
                 .addSvgIcon(LanguageType.FRENCH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
                 .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'))
-                .addSvgIcon('landing-page-illustration', sanitizer.
-                bypassSecurityTrustResourceUrl('./assets/icons/Illustration-landing-page.svg'));
+                .addSvgIcon('landing-page-illustration', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/Illustration-landing-page.svg'))
+                .addSvgIcon('logo_black_bg', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_black_background.svg'));
+
                 this.isOverlay$ = this.store$.select(selectOverlayedModal);
+                
                 //this.store$.dispatch(SetLanguageAction({key: value}));
                 this.modalStore$ = this.store$.select(selectAllModalState);
+                this.isLoginPageActive$  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'account/authentification'});
+
 
   }
 }

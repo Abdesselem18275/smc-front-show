@@ -1,29 +1,26 @@
 <header class="column--centred">
-        <p i18n class="font--dark-grey mat-subheading-2">Please enter the following informations</p>
         <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
                 {{item.value}}
         </p>
 </header>
-        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="form__field">
-            <label for="email">
-                <mat-icon class="mr2">email</mat-icon>
-                <span i18n>Email </span>
-            </label>
-            <input appControlValidatorMessage required  type="email" formControlName="email" id="email">
-        </div>
-        <div class="form__field">
-          <label for="email">
-              <mat-icon class="mr2">vpn_key</mat-icon>
-              <span i18n> password </span>
-          </label>
-          <input appControlValidatorMessage required  type="password" formControlName="password" id="password">
-          <p class="mat-caption font--dark-grey" i18n>Forget yous password ?</p>
-      </div>
-                                <button class="form__submit-button mt4" type="submit"
-                                        mat-raised-button color="primary" primary>
+
+        <form class="column--centred"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                        <mat-label>email</mat-label>
+                        <input appControlValidatorMessage matInput type="email" formControlName="email" placeholder="email" id="email">
+                        <mat-icon class="mr2" matPrefix>person</mat-icon>
+                        <mat-hint>Enter your email adress</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="my6" appearance="outline">
+                        <mat-label>password</mat-label>
+                        <input appControlValidatorMessage matInput type="password" formControlName="password" id="password">
+                        <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
+                        <mat-hint>Enter your password</mat-hint>
+                </mat-form-field>
+                                <button type="submit" [disabled]="!loginForm.valid"
+                                        mat-flat-button color="accent" primary>
                                         <span i18n>
-                                                Sign in with SMC
+                                                SIGN IN
                                         </span>
                                 </button>
 

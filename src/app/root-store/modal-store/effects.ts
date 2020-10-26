@@ -5,6 +5,7 @@ import { ToggleUserCard, ToggleAction, CloseAllAction, ToggleWithAuth } from './
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Router } from '@angular/router';
+import { RedirectForAuthentification } from '../user-store/actions';
 
 @Injectable()
 export class ModalEffects {
@@ -12,8 +13,8 @@ export class ModalEffects {
     userCardLogic$ = createEffect(() =>
     this.actions$.pipe(
         ofType(ToggleUserCard),
-        map(() =>
-            ToggleAction({key : this.authService.isLogged() ? 'userCardBox' : 'loginBox'}))));
+        map(() => 
+        this.authService.isLogged() ? ToggleAction({key : 'userCardBox'}): RedirectForAuthentification({redirectUrl : this.router.url}))));
 
     modalToggleAuthorization = createEffect(() =>
     this.actions$.pipe(
