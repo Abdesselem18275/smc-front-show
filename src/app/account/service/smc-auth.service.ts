@@ -1,12 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Router, Navigation, NavigationExtras, UrlTree, ActivatedRouteSnapshot, UrlSegment } from '@angular/router';
+import { Observable, EMPTY } from 'rxjs';
+import { Router} from '@angular/router';
 import { ProductShort } from 'src/app/models/product.models.js';
-import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service.js';
+import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.js';
 import { Profile } from '../../models/account.models';
-import { Store } from '@ngrx/store';
-import { RedirectDataType } from 'src/app/models/shared.models';
+import { take } from 'rxjs/internal/operators/take';
 
 
 @Injectable({
@@ -19,7 +18,7 @@ export class SmcAuthService {
     })
   };
 
-
+  private _profile : Profile
   constructor(
               private http: HttpClient,
               private router: Router,
@@ -55,6 +54,7 @@ return this.http.patch<Profile>(query, payload);
 }
 
 getProfileFavorites() {
+
   const query: string = [
     this.apiUrl,
     '/profile/',
@@ -64,14 +64,14 @@ getProfileFavorites() {
    return this.http.get<ProductShort[]>(query);
 }
 
-profileRefresh(): Observable<any> {
+profileRefresh(): Observable<Profile> {
   const query: string = [
     this.apiUrl,
     '/profile/',
     this.getProfileId(),
     '/'
    ].join('');
-  return this.http.get<Profile>(query);
+  return  this.getProfileId() ?  this.http.get<Profile>(query) :EMPTY;
 }
 PutUserRequest(payload:any): Observable<any> {
   const query: string = [
@@ -104,7 +104,7 @@ getInitialState = () => ({
     isLoading: false,
     isAuthenticated: this.isLogged(),
     errorMessage: null,
-    profile: null ,
+    profile:null,
     redirectUrl:this.router.url
   })
 

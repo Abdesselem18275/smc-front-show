@@ -1,50 +1,29 @@
-<!-- <header class="main-header  inline--centred--spaced">
-    <span></span>
-   <button appModalClose mat-icon-button>
-           <mat-icon>close</mat-icon>
-   </button>
-</header>
-<mat-progress-bar *ngIf="(isChecking |async)" mode="indeterminate">
 
-</mat-progress-bar>
-<mat-tab-group class="px4 pb8 pt4" mat-stretch-tabs>
-    <mat-tab class="column--centred">
-        <ng-template  mat-tab-label>
-            <mat-icon class="mr2">login</mat-icon>
-              <p class="mat-h3" i18n>SIGN IN</p>
-            </ng-template>
-        <app-account-login class="my8"></app-account-login>
-        <mat-divider></mat-divider>
-        <app-google-sign-in>
-        </app-google-sign-in>
-    </mat-tab>
-    <mat-tab>
-        <ng-template  mat-tab-label>
-            <mat-icon class="mr2">person_add</mat-icon>
-            <p class="mat-h3" i18n>REGISTER</p>
-          </ng-template>
-        <app-create-profile class="mt8 column--centred"></app-create-profile>
-    </mat-tab>
-</mat-tab-group> -->
-<main class="inline">
+<main class="main-container">
 
 <aside class="left-side">
 <div class="layer">
     <h1 class="mat-h1">WELCOME BACK</h1>
-    <section class="google-login">
-        <app-google-sign-in>
-        </app-google-sign-in>
-    </section>
     <p class="mt8 text--centred mat-subheading-1">D'ont have an account ? </p>
     <a class="font--white mat-body-1 text--centred">Sign up with SMC</a>
 </div>
 </aside>
 <aside class="right-side column--centred">
-    <div class="illustration-container">
+
+    <div class="mb8 illustration-container">
         <mat-icon inline="true" svgIcon="logo"></mat-icon>
       </div>
-    <h1 class="mat-h1">SIGN IN</h1>
+      <header class="font--dark-grey text--centred">
+        <h1 class="mat-h1">SIGN IN</h1>
+     </header>
     <app-account-login></app-account-login>
-
+    <section class="mt8 google-login">
+        <app-google-sign-in>
+        </app-google-sign-in>
+    </section>
+    <footer class=" text--centred">
+        <p class="mt8mat-body-1">D'ont have an account ? </p>
+        <a class="mat-caption">Sign up with SMC</a>
+    </footer>
 </aside>
 </main>

@@ -5,7 +5,7 @@
 </header>
 
         <form class="column--centred"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline">
+                <mat-form-field class="mt8" appearance="outline">
                         <mat-label>email</mat-label>
                         <input appControlValidatorMessage matInput type="email" formControlName="email" placeholder="email" id="email">
                         <mat-icon class="mr2" matPrefix>person</mat-icon>
@@ -19,8 +19,8 @@
                 </mat-form-field>
                                 <button type="submit" [disabled]="!loginForm.valid"
                                         mat-flat-button color="accent" primary>
-                                        <span i18n>
-                                                SIGN IN
+                                        <span class="mat-body-2" i18n>
+                                                Sign in with SMC
                                         </span>
                                 </button>
 

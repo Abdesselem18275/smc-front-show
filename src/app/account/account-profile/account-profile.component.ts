@@ -22,7 +22,7 @@ export class AccountProfileComponent implements OnInit {
   constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit(): void {
-    this.store$.dispatch(UserStoreActions.UserRefreshAction())
+    //this.store$.dispatch(UserStoreActions.UserRefreshAction())
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser)
     this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
   }

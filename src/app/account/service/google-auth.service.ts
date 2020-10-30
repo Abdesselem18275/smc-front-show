@@ -3,7 +3,7 @@
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SmcAuthService } from '../../account/service/smc-auth.service';
-import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
+import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
@@ -47,7 +47,7 @@ export class GoogleAuthService {
     });
   }
   private onFailure():void {
-    console.error('failed')
+    console.warn('failed')
   }
 
   private onSignIn(googleUser) {
