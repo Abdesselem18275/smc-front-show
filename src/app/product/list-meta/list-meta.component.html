@@ -14,7 +14,7 @@
           <ng-container *ngFor="let item of category.children">
             <button
             class="m2"
-            [routerLink]="['/product/list']" color="accent"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge"
+            [routerLink]="['/product/list']" color="accent"  [queryParams]="{categories__designation__in: item.designation}"
              mat-flat-button>
                 <span>{{item.designation | uppercase}}</span>
             </button>
@@ -45,13 +45,6 @@
   <mat-icon #boxSizeIcon>view_module</mat-icon>
   <span #boxSizeText class="ml2" i18n>SMALL</span>
 </button>
-<!-- <button  (click)="toggleModal('filterBox')"  class="meta-bar__filter" mat-stroked-button>
-<mat-icon [matBadge]="(filterParamCount$ | async) != 0 ? (filterParamCount$ | async) : ''"
-          matBadgeColor="accent"
-          matBadgePosition="above before">tune
-</mat-icon>
-<span class="ml2" i18n>FILTER</span>
-</button> -->
 </section>
 </main>
 

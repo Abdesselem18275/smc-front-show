@@ -4,7 +4,7 @@
 <main class="main-container global--gutters ">
   <section class="product-title">
     <h1 class="mat-h1">{{(product$ |async)?.designation | uppercase}}</h1>
-    <p class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</p>
+    <span class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
   </section>
   <aside class="general-description column">
 <section>
@@ -14,7 +14,7 @@
    </app-appearance-selector>
   </section>
 <section>
-  <p i18n class="mat-h3 font--dark-grey">Description</p>
+  <span i18n class="mat-h3 font--dark-grey">Description</span>
   <mat-divider></mat-divider>
   <p class="mt4 mat-body-1 description-text font--dark-accent" >
     {{(product$ |async).longDescription}}

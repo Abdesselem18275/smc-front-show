@@ -1,11 +1,11 @@
-<p i18n class="mat-h3 font--dark-grey">Materials</p>
+<span i18n class="mat-h3 font--dark-grey">Materials</span>
 <mat-divider></mat-divider>
 <mat-list dense>
     <mat-list-item>
       <div mat-line>
-          <p i18n class="mat-body-2">
+          <span i18n class="mat-body-2">
             {product?.rawMaterials.length,plural,=1 {one raw material variant} other {{{product?.rawMaterials.length}} raw material variants }    }
-          </p>
+          </span>
         </div>
       <div mat-line class="mat-caption">
         <span *ngFor="let rawMat of product?.rawMaterials ; first as isFirst">
@@ -16,9 +16,9 @@
     </mat-list-item>
     <mat-list-item>
         <div mat-line>
-          <p i18n class="mat-body-2">
+          <span i18n class="mat-body-2">
             {product?.interiorCoatings.length,plural,=1 {one interior coating variant} other {{{product?.interiorCoatings.length}} interior coating variants }    }
-          </p>
+          </span>
         </div>
         <div mat-line >
           <span class="mat-caption" *ngFor="let intCoat of product?.interiorCoatings ; first as isFirst">

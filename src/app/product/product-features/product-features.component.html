@@ -1,22 +1,22 @@
 <ng-container *ngIf="features.length > 0">
 <section >
 
-<p i18n class="mat-h3 font--dark-grey">Additional informations</p>
+<span i18n class="mat-h3 font--dark-grey">Additional informations</span>
 <mat-divider></mat-divider>
 <mat-list [class.horizontal]="align === 'horizontal'" dense>
 
 <mat-list-item *ngFor="let item of features">
-  <mat-icon [svgIcon]="item.svgIcon.designation" matListIcon></mat-icon>
+  <mat-icon [svgIcon]="item.svgIcon?.designation" matListIcon></mat-icon>
 
   <div mat-line>
-    <p class="mat-body-2">
-      {{item.designation}}
-    </p>
+    <span class="mat-body-2">
+      {{item?.designation}}
+    </span>
   </div>
   <div mat-line >
-    <p class="mat-caption">
-      {{item.description}}
-    </p>
+    <span class="mat-caption">
+      {{item?.description}}
+    </span>
 </div>
 </mat-list-item>
 </mat-list>

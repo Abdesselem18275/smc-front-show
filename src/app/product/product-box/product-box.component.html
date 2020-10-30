@@ -1,20 +1,15 @@
 
 <div  class="content--grid">
         <ng-container appImagePlaceholder *ngIf="(isBigSize$ |async) else smallBox" >
-        <div  class="mat-h4 p2 inline--centred">
+        <div  class="mat-h4 p3 inline--centred">
                 <button  #pulsingButton [appFavoriteHandler]="product?.id" mat-icon-button>
                         <mat-icon  [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>
-                <section >
-                        <p #pulsingText>{{product.designation | uppercase}}</p>
-                        <p #pulsingText class="mat-caption font--dark-grey">
-                                <!-- <span  #toHideLoading  class="mat-caption"
-                                [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
-                                *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
-                                        {{(rootCat$ |async)?.designation}} /
-                        </span> -->
+                <section class="column">
+                        <span class="mat-body" #pulsingText>{{product.designation | uppercase}}</span>
+                        <span #pulsingText class="mat-caption font--dark-grey">
                                 {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}
-                        </p>
+                        </span>
 
 
                </section>
@@ -80,15 +75,15 @@
         <a #loadingImage [routerLink]="['/product', product.id]">
                 <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:400">
         </a>
-        <section class="mx4">
-                <p class="mat-body"  #pulsingText>{{product.designation | uppercase}}</p>
-                <p #pulsingText class="mat-caption font--dark-grey">
+        <section class="column mx4">
+                <span class="mat-body"  #pulsingText>{{product.designation | uppercase}}</span>
+                <span #pulsingText class="mat-caption font--dark-grey">
                         <span #pulsingText class="mat-caption"
-                        [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}" queryParamsHandling="merge"
+                        [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: product.rootCategory}"
                         *ngIf="(isSearchActive |async) || (isFavoriteRoute |async)" class="font--dark-grey mat-caption">
                         {{(rootCat$ |async)?.designation}} /
                 </span >
-                        {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</p>
+                        {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</span>
 
          </section>
          <mat-divider class="my2"></mat-divider>

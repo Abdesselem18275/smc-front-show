@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
   column-gap: 1rem;
-  grid-template-rows: 2.5rem auto;
+  grid-template-rows: 3rem auto;
   row-gap: 2rem;
   grid-template-areas: 
   "title title images images images"
@@ -38,6 +38,9 @@
 }
 .general-description {
   grid-area: gen-desc;
+  p {
+    text-align: justify;
+  }
 }
 .images-container {
   grid-area: images;

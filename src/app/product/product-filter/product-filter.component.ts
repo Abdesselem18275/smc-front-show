@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ParamStoreState } from 'src/app/root-store/param-store';
 import { FilterCategory } from '../../models/product.models';
 import { Observable } from 'rxjs';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
@@ -22,7 +21,7 @@ export class ProductFilterComponent implements OnInit {
   isScrollable: boolean;
   isActive: boolean;
 
-  constructor(private store$: Store<ParamStoreState.State>) {
+  constructor(private store$: Store<any>) {
    }
 
   ngOnInit():void {

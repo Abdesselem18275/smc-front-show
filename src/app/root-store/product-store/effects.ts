@@ -1,27 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductDataService } from 'src/app/product/service/product-data.service';
-import {map, switchMap, withLatestFrom, concatMap, tap, filter } from 'rxjs/operators';
-import { Store, select } from '@ngrx/store';
+import {map, switchMap, concatMap, filter } from 'rxjs/operators';
 import * as ProductStoreActions from './actions';
-import * as ProductStoreState from './state';
-import { of } from 'rxjs';
-import { AddOrUpdateManyAction, ClearAction } from '../param-store/actions';
-import { selectAllParams } from '../param-store/selectors';
 import { ROUTER_NAVIGATED } from '@ngrx/router-store';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
+import { AppDataService } from 'src/app/shared/service/app-data.service';
+import { PaginatedProductsType } from 'src/app/models/product.models';
+import { ParamMap, convertToParamMap } from '@angular/router';
+import { CustomRouterNavigatedAction } from '../router-store/custom-route-serializer';
 
 
 @Injectable()
 export class ProductEffects {
+
+
     fetchProducts$  = createEffect(() =>
     this.actions$.pipe(
-          ofType(AddOrUpdateManyAction, ClearAction) ,
-          concatMap(action => of(action).pipe(
-            withLatestFrom(this.store$.pipe(
-            select(selectAllParams))))),
-          switchMap(([action, params])  => this.pds.get_elements({model: 'product', param_key : params}).pipe(
-           map(results => (ProductStoreActions.AddOrUpdateManyAction({results : results})))))));
+      ofType(ROUTER_NAVIGATED) ,
+      filter((x: any) =>  (x.payload.event.url).includes('product/list')),
+      map((par:CustomRouterNavigatedAction) => convertToParamMap(par.payload.routerState.queryParams)),
+      switchMap((param:ParamMap)  => this.ads.get<PaginatedProductsType>('/products/',param).pipe(
+        map(results => (ProductStoreActions.AddOrUpdateManyAction({results : results})))))));
 
     favoritesFetch$ = createEffect(() =>
     this.actions$.pipe(
@@ -36,8 +35,6 @@ export class ProductEffects {
             }})]))))));
 
 constructor(private actions$: Actions ,
-            private store$: Store<ProductStoreState.State>,
             private authService: SmcAuthService,
-            private pds: ProductDataService) {}
+            private ads: AppDataService) {}
   }
-

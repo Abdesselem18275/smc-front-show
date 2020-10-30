@@ -11,9 +11,6 @@ import { CustomSerializer } from './custom-route-serializer';
   imports: [
     CommonModule,
     StoreModule.forFeature(featureKey, reducers),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer
-    })
   ]
 })
 export class RouterStoreModule { }

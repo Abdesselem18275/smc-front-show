@@ -1,12 +1,12 @@
 <section *ngIf="(breadCrumb$ | async)?.length > 0" class="inline--centred">
     <ng-container *ngIf="!currentProduct">
-    <p  i18n [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: ''}" [queryParamsHandling]= "'merge'">
+    <p  i18n [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: ''}">
         ALL PRODUCTS
     </p>
     <mat-icon inline="true">keyboard_arrow_right</mat-icon>
     </ng-container>
         <ng-container *ngFor="let item of breadCrumb$ | async; last as isLast ; first as isFirst">
-            <p  [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item.designation}" queryParamsHandling="merge" >
+            <p  [routerLink]="['/product/list']"  [queryParams]="{categories__designation__in: item.designation}">
                 {{item.designation | uppercase}}
             </p>
             <mat-icon inline="true" *ngIf="!isLast">keyboard_arrow_right</mat-icon>

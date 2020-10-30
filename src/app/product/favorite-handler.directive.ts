@@ -1,4 +1,4 @@
-import { Directive, Input, HostListener, OnDestroy, ContentChildren, QueryList, Renderer2, AfterViewChecked } from '@angular/core';
+import { Directive, Input, HostListener, OnDestroy, ContentChildren, QueryList, Renderer2, AfterViewChecked, AfterContentInit } from '@angular/core';
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from '../root-store/user-store';
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Directive({
   selector: '[appFavoriteHandler]'
 })
-export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
+export class FavoriteHandlerDirective implements AfterContentInit,OnDestroy {
   @Input()
   appFavoriteHandler: number;
   subscription: Subscription ;
@@ -27,7 +27,7 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
   }
 
 
-  ngAfterViewChecked():void {
+  ngAfterContentInit():void {
     this.matIcon = <HTMLElement>this.matIconList.first._elementRef.nativeElement
     this.subscription = this.store$.select(UserStoreSelectors.selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
@@ -36,7 +36,6 @@ export class FavoriteHandlerDirective implements AfterViewChecked,OnDestroy {
 
   @HostListener('click')
   onClick():void {
-    console.warn(this.router.url)
     this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
       take(1),
     ).subscribe((isAuth) => {

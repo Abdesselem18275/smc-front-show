@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, catchError, withLatestFrom, filter, tap, take } from 'rxjs/operators';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
-import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables.service';
+import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables';
 import * as UsersActions from './actions';
 import { selectUser, selectIsAuthentificated, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
@@ -29,7 +29,6 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(UsersActions.LoginAction),
       withLatestFrom(this.store$.select(selectRedirectNavigation)),
-      map((content:any) => JSON.stringify(content[0].credentials)),
       switchMap((content:any)  =>
         this.as.login( JSON.stringify(content[0].credentials)).pipe(
           switchMap(payload => {
@@ -59,22 +58,6 @@ export class UserEffects {
           catchError(async (err) =>  {
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
           }))
-    )));
-
-    refreshUser$  = createEffect(() =>
-    this.actions$.pipe(
-      ofType(UsersActions.UserRefreshAction),
-      withLatestFrom(this.store$.select(selectIsAuthentificated)),
-      filter(content => (content[1])),
-      switchMap(()  =>
-        this.as.profileRefresh().pipe(
-          map(payload => {
-            return UsersActions.LoadUserAction({payload});
-          }),
-          catchError(async (err) => {
-            return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error.non_field_errors)) });
-          }
-          ))
     )));
 
     logOut$  = createEffect(() =>
@@ -125,14 +108,6 @@ export class UserEffects {
         filter(payload => payload !== null),
         map(payload => UsersActions.UpdateUserAction({message:'Your favorites list was successfully updated',payload}))));
 
-      userRefrechTrigger$  = createEffect(() =>
-        this.actions$.pipe(
-          ofType(ModalStoreActions.ToggleAction, ROUTER_NAVIGATION),
-          withLatestFrom(this.store$.select(selectIsAuthentificated)),
-          withLatestFrom(this.store$.select(selectUser)),
-          filter(content => content[0][1] && content[1] === null),
-          map(() => UsersActions.UserRefreshAction())));
-      
       redirectForAuthEffect$ = createEffect(() =>
       this.actions$.pipe(
         ofType(UsersActions.RedirectForAuthentification),

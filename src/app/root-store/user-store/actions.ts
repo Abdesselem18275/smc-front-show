@@ -6,14 +6,13 @@ export enum ActionsType {
   FAILURE = '[User] Request Failure',
   LOAD_USER = '[User] Load User to store',
   LOGOUT    = '[User] Logout a  user',
-  REFRECH   =  '[User] Refrech User',
   CREATE = '[User] Create new user',
   UPDATE = '[User] Update user',
   TOGGLE_FAVORITE = '[User] Toggle favorite',
   TRIGGER_FAVORITE = '[User] Trigger favorite',
   FETCH_USER_REQUESTS = '[User] Fetch User Request',
   LOAD_USER_REQUESTS = '[User] Fetch User Request',
-  AUTH_REDIRECT  ='[User] Redirect for Authentification'
+  AUTH_REDIRECT  ='[User] Redirect for Authentification',
 
 }
 export const LoginAction = createAction(
@@ -26,9 +25,6 @@ export const LogoutAction = createAction(
 export const FailureAction = createAction(
   ActionsType.FAILURE,
   props<{ message: any}>()
-);
-export const UserRefreshAction = createAction(
-  ActionsType.REFRECH
 );
 export const LoadUserAction = createAction(
   ActionsType.LOAD_USER,

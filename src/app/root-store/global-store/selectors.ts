@@ -17,28 +17,29 @@ export const selectRootCategory =  createSelector(selectRootCategories,(categori
               children : categories}));
 export const selectFilters =  createSelector(selectGlobalState,(state) => state.filters);
 export const selectNavMenuTree =  createSelector(selectGlobalState,(state) =>state.navMenuTree);
-export const selectCategoryQueryParam = createSelector(
-    selectCategories,
-    RouterStoreSelectors.selectQueryParams,
-    (categories,queryParams) =>
-    {
-      return queryParams['categories__designation__in'] !== '' && queryParams['categories__designation__in'] ?
-      categories.filter(cat => cat.designation === queryParams['categories__designation__in']).shift():
-      {
-        designation : 'All Cateogries',
-        isRoot: true,
-        children : categories.filter(cat => cat.isRoot)
-      }
-    })
+
+// export const selectCategoryQueryParam = createSelector(
+//     selectCategories,
+//     RouterStoreSelectors.selectQueryParam,
+//     (categories,queryParams,props: {paramKey:string}) =>
+//     {
+//       return queryParams['categories__designation__in'] !== '' && queryParams['categories__designation__in'] ?
+//       categories.filter(cat => cat.designation === queryParams['categories__designation__in']).shift():
+//       {
+//         designation : 'All Cateogries',
+//         isRoot: true,
+//         children : categories.filter(cat => cat.isRoot)
+//       }
+//     })
   export const selectRequestSubjects = createSelector(selectGlobalState,(state) => state.requestSubjects);
-  export const selectBreadcrumbArray = createSelector(
-    selectCategories,
-    selectCategoryQueryParam,
-    (categories:Category[],category:Category,props : {product : ProductShort}) => {
-      return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
-      category ? setItems(categories,category).reverse():null
-      //return category ? setItems(categories,category).reverse():null
-    })
+    // export const selectBreadcrumbArray = createSelector(
+    //   selectCategories,
+    //   selectCategoryQueryParam,
+    //   (categories:Category[],category:Category,props : {product : ProductShort}) => {
+    //     return props.product ? setItems(categories,getItem(categories,props.product.rootCategory)).reverse():
+    //     category ? setItems(categories,category).reverse():null
+    //     //return category ? setItems(categories,category).reverse():null
+    //   })
   export const selectCategoryById = createSelector(selectCategories,
     (categories:Category[],props: {id:number}) => getItem(categories,props.id))
   export const selectFilterForm = createSelector(

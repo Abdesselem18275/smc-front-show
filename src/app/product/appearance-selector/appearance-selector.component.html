@@ -1,7 +1,7 @@
 <ng-container *ngIf="mode === 'FULL'">
-  <p  class="mat-h3  font--dark-grey">
-    {appearanceVariants.length, plural, =0 {No} =1 {One} other { {{appearanceVariants.length}} } } available look
-  </p>
+  <span  class="mat-body-1  font--dark-grey">
+    {appearanceVariants.length, plural, =0 {Non available look} =1 {One look available } other { {{appearanceVariants.length}} available looks } } 
+  </span>
   <mat-divider></mat-divider>
 </ng-container>
 <section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">

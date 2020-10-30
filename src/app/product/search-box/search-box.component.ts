@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
 import { ParamType } from '../../models/product.models';
 import { Store } from '@ngrx/store';
-import { ParamStoreState, ParamStoreActions , ModalStoreActions } from 'src/app/root-store';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -17,7 +16,7 @@ export class SearchBoxComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private store$: Store<ParamStoreState.State>) { }
+              private store$: Store<any>) { }
   ngOnInit() {
   this.searchBar.valueChanges.pipe(
       debounceTime(150),
@@ -31,7 +30,12 @@ export class SearchBoxComponent implements OnInit {
           value: term,
           type : ParamType.SEARCH
         };
-       this.store$.dispatch(ParamStoreActions.AddOrUpdateAction({param : param}));
+       const navExtra:NavigationExtras = {
+         queryParams : {
+           search:term
+         },         
+       }
+       this.router.navigate(['/product/list'],navExtra)
        if(!this.router.url.includes('product/list')) {
         this.router.navigate(['product/list']);
 
@@ -42,6 +46,6 @@ export class SearchBoxComponent implements OnInit {
 }
 
 closePopup() {
-    this.store$.dispatch(ParamStoreActions.ClearAction());
+    //this.store$.dispatch(ParamStoreActions.ClearAction());
 }
 }

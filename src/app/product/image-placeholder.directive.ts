@@ -25,7 +25,6 @@ export class ImagePlaceholderDirective implements AfterContentInit,OnDestroy {
       this.targetImage = <HTMLElement>this.imageQueryList.first.nativeElement
       this.subscribtion= fromEvent(this.targetImage,'load').
       subscribe((event) => {
-        console.warn(event)
         this.pragraphList ? this._unsetTextLoading() : null
         this.imageList ? this._unsetImageloading() : null
         this.toHideList ? this._unsetHideEffect() : null
@@ -34,7 +33,6 @@ export class ImagePlaceholderDirective implements AfterContentInit,OnDestroy {
     }
   }
   ngOnDestroy(): void {
-    console.warn('Unsubscribe')
     if (this.subscribtion) {
       this.subscribtion.unsubscribe()
 

@@ -5,6 +5,7 @@ export interface State extends EntityState<ProductShort> {
   isLoading: boolean;
   objCount: number;
   isBigBox: boolean;
+  pageNumber:number,
   selectedProduct: ProductShort;
 }
 
@@ -24,5 +25,6 @@ export const initialState: State = adapter.getInitialState({
   isLoading : false,
   objCount : 0,
   isBigBox : true,
+  pageNumber:1,
   selectedProduct : null,
 });

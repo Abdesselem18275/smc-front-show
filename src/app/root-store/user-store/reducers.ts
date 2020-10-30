@@ -22,13 +22,6 @@ const userReducer = createReducer(
       };
       return newState;
     }),
-    on(UsersActions.UserRefreshAction, (state) => {
-      const newState = {
-        ...state ,
-        isLoading : true,
-      };
-      return newState;
-    }),
     on(UsersActions.FailureAction, (state, { message }) => {
       const newState = {
         ...state ,
