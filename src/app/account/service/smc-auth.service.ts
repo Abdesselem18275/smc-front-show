@@ -27,73 +27,8 @@ export class SmcAuthService {
               @Inject(PROFILE_ID) private profileId: string) {
                }
 
-createProfile(payload): Observable<any> {
-    const query: string = [
-      this.apiUrl,
-      '/profiles/',
-     ].join('');
-  return this.http.post<Profile>(query, payload) ;
-}
-
-login(credentials: any): Observable<any> {
-  const query: string = [
-      this.apiUrl,
-      '/s-auth/'
-       ].join('');
-  return this.http.post<Profile>(query, credentials);
-}
-
-updateProfile(payload): Observable<any> {
-  const query: string = [
-    this.apiUrl,
-    '/profile/',
-    this.getProfileId(),
-    '/'
-   ].join('');
-return this.http.patch<Profile>(query, payload);
-}
-
-getProfileFavorites() {
-
-  const query: string = [
-    this.apiUrl,
-    '/profile/',
-    this.getProfileId(),
-    '/favorites/'
-   ].join('');
-   return this.http.get<ProductShort[]>(query);
-}
-
-profileRefresh(): Observable<Profile> {
-  const query: string = [
-    this.apiUrl,
-    '/profile/',
-    this.getProfileId(),
-    '/'
-   ].join('');
-  return  this.getProfileId() ?  this.http.get<Profile>(query) :EMPTY;
-}
-PutUserRequest(payload:any): Observable<any> {
-  const query: string = [
-    this.apiUrl,
-    '/profile/',
-    this.getProfileId(),
-    '/requests/'
-   ].join('');
-return this.http.post(query, payload);
-}
-listUserRequest(): Observable<any> {
-  const query: string = [
-    this.apiUrl,
-    '/profile/',
-    this.getProfileId(),
-    '/requests/'
-   ].join('');
-  return this.http.get(query);
-}
 
 redirect(redirectUrl?:string) {
-  console.warn(this.isLogged(),redirectUrl)
   if (this.isLogged()) {
     this.router.navigateByUrl(redirectUrl ? redirectUrl : '/product/list')
   } else {

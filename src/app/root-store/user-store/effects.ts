@@ -5,13 +5,13 @@ import { map, switchMap, catchError, withLatestFrom, filter, tap, take } from 'r
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { TOKEN_KEY, PROFILE_ID } from 'src/app/injectables';
 import * as UsersActions from './actions';
-import { selectUser, selectIsAuthentificated, selectRedirectNavigation } from './selectors';
+import { selectUser, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
-import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Router } from '@angular/router';
+import { AppDataService } from 'src/app/shared/service/app-data.service';
 
 
 @Injectable()
@@ -20,6 +20,7 @@ export class UserEffects {
       private router: Router,
        private actions$: Actions ,
        private as: SmcAuthService,
+       private ads: AppDataService,
        private snakBar: MatSnackBar,
        @Inject(TOKEN_KEY) private tokenKey: string,
        @Inject(PROFILE_ID) private profileId: string,
@@ -30,10 +31,10 @@ export class UserEffects {
       ofType(UsersActions.LoginAction),
       withLatestFrom(this.store$.select(selectRedirectNavigation)),
       switchMap((content:any)  =>
-        this.as.login( JSON.stringify(content[0].credentials)).pipe(
-          switchMap(payload => {
+        this.ads.post<{profile:Profile,token:string}>('/s-auth/',JSON.stringify(content[0].credentials)).pipe(
+          switchMap((payload:{profile:Profile,token:string} )=> {
             localStorage.setItem(this.tokenKey, payload.token);
-            localStorage.setItem(this.profileId, payload.profile.id);
+            localStorage.setItem(this.profileId, payload.profile.id.toString());
             this.as.redirect(content[1]);
             return [
               ModalStoreActions.CloseAllAction(),
@@ -50,7 +51,7 @@ export class UserEffects {
       ofType(UsersActions.LoadUserRequestsAction),
       map((action: any ) => JSON.stringify(action.payload)),
       switchMap((payload)  =>
-        this.as.PutUserRequest(payload).pipe(
+        this.ads.post<Profile>(`/profile/${this.as.getProfileId}/requests/`,payload).pipe(
           map(() => {
             this.snakBar.open('your request was successfully submitted . We will soon answer you via your email adress')
             return ModalStoreActions.CloseAllAction()
@@ -75,10 +76,10 @@ export class UserEffects {
         ofType(UsersActions.CreateUserAction),
         map((action: any ) => JSON.stringify(action.payload)),
         switchMap((payload)  =>
-          this.as.createProfile(payload).pipe(
-            map((response: any) => {
+          this.ads.post<{profile:Profile,token:string}>('/profiles/',payload).pipe(
+            map((response: {profile:Profile,token:string}) => {
               localStorage.setItem(this.tokenKey, response.token);
-              localStorage.setItem(this.profileId, response.profile.id);
+              localStorage.setItem(this.profileId, response.profile.id.toString());
               this.as.redirect();
               return UsersActions.LoadUserAction({payload: response.profile});
             }),
@@ -91,7 +92,7 @@ export class UserEffects {
         ofType(UsersActions.UpdateUserAction),
         map((action:any) => [JSON.stringify(action.payload, editFormReplacer),action.message]),
         switchMap((payload)  =>
-          this.as.updateProfile(payload[0]).pipe(
+          this.ads.patch<Profile>(`/profile/${this.as.getProfileId()}/`,payload[0]).pipe(
             map((profile: Profile) => {
               this.snakBar.open(payload[1]);
               return UsersActions.LoadUserAction({payload: profile});

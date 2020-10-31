@@ -5,7 +5,7 @@ import * as ProductStoreActions from './actions';
 import { ROUTER_NAVIGATED } from '@ngrx/router-store';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
 import { AppDataService } from 'src/app/shared/service/app-data.service';
-import { PaginatedProductsType } from 'src/app/models/product.models';
+import { PaginatedProductsType, ProductShort } from 'src/app/models/product.models';
 import { ParamMap, convertToParamMap } from '@angular/router';
 import { CustomRouterNavigatedAction } from '../router-store/custom-route-serializer';
 
@@ -26,7 +26,8 @@ export class ProductEffects {
     this.actions$.pipe(
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/favorites')),
-        switchMap(() => this.authService.getProfileFavorites().pipe(
+        switchMap(() => 
+        this.ads.get<ProductShort[]>(`/profile/${this.as.getProfileId()}/favorites/`).pipe(
           concatMap(res => ([
             ProductStoreActions.ClearAllAction(),
             ProductStoreActions.AddOrUpdateManyAction({results : {
@@ -35,6 +36,6 @@ export class ProductEffects {
             }})]))))));
 
 constructor(private actions$: Actions ,
-            private authService: SmcAuthService,
+            private as: SmcAuthService,
             private ads: AppDataService) {}
   }
