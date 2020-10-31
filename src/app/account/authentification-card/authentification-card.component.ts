@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ParamStoreState, ModalStoreActions } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 
@@ -12,7 +11,7 @@ import { UserStoreSelectors } from 'src/app/root-store/user-store';
 export class AuthentificationCardComponent implements OnInit {
   isChecking: Observable<boolean>;
 
-  constructor(private store$: Store<ParamStoreState.State>) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit(): void {
     this.isChecking = this.store$.select(UserStoreSelectors.selectIsLoading);
