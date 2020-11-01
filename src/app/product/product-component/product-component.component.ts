@@ -5,6 +5,7 @@ import { ComponentsSpecification } from '../../models/product.models';
   selector: 'app-product-component',
   changeDetection : ChangeDetectionStrategy.OnPush,
   templateUrl: './product-component.component.html',
+  styleUrls: ['./product-component.component.scss']
 })
 export class ProductComponentComponent{
   @Input() componentsSpecs : ComponentsSpecification[];
