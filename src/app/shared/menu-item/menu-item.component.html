@@ -9,7 +9,7 @@
     </ng-container>
     <!-- Handle sub menu items -->
     <ng-container *ngIf="!item.children">
-      <button color="accent" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}" [queryParamsHandling]= "'merge'">
+      <button color="accent" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}">
         {{item.designation}}
       </button>
     </ng-container>

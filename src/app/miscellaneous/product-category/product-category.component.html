@@ -1,5 +1,5 @@
 <main class="column">
-  <a [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}" [queryParamsHandling]= "'merge'">
+  <a [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: category.designation}">
   <img [src]="category.thumbNail | mergeSizeQs:600" class="root-category">
   <p class="mat-h1 mt4">
     {{category.designation | uppercase}}
@@ -13,7 +13,7 @@
 </a>
   <mat-chip-list >
     <mat-chip
-    [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}" [queryParamsHandling]= "'merge'"
+    [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: childCat.designation}"
      color="primary" *ngFor="let childCat of category.children">
          {{childCat.designation}}
     </mat-chip>

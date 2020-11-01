@@ -84,7 +84,6 @@ export class MenuDataBuilderService {
   generateCatRouterLink(designation:string): UrlTree {
     const navigationExtras: NavigationExtras = {
       queryParams: { categories__designation__in: designation },
-      queryParamsHandling : 'merge'
     };
     return this.router.createUrlTree(['/product/list'],navigationExtras)
   }

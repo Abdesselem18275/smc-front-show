@@ -32,7 +32,13 @@ export class ScrollPaginatorDirective implements AfterViewInit  {
 
 
    entriesHandler():void {
-    this.store$.dispatch(ParamStore.ParamStoreActions.NextPageAction());
+    const navExtra:NavigationExtras = {
+      queryParams : {
+        [this.queryParamKeys.PAGE]:this._currentPage+1
+      }, 
+      queryParamsHandling:'merge'        
+    }
+    this.router.navigate(['/product/list'],navExtra)
 
   }
 

@@ -6,7 +6,7 @@
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
           <button color="accent" class="login-button" *ngIf="!(isLogged$ |async) && (isSideNav$| async)"
-          mat-stroked-button (click)="login()">
+          mat-stroked-button [routerLink]="['/account/authentification']">
           <mat-icon class="mr4">account_box</mat-icon>
             <span i18n>WELCOME , SIGN IN</span>
           </button>
