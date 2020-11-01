@@ -122,4 +122,4 @@ export interface MenuTreeData {
     [key: string]: string;
   }
 
-
+export type PaginatedProductsType = {count:number,next:string,previous:string,results:ProductShort[]}

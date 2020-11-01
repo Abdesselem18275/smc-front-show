@@ -17,6 +17,14 @@ const productReducer = createReducer(
       };
       return adapter.upsertMany(results['results'], newState);
     }),
+    on(ProductActions.SetManyProductsAction, (state, { payload }) => {
+      const newState = {
+        ...state ,
+        isLoading : false,
+        objCount : payload['count']
+      };
+      return adapter.setAll(payload['results'], newState);
+    }),
     on(ProductActions.ClearAllAction, (state) => {
       return adapter.removeAll(initialState);
     }),

@@ -1,20 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input,Renderer2 } from '@angular/core';
+import { Directive, EventEmitter, Output, ElementRef, AfterViewInit, Input,Renderer2, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
-import { throttleTime, skip } from 'rxjs/operators';
-import { RootStoreState } from '../root-store';
-import { Store } from '@ngrx/store';
-import  * as ParamStore from '../root-store/param-store';
+import { throttleTime, skip, filter, tap } from 'rxjs/operators';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { QUERY_PARAM_KEYS } from '../injectables';
+const PAGE_PARAM_KEY = 'page'
 @Directive({
   selector: '[appScrollPaginator]'
 })
 export class ScrollPaginatorDirective implements AfterViewInit  {
-  @Output() pageNumber: EventEmitter<number> = new EventEmitter();
-  @Input()  onViewPort = true;
+  @Input()  onViewPort = true
+  @Input()  pagesCount : number;
+
+  _currentPage: number;
+  _ItemCount: number
   private observerEvents = new Subject<IntersectionObserverEntry[]>();
   constructor(private _element: ElementRef ,
-              private store$: Store<RootStoreState.State>,
-              private _renderer: Renderer2) { }
+              private route : ActivatedRoute,
+              @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
+              private router: Router,
+              private _renderer: Renderer2) {
+                this.route.queryParamMap.subscribe(queryParamMap => { 
+                  this._currentPage = this.route.snapshot.queryParamMap.has(queryParamKeys.PAGE) ?
+                  parseInt(this.route.snapshot.queryParamMap.get(PAGE_PARAM_KEY)): 1})
+               }
 
   ngAfterViewInit():void {
     const rootElement = this.onViewPort === true ? null : this._renderer.parentNode(this._element.nativeElement);
@@ -24,7 +33,12 @@ export class ScrollPaginatorDirective implements AfterViewInit  {
       threshold: 1};
       new IntersectionObserver(entries => this.observerEvents.next(entries), options).
       observe(<Element>(this._element.nativeElement));
-      this.observerEvents.asObservable().pipe(throttleTime(1500) , skip(1)).
+      this.observerEvents.asObservable().pipe(
+        filter(() => this._currentPage < this.pagesCount),
+        tap(() => console.warn(`current page ${this._currentPage} pages count ${this.pagesCount}`)),
+
+        throttleTime(1500) , 
+        skip(1)).
       subscribe(()=> {
         this.entriesHandler();
       });
