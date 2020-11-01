@@ -25,7 +25,10 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
    color: red;
 }
 .font--white {
-  color: white;
+  * {
+    color: white
+
+  }
 }
 
 .font--primary {

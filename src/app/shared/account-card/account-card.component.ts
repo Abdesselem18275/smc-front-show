@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../models/account.models';
-import { ParamStoreState, ModalStoreSelectors } from 'src/app/root-store';
+import { ModalStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Observable } from 'rxjs';
@@ -19,12 +19,12 @@ export class AccountCardComponent implements OnInit {
   isLogged$:Observable<boolean>;
   isLoading$: Observable<boolean>;
   initials$ : Observable<string>
-  constructor(private router: Router,private store$: Store<ParamStoreState.State>) {
+  constructor(private router: Router,private store$: Store<any>) {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isSideNav$ = this.store$.select(ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'})
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
     this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
-    this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(map(profile => profile.first_name[0].concat(profile.last_name[0]) ))
+    this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(map(profile => profile && profile.first_name[0].concat(profile.last_name[0]) ))
   }
 
   ngOnInit() {

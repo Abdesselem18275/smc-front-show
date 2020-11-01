@@ -19,14 +19,15 @@ import { MergeSizeQsPipe } from './merge-size-qs.pipe';
 import { ModalCloseDirective } from './modal-close.directive';
 import { InitialsIconComponent } from './initials-icon/initials-icon.component';
 import { AccountCardComponent } from './account-card/account-card.component';
-
+import { ControlErrorMessageComponent } from './control-error-message/control-error-message.component';
+import { ControlValidatorMessageDirective } from './control-validator-message.directive';
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,ProductFilterComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
-    AccountCardComponent,
+    AccountCardComponent,ControlValidatorMessageDirective,
     TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
-    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective],
+    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -39,12 +40,14 @@ import { AccountCardComponent } from './account-card/account-card.component';
     SearchBoxComponent,
     ReactiveFormsModule,
     MaterialModule,
+    ControlValidatorMessageDirective,
     AccountCardComponent,
     InitialsIconComponent,
     ScrollPaginatorDirective,
     LoadingComponent,
     ProductFilterComponent,
     MergeSizeQsPipe,
+    ControlErrorMessageComponent,
     ModalCloseDirective,
   ]
 })

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { UserLanguage } from 'src/app/root-store/global-store/state';
-import { SUPPORTED_LANGUAGES } from 'src/app/injectables.service';
+import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,6 @@ export class GlobalConfigService {
   getInitialGlobalConfig() {
     const language = this.baseUrl.replace(/\//g, '');
     const selectedLanguage = this.languageList.filter(lang => lang.id === language)[0]
-    console.warn(language,selectedLanguage);
-    console.warn(this.languageList)
     return  {
       language : selectedLanguage,
       categories: [],

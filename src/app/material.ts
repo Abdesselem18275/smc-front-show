@@ -20,6 +20,7 @@ import {MatTableModule} from '@angular/material/table';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -28,7 +29,7 @@ import {MatInputModule} from '@angular/material/input';
   exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule , MatInputModule,MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,LayoutModule,
-            MatProgressBarModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
+            MatProgressBarModule,MatSelectModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
             MatTreeModule,MatSlideToggleModule, MatListModule,MatMenuModule,MatTableModule],
 })
 export class MaterialModule {}

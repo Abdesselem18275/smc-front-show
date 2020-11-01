@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns":true,
     "noFallthroughCasesInSwitch":true,
+    "emitDecoratorMetadata": true, 
     "outDir": "./out-tsc/app",
     "types": []
   },

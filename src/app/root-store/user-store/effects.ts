@@ -42,6 +42,7 @@ export class UserEffects {
             ];
           }),
           catchError(async (err) =>  {
+            console.warn(err)
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
           }))
     )));
@@ -57,7 +58,8 @@ export class UserEffects {
             return ModalStoreActions.CloseAllAction()
           }),
           catchError(async (err) =>  {
-            return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
+            console.warn(err)
+            return UsersActions.FailureAction({ message: err });
           }))
     )));
 
@@ -84,7 +86,7 @@ export class UserEffects {
               return UsersActions.LoadUserAction({payload: response.profile});
             }),
             catchError(async (err) =>  {
-              return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
+              return UsersActions.FailureAction({ message: err });
             }))
       )));
       updateUser$  = createEffect(() =>
