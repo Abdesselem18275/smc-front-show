@@ -1,6 +1,5 @@
-import { InjectionToken, APP_INITIALIZER } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { UserLanguage, LanguageType } from './root-store/global-store/state';
-import { ConfigService } from './shared/service/config.service';
 
  const LANGUAGE_LIST = () =>([
   {
@@ -20,8 +19,15 @@ const SMC_API_URL = () => 'http://ec2-15-188-104-88.eu-west-3.compute.amazonaws.
 
 const APP_TOKEN_KEY = () => 'smcToken';
 const APP_PROFILE_ID = () => 'smcId';
-
-
+const PARAM_KEYS_MAP = () => ({
+  PAGE:'page',
+  SEARCH:'search',
+  CAT_DESIGNATION:'categories__designation__in'
+});
+export const QUERY_PARAM_KEYS = new InjectionToken<any>('ParamKeys', {
+  providedIn: 'root',
+  factory: PARAM_KEYS_MAP
+});
 export const API_URL = new InjectionToken<string>('ApiUrl', {
   providedIn: 'root',
   factory: SMC_API_URL

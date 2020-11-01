@@ -22,7 +22,6 @@ export class GoogleSignInComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     const width = this.render.parentNode(this.element.nativeElement).clientWidth;
-    console.warn(width)
     this.googleAuthService.buttonRender('google-signin2', width);
   }
 

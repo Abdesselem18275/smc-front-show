@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
 import { Observable, Subscription } from 'rxjs';
-import { ParamStoreState, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Profile } from '../../models/account.models';
@@ -33,13 +32,11 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
   }
 
   ngOnInit():void {
-    console.warn(countries())
 
 
     this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
-      console.warn(profile)
       this.accountForm.setValue({
         first_name: profile.first_name,
         last_name: profile.last_name,

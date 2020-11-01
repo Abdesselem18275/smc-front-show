@@ -3,27 +3,43 @@
 
 <aside class="left-side">
 <div class="layer">
+    <div class="mb8 illustration-container">
+        <mat-icon  inline="true" svgIcon="logo_white"></mat-icon>
+      </div>
     <h1 class="mat-h1">WELCOME BACK</h1>
-    <p class="mt8 text--centred mat-subheading-1">D'ont have an account ? </p>
-    <a class="font--white mat-body-1 text--centred">Sign up with SMC</a>
+    <div class="font--white">
+        <ng-container *ngTemplateOutlet="altAction">
+
+        </ng-container>
+    </div>
+
+
 </div>
 </aside>
 <aside class="right-side column--centred">
 
-    <div class="mb8 illustration-container">
-        <mat-icon inline="true" svgIcon="logo"></mat-icon>
-      </div>
-      <header class="font--dark-grey text--centred">
-        <h1 class="mat-h1">SIGN IN</h1>
-     </header>
-    <app-account-login></app-account-login>
-    <section class="mt8 google-login">
-        <app-google-sign-in>
-        </app-google-sign-in>
-    </section>
-    <footer class=" text--centred">
-        <p class="mt8mat-body-1">D'ont have an account ? </p>
-        <a class="mat-caption">Sign up with SMC</a>
+
+    <div class="mt8 outlet-container">
+        <router-outlet></router-outlet>
+
+    </div>
+
+    <footer class="mt12  text--centred">
+
+<ng-container *ngTemplateOutlet="altAction">
+
+</ng-container>
     </footer>
 </aside>
 </main>
+<ng-template #altAction>
+    <a routerLinkActive="hide" [routerLink]="['create-profile']" class="column text--centred">
+        <span i18n class="text--centred mat-body">D'ont have an account ?</span>
+        <span  class="mat-caption full-width">  Create an account with SMC </span>
+    </a>
+    <a routerLinkActive="hide" [routerLink]="['./login']" class="mt8 text--centred">
+        <p i18n class="text--centred mat-body">Go back and Sign in</p></a>
+    <a [routerLink]="['/product/list']"  class="text--centred">
+        <p i18n class="text--centred mat-body">Go back ,I prefer signin later  </p>
+    </a>
+</ng-template>

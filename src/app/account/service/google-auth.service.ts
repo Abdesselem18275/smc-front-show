@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SmcAuthService } from '../../account/service/smc-auth.service';
@@ -9,10 +8,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Profile } from '../../models/account.models';
 import { Observable } from 'rxjs';
-import { take, switchMap, withLatestFrom } from 'rxjs/operators';
-import { Navigation, ActivatedRouteSnapshot } from '@angular/router';
-import { RedirectDataType } from 'src/app/models/shared.models';
-
+import { take,withLatestFrom } from 'rxjs/operators';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const gapi: any;
 @Injectable({
@@ -47,7 +43,6 @@ export class GoogleAuthService {
     });
   }
   private onFailure():void {
-    console.warn('failed')
   }
 
   private onSignIn(googleUser) {
@@ -56,7 +51,6 @@ export class GoogleAuthService {
       subscribe(
         (data : [{token: string, profile: Profile} ,string] ) => 
         {
-      console.warn(data)
       
       const jsonData = data[0];
       localStorage.setItem(this.tokenKey, jsonData.token);

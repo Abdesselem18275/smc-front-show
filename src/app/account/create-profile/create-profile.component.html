@@ -1,65 +1,72 @@
 
-    <mat-progress-bar *ngIf="isChecking$ | async" mode="indeterminate">
-    </mat-progress-bar>
+                                <header>
+                                    <h1 class="font--dark-grey mat-h1">CREATE NEW ACCOUNT</h1>
+                                    <p class="alert mat-caption" *ngFor="let item of serverError$ | async  | keyvalue">
+                                        {{item.value}}</p>
+                            </header>
+            
             <form
+            class="form column"
             [formGroup]="createForm" (ngSubmit)="onSubmit()">
-                    <header class="column--centred">
-                        <p i18n class="font--dark-grey mat-subheading-2">Please fill the following information
-                        </p>
-                        <p class="alert mat-caption" *ngFor="let item of serverError$ | async  | keyvalue">
-                            {{item.value}}</p>
-                </header>
+            <mat-form-field class="civility-field" appearance="outline">
+                <mat-label>Civility</mat-label>
+                <mat-select required formControlName="civility" name="food">
+                    <mat-option i18n selected value="Mr">Gentelman</mat-option>
+                    <mat-option i18n value="Mme">Madam</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field class="email-field" appControlValidatorMessage appearance="outline">
+                    <mat-label i18n>email</mat-label>
+                    <input required matInput type="email" formControlName="email" placeholder="email" id="email">
+                    <mat-icon class="mr2" matPrefix>person</mat-icon>
+                    <mat-hint i18n>Enter your email adress</mat-hint>
+                    <mat-error>
+                    </mat-error>
+            </mat-form-field>
+            <mat-form-field class="password-field" appControlValidatorMessage appearance="outline">
+                <mat-label i18n>password</mat-label>
+                <input required  matInput type="password" formControlName="password" id="password">
+                <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
+                <mat-hint i18n>Enter your password</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field class="confirm-password-field" appControlValidatorMessage appearance="outline">
+                <mat-label i18n>Confirmation password</mat-label>
+                <input  required matInput type="password" autocomplete="new-password"  formControlName="confirmPassword">
+                <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
+                <mat-hint i18n>confirm your password</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
 
-                <div class="form__field">
-                    <label for="email">
-                        <mat-icon class="mr2">email</mat-icon>
-                        <span i18n>Email</span>
-                    </label>
-                    <input appControlValidatorMessage  required  type="email" formControlName="email" id="email">
+              <mat-form-field class="first-field" appControlValidatorMessage appearance="outline">
+                <mat-label i18n>First name</mat-label>
+                <input required matInput type="text"  formControlName="first_name">
+                <mat-error></mat-error>
+            </mat-form-field> 
+            <mat-form-field class="last-field" appControlValidatorMessage appearance="outline">
+                <mat-label i18n>Last name</mat-label>
+                <input required matInput type="text"  formControlName="last_name">
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field class="phone-field" appControlValidatorMessage appearance="outline">
+                <mat-label i18n>Phone number</mat-label>
+                <input required matInput type="text"  formControlName="phone_number">
+                <mat-error></mat-error>
+            </mat-form-field>
 
-                </div>
-                <div class="form__field">
-                    <label for="password">
-                        <mat-icon class="mr2">vpn_key</mat-icon>
-                        <span i18n>password</span>
-                      </label>
-                    <input appControlValidatorMessage required  autocomplete="new-password" type="password" formControlName="password" id="password">
-                </div>
-                <div class="form__field">
-                    <label i18n>confirm your password</label>
-                    <input required appControlValidatorMessage  autocomplete="new-password" type="password" formControlName="confirmPassword" id="new-confirmPassword">
-                </div>
-
-                <header class="fieldset-title">
-                    <p class="inline--centred mat-subheading-1">
-                        <mat-icon>person</mat-icon>
-                       <span>Personal information </span>
-                    </p>
-                </header>
-                    <div class="form__field">
-                        <label   for ="civility" i18n>Civility</label>
-                        <select name="civility" formControlName="civility" id="civility">
-                            <option i18n selected value="Mr">Gentelman</option>
-                            <option i18n value="Mme">Madam</option>
-                        </select>
-                    </div>
-                <div class="form__field">
-                    <label  for ="first_name" i18n>First name</label>
-                    <input appControlValidatorMessage required type="text" formControlName="first_name" id="first_name">
-                </div>
-                <div class="form__field">
-                <label for ="last_name" i18n>Last name</label>
-                <input appControlValidatorMessage required type="text" formControlName="last_name" id="last_name">
-            </div>
-
-            <div class="my4 inline--centred">
-              <input  formControlName="is_professional" type="checkbox" id="is_professional">
-              <label class="mat-body ml4" i18n for="is_professional">Are you a professional ?</label>
-            </div>
-
-            <button class="form__submit-button" type="submit"
-            mat-raised-button color="primary" primary>
-            <span i18n class="mat-subheading-2">
+            <mat-form-field class="country-field"  appearance="outline">
+                <mat-label i18n>Country</mat-label>
+                <mat-select required formControlName="country">
+                    <mat-option 
+                    [value]="country[1]"
+                    *ngFor="let country of countryNames" i18n selected value="Mr">
+                    {{country[1]}}
+                </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <button class="button" type="submit"
+            mat-flat-button color="accent" primary>
+            <span i18n class="mat-body-2">
                 Register
             </span>
             </button>

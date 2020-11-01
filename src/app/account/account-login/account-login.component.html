@@ -1,21 +1,28 @@
-<header class="column--centred">
-        <p class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
+
+
+<header>
+        <h1 i18n class="font--dark-grey mat-h1">SIGN IN WITH SMC</h1>
+        <p  class="mat-caption alert" *ngFor="let item of auth_non_field_error |async  | keyvalue">
                 {{item.value}}
         </p>
 </header>
-
-        <form class="column--centred"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <mat-form-field class="mt8" appearance="outline">
-                        <mat-label>email</mat-label>
-                        <input appControlValidatorMessage matInput type="email" formControlName="email" placeholder="email" id="email">
+        
+        <form class="column--centred"   [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appControlValidatorMessage appearance="outline">
+                        <mat-label i18n>email</mat-label>
+                        <input   matInput type="email" formControlName="email" placeholder="email" id="email">
                         <mat-icon class="mr2" matPrefix>person</mat-icon>
-                        <mat-hint>Enter your email adress</mat-hint>
+                        <mat-hint i18n>Enter your email adress</mat-hint>
+                        <mat-error>
+                        </mat-error>
                 </mat-form-field>
-                <mat-form-field class="my6" appearance="outline">
-                        <mat-label>password</mat-label>
-                        <input appControlValidatorMessage matInput type="password" formControlName="password" id="password">
+                <mat-form-field appControlValidatorMessage class="my6" appearance="outline">
+                        <mat-label i18n>password</mat-label>
+                        <input  matInput type="password" formControlName="password" id="password">
                         <mat-icon class="mr2" matPrefix>vpn_key</mat-icon>
-                        <mat-hint>Enter your password</mat-hint>
+                        <mat-hint i18n>Enter your password</mat-hint>
+                        <mat-error></mat-error>
+
                 </mat-form-field>
                                 <button type="submit" [disabled]="!loginForm.valid"
                                         mat-flat-button color="accent" primary>
@@ -26,3 +33,9 @@
 
 
                                 </form>
+                                <section class="mt12 google-login">
+                                        <h1 i18n class="font--dark-grey mat-h1">SIGN IN WITH GOOGLE</h1>
+
+                                        <app-google-sign-in>
+                                        </app-google-sign-in>
+                                    </section>

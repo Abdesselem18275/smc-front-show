@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TOKEN_KEY } from '../injectables.service';
+import { TOKEN_KEY } from '../injectables';
 import { Store } from '@ngrx/store';
 import { GlobalStoreSelectors } from '../root-store/global-store';
 import { mergeMap } from 'rxjs/operators';

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
 import { Store } from '@ngrx/store';
-import { ParamStoreState, ModalStoreActions } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 
@@ -20,7 +19,7 @@ export class AccountLoginComponent implements OnInit   {
   isChecking: Observable<boolean>;
   constructor(
               private accountFormService: AccountFormService,
-              private store$: Store<ParamStoreState.State>) {
+              private store$: Store<any>) {
   }
    ngOnInit() {
     this.isChecking = this.store$.select(UserStoreSelectors.selectIsLoading);
