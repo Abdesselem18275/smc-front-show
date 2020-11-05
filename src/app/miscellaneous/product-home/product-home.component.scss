@@ -12,17 +12,14 @@ main {
 .hero-image {
 
   background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=3000x3000');
-  @media only screen and (max-width:720px) {
-    background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg?d=1000x1000');
-  }
 }
 .wide-image {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   .text-container {
     color: white;
-    margin-top: 20%;
+    margin-bottom: 3rem;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
   }
