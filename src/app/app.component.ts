@@ -24,7 +24,7 @@ export class AppComponent {
   isSideMenuActive: boolean;
   isOverlay$: Observable<boolean>;
   modalStore$: Observable<ModalStoreState.State>;
-  isLoginPageActive$ :Observable<boolean>;
+  showMenu$ :Observable<boolean>;
   constructor(
               private router : Router,
               private store$: Store<any>,
@@ -35,7 +35,7 @@ export class AppComponent {
     iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))
                 .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
                 .addSvgIcon('logo_mini', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_smc_mini.svg'))
-                .addSvgIcon('logo_white', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_white.svg'))
+                .addSvgIcon('logo_full_white', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_full_white.svg'))
                 .addSvgIcon(LanguageType.GERMAN, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
                 .addSvgIcon(LanguageType.FRENCH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
                 .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'))
@@ -45,9 +45,12 @@ export class AppComponent {
                 this.isOverlay$ = this.store$.select(selectOverlayedModal);
                 
                 this.modalStore$ = this.store$.select(selectAllModalState);
-                this.isLoginPageActive$ = this.router.events.pipe(
+                this.showMenu$ = this.router.events.pipe(
                   filter(event => event instanceof NavigationEnd),
-                  map((event:NavigationEnd) => event.url.includes('account/authentification'))
+                  map((event:NavigationEnd) => 
+                  !(event.url.includes('account/authentification') ||
+                  event.url.includes('miscellaneous/home')
+                  ))
                 )
 
 

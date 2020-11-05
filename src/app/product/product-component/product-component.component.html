@@ -7,7 +7,7 @@
 
   <div mat-line>
       <span class="mat-body-2">
-        {{componentSpec.component.designation}}
+        {{componentSpec.component?.designation}}
       </span>
     </div>
   <div mat-line class="mat-caption">
@@ -15,17 +15,17 @@
       <span i18n>
         Raw materials:
       </span>
-    <span *ngFor="let rawMat of componentSpec.rawMaterials ; first as isFirst">
+    <span *ngFor="let rawMat of componentSpec?.rawMaterials ; first as isFirst">
       <span *ngIf="!isFirst">,</span>
       {{rawMat}}
     </span>
   </div>
   <div mat-line class="mat-caption">
       <span >
-        {{(componentSpec.component.measureType.designation | lowercase)}}
-        ({{componentSpec.component.measureType.unit}}) :
+        {{(componentSpec.component.measureType?.designation | lowercase)}}
+        ({{componentSpec.component.measureType?.unit}}) :
       </span>
-    <span *ngFor="let measure of componentSpec.measures ; first as isFirst">
+    <span *ngFor="let measure of componentSpec?.measures ; first as isFirst">
       <span *ngIf="!isFirst">&nbsp;-&nbsp;</span>
       {{measure}}
     </span>

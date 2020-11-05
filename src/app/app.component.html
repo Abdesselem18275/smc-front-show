@@ -1,4 +1,4 @@
-      <header *ngIf='(isLoginPageActive$ | async) ===false' class="mat-elevation-z4">
+      <header *ngIf='(showMenu$ | async)' class="mat-elevation-z4">
             <app-product-menu></app-product-menu>
       </header>
       <div class='overlay' appModalClose *ngIf="isOverlay$|async">
