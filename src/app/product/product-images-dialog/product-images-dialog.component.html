@@ -1,0 +1,29 @@
+<ng-container *ngIf="data.product as product">
+<header class="dialog-header inline--centred--spaced" mat-dialog-title>
+    <h2 class="mat-h2">{{product.designation}} Images</h2>
+  </header>
+  <section  mat-dialog-content>
+    <section  class="inline dialog-container">
+        <ng-container *ngIf="!(isLoading$ | async)" appImagePlaceholder>
+
+         <div   #loadingImage class="image-container">
+            <img  #targetImage  [src]="selectedImage">
+         </div>
+        </ng-container>
+
+        <section class="selector column">
+         <div class="appearances-selector">
+            <app-appearance-selector
+            (selectedAppearanceVariant) = "setAppearanceVariant($event)"
+            [appearanceVariants]="product.appearanceVariants">
+           </app-appearance-selector>
+         </div>
+         <div class="images-selector">
+             <img [class.img--selected]="selectedImage == image" (click)="selectImage(image)" [src]="image|mergeSizeQs:100" *ngFor="let image of images|async">
+         </div>
+        </section >
+    </section>
+</section>
+    <div mat-dialog-actions>
+    </div>
+</ng-container>

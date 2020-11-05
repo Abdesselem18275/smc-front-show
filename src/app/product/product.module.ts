@@ -19,6 +19,7 @@ import { ProductFeaturesComponent } from './product-features/product-features.co
 import { ProductComponentComponent } from './product-component/product-component.component';
 import { CommonModule } from '@angular/common';
 import {CategoryBreadcrumbComponent} from './category-breadcrumb/category-breadcrumb.component';
+import { ProductImagesDialogComponent } from './product-images-dialog/product-images-dialog.component';
 
 
 @NgModule({
@@ -31,5 +32,5 @@ import {CategoryBreadcrumbComponent} from './category-breadcrumb/category-breadc
                   ProductDetailComponent, ProductBoxComponent, ListMetaComponent,
                   BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
                   ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
-                  ProductFeaturesComponent, ProductComponentComponent],})
+                  ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent],})
 export class ProductModule { }

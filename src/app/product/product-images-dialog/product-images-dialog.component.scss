@@ -1,0 +1,27 @@
+@import '/src/styles/colors.scss';
+.dialog-container {
+    height: 500px;
+}
+.image-container {
+    flex : 1 1 65%;
+    img {
+        max-width: 100%;
+    }
+}
+.selector {
+    flex : 1 1 35%;
+    margin-left: 1rem;
+}
+.images-selector {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+        max-width: 84px;
+        margin: 0.25rem ;
+        border: 2px solid $light-grey-color;
+    }
+    .img--selected {
+        border: 2px solid mat-color($smc-show-case-primary);
+
+    }
+}
