@@ -22,8 +22,8 @@
   </div>
   <div mat-line class="mat-caption">
       <span >
-        {{(componentSpec.component.measureType.designation | lowercase)}}
-        ({{componentSpec.component.measureType.unit}}) :
+        {{(componentSpec.component.measureType?.designation | lowercase)}}
+        ({{componentSpec.component.measureType?.unit}}) :
       </span>
     <span *ngFor="let measure of componentSpec.measures ; first as isFirst">
       <span *ngIf="!isFirst">&nbsp;-&nbsp;</span>

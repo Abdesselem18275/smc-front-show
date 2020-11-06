@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef, OnDestroy, ContentChildren, QueryList, ElementRef, ViewChildren } from '@angular/core';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
-import { throttle, bufferCount} from 'rxjs/operators';
+import { throttle, bufferCount, take} from 'rxjs/operators';
 import { fromEvent, merge, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductImagesDialogComponent } from '../product-images-dialog/product-images-dialog.component';
 
 @Component({
   selector: 'app-image-carousel',
@@ -14,7 +17,11 @@ export class ImageCarouselComponent implements OnDestroy,AfterViewInit{
   selectedIndex = 0;
   private subscription : Subscription
   @ViewChild(CdkScrollable, {static : true}) scrollable: CdkScrollable;
-  constructor(private scroll: ScrollDispatcher,private cdr: ChangeDetectorRef) { }
+  constructor(
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private scroll: ScrollDispatcher,
+    private cdr: ChangeDetectorRef) { }
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
@@ -52,4 +59,13 @@ export class ImageCarouselComponent implements OnDestroy,AfterViewInit{
     }
     return this.selectImage(_index);
   }
+  openImagesDialog() {
+    this.route.data.pipe(take(1)).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(ProductImagesDialogComponent, {
+          width: '1280px',
+          data: {product : data.product}
+        });
+      }
+    )}
  }

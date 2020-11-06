@@ -1,27 +1,35 @@
 <ng-container *ngIf="data.product as product">
-<header class="dialog-header inline--centred--spaced" mat-dialog-title>
-    <h2 class="mat-h2">{{product.designation}} Images</h2>
-  </header>
   <section  mat-dialog-content>
     <section  class="inline dialog-container">
         <ng-container *ngIf="!(isLoading$ | async)" appImagePlaceholder>
 
-         <div   #loadingImage class="image-container">
-            <img  #targetImage  [src]="selectedImage">
+         <div #loadingImage  appImageZoom    class="image-container">
+            <img   #targetImage  [src]="selectedImage">
          </div>
         </ng-container>
 
-        <section class="selector column">
+            <div class="header inline--centred--spaced">
+                <div>
+                <h2 class="mat-h2">{{product.designation}}</h2>
+                <span class="font--grey mat-caption">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
+               </div>
+                <button (click)="close()" mat-icon-button><mat-icon>close</mat-icon></button>
+            </div>
+
+
          <div class="appearances-selector">
             <app-appearance-selector
             (selectedAppearanceVariant) = "setAppearanceVariant($event)"
             [appearanceVariants]="product.appearanceVariants">
            </app-appearance-selector>
          </div>
-         <div class="images-selector">
-             <img [class.img--selected]="selectedImage == image" (click)="selectImage(image)" [src]="image|mergeSizeQs:100" *ngFor="let image of images|async">
+         <div class="images">
+            <p i18n class="mat-h3 font--dark-grey">Images</p>
+            <mat-divider></mat-divider>
+            <div class="images-selector">
+                <img [class.img--selected]="selectedImage == image" (click)="selectImage(image)" [src]="image|mergeSizeQs:100" *ngFor="let image of images|async">
+            </div>
          </div>
-        </section >
     </section>
 </section>
     <div mat-dialog-actions>

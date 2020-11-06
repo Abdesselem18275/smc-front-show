@@ -1,22 +1,57 @@
 @import '/src/styles/colors.scss';
 .dialog-container {
-    height: 500px;
-}
-.image-container {
-    flex : 1 1 65%;
-    img {
-        max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 3fr minmax(200px,1fr);
+    grid-template-rows: minmax(auto,4rem) minmax(auto,6rem) auto;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    grid-template-areas: 
+    "_image _header"
+    "_image appearances"
+    "_image images";
+    @media only screen and (max-width:1024px) {
+        grid-template-columns: 1fr;
+        grid-template-rows:auto;
+        grid-template-areas: 
+        "_header"
+        "appearances"
+        "_image "
+        "images";
     }
 }
-.selector {
-    flex : 1 1 35%;
-    margin-left: 1rem;
+.image-container {
+    grid-area:_image;
+    overflow: hidden;
+
+    padding: 1rem;
+    img {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    img.over {
+        position: relative;
+        max-width: none;
+
+    }
+}
+.header {
+    grid-area:_header;
+
+}
+.appearances-selector {
+    grid-area:appearances;
+}
+.images {
+    grid-area:images;
+
 }
 .images-selector {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     img {
-        max-width: 84px;
+        max-width: 4.5rem;
         margin: 0.25rem ;
         border: 2px solid $light-grey-color;
     }
@@ -24,4 +59,7 @@
         border: 2px solid mat-color($smc-show-case-primary);
 
     }
+}
+.mat-h2,.mat-h3  {
+    margin: 0;
 }

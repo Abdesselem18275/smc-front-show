@@ -17,7 +17,7 @@ export class ProductDetailComponent    {
   isSmallScreen$ : Observable<Boolean>
   product$: Observable<ProductShort>;
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
-  constructor(private dialog: MatDialog,private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef,private route: ActivatedRoute) {
+  constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef,private route: ActivatedRoute) {
     this.product$ = this.route.data.pipe(map(data => data.product));
     this.isSmallScreen$ = breakpointObserver.observe('(max-width: 1200px)').pipe(map(x => x.matches));
    }
@@ -30,13 +30,5 @@ export class ProductDetailComponent    {
       map(appVariance => appVariance.images.map(image => image.content).concat(appVariance.thumbNail).reverse())
     )
   }
-  openImagesDialog() {
-    this.product$.pipe(take(1)).subscribe(
-      product => {
-        const dialogRef = this.dialog.open(ProductImagesDialogComponent, {
-          width: '1280px',
-          data: {product}
-        });
-      }
-    )}
+
 }

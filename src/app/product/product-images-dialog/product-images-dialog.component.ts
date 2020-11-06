@@ -17,6 +17,7 @@ export class ProductImagesDialogComponent implements OnInit {
     private cdRef:ChangeDetectorRef,
     public dialogRef: MatDialogRef<ProductImagesDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {product : ProductLong}) { 
+      console.warn(data)
       this.images.pipe(
       filter(x => x && x.length > 0),
       take(1)).subscribe((x:string[])=> {
@@ -29,6 +30,7 @@ export class ProductImagesDialogComponent implements OnInit {
   }
   setAppearanceVariant(appearanceVariant :AppearanceVariant ):void {
     this.selectedAppearanceVariant$.next(appearanceVariant);
+    this.cdRef.detectChanges()
   }
   get images() : Observable<string[]> {
     return this.selectedAppearanceVariant$ && this.selectedAppearanceVariant$.asObservable().pipe(
@@ -36,7 +38,10 @@ export class ProductImagesDialogComponent implements OnInit {
       map(appVariance => appVariance.images.map(image => image.content).concat(appVariance.thumbNail).reverse())
     )
   }
-  
+  close(): void {
+    this.dialogRef.close();
+  }
+
   selectImage(image:string):void {
     this.setLoading(true)
     this.selectedImage = image
