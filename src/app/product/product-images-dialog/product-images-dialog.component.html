@@ -1,37 +1,31 @@
 <ng-container *ngIf="data.product as product">
-  <section  mat-dialog-content>
-    <section  class="inline dialog-container">
+    <section mat-dialog-title>
+        <div class="header inline">
+            <div class="column">
+            <h2 class="mat-h2">{{product.designation}}</h2>
+            <span class="font--grey mat-caption">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
+           </div>
+            <button  mat-dialog-close  mat-icon-button><mat-icon>close</mat-icon></button>
+        </div>
+    </section>
+    <section mat-dialog-content>
         <ng-container *ngIf="!(isLoading$ | async)" appImagePlaceholder>
 
-         <div #loadingImage  appImageZoom    class="image-container">
-            <img   #targetImage  [src]="selectedImage">
-         </div>
-        </ng-container>
-
-            <div class="header inline--centred--spaced">
-                <div>
-                <h2 class="mat-h2">{{product.designation}}</h2>
-                <span class="font--grey mat-caption">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
-               </div>
-                <button (click)="close()" mat-icon-button><mat-icon>close</mat-icon></button>
+            <div #loadingImage  appImageZoom    class="image-container">
+               <img   #targetImage  [src]="selectedImage">
             </div>
-
-
-         <div class="appearances-selector">
+           </ng-container>
+    </section>
+    <div class="inline--centred--spaced" mat-dialog-actions>
+        <div class="appearances-selector">
             <app-appearance-selector
+            mode="MINIMAL"
             (selectedAppearanceVariant) = "setAppearanceVariant($event)"
             [appearanceVariants]="product.appearanceVariants">
            </app-appearance-selector>
          </div>
-         <div class="images">
-            <p i18n class="mat-h3 font--dark-grey">Images</p>
-            <mat-divider></mat-divider>
-            <div class="images-selector">
-                <img [class.img--selected]="selectedImage == image" (click)="selectImage(image)" [src]="image|mergeSizeQs:100" *ngFor="let image of images|async">
-            </div>
-         </div>
-    </section>
-</section>
-    <div mat-dialog-actions>
+        <div class="images-selector">
+            <img [class.img--selected]="selectedImage == image" (click)="selectImage(image)" [src]="image|mergeSizeQs:100" *ngFor="let image of images|async">
+        </div>
     </div>
 </ng-container>

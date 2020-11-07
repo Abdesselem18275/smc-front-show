@@ -63,7 +63,9 @@ export class ImageCarouselComponent implements OnDestroy,AfterViewInit{
     this.route.data.pipe(take(1)).subscribe(
       data => {
         const dialogRef = this.dialog.open(ProductImagesDialogComponent, {
-          width: '1280px',
+          width: '520px',
+          maxWidth:'100vw',
+          maxHeight:'95vh',
           data: {product : data.product}
         });
       }
