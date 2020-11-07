@@ -1,4 +1,5 @@
-<div class="bg-image hero-image">
+<img (load)="isLoaded()" hidden src="https://d2z6sbqggbt9fg.cloudfront.net/media/main_hero_image.jpg">
+<div [ngClass]="bgClass" class="bg-image">
 </div>
 <div class="hero-text-container column">
   <div class="content">
