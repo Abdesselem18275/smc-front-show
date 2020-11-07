@@ -4,7 +4,7 @@
 
 <div cdkScrollable class="inline--centred images-container">
     <div class="image-container" #loadingImage *ngFor="let item of images">
-      <img  #targetImage  [src]="item  | mergeSizeQs:1200">
+      <img (click)="openImagesDialog()"  #targetImage  [src]="item  | mergeSizeQs:1200">
     </div>
   </div>
 

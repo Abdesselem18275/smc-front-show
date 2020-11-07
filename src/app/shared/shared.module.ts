@@ -21,13 +21,14 @@ import { InitialsIconComponent } from './initials-icon/initials-icon.component';
 import { AccountCardComponent } from './account-card/account-card.component';
 import { ControlErrorMessageComponent } from './control-error-message/control-error-message.component';
 import { ControlValidatorMessageDirective } from './control-validator-message.directive';
+import { ImageZoomDirective } from './directives/image-zoom.directive';
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,ProductFilterComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
     AccountCardComponent,ControlValidatorMessageDirective,
     TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
-    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent],
+    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent, ImageZoomDirective],
   imports:  [
     CommonModule,
     RouterModule,
@@ -48,6 +49,7 @@ import { ControlValidatorMessageDirective } from './control-validator-message.di
     ProductFilterComponent,
     MergeSizeQsPipe,
     ControlErrorMessageComponent,
+    ImageZoomDirective,
     ModalCloseDirective,
   ]
 })
