@@ -1,0 +1,63 @@
+
+    
+    <main class="main-container global--gutters mt4">
+<section class="illustration-container">
+    <header class="mb8">
+        <h1 i18n class="font--dark-grey mat-h1 text--centred"> CONTACT US</h1>
+        <mat-divider></mat-divider>
+    </header>
+    <address class="mb8 mat-subheading-2">
+        <a class="adress_el" href="mailto:sotulatn@gmail.com ">
+            <mat-icon color="accent">mail</mat-icon>sotulatn@gmail.com</a>
+        <a class="adress_el" href="tel:+13115552368">
+            <mat-icon color="accent">phone</mat-icon> (311) 555-2368</a>
+        <div class="adress_el">
+            <mat-icon color="accent">location_on</mat-icon>
+            <span>
+                Zone industrielle Mornaguia <br>1110 Tunisie
+            </span>
+        </div >
+
+      </address>
+      <mat-divider></mat-divider>
+
+    <mat-icon inline="true" class="mt8 illustration" svgIcon="contact-us"></mat-icon>
+    <section class="my8 social-community inline">
+        <a target="_blank" href="https://www.facebook.com/SMCuivre">
+            <mat-icon   inline="true" svgIcon="facebook"></mat-icon>
+
+        </a>
+        <a target="_blank">
+            <mat-icon inline="true" svgIcon="instagram"></mat-icon>
+
+        </a>
+      </section>
+</section>
+<section class="informations-container">
+        <p class=" text--centred font--dark-grey mat-body-strong">Have any question ? ask it now</p>
+
+    <form (ngSubmit)="onSubmit()" class="column mt8" [formGroup]="askForm">
+
+            <mat-form-field  appearance="outline" appControlValidatorMessage>
+                <mat-label>Name</mat-label>
+                <input type="text" required matInput formControlName="name">
+                <mat-hint>Enter your first and last name</mat-hint>
+                
+                <mat-error></mat-error>
+            </mat-form-field>
+        <mat-form-field class="my4" appearance="outline" appControlValidatorMessage>
+            <mat-label>Email</mat-label>
+            <input type="email"  required matInput formControlName="email">
+            <mat-hint>Enter Email adress</mat-hint>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field class="mb4" appearance="outline" appControlValidatorMessage>
+            <mat-label>Your message</mat-label>
+            <textarea rows="7" type="text"  required matInput formControlName="message">
+                </textarea>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <button class="full-width" type="submit" mat-flat-button color="accent">SEND</button>
+    </form>
+</section>
+</main>

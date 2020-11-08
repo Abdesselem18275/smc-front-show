@@ -1,7 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ModalStoreSelectors } from 'src/app/root-store';
-import { ToggleAction } from 'src/app/root-store/modal-store/actions';
 import { MenuTreeData } from 'src/app/models/product.models';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
 import { Observable } from 'rxjs';

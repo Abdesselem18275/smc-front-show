@@ -43,6 +43,10 @@
     display: flex;
     align-items: center;
   }
+  .inline--spaced {
+    display: flex;
+    justify-content: space-between;
+  }
   .inline--centred--spaced {
     @extend .inline--centred;
     justify-content: space-between;

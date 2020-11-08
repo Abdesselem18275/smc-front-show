@@ -2,65 +2,65 @@ import { Injectable } from '@angular/core';
 import { MenuTreeData, Category } from 'src/app/models/product.models';
 import { NavigationExtras, Router, UrlTree } from '@angular/router';
 
-const INIT_NAV_TREE_DATA: MenuTreeData[]  = [
-  {
-    designation : 'products',
-    icon : 'category',
-    children : []
-  },
-  {
-    designation : 'Utilities',
-    icon: 'info',
-    children : [
-      {
-        designation : 'Mainteance tips',
-        routerLink : '/Mainteance'
-      },
-      {
-        designation : 'Copper benefits',
-        routerLink : '/Copper'
-      },
-      {
-        designation : 'returns',
-        routerLink : '/returns'
-      },
-      {
-        designation : 'Paiments Information',
-        routerLink : ''
-      }
-    ]
-  },
-   {
-     designation: 'About us',
-     routerLink: '/about-us',
-     icon: 'contact_support',
-     children : [
-      {
-        designation: 'Who we are',
-        routerLink: '/about-us',
-      },
-      {
-        designation: 'Contact us',
-        routerLink: '/about-us',
-      },
-      {
-        designation: 'Our team',
-        routerLink: '/about-us',
-      }
-     ]
-   }
-];
+
 @Injectable({
   providedIn: 'root'
 })
 export class MenuDataBuilderService {
-
+  navTree :  MenuTreeData[]
   constructor(private router: Router) {
-
+    this.navTree  = [
+      {
+        designation : 'products',
+        icon : 'category',
+        children : []
+      },
+      {
+        designation : 'Utilities',
+        icon: 'info',
+        children : [
+          {
+            designation : 'Mainteance tips',
+            routerLink : '/Mainteance'
+          },
+          {
+            designation : 'Copper benefits',
+            routerLink : '/Copper'
+          },
+          {
+            designation : 'returns',
+            routerLink : '/returns'
+          },
+          {
+            designation : 'Paiments Information',
+            routerLink : ''
+          }
+        ]
+      },
+       {
+         designation: 'About us',
+         routerLink: '/about-us',
+         icon: 'contact_support',
+         children : [
+          {
+            designation: 'Who we are',
+            routerLink: this.router.createUrlTree(['/miscellaneous/home/'],{fragment:'about-us'}),
+          },
+          {
+            designation: 'Contact us',
+            routerLink: this.router.createUrlTree(['/miscellaneous/home/'],{fragment:'contact-us'}),
+          },
+          {
+            designation: 'Our team',
+            routerLink: '/about-us',
+          }
+         ]
+       }
+    ];
   }
 
   buildMenuTree = (rootCategories: Category[]):MenuTreeData[] => {
-    return INIT_NAV_TREE_DATA.map((cat: MenuTreeData)  => {
+    return this.navTree.map((cat: MenuTreeData)  => {
       if (cat.designation === 'products') {
         return {
           ...cat,

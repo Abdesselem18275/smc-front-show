@@ -32,14 +32,19 @@ export class AppComponent {
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
 
-    iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))
-                .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
-                .addSvgIcon('logo_mini', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_smc_mini.svg'))
-                .addSvgIcon('logo_full_white', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_full_white.svg'))
-                .addSvgIcon(LanguageType.GERMAN, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/germany.svg'))
-                .addSvgIcon(LanguageType.FRENCH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/france.svg'))
-                .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/united-kingdom.svg'))
-                .addSvgIcon('landing-page-illustration', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/Illustration-landing-page.svg'))
+    iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/loading_logo.svg'))
+                .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/loader_2.svg'))
+                .addSvgIcon('logo_mini', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/logo_smc_mini.svg'))
+                .addSvgIcon('logo_full_white', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/logo_full_white.svg'))
+                .addSvgIcon(LanguageType.GERMAN, sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/germany.svg'))
+                .addSvgIcon(LanguageType.FRENCH, sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/france.svg'))
+                .addSvgIcon(LanguageType.ENGLISH, sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/united-kingdom.svg'))
+                .addSvgIcon('landing-page-illustration', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/Illustration-landing-page.svg'))
+                .addSvgIcon('facebook', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/facebook.svg'))
+                .addSvgIcon('instagram', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/insta.svg'))
+
+                .addSvgIcon('contact-us', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/contact_us_illustration.svg'))
+
                 .addSvgIcon('logo_black_bg', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_black_background.svg'));
 
                 this.isOverlay$ = this.store$.select(selectOverlayedModal);
