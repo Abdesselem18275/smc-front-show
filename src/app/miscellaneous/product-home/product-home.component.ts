@@ -35,9 +35,6 @@ export class ProductHomeComponent implements OnInit {
       console.warn(e);
       if (e.position) {
         // backward navigation
-        console.warn('position',e);
-
-        this.viewportScroller.scrollToPosition(e.position);
       } else if (e.anchor) {
         console.warn('anchor',e.anchor);
         // anchor navigation
@@ -45,7 +42,6 @@ export class ProductHomeComponent implements OnInit {
         //this.location.replaceState(pathWithoutHash);
       } else {
         // forward navigation
-        this.viewportScroller.scrollToPosition([0, 0]);
       }
     });
    }

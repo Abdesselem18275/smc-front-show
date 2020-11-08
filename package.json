@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=fr",
-    "build": "ng build --configuration=production --watch",
+    "build": "ng build --configuration=production",
     "build:dev": "ng build --configuration=fr --watch",
-    "heroku-postbuild": "ng build --configuration=production",
+    "heroku-postbuild": "npm run build",
     "test": "ng test",
     "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix",
     "eslint": "eslint 'src/**/*.ts'",
