@@ -3,7 +3,7 @@
 </div>
 <div class="hero-text-container column">
   <div class="content">
-    <mat-icon class="logo" inline="true"  svgIcon="logo_full_white"></mat-icon>
+    <mat-icon class="logo"  svgIcon="logo_full_white"></mat-icon>
   </div>
 
 </div>
@@ -12,7 +12,7 @@
       <p i18n class="mb8 description mat-subheading-1">
         SMC bridges old and new by creating furniture, lighting and interior objects with timeless appeal. From reissuing design icons to creating future classics in collaboration with acclaimed international designers, the collection combines craftsmanship with creativity and shapes carefully considered pieces with purpose and meaning. Always respectfully. Always made to last
       </p>
-          <a mat-stroked-button color="accent" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}">
+          <a mat-flat-button color="accent" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}">
           <span class="mat-h3">Discover our products</span>
       </a>
 </section>
@@ -32,3 +32,6 @@
 </section> 
 
 
+<section class="my16" id="contact-us">
+  <app-contact-us></app-contact-us>
+</section>
