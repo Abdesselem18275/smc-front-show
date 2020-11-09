@@ -10,8 +10,7 @@
     "test": "ng test",
     "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix",
     "eslint": "eslint 'src/**/*.ts'",
-    "e2e": "ng e2e",
-    "postinstall": "ng build  --prod"
+    "e2e": "ng e2e"
   },
   "engines": {
     "node": "14.10.1",
