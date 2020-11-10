@@ -8,7 +8,6 @@ import * as UsersActions from './actions';
 import { selectUser, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ModalStoreActions } from '../modal-store';
 import { editFormReplacer } from 'src/utils/json-util';
 import { Router } from '@angular/router';
 import { AppDataService } from 'src/app/shared/service/app-data.service';
@@ -37,7 +36,6 @@ export class UserEffects {
             localStorage.setItem(this.profileId, payload.profile.id.toString());
             this.as.redirect(content[1]);
             return [
-              ModalStoreActions.CloseAllAction(),
               UsersActions.LoadUserAction({payload})
             ];
           }),
@@ -47,21 +45,6 @@ export class UserEffects {
           }))
     )));
 
-    LoadUserRequestEffect$  = createEffect(() =>
-    this.actions$.pipe(
-      ofType(UsersActions.LoadUserRequestsAction),
-      map((action: any ) => JSON.stringify(action.payload)),
-      switchMap((payload)  =>
-        this.ads.post<Profile>(`/profile/${this.as.getProfileId}/requests/`,payload).pipe(
-          map(() => {
-            this.snakBar.open('your request was successfully submitted . We will soon answer you via your email adress')
-            return ModalStoreActions.CloseAllAction()
-          }),
-          catchError(async (err) =>  {
-            console.warn(err)
-            return UsersActions.FailureAction({ message: err });
-          }))
-    )));
 
     logOut$  = createEffect(() =>
     this.actions$.pipe(
@@ -70,8 +53,7 @@ export class UserEffects {
         localStorage.removeItem(this.tokenKey);
         localStorage.removeItem(this.profileId);
         this.as.redirect();
-        return ModalStoreActions.CloseAllAction();
-      })));
+      })),{dispatch:false});
 
     createUser$  = createEffect(() =>
     this.actions$.pipe(
@@ -120,9 +102,9 @@ export class UserEffects {
           ).subscribe(() => {
             this.router.navigate(['/account/authentification'])
           })})
-        
-        
+
+
         ),{dispatch:false});
-        
+
 
   }

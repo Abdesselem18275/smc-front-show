@@ -8,7 +8,6 @@ import { LoadingComponent } from './loading/loading.component';
 
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
 import { TextHightlightDirective } from './text-hightlight.directive';
-import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 import { LanguageBoxComponent } from './language-box/language-box.component';
 import { CategoryMenuComponent } from './category-menu/category-menu.component';
 import { ProductMenuComponent } from './product-menu/product-menu.component';
@@ -24,7 +23,7 @@ import { ControlValidatorMessageDirective } from './control-validator-message.di
 import { ImageZoomDirective } from './directives/image-zoom.directive';
 @NgModule({
   declarations: [ProductMenuComponent,
-    SideNavMenuComponent,SearchBoxComponent,ProductFilterComponent,
+    SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
     AccountCardComponent,ControlValidatorMessageDirective,
     TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
@@ -46,7 +45,6 @@ import { ImageZoomDirective } from './directives/image-zoom.directive';
     InitialsIconComponent,
     ScrollPaginatorDirective,
     LoadingComponent,
-    ProductFilterComponent,
     MergeSizeQsPipe,
     ControlErrorMessageComponent,
     ImageZoomDirective,

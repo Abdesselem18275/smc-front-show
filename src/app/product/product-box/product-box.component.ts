@@ -1,4 +1,4 @@
-import { ProductStoreSelectors, ModalStoreActions, ProductStoreActions } from 'src/app/root-store';
+import { ProductStoreSelectors} from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -55,9 +55,6 @@ export class ProductBoxComponent implements OnInit  {
     this.isMaterialOpen = !this.isMaterialOpen
 
   }
-  toggleModal(value) {
-    this.store$.dispatch(ProductStoreActions.LoadProductAction({product:this.product}))
-    this.store$.dispatch(ModalStoreActions.ToggleWithAuth({key: value}));
-  }
+
 
 }

@@ -1,9 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { RootStoreState, ModalStoreState } from './root-store';
-import { Store } from '@ngrx/store';
-import { selectAllModalState, selectOverlayedModal } from './root-store/modal-store/selectors';
 import { Observable } from 'rxjs';
 import { LanguageType} from './root-store/global-store/state';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
@@ -24,13 +21,11 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   isSideMenuActive: boolean;
   isOverlay$: Observable<boolean>;
-  modalStore$: Observable<ModalStoreState.State>;
   showMenu$ :Observable<boolean>;
   @ViewChild('sidenav',{static:false}) sideNav  :MatSidenav
 
   constructor(
               private router : Router,
-              private store$: Store<any>,
                @Inject('APP_BASE_HREF') private baseUrl: string,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
@@ -48,9 +43,7 @@ export class AppComponent {
                 .addSvgIcon('contact-us', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/contact_us_illustration.svg'))
                 .addSvgIcon('logo_black_bg', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_black_background.svg'));
 
-                this.isOverlay$ = this.store$.select(selectOverlayedModal);
 
-                this.modalStore$ = this.store$.select(selectAllModalState);
                 this.showMenu$ = this.router.events.pipe(
                   filter(event => event instanceof NavigationEnd),
                   tap(event => console.warn(event)),
@@ -63,8 +56,6 @@ export class AppComponent {
 
   }
   toggleSideNav() {
-    console.warn(this.sideNav)
     this.sideNav.toggle()
-
   }
 }

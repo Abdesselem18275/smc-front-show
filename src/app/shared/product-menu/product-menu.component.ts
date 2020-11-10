@@ -2,11 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { filter, map, take } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RootStoreState, ModalStoreState } from 'src/app/root-store';
-import { selectAllModalState } from 'src/app/root-store/modal-store/selectors';
-import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
+import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
-import { ModalRoute } from 'src/app/models/shared.models';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountCardComponent } from '../account-card/account-card.component';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
@@ -18,8 +15,6 @@ import { SearchBoxComponent } from '../search-box/search-box.component';
   styleUrls: ['./product-menu.component.scss'],
 })
 export class ProductMenuComponent implements OnInit {
-  modalRoute = ModalRoute;
-  modalStore$: Observable<ModalStoreState.State>;
   isHomeRoute$: Observable<boolean>;
   @Output()
   sideNavEmmiter = new EventEmitter<any>();
@@ -31,7 +26,6 @@ export class ProductMenuComponent implements OnInit {
 
   }
   ngOnInit():void {
-    this.modalStore$ = this.store$.select(selectAllModalState);
     this.isHomeRoute$ = this.router.events.pipe(
       filter(x => x instanceof NavigationEnd),
       map(event => event['url'] === '/miscellaneous/home'));
@@ -61,7 +55,5 @@ export class ProductMenuComponent implements OnInit {
     })
 
   }
-  toggleModal(value:string):void {
-    this.store$.dispatch(ToggleAction({key: value}));
-  }
+
 }

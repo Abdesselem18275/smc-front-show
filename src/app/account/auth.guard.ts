@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { SmcAuthService } from './service/smc-auth.service';
 import { Store } from '@ngrx/store';
 import { State } from '../root-store/state';
-import { ModalStoreActions } from '../root-store';
 import { UserStoreActions } from '../root-store/user-store';
 
 

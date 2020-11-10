@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ModalStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
@@ -21,9 +20,6 @@ export class LanguageBoxComponent {
     private store$: Store<any>) {
       this.languageList = languageList;
       this.language$ = this.store$.select(selectLanguage);
-      this.isSideNav$ = this.store$.select<boolean>(
-        ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'}
-        )
     }
   getHref(localId:string) {
     return '/'+localId

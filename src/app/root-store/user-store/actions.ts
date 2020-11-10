@@ -36,7 +36,7 @@ export const CreateUserAction = createAction(
 );
 export const UpdateUserAction = createAction(
   ActionsType.UPDATE,
-  props<{ 
+  props<{
     message?:string
     payload: any}>()
 );
@@ -48,9 +48,7 @@ export const ToggleFavoriteAction = createAction(
 export const FetchUserRequestsAction = createAction(
   ActionsType.FETCH_USER_REQUESTS);
 
-export const LoadUserRequestsAction = createAction(
-  ActionsType.LOAD_USER_REQUESTS,
-  props<{payload:any}>());
+
 
 export const RedirectForAuthentification = createAction(
     ActionsType.AUTH_REDIRECT,props<{redirectUrl?:string}>());

@@ -2,7 +2,7 @@
       <header class="pt4 column">
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
-          <button color="accent" class="side login-button" *ngIf="!(isLogged$ |async)"
+          <button [routerLink]="['/account/authentification']" color="accent" class="side login-button" *ngIf="!(isLogged$ |async)"
           mat-stroked-button [routerLink]="['/account/authentification']">
           <mat-icon class="mr4">account_box</mat-icon>
             <span i18n>WELCOME , SIGN IN</span>

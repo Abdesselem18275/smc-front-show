@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { ProductStoreSelectors, ModalStoreActions } from 'src/app/root-store';
+import { ProductStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
@@ -27,7 +27,7 @@ export class ListMetaComponent  {
   constructor(
     private route : ActivatedRoute,
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
-    private store$: Store<any> ) { 
+    private store$: Store<any> ) {
       this.objCount$ = this.store$.select(ProductStoreSelectors.selectProductsCount);
       this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
       this.isSearchActive$ = this.route.queryParamMap.pipe(
@@ -50,9 +50,6 @@ export class ListMetaComponent  {
     }
 
 
-  toggleModal(value) {
-    this.store$.dispatch(ModalStoreActions.ToggleAction({key : value}));
-  }
 
 
 }

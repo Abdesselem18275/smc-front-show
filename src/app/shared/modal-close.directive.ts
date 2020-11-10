@@ -1,7 +1,5 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { ModalStoreActions } from '../root-store';
 
 @Directive({
   selector: '[appModalClose]'
