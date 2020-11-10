@@ -10,6 +10,7 @@ import { ModalRoute } from 'src/app/models/shared.models';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountCardComponent } from '../account-card/account-card.component';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { SearchBoxComponent } from '../search-box/search-box.component';
 
 @Component({
   selector: 'app-product-menu',
@@ -49,6 +50,15 @@ export class ProductMenuComponent implements OnInit {
       this.store$.dispatch(UserStoreActions.RedirectForAuthentification(
          {redirectUrl:this.router.url}
       )))
+
+  }
+  openSearchDialog() {
+    this.dialog.open(SearchBoxComponent,{
+      position: {top:'0',right:'0'},
+      width:'100vw',
+      maxWidth:'100vw',
+      hasBackdrop:false,
+    })
 
   }
   toggleModal(value:string):void {

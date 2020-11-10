@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SearchBoxComponent } from '../product/search-box/search-box.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material';
 import { RouterModule } from '@angular/router';

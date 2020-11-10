@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { ModalStoreActions } from '../root-store';
 
@@ -7,10 +8,10 @@ import { ModalStoreActions } from '../root-store';
 })
 export class ModalCloseDirective {
 
-  constructor(private store$: Store<any>,private _element: ElementRef ) { }
+  constructor(private matDialog : MatDialog,private _element: ElementRef ) { }
   @HostListener('click')
   onClick():void {
-    this.store$.dispatch(ModalStoreActions.CloseAllAction());
+    this.matDialog.closeAll()
   }
 
 }
