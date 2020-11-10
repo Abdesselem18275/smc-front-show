@@ -10,7 +10,10 @@
     <header *ngIf='(showMenu$ | async)' class="mat-elevation-z4">
       <app-product-menu (sideNavEmmiter)="toggleSideNav()"></app-product-menu>
 </header>
-    <router-outlet></router-outlet>
+<div class="router-outlet-container">
+  <router-outlet></router-outlet>
+
+</div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
