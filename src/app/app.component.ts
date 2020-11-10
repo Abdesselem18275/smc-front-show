@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { RootStoreState, ModalStoreState } from './root-store';
@@ -10,6 +10,7 @@ import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from '.
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { ActivatedRoute, UrlSegment, Router, NavigationEnd } from '@angular/router';
 import { map, filter, tap } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material/sidenav';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class AppComponent {
   isOverlay$: Observable<boolean>;
   modalStore$: Observable<ModalStoreState.State>;
   showMenu$ :Observable<boolean>;
+  @ViewChild('sidenav',{static:false}) sideNav  :MatSidenav
+
   constructor(
               private router : Router,
               private store$: Store<any>,
@@ -57,6 +60,11 @@ export class AppComponent {
                   ))
                 )
 
+
+  }
+  toggleSideNav() {
+    console.warn(this.sideNav)
+    this.sideNav.toggle()
 
   }
 }

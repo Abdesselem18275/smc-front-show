@@ -1,8 +1,8 @@
 
-      <header class="column">
+      <header class="pt4 column">
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
-          <button color="accent" class="login-button" *ngIf="!(isLogged$ |async) && (isSideNav$| async)"
+          <button color="accent" class="side login-button" *ngIf="!(isLogged$ |async)"
           mat-stroked-button [routerLink]="['/account/authentification']">
           <mat-icon class="mr4">account_box</mat-icon>
             <span i18n>WELCOME , SIGN IN</span>
@@ -24,7 +24,7 @@
                    </div>
               </section>
         </header>
-    <main  *ngIf="!(isSideNav$| async)"  class="px4 column--centred">
+    <main class="card px4 column--centred">
       <mat-nav-list  class="nav-list nav-list--full-width">
           <mat-list-item  routerLink="/product/favorites">
               <mat-icon matListIcon>favorite </mat-icon>

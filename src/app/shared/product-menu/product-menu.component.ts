@@ -20,6 +20,8 @@ export class ProductMenuComponent implements OnInit {
   modalRoute = ModalRoute;
   modalStore$: Observable<ModalStoreState.State>;
   isHomeRoute$: Observable<boolean>;
+  @Output()
+  sideNavEmmiter = new EventEmitter<any>();
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor( private router: Router,
                private dialog: MatDialog,
@@ -33,7 +35,9 @@ export class ProductMenuComponent implements OnInit {
       filter(x => x instanceof NavigationEnd),
       map(event => event['url'] === '/miscellaneous/home'));
   }
-
+  toggleSideNav() {
+    this.sideNavEmmiter.emit('')
+  }
   openCardDialog() {
     this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
       take(1)

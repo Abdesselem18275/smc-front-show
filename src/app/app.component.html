@@ -1,19 +1,20 @@
-      <header *ngIf='(showMenu$ | async)' class="mat-elevation-z4">
-            <app-product-menu></app-product-menu>
-      </header>
-      <div class='overlay' appModalClose *ngIf="isOverlay$|async">
-      </div>
 
+<!--
     <div  [@expandAnimation] *ngIf="(modalStore$ | async).searchBox" class="search-box">
         <app-search-box >
         </app-search-box>
-    </div>
+    </div> -->
 
 
-    <div  [@routeAnimations]  *ngIf="(modalStore$ | async).sideMenuBox || (modalStore$ | async).filterBox" class="mat-elevation-z2 side-box">
-        <app-side-nav-menu *ngIf="(modalStore$ | async).sideMenuBox" >
-        </app-side-nav-menu>
-    </div>
+<mat-sidenav-container hasBackdrop="unset" >
+  <mat-sidenav #sidenav mode="over">
+    <app-side-nav-menu></app-side-nav-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header *ngIf='(showMenu$ | async)' class="mat-elevation-z4">
+      <app-product-menu (sideNavEmmiter)="toggleSideNav()"></app-product-menu>
+</header>
+    <router-outlet></router-outlet>
 
-<router-outlet></router-outlet>
-
+  </mat-sidenav-content>
+</mat-sidenav-container>

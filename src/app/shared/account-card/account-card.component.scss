@@ -1,6 +1,8 @@
 @import "../../../styles/colors.scss";
 
-
+.side {
+  display: none;
+}
 .main-header {
   width: 100%;
 
@@ -35,5 +37,13 @@
   button {
     border: solid 1px mat-color($smc-show-case-accent);
     background-color: white;
+  }
+}
+@media only screen and (max-width:1024px) {
+  .card {
+    display: none;
+  }
+  .side {
+    display: block;
   }
 }

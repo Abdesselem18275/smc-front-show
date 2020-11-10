@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 
@@ -30,7 +31,7 @@ import {MatDialogModule} from '@angular/material/dialog';
   exports: [MatCheckboxModule, MatButtonModule, MatDividerModule,
             MatTabsModule , MatInputModule,MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,LayoutModule,
-            MatProgressBarModule,MatSelectModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
+            MatProgressBarModule,MatSelectModule,MatSidenavModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
             MatTreeModule,MatSlideToggleModule,MatDialogModule, MatListModule,MatMenuModule,MatTableModule],
 })
 export class MaterialModule {}
