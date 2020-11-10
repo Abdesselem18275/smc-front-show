@@ -1,7 +1,4 @@
-<ng-template #loading>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
-<ng-container *ngIf="!(isLoading$ | async) else loading">
+
       <header class="column">
         <section class="column--centred">
         <section class="inline--centred--spaced nav-list--full-width">
@@ -9,8 +6,6 @@
           mat-stroked-button [routerLink]="['/account/authentification']">
           <mat-icon class="mr4">account_box</mat-icon>
             <span i18n>WELCOME , SIGN IN</span>
-          </button>
-          <button  appModalClose class="icon--full-right" mat-icon-button><mat-icon>close</mat-icon>
           </button>
         </section>
 
@@ -45,5 +40,4 @@
           </mat-list-item>
       </mat-nav-list>
 </main>
-</ng-container>
 

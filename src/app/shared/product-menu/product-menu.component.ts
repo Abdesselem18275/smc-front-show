@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ModalStoreState } from 'src/app/root-store';
@@ -7,6 +7,9 @@ import { selectAllModalState } from 'src/app/root-store/modal-store/selectors';
 import { ToggleAction, ToggleUserCard } from 'src/app/root-store/modal-store/actions';
 import { Observable } from 'rxjs';
 import { ModalRoute } from 'src/app/models/shared.models';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountCardComponent } from '../account-card/account-card.component';
+import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 
 @Component({
   selector: 'app-product-menu',
@@ -19,6 +22,7 @@ export class ProductMenuComponent implements OnInit {
   isHomeRoute$: Observable<boolean>;
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor( private router: Router,
+               private dialog: MatDialog,
                private store$: Store<RootStoreState.State>) {
 
 
@@ -30,10 +34,20 @@ export class ProductMenuComponent implements OnInit {
       map(event => event['url'] === '/miscellaneous/home'));
   }
 
+  openCardDialog() {
+    this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
+      take(1)
+    ).subscribe(x => x ?
+      this.dialog.open(AccountCardComponent,{
+        position: {top:'5rem',right:'1rem'},
+        width:'20rem'
+      }):
+      this.store$.dispatch(UserStoreActions.RedirectForAuthentification(
+         {redirectUrl:this.router.url}
+      )))
+
+  }
   toggleModal(value:string):void {
     this.store$.dispatch(ToggleAction({key: value}));
   }
-  toggleUserCard():void {
-    this.store$.dispatch(ToggleUserCard());
-    }
 }

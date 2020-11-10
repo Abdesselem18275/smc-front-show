@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ToggleAction } from 'src/app/root-store/modal-store/actions';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-account-card',
@@ -17,13 +18,11 @@ export class AccountCardComponent implements OnInit {
   profile$: Observable<Profile>;
   isSideNav$: Observable<boolean>;
   isLogged$:Observable<boolean>;
-  isLoading$: Observable<boolean>;
   initials$ : Observable<string>
-  constructor(private router: Router,private store$: Store<any>) {
+  constructor(private matDialog : MatDialog,private router: Router,private store$: Store<any>) {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isSideNav$ = this.store$.select(ModalStoreSelectors.selectModalStateByType,{key : 'sideMenuBox'})
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-    this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
     this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(map(profile => profile && profile.first_name[0].concat(profile.last_name[0]) ))
   }
 
@@ -32,6 +31,7 @@ export class AccountCardComponent implements OnInit {
   }
 
   logOut() {
+    this.matDialog.closeAll()
     this.store$.dispatch(UserStoreActions.LogoutAction());
   }
   navToProfile() {
