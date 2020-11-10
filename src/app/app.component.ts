@@ -9,7 +9,7 @@ import { LanguageType} from './root-store/global-store/state';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
 import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { ActivatedRoute, UrlSegment, Router, NavigationEnd } from '@angular/router';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -48,13 +48,14 @@ export class AppComponent {
                 .addSvgIcon('logo_black_bg', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_black_background.svg'));
 
                 this.isOverlay$ = this.store$.select(selectOverlayedModal);
-                
+
                 this.modalStore$ = this.store$.select(selectAllModalState);
                 this.showMenu$ = this.router.events.pipe(
                   filter(event => event instanceof NavigationEnd),
-                  map((event:NavigationEnd) => 
+                  tap(event => console.warn(event)),
+                  map((event:NavigationEnd) =>
                   !(event.url.includes('account/authentification') ||
-                  event.url.includes('miscellaneous/home')
+                  event.urlAfterRedirects.includes('miscellaneous/home')
                   ))
                 )
 
