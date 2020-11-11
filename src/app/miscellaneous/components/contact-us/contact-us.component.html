@@ -1,17 +1,23 @@
 
-    
+
     <main class="main-container global--gutters mt4">
 <section class="illustration-container">
     <header class="mb8">
         <h1 i18n class="font--dark-grey mat-h1 text--centred"> CONTACT US</h1>
-        <mat-divider></mat-divider>
     </header>
-    <address class="mb8 mat-subheading-2">
-        <a class="adress_el" href="mailto:sotulatn@gmail.com ">
+    <address class="mb16">
+        <a class=" mat-subheading-2 adress_el" href="mailto:sotulatn@gmail.com ">
             <mat-icon color="accent">mail</mat-icon>sotulatn@gmail.com</a>
-        <a class="adress_el" href="tel:+13115552368">
-            <mat-icon color="accent">phone</mat-icon> (311) 555-2368</a>
-        <div class="adress_el">
+        <a class=" mat-subheading-2 adress_el" href="tel:+13115552368">
+            <mat-icon color="accent">phone</mat-icon>
+            <div class="tel-contacts">
+              <span>tel : (216) 54 889 629</span>
+              <span>fax : (216) 71 540 055</span>
+            </div>
+
+
+          </a>
+        <div class=" mat-subheading-2 adress_el">
             <mat-icon color="accent">location_on</mat-icon>
             <span>
                 Zone industrielle Mornaguia <br>1110 Tunisie
@@ -19,10 +25,9 @@
         </div >
 
       </address>
-      <mat-divider></mat-divider>
 
     <mat-icon inline="true" class="mt8 illustration" svgIcon="contact-us"></mat-icon>
-    <section class="my8 social-community inline">
+    <section class="mt8 mb16 social-community inline">
         <a target="_blank" href="https://www.facebook.com/SMCuivre">
             <mat-icon   inline="true" svgIcon="facebook"></mat-icon>
 
@@ -39,16 +44,20 @@
     <form (ngSubmit)="onSubmit()" class="column mt8" [formGroup]="askForm">
 
             <mat-form-field  appearance="outline" appControlValidatorMessage>
-                <mat-label>Name</mat-label>
-                <input type="text" required matInput formControlName="name">
-                <mat-hint>Enter your first and last name</mat-hint>
-                
+                <mat-label>First name</mat-label>
+                <input type="text" required matInput formControlName="first_name">
+
                 <mat-error></mat-error>
             </mat-form-field>
-        <mat-form-field class="my4" appearance="outline" appControlValidatorMessage>
+            <mat-form-field  appearance="outline" appControlValidatorMessage>
+              <mat-label>Last name</mat-label>
+              <input type="text" required matInput formControlName="last_name">
+
+              <mat-error></mat-error>
+          </mat-form-field>
+        <mat-form-field  appearance="outline" appControlValidatorMessage>
             <mat-label>Email</mat-label>
             <input type="email"  required matInput formControlName="email">
-            <mat-hint>Enter Email adress</mat-hint>
             <mat-error></mat-error>
         </mat-form-field>
         <mat-form-field class="mb4" appearance="outline" appControlValidatorMessage>

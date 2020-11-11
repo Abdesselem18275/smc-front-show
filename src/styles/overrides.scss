@@ -28,6 +28,7 @@ a {
 
 html, body { height: 100%; }
 body { margin: 0;
+       scroll-behavior: smooth;
        font-family: Roboto, "Helvetica Neue", sans-serif;}
 @media only screen and (max-width:720px)  {
         html {

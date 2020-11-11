@@ -17,16 +17,20 @@ export class ContactUsComponent  {
   askForm:FormGroup
   constructor(private snackBar : MatSnackBar,private ads:AppDataService,private fb:FormBuilder,private store$:Store<any>) {
     this.askForm = this.fb.group({
-      name : ['',Validators.required],
+      first_name : ['',Validators.required],
+      last_name : ['',Validators.required],
       email: ['' ,[Validators.required,Validators.email]],
       message:  ['',Validators.required],
+      user:['']
     })
     this.store$.select(UserStoreSelectors.selectUser).pipe(
       take(1),
       filter(profile => profile ? true : false)).subscribe((profile:Profile) => {
           this.askForm.patchValue({
-            name:`${profile.first_name} ${profile.last_name}`,
-            email:profile.email
+            first_name:profile.first_name,
+            last_name:profile.last_name,
+            email:profile.email,
+            user : profile.id
           })
     })
    }
@@ -34,10 +38,10 @@ export class ContactUsComponent  {
      this.askForm.markAsDirty()
      this.askForm.enable()
      if(this.askForm.valid) {
-      this.ads.post('/account/requests',JSON.stringify(this.askForm.value)).pipe(
+      this.ads.post<any>('/requests/',JSON.stringify(this.askForm.value)).pipe(
         take(1)
       ).subscribe(
-        () => this.snackBar.open('We have received yout request \nwill answer you soon','')
+        () => this.snackBar.open('We have received your request,will answer you soon','')
       )
      }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { Category } from '../../models/product.models';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { filter, map } from 'rxjs/operators';
   templateUrl: './product-home.component.html',
   styleUrls: ['./product-home.component.scss']
 })
-export class ProductHomeComponent implements OnInit {
+export class ProductHomeComponent  implements AfterViewInit  {
   categories$: Observable<Category[]>;
   isLoaded$ = new BehaviorSubject<boolean>(false);
   bgClass: {};
@@ -22,12 +22,16 @@ export class ProductHomeComponent implements OnInit {
     private viewportScroller: ViewportScroller,
     private router: Router,
     private store$: Store<RootStoreState.State>) {
+    this.categories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
     this.isLoaded$.subscribe((x) => {
       this.bgClass = {
         'hero-image':  x,
         'image--pulsing': !x
       };
     })
+
+   }
+   ngAfterViewInit() {
     this.router.events.pipe(
       filter((e) => e instanceof Scroll),
       map(e => e as Scroll)
@@ -45,11 +49,6 @@ export class ProductHomeComponent implements OnInit {
       }
     });
    }
-  ngOnInit() {
-
-
-    this.categories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
-  }
   isLoaded() {
     this.isLoaded$.next(true)
   }

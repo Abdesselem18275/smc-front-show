@@ -2,7 +2,7 @@
 .main-container {
    display: flex;
    justify-content: space-between;
-   
+
 }
 address {
     flex-wrap: wrap;
@@ -10,10 +10,19 @@ address {
     justify-content: space-between;
     .adress_el {
         display: flex;
+        margin: 1rem 0;
         flex-direction: column;
         align-items: center;
         mat-icon{
             margin-bottom: 1rem;
+            font-size: 32px;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+        }
+        .tel-contacts {
+          display: flex;
+          flex-direction: column;
         }
         span {
             text-align: center;
@@ -21,12 +30,13 @@ address {
 
     }
     @media only screen and (max-width:640px) {
+      padding-left: 2rem;
         flex-direction: column;
         .adress_el {
-        margin: 0.5rem 0;
         flex-direction: row;
         mat-icon{
-            margin: 0 1rem 0 0;
+            margin: 0 2rem 0 0;
+
         }
         span {
             text-align: left;
@@ -43,7 +53,7 @@ address {
 .illustration {
     width: 30rem;
     max-width: 100%;
-    
+
 }
 .informations-container {
     background-color: $extreme-light-grey-color;
@@ -53,7 +63,7 @@ address {
 }
 .social-community {
     justify-content: space-evenly;
-        
+
         mat-icon {
             max-width: 3rem;
         }

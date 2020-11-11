@@ -27,12 +27,6 @@ const routerOptions: ExtraOptions = {
   imports: [
     RouterModule.forRoot(appRoutes, routerOptions),
   ],
-  providers : [
-          {
-        provide: LocationStrategy,
-        useClass: PathLocationStrategy
-        }
-  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
