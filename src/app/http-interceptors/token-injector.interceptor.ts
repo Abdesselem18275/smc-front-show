@@ -22,7 +22,6 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token: string = localStorage.getItem(this.tokenKey);
     if(request.method === 'JSONP') {
-      console.warn(request)
       return next.handle(request)
     }
     if (request.url.includes('smc-static-media')) {

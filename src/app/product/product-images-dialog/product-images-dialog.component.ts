@@ -13,11 +13,10 @@ export class ProductImagesDialogComponent implements OnInit {
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
   isLoading$ = new BehaviorSubject<boolean>(false)
   selectedImage : string;
-  constructor(    
+  constructor(
     private cdRef:ChangeDetectorRef,
     public dialogRef: MatDialogRef<ProductImagesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {product : ProductLong}) { 
-      console.warn(data)
+    @Inject(MAT_DIALOG_DATA) public data: {product : ProductLong}) {
       this.images.pipe(
       filter(x => x && x.length > 0),
       take(1)).subscribe((x:string[])=> {

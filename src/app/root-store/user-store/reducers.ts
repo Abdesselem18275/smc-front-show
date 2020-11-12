@@ -41,7 +41,6 @@ const userReducer = createReducer(
       return newState;
     }),
     on(UsersActions.RedirectForAuthentification,(state,{ redirectUrl }) => {
-      console.warn(redirectUrl)
       return {
         ...state,
         redirectUrl:redirectUrl ? redirectUrl : state.redirectUrl
