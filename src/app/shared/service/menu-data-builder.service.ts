@@ -47,15 +47,16 @@ export class MenuDataBuilderService {
             routerLink: this.router.createUrlTree(['/miscellaneous/home/'],{fragment:'about-us'}),
           },
           {
-            designation: 'Contact us',
-            routerLink: this.router.createUrlTree(['/miscellaneous/home/'],{fragment:'contact-us'}),
-          },
-          {
             designation: 'Our team',
             routerLink: '/about-us',
           }
          ]
-       }
+       },
+       {
+        designation: 'Contact us',
+        icon: 'perm_phone_msg',
+        routerLink: this.router.createUrlTree(['/miscellaneous/home/'],{fragment:'contact-us'}),
+      },
     ];
   }
 

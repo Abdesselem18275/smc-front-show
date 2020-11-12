@@ -50,12 +50,9 @@ header {
         width: 48%;
       }
       @media only screen and (max-width:850px) {
-        margin : 4%;
-        width: 92%;
-      }
-      @media only screen and (max-width:600px) {
+        max-width: 520px;
+        margin : 1rem auto;
         width: 100%;
-        margin: 1.5rem 0;
       }
     }
 }

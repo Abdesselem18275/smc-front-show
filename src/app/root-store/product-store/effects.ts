@@ -19,7 +19,6 @@ export class ProductEffects {
     fetchProducts$  = createEffect(() =>
     this.actions$.pipe(
       ofType(ROUTER_NAVIGATED) ,
-      tap(x => console.warn(x)),
       filter((x: RouterNavigatedAction) =>  (x.payload.routerState.url).includes('product/list')),
       tap(() => this.store$.dispatch(ProductStoreActions.LoadRequestAction())),
       map(() => this.route.snapshot.queryParamMap),
@@ -31,8 +30,6 @@ export class ProductEffects {
             ProductStoreActions.SetManyProductsAction({payload:results})
 
         }
-
-
           )))));
 
     favoritesFetch$ = createEffect(() =>

@@ -7,9 +7,8 @@
   </div>
 
 </div>
-<section  class="about-us column--centred font--dark-grey"  id="about-us">
+<section id="about-us" #aboutUs class="about-us column--centred font--dark-grey">
       <h1  class="mat-h1">WHO WE ARE</h1>
-
       <p i18n class="mb8 description mat-subheading-1">
         Société Moderne de Cuivre provides beautiful, handmade copper cookware and decorative essentials that offer more opportunity to gather and make memories. With the use of noble materials like copper, brass, and tin, we produce high-quality products and that our customers are able to enjoy for many years to come. Whether you love to host dinners or only cook when necessary, our items offer long-wear use that will surely impress even your harshest food critics. There are many different types of cookware stores out there, which can be overwhelming when trying to find the best sets. Let Société Moderne de Cuivre be your one-stop-shop for your kitchen needs of all categories.      </p>
           <a mat-flat-button color="accent" [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: ''}">
@@ -31,6 +30,6 @@
 </section>
 
 
-<section class="my16"  id="contact-us">
+<section  #contactUs  class="my16">
   <app-contact-us></app-contact-us>
 </section>

@@ -18,19 +18,13 @@ const appRoutes: Routes = [
 ];
 const routerOptions: ExtraOptions = {
   useHash: true,
-  anchorScrolling: 'enabled',
+  anchorScrolling: "enabled",
   enableTracing: true,
-  onSameUrlNavigation: 'reload',
-  relativeLinkResolution: 'corrected',
-  scrollPositionRestoration:"enabled"
+  onSameUrlNavigation: "reload",
+  relativeLinkResolution: "corrected",
+  scrollPositionRestoration:"top"
 };
 @NgModule({
-  providers : [
-    {
-  provide: LocationStrategy,
-  useClass: PathLocationStrategy
-  }
-],
   imports: [
     RouterModule.forRoot(appRoutes, routerOptions),
   ],
