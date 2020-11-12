@@ -4,7 +4,11 @@
    justify-content: space-between;
 
 }
+.contact-container {
+ justify-content: center;
+}
 address {
+  margin: 8rem 0;
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
@@ -47,14 +51,10 @@ address {
     }
     }
 }
-.illustration-container,.informations-container  {
+.contact-container,.informations-container  {
    flex: 0 0 48%;
 }
-.illustration {
-    width: 30rem;
-    max-width: 100%;
 
-}
 .informations-container {
     background-color: $extreme-light-grey-color;
     padding: 2rem;
@@ -65,7 +65,7 @@ address {
     justify-content: space-evenly;
 
         mat-icon {
-            max-width: 3rem;
+            max-width: 3.5rem;
         }
 }
 @media only screen and (max-width:1300px) {

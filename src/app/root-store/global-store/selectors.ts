@@ -2,7 +2,6 @@ import * as fromGlobalReducer from './reducers';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './state';
 import { Category,ProductShort, FilterCategory } from 'src/app/models/product.models';
-import { RouterStoreSelectors } from '../router-store';
 import { FormGroup, FormControl } from '@angular/forms';
 
 

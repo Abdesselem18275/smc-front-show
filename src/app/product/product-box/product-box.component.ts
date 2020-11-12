@@ -4,10 +4,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { ProductShort, AppearanceVariant, Category } from 'src/app/models/product.models';
-import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { verticalAccordionAnimation } from 'src/app/animations';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 
 
@@ -38,7 +37,9 @@ export class ProductBoxComponent implements OnInit  {
   ngOnInit() {
     this.isSearchActive = this.route.queryParamMap.pipe(
       map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)))
-    this.isFavoriteRoute  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
+    this.isFavoriteRoute  =  this.route.url.pipe(
+      map((urls:UrlSegment[]) => urls.toString().includes('favorites'))
+    )
     this.selectedAppearanceVariant$  = new BehaviorSubject<AppearanceVariant>(this.product.appearanceVariants[0])
     this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize)
     this.rootCat$ = this.store$.select(GlobalStoreSelectors.selectCategoryById,{id:this.product.rootCategory}).pipe(take(1))

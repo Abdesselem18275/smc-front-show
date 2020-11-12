@@ -1,11 +1,20 @@
 
-
-    <main class="main-container global--gutters mt4">
-<section class="illustration-container">
     <header class="mb8">
-        <h1 i18n class="font--dark-grey mat-h1 text--centred"> CONTACT US</h1>
-    </header>
-    <address class="mb16">
+      <h1 i18n class="font--dark-grey mat-h1 text--centred"> CONTACT US</h1>
+  </header>
+    <main class="main-container global--gutters mt4">
+<section class="contact-container column">
+  <section class="social-community inline">
+    <a target="_blank" href="https://www.facebook.com/SMCuivre">
+        <mat-icon   inline="true" svgIcon="facebook"></mat-icon>
+
+    </a>
+    <a target="_blank">
+        <mat-icon inline="true" svgIcon="instagram"></mat-icon>
+
+    </a>
+  </section>
+    <address>
         <a class=" mat-subheading-2 adress_el" href="mailto:sotulatn@gmail.com ">
             <mat-icon color="accent">mail</mat-icon>sotulatn@gmail.com</a>
         <a class=" mat-subheading-2 adress_el" href="tel:+13115552368">
@@ -26,17 +35,7 @@
 
       </address>
 
-    <mat-icon inline="true" class="mt8 illustration" svgIcon="contact-us"></mat-icon>
-    <section class="mt8 mb16 social-community inline">
-        <a target="_blank" href="https://www.facebook.com/SMCuivre">
-            <mat-icon   inline="true" svgIcon="facebook"></mat-icon>
 
-        </a>
-        <a target="_blank">
-            <mat-icon inline="true" svgIcon="instagram"></mat-icon>
-
-        </a>
-      </section>
 </section>
 <section class="informations-container">
         <p class=" text--centred font--dark-grey mat-body-strong">Have any question ? ask it now</p>
@@ -62,7 +61,7 @@
         </mat-form-field>
         <mat-form-field class="mb4" appearance="outline" appControlValidatorMessage>
             <mat-label>Your message</mat-label>
-            <textarea rows="7" type="text"  required matInput formControlName="message">
+            <textarea rows="6" type="text"  required matInput formControlName="message">
                 </textarea>
             <mat-error></mat-error>
         </mat-form-field>

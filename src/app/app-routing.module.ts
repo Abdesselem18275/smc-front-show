@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {RouterModule , Routes, ExtraOptions} from '@angular/router';
+import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -21,9 +21,16 @@ const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
   enableTracing: true,
   onSameUrlNavigation: 'reload',
-  relativeLinkResolution: 'corrected'
+  relativeLinkResolution: 'corrected',
+  scrollPositionRestoration:"enabled"
 };
 @NgModule({
+  providers : [
+    {
+  provide: LocationStrategy,
+  useClass: PathLocationStrategy
+  }
+],
   imports: [
     RouterModule.forRoot(appRoutes, routerOptions),
   ],

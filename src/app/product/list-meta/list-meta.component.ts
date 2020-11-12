@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { Category } from '../../models/product.models';
-import { RouterStoreSelectors } from 'src/app/root-store/router-store';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
@@ -31,8 +30,10 @@ export class ListMetaComponent  {
       this.objCount$ = this.store$.select(ProductStoreSelectors.selectProductsCount);
       this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
       this.isSearchActive$ = this.route.queryParamMap.pipe(
-        map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)))
-      this.isFavoriteActive$  = this.store$.select(RouterStoreSelectors.isCrrentUrl,{url:'favorites'});
+       map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)))
+       this.isFavoriteActive$ =   this.route.url.pipe(
+         map((urls:UrlSegment[]) => urls.toString().includes('favorites'))
+       )
       this.activeCategory$ = this.route.queryParamMap.pipe(
         map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
         withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),

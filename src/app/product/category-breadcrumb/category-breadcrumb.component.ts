@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { RouterStoreSelectors } from 'src/app/root-store/router-store';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { withLatestFrom, map, tap, filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +20,7 @@ export class CategoryBreadcrumbComponent implements OnInit {
   breadCrumb$: Observable<Category[]>;
   @Input() currentProduct?: ProductShort;
 
-  constructor(    
+  constructor(
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
     private route :ActivatedRoute,
     private store$: Store<RootStoreState.State>) { }
@@ -30,9 +29,9 @@ export class CategoryBreadcrumbComponent implements OnInit {
       map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
       withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),
       map(([value,categories]:[string,Category[]]) =>
-        this.currentProduct ? 
+        this.currentProduct ?
           this.setItems(categories,this.getItem(categories, this.currentProduct.rootCategory)):
-          value ? 
+          value ?
           this.setItems(categories,categories.find(cat => cat.designation.toLowerCase() === value.toLowerCase())):
           []
     ),

@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { GlobalStoreModule } from './global-store/global-store.module';
 import { UserStoreModule } from './user-store/user-store.module';
-import { RouterStoreModule } from './router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -13,7 +13,6 @@ import { RouterStoreModule } from './router-store';
   imports: [
     CommonModule,
     ProductStoreModule,
-    RouterStoreModule,
     StoreModule.forRoot({},
       {
       runtimeChecks: {
@@ -26,6 +25,8 @@ import { RouterStoreModule } from './router-store';
     GlobalStoreModule,
     UserStoreModule,
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot()
+
   ]
 })
 export class RootStoreModule { }

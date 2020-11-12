@@ -6,7 +6,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { ViewportScroller } from '@angular/common';
 import { Router, Scroll } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 
 
 @Component({
@@ -34,15 +34,14 @@ export class ProductHomeComponent  implements AfterViewInit  {
    ngAfterViewInit() {
     this.router.events.pipe(
       filter((e) => e instanceof Scroll),
-      map(e => e as Scroll)
+      map(e => e as Scroll),
     ).subscribe(e => {
-      console.warn(e);
       if (e.position) {
         // backward navigation
       } else if (e.anchor) {
         console.warn('anchor',e.anchor);
         // anchor navigation
-        this.viewportScroller.scrollToAnchor(e.anchor);
+        this.viewportScroller.scrollToAnchor(e.anchor)
         //this.location.replaceState(pathWithoutHash);
       } else {
         // forward navigation

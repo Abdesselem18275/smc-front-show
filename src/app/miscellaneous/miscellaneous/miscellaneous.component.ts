@@ -11,5 +11,4 @@ export class MiscellaneousComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
