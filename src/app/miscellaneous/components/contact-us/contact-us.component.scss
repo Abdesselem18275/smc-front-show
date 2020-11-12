@@ -8,7 +8,8 @@
  justify-content: center;
 }
 address {
-  margin: 8rem 0;
+    margin: 6rem 0;
+    padding: 2rem;
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
@@ -34,7 +35,7 @@ address {
 
     }
     @media only screen and (max-width:640px) {
-      padding-left: 2rem;
+      background-color: $extreme-light-grey-color;
         flex-direction: column;
         .adress_el {
         flex-direction: row;
