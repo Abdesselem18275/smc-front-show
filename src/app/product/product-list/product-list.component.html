@@ -14,7 +14,7 @@
                 <app-product-box  class="product-box  mat-elevation-z4" [product]="productShort" *ngFor="let productShort of productShorts$ | async">
                 </app-product-box>
           </section>
-    <div [pagesCount]="pagesCount$ | async"  appScrollPaginator class='bottom-line'>
+    <div [pagesCount]="pagesCount$ | async"  appScrollPaginator class='column--centred bottom-line'>
       <mat-icon inline="true" *ngIf="isLoading$ | async" svgIcon="loading_2"></mat-icon>
 
     </div>

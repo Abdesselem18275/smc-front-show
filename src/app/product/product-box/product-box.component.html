@@ -18,7 +18,7 @@
                 </button>
         </div>
         <a #loadingImage [routerLink]="['/product', product.id]">
-        <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:1000">
+        <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:600">
         </a>
 
         <section class="my2 mx4 content-information">
