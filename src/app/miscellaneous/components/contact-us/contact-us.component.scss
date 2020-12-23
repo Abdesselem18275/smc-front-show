@@ -1,4 +1,3 @@
-@import '/src/styles/colors.scss';
 .main-container {
    display: flex;
    justify-content: space-between;
@@ -35,7 +34,6 @@ address {
 
     }
     @media only screen and (max-width:640px) {
-      background-color: $extreme-light-grey-color;
         flex-direction: column;
         .adress_el {
         flex-direction: row;
@@ -57,7 +55,6 @@ address {
 }
 
 .informations-container {
-    background-color: $extreme-light-grey-color;
     padding: 2rem;
     border-radius: 8px;
 

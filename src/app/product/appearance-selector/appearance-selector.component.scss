@@ -1,9 +1,8 @@
-@import "src/styles.scss";
 
 .appearance-box {
     max-width: 2rem;
     span {
-        border: solid 1px mat-color($smc-show-case-primary);
+        border: solid 1px orange;
         width: 100%;
 
     }
@@ -16,7 +15,7 @@ img {
     border-radius: 2rem;
 }
 .img--bordered {
-    border: solid 1px mat-color($smc-show-case-primary,darker);
+    border: solid 1px orangered;
     padding: 1px;
 }
 p {

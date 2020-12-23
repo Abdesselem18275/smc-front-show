@@ -1,5 +1,4 @@
-@import "../../../styles/util-mixins.scss";
-@import "../../../styles/colors.scss";
+@import "util-mixins";
 :host {
   display: flex;
   flex-direction: column;
@@ -37,10 +36,10 @@
 
 }
 .dot--selected {
-  background-color: mat-color($smc-show-case-primary);
+  background-color: orangered;
 }
 .dot--unSelected {
-  background-color:  mat-color($smc-show-case-accent);
+  background-color:  black;
 }
 
 button mat-icon {

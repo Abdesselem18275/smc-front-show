@@ -1,9 +1,7 @@
-@import "../../../styles/colors.scss";
+@import "colors";
+@import "app-theme";
 :host {
     transition: ease-in 0.2s;
-}
-.breadcrumb-container {
-    background-color: $extreme-light-grey-color;
 }
 
 .loading-placeholder {

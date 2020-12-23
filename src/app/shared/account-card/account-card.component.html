@@ -13,16 +13,17 @@
             <section *ngIf="isLogged$ |async" class="column--centred">
                 <app-initials-icon [size]="72" class="mb4" (click)="navToProfile()" [initials]="initials$ | async"></app-initials-icon>
                   <p class="mat-h1"> {{(profile$ |async).first_name}} {{(profile$ |async).last_name}} </p>
-                  <p class="mat-h3 font--dark-grey">{{(profile$ |async).email}}</p>
-                <div class="action-container my4">
-                  <button routerLink="/product/favorites" mat-icon-button>
-                      <mat-icon color="accent">favorite</mat-icon>
+                  <p class="mat-h3  font--dark-grey">{{(profile$ |async).email}}</p>
+                <div class="side action-container mb4">
+                  <button routerLink="/product/favorites" mat-mini-fab>
+                      <mat-icon color="primary">favorite</mat-icon>
                   </button>
-                  <button (click)="logOut()"  mat-icon-button>
-                   <mat-icon color="accent">exit_to_app</mat-icon>
+                  <button (click)="logOut()"  mat-mini-fab>
+                   <mat-icon color="primary">exit_to_app</mat-icon>
                   </button>
                    </div>
               </section>
+              <mat-divider ></mat-divider>
         </header>
     <main class="card px4 column--centred">
       <mat-nav-list  class="nav-list nav-list--full-width">
@@ -30,7 +31,7 @@
               <mat-icon matListIcon>favorite </mat-icon>
               <div i18n matLine>Favorites</div>
           </mat-list-item>
-          <mat-list-item routerLink="/account/profile">
+          <mat-list-item>
               <mat-icon matListIcon>person </mat-icon>
               <div i18n matLine>Profile</div>
           </mat-list-item>

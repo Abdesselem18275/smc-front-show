@@ -1,9 +1,4 @@
-@import "src/styles.scss";
-
-.list__meta__bar {
-    background-color:$extreme-light-grey-color;
-}
-
+@import 'util-mixins';
 header {
     padding: 0 1.5rem;
     img {

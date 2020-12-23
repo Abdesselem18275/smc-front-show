@@ -43,8 +43,8 @@ export class FavoriteHandlerDirective implements AfterContentInit,OnDestroy {
         : this.store$.dispatch(UserStoreActions.RedirectForAuthentification({redirectUrl:this.router.url}))
     })  }
   updateIconStyle(state: boolean):void {
-    this.renderer.removeClass(this.matIcon,'font--primary')
-    const favClass = state ? 'font--primary' : 'font--dark-grey';
+    this.renderer.removeClass(this.matIcon,'font--amber')
+    const favClass = state ? 'font--amber' : 'font--dark-grey';
     const property = state ? 'favorite' : 'favorite_border';
     this.renderer.addClass(this.matIcon,favClass)
     this.renderer.setProperty(this.matIcon,'innerHTML',property);

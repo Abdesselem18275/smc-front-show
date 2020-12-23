@@ -7,7 +7,6 @@ import { ProductHomeComponent } from './product-home/product-home.component';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
   imports: [
     CommonModule,
     SharedModule,
-    GoogleMapsModule,
     MiscellaneousRoutingModule
   ]
 })

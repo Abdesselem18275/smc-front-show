@@ -15,7 +15,7 @@ import { UserLanguage, LanguageType } from './root-store/global-store/state';
     LanguageType: LanguageType.GERMAN
   }
 ]);
-const SMC_API_URL = () => 'http://ec2-15-188-104-88.eu-west-3.compute.amazonaws.com/smc/api';
+const SMC_API_URL = () => 'http://backend.smcuivre.com/smc/api';
 
 const APP_TOKEN_KEY = () => 'smcToken';
 const APP_PROFILE_ID = () => 'smcId';

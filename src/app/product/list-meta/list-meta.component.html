@@ -7,10 +7,10 @@
         <section class="column--centred">
            <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon"></mat-icon>
           <p class="mat-h1">{{category.designation | uppercase}}</p>
-          <p class="description-container mat-body-1 font--dark-accent">{{category.description}}</p>
+          <p class="description-container mat-body-1 font--dark-grey">{{category.description}}</p>
         </section>
 
-        <section *ngIf="category.children" class="category-children-container font--dark-accent mt4 inline--centred">
+        <section *ngIf="category.children" class="category-children-container font--dark-grey mt4 inline--centred">
           <ng-container *ngFor="let item of category.children">
             <button
             class="m2"
@@ -36,7 +36,7 @@
 
 
 
-<main class="list__meta__bar inline--centred--spaced global--gutters mat-subheading-1">
+<main class="bg--extreme-light-grey inline--centred--spaced global--gutters mat-subheading-1">
 <p class="font--thin" i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
 
 

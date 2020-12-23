@@ -1,4 +1,3 @@
-@import '../app-custom-themes.scss';
 
 
 $dark-grey : rgba(0,0,0,0.70);
@@ -15,6 +14,8 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
 .font--amber {
   color: orange;
 }
+
+
 .font--grey {
   color:$grey-color ;
 }
@@ -31,14 +32,13 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
   }
 }
 
-.font--primary {
-  color: mat-color($smc-show-case-primary);
-}
-.font--dark-accent {
-  color: mat-color($smc-show-case-accent,darker);
-}
+
 .font--transparent {
   color: transparent;
+}
+
+.bg--extreme-light-grey {
+  background-color:$extreme-light-grey-color;
 }
 
 .alert {
