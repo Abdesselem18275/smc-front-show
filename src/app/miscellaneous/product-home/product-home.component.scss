@@ -1,9 +1,7 @@
-@import "src/styles.scss";
-main {
-  @extend .global--gutters;
-}
+
+
 .bg-image {
-  height: 100%;
+  height: 100vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
