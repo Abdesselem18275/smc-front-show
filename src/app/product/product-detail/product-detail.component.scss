@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
   column-gap: 1rem;
-  grid-template-rows: 3rem auto;
+  grid-template-rows: 6.5rem auto;
   row-gap: 2rem;
   grid-template-areas: 
   "title title images images images"

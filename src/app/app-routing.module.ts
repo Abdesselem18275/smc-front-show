@@ -17,11 +17,8 @@ const appRoutes: Routes = [
 
 ];
 const routerOptions: ExtraOptions = {
-  useHash: true,
   anchorScrolling: "enabled",
   enableTracing: true,
-  onSameUrlNavigation: "reload",
-  relativeLinkResolution: "corrected",
   scrollPositionRestoration:"top"
 };
 @NgModule({

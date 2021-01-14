@@ -1,8 +1,8 @@
-<section class="global--gutters">
-  <app-category-breadcrumb class="mat-body-2 font--dark-grey breadcrumb" [currentProduct]="product$ |async"></app-category-breadcrumb>
-</section>
+
 <main class="main-container global--gutters ">
+
   <section class="product-title">
+    <app-category-breadcrumb class="mat-caption font--dark-grey" [currentProduct]="product$ |async"></app-category-breadcrumb>
     <h1 class="mat-h1">{{(product$ |async)?.designation | uppercase}}</h1>
     <span class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
   </section>
