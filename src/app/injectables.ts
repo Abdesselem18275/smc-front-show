@@ -17,7 +17,7 @@ import { UserLanguage, LanguageType } from './root-store/global-store/state';
   }
 ]);
 const SMC_API_URL = () => 'http://backend.smcuivre.com/smc/api';
-
+const LOCAL_API_URL = () => 'http://127.0.0.1:8080/api';
 const APP_TOKEN_KEY = () => 'smcToken';
 const APP_PROFILE_ID = () => 'smcId';
 const PARAM_KEYS_MAP = () => ({
@@ -31,7 +31,7 @@ export const QUERY_PARAM_KEYS = new InjectionToken<any>('ParamKeys', {
 });
 export const API_URL = new InjectionToken<string>('ApiUrl', {
   providedIn: 'root',
-  factory: SMC_API_URL
+  factory: LOCAL_API_URL
 });
 export const TOKEN_KEY = new InjectionToken<string>('TokenKey', {
   providedIn: 'root',

@@ -44,9 +44,11 @@ export interface ProductLong extends ProductShort {
 export interface DimensionsSpecification {
     measures: number[];
     measureType: MeasureType;
+    isMasterSpecification: boolean;
 }
 export interface MeasureType {
    designation: string;
+   getShortDesignation: string;
    unit: string;
 }
 export interface AppearanceVariant {

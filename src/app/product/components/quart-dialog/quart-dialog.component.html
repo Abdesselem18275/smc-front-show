@@ -1,25 +1,41 @@
-<header mat-dialog-title>
-    <h1 class="mat-h1">PRODUCT QUART
-    </h1>
-    <span class="mat-body-1 font--dark-grey">{{product.designation | titlecase}}</span>
+<header mat-dialog-title >
+    <div class="inline--centred--spaced">
+        <div>
+            <h1 class="mat-h1">PRODUCT QUART
+            </h1>
+            <span class="mat-body-1 font--dark-grey">{{product.designation | titlecase}}</span>
+        </div>
+        <mat-icon class="quart-icon">
+            shopping_cart
+        </mat-icon>
+    </div>
 
 </header>
 <main mat-dialog-content>
     <p class="mat-body-2">Select a Look</p>
-<!-- <mat-accordion>
+<mat-accordion>
     <mat-expansion-panel *ngFor="let appearanceVariant of product.appearanceVariants">
-        <mat-expansion-panel-header class="inline--centred">
-        <mat-panel-title>
+        <mat-expansion-panel-header >
+        <mat-panel-title class="inline--centred">
             <img [src]="appearanceVariant.thumbNail | mergeSizeQs:100" class="thumbNail">
-          </mat-panel-title>
-          <mat-panel-description>
             {{appearanceVariant?.look.texture +' '+ appearanceVariant.look.material}}
-            <mat-icon>date_range</mat-icon>
+
+          </mat-panel-title>
+          <mat-panel-description class="inline--centred">
+              x 21
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>Set quantity for the desired dimension</p>
+        <p>Set quantity for each desired dimension</p>
+        <app-product-dimensions
+        mode="quart"
+        *ngIf="product.dimensionsSpecifications.length > 0"
+        [productDimensions]="product.dimensionsSpecifications">
+        </app-product-dimensions>
+        <form>
+
+        </form>
     </mat-expansion-panel>
-</mat-accordion> -->
+</mat-accordion>
 </main>
 
 <div mat-dialog-actions class="inline--centred--spaced">
