@@ -14,24 +14,23 @@ import { SearchBoxComponent } from '../search-box/search-box.component';
   templateUrl: './product-menu.component.html',
   styleUrls: ['./product-menu.component.scss'],
 })
-export class ProductMenuComponent implements OnInit {
-  isHomeRoute$: Observable<boolean>;
+export class ProductMenuComponent  {
   @Output()
   sideNavEmmiter = new EventEmitter<any>();
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  isHomeRoute$: Observable<boolean>;
+
   constructor( private router: Router,
                private dialog: MatDialog,
                private store$: Store<RootStoreState.State>) {
+                this.isHomeRoute$ = this.router.events.pipe(
+                  filter((x: any) => x instanceof NavigationEnd),
+                  map(event => event.url === '/miscellaneous/home'));
 
 
-  }
-  ngOnInit():void {
-    this.isHomeRoute$ = this.router.events.pipe(
-      filter(x => x instanceof NavigationEnd),
-      map(event => event['url'] === '/miscellaneous/home'));
   }
   toggleSideNav() {
-    this.sideNavEmmiter.emit('')
+    this.sideNavEmmiter.emit('');
   }
   openCardDialog() {
     this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
@@ -43,7 +42,7 @@ export class ProductMenuComponent implements OnInit {
       }):
       this.store$.dispatch(UserStoreActions.RedirectForAuthentification(
          {redirectUrl:this.router.url}
-      )))
+      )));
 
   }
   openSearchDialog() {
@@ -52,7 +51,7 @@ export class ProductMenuComponent implements OnInit {
       width:'100vw',
       maxWidth:'100vw',
       hasBackdrop:false,
-    })
+    });
 
   }
 

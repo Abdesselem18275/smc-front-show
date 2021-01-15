@@ -12,16 +12,15 @@ import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
   styleUrls: ['./language-box.component.scss']
 })
 export class LanguageBoxComponent {
-  language$: Observable<UserLanguage>;
+  language$: Observable<UserLanguage | null>;
   languageList: UserLanguage[];
-  isSideNav$: Observable<boolean>;
   constructor(
     @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
     private store$: Store<any>) {
       this.languageList = languageList;
       this.language$ = this.store$.select(selectLanguage);
     }
-  getHref(localId:string) {
-    return '/'+localId
+  getHref(localId: string) {
+    return '/'+localId;
   }
 }

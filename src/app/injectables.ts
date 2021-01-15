@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { InjectionToken } from '@angular/core';
 import { UserLanguage, LanguageType } from './root-store/global-store/state';
 
  const LANGUAGE_LIST = () =>([
   {
     id: 'fr-FR',
-    LanguageType: LanguageType.FRENCH
+    languageType: LanguageType.FRENCH
   },
   {
     id: 'en-US',
-    LanguageType: LanguageType.ENGLISH
+    languageType: LanguageType.ENGLISH
 
   }, {
     id: 'de-DE',
-    LanguageType: LanguageType.GERMAN
+    languageType: LanguageType.GERMAN
   }
 ]);
 const SMC_API_URL = () => 'http://backend.smcuivre.com/smc/api';

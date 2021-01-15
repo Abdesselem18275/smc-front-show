@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountFormService } from '../service/account-form.service';
-import { Observable, Subscription } from 'rxjs';
+import { EMPTY, Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
 import { Profile } from '../../models/account.models';
@@ -19,8 +20,8 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
   accountForm: FormGroup;
   countryNames= countries();
   isUpdating$: Observable<boolean>;
-  serverError$: Observable<any>;
-  subscription: Subscription ;
+  serverError$!: Observable<any>;
+  subscription!: Subscription ;
   constructor(private store$: Store,
               private accountFormService: AccountFormService)
               {
@@ -31,7 +32,7 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
     this.subscription.unsubscribe();
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
 
     this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
@@ -52,8 +53,8 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
     });
   }
 
-  onSubmit():void {
-    if (!this.accountForm.get('is_professional').value) {
+  onSubmit(): void {
+    if (!this.accountForm.get('is_professional')?.value) {
       this.accountForm.setValue({
         company_name : null,
         position: null,

@@ -1,8 +1,17 @@
-
-<main class="main-container global--gutters ">
+<main class="global--gutters column--centred">
+<section class="actions-container">
+  <button  #pulsingButton [appFavoriteHandler]="(product$ |async)?.id" mat-mini-fab>
+    <mat-icon #favIcon>favorite</mat-icon>
+  </button>
+  <button #pulsingButton mat-mini-fab>
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+</section>
+<main class="main-container">
 
   <section class="product-title">
-    <app-category-breadcrumb class="mat-caption font--dark-grey" [currentProduct]="product$ |async"></app-category-breadcrumb>
+      <app-category-breadcrumb class="mat-caption font--dark-grey" [currentProduct]="product$ |async"></app-category-breadcrumb>
+
     <h1 class="mat-h1">{{(product$ |async)?.designation | uppercase}}</h1>
     <span class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
   </section>
@@ -54,3 +63,4 @@
 <footer class="global--gutters related-products">
 <h1 i18n class="mat-h1 font--dark-grey">RELATED PRODUCTS</h1>
 </footer>
+</main>

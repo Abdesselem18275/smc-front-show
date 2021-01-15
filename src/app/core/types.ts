@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { UrlTree } from '@angular/router';
 
 export interface MinimalProduct {
   id: number;
   designation: string;
-  appearanceVariants:string;
+  appearanceVariants: string;
 }
 export interface FilterCategory {
     controlType: string;
@@ -24,44 +25,44 @@ export interface Choice {
 export interface ProductShort {
     id: number;
     designation: string;
-    shortDescription: string
+    shortDescription: string;
     interiorCoatings: string[];
     longDescription: string;
     rawMaterials: string[];
     rootCategory: number;
     dimensionsSpecifications: DimensionsSpecification[];
-    appearanceVariants : AppearanceVariant[];
-    componentsSpecifications: ComponentsSpecification[]
-    features: Feature[]
+    appearanceVariants: AppearanceVariant[];
+    componentsSpecifications: ComponentsSpecification[];
+    features: Feature[];
 
 }
 
 export interface ProductLong extends ProductShort {
-  longDescription : string;
+  longDescription: string;
 }
 
 export interface DimensionsSpecification {
     measures: number[];
-    measureType : MeasureType
+    measureType: MeasureType;
 }
 export interface MeasureType {
-   designation : string
-   unit: string
+   designation: string;
+   unit: string;
 }
 export interface AppearanceVariant {
-    id?:number;
-    thumbNail?:string;
+    id?: number;
+    thumbNail?: string;
     images?: BaseImage[];
     look?: Look;
 }
 export interface Look {
-    thumbNail : string;
+    thumbNail: string;
     material: string;
     texture: string;
  }
 export interface ComponentsSpecification {
-    component : ProductComponent;
-    measures : number[];
+    component: ProductComponent;
+    measures: number[];
     rawMaterials: string[];
 }
 
@@ -86,7 +87,7 @@ export interface Category   {
     isLeaf?: boolean;
     children?: Category[];
     thumbNail?: string;
-    thumbNailAux?:string;
+    thumbNailAux?: string;
     svgIcon?: string;
 }
 
@@ -95,20 +96,10 @@ export interface Feature {
     description: string;
     svgIcon: BaseImage;
 }
-export enum ParamType {
-    PAGE = 'Page',
-    FILTER = 'Filter',
-    CATEGORY = 'Category',
-    SEARCH = 'Search',
-}
-export enum AppSelectorMode {
-    Minimal = 'MINIMAL',
-    Full = 'FULL',
-}
 export interface Param {
     key: string;
     value: string;
-    type: ParamType;
+    type: any;
 }
 export interface MenuTreeData {
     designation: string;
@@ -122,4 +113,10 @@ export interface MenuTreeData {
     [key: string]: string;
   }
 
-export type PaginatedProductsType = {count:number,next:string,previous:string,results:ProductShort[]}
+export type PaginatedProductsType = {count: number;next: string;previous: string;results: ProductShort[]};
+export type InitDataType = {
+    categories: Category[];
+    icons: BaseImage[];
+    navMenuTree: MenuTreeData[];
+}
+;

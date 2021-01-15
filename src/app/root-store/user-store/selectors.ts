@@ -12,21 +12,15 @@ export const selectUserState = createFeatureSelector<State>(fromUserReducer.feat
 
 export const selectUser = createSelector(
   selectUserState,
-    (state) => {
-        return state.profile;
-    }
+    (state) => state.profile
   );
 export const selectError = createSelector(
     selectUserState,
-      (state) => {
-          return state.errorMessage;
-      }
+      (state) => state.errorMessage
     );
 export const selectIsLoading = createSelector(
       selectUserState,
-        (state) => {
-            return state.isLoading;
-        }
+        (state) => state.isLoading
       );
 
 export const selectIsUserLoaded = createSelector(
@@ -37,7 +31,7 @@ export const selectIsUserLoaded = createSelector(
 export const selectIsFavorite = createSelector(
   selectUser,
   selectIsUserLoaded,
-  (user: Profile,isLoaded, prop: {id: number}) => (isLoaded ? user.favorites.map(fav => fav.id).includes(prop.id):false)
+  (user: Profile,isLoaded: boolean, prop: {id: number}) => (isLoaded ? user.favorites.map(fav => fav.id).includes(prop.id):false)
   );
 
 export const selectIsAuthentificated = createSelector(

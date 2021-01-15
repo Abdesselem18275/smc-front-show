@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DimensionsSpecification, DimensionElement } from '../../models/product.models';
 import { MatTableDataSource } from '@angular/material/table';
+import { DimensionsSpecification, DimensionElement } from 'src/app/core/types';
 import { HelperService} from '../../shared/service/helper.service';
 
 @Component({
@@ -10,21 +10,23 @@ import { HelperService} from '../../shared/service/helper.service';
   styleUrls: ['./product-dimensions.component.scss'],
 })
 export class ProductDimensionsComponent implements OnInit {
-  @Input() productDimensions : DimensionsSpecification[]
-  displayedColumns : string[]
-  dataSource : MatTableDataSource<DimensionElement>;
-  constructor(private helperS:HelperService) { }
+  @Input()
+  productDimensions: DimensionsSpecification[] = [];
+  displayedColumns: string[] = [];
+  dataSource!: MatTableDataSource<DimensionElement>;
+  constructor(private helperS: HelperService) {
+   }
 
   ngOnInit(): void {
 
-    this.dataSource = new MatTableDataSource<DimensionElement>(this.helperS.toDimensionArray(this.productDimensions))
-    this.displayedColumns = this.productDimensions.map(x => x.measureType.designation)
-    this.displayedColumns.unshift('no.')
+    this.dataSource = new MatTableDataSource<DimensionElement>(this.helperS.toDimensionArray(this.productDimensions));
+    this.displayedColumns = this.productDimensions.map(x => x.measureType.designation);
+    this.displayedColumns.unshift('no.');
   }
   variantsNumber() {
-      return this.productDimensions[0].measures.length
+      return this.productDimensions[0].measures.length;
     }
   tableWidth() {
-    return `${this.displayedColumns.length * 80}px`
+    return `${this.displayedColumns.length * 80}px`;
   }
 }

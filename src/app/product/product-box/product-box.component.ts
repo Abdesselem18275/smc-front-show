@@ -1,13 +1,13 @@
 import { ProductStoreSelectors} from 'src/app/root-store';
 import { Store } from '@ngrx/store';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, EMPTY } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { ProductShort, AppearanceVariant, Category } from 'src/app/models/product.models';
 import { verticalAccordionAnimation } from 'src/app/animations';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
+import { ProductShort, Category, AppearanceVariant } from 'src/app/core/types';
 
 
 @Component({
@@ -20,40 +20,42 @@ import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 })
 export class ProductBoxComponent implements OnInit  {
 
-  @Input() product: ProductShort;
+  @Input() product!: ProductShort;
   isSearchActive: Observable<boolean>;
   isFavoriteRoute: Observable<any>;
-  isBigSize$: Observable<boolean>;
-  rootCat$ :Observable<Category>;
-  isDimensionOpen: boolean;
-  isMaterialOpen: boolean;
+  isBigSize$: Observable<boolean> = EMPTY;
+  rootCat$: Observable<Category>= EMPTY;
+  isDimensionOpen = false;
+  isMaterialOpen = false;
 
-  selectedAppearanceVariant$ : BehaviorSubject<AppearanceVariant> ;
+  selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant | null>(null) ;
   constructor(
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
-    private route : ActivatedRoute,
-    private store$: Store<any>) { }
+    private route: ActivatedRoute,
+    private store$: Store<any>) {
+      this.isSearchActive = this.route.queryParamMap.pipe(
+        map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)));
+      this.isFavoriteRoute  =  this.route.url.pipe(
+        map((urls: UrlSegment[]) => urls.toString().includes('favorites'))
+      );
+     }
 
   ngOnInit() {
-    this.isSearchActive = this.route.queryParamMap.pipe(
-      map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)))
-    this.isFavoriteRoute  =  this.route.url.pipe(
-      map((urls:UrlSegment[]) => urls.toString().includes('favorites'))
-    )
-    this.selectedAppearanceVariant$  = new BehaviorSubject<AppearanceVariant>(this.product.appearanceVariants[0])
-    this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize)
-    this.rootCat$ = this.store$.select(GlobalStoreSelectors.selectCategoryById,{id:this.product.rootCategory}).pipe(take(1))
+
+    this.selectedAppearanceVariant$.next(this.product.appearanceVariants[0]);
+    this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize);
+    this.rootCat$ = this.store$.select(GlobalStoreSelectors.selectCategoryById,{id:this.product.rootCategory}).pipe(take(1));
   }
-  setAppearanceVariant(appearanceVariant :AppearanceVariant ) {
+  setAppearanceVariant(appearanceVariant: AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);
   }
   toggleDimension() {
-    this.isMaterialOpen = false
-    this.isDimensionOpen = !this.isDimensionOpen
+    this.isMaterialOpen = false;
+    this.isDimensionOpen = !this.isDimensionOpen;
   }
   toggleMaterial() {
-    this.isDimensionOpen = false
-    this.isMaterialOpen = !this.isMaterialOpen
+    this.isDimensionOpen = false;
+    this.isMaterialOpen = !this.isMaterialOpen;
 
   }
 

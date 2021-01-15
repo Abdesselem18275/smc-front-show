@@ -1,21 +1,17 @@
-import { ProductShort } from 'src/app/models/product.models';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { ProductShort } from 'src/app/core/types';
 
 export interface State extends EntityState<ProductShort> {
   isLoading: boolean;
   objCount: number;
   isBigBox: boolean;
-  pageNumber:number,
+  pageNumber: number;
   selectedProduct: ProductShort;
 }
 
 
-export function selectParamKey(a: ProductShort): number {
-  return a.id;
-}
-export function sortByName(a: ProductShort, b: ProductShort): number {
-  return a.designation.localeCompare(b.designation);
-}
+export const selectParamKey = (a: ProductShort): number => a.id;
+export const sortByName = (a: ProductShort, b: ProductShort): number => a.designation.localeCompare(b.designation);
 export const adapter: EntityAdapter<ProductShort> = createEntityAdapter<ProductShort>({
   selectId: selectParamKey,
  // sortComparer: sortByName,

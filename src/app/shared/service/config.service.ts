@@ -5,13 +5,13 @@ import { take } from 'rxjs/operators';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from './menu-data-builder.service';
-import { Category } from 'src/app/models/product.models';
 import { GlobalStoreActions } from 'src/app/root-store/global-store';
 import { PROFILE_ID } from 'src/app/injectables';
 import { Profile } from 'src/app/models/account.models';
 import { EMPTY } from 'rxjs';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
+import { Category, InitDataType } from 'src/app/core/types';
 
 
 
@@ -25,7 +25,7 @@ export class ConfigService {
     private sanitizer: DomSanitizer,
     private mdbs: MenuDataBuilderService,
     private store$: Store<any>,
-    private ads : AppDataService ) {
+    private ads: AppDataService ) {
       iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))
       .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
       .addSvgIcon('logo_mini', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_smc_mini.svg'))
@@ -42,20 +42,20 @@ export class ConfigService {
 
     }
 
-  loadInitials(): Promise<void| Object> {
-    return this.ads.get<any>('/initData/').pipe(take(1)).toPromise().then((response : any) => {
-      response['icons'].forEach(jsonItem => {
+  loadInitials(): Promise<void> {
+    return this.ads.get<InitDataType>('/initData/').pipe(take(1)).toPromise().then((response: InitDataType) => {
+      response.icons.forEach(jsonItem => {
         this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
       });
-      response['navMenuTree'] = this.mdbs.buildMenuTree(response['categories'].filter((cat:Category) => cat.isRoot))
-      this.store$.dispatch(GlobalStoreActions.LoadInitDataAction({payload:response}))
+      response.navMenuTree = this.mdbs.buildMenuTree(response.categories.filter((cat: Category) => cat.isRoot));
+      this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:response}));
     });
   }
-  loadProfile(): Promise<void| Object>  {
+  loadProfile(): Promise<void>  {
 
     return localStorage.getItem(this.profileId) ?
-    this.ads.get<Profile>(`/profile/${localStorage.getItem(this.profileId)}/`).pipe(take(1)).toPromise().then((profile : Profile) => {
-      this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
-    }) : EMPTY.toPromise()
+    this.ads.get<Profile>(`/profile/${localStorage.getItem(this.profileId)}/`).pipe(take(1)).toPromise().then((profile: Profile) => {
+      this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}));
+    }) : EMPTY.toPromise();
   }
 }

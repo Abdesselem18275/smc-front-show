@@ -1,4 +1,7 @@
-import { Category, FilterCategory, MenuTreeData } from 'src/app/models/product.models';
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-shadow */
+
+import { Category, FilterCategory, MenuTreeData } from 'src/app/core/types';
 
 export enum LanguageType {
     ENGLISH = 'English',
@@ -7,16 +10,16 @@ export enum LanguageType {
 }
 export interface UserLanguage {
     id: string;
-    LanguageType: string;
+    languageType: string;
 }
 
 
 export class State  {
-  language!: UserLanguage;
+  language!: UserLanguage | null;
   categories!: Category[];
   filters!: FilterCategory[];
   navMenuTree!: MenuTreeData[];
-  requestSubjects!: { id: number; designation: string; }[];
+  requestSubjects!: { id: number; designation: string}[];
 }
 
 

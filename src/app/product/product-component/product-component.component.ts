@@ -1,5 +1,5 @@
 import { Input, Component, ChangeDetectionStrategy } from '@angular/core';
-import { ComponentsSpecification } from '../../models/product.models';
+import { ComponentsSpecification } from 'src/app/core/types';
 
 @Component({
   selector: 'app-product-component',
@@ -8,5 +8,5 @@ import { ComponentsSpecification } from '../../models/product.models';
   styleUrls: ['./product-component.component.scss']
 })
 export class ProductComponentComponent{
-  @Input() componentsSpecs : ComponentsSpecification[];
+  @Input() componentsSpecs: ComponentsSpecification[] = [];
 }
