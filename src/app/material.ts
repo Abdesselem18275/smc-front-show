@@ -23,6 +23,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -32,6 +33,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
             MatTabsModule , MatInputModule,MatIconModule , MatBadgeModule, MatToolbarModule,
             MatSnackBarModule, ScrollingModule, MatButtonToggleModule,LayoutModule,
             MatProgressBarModule,MatSelectModule,MatSidenavModule, MatFormFieldModule,MatChipsModule, MatTreeModule,MatRippleModule,
-            MatTreeModule,MatSlideToggleModule,MatDialogModule, MatListModule,MatMenuModule,MatTableModule],
+            MatTreeModule,MatSlideToggleModule,MatDialogModule,MatExpansionModule, MatListModule,MatMenuModule,MatTableModule],
 })
 export class MaterialModule {}

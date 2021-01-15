@@ -7,7 +7,7 @@
         <section class="column--centred">
            <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon"></mat-icon>
           <p class="mat-h1">{{category.designation | uppercase}}</p>
-          <p class="description-container mat-body-1 font--dark-grey">{{category.description}}</p>
+          <p *ngIf="category.description" class="description-container mat-body-1 font--dark-grey">{{category.description}}</p>
         </section>
 
         <section *ngIf="category.children" class="category-children-container font--dark-grey mt4 inline--centred">
@@ -36,8 +36,8 @@
 
 
 
-<main class="bg--extreme-light-grey inline--centred--spaced global--gutters mat-subheading-1">
-<p class="font--thin" i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
+<main class="inline--centred--spaced global--gutters mat-subheading-2">
+<p  i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
 
 
 <section class="action-container inline--centred">

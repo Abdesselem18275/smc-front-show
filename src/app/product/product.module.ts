@@ -20,6 +20,7 @@ import { ProductImagesDialogComponent } from './product-images-dialog/product-im
 import { ProductBoxComponent } from './product-box/product-box.component';
 import { AppearanceSelectorComponent } from './components/appearance-selector/appearance-selector.component';
 import { CategoryBreadcrumbComponent } from './components/category-breadcrumb/category-breadcrumb.component';
+import { QuartDialogComponent } from './components/quart-dialog/quart-dialog.component';
 
 
 @NgModule({
@@ -32,5 +33,5 @@ import { CategoryBreadcrumbComponent } from './components/category-breadcrumb/ca
                   ProductDetailComponent, ListMetaComponent,ProductBoxComponent,
                   BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
                   ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
-                  ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent],})
+                  ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent, QuartDialogComponent],})
 export class ProductModule { }

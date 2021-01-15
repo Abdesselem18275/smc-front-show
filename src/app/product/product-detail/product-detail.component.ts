@@ -1,9 +1,10 @@
 import { Component , ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AppearanceVariant, BaseImage, ProductShort } from 'src/app/core/types';
+import { QuartDialogService } from '../service/quart-dialog.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,7 +16,11 @@ export class ProductDetailComponent    {
   isSmallScreen$: Observable<boolean>;
   product$: Observable<ProductShort>;
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
-  constructor(breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef,private route: ActivatedRoute) {
+  constructor(
+    breakpointObserver: BreakpointObserver,
+    private qds: QuartDialogService,
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute) {
     this.product$ = this.route.data.pipe(map(data => data.product));
     this.isSmallScreen$ = breakpointObserver.observe('(max-width: 1200px)').pipe(map(x => x.matches));
    }
@@ -28,6 +33,10 @@ export class ProductDetailComponent    {
       map((appVariance: AppearanceVariant) =>
       appVariance.images.map((image: BaseImage) => image.content).concat(appVariance.thumbNail).reverse())
     );
+  }
+
+  openQuart() {
+    this.product$.pipe(take(1)).subscribe(x =>this.qds.openQuartDialog(x));
   }
 
 }
