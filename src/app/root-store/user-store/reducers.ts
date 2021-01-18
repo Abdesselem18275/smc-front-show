@@ -40,17 +40,15 @@ const userReducer = createReducer(
       };
       return newState;
     }),
-    on(UsersActions.RedirectForAuthentification,(state,{ redirectUrl }) => {
-      return {
+    on(UsersActions.RedirectForAuthentification,(state,{ redirectUrl }) => ({
         ...state,
         redirectUrl:redirectUrl ? redirectUrl : state.redirectUrl
-      }
-    }),
+      })),
     on(UsersActions.ToggleFavoriteAction, (state, { id }) => {
       if (state.profile == null) {
         return state;
       }
-      let favorites = Object.assign([], state.profile.favorites.map(fav => fav.id));
+      let favorites = Object.assign([], state.profile.favorites.map(fav => fav));
       if (favorites.includes(id)) {
           favorites = favorites.filter( x => x !== id );
       } else {
@@ -66,6 +64,5 @@ const userReducer = createReducer(
       return newState;
     }),
 );
-export function reducer(state: State | undefined, action: Action) {
-  return userReducer(state, action);
-}
+export const  reducer = (state: State | undefined, action: Action)  => userReducer(state, action) ;
+

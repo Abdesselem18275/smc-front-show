@@ -27,7 +27,9 @@
         </header>
     <main class="card px4 column--centred">
       <mat-nav-list  class="nav-list nav-list--full-width">
-          <mat-list-item  routerLink="/product/favorites">
+          <mat-list-item  
+          [queryParams]="{profiles: (this.profile$ | async).id}"
+          routerLink="/product/list">
               <mat-icon matListIcon>favorite </mat-icon>
               <div i18n matLine>Favorites</div>
           </mat-list-item>

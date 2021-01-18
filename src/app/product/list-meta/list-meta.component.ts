@@ -3,7 +3,7 @@ import { ProductStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
@@ -31,8 +31,8 @@ export class ListMetaComponent  {
       this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
       this.isSearchActive$ = this.route.queryParamMap.pipe(
        map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)));
-       this.isFavoriteActive$ =   this.route.url.pipe(
-         map((urls: UrlSegment[]) => urls.toString().includes('favorites'))
+       this.isFavoriteActive$ =   this.route.queryParamMap.pipe(
+         map((paramMap: ParamMap) => paramMap.has('profiles'))
        );
       this.activeCategory$ = this.route.queryParamMap.pipe(
         map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),

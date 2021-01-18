@@ -46,7 +46,6 @@ export class FavoriteHandlerDirective implements AfterContentInit,OnDestroy {
 
     // eslint-disable-next-line no-underscore-dangle
     this.matIcon = this.matIconComp._elementRef.nativeElement;
-    console.warn(this.matIcon);
     this.subscription = this.store$.select(UserStoreSelectors.selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
       this.updateIconStyle(state);
       });

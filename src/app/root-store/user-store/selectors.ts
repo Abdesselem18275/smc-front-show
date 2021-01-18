@@ -31,7 +31,7 @@ export const selectIsUserLoaded = createSelector(
 export const selectIsFavorite = createSelector(
   selectUser,
   selectIsUserLoaded,
-  (user: Profile,isLoaded: boolean, prop: {id: number}) => (isLoaded ? user.favorites.map(fav => fav.id).includes(prop.id):false)
+  (user: Profile,isLoaded: boolean, prop: {id: number}) => (isLoaded ? user.favorites.includes(prop.id):false)
   );
 
 export const selectIsAuthentificated = createSelector(
