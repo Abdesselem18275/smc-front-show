@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { createAction, props, Action } from '@ngrx/store';
-import { ProductShort } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 
 // eslint-disable-next-line no-shadow
 export enum ProductActionsType {
@@ -16,7 +16,7 @@ export enum ProductActionsType {
 
 export const AddOrUpdateAction = createAction(
   ProductActionsType.UPDATE,
-  props<{ product: ProductShort}>()
+  props<{ product: Product}>()
 );
 
 export const AddOrUpdateManyAction = createAction(
@@ -40,4 +40,4 @@ export const SetManyProductsAction = createAction(
   props<{ payload: any}>()
 );
 export const DeleteProduct = createAction(ProductActionsType.REMOVE, props<{ id: string }>());
-export const LoadProductAction = createAction(ProductActionsType.LOAD_PRODUCT, props<{ product: ProductShort }>());
+export const LoadProductAction = createAction(ProductActionsType.LOAD_PRODUCT, props<{ product: Product }>());

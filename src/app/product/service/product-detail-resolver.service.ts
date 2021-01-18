@@ -5,12 +5,12 @@ import { mergeMap, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ProductStoreActions } from 'src/app/root-store';
 import { AppDataService } from 'src/app/shared/service/app-data.service';
-import { ProductShort } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductDetailResolverService implements Resolve<ProductShort> {
+export class ProductDetailResolverService implements Resolve<Product> {
 
   constructor(private ads: AppDataService, private router: Router,private store$: Store<RootStoreState.State>) {
 
@@ -19,9 +19,9 @@ export class ProductDetailResolverService implements Resolve<ProductShort> {
   Observable<never> {
     this.store$.dispatch(ProductStoreActions.LoadRequestAction());
     const id = route.paramMap.get('id');
-    return this.ads.get<ProductShort>(`/product/${id}/`).pipe(
+    return this.ads.get<Product>(`/products/${id}/`).pipe(
       take(1),
-      mergeMap((product: ProductShort) => {
+      mergeMap((product: Product) => {
         if (product) {
           this.store$.dispatch(ProductStoreActions.LoadProductAction({product}));
           return of(product);

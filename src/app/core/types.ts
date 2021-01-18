@@ -22,7 +22,7 @@ export interface Choice {
     value: string;
     checked: boolean;
 }
-export interface ProductShort {
+export type Product = {
     id: number;
     designation: string;
     shortDescription: string;
@@ -30,21 +30,20 @@ export interface ProductShort {
     longDescription: string;
     rawMaterials: string[];
     rootCategory: number;
-    dimensionsSpecifications: DimensionsSpecification[];
+    dimensionVariants: DimensionVariant[];
     appearanceVariants: AppearanceVariant[];
     componentsSpecifications: ComponentsSpecification[];
     features: Feature[];
+};
 
-}
-
-export interface ProductLong extends ProductShort {
-  longDescription: string;
-}
-
-export interface DimensionsSpecification {
-    measures: number[];
+export interface DimensionVariantSpecification {
+    value: number[];
     measureType: MeasureType;
     isMasterSpecification: boolean;
+}
+export interface DimensionVariant {
+  designation: string;
+  dimensionVariantsSpecs: DimensionVariantSpecification[];
 }
 export interface MeasureType {
    designation: string;
@@ -78,8 +77,6 @@ export interface BaseImage {
     content: string;
     designation: string;
 }
-
-
 export interface Category   {
     id?: number;
     designation: string;
@@ -115,7 +112,7 @@ export interface MenuTreeData {
     [key: string]: string;
   }
 
-export type PaginatedProductsType = {count: number;next: string;previous: string;results: ProductShort[]};
+export type PaginatedProductsType = {count: number;next: string;previous: string;results: Product[]};
 export type InitDataType = {
     categories: Category[];
     icons: BaseImage[];

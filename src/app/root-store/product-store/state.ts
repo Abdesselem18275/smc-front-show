@@ -1,18 +1,18 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { ProductShort } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 
-export interface State extends EntityState<ProductShort> {
+export interface State extends EntityState<Product> {
   isLoading: boolean;
   objCount: number;
   isBigBox: boolean;
   pageNumber: number;
-  selectedProduct: ProductShort;
+  selectedProduct: Product;
 }
 
 
-export const selectParamKey = (a: ProductShort): number => a.id;
-export const sortByName = (a: ProductShort, b: ProductShort): number => a.designation.localeCompare(b.designation);
-export const adapter: EntityAdapter<ProductShort> = createEntityAdapter<ProductShort>({
+export const selectParamKey = (a: Product): number => a.id;
+export const sortByName = (a: Product, b: Product): number => a.designation.localeCompare(b.designation);
+export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
   selectId: selectParamKey,
  // sortComparer: sortByName,
 });

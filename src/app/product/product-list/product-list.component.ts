@@ -5,7 +5,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { sideSlideInAnimation } from 'src/app/animations';
 import { map } from 'rxjs/operators';
-import { ProductShort } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 const PRODUCTS_PER_PAGE = 10;
 @Component({
   selector: 'app-product-list',
@@ -15,7 +15,7 @@ const PRODUCTS_PER_PAGE = 10;
 })
 export class ProductListComponent  {
 
-  productShorts$: Observable<ProductShort[]>;
+  productShorts$: Observable<Product[]>;
   isLoading$: Observable<boolean>;
   isBigSize$: Observable<boolean>;
   pagesCount$: Observable<number>;

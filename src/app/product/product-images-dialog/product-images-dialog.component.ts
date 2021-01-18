@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take,filter } from 'rxjs/operators';
-import { AppearanceVariant, BaseImage, ProductLong } from 'src/app/core/types';
+import { AppearanceVariant, BaseImage, Product } from 'src/app/core/types';
 
 @Component({
   selector: 'app-product-images-dialog',
@@ -16,7 +16,7 @@ export class ProductImagesDialogComponent implements OnInit {
   constructor(
     private cdRef: ChangeDetectorRef,
     public dialogRef: MatDialogRef<ProductImagesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {product: ProductLong}) {
+    @Inject(MAT_DIALOG_DATA) public data: {product: Product}) {
       this.images.pipe(
       filter(x => x && x.length > 0),
       take(1)).subscribe((x: string[])=> {

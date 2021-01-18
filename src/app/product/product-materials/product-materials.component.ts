@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ProductShort } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 
 @Component({
   selector: 'app-product-materials',
@@ -7,6 +7,6 @@ import { ProductShort } from 'src/app/core/types';
   templateUrl: './product-materials.component.html'
 })
 export class ProductMaterialsComponent  {
-  @Input() product!: ProductShort;
+  @Input() product!: Product;
   constructor() { }
 }

@@ -9,7 +9,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from '..';
-import { PaginatedProductsType, ProductShort } from 'src/app/core/types';
+import { PaginatedProductsType, Product } from 'src/app/core/types';
 
 
 @Injectable()
@@ -37,7 +37,7 @@ export class ProductEffects {
         ofType(ROUTER_NAVIGATED),
         filter((x: any) =>  (x.payload.event.url).includes('product/favorites')),
         switchMap(() =>
-        this.ads.get<ProductShort[]>(`/profile/${this.as.getProfileId()}/favorites/`).pipe(
+        this.ads.get<Product[]>(`/profiles/favorites/`).pipe(
           concatMap(res => ([
             ProductStoreActions.ClearAllAction(),
             ProductStoreActions.AddOrUpdateManyAction({results : {

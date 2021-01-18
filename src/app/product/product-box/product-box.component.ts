@@ -7,7 +7,7 @@ import { verticalAccordionAnimation } from 'src/app/animations';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
-import { ProductShort, Category, AppearanceVariant } from 'src/app/core/types';
+import { Product, Category, AppearanceVariant } from 'src/app/core/types';
 
 
 @Component({
@@ -20,7 +20,7 @@ import { ProductShort, Category, AppearanceVariant } from 'src/app/core/types';
 })
 export class ProductBoxComponent implements OnInit  {
 
-  @Input() product!: ProductShort;
+  @Input() product!: Product;
   isSearchActive: Observable<boolean>;
   isFavoriteRoute: Observable<any>;
   isBigSize$: Observable<boolean> = EMPTY;

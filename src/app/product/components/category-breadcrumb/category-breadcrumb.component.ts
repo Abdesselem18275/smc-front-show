@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Category, ProductShort } from 'src/app/core/types';
+import { Category, Product } from 'src/app/core/types';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryBreadcrumbComponent implements OnInit {
   @Input()
-  currentProduct!: ProductShort;
+  currentProduct!: Product;
   categories: Category[] = [];
   items: string[] = [];
   isNotEmpty = true;
@@ -41,10 +41,7 @@ export class CategoryBreadcrumbComponent implements OnInit {
     );
   }
 
-  private getItem(categories: Category[],key: number): Category |undefined {
-    return categories.find(category =>  category.id === key);
-  }
-
+  private getItem = (categories: Category[],key: number): Category |undefined => categories.find(category => category.id === key);
   private setItems(categories: Category[],param: Category): Category[] {
     if (param === undefined || param.designation==='All Cateogries') {
       return [];

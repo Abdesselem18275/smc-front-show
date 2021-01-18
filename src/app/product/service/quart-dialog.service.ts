@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductLong } from 'src/app/core/types';
+import { Product } from 'src/app/core/types';
 import { QuartDialogComponent } from '../components/quart-dialog/quart-dialog.component';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class QuartDialogService {
 
   }
 
-  openQuartDialog(product: ProductLong) {
+  openQuartDialog(product: Product) {
     const dialogRef = this.dialog.open(QuartDialogComponent, {
       width: '640px',
       data: {product}

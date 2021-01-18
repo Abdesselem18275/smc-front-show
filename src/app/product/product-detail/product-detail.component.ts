@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AppearanceVariant, BaseImage, ProductShort } from 'src/app/core/types';
+import { AppearanceVariant, BaseImage, Product } from 'src/app/core/types';
 import { QuartDialogService } from '../service/quart-dialog.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { QuartDialogService } from '../service/quart-dialog.service';
 })
 export class ProductDetailComponent    {
   isSmallScreen$: Observable<boolean>;
-  product$: Observable<ProductShort>;
+  product$: Observable<Product>;
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
   constructor(
     breakpointObserver: BreakpointObserver,
