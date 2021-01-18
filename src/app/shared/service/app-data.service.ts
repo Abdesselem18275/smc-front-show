@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Observable, throwError, from } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { ParamMap, } from '@angular/router';
-import { API_URL, TOKEN_KEY, PROFILE_ID } from '../../injectables';
+import { API_URL} from '../../injectables';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable, Inject } from '@angular/core';
 import {
   HttpRequest,
@@ -15,14 +16,14 @@ import { mergeMap } from 'rxjs/operators';
 export class TokenInjectorInterceptor implements HttpInterceptor {
 
   constructor(
-    private store : Store<any>,
+    private store: Store<any>,
     @Inject(TOKEN_KEY) private tokenKey: string
     ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token: string = localStorage.getItem(this.tokenKey);
     if(request.method === 'JSONP') {
-      return next.handle(request)
+      return next.handle(request);
     }
     if (request.url.includes('smc-static-media')) {
       return next.handle(request);
@@ -41,7 +42,7 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
             'Accept-Language':lang.id
           }
         })))
-      )
+      );
     }
 
   }

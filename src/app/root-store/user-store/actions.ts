@@ -1,6 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { createAction, props } from '@ngrx/store';
-import { Navigation, RouterStateSnapshot, ActivatedRouteSnapshot, Params } from '@angular/router';
-
 export enum ActionsType {
   LOGIN     = '[User] Login a user',
   FAILURE = '[User] Request Failure',
@@ -37,8 +36,8 @@ export const CreateUserAction = createAction(
 export const UpdateUserAction = createAction(
   ActionsType.UPDATE,
   props<{
-    message?:string
-    payload: any}>()
+    message?: string;
+    payload: any;}>()
 );
 export const ToggleFavoriteAction = createAction(
   ActionsType.TOGGLE_FAVORITE,
@@ -51,4 +50,4 @@ export const FetchUserRequestsAction = createAction(
 
 
 export const RedirectForAuthentification = createAction(
-    ActionsType.AUTH_REDIRECT,props<{redirectUrl?:string}>());
+    ActionsType.AUTH_REDIRECT,props<{redirectUrl?: string}>());

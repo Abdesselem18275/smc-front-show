@@ -29,7 +29,6 @@ export class ScrollPaginatorDirective implements AfterViewInit  {
 
   ngAfterViewInit(): void {
     const rootElement = this.onViewPort === true ? null : this.renderer.parentNode(this.element.nativeElement);
-    console.warn(rootElement);
     const options = {
       root : rootElement,
       rootMargin: '0px',
