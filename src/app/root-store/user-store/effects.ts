@@ -21,10 +21,10 @@ login$  = createEffect(() =>
       ofType(UsersActions.LoginAction),
       withLatestFrom(this.store$.select(selectRedirectNavigation)),
       switchMap((content: any)  =>
-        this.ads.post<{profile: Profile;token: string}>('/s-auth/',JSON.stringify(content[0].credentials)).pipe(
-          switchMap((payload: {profile: Profile;token: string} )=> {
-            localStorage.setItem(this.tokenKey, payload.token);
-            localStorage.setItem(this.profileId, payload.profile.id.toString());
+        this.ads.post<Profile>('/s-auth/',JSON.stringify(content[0].credentials)).pipe(
+          switchMap((payload: Profile )=> {
+            localStorage.setItem(this.tokenKey, payload.auth_token);
+            localStorage.setItem(this.profileId, payload.id.toString());
             this.as.redirect(content[1]);
             return [
               UsersActions.LoadUserAction({payload})
@@ -51,12 +51,12 @@ login$  = createEffect(() =>
         ofType(UsersActions.CreateUserAction),
         map((action: any ) => JSON.stringify(action.payload)),
         switchMap((payload)  =>
-          this.ads.post<{profile: Profile;token: string}>('/profiles/',payload).pipe(
-            map((response: {profile: Profile;token: string}) => {
-              localStorage.setItem(this.tokenKey, response.token);
-              localStorage.setItem(this.profileId, response.profile.id.toString());
+          this.ads.post<Profile>('/profiles/',payload).pipe(
+            map((response: Profile) => {
+              localStorage.setItem(this.tokenKey, response.auth_token);
+              localStorage.setItem(this.profileId, response.id.toString());
               this.as.redirect();
-              return UsersActions.LoadUserAction({payload: response.profile});
+              return UsersActions.LoadUserAction({payload: response});
             }),
             catchError(async (err) =>  UsersActions.FailureAction({ message: err })))
       )));
@@ -65,7 +65,7 @@ login$  = createEffect(() =>
         ofType(UsersActions.UpdateUserAction),
         map((action: any) => [JSON.stringify(action.payload, this.editFormReplacer),action.message]),
         switchMap((payload)  =>
-          this.ads.patch<Profile>(`/profile/${this.as.getProfileId()}/`,payload[0]).pipe(
+          this.ads.patch<Profile>(`/profiles/${this.as.getProfileId()}/`,payload[0]).pipe(
             map((profile: Profile) => {
               this.snakBar.open(payload[1]);
               return UsersActions.LoadUserAction({payload: profile});

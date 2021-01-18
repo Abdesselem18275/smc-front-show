@@ -54,7 +54,7 @@ export class ConfigService {
   loadProfile(): Promise<void>  {
 
     return localStorage.getItem(this.profileId) ?
-    this.ads.get<Profile>(`/profile/${localStorage.getItem(this.profileId)}/`).pipe(take(1)).toPromise().then((profile: Profile) => {
+    this.ads.get<Profile>(`/profiles/${localStorage.getItem(this.profileId)}/`).pipe(take(1)).toPromise().then((profile: Profile) => {
       this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}));
     }) : EMPTY.toPromise();
   }
