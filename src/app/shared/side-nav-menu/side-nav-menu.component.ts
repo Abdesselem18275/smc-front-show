@@ -1,13 +1,13 @@
 import { Component} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
-import { MenuTreeData } from 'src/app/models/product.models';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
 import { Observable } from 'rxjs';
 import { Profile } from 'src/app/models/account.models';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
+import { MenuTreeData } from 'src/app/core/types';
 
 
 @Component({
@@ -20,8 +20,6 @@ export class SideNavMenuComponent {
   isLoading$: Observable<boolean>;
   navMenuData$: Observable<MenuTreeData[]>;
   isLogged$: Observable<boolean>;
-  languageType: LanguageType;
-  isSideNav$: Observable<boolean>;
   constructor(private store$: Store<RootStoreState.State>) {
                 this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
                 this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);

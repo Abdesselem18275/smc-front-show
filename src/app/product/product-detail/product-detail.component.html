@@ -1,8 +1,17 @@
-<section class="global--gutters">
-  <app-category-breadcrumb class="mat-body-2 font--dark-grey breadcrumb" [currentProduct]="product$ |async"></app-category-breadcrumb>
+<main class="global--gutters column--centred">
+<section class="actions-container">
+  <button  #pulsingButton [appFavoriteHandler]="(product$ |async)?.id" mat-mini-fab>
+    <mat-icon #favIcon>favorite</mat-icon>
+  </button>
+  <button (click)="openQuart()" #pulsingButton mat-mini-fab>
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
 </section>
-<main class="main-container global--gutters ">
+<main class="main-container">
+
   <section class="product-title">
+      <app-category-breadcrumb class="mat-caption font--dark-grey" [currentProduct]="product$ |async"></app-category-breadcrumb>
+
     <h1 class="mat-h1">{{(product$ |async)?.designation | uppercase}}</h1>
     <span class="font--grey mat-body">{{(selectedAppearanceVariant$|async)?.look?.texture +' '+ (selectedAppearanceVariant$|async)?.look?.material}}</span>
   </section>
@@ -34,8 +43,8 @@
   </section>
     <section class="dimension">
       <app-product-dimensions
-      *ngIf="(product$ |async).dimensionsSpecifications.length > 0"
-      [productDimensions]="(product$ |async).dimensionsSpecifications">
+      *ngIf="(product$ |async).dimensionVariants.length > 0"
+      [dimensionVariants]="(product$ |async).dimensionVariants">
       </app-product-dimensions>
     </section>
     <section class="materials">
@@ -54,3 +63,4 @@
 <footer class="global--gutters related-products">
 <h1 i18n class="mat-h1 font--dark-grey">RELATED PRODUCTS</h1>
 </footer>
+</main>

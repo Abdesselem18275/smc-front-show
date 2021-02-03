@@ -15,12 +15,13 @@ import { MatDialog } from '@angular/material/dialog';
 export class AccountCardComponent implements OnInit {
   profile$: Observable<Profile>;
   isSideNav$: Observable<boolean>;
-  isLogged$:Observable<boolean>;
-  initials$ : Observable<string>
-  constructor(private matDialog : MatDialog,private router: Router,private store$: Store<any>) {
+  isLogged$: Observable<boolean>;
+  initials$: Observable<string>;
+  constructor(private matDialog: MatDialog,private router: Router,private store$: Store<any>) {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-    this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(map(profile => profile && profile.first_name[0].concat(profile.last_name[0]) ))
+    this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(
+      map(profile => profile ? profile.first_name[0].concat(profile.last_name[0]) : '?' ));
   }
 
   ngOnInit() {
@@ -28,11 +29,11 @@ export class AccountCardComponent implements OnInit {
   }
 
   logOut() {
-    this.matDialog.closeAll()
+    this.matDialog.closeAll();
     this.store$.dispatch(UserStoreActions.LogoutAction());
   }
   navToProfile() {
-    const redirect = '/account/profile'
+    const redirect = '/account/profile';
     this.router.navigateByUrl(redirect);
   }
 

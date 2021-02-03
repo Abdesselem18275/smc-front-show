@@ -7,24 +7,19 @@ export const featureKey = 'global';
 
 const globalReducer = createReducer(
     initialState,
-    on(GlobalActions.SetLanguageAction, (state, { key }) => {
-        return {
+    on(GlobalActions.setLanguageAction, (state, { key }) => ({
             ...state ,
             language : key
-          };
-    }),
-    on(GlobalActions.LoadInitDataAction, (state, { payload }) => {
-      return {
+          })),
+    on(GlobalActions.loadInitDataAction, (state, { payload }) => ({
           ...state ,
-          categories : payload['categories'],
-          filters : payload['filters'],
-          navMenuTree : payload['navMenuTree'],
-          requestSubjects : payload['subjects']
-        };
-  }),
+          categories : payload.categories,
+          filters : payload.filters,
+          navMenuTree : payload.navMenuTree,
+          requestSubjects : payload.subjects
+        })),
 );
 
 
-  export function reducer(state: State | undefined, action: Action) {
-    return globalReducer(state, action);
-  }
+  export const reducer = (state: State | undefined, action: Action) => globalReducer(state, action);
+

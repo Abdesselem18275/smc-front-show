@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -31,10 +32,10 @@ export class GoogleAuthService {
         });
   }
 
-  buttonRender(elementId: string , width: number):void {
+  buttonRender(elementId: string , width: number): void {
     gapi.signin2.render(elementId, {
       scope: 'profile email',
-      width : width,
+      width,
       height : '36',
       theme: 'dark',
       longtitle: true,
@@ -42,27 +43,7 @@ export class GoogleAuthService {
       onfailure: this.onFailure()
     });
   }
-  private onFailure():void {
-  }
-
-  private onSignIn(googleUser) {
-    this.ngZone.runOutsideAngular(() => {this.createOrSignin(googleUser.getAuthResponse().id_token).pipe(take(1),withLatestFrom(
-      this.store$.select(UserStoreSelectors.selectRedirectNavigation))).
-      subscribe(
-        (data : [{token: string, profile: Profile} ,string] ) => 
-        {
-      
-      const jsonData = data[0];
-      localStorage.setItem(this.tokenKey, jsonData.token);
-      localStorage.setItem(this.profileId, jsonData.profile.id.toString());
-      this.store$.dispatch(UserStoreActions.LoadUserAction({payload: jsonData.profile }));
-      this.ngZone.run(() => {this.authService.redirect(data[1]);});
-      this.signOut();
-    })});
-     }
-
-
-  createOrSignin(id_token: string):Observable<any> {
+  createOrSignin(id_token: string): Observable<any> {
     const endPoint = '/g-auth/';
     const query: string = [
       this.apiUrl,
@@ -80,5 +61,26 @@ export class GoogleAuthService {
     const auth2 = gapi.auth2.getAuthInstance();
     return auth2.signOut();
   }
+  private onFailure(): void {
+  }
+
+  private onSignIn(googleUser) {
+    this.ngZone.runOutsideAngular(() => {this.createOrSignin(googleUser.getAuthResponse().id_token).pipe(take(1),withLatestFrom(
+      this.store$.select(UserStoreSelectors.selectRedirectNavigation))).
+      subscribe(
+        (data: [profile: Profile ,redirect:string] ) =>
+        {
+
+      const profile = data[0];
+      localStorage.setItem(this.tokenKey, profile.auth_token);
+      localStorage.setItem(this.profileId, profile.id.toString());
+      this.store$.dispatch(UserStoreActions.LoadUserAction({payload: profile }));
+      this.ngZone.run(() => {this.authService.redirect(data[1]);});
+      this.signOut();
+    });});
+     }
+
+
+
 
 }

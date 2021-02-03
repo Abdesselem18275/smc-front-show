@@ -43,8 +43,8 @@
             *ngIf="isDimensionOpen">
             <section >
       <app-product-dimensions
-              *ngIf="product.dimensionsSpecifications.length > 0"
-              [productDimensions]="product.dimensionsSpecifications">
+              *ngIf="product.dimensionVariants.length > 0"
+              [dimensionVariants]="product.dimensionVariants">
       </app-product-dimensions>
             </section>
 

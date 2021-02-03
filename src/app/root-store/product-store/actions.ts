@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { createAction, props, Action } from '@ngrx/store';
-import { ProductShort } from 'src/app/models/product.models';
+import { Product } from 'src/app/core/types';
 
-export enum ActionsType {
+// eslint-disable-next-line no-shadow
+export enum ProductActionsType {
   UPDATE  = '[Product] Add Or Update',
   SET =  '[Product] Set products',
   UPDATES = '[Product] Multiple Add Or Update',
@@ -13,29 +15,29 @@ export enum ActionsType {
 }
 
 export const AddOrUpdateAction = createAction(
-  ActionsType.UPDATE,
-  props<{ product: ProductShort}>()
+  ProductActionsType.UPDATE,
+  props<{ product: Product}>()
 );
 
 export const AddOrUpdateManyAction = createAction(
-  ActionsType.UPDATES,
+  ProductActionsType.UPDATES,
   props<{ results: any}>()
 );
 
 export const ClearAllAction = createAction(
-  ActionsType.CLEAR,
+  ProductActionsType.CLEAR,
 );
 
 export const LoadRequestAction = createAction(
-  ActionsType.IS_LOADING,
+  ProductActionsType.IS_LOADING,
 );
 
 export const ToggleBoxSizeAction = createAction(
-  ActionsType.TOGGLE_BOX_SIZE,
+  ProductActionsType.TOGGLE_BOX_SIZE,
 );
 export const SetManyProductsAction = createAction(
-  ActionsType.SET,
+  ProductActionsType.SET,
   props<{ payload: any}>()
 );
-export const DeleteProduct = createAction(ActionsType.REMOVE, props<{ id: string }>());
-export const LoadProductAction = createAction(ActionsType.LOAD_PRODUCT, props<{ product: ProductShort }>());
+export const DeleteProduct = createAction(ProductActionsType.REMOVE, props<{ id: string }>());
+export const LoadProductAction = createAction(ProductActionsType.LOAD_PRODUCT, props<{ product: Product }>());

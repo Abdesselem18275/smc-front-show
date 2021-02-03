@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Observable, throwError, from } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { ParamMap, } from '@angular/router';
-import { API_URL, TOKEN_KEY, PROFILE_ID } from '../../injectables';
+import { API_URL} from '../../injectables';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -22,8 +22,8 @@ export class AppDataService {
         });
       } else {
         paramMap.keys.forEach(key => {
-          httpParams = httpParams.set(key, paramMap.get(key));
-        })
+          httpParams = httpParams.set(key, paramMap.get(key) ?? '');
+        });
       }
 
       options = { params: httpParams };
@@ -51,10 +51,10 @@ export class AppDataService {
       catchError(error => this.handleError(error)));
   }
 
-  delete(endPoint: string):Observable<any> {
+  delete(endPoint: string): Observable<any> {
     const query: string = [this.apiUrl, endPoint].join('');
     return this.http.delete(query).pipe(
-      catchError(error => this.handleError(error))); 
+      catchError(error => this.handleError(error)));
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -66,7 +66,7 @@ export class AppDataService {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
-      
+
     }
     // Return an observable with a user-facing error message.
     return throwError(error.error);

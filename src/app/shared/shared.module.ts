@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
 
 import { ScrollPaginatorDirective } from './scroll-paginator.directive';
-import { TextHightlightDirective } from './text-hightlight.directive';
 import { LanguageBoxComponent } from './language-box/language-box.component';
 import { CategoryMenuComponent } from './category-menu/category-menu.component';
 import { ProductMenuComponent } from './product-menu/product-menu.component';
@@ -25,8 +24,7 @@ import { ImageZoomDirective } from './directives/image-zoom.directive';
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
-    AccountCardComponent,ControlValidatorMessageDirective,
-    TextHightlightDirective, LanguageBoxComponent,CategoryMenuComponent,
+    AccountCardComponent,ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent, ImageZoomDirective],
   imports:  [
     CommonModule,

@@ -10,7 +10,7 @@ import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-st
   templateUrl: './account-profile.component.html',
   styleUrls: ['./account-profile.component.scss']
 })
-export class AccountProfileComponent implements OnInit {
+export class AccountProfileComponent  {
   tabs = [
     { label: 'Informations', icon: 'account_circle' , path: 'profile' },
     { label: 'Favorites', icon: 'favorite' , path: 'favorites' },
@@ -19,12 +19,10 @@ export class AccountProfileComponent implements OnInit {
   activeLink=this.tabs[0].label;
   isUpdating$: Observable<boolean>;
   profile$: Observable<Profile>;
-  constructor(private store$: Store<RootStoreState.State>) { }
-
-  ngOnInit(): void {
-    //this.store$.dispatch(UserStoreActions.UserRefreshAction())
-    this.profile$ = this.store$.select(UserStoreSelectors.selectUser)
+  constructor(private store$: Store<RootStoreState.State>) {
+    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
   }
+
 
 }

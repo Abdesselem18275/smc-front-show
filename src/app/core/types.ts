@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { UrlTree } from '@angular/router';
 
 export interface MinimalProduct {
   id: number;
   designation: string;
-  appearanceVariants:string;
+  appearanceVariants: string;
 }
 export interface FilterCategory {
     controlType: string;
@@ -21,47 +22,48 @@ export interface Choice {
     value: string;
     checked: boolean;
 }
-export interface ProductShort {
+export type Product = {
     id: number;
     designation: string;
-    shortDescription: string
+    shortDescription: string;
     interiorCoatings: string[];
     longDescription: string;
     rawMaterials: string[];
     rootCategory: number;
-    dimensionsSpecifications: DimensionsSpecification[];
-    appearanceVariants : AppearanceVariant[];
-    componentsSpecifications: ComponentsSpecification[]
-    features: Feature[]
+    dimensionVariants: DimensionVariant[];
+    appearanceVariants: AppearanceVariant[];
+    componentsSpecifications: ComponentsSpecification[];
+    features: Feature[];
+};
 
+export interface DimensionVariantSpecification {
+    value: number[];
+    measureType: MeasureType;
+    isMasterSpecification: boolean;
 }
-
-export interface ProductLong extends ProductShort {
-  longDescription : string;
-}
-
-export interface DimensionsSpecification {
-    measures: number[];
-    measureType : MeasureType
+export interface DimensionVariant {
+  designation: string;
+  dimensionVariantsSpecs: DimensionVariantSpecification[];
 }
 export interface MeasureType {
-   designation : string
-   unit: string
+   designation: string;
+   getShortDesignation: string;
+   unit: string;
 }
 export interface AppearanceVariant {
-    id?:number;
-    thumbNail?:string;
+    id?: number;
+    thumbNail?: string;
     images?: BaseImage[];
     look?: Look;
 }
 export interface Look {
-    thumbNail : string;
+    thumbNail: string;
     material: string;
     texture: string;
  }
 export interface ComponentsSpecification {
-    component : ProductComponent;
-    measures : number[];
+    component: ProductComponent;
+    measures: number[];
     rawMaterials: string[];
 }
 
@@ -75,8 +77,6 @@ export interface BaseImage {
     content: string;
     designation: string;
 }
-
-
 export interface Category   {
     id?: number;
     designation: string;
@@ -86,7 +86,7 @@ export interface Category   {
     isLeaf?: boolean;
     children?: Category[];
     thumbNail?: string;
-    thumbNailAux?:string;
+    thumbNailAux?: string;
     svgIcon?: string;
 }
 
@@ -95,20 +95,10 @@ export interface Feature {
     description: string;
     svgIcon: BaseImage;
 }
-export enum ParamType {
-    PAGE = 'Page',
-    FILTER = 'Filter',
-    CATEGORY = 'Category',
-    SEARCH = 'Search',
-}
-export enum AppSelectorMode {
-    Minimal = 'MINIMAL',
-    Full = 'FULL',
-}
 export interface Param {
     key: string;
     value: string;
-    type: ParamType;
+    type: any;
 }
 export interface MenuTreeData {
     designation: string;
@@ -122,4 +112,10 @@ export interface MenuTreeData {
     [key: string]: string;
   }
 
-export type PaginatedProductsType = {count:number,next:string,previous:string,results:ProductShort[]}
+export type PaginatedProductsType = {count: number;next: string;previous: string;results: Product[]};
+export type InitDataType = {
+    categories: Category[];
+    icons: BaseImage[];
+    navMenuTree: MenuTreeData[];
+}
+;

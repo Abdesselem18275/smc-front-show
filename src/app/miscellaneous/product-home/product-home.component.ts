@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, OnDestroy} from '@angular/core';
-import { Category } from '../../models/product.models';
-import { Observable, BehaviorSubject, Subscription } from 'rxjs';
+import { Component, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
+import { Category } from 'src/app/core/types';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { ViewportScroller } from '@angular/common';
-import { Router, Scroll, ActivatedRoute } from '@angular/router';
-import { filter, map, take } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { filter, take } from 'rxjs/operators';
 
 
 @Component({

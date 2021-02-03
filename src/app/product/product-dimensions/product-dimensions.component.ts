@@ -1,30 +1,66 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DimensionsSpecification, DimensionElement } from '../../models/product.models';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { HelperService} from '../../shared/service/helper.service';
+import { DimensionVariant, DimensionVariantSpecification } from 'src/app/core/types';
 
 @Component({
   selector: 'app-product-dimensions',
   templateUrl: './product-dimensions.component.html',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls: ['./product-dimensions.component.scss'],
 })
 export class ProductDimensionsComponent implements OnInit {
-  @Input() productDimensions : DimensionsSpecification[]
-  displayedColumns : string[]
-  dataSource : MatTableDataSource<DimensionElement>;
-  constructor(private helperS:HelperService) { }
+  @Input()
+  mode: 'quart'|'presentation' = 'presentation';
+  @Input()
+  dimensionVariants: DimensionVariant[] = [];
+  @Output()
+  variantQuantities  = new EventEmitter<{[key: string]: number}>();
+  quantityForm: FormGroup;
+  displayedColumns: string[] = [];
+  dimensionColumns: string[] = [];
+  dataSource!: MatTableDataSource<DimensionVariant>;
+  constructor(private fb: FormBuilder) {
+    this.quantityForm = this.fb.group({});
+    this.quantityForm.valueChanges.subscribe((value) => this.variantQuantities.emit(value));
+   }
 
   ngOnInit(): void {
+    this.dimensionVariants.forEach((dimVariant: DimensionVariant) => {
+      this.quantityForm.setControl(dimVariant.designation,new FormControl(0));
+    });
+    this.dataSource = new MatTableDataSource<DimensionVariant>(this.dimensionVariants);
+    this.dimensionColumns = Array.from(this.dimensionVariants.reduce(
+      (acc: Set<string>,currentValue: DimensionVariant) => {
+        currentValue.dimensionVariantsSpecs.forEach(dim => {
+          acc.add(dim.measureType.designation);
+        });
+        return acc;
+      }
 
-    this.dataSource = new MatTableDataSource<DimensionElement>(this.helperS.toDimensionArray(this.productDimensions))
-    this.displayedColumns = this.productDimensions.map(x => x.measureType.designation)
-    this.displayedColumns.unshift('no.')
+      ,new Set<string>()));
+    this.displayedColumns = this.dimensionColumns.slice();
+    this.displayedColumns.unshift('ref');
+    if(!this.isPresentationMode) {
+      this.displayedColumns.unshift('quantity');
+    }
   }
   variantsNumber() {
-      return this.productDimensions[0].measures.length
+      return this.dimensionColumns.length;
     }
   tableWidth() {
-    return `${this.displayedColumns.length * 80}px`
+    return `${this.displayedColumns.length * 80}px`;
+  }
+  getMeasure(variant: DimensionVariant,measureType: string): string {
+      const varIndex = this.dimensionVariants.find((dimVar: DimensionVariant) => dimVar.designation === variant.designation);
+      if (variant) {
+        const measure = varIndex.dimensionVariantsSpecs.find((dimSpecs: DimensionVariantSpecification) =>
+          dimSpecs.measureType.designation === measureType );
+        return measure ? `${measure.value} ${measure.measureType.unit}` : '-';
+      } else {
+        return '-';
+      }
+  }
+  get isPresentationMode(): boolean {
+    return this.mode === 'presentation';
   }
 }

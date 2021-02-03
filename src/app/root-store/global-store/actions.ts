@@ -1,12 +1,12 @@
 import { createAction, props } from '@ngrx/store';
 import { UserLanguage } from './state';
 
-export const SetLanguageAction = createAction(
+export const setLanguageAction = createAction(
     '[Global] Set language',
     props<{ key: UserLanguage}>()
   );
 
-export const LoadInitDataAction = createAction(
+export const loadInitDataAction = createAction(
     '[Global] Load init data',
     props<{payload: any}>()
   );

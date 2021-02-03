@@ -18,26 +18,22 @@ import { MatSidenav } from '@angular/material/sidenav';
     sideSlideInAnimation]
 })
 export class AppComponent {
-  isSideMenuActive: boolean;
-  isOverlay$: Observable<boolean>;
-  showMenu$ :Observable<boolean>;
-  @ViewChild('sidenav',{static:false}) sideNav  :MatSidenav
+  @ViewChild('sidenav',{static:false}) sideNav!: MatSidenav;
+  isSideMenuActive = false;
+  showMenu$: Observable<boolean>;
 
-  constructor(
-              private router : Router) {
-
-
+  constructor(private router: Router) {
                 this.showMenu$ = this.router.events.pipe(
-                  filter(event => event instanceof NavigationEnd),
-                  map((event:NavigationEnd) =>
+                  filter((event: any) => event instanceof NavigationEnd),
+                  map((event: NavigationEnd) =>
                   !(event.url.includes('account/authentification') ||
                   event.urlAfterRedirects.includes('miscellaneous/home')
                   ))
-                )
-                this.router.events.subscribe(() => this.sideNav.close())
+                );
+                this.router.events.subscribe(() => this.sideNav.close());
 
   }
   toggleSideNav() {
-    this.sideNav.toggle()
+    this.sideNav.toggle();
   }
 }

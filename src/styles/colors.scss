@@ -12,12 +12,15 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
   color: blue;
 }
 .font--amber {
-  color: orange;
+  color: orange!important;
 }
 
 
 .font--grey {
   color:$grey-color ;
+}
+.font--light-grey {
+  color:$light-grey-color;
 }
 .font--dark-grey {
   color:$dark-grey ;
@@ -38,7 +41,7 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
 }
 
 .bg--extreme-light-grey {
-  background-color:$extreme-light-grey-color;
+  background-color:$extreme-light-grey-color!important;
 }
 
 .alert {

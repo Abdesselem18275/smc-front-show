@@ -8,39 +8,30 @@ import * as UsersActions from './actions';
 import { selectUser, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { editFormReplacer } from 'src/utils/json-util';
 import { Router } from '@angular/router';
 import { AppDataService } from 'src/app/shared/service/app-data.service';
 
 
 @Injectable()
 export class UserEffects {
-     constructor(
-      private router: Router,
-       private actions$: Actions ,
-       private as: SmcAuthService,
-       private ads: AppDataService,
-       private snakBar: MatSnackBar,
-       @Inject(TOKEN_KEY) private tokenKey: string,
-       @Inject(PROFILE_ID) private profileId: string,
-       private store$: Store<any>) {}
 
-    login$  = createEffect(() =>
+
+login$  = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.LoginAction),
       withLatestFrom(this.store$.select(selectRedirectNavigation)),
-      switchMap((content:any)  =>
-        this.ads.post<{profile:Profile,token:string}>('/s-auth/',JSON.stringify(content[0].credentials)).pipe(
-          switchMap((payload:{profile:Profile,token:string} )=> {
-            localStorage.setItem(this.tokenKey, payload.token);
-            localStorage.setItem(this.profileId, payload.profile.id.toString());
+      switchMap((content: any)  =>
+        this.ads.post<Profile>('/s-auth/',JSON.stringify(content[0].credentials)).pipe(
+          switchMap((payload: Profile )=> {
+            localStorage.setItem(this.tokenKey, payload.auth_token);
+            localStorage.setItem(this.profileId, payload.id.toString());
             this.as.redirect(content[1]);
             return [
               UsersActions.LoadUserAction({payload})
             ];
           }),
           catchError(async (err) =>  {
-            console.warn(err)
+            console.warn(err);
             return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
           }))
     )));
@@ -60,30 +51,26 @@ export class UserEffects {
         ofType(UsersActions.CreateUserAction),
         map((action: any ) => JSON.stringify(action.payload)),
         switchMap((payload)  =>
-          this.ads.post<{profile:Profile,token:string}>('/profiles/',payload).pipe(
-            map((response: {profile:Profile,token:string}) => {
-              localStorage.setItem(this.tokenKey, response.token);
-              localStorage.setItem(this.profileId, response.profile.id.toString());
+          this.ads.post<Profile>('/profiles/',payload).pipe(
+            map((response: Profile) => {
+              localStorage.setItem(this.tokenKey, response.auth_token);
+              localStorage.setItem(this.profileId, response.id.toString());
               this.as.redirect();
-              return UsersActions.LoadUserAction({payload: response.profile});
+              return UsersActions.LoadUserAction({payload: response});
             }),
-            catchError(async (err) =>  {
-              return UsersActions.FailureAction({ message: err });
-            }))
+            catchError(async (err) =>  UsersActions.FailureAction({ message: err })))
       )));
       updateUser$  = createEffect(() =>
       this.actions$.pipe(
         ofType(UsersActions.UpdateUserAction),
-        map((action:any) => [JSON.stringify(action.payload, editFormReplacer),action.message]),
+        map((action: any) => [JSON.stringify(action.payload, this.editFormReplacer),action.message]),
         switchMap((payload)  =>
-          this.ads.patch<Profile>(`/profile/${this.as.getProfileId()}/`,payload[0]).pipe(
+          this.ads.patch<Profile>(`/profiles/${this.as.getProfileId()}/`,payload[0]).pipe(
             map((profile: Profile) => {
               this.snakBar.open(payload[1]);
               return UsersActions.LoadUserAction({payload: profile});
             }),
-            catchError(async (err) =>  {
-              return UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) });
-            }))
+            catchError(async (err) =>  UsersActions.FailureAction({ message: JSON.parse(JSON.stringify(err.error)) })))
       )));
       toggleFavorite$  = createEffect(() =>
       this.actions$.pipe(
@@ -100,11 +87,34 @@ export class UserEffects {
           this.snakBar.open('You have to login to perform this action','Login').onAction().pipe(
             take(1)
           ).subscribe(() => {
-            this.router.navigate(['/account/authentification'])
-          })})
+            this.router.navigate(['/account/authentification']);
+          });})
 
 
         ),{dispatch:false});
 
+  constructor(
+          private router: Router,
+           private actions$: Actions ,
+           private as: SmcAuthService,
+           private ads: AppDataService,
+           private snakBar: MatSnackBar,
+           @Inject(TOKEN_KEY) private tokenKey: string,
+           @Inject(PROFILE_ID) private profileId: string,
+           private store$: Store<any>) {}
+
+           editFormReplacer<T>(key: string, value: T): T|undefined  {
+            // Filtering out properties
+            if ( key === 'email') {
+              return undefined;
+            }
+            if ( key === 'password') {
+              return undefined;
+            }
+            if ( key === 'confirmPassword') {
+              return undefined;
+            }
+            return value;
+          }
 
   }

@@ -1,16 +1,4 @@
-export function editFormReplacer<T>(key: string, value:T):T {
-    // Filtering out properties
-    if ( key === 'email') {
-      return undefined;
-    }
-    if ( key === 'password') {
-      return undefined;
-    }
-    if ( key === 'confirmPassword') {
-      return undefined;
-    }
-    return value;
-  }
+
 
 // export function flatten(object, prefix = '')  {
 //     return Object.keys(object).reduce((carry, key) => {

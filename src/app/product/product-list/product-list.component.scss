@@ -1,21 +1,6 @@
+@import 'colors';
 
-.side-box {
-  position: fixed;
-  top:0;
-  background-color: white;
-  z-index: 3;
-  overflow: scroll;
-  height: 100%;
-}
-.list__metadata {
-  background-color: white;
-}
 
-header {
-  p {
-    text-align: center;
-  }
-}
 
 .content {
  min-height: 100vh;

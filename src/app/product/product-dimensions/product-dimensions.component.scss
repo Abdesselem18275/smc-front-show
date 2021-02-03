@@ -11,4 +11,9 @@ caption {
   display: block;
   text-align: left;
 }
-
+.quantity-field {
+  max-width: 3rem;
+}
+input {
+  max-width: 100%;
+}

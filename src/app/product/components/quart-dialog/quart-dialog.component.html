@@ -1,0 +1,45 @@
+<header mat-dialog-title >
+    <div class="inline--centred--spaced">
+        <div>
+            <h1 class="mat-h1">PRODUCT QUART
+            </h1>
+            <span class="mat-body-1 font--dark-grey">{{product.designation | titlecase}}</span>
+        </div>
+        <mat-icon class="quart-icon">
+            add_shopping_cart
+        </mat-icon>
+    </div>
+
+</header>
+<main mat-dialog-content>
+    <p class="mat-body-2">Select a Look</p>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let appearanceVariant of product.appearanceVariants">
+        <mat-expansion-panel-header >
+        <mat-panel-title class="inline--centred">
+            <img [src]="appearanceVariant.thumbNail | mergeSizeQs:100" class="thumbNail">
+            {{appearanceVariant?.look.texture +' '+ appearanceVariant.look.material}}
+
+          </mat-panel-title>
+          <mat-panel-description class="inline--centred">
+              x {{getQuantities(appearanceVariant)}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Set quantity for each desired dimension</p>
+        <app-product-dimensions
+        (variantQuantities)="updateQuart($event,appearanceVariant)"
+        mode="quart"
+        *ngIf="product.dimensionVariants.length > 0"
+        [dimensionVariants]="product.dimensionVariants">
+        </app-product-dimensions>
+        <form>
+
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>
+</main>
+
+<div mat-dialog-actions class="inline--centred--spaced">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button color="primary" type="submit" (click)="confirm()" cdkFocusInitial>ADD TO QUART</button>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Category, ProductShort } from 'src/app/models/product.models';
+import { Category, Product } from 'src/app/core/types';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
@@ -14,21 +14,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./category-breadcrumb.component.scss']
 })
 export class CategoryBreadcrumbComponent implements OnInit {
-  categories: Category[];
-  items: string[];
-  isNotEmpty: boolean;
-  breadCrumb$: Observable<Category[]>;
-  @Input() currentProduct?: ProductShort;
+  @Input()
+  currentProduct!: Product;
+  categories: Category[] = [];
+  items: string[] = [];
+  isNotEmpty = true;
+  breadCrumb$!: Observable<Category[]>;
+
 
   constructor(
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
-    private route :ActivatedRoute,
+    private route: ActivatedRoute,
     private store$: Store<RootStoreState.State>) { }
-  ngOnInit():void {
+  ngOnInit(): void {
     this.breadCrumb$ = this.route.queryParamMap.pipe(
       map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
       withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),
-      map(([value,categories]:[string,Category[]]) =>
+      map(([value,categories]: [string,Category[]]) =>
         this.currentProduct ?
           this.setItems(categories,this.getItem(categories, this.currentProduct.rootCategory)):
           value ?
@@ -36,19 +38,16 @@ export class CategoryBreadcrumbComponent implements OnInit {
           []
     ),
     map(breadcrumb => breadcrumb.reverse())
-    )
+    );
   }
 
-  private getItem(categories,key:number): Category {
-    return categories.find(category =>  category.id === key);
-  }
-
-  private setItems(categories,param:Category): Category[] {
+  private getItem = (categories: Category[],key: number): Category |undefined => categories.find(category => category.id === key);
+  private setItems(categories: Category[],param: Category): Category[] {
     if (param === undefined || param.designation==='All Cateogries') {
       return [];
     }
-    const cat = this.getItem(categories,param.id)
-    const parentCategory = this.getItem(categories,param.parentCategory)
+    const cat = this.getItem(categories,param.id);
+    const parentCategory = this.getItem(categories,param.parentCategory);
     return([param].concat(this.setItems(categories,cat.isRoot ? undefined : parentCategory)));
   }
 

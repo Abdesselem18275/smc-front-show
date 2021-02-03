@@ -1,5 +1,5 @@
-import { MinimalProduct } from './product.models';
-
+/* eslint-disable @typescript-eslint/naming-convention */
+import { MinimalProduct } from '../core/types';
 export interface Profile {
     id: number;
     email: string;
@@ -10,15 +10,16 @@ export interface Profile {
     country: string;
     phone_number: string;
     position: string;
+    auth_token: string;
     activity_field: string;
     company_name: string;
-    favorites: MinimalProduct[];
+    favorites: number[];
     civility: string;
-    sended_requests:  UserRequest[]
+    sended_requests:  UserRequest[];
 }
 export interface UserRequest {
-    id :number;
-    subjects : string[];
+    id: number;
+    subjects: string[];
     status: string;
     related_products: string[];
     text_content: string;

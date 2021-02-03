@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ListMetaComponent } from './list-meta/list-meta.component';
 import { BoxSizeToggelerDirective } from './box-size-toggeler.directive';
 import { FavoriteHandlerDirective } from './favorite-handler.directive';
-import { AppearanceSelectorComponent } from './appearance-selector/appearance-selector.component';
 import { ImagePlaceholderDirective } from './image-placeholder.directive';
 import { ProductDimensionsComponent } from './product-dimensions/product-dimensions.component';
 import { ProductMaterialsComponent } from './product-materials/product-materials.component';
@@ -17,9 +16,11 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { ProductFeaturesComponent } from './product-features/product-features.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
 import { CommonModule } from '@angular/common';
-import {CategoryBreadcrumbComponent} from './category-breadcrumb/category-breadcrumb.component';
 import { ProductImagesDialogComponent } from './product-images-dialog/product-images-dialog.component';
 import { ProductBoxComponent } from './product-box/product-box.component';
+import { AppearanceSelectorComponent } from './components/appearance-selector/appearance-selector.component';
+import { CategoryBreadcrumbComponent } from './components/category-breadcrumb/category-breadcrumb.component';
+import { QuartDialogComponent } from './components/quart-dialog/quart-dialog.component';
 
 
 @NgModule({
@@ -32,5 +33,5 @@ import { ProductBoxComponent } from './product-box/product-box.component';
                   ProductDetailComponent, ListMetaComponent,ProductBoxComponent,
                   BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
                   ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
-                  ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent],})
+                  ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent, QuartDialogComponent],})
 export class ProductModule { }

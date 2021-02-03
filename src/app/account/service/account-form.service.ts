@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Injectable } from '@angular/core';
 import { ValidationErrors , FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
@@ -52,15 +53,15 @@ export class AccountFormService {
     });
     return form;
   }
-  passwordConfirmedValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+  passwordConfirmedValidator = (control: FormGroup): ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
     if (password && confirmPassword && password.value === confirmPassword.value)  {
       return null;
     }
     if (control.get('confirmPassword')) {
-      control.get('confirmPassword').setErrors({passwordNotConfirmed: true});
+      control.get('confirmPassword')?.setErrors({passwordNotConfirmed: true});
     }
     return { passwordNotConfirmed: true } ;
-  }
+  };
 }
