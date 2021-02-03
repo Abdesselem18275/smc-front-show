@@ -1,12 +1,15 @@
-<ng-container *ngIf="mode === 'FULL'">
+<div class="mb2" *ngIf="mode === 'FULL'">
 
   <span  i18n class="mat-h3 font--dark-grey">
     {appearanceVariants.length, plural, =0 {Non available look} =1 {One look available } other { {{appearanceVariants.length}} available looks } } 
   </span>
   <mat-divider></mat-divider>
-</ng-container>
-<section (mouseout)="setHoveredAppearance(null)" class="mt2 inline--centred">
-  <div #loadingImage  (mouseover)="setHoveredAppearance(item)" *ngFor="let item of appearanceVariants" class='mr4 column appearance-box'>
+</div>
+<section (mouseout)="setHoveredAppearance(null)" class="inline--centred">
+  <div #loadingImage 
+      [class]="mode === 'FULL' ? 'appearance-box--large' :  'appearance-box--small'"  
+      (mouseover)="setHoveredAppearance(item)" 
+      *ngFor="let item of appearanceVariants">
     <img  class="mb1"
     [src]="item.look.thumbNail  | mergeSizeQs:50"
     (click)="setAppearanceVariant(item)">

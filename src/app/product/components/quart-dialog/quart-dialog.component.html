@@ -18,14 +18,14 @@
         <mat-expansion-panel-header >
         <mat-panel-title class="inline--centred">
             <img [src]="appearanceVariant.thumbNail | mergeSizeQs:100" class="thumbNail">
-            {{appearanceVariant?.look.texture +' '+ appearanceVariant.look.material}}
+            <span class="mat-caption">{{appearanceVariant?.look.texture +' '+ appearanceVariant.look.material}}</span>
 
           </mat-panel-title>
           <mat-panel-description class="inline--centred">
               x {{getQuantities(appearanceVariant)}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>Set quantity for each desired dimension</p>
+        <p class="mat-caption">Set quantity for each desired dimension</p>
         <app-product-dimensions
         (variantQuantities)="updateQuart($event,appearanceVariant)"
         mode="quart"

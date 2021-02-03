@@ -15,6 +15,7 @@ export class QuartDialogService {
   openQuartDialog(product: Product) {
     const dialogRef = this.dialog.open(QuartDialogComponent, {
       width: '640px',
+      maxWidth:'95vw',
       data: {product}
     });
   }

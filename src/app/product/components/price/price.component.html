@@ -1,0 +1,20 @@
+<!-- 
+<ng-container *ngIf="this.isSmallScreen else large">
+    <div class="mt2 column--centred mat-body-strong">
+        <span>{{product.minPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+        <span>-</span>
+        <span>{{product.maxPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+    </div>   
+</ng-container>
+<ng-template #large>
+    <div class="mt2 inline--centred mat-h4">
+        <span>{{product.minPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+        <span class="mx2">-</span>
+        <span>{{product.maxPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+    </div>
+</ng-template> -->
+<div class="mt2 inline--centred mat-h4">
+    <span>{{product.minPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+    <span class="mx2">-</span>
+    <span>{{product.maxPrice | currency:'TND':'symbol':'0.0-2'}}</span>
+</div>

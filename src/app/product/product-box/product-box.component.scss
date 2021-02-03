@@ -24,16 +24,19 @@
 .mat-icon--full-right {
     margin-left: auto;
 }
-.mat-h4,.mat-h6 {
+.mat-h4,.mat-h6,.mat-h3 {
     margin: 0 0 0;
 }
 app-category-breadcrumb {
     text-transform: lowercase;
 }
 app-appearance-selector {
-    width: 100%;
+    flex:1 1 70%;
 }
-
+app-price {
+    flex: 1 1 7rem;
+    min-width: 5rem;
+}
 .icon--rotate {
     transform: rotate(-90deg)
 }

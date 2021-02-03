@@ -1,11 +1,19 @@
-
 .appearance-box {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  span {
+    border: solid 1px orange;
+    width: 100%;
+}
+}
+.appearance-box--large {
     max-width: 2rem;
-    span {
-        border: solid 1px orange;
-        width: 100%;
-
-    }
+    @extend .appearance-box
+}
+.appearance-box--small {
+  max-width: 2rem;
+  @extend .appearance-box
 }
 .appearance-box:hover {
   cursor: pointer;
@@ -14,6 +22,7 @@ img {
     max-width: 100%;
     border-radius: 2rem;
 }
+
 .img--bordered {
     border: solid 1px orangered;
     padding: 1px;

@@ -6,7 +6,7 @@
                         <mat-icon  [inline]="!(isBigSize$ |async)" #favIcon>favorite</mat-icon>
                 </button>
                 <section class="column">
-                        <span class="mat-body" #pulsingText>{{product.designation | uppercase}}</span>
+                        <span class="mat-h3" #pulsingText>{{product.designation | uppercase}}</span>
                         <span #pulsingText class="mat-caption font--dark-grey">
                                 {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}
                         </span>
@@ -21,18 +21,19 @@
         <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:600">
         </a>
 
-        <section class="my2 mx4 content-information">
+        <section class="mx4 content-information">
                <p #pulsingText class="mat-body font--dark-grey">{{product.shortDescription}}</p>
         </section>
 
-        <section  #toHideLoading  class="mt4 px4  inline--centred">
+        <section  #toHideLoading  class="p4 inline--centred">
 
                 <app-appearance-selector
+                         mode = 'MINIMAL'
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
         </section>
-        <section   [class.section--toggeled]="isDimensionOpen" *ngIf="isBigSize$ |async" class="details-container column">
+        <!-- <section   [class.section--toggeled]="isDimensionOpen" *ngIf="isBigSize$ |async" class="mt4 details-container column">
             <section (click)="toggleDimension()" class="p4 details-toggeler font--grey inline--centred--spaced">
               <span i18n class="mat-body-strong">Technical details</span>
               <mat-icon [style.transform]="isDimensionOpen ? 'rotateX(180deg)' :''" >expand_more</mat-icon>
@@ -42,6 +43,7 @@
             [@verticalAccordionAnimation]
             *ngIf="isDimensionOpen">
             <section >
+
       <app-product-dimensions
               *ngIf="product.dimensionVariants.length > 0"
               [dimensionVariants]="product.dimensionVariants">
@@ -62,8 +64,12 @@
               </app-product-component>
             </section>
            </section>
-        </section>
+        </section> -->
+        <mat-divider></mat-divider>
+        <section class="px4 py2">
+                <app-price  [product]="product"></app-price>
 
+        </section>
 </ng-container>
 </div>
 
@@ -75,7 +81,7 @@
         <a #loadingImage [routerLink]="['/product', product.id]">
                 <img #targetImage  class='content__thumbnail' [src]="(selectedAppearanceVariant$|async)?.thumbNail | mergeSizeQs:1000">
         </a>
-        <section class="column mx4">
+        <section class="column px4 py2">
                 <span class="mat-body"  #pulsingText>{{product.designation | uppercase}}</span>
                 <span #pulsingText class="mat-caption font--dark-grey">
                         <span #pulsingText class="mat-caption"
@@ -86,14 +92,20 @@
                         {{(selectedAppearanceVariant$|async)?.look.texture}} {{(selectedAppearanceVariant$|async)?.look.material}}</span>
 
          </section>
-         <mat-divider class="my2"></mat-divider>
-         <section  #toHideLoading  class="px4 mb2 inline--centred">
+         <mat-divider></mat-divider>
+         <section  #toHideLoading  class="px4 py2  mb2 inline--centred">
 
                 <app-appearance-selector
                         mode = 'MINIMAL'
                         (selectedAppearanceVariant) = "setAppearanceVariant($event)"
                         [appearanceVariants]="product.appearanceVariants">
                 </app-appearance-selector>
+
+        </section>
+        <mat-divider></mat-divider>     
+        <section class="px4 py2">
+                <app-price [product]="product"></app-price>
+
         </section>
 </ng-container>
 </ng-template>

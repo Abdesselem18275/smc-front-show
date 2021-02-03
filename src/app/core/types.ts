@@ -34,6 +34,8 @@ export type Product = {
     appearanceVariants: AppearanceVariant[];
     componentsSpecifications: ComponentsSpecification[];
     features: Feature[];
+    minPrice: number;
+    maxPrice: number;
 };
 
 export interface DimensionVariantSpecification {
