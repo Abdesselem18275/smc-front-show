@@ -6,7 +6,7 @@
             <span class="mat-body-1 font--dark-grey">{{product.designation | titlecase}}</span>
         </div>
         <mat-icon class="quart-icon">
-            shopping_cart
+            add_shopping_cart
         </mat-icon>
     </div>
 
@@ -22,14 +22,15 @@
 
           </mat-panel-title>
           <mat-panel-description class="inline--centred">
-              x 21
+              x {{getQuantities(appearanceVariant)}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <p>Set quantity for each desired dimension</p>
         <app-product-dimensions
+        (variantQuantities)="updateQuart($event,appearanceVariant)"
         mode="quart"
-        *ngIf="product.dimensionsSpecifications.length > 0"
-        [productDimensions]="product.dimensionsSpecifications">
+        *ngIf="product.dimensionVariants.length > 0"
+        [dimensionVariants]="product.dimensionVariants">
         </app-product-dimensions>
         <form>
 
@@ -40,5 +41,5 @@
 
 <div mat-dialog-actions class="inline--centred--spaced">
     <button mat-button mat-dialog-close>CANCEL</button>
-    <button mat-button color="primary" type="submit" (click)="confirm()" cdkFocusInitial>CONFIRM</button>
+    <button mat-button color="primary" type="submit" (click)="confirm()" cdkFocusInitial>ADD TO QUART</button>
 </div>

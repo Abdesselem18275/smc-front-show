@@ -43,7 +43,7 @@ export class ConfigService {
     }
 
   loadInitials(): Promise<void> {
-    return this.ads.get<InitDataType>('/initData/').pipe(take(1)).toPromise().then((response: InitDataType) => {
+    return this.ads.get<InitDataType>('/product/initData/').pipe(take(1)).toPromise().then((response: InitDataType) => {
       response.icons.forEach(jsonItem => {
         this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
       });
@@ -54,7 +54,8 @@ export class ConfigService {
   loadProfile(): Promise<void>  {
 
     return localStorage.getItem(this.profileId) ?
-    this.ads.get<Profile>(`/profiles/${localStorage.getItem(this.profileId)}/`).pipe(take(1)).toPromise().then((profile: Profile) => {
+    this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
+      take(1)).toPromise().then((profile: Profile) => {
       this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}));
     }) : EMPTY.toPromise();
   }

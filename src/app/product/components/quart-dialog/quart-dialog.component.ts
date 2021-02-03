@@ -1,33 +1,33 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AppearanceVariant, ProductLong } from 'src/app/core/types';
+import { AppearanceVariant, Product } from 'src/app/core/types';
 
 @Component({
   selector: 'app-quart-dialog',
   templateUrl: './quart-dialog.component.html',
   styleUrls: ['./quart-dialog.component.scss']
 })
-export class QuartDialogComponent implements OnInit {
-  product: ProductLong;
-  quartArrayForm: FormGroup;
+export class QuartDialogComponent{
+  product: Product;
+  quartMap = new Map<number,{[key: string]: number}>();
   constructor(
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: {product: ProductLong}) {
+    @Inject(MAT_DIALOG_DATA) public data: {product: Product}) {
     this.product = data.product;
-    this.product.appearanceVariants.forEach((app: AppearanceVariant)=> {
-        //this.quartArrayForm.setControl(app.id,new )
-    });
   }
 
-
-  ngOnInit(): void {
+  updateQuart(event,appearance: AppearanceVariant): void {
+    this.quartMap.set(appearance.id,event);
   }
-  // get quartFormEl() : FormGroup {
-  //   return this.fb.group({
-
-  //   })
-  // }
+  getQuantities = (appearance: AppearanceVariant): number => {
+    if(this.quartMap.has(appearance.id)) {
+      return Object.keys(this.quartMap.get(appearance.id)).reduce(
+        (acc: number,currentValue: string) => acc + this.quartMap.get(appearance.id)[currentValue],0);
+    } else {
+      return 0;
+    }
+  };
   confirm(): void {
 
   }

@@ -1,20 +1,17 @@
 
       <header class="pt4 column">
         <section class="column--centred">
-        <section class="inline--centred--spaced nav-list--full-width">
-          <button [routerLink]="['/account/authentification']" color="accent" class="side login-button" *ngIf="!(isLogged$ |async)"
-          mat-stroked-button [routerLink]="['/account/authentification']">
-          <mat-icon class="mr4">account_box</mat-icon>
-            <span i18n>WELCOME , SIGN IN</span>
-          </button>
-        </section>
+
 
       </section>
-            <section *ngIf="isLogged$ |async" class="column--centred">
-                <app-initials-icon [size]="72" class="mb4" (click)="navToProfile()" [initials]="initials$ | async"></app-initials-icon>
-                  <p class="mat-h1"> {{(profile$ |async).first_name}} {{(profile$ |async).last_name}} </p>
-                  <p class="mat-h3  font--dark-grey">{{(profile$ |async).email}}</p>
-                <div class="side action-container mb4">
+            <section  class="column--centred">
+                <app-initials-icon [size]="72"  (click)="navToProfile()" [initials]="initials$ | async"></app-initials-icon>
+                <ng-container *ngIf="isLogged$ |async" >
+                  <p class="mt4 mat-h1"> {{(profile$ |async)?.first_name}} {{(profile$ |async)?.last_name}} </p>
+                  <p class="mat-h3  font--dark-grey">{{(profile$ |async)?.email}}</p>
+                </ng-container>
+
+                <div *ngIf="isLogged$ |async else anonymous " class="side action-container mb4">
                   <button routerLink="/product/favorites" mat-mini-fab>
                       <mat-icon color="primary">favorite</mat-icon>
                   </button>
@@ -23,24 +20,41 @@
                   </button>
                    </div>
               </section>
+              <section *ngIf="!(isLogged$ |async)" class="inline--centred--spaced nav-list--full-width">
+                <button [routerLink]="['/account/authentification']" color="accent" class="side login-button" 
+                mat-stroked-button [routerLink]="['/account/authentification']">
+                <mat-icon class="mr4">account_box</mat-icon>
+                  <span i18n>WELCOME , SIGN IN</span>
+                </button>
+              </section>
               <mat-divider ></mat-divider>
         </header>
     <main class="card px4 column--centred">
       <mat-nav-list  class="nav-list nav-list--full-width">
           <mat-list-item  
-          [queryParams]="{profiles: (this.profile$ | async).id}"
+          *ngIf="(isLogged$ |  async)"
+          [queryParams]="{profiles: (this.profile$ | async)?.id}"
           routerLink="/product/list">
-              <mat-icon matListIcon>favorite </mat-icon>
-              <div i18n matLine>Favorites</div>
+              <mat-icon  matListIcon>favorite </mat-icon>
+              <div  i18n matLine>Favorites</div>
           </mat-list-item>
-          <mat-list-item>
+          <mat-list-item *ngIf="(isLogged$ |  async)">
               <mat-icon matListIcon>person </mat-icon>
               <div i18n matLine>Profile</div>
           </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>shopping_cart</mat-icon>
+            <div i18n matLine>Quart</div>
+        </mat-list-item>
           <mat-list-item (click)="logOut()">
               <mat-icon matListIcon>exit_to_app </mat-icon>
-              <div  i18n matLine>Log out</div>
+              <div  i18n matLine>{{(isLogged$ |  async) ? 'log out' : 'sign in'}}</div>
           </mat-list-item>
       </mat-nav-list>
 </main>
+<ng-template #anonymous>
+  <p class="mat-body text--centred font--grey">
+    You are not authenticated consider <strong>sign in</strong> or <strong>create a new account</strong>
+  </p>
+</ng-template>
 

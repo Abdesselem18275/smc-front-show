@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { DimensionVariant, DimensionVariantSpecification } from 'src/app/core/types';
 
@@ -12,14 +13,21 @@ export class ProductDimensionsComponent implements OnInit {
   mode: 'quart'|'presentation' = 'presentation';
   @Input()
   dimensionVariants: DimensionVariant[] = [];
+  @Output()
+  variantQuantities  = new EventEmitter<{[key: string]: number}>();
+  quantityForm: FormGroup;
   displayedColumns: string[] = [];
   dimensionColumns: string[] = [];
   dataSource!: MatTableDataSource<DimensionVariant>;
-  constructor() {
+  constructor(private fb: FormBuilder) {
+    this.quantityForm = this.fb.group({});
+    this.quantityForm.valueChanges.subscribe((value) => this.variantQuantities.emit(value));
    }
 
   ngOnInit(): void {
-
+    this.dimensionVariants.forEach((dimVariant: DimensionVariant) => {
+      this.quantityForm.setControl(dimVariant.designation,new FormControl(0));
+    });
     this.dataSource = new MatTableDataSource<DimensionVariant>(this.dimensionVariants);
     this.dimensionColumns = Array.from(this.dimensionVariants.reduce(
       (acc: Set<string>,currentValue: DimensionVariant) => {

@@ -22,7 +22,7 @@ export class ProductEffects {
       filter((x: RouterNavigatedAction) =>  (x.payload.routerState.url).includes('product/list')),
       tap(() => this.store$.dispatch(ProductStoreActions.LoadRequestAction())),
       map(() => this.route.snapshot.queryParamMap),
-      switchMap((param: ParamMap)  => this.ads.get<PaginatedProductsType>('/products/',param).pipe(
+      switchMap((param: ParamMap)  => this.ads.get<PaginatedProductsType>('/product/products/',param).pipe(
         map(results => {
           const page_number = param.has(this.queryParamKeys.PAGE) ? param.get(this.queryParamKeys.PAGE) : 1;
           return page_number !== 1 ?
@@ -31,19 +31,6 @@ export class ProductEffects {
 
         }
           )))));
-
-    favoritesFetch$ = createEffect(() =>
-    this.actions$.pipe(
-        ofType(ROUTER_NAVIGATED),
-        filter((x: any) =>  (x.payload.event.url).includes('product/favorites')),
-        switchMap(() =>
-        this.ads.get<Product[]>(`/profiles/favorites/`).pipe(
-          concatMap(res => ([
-            ProductStoreActions.ClearAllAction(),
-            ProductStoreActions.AddOrUpdateManyAction({results : {
-              results : res,
-              count : res.length
-            }})]))))));
 
 constructor(private actions$: Actions ,
             private store$: Store<RootStoreState.State>,

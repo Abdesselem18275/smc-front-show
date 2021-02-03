@@ -19,7 +19,7 @@ export class ProductDetailResolverService implements Resolve<Product> {
   Observable<never> {
     this.store$.dispatch(ProductStoreActions.LoadRequestAction());
     const id = route.paramMap.get('id');
-    return this.ads.get<Product>(`/products/${id}/`).pipe(
+    return this.ads.get<Product>(`/product/products/${id}/`).pipe(
       take(1),
       mergeMap((product: Product) => {
         if (product) {

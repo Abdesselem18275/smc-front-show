@@ -21,7 +21,7 @@ export class AccountCardComponent implements OnInit {
     this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
     this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
     this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(
-      map(profile => profile && profile.first_name[0].concat(profile.last_name[0]) ));
+      map(profile => profile ? profile.first_name[0].concat(profile.last_name[0]) : '?' ));
   }
 
   ngOnInit() {

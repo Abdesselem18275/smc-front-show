@@ -35,13 +35,21 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
       }));
     } else {
       return this.store.select(GlobalStoreSelectors.selectLanguage).pipe(
-        mergeMap(lang => next.handle(request.clone({
+        mergeMap(lang => next.handle(request.clone(token ? {
           setHeaders: {
             Authorization: 'Token ' + token,
             'Content-Type':  'application/json',
             'Accept-Language':lang.id
           }
-        })))
+        }:
+        {
+          setHeaders: {
+            'Content-Type':  'application/json',
+            'Accept-Language':lang.id
+          }
+        }
+
+        )))
       );
     }
 

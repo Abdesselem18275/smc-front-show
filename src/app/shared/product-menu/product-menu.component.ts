@@ -33,16 +33,20 @@ export class ProductMenuComponent  {
     this.sideNavEmmiter.emit('');
   }
   openCardDialog() {
-    this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
-      take(1)
-    ).subscribe(x => x ?
-      this.dialog.open(AccountCardComponent,{
-        position: {top:'5rem',right:'1rem'},
-        width:'20rem'
-      }):
-      this.store$.dispatch(UserStoreActions.RedirectForAuthentification(
-         {redirectUrl:this.router.url}
-      )));
+    this.dialog.open(AccountCardComponent,{
+      position: {top:'5rem',right:'1rem'},
+      width:'20rem'
+    });
+    // this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
+    //   take(1)
+    // ).subscribe(x => x ?
+    //   this.dialog.open(AccountCardComponent,{
+    //     position: {top:'5rem',right:'1rem'},
+    //     width:'20rem'
+    //   }):
+    //   this.store$.dispatch(UserStoreActions.RedirectForAuthentification(
+    //      {redirectUrl:this.router.url}
+    //   )));
 
   }
   openSearchDialog() {

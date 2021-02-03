@@ -1,4 +1,3 @@
-import { Directive, Input, HostListener, OnDestroy, Renderer2, AfterContentInit, ContentChild } from '@angular/core';
 import { RootStoreState } from '../root-store';
 import { Store } from '@ngrx/store';
 import { UserStoreActions, UserStoreSelectors } from '../root-store/user-store';
@@ -6,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Directive, AfterContentInit, OnDestroy, ContentChild, Renderer2, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appFavoriteHandler]'
