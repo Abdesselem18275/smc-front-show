@@ -16,7 +16,7 @@ import { UserLanguage, LanguageType } from './root-store/global-store/state';
     languageType: LanguageType.GERMAN
   }
 ]);
-const SMC_API_URL = () => 'http://backend.smcuivre.com/smc/api';
+const SMC_API_URL = () => 'http://backend.smcuivre.com/api';
 const LOCAL_API_URL = () => 'http://127.0.0.1:8080/api';
 const APP_TOKEN_KEY = () => 'smcToken';
 const APP_PROFILE_ID = () => 'smcId';
