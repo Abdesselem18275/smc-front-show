@@ -16,6 +16,7 @@ export class CategoryMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.rootCategories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
+    this.rootCategories$.subscribe(x => console.warn(x));
   }
 
 }

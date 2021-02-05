@@ -15,18 +15,17 @@
      <div class="mat-h3 inline--centred nav-tabs__tab">
 
         <app-category-menu></app-category-menu>
-        <a fragment="about-us" [routerLink]="['/miscellaneous/home']" mat-button i18n>
-         About us
-        </a>
-        <a fragment="contact-us" [routerLink]="['/miscellaneous/home']" mat-button i18n>
-         Contact us
+        |
+        <a color="accent" fragment="about-us" [routerLink]="['/miscellaneous/home']" mat-button i18n>
+          <mat-icon class="mr-2">help_outline</mat-icon>
+         Informations
         </a>
      </div>
      <span class="space-divider"></span>
      <div class="nav-bar__tools">
-        <button mat-icon-button  (click)="openSearchDialog()">
+        <!-- <button mat-icon-button  (click)="openSearchDialog()">
             <mat-icon>search</mat-icon>
-        </button>
+        </button> -->
 
         <button  mat-button   (click)="openCardDialog()" id="account-icon">
             <mat-icon class="material-icons-outlined mr2">person</mat-icon>

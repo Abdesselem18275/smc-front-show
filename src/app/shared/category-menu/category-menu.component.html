@@ -1,4 +1,4 @@
-
+<!-- 
   <button mat-button [matMenuTriggerFor]="menu">
     <span i18n>Product</span>
   </button>
@@ -6,4 +6,19 @@
     <button *ngFor="let item of rootCategories$ | async" color="accent" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}">
       {{item.designation}}
     </button>
-  </mat-menu>
+  </mat-menu> -->
+
+  <button 
+    [matMenuTriggerData]="{category: root}"
+    [matMenuTriggerFor]="menu"
+    mat-button *ngFor="let root of rootCategories$ | async">
+    <span i18n>{{root.designation | titlecase}}</span>
+  </button>
+  <mat-menu #menu>
+    <ng-template matMenuContent  let-category="category">
+      <button *ngFor="let item of category.children" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}">
+        {{item.designation | titlecase}}
+      </button>
+    </ng-template>
+
+  </mat-menu> 
