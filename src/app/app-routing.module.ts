@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import {RouterModule , Routes, ExtraOptions} from '@angular/router';
-import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
 const appRoutes: Routes = [
   {path : 'product' , loadChildren: async () => {
-    const productModule = await import('./product/product.module')
+    const productModule = await import('./product/product.module');
     return productModule.ProductModule;
   }
   },
@@ -17,9 +16,9 @@ const appRoutes: Routes = [
 
 ];
 const routerOptions: ExtraOptions = {
-  anchorScrolling: "enabled",
+  anchorScrolling: 'enabled',
   enableTracing: true,
-  scrollPositionRestoration:"top"
+  scrollPositionRestoration:'top'
 };
 @NgModule({
   imports: [

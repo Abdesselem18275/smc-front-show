@@ -24,6 +24,9 @@ export class LocalesDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  getHref(localId: string) {
+    return '/'+localId;
+  }
   confirm(){
 
   }

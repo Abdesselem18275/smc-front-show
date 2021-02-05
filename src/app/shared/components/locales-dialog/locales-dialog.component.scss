@@ -1,10 +1,30 @@
+@import "app-theme";
+
 .horizontal {
     display: flex!important;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    max-height: 320px;
+    overflow-y: scroll;
     .mat-list-item {
        width: 33%;
        min-width: 120px;
     }
+}
+.lang-selector {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    button {
+        margin: 0.5rem 0;
+    }
+}
+.remark {
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: mat-color($smc-show-case-accent,lighter);
+}
+.button--active {
+    border: 2px solid mat-color($smc-show-case-primary);
 }

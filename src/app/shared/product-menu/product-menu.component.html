@@ -28,22 +28,28 @@
             <mat-icon>search</mat-icon>
         </button>
 
-        <button  mat-icon-button   (click)="openCardDialog()" id="account-icon">
-            <mat-icon class="material-icons-outlined">person</mat-icon>
+        <button  mat-button   (click)="openCardDialog()" id="account-icon">
+            <mat-icon class="material-icons-outlined mr2">person</mat-icon>
+            <div class="column" *ngIf="(profile$ | async) as profile ; else anonymous">
+               <span class="mat-caption font--dark-grey">welcome</span>
+               <span>{{profile.first_name | titlecase}}</span>
+            </div>
         </button>
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>
             <mat-icon>favorite_border</mat-icon>
         </button>
-        <!-- <app-language-box>
-        </app-language-box> -->
-        <button class="inline" (click)="openLocalDialog()" mat-button>
-            <mat-icon class="mr2" [svgIcon]="(language$ |async)?.languageType"></mat-icon>
-            <span class="mat-caption">France | EUR</span>
+        <app-language-box>
+        </app-language-box>
+        <button class="inline--centred" (click)="openLocalDialog()" mat-button>
+          <mat-icon class="mr2">settings</mat-icon>
+          <span>France | £</span>
           </button>
 
     </div>
   </nav>
-
+<ng-template #anonymous>
+Login
+</ng-template>
 
 
 

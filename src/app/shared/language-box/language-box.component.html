@@ -1,7 +1,7 @@
 
   <button class="inline" [matMenuTriggerFor]="lang" mat-button>
-    <mat-icon class="mr2" [svgIcon]="(language$ |async)?.languageType"></mat-icon>
-    <span class="mat-caption">France | EUR</span>
+    <mat-icon class="mr2">language</mat-icon>
+    <span>{{(language$ |async)?.languageType.substr(0,2)}}</span>
   </button>
 
   <mat-menu  #lang="matMenu">

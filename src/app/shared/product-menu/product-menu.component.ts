@@ -12,6 +12,7 @@ import { UserLanguage } from 'src/app/root-store/global-store/state';
 import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 import { LocalesDialogComponent } from '../components/locales-dialog/locales-dialog.component';
+import { Profile } from 'src/app/models/account.models';
 
 @Component({
   selector: 'app-product-menu',
@@ -23,12 +24,14 @@ export class ProductMenuComponent  {
   sideNavEmmiter = new EventEmitter<any>();
   @Output() isSideMenuActiveEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   isHomeRoute$: Observable<boolean>;
+  profile$: Observable<Profile>;
   language$: Observable<UserLanguage | null>;
   languageList: UserLanguage[];
   constructor( private router: Router,
                private dialog: MatDialog,
                @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
                private store$: Store<RootStoreState.State>) {
+                this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
                 this.isHomeRoute$ = this.router.events.pipe(
                   filter((x: any) => x instanceof NavigationEnd),
                   map(event => event.url === '/miscellaneous/home'));
