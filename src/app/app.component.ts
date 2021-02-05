@@ -18,7 +18,7 @@ import { MatSidenav } from '@angular/material/sidenav';
     sideSlideInAnimation]
 })
 export class AppComponent {
-  @ViewChild('sidenav',{static:false}) sideNav!: MatSidenav;
+  //@ViewChild('sidenav',{static:false}) sideNav!: MatSidenav;
   isSideMenuActive = false;
   showMenu$: Observable<boolean>;
 
@@ -30,10 +30,10 @@ export class AppComponent {
                   event.urlAfterRedirects.includes('miscellaneous/home')
                   ))
                 );
-                this.router.events.subscribe(() => this.sideNav.close());
+                // this.router.events.subscribe(() => this.sideNav.close());
 
   }
   toggleSideNav() {
-    this.sideNav.toggle();
+    //this.sideNav.toggle();
   }
 }

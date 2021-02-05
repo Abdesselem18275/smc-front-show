@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AppearanceVariant } from 'src/app/core/types';
+import { AppearanceVariant } from 'src/app/models/product.models';
 
 @Injectable()
 export class AppearanceSelectorStateService {

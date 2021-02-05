@@ -5,7 +5,7 @@ import { RootStoreState } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { sideSlideInAnimation } from 'src/app/animations';
 import { map } from 'rxjs/operators';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 const PRODUCTS_PER_PAGE = 10;
 @Component({
   selector: 'app-product-list',

@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Category } from 'src/app/core/types';
+import { Category } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-menu-item',

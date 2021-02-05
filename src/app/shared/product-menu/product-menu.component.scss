@@ -2,6 +2,11 @@
 p {
   cursor: pointer;
 }
+.locale-band {
+  span {
+    margin: 0 auto;
+  }
+}
 
 .nav-tabs__tab {
   justify-content: space-between;
@@ -16,7 +21,8 @@ p {
 }
 
 .nav-bar__logo {
-  max-width: 3rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
 }
 
 .nav-bar__tools

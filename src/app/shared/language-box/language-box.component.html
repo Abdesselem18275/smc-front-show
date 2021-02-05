@@ -1,13 +1,16 @@
 
-  <button [matMenuTriggerFor]="lang" mat-icon-button>
-    <mat-icon [svgIcon]="(language$ |async)?.languageType"></mat-icon>
+  <button class="inline" [matMenuTriggerFor]="lang" mat-button>
+    <mat-icon class="mr2" [svgIcon]="(language$ |async)?.languageType"></mat-icon>
+    <span class="mat-caption">France | EUR</span>
   </button>
 
   <mat-menu  #lang="matMenu">
-    <a class="inline--centred" [href]="getHref(item.id)" mat-menu-item *ngFor="let item of languageList" >
+    <a class="inline--centred--spaced" [href]="getHref(item.id)" mat-menu-item *ngFor="let item of languageList" >
+      <div>
         <mat-icon [svgIcon]="(item.languageType)"></mat-icon>
         <span class="mat-body-2">{{item.languageType}}</span>
-        <mat-icon *ngIf="(language$ |async)?.languageType == item.languageType" class="check--full-right">check</mat-icon>
+      </div>
+        <mat-icon *ngIf="(language$ |async)?.languageType == item.languageType">check</mat-icon>
     </a>
   </mat-menu>
 

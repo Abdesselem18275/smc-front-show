@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take,filter } from 'rxjs/operators';
-import { AppearanceVariant, BaseImage, Product } from 'src/app/core/types';
+import { AppearanceVariant, BaseImage, Product } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-product-images-dialog',

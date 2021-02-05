@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { Router } from '@angular/router';
-import { MenuTreeData } from 'src/app/core/types';
+import { MenuTreeData } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-categories-tree',

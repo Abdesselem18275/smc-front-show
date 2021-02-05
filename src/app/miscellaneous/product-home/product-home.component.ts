@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
-import { Category } from 'src/app/core/types';
+import { Category } from 'src/app/models/product.models';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';

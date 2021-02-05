@@ -7,7 +7,7 @@ import { ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
-import { Category } from 'src/app/core/types';
+import { Category } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-list-meta',

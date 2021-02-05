@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { Category } from 'src/app/core/types';
+import { Category } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-category-menu',

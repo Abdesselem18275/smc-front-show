@@ -94,6 +94,9 @@
             },
             "de": {
               "browserTarget": "smc-show-case:build:de"
+            },
+            "en": {
+              "browserTarget": "smc-show-case:build:en"
             }
           }
         },

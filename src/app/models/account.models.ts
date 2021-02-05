@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { MinimalProduct } from '../core/types';
 export interface Profile {
     id: number;
     email: string;

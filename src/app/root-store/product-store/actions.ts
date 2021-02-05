@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { createAction, props, Action } from '@ngrx/store';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 
 // eslint-disable-next-line no-shadow
 export enum ProductActionsType {

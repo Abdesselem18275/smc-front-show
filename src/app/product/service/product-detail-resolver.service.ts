@@ -5,7 +5,7 @@ import { mergeMap, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { RootStoreState, ProductStoreActions } from 'src/app/root-store';
 import { AppDataService } from 'src/app/shared/service/app-data.service';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 
 @Injectable({
   providedIn: 'root'

@@ -115,9 +115,4 @@ export interface MenuTreeData {
   }
 
 export type PaginatedProductsType = {count: number;next: string;previous: string;results: Product[]};
-export type InitDataType = {
-    categories: Category[];
-    icons: BaseImage[];
-    navMenuTree: MenuTreeData[];
-}
-;
+

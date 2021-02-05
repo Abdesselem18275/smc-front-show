@@ -7,7 +7,7 @@ import { Profile } from 'src/app/models/account.models';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { MenuTreeData } from 'src/app/core/types';
+import { MenuTreeData } from 'src/app/models/product.models';
 
 
 @Component({

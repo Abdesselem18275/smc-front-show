@@ -1,5 +1,5 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 
 export interface State extends EntityState<Product> {
   isLoading: boolean;

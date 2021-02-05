@@ -1,23 +1,20 @@
+
 <nav class='nav-bar font--dark-grey global--gutters menu--shared-style'>
       <button mat-icon-button class="nav-bar__left-content mr2">
         <mat-icon (click)="toggleSideNav()">menu</mat-icon>
       </button>
 
 
-      <mat-icon
+      <span
       [routerLink]="['/miscellaneous/home/']"
-      class="nav-bar__logo"
-      inline="true"
-      svgIcon="logo_mini">
-     </mat-icon>
+      class="nav-bar__logo">
+      SMC
+     </span>
 
 
      <div class="mat-h3 inline--centred nav-tabs__tab">
 
         <app-category-menu></app-category-menu>
-        <a mat-button i18n>
-         Utility
-        </a>
         <a fragment="about-us" [routerLink]="['/miscellaneous/home']" mat-button i18n>
          About us
         </a>
@@ -31,14 +28,18 @@
             <mat-icon>search</mat-icon>
         </button>
 
-        <button mat-icon-button   (click)="openCardDialog()" id="account-icon">
-            <mat-icon>person</mat-icon>
+        <button  mat-icon-button   (click)="openCardDialog()" id="account-icon">
+            <mat-icon class="material-icons-outlined">person</mat-icon>
         </button>
         <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>
             <mat-icon>favorite_border</mat-icon>
         </button>
-            <app-language-box>
-            </app-language-box>
+        <!-- <app-language-box>
+        </app-language-box> -->
+        <button class="inline" (click)="openLocalDialog()" mat-button>
+            <mat-icon class="mr2" [svgIcon]="(language$ |async)?.languageType"></mat-icon>
+            <span class="mat-caption">France | EUR</span>
+          </button>
 
     </div>
   </nav>

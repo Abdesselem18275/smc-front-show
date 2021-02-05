@@ -1,0 +1,68 @@
+<header >
+<h1 class="mat-h1">Preferences</h1>
+</header>
+<main mat-dialog-content>
+    <section class="my4">
+    <h2 class="mat-h2">Set your Language</h2>
+    <div class="inline--centred--spaced">
+        <button mat-button class="inline"  *ngFor="let item of languageList" >
+            <mat-icon class="mr2" [svgIcon]="(item.languageType)"></mat-icon>
+            <span class="mat-body-2">{{item.languageType}}</span>
+        </button>
+    </div>
+    
+</section>
+<section class="my8">
+    <h2 class="mat-h2">Set your Location & Currency</h2>
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="mr2">my_location</mat-icon>
+            Location
+          </ng-template>
+          <mat-list class="horizontal" dense>
+
+            <mat-list-item *ngFor="let item of countries$ | async">            
+              <div mat-line>
+                <span class="mat-body-2">
+                  {{item?.designation}}
+                </span>
+              </div>
+              <div mat-line >
+                <span class="mat-caption">
+                  {{item?.alpha3Code}}
+                </span>
+            </div>
+            </mat-list-item>
+            </mat-list>
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="mr2">price_change</mat-icon>
+            Currency
+          </ng-template>
+          <mat-list class="horizontal" dense>
+
+            <mat-list-item *ngFor="let item of currencies$ | async">            
+              <div mat-line>
+                <span class="mat-body-2">
+                  {{item?.designation}}
+                </span>
+              </div>
+              <div mat-line >
+                <span class="mat-caption">
+                  {{item?.alphaCode}}
+                </span>
+            </div>
+            </mat-list-item>
+            </mat-list>
+        </mat-tab>
+      </mat-tab-group>
+</section >
+
+</main>
+<footer class="inline--centred--spaced" mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>CANCEL</button>
+    <button mat-raised-button color="primary" type="submit" (click)="confirm()" cdkFocusInitial>CONFIRM</button>
+</footer>

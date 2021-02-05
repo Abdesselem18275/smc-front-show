@@ -1,0 +1,10 @@
+.horizontal {
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    .mat-list-item {
+       width: 33%;
+       min-width: 120px;
+    }
+}

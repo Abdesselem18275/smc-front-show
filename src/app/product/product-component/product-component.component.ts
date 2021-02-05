@@ -1,5 +1,5 @@
 import { Input, Component, ChangeDetectionStrategy } from '@angular/core';
-import { ComponentsSpecification } from 'src/app/core/types';
+import { ComponentsSpecification } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-product-component',

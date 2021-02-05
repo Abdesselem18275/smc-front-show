@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AppearanceVariant, Product } from 'src/app/core/types';
+import { AppearanceVariant, Product } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-quart-dialog',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 import { QuartDialogComponent } from '../components/quart-dialog/quart-dialog.component';
 
 @Injectable({

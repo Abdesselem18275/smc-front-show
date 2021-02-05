@@ -20,12 +20,13 @@ import { AccountCardComponent } from './account-card/account-card.component';
 import { ControlErrorMessageComponent } from './control-error-message/control-error-message.component';
 import { ControlValidatorMessageDirective } from './control-validator-message.directive';
 import { ImageZoomDirective } from './directives/image-zoom.directive';
+import { LocalesDialogComponent } from './components/locales-dialog/locales-dialog.component';
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
     AccountCardComponent,ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
-    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent, ImageZoomDirective],
+    MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent, ImageZoomDirective, LocalesDialogComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -47,6 +48,7 @@ import { ImageZoomDirective } from './directives/image-zoom.directive';
     ControlErrorMessageComponent,
     ImageZoomDirective,
     ModalCloseDirective,
+    LocalesDialogComponent,
   ]
 })
 export class SharedModule { }

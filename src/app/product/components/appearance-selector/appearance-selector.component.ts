@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ProductStoreSelectors } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
 import {AppearanceSelectorStateService} from './appearance-selector-state.service';
-import { AppearanceVariant } from 'src/app/core/types';
+import { AppearanceVariant } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-appearance-selector',

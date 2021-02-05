@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AppearanceVariant, BaseImage, Product } from 'src/app/core/types';
+import { AppearanceVariant, BaseImage, Product } from 'src/app/models/product.models';
 import { QuartDialogService } from '../service/quart-dialog.service';
 
 @Component({

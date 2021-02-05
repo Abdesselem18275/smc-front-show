@@ -2,7 +2,7 @@ import * as fromGlobalReducer from './reducers';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './state';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Category, FilterCategory, Choice } from 'src/app/core/types';
+import { Category, FilterCategory, Choice } from 'src/app/models/product.models';
 
 
 export const selectGlobalState = createFeatureSelector<State>(fromGlobalReducer.featureKey);

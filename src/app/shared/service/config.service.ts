@@ -11,7 +11,10 @@ import { Profile } from 'src/app/models/account.models';
 import { EMPTY } from 'rxjs';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
-import { Category, InitDataType } from 'src/app/core/types';
+import { Category } from 'src/app/models/product.models';
+import { GlobalStateService } from '../state/global-state.service';
+import { json } from 'express';
+import { InitDataType } from 'src/app/models/shared.models';
 
 
 
@@ -20,6 +23,7 @@ import { Category, InitDataType } from 'src/app/core/types';
 })
 export class ConfigService {
   constructor(
+    private gss: GlobalStateService,
     @Inject(PROFILE_ID) private profileId: string,
     private iconRegistry: MatIconRegistry ,
     private sanitizer: DomSanitizer,
@@ -47,6 +51,9 @@ export class ConfigService {
       response.icons.forEach(jsonItem => {
         this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
       });
+      this.gss.setCountries(response.countries);
+      this.gss.setCurrencies(response.currencies);
+
       response.navMenuTree = this.mdbs.buildMenuTree(response.categories.filter((cat: Category) => cat.isRoot));
       this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:response}));
     });

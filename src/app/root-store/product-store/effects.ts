@@ -9,7 +9,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from '..';
-import { PaginatedProductsType, Product } from 'src/app/core/types';
+import { PaginatedProductsType, Product } from 'src/app/models/product.models';
 
 
 @Injectable()

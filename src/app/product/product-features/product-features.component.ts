@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Product, Feature } from 'src/app/core/types';
+import { Product, Feature } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-product-features',
@@ -8,8 +8,8 @@ import { Product, Feature } from 'src/app/core/types';
   styleUrls: ['./product-features.component.scss']
 })
 export class ProductFeaturesComponent implements OnInit {
-  @Input() features : Feature[];
-  @Input() align : 'horizontal' | 'vertical' = 'vertical'
+  @Input() features: Feature[];
+  @Input() align: 'horizontal' | 'vertical' = 'vertical';
   constructor() { }
 
   ngOnInit(): void {

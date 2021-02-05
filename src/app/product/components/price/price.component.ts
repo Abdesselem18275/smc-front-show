@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/core/types';
+import { Product } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-price',

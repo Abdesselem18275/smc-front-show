@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { NavigationExtras, Router, UrlTree } from '@angular/router';
-import { Category, MenuTreeData } from 'src/app/core/types';
+import { Category, MenuTreeData } from 'src/app/models/product.models';
 
 
 @Injectable({

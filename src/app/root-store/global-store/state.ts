@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-shadow */
 
-import { Category, FilterCategory, MenuTreeData } from 'src/app/core/types';
+import { Category, FilterCategory, MenuTreeData } from 'src/app/models/product.models';
 
 export enum LanguageType {
     ENGLISH = 'English',

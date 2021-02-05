@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { DimensionVariant, DimensionVariantSpecification } from 'src/app/core/types';
+import { DimensionVariant, DimensionVariantSpecification } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-product-dimensions',
