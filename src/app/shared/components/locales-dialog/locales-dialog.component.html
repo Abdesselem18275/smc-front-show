@@ -1,5 +1,7 @@
-<header mat-dialog-title >
+<header class="inline--centred--spaced">
 <h1 class="mat-h1">Preferences</h1>
+<button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+
 </header>
 <main mat-dialog-content>
 <section class="my4">
@@ -13,7 +15,12 @@
     <span>Paiment Currency have little or no impact on the products prices as we regulary update our internal exchange rates. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <a mat-list-item class="list__el mx2" *ngFor="let item of currencies$ | async">
+    <a mat-list-item 
+    [class.element--active]="(paimentCurrency$ | async)?.id == item.id"
+    [routerLink] = "[]"
+    [queryParams]="paimentCurrencyQueryParam(item)"
+    [relativeTo]="currentRoute"
+    *ngFor="let item of currencies$ | async">
       <div mat-list-icon>
         {{item?.symbol}}
       </div>            
@@ -43,7 +50,13 @@
     <span>Products prices greatly depend on the shipping country taxes and fees. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item *ngFor="let item of countries$ | async">      
+    <a 
+    mat-list-item 
+    [class.element--active]="(shippingCountry$ | async)?.id == item.id"
+    [routerLink] = "[]"
+    [queryParams]="shippingCountryQueryParam(item)"
+    [relativeTo]="currentRoute"
+    *ngFor="let item of countries$ | async">      
       <img mat-list-icon [src]="getFlagUrl(item)">   
       <div mat-line>
         <span class="mat-body-2">
@@ -55,13 +68,10 @@
           {{item?.alpha3Code}}
         </span>
     </div>
-    </mat-list-item>
+    </a>
     </mat-list>
   
 </section>
 
 </main>
-<footer class="inline--centred--spaced" mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close>CANCEL</button>
-    <button mat-raised-button color="primary" type="submit" (click)="confirm()" cdkFocusInitial>CONFIRM</button>
-</footer>
+
