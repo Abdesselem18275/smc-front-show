@@ -13,7 +13,7 @@
     <span>Paiment Currency have little or no impact on the products prices as we regulary update our internal exchange rates. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item class="list__el mx2" *ngFor="let item of currencies$ | async">
+    <a mat-list-item class="list__el mx2" *ngFor="let item of currencies$ | async">
       <div mat-list-icon>
         {{item?.symbol}}
       </div>            
@@ -27,7 +27,7 @@
           {{item?.alphaCode}}
         </span>
     </div>
-    </mat-list-item>
+  </a>
     </mat-list>
   
 </section>
@@ -59,58 +59,6 @@
     </mat-list>
   
 </section>
-<!-- <section class="my8">
-    <h2 class="mat-h2">Set your Location & Currency</h2>
-    <div class="remark mat-body inline--centred mb4">
-      <mat-icon class="mr2">report</mat-icon>
-      <span>Products prices greatly depend on the shipping country taxes and fees.</span>
-    </div>
-    <mat-tab-group  mat-stretch-tabs>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="mr2">local_shipping</mat-icon>
-            Shipping country
-          </ng-template>
-
-          <mat-list class="horizontal" dense>
-            <mat-list-item *ngFor="let item of countries$ | async">            
-              <div mat-line>
-                <span class="mat-body-2">
-                  {{item?.designation}}
-                </span>
-              </div>
-              <div mat-line >
-                <span class="mat-caption">
-                  {{item?.alpha3Code}}
-                </span>
-            </div>
-            </mat-list-item>
-            </mat-list>
-        </mat-tab>
-      
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="mr2">price_change</mat-icon>
-            Currency
-          </ng-template>
-          <mat-list class="horizontal" dense>
-
-            <mat-list-item *ngFor="let item of currencies$ | async">            
-              <div mat-line>
-                <span class="mat-body-2">
-                  {{item?.designation}}
-                </span>
-              </div>
-              <div mat-line >
-                <span class="mat-caption">
-                  {{item?.alphaCode}}
-                </span>
-            </div>
-            </mat-list-item>
-            </mat-list>
-        </mat-tab>
-      </mat-tab-group>
-</section > -->
 
 </main>
 <footer class="inline--centred--spaced" mat-dialog-actions>
