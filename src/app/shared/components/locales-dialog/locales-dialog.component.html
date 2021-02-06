@@ -2,16 +2,6 @@
 <h1 class="mat-h1">Preferences</h1>
 </header>
 <main mat-dialog-content>
-    <!-- <section class="my4">
-    <h2 class="mat-h2">Set Your Language</h2>
-    <div class="lang-selector">
-        <a  mat-flat-button [href]="getHref(item.id)" class="inline button--active"  *ngFor="let item of languageList" >
-            <mat-icon class="mr2" [svgIcon]="(item.languageType)"></mat-icon>
-            <span class="mat-body-2">{{item.languageType}}</span>
-        </a>
-    </div>
-    
-</section> -->
 <section class="my4">
   <h3 class="mat-h3 inline--centred">
     <mat-icon class="mr2">payments</mat-icon>
@@ -23,7 +13,10 @@
     <span>Paiment Currency have little or no impact on the products prices as we regulary update our internal exchange rates. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item *ngFor="let item of currencies$ | async">            
+    <mat-list-item class="list__el mx2" *ngFor="let item of currencies$ | async">
+      <div mat-list-icon>
+        {{item?.symbol}}
+      </div>            
       <div mat-line>
         <span class="mat-body-2">
           {{item?.designation}}
@@ -39,7 +32,7 @@
   
 </section>
 <mat-divider></mat-divider>
-<section class="my4">
+<section class="country-list my4">
   <h3 class="mat-h3 inline--centred">
     <mat-icon class="mr2">local_shipping</mat-icon>
 
@@ -50,7 +43,8 @@
     <span>Products prices greatly depend on the shipping country taxes and fees. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item *ngFor="let item of countries$ | async">            
+    <mat-list-item *ngFor="let item of countries$ | async">      
+      <img mat-list-icon [src]="getFlagUrl(item)">   
       <div mat-line>
         <span class="mat-body-2">
           {{item?.designation}}
