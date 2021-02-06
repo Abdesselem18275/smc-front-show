@@ -29,20 +29,6 @@ p {
 {
     display: flex;
     align-items: center;
-    #favorite-icon {
-      display: none;
-    }
-
-      @media only screen and (max-width:1024px) {
-        margin-left: auto;
-        #account-icon {
-          display: none;
-        }
-        #favorite-icon {
-          display: inline-block;
-        }
-
-    }
 }
 .nav-bar {
   @media only screen and (max-width:1024px) {
@@ -57,6 +43,12 @@ p {
 @media only screen and (max-width:1024px) {
   .space-divider {
     display: none;
+  }
+  .nav-bar__tools > :not(.shipping-settings) {
+    display: none;
+  } 
+  .nav-bar__tools  {
+    margin-left: auto;
   }
         .nav-bar__nav-tab {
           display: none;
