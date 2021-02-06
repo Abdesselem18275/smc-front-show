@@ -14,6 +14,8 @@ import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 import { LocalesDialogComponent } from '../components/locales-dialog/locales-dialog.component';
 import { Profile } from 'src/app/models/account.models';
 import { SideNavMenuComponent } from '../side-nav-menu/side-nav-menu.component';
+import { Country, Currency } from 'src/app/models/shared.models';
+import { GlobalStateService } from '../state/global-state.service';
 
 @Component({
   selector: 'app-product-menu',
@@ -28,10 +30,15 @@ export class ProductMenuComponent  {
   profile$: Observable<Profile>;
   language$: Observable<UserLanguage | null>;
   languageList: UserLanguage[];
+  shippingCountry$: Observable<Country>;
+  paimentCurrency$: Observable<Currency>;
   constructor( private router: Router,
+               private gss: GlobalStateService,
                private dialog: MatDialog,
                @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
                private store$: Store<RootStoreState.State>) {
+                this.paimentCurrency$ = this.gss.userPaimentCurrency;
+                this.shippingCountry$ = this.gss.userShippingCountry;
                 this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
                 this.isHomeRoute$ = this.router.events.pipe(
                   filter((x: any) => x instanceof NavigationEnd),

@@ -1,0 +1,16 @@
+
+  <button class="inline" [matMenuTriggerFor]="lang" mat-button>
+    <mat-icon class="mr2">language</mat-icon>
+    <span>{{(language$ |async)?.languageType.substr(0,2)}}</span>
+  </button>
+
+  <mat-menu  #lang="matMenu">
+    <a class="inline--centred--spaced" [href]="getHref(item.id)" mat-menu-item *ngFor="let item of languageList" >
+      <div>
+        <mat-icon [svgIcon]="(item.languageType)"></mat-icon>
+        <span class="mat-body-2">{{item.languageType}}</span>
+      </div>
+        <mat-icon *ngIf="(language$ |async)?.languageType == item.languageType">check</mat-icon>
+    </a>
+  </mat-menu>
+

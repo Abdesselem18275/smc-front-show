@@ -24,3 +24,13 @@ export type InitDataType = {
     countries: Country[];
     currencies: Currency[];
 };
+
+export enum SessionStorageKey {
+    shippingCountry = 'SHIPPING_COUNTRY',
+    paymentCurrency = 'PAYMENT_CURRENCY',
+  }
+
+export enum AppQueryParamKey {
+    shippingCountry = 'shippingCountry',
+    paymentCurrency = 'paymentCurrency',
+  }

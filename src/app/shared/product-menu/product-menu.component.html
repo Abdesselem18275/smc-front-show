@@ -38,7 +38,7 @@
         </app-language-box>
         <button class="shipping-settings inline--centred" (click)="openLocalDialog()" mat-button>
           <mat-icon class="mr2">settings</mat-icon>
-          <span>France | £</span>
+          <span>{{(shippingCountry$|async)?.designation}} | {{(paimentCurrency$|async)?.symbol}}</span>
           </button>
 
     </div>
