@@ -34,12 +34,9 @@
                <span>{{profile.first_name | titlecase}}</span>
             </div>
         </button>
-        <button id="favorite-icon" [routerLink]="['product/favorites']"     class="mx1" mat-icon-button>
-            <mat-icon>favorite_border</mat-icon>
-        </button>
         <app-language-box>
         </app-language-box>
-        <button class="inline--centred" (click)="openLocalDialog()" mat-button>
+        <button class="shipping-settings inline--centred" (click)="openLocalDialog()" mat-button>
           <mat-icon class="mr2">settings</mat-icon>
           <span>France | £</span>
           </button>

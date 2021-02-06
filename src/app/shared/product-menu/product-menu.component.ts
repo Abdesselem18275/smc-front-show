@@ -13,6 +13,7 @@ import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
 import { selectLanguage } from 'src/app/root-store/global-store/selectors';
 import { LocalesDialogComponent } from '../components/locales-dialog/locales-dialog.component';
 import { Profile } from 'src/app/models/account.models';
+import { SideNavMenuComponent } from '../side-nav-menu/side-nav-menu.component';
 
 @Component({
   selector: 'app-product-menu',
@@ -39,7 +40,11 @@ export class ProductMenuComponent  {
 
   }
   toggleSideNav() {
-    this.sideNavEmmiter.emit('');
+    this.dialog.open(SideNavMenuComponent,{
+      position: {top:'0',right:'0'},
+      width:'100vw',
+      maxWidth:'100vw'
+    });
   }
   openCardDialog() {
     this.dialog.open(AccountCardComponent,{
@@ -58,7 +63,7 @@ export class ProductMenuComponent  {
   }
   openLocalDialog(){
     this.dialog.open(LocalesDialogComponent,{
-      width:'600px',
+      width:'800px',
       maxWidth:'100vw',
       });
   }
