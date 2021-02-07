@@ -43,7 +43,5 @@ export class LocalesDialogComponent {
   getFlagUrl(country: Country): string {
     return `https://www.countryflags.io/${country.alpha2Code.toLowerCase().replace('""','').trim()}/flat/64.png`;
   }
-  getFlagUrl(country: Country): string {
-    return `https://www.countryflags.io/${country.alpha2Code.toLowerCase().replace('""','').trim()}/flat/64.png`;
-  }
+
 }

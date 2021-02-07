@@ -15,7 +15,14 @@
     <span>Paiment Currency have little or no impact on the products prices as we regulary update our internal exchange rates. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item class="list__el mx2" *ngFor="let item of currencies$ | async">
+    <a  
+    mat-list-item
+    [class.element--active]="(paimentCurrency$ | async)?.id == item.id"
+    [routerLink] = "[]"
+    [queryParams]="paimentCurrencyQueryParam(item)"
+    [relativeTo]="currentRoute"
+    
+    *ngFor="let item of currencies$ | async">
       <div mat-list-icon>
         {{item?.symbol}}
       </div>            
@@ -45,8 +52,6 @@
     <span>Products prices greatly depend on the shipping country taxes and fees. </span>
   </div>  
   <mat-list class="horizontal" dense>
-    <mat-list-item *ngFor="let item of countries$ | async">      
-
     <a 
     mat-list-item 
     [class.element--active]="(shippingCountry$ | async)?.id == item.id"
