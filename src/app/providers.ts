@@ -11,7 +11,9 @@ function loadInitData(configService: ConfigService) {
 function loadProfile(configService: ConfigService) {
     return ():Promise<any> => configService.loadProfile();
   }
-
+  function loadLocales(configService: ConfigService) {
+    return ():Promise<any> => configService.loadLocales();
+  }
   
 const getBaseUrl = (s: PlatformLocation):string => {
     const baseUrl = Location.stripTrailingSlash(s.getBaseHrefFromDOM())
@@ -28,6 +30,12 @@ export const providers: Array<any> = [
     {
         provide: APP_INITIALIZER,
         useFactory: loadProfile,
+        deps: [ConfigService],
+        multi: true
+      },
+      {
+        provide: APP_INITIALIZER,
+        useFactory: loadLocales,
         deps: [ConfigService],
         multi: true
       },

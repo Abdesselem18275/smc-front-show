@@ -1,8 +1,10 @@
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { AppQueryParamKey, Country, Currency } from 'src/app/models/shared.models';
+import { AppQueryParamKey, Country, Currency, SessionStorageKey } from 'src/app/models/shared.models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +12,20 @@ import { AppQueryParamKey, Country, Currency } from 'src/app/models/shared.model
 export class GlobalStateService {
   private readonly countriesSubject = new BehaviorSubject<Country[]>([]);
   private readonly currenciesSubject = new BehaviorSubject<Currency[]>([]);
-  constructor(private route: ActivatedRoute) {
+  constructor(@Inject(DOCUMENT) private document: Document,private route: ActivatedRoute) {
     this.route.queryParamMap.pipe(
       filter((paramMap: ParamMap) =>
         paramMap.has(AppQueryParamKey.shippingCountry) || paramMap.has(AppQueryParamKey.paymentCurrency))
     ).subscribe((paramMap: ParamMap) => {
       if(paramMap.has(AppQueryParamKey.shippingCountry)) {
         sessionStorage.setItem(
-          AppQueryParamKey.shippingCountry,
-          paramMap.get(AppQueryParamKey.shippingCountry));
+          SessionStorageKey.shippingCountry,
+        paramMap.get(AppQueryParamKey.shippingCountry));
         this.countriesSubject.next(this.countriesSubject.getValue());
       }
       if(paramMap.has(AppQueryParamKey.paymentCurrency)) {
         sessionStorage.setItem(
-          AppQueryParamKey.paymentCurrency,
+          SessionStorageKey.paymentCurrency,
           paramMap.get(AppQueryParamKey.paymentCurrency));
         this.currenciesSubject.next(this.currenciesSubject.getValue());
 
@@ -31,6 +33,11 @@ export class GlobalStateService {
 
 
     });
+  }
+
+  initSelectedLocales():void {
+    this.countriesSubject.next(this.countriesSubject.getValue());
+    this.currenciesSubject.next(this.currenciesSubject.getValue());
   }
   setCurrencies(payload: Currency[]): void {
     this.currenciesSubject.next(payload);
@@ -49,17 +56,17 @@ export class GlobalStateService {
     return this.currencies.pipe(
       filter(
         (currencies: Currency[]) =>
-          currencies.map(currency => currency.alphaCode).includes(sessionStorage.getItem(AppQueryParamKey.paymentCurrency))),
+          currencies.map(currency => currency.alphaCode).includes(sessionStorage.getItem(SessionStorageKey.paymentCurrency))),
       map((currencies: Currency[]) =>
-        currencies.find(currency => currency.alphaCode === sessionStorage.getItem(AppQueryParamKey.paymentCurrency))));
+        currencies.find(currency => currency.alphaCode === sessionStorage.getItem(SessionStorageKey.paymentCurrency))));
   }
 
   get userShippingCountry(): Observable<Country> {
     return this.countries.pipe(
       filter(
         (countries: Country[]) =>
-        countries.map(country => country.alpha2Code).includes(sessionStorage.getItem(AppQueryParamKey.shippingCountry))),
+        countries.map(country => country.alpha2Code.toLowerCase()).includes(sessionStorage.getItem(SessionStorageKey.shippingCountry))),
       map((countries: Country[]) =>
-      countries.find(country => country.alpha2Code === sessionStorage.getItem(AppQueryParamKey.shippingCountry))));
+      countries.find(country => country.alpha2Code.toLowerCase() === sessionStorage.getItem(SessionStorageKey.shippingCountry))));
   }
 }

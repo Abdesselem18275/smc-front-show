@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {AppDataService} from './app-data.service';
-import { take } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from './menu-data-builder.service';
@@ -14,7 +14,8 @@ import { LanguageType } from 'src/app/root-store/global-store/state';
 import { Category } from 'src/app/models/product.models';
 import { GlobalStateService } from '../state/global-state.service';
 import { json } from 'express';
-import { InitDataType } from 'src/app/models/shared.models';
+import { AppQueryParamKey, InitDataType, SessionStorageKey } from 'src/app/models/shared.models';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -27,6 +28,7 @@ export class ConfigService {
     @Inject(PROFILE_ID) private profileId: string,
     private iconRegistry: MatIconRegistry ,
     private sanitizer: DomSanitizer,
+    private http: HttpClient ,
     private mdbs: MenuDataBuilderService,
     private store$: Store<any>,
     private ads: AppDataService ) {
@@ -65,5 +67,17 @@ export class ConfigService {
       take(1)).toPromise().then((profile: Profile) => {
       this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}));
     }) : EMPTY.toPromise();
+  }
+  loadLocales(): Promise<void>  {
+
+    return sessionStorage.getItem(SessionStorageKey.paymentCurrency) && 
+          sessionStorage.getItem(SessionStorageKey.shippingCountry) ? EMPTY.toPromise() : 
+    this.http.get<{country:string}>('https://yhph57qw9k.execute-api.eu-central-1.amazonaws.com/dev').pipe(
+      tap(res => {
+        sessionStorage.setItem(AppQueryParamKey.shippingCountry,res.country.toLowerCase())
+        this.gss.initSelectedLocales()
+      }
+        ),
+      take(1)).toPromise().then()
   }
 }

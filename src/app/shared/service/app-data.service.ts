@@ -26,7 +26,11 @@ export class AppDataService {
         });
       }
 
-      options = { params: httpParams };
+      options = { 
+        params: httpParams ,
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+        })};
     }
     return this.http.get<T>(query, options).pipe();
   }

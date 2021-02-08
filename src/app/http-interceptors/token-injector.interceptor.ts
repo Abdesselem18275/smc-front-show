@@ -22,36 +22,9 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token: string = localStorage.getItem(this.tokenKey);
-    if(request.method === 'JSONP') {
-      return next.handle(request);
-    }
-    if (request.url.includes('smc-static-media')) {
-      return next.handle(request);
-    } else if (request.url.includes('g-auth')) {
-      return next.handle(request.clone({
-        setHeaders: {
-          'Content-Type':  'application/x-www-form-urlencoded'
-        }
-      }));
-    } else {
-      return this.store.select(GlobalStoreSelectors.selectLanguage).pipe(
-        mergeMap(lang => next.handle(request.clone(token ? {
-          setHeaders: {
-            Authorization: 'Token ' + token,
-            'Content-Type':  'application/json',
-            'Accept-Language':lang.id
-          }
-        }:
-        {
-          setHeaders: {
-            'Content-Type':  'application/json',
-            'Accept-Language':lang.id
-          }
-        }
-
-        )))
-      );
-    }
-
+    request = token ? request.clone({
+      headers:request.headers.set('Authorization','Token ' + token) 
+    }):request
+    return next.handle(request)
   }
 }
