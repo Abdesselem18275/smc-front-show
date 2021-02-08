@@ -1,8 +1,0 @@
-@import "util-mixins";
-
-li.mat-icon {
-    @include md-icon-size(1.5rem);
-}
-a {
-    min-width:220px ;
-}

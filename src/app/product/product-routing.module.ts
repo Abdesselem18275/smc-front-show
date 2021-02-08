@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductComponent } from './product/product.component';
-import { ProductHomeComponent } from '../miscellaneous/product-home/product-home.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductDetailResolverService } from './service/product-detail-resolver.service';
 import { AuthGuard } from '../account/auth.guard';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductHomeComponent } from '../miscellaneous/components/product-home/product-home.component';
 
 const productRoutes: Routes = [
   { path : '',

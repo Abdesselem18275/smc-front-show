@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { AccountRoutingModule } from './account-routing.module';
-import { AccountComponent } from './account/account.component';
-import { SharedModule } from '../shared/shared.module';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { UserRequestListComponent } from './user-request-list/user-request-list.component';
 import { CommonModule } from '@angular/common';
-import { AccountProfileComponent } from './account-profile/account-profile.component';
-import { AuthentificationCardComponent } from './authentification-card/authentification-card.component';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
-import { AccountLoginComponent } from './account-login/account-login.component';
-import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+import { AccountRoutingModule } from './account-routing.module';
+import { AccountLoginComponent } from './components/account-login/account-login.component';
+import { AccountProfileComponent } from './components/account-profile/account-profile.component';
+import { AccountComponent } from './components/account/account.component';
+import { AuthentificationCardComponent } from './components/authentification-card/authentification-card.component';
+import { CreateProfileComponent } from './components/create-profile/create-profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
 
 @NgModule({
   declarations: [AccountComponent,
@@ -18,7 +17,6 @@ import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component
                  CreateProfileComponent,
                  GoogleSignInComponent,
                  AuthentificationCardComponent,
-                 UserRequestListComponent,
                  AccountProfileComponent],
   imports: [
     CommonModule,

@@ -31,7 +31,7 @@ export const QUERY_PARAM_KEYS = new InjectionToken<any>('ParamKeys', {
 });
 export const API_URL = new InjectionToken<string>('ApiUrl', {
   providedIn: 'root',
-  factory: LOCAL_API_URL
+  factory: SMC_API_URL
 });
 export const TOKEN_KEY = new InjectionToken<string>('TokenKey', {
   providedIn: 'root',

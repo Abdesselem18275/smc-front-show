@@ -1,3 +1,4 @@
+import { Component} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootStoreState } from 'src/app/root-store';
 import { LogoutAction } from 'src/app/root-store/user-store/actions';
@@ -7,7 +8,6 @@ import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { MenuTreeData } from 'src/app/models/product.models';
-import { Component } from '@angular/core';
 
 
 @Component({

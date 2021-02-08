@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountProfileComponent } from './account-profile/account-profile.component';
-import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './auth.guard';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import {AuthentificationCardComponent } from './authentification-card/authentification-card.component';
-import { AccountLoginComponent } from './account-login/account-login.component';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { AccountLoginComponent } from './components/account-login/account-login.component';
+import { AccountProfileComponent } from './components/account-profile/account-profile.component';
+import { AccountComponent } from './components/account/account.component';
+import { AuthentificationCardComponent } from './components/authentification-card/authentification-card.component';
+import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 const routes: Routes = [
   { path : '',
   component : AccountComponent,
@@ -22,7 +21,7 @@ const routes: Routes = [
         {
           path:'create-profile',
           component:CreateProfileComponent,
-        }, 
+        },
         {
           path:'',
           redirectTo:'login'
