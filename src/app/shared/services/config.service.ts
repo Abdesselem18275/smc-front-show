@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {AppDataService} from './app-data.service';
-import { exhaustMap, switchMap, take, tap } from 'rxjs/operators';
+import { exhaustMap, take, tap } from 'rxjs/operators';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from './menu-data-builder.service';
@@ -13,10 +13,8 @@ import { UserStoreActions } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
 import { Category } from 'src/app/models/product.models';
 import { GlobalStateService } from '../state/global-state.service';
-import { json } from 'express';
-import { AppQueryParamKey, InitDataType, SessionStorageKey } from 'src/app/models/shared.models';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
+import { InitDataType } from 'src/app/models/shared.models';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -61,7 +59,7 @@ export class ConfigService {
         res.navMenuTree = this.mdbs.buildMenuTree(res.categories.filter((cat: Category) => cat.isRoot));
         this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:res}));
       }),
-      exhaustMap((res: InitDataType) =>
+      exhaustMap(() =>
         this.http.get<{country: string}>('https://yhph57qw9k.execute-api.eu-central-1.amazonaws.com/dev').pipe(
           take(1),
           tap(country => {

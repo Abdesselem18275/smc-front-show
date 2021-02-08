@@ -1,9 +1,9 @@
 
 import { APP_INITIALIZER } from '@angular/core';
 
-import { ConfigService } from './shared/service/config.service';
 import { PlatformLocation,Location,CommonModule, APP_BASE_HREF, } from '@angular/common';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { ConfigService } from './shared/services/config.service';
 
 // const loadInitData = (configService: ConfigService): () => Promise<any> => () => configService.loadInitData();
 
