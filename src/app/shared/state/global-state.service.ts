@@ -35,9 +35,13 @@ export class GlobalStateService {
     });
   }
 
-  initSelectedLocales():void {
-    this.countriesSubject.next(this.countriesSubject.getValue());
+  initUserLocales(countryCode: string): void {
+    sessionStorage.setItem(SessionStorageKey.shippingCountry,countryCode);
+    const relatedCurrency = this.countriesSubject.getValue().find((country: Country) =>
+    country.alpha2Code ===  countryCode)?.currency ?? 'USD';
+    sessionStorage.setItem(SessionStorageKey.paymentCurrency,relatedCurrency);
     this.currenciesSubject.next(this.currenciesSubject.getValue());
+    this.countriesSubject.next(this.countriesSubject.getValue());
   }
   setCurrencies(payload: Currency[]): void {
     this.currenciesSubject.next(payload);
@@ -65,8 +69,8 @@ export class GlobalStateService {
     return this.countries.pipe(
       filter(
         (countries: Country[]) =>
-        countries.map(country => country.alpha2Code.toLowerCase()).includes(sessionStorage.getItem(SessionStorageKey.shippingCountry))),
+        countries.map(country => country.alpha2Code).includes(sessionStorage.getItem(SessionStorageKey.shippingCountry))),
       map((countries: Country[]) =>
-      countries.find(country => country.alpha2Code.toLowerCase() === sessionStorage.getItem(SessionStorageKey.shippingCountry))));
+      countries.find(country => country.alpha2Code === sessionStorage.getItem(SessionStorageKey.shippingCountry))));
   }
 }

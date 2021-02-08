@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {AppDataService} from './app-data.service';
-import { take, tap } from 'rxjs/operators';
+import { exhaustMap, switchMap, take, tap } from 'rxjs/operators';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuDataBuilderService } from './menu-data-builder.service';
@@ -16,6 +16,7 @@ import { GlobalStateService } from '../state/global-state.service';
 import { json } from 'express';
 import { AppQueryParamKey, InitDataType, SessionStorageKey } from 'src/app/models/shared.models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
 
 
 
@@ -48,36 +49,31 @@ export class ConfigService {
 
     }
 
-  loadInitials(): Promise<void> {
-    return this.ads.get<InitDataType>('/product/initData/').pipe(take(1)).toPromise().then((response: InitDataType) => {
-      response.icons.forEach(jsonItem => {
-        this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
-      });
-      this.gss.setCountries(response.countries);
-      this.gss.setCurrencies(response.currencies);
-
-      response.navMenuTree = this.mdbs.buildMenuTree(response.categories.filter((cat: Category) => cat.isRoot));
-      this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:response}));
-    });
-  }
-  loadProfile(): Promise<void>  {
-
-    return localStorage.getItem(this.profileId) ?
-    this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
-      take(1)).toPromise().then((profile: Profile) => {
-      this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}));
-    }) : EMPTY.toPromise();
-  }
-  loadLocales(): Promise<void>  {
-
-    return sessionStorage.getItem(SessionStorageKey.paymentCurrency) && 
-          sessionStorage.getItem(SessionStorageKey.shippingCountry) ? EMPTY.toPromise() : 
-    this.http.get<{country:string}>('https://yhph57qw9k.execute-api.eu-central-1.amazonaws.com/dev').pipe(
-      tap(res => {
-        sessionStorage.setItem(AppQueryParamKey.shippingCountry,res.country.toLowerCase())
-        this.gss.initSelectedLocales()
-      }
-        ),
-      take(1)).toPromise().then()
+  init(): Promise<void> {
+    return this.ads.get<InitDataType>('/product/initData/').pipe(
+      take(1),
+      tap((res: InitDataType) => {
+        res.icons.forEach(jsonItem => {
+          this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
+        });
+        this.gss.setCountries(res.countries);
+        this.gss.setCurrencies(res.currencies);
+        res.navMenuTree = this.mdbs.buildMenuTree(res.categories.filter((cat: Category) => cat.isRoot));
+        this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:res}));
+      }),
+      exhaustMap((res: InitDataType) =>
+        this.http.get<{country: string}>('https://yhph57qw9k.execute-api.eu-central-1.amazonaws.com/dev').pipe(
+          take(1),
+          tap(country => {
+            this.gss.initUserLocales(country.country);
+          })
+        )),
+      exhaustMap(() => localStorage.getItem(this.profileId) ?
+      this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
+        take(1),
+        tap((profile: Profile) =>
+          this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
+        )):EMPTY
+      )).toPromise().then();
   }
 }

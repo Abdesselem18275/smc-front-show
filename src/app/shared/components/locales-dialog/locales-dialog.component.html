@@ -59,7 +59,7 @@
     [queryParams]="shippingCountryQueryParam(item)"
     [relativeTo]="currentRoute"
     *ngFor="let item of countries$ | async">      
-      <img mat-list-icon [src]="getFlagUrl(item)">   
+      <img loading="lazy" mat-list-icon [src]="getFlagUrl(item)">   
       <div mat-line>
         <span class="mat-body-2">
           {{item?.designation}}

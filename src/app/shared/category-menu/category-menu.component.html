@@ -1,13 +1,3 @@
-<!-- 
-  <button mat-button [matMenuTriggerFor]="menu">
-    <span i18n>Product</span>
-  </button>
-  <mat-menu #menu>
-    <button *ngFor="let item of rootCategories$ | async" color="accent" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}">
-      {{item.designation}}
-    </button>
-  </mat-menu> -->
-
   <button 
     [matMenuTriggerData]="{category: root}"
     [matMenuTriggerFor]="menu"

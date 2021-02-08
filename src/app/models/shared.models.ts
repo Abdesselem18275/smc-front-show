@@ -6,6 +6,7 @@ export type Country = {
     alpha2Code: string;
     alpha3Code: string;
     numCode: string;
+    currency: string;
 };
 export type Currency = {
     id: number;
