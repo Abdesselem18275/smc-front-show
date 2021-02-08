@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material';
-import { AccountCardComponent } from './components/account-card/account-card.component';
 import { CategoriesTreeComponent } from './components/categories-tree/categories-tree.component';
 import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
 import { ControlErrorMessageComponent } from './components/control-error-message/control-error-message.component';
@@ -25,7 +24,7 @@ import { ModalCloseDirective } from './directives/modal-close.directive';
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
-    AccountCardComponent,ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
+    ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent,
     ImageZoomDirective, LocalesDialogComponent],
   imports:  [
@@ -41,7 +40,6 @@ import { ModalCloseDirective } from './directives/modal-close.directive';
     ReactiveFormsModule,
     MaterialModule,
     ControlValidatorMessageDirective,
-    AccountCardComponent,
     InitialsIconComponent,
     ScrollPaginatorDirective,
     LoadingComponent,
