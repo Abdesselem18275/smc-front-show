@@ -44,7 +44,7 @@ export class GoogleAuthService {
     });
   }
   createOrSignin(id_token: string): Observable<any> {
-    const endPoint = '/g-auth/';
+    const endPoint = '/account/g-auth/';
     const query: string = [
       this.apiUrl,
       endPoint

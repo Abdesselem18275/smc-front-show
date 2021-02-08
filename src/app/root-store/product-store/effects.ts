@@ -4,7 +4,7 @@ import {map, switchMap, concatMap, filter, tap } from 'rxjs/operators';
 import * as ProductStoreActions from './actions';
 import { ROUTER_NAVIGATED, RouterNavigatedAction } from '@ngrx/router-store';
 import { SmcAuthService } from 'src/app/account/service/smc-auth.service';
-import { AppDataService } from 'src/app/shared/service/app-data.service';
+import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Store } from '@ngrx/store';

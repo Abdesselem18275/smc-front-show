@@ -26,7 +26,7 @@ export class AppDataService {
         });
       }
 
-      options = { 
+      options = {
         params: httpParams ,
         headers: new HttpHeaders({
           'Content-Type':  'application/json',

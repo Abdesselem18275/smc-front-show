@@ -22,9 +22,9 @@ export class TokenInjectorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token: string = localStorage.getItem(this.tokenKey);
-    request = token ? request.clone({
-      headers:request.headers.set('Authorization','Token ' + token) 
-    }):request
-    return next.handle(request)
+    request = token && request.url.includes('/api/') ? request.clone({
+      headers:request.headers.set('Authorization','Token ' + token)
+    }):request;
+    return next.handle(request);
   }
 }

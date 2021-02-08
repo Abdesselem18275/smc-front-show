@@ -22,5 +22,5 @@ export class LocaleInterceptor implements HttpInterceptor {
         headers:request.headers.set('Accept-Language',lang.id)
       }
 
-      ))))
+      ))));
 }}

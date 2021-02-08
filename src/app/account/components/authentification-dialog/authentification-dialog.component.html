@@ -1,0 +1,40 @@
+<header class="mb4" mat-dialog-header>
+    <div class="inline--centred--spaced">
+        <h1 class="inline--centred mat-h1"><mat-icon class="mr2">lock</mat-icon>AUTHENTIFICATION</h1>
+        <button mat-dialog-close mat-icon-button><mat-icon>close</mat-icon></button>
+
+    </div>
+</header>
+<main mat-dialog-content>
+    <ng-container *ngIf="isLogin else createAccount">
+        <app-account-login></app-account-login>
+        <p class="user-action inline--centred--spaced mat-caption">
+            <a>Forget your password ?</a>
+        </p>
+        <mat-divider></mat-divider>
+        <section class="my6 google-login">
+            <app-google-sign-in>
+            </app-google-sign-in>
+        </section>
+
+    </ng-container>
+
+</main>
+<footer mat-dialog-actions>
+<button (click)="toggleDialogMode()" mat-button>
+    <ng-container *ngIf="isLogin else login">
+
+        <mat-icon class="mr2">person_add</mat-icon>
+        <span >Dont have an account ? Signup</span>
+    </ng-container>
+
+</button>
+</footer>
+<ng-template #createAccount>
+<app-create-profile></app-create-profile>
+
+</ng-template>
+<ng-template #login>
+    <mat-icon class="mr2">login</mat-icon>
+    <span>Go back and login</span>
+</ng-template>

@@ -26,11 +26,10 @@ export class AccountFormService {
   }
 
   createAuthForm(): FormGroup {
-    const form = this.fb.group({
+    return this.fb.group({
       email : ['', [Validators.required, Validators.email]],
       password : ['', Validators.required],
     });
-    return form;
   }
 
   createLoadFullAccountForm(): FormGroup {

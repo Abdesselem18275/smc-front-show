@@ -28,11 +28,13 @@
         </button> -->
 
         <button  mat-button   (click)="openCardDialog()" id="account-icon">
+          <div class="inline--centred">
             <mat-icon class="material-icons-outlined mr2">person</mat-icon>
-            <div class="column" *ngIf="(profile$ | async) as profile ; else anonymous">
-               <span class="mat-caption font--dark-grey">welcome</span>
+            <div *ngIf="(profile$ | async) as profile ; else anonymous">
                <span>{{profile.first_name | titlecase}}</span>
             </div>
+          </div>
+
         </button>
         <app-language-box>
         </app-language-box>

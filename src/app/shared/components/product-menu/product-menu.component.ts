@@ -16,6 +16,8 @@ import { SideNavMenuComponent } from '../side-nav-menu/side-nav-menu.component';
 import { Country, Currency } from 'src/app/models/shared.models';
 import { GlobalStateService } from '../../state/global-state.service';
 import { LocalesDialogComponent } from '../locales-dialog/locales-dialog.component';
+import { AuthentificationDialogComponent } from 'src/app/account/components/authentification-dialog/authentification-dialog.component';
+import { LazyLoaderService } from '../../services/lazy-loader.service';
 
 @Component({
   selector: 'app-product-menu',
@@ -33,6 +35,7 @@ export class ProductMenuComponent  {
   shippingCountry$: Observable<Country>;
   paimentCurrency$: Observable<Currency>;
   constructor( private router: Router,
+              private lls: LazyLoaderService,
                private gss: GlobalStateService,
                private dialog: MatDialog,
                @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
@@ -54,10 +57,22 @@ export class ProductMenuComponent  {
     });
   }
   openCardDialog() {
-    this.dialog.open(AccountCardComponent,{
-      position: {top:'5rem',right:'1rem'},
-      width:'20rem'
-    });
+    this.lls.loadModule(
+      () => import('../../../account/account.module').then(m => m.AccountModule)).then(() => this.profile$.pipe(take(1)).subscribe((x) => {
+        if(x) {
+         this.dialog.open(AccountCardComponent,{
+           position: {top:'5rem',right:'1rem'},
+           width:'20rem'
+         });
+        }else {
+         this.dialog.open(AuthentificationDialogComponent,{
+           width:'400px',
+           maxWidth:'100vw'
+         });
+        }
+     }));
+
+
   }
   openSearchDialog() {
     this.dialog.open(SearchBoxComponent,{

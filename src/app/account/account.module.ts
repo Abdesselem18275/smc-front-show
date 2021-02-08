@@ -5,10 +5,10 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountLoginComponent } from './components/account-login/account-login.component';
 import { AccountProfileComponent } from './components/account-profile/account-profile.component';
 import { AccountComponent } from './components/account/account.component';
-import { AuthentificationCardComponent } from './components/authentification-card/authentification-card.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
+import { AuthentificationDialogComponent } from './components/authentification-dialog/authentification-dialog.component';
 
 @NgModule({
   declarations: [AccountComponent,
@@ -16,8 +16,9 @@ import { GoogleSignInComponent } from './components/google-sign-in/google-sign-i
                  AccountLoginComponent,
                  CreateProfileComponent,
                  GoogleSignInComponent,
-                 AuthentificationCardComponent,
-                 AccountProfileComponent],
+                 AccountProfileComponent,
+                 AuthentificationDialogComponent,
+                 ],
   imports: [
     CommonModule,
     SharedModule,

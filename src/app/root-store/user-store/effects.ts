@@ -9,7 +9,7 @@ import { selectUser, selectRedirectNavigation } from './selectors';
 import { Profile } from 'src/app/models/account.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AppDataService } from 'src/app/shared/service/app-data.service';
+import { AppDataService } from 'src/app/shared/services/app-data.service';
 
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
@@ -14,7 +14,7 @@ declare const gapi: any;
   styleUrls: ['./account-login.component.scss']
 })
 export class AccountLoginComponent implements OnInit   {
-  auth_non_field_error: Observable<string>;
+  authNonFieldError: Observable<string>;
   loginForm: FormGroup;
   isChecking: Observable<boolean>;
   constructor(
@@ -27,8 +27,12 @@ export class AccountLoginComponent implements OnInit   {
   }
 
   onSubmit() {
-    const credentials = this.loginForm.value;
-    this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
-    this.auth_non_field_error = this.store$.select(UserStoreSelectors.selectError);
+    this.loginForm.enable();
+    if(this.loginForm.valid) {
+      const credentials = this.loginForm.value;
+      this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
+      this.authNonFieldError = this.store$.select(UserStoreSelectors.selectError);
+    }
+
   }
 }

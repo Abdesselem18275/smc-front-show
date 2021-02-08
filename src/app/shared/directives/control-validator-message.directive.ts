@@ -25,6 +25,7 @@ export class ControlValidatorMessageDirective implements OnDestroy, AfterContent
   }
   ngAfterContentInit(): void {
     const factory = this.resolver.resolveComponentFactory<ControlErrorMessageComponent>(ControlErrorMessageComponent);
+
     this.inputEl.ngControl.control?.statusChanges.subscribe(x =>
       {
         this.errorMsgContainerEl.clear();
