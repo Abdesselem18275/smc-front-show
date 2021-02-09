@@ -16,7 +16,7 @@
 
         <app-category-menu></app-category-menu>
         |
-        <a color="accent" fragment="about-us" [routerLink]="['/miscellaneous/home']" mat-button i18n>
+        <a color="accent" [matMenuTriggerFor]="informations"  mat-button i18n>
           <mat-icon class="mr-2">help_outline</mat-icon>
          Informations
         </a>
@@ -62,6 +62,18 @@ Login
   <mat-icon>shopping_basket</mat-icon>
   <span class="mat-body-2">My quart</span>
 </button>
+</mat-menu>
+
+<mat-menu   #informations="matMenu">
+  <button  fragment="about-us" [routerLink]="['/miscellaneous/home']"mat-menu-item>
+      <mat-icon>business</mat-icon>
+      <span class="mat-body-2">Who we are</span>
+
+  </button>
+  <button   fragment="about-us" [routerLink]="['/miscellaneous/home']" mat-menu-item>
+      <mat-icon>mail</mat-icon>
+      <span class="mat-body-2">Contact us</span>
+  </button>
 </mat-menu>
 
 

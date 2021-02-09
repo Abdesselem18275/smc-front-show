@@ -46,11 +46,11 @@
   </mat-list-item>
   <div mat-subheader>Informations</div>
   <mat-divider></mat-divider>
-  <mat-list-item>
+  <mat-list-item fragment="about-us" [routerLink]="['/miscellaneous/home']">
     <mat-icon mat-list-icon>business</mat-icon>
     <span mat-line class="mat-body-2">Who we are</span>
   </mat-list-item>
-  <mat-list-item>
+  <mat-list-item fragment="contact-us" [routerLink]="['/miscellaneous/home']">
     <mat-icon mat-list-icon>mail</mat-icon>
     <span mat-line class="mat-body-2">Contact us</span>
   </mat-list-item>
