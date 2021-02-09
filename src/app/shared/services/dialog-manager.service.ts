@@ -22,6 +22,8 @@ export class DialogManagerService {
     private store$: Store<RootStoreState.State>,
     private lls: LazyLoaderService ,
     private dialog: MatDialog) { }
+
+
   openCardDialog() {
     this.lls.loadModule(
       () => import('../../account/account.module').then(m => m.AccountModule)).then(() =>

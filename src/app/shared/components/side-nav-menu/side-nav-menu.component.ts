@@ -23,8 +23,6 @@ import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
 })
 export class SideNavMenuComponent {
   profile$: Observable<Profile>;
-  isLoading$: Observable<boolean>;
-  navMenuData$: Observable<MenuTreeData[]>;
   isLogged$: Observable<boolean>;
   rootCategories$: Observable<Category[]>;
   paimentCurrency$: Observable<Currency>;
@@ -39,9 +37,7 @@ export class SideNavMenuComponent {
     private store$: Store<RootStoreState.State>) {
       this.languageList = languageList;
       this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
-      this.isLoading$ = this.store$.select(UserStoreSelectors.selectIsLoading);
       this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-      this.navMenuData$ = this.store$.select(GlobalStoreSelectors.selectNavMenuTree);
       this.paimentCurrency$ = this.gss.userPaimentCurrency;
       this.shippingCountry$ = this.gss.userShippingCountry;
       this.language$ = this.store$.select(selectLanguage);

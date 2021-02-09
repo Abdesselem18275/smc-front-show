@@ -21,7 +21,6 @@ export class AppComponent {
   @ViewChild('sidenav',{static:false}) sideNav!: MatSidenav;
   isSideMenuActive = false;
   showMenu$: Observable<boolean>;
-
   constructor(private router: Router) {
                 this.showMenu$ = this.router.events.pipe(
                   filter((event: any) => event instanceof NavigationEnd),
@@ -30,7 +29,7 @@ export class AppComponent {
                   event.urlAfterRedirects.includes('miscellaneous/home')
                   ))
                 );
-                // this.router.events.subscribe(() => this.sideNav.close());
+                this.router.events.subscribe(() => this.sideNav.close());
 
   }
   toggleSideNav() {

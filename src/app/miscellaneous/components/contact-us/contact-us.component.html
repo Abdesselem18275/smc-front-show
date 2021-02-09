@@ -1,46 +1,45 @@
 
-    <header class="mb8">
-      <h1 i18n class="font--dark-grey mat-h1 text--centred"> CONTACT US</h1>
+    <header class="column--centred p4 mb8">
+      <h1 i18n class="font--dark-grey mat-h1 text--centred">Get in touch</h1>
+      <p class="mat-subheading-2 text--centred font--grey">Contact us for any question , quoting or claim </p>
   </header>
-    <main class="main-container global--gutters mt4">
-<section class="contact-container column">
-  <section class="social-community inline">
+  <main class="p4">
+  <section class="social-community">
     <a target="_blank" href="https://www.facebook.com/SMCuivre">
-        <mat-icon   inline="true" svgIcon="facebook"></mat-icon>
+        <mat-icon class="community-icon"   inline="true" svgIcon="facebook"></mat-icon>
 
     </a>
     <a target="_blank">
-        <mat-icon inline="true" svgIcon="instagram"></mat-icon>
+        <mat-icon class="community-icon" inline="true" svgIcon="instagram"></mat-icon>
 
     </a>
   </section>
-    <address class="bg--extreme-light-grey">
-        <a class=" mat-subheading-2 adress_el" href="mailto:sotulatn@gmail.com ">
-            <mat-icon color="accent">mail</mat-icon>sotulatn@gmail.com</a>
-        <a class=" mat-subheading-2 adress_el" href="tel:+13115552368">
-            <mat-icon color="accent">phone</mat-icon>
-            <div class="tel-contacts">
+    <address class="adress-container">
+        <a class="mat-subheading-2 column--centred" href="mailto:sotulatn@gmail.com ">
+            <mat-icon color="accent">mail</mat-icon>
+            <span>sotulatn@gmail.com</span>
+        </a>
+        <a class="mat-subheading-2 column--centred" href="tel:+13115552368">
+            <mat-icon   color="accent">phone</mat-icon>
+            <div class="column">
               <span>tel : (216) 54 889 629</span>
               <span>fax : (216) 71 540 055</span>
             </div>
 
 
           </a>
-        <div class=" mat-subheading-2 adress_el">
-            <mat-icon color="accent">location_on</mat-icon>
-            <span>
-                Zone industrielle Mornaguia <br>1110 Tunisie
-            </span>
+        <div class=" mat-subheading-2 column--centred">
+            <mat-icon  color="accent">location_on</mat-icon>
+            <div class="column--centred">
+                Zone industrielle Mornaguia 
+                <span>1110 Tunisie</span>
+            </div>
         </div >
 
       </address>
 
-
-</section>
-<section class="informations-container bg--extreme-light-grey">
-        <p class=" text--centred font--dark-grey mat-body-strong">Have any question ? ask it now</p>
-
-    <form (ngSubmit)="onSubmit()" class="column mt8" [formGroup]="askForm">
+<section class="contact-form">
+    <form (ngSubmit)="onSubmit()" class="column" [formGroup]="askForm">
 
             <mat-form-field  appearance="outline" appControlValidatorMessage>
                 <mat-label>First name</mat-label>
