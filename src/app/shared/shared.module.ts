@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ScrollPaginatorDirective } from './directives/scroll-paginator.directive';
 import { ControlValidatorMessageDirective } from './directives/control-validator-message.directive';
 import { ImageZoomDirective } from './directives/image-zoom.directive';
-import { LocalesDialogComponent } from './components/locales-dialog/locales-dialog.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -20,13 +19,17 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { SideNavMenuComponent } from './components/side-nav-menu/side-nav-menu.component';
 import { MergeSizeQsPipe } from './merge-size-qs.pipe';
 import { ModalCloseDirective } from './directives/modal-close.directive';
+import { CountryFlagPipe } from './pipes/country-flag.pipe';
+import { ShippingCountrySelectorDialogComponent } from
+  './components/shipping-country-selector-dialog/shipping-country-selector-dialog.component';
+import { CurrencySelectorDialogComponent } from './components/currency-selector-dialog/currency-selector-dialog.component';
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
     ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent,
-    ImageZoomDirective, LocalesDialogComponent],
+    ImageZoomDirective, CountryFlagPipe, ShippingCountrySelectorDialogComponent, CurrencySelectorDialogComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -47,7 +50,7 @@ import { ModalCloseDirective } from './directives/modal-close.directive';
     ControlErrorMessageComponent,
     ImageZoomDirective,
     ModalCloseDirective,
-    LocalesDialogComponent,
+    CountryFlagPipe,
   ]
 })
 export class SharedModule { }

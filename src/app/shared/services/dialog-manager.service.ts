@@ -6,8 +6,10 @@ import { AccountCardComponent } from 'src/app/account/components/account-card/ac
 import { AuthentificationDialogComponent } from 'src/app/account/components/authentification-dialog/authentification-dialog.component';
 import { RootStoreState } from 'src/app/root-store';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
-import { LocalesDialogComponent } from '../components/locales-dialog/locales-dialog.component';
+import { CurrencySelectorDialogComponent } from '../components/currency-selector-dialog/currency-selector-dialog.component';
 import { SearchBoxComponent } from '../components/search-box/search-box.component';
+import { ShippingCountrySelectorDialogComponent }
+  from '../components/shipping-country-selector-dialog/shipping-country-selector-dialog.component';
 import { SideNavMenuComponent } from '../components/side-nav-menu/side-nav-menu.component';
 import { LazyLoaderService } from './lazy-loader.service';
 
@@ -20,13 +22,6 @@ export class DialogManagerService {
     private store$: Store<RootStoreState.State>,
     private lls: LazyLoaderService ,
     private dialog: MatDialog) { }
-  toggleSideNav() {
-    this.dialog.open(SideNavMenuComponent,{
-      position: {top:'0',right:'0'},
-      width:'100vw',
-      maxWidth:'100vw'
-    });
-  }
   openCardDialog() {
     this.lls.loadModule(
       () => import('../../account/account.module').then(m => m.AccountModule)).then(() =>
@@ -55,8 +50,14 @@ export class DialogManagerService {
     });
 
   }
-  openLocalDialog(){
-    this.dialog.open(LocalesDialogComponent,{
+  openPaymentCurrencySelectorDialog(){
+    this.dialog.open(CurrencySelectorDialogComponent,{
+      width:'800px',
+      maxWidth:'100vw',
+      });
+  }
+  openShippingCountrySelectorDialog() {
+    this.dialog.open(ShippingCountrySelectorDialogComponent,{
       width:'800px',
       maxWidth:'100vw',
       });

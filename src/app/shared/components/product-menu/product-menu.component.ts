@@ -42,7 +42,8 @@ export class ProductMenuComponent  {
 
   }
   toggleSideNav() {
-    this.dms.toggleSideNav();
+    //this.dms.toggleSideNav();
+    this.sideNavEmmiter.emit('');
   }
   openCardDialog() {
     this.dms.openCardDialog();
@@ -52,8 +53,10 @@ export class ProductMenuComponent  {
     this.dms.openSearchDialog();
 
   }
-  openLocalDialog(){
-    this.dms.openLocalDialog();
+  openShippingCoutryDialog() {
+    this.dms.openShippingCountrySelectorDialog();
   }
-
+  openPaimentCurrencyDialog(){
+    this.dms.openPaymentCurrencySelectorDialog();
+  }
 }

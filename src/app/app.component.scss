@@ -9,3 +9,7 @@ header {
 .main-container {
   height: 100vh;
 }
+mat-sidenav {
+  padding: 1.5rem;
+  width: min(420px,calc(100vw - 56px))
+}

@@ -40,6 +40,12 @@ p {
 .nav-bar__left-content {
   display: none;
 }
+
+.country-flag {
+  max-width: 32px;
+  border-radius: 64px;
+}
+
 @media only screen and (max-width:1024px) {
   .space-divider {
     display: none;
@@ -60,3 +66,6 @@ p {
         }
 
       }
+.mat-h3 {
+  margin: 0 1rem 0 0;
+}

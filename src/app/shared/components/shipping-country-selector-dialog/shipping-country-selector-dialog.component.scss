@@ -1,0 +1,41 @@
+@import "app-theme";
+
+.horizontal {
+    display: flex!important;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-height: 320px;
+    overflow-y: auto;
+    .mat-list-item {
+        min-width: 120px;
+        margin : 1%;
+        width: 31.3333%;
+        @media only screen and (max-width:600px) {
+          width: 48%;
+        }
+        @media only screen and (max-width:400px) {
+            width: 98%;
+          }
+    }
+}
+.remark {
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: mat-color($smc-show-case-accent,lighter);
+}
+.element--active {
+    border: 2px solid mat-color($smc-show-case-primary);
+}
+header {
+    button {
+        margin-left: auto;
+    }
+}
+a{
+    text-decoration: none;
+}
+.mat-h2 {
+    margin: 0;
+}

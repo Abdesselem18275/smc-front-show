@@ -38,8 +38,8 @@
         </button>
         <app-language-box>
         </app-language-box>
-        <button class="shipping-settings inline--centred" (click)="openLocalDialog()" mat-button>
-          <mat-icon class="mr2">shopping_cart</mat-icon>
+        <button class="shipping-settings inline--centred" [matMenuTriggerFor]="shopMenu" mat-button>
+          <mat-icon class="material-icons-outlined mr2">shopping_cart</mat-icon>
           <span>{{(shippingCountry$|async)?.designation}} | {{(paimentCurrency$|async)?.symbol}}</span>
           </button>
 
@@ -48,6 +48,20 @@
 <ng-template #anonymous>
 Login
 </ng-template>
+<mat-menu   #shopMenu="matMenu">
+  <button  (click)="openPaimentCurrencyDialog()" mat-menu-item>
+      <mat-icon>payments</mat-icon>
+      <span class="mat-body-2">{{(paimentCurrency$|async)?.designation}}</span>
 
+  </button>
+  <button   (click)="openShippingCoutryDialog()" mat-menu-item>
+      <mat-icon>local_shipping</mat-icon>
+      <span class="mat-body-2">{{(shippingCountry$|async)?.designation}}</span>
+  </button>
+<button mat-menu-item>
+  <mat-icon>shopping_basket</mat-icon>
+  <span class="mat-body-2">My quart</span>
+</button>
+</mat-menu>
 
 
