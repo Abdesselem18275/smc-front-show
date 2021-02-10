@@ -1,4 +1,4 @@
-<header >
+<header class="mb4">
   <ng-container  *ngIf="isLogged$ | async else anonumous">
     <div class="header">
       <app-initials-icon [size]="52"  [initials]="initials$ | async"></app-initials-icon>
@@ -17,23 +17,6 @@
     <app-categories-tree [treeData]="navMenuData$ |async"></app-categories-tree>
   </div> -->
 <mat-list dense>
-  <div mat-subheader>Preferences</div>
-  <mat-divider></mat-divider>
-  <mat-list-item (click)="openPaimentCurrencyDialog()">
-    <mat-icon mat-list-icon>payments</mat-icon>
-    <span mat-line class="mat-body-2">Payment currency</span>
-    <span mat-line class="mat-body-2">{{(paimentCurrency$|async)?.designation}}</span>
-  </mat-list-item>
-  <mat-list-item (click)="openShippingCoutryDialog()">
-    <mat-icon mat-list-icon>local_shipping</mat-icon>
-    <span mat-line class="mat-body-2">Shipping country</span>
-    <span mat-line class="mat-body-2">{{(shippingCountry$|async)?.designation}}</span>
-  </mat-list-item>
-  <mat-list-item [matMenuTriggerFor]="lang">
-    <mat-icon mat-list-icon>language</mat-icon>
-    <span mat-line class="mat-body-2">Language</span>
-    <span mat-line class="mat-body-2">{{(language$ |async)?.languageType}}</span>
-  </mat-list-item>
   <div mat-subheader>Products Categories</div>
   <mat-divider></mat-divider>
   <mat-list-item 
@@ -44,14 +27,54 @@
     <mat-icon [svgIcon]="rootCat.svgIcon" mat-list-icon></mat-icon>
     <span mat-line class="mat-body-2">{{rootCat.designation | titlecase}}</span>
   </mat-list-item>
+  <div mat-subheader>Preferences</div>
+  <mat-divider></mat-divider>
+  <mat-list-item (click)="openPaimentCurrencyDialog()">
+    <mat-icon class="material-icons-outlined" mat-list-icon>payments</mat-icon>
+    <span mat-line class="mat-body-2">Payment currency</span>
+    <span mat-line class="mat-body-2">{{(paimentCurrency$|async)?.designation}}</span>
+  </mat-list-item>
+  <mat-list-item (click)="openShippingCoutryDialog()">
+    <mat-icon class="material-icons-outlined" mat-list-icon>local_shipping</mat-icon>
+    <span mat-line class="mat-body-2">Shipping country</span>
+    <span mat-line class="mat-body-2">{{(shippingCountry$|async)?.designation}}</span>
+  </mat-list-item>
+  <mat-list-item [matMenuTriggerFor]="lang">
+    <mat-icon class="material-icons-outlined" mat-list-icon>language</mat-icon>
+    <span mat-line class="mat-body-2">Language</span>
+    <span mat-line class="mat-body-2">{{(language$ |async)?.languageType}}</span>
+  </mat-list-item>
+  <ng-container *ngIf="isLogged$ | async">
+    <div  mat-subheader>Profile</div>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <mat-icon class="material-icons-outlined" mat-list-icon>account_circle</mat-icon>
+      <span mat-line class="mat-body-2">Personal informations</span>
+    </mat-list-item>
+    <mat-list-item
+      [queryParams]="{profiles: (this.profile$ | async)?.id}"
+      routerLink="/product/list">
+      <mat-icon class="material-icons-outlined" mat-list-icon>favorite_border</mat-icon>
+      <span mat-line class="mat-body-2">My favorites</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon class="material-icons-outlined" mat-list-icon>shopping_cart</mat-icon>
+      <span mat-line class="mat-body-2">My quart</span>
+    </mat-list-item>
+    <mat-list-item (click)="logOut()">
+      <mat-icon class="material-icons-outlined" mat-list-icon>logout</mat-icon>
+      <span mat-line class="mat-body-2">Log out</span>
+    </mat-list-item>
+  </ng-container>
+
   <div mat-subheader>Informations</div>
   <mat-divider></mat-divider>
   <mat-list-item fragment="about-us" [routerLink]="['/miscellaneous/home']">
-    <mat-icon mat-list-icon>business</mat-icon>
+    <mat-icon class="material-icons-outlined" mat-list-icon>business</mat-icon>
     <span mat-line class="mat-body-2">Who we are</span>
   </mat-list-item>
   <mat-list-item fragment="contact-us" [routerLink]="['/miscellaneous/home']">
-    <mat-icon mat-list-icon>mail</mat-icon>
+    <mat-icon class="material-icons-outlined" mat-list-icon>mail</mat-icon>
     <span mat-line class="mat-body-2">Contact us</span>
   </mat-list-item>
 </mat-list>
@@ -59,11 +82,7 @@
 
 </main>
 <ng-template #anonumous>
-  <div  class="inline--centred--spaced">
-    <button mat-stroked-button>Login or create an account</button>
-    <button mat-dialog-close mat-icon-button><mat-icon>close</mat-icon></button>
-
-  </div>
+    <button (click)="openCardDialog()" mat-stroked-button>Login or create an account</button>
 </ng-template>
 <mat-menu  #lang="matMenu">
   <a class="inline--centred--spaced" [href]="getHref(item.id)" mat-menu-item *ngFor="let item of languageList" >

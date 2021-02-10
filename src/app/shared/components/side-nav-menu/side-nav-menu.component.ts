@@ -55,6 +55,10 @@ export class SideNavMenuComponent {
   openPaimentCurrencyDialog(){
     this.dms.openPaymentCurrencySelectorDialog();
   }
+    openCardDialog() {
+    this.dms.openCardDialog();
+
+  }
   getHref(localId: string) {
     return '/'+localId;
   }
