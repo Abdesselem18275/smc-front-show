@@ -63,6 +63,15 @@
     background: linear-gradient(91.53deg, #E6ECF5 15.98%, #BFC8D8 155.4%, rgba(238, 243, 250, 0.526042) 188.7%);
 
   }
+  .global-horizontal--gutters {
+    padding:  0 5rem;
+    @media only screen and (max-width:1024px) {
+      padding:  0 3rem;
+    }
+    @media only screen and (max-width:600px) {
+      padding:  0 1rem;
+    }
+  }   
   .global--gutters {
     padding:  1rem 5rem;
     @media only screen and (max-width:1024px) {

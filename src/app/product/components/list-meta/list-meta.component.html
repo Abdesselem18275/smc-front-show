@@ -1,11 +1,8 @@
-<header class=" inline--centred--spaced">
-  <img [src]="(activeCategory$ | async)?.thumbNailAux | mergeSizeQs:600">
-
-  <section class="px8 py4 column--centred">
+<header class="column--centred">
     <ng-container *ngIf="!((isSearchActive$ | async) || (isFavoriteActive$ | async)) else others">
       <ng-container *ngIf="(activeCategory$ | async) as category else allProducts">
         <section class="column--centred">
-           <mat-icon color="accent" *ngIf="category.svgIcon" class="mb8" id="category-icon--big" [svgIcon]="category.svgIcon"></mat-icon>
+           <mat-icon color="accent" *ngIf="category.svgIcon" class="mb4 category-icon--big"  [svgIcon]="category.svgIcon"></mat-icon>
           <p class="mat-h1">{{category.designation | uppercase}}</p>
           <p *ngIf="category.description" class="description-container mat-body-1 font--dark-grey">{{category.description}}</p>
         </section>
@@ -26,9 +23,6 @@
         <p i18n  class="mat-h1">ALL PRODUCTS</p>
       </ng-template>
   </ng-container>
-</section>
-<img [src]="(activeCategory$ | async)?.thumbNailAux | mergeSizeQs:600">
-
 </header>
 
 
@@ -37,7 +31,10 @@
 
 
 <main class="inline--centred--spaced global--gutters mat-subheading-2">
-<p  i18n *ngIf="!(isLoading$ | async)">{{objCount$ | async}} selected products</p>
+  <button mat-stroked-button>
+    <span  i18n > {{objCount$ | async}} selected products</span>
+  </button>
+
 
 
 <section class="action-container inline--centred">

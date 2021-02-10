@@ -14,7 +14,7 @@ header {
       }
 }
 .description-container {
-    min-width: 300px;
+    width: max(50vw,300px);
     text-align: center;
 }
 .mat-h3{
@@ -34,10 +34,9 @@ header {
     flex-wrap: wrap;
 }
 
-#category-icon--big {
-    @include md-icon-size(5rem)
+.category-icon--big {
+    @include md-icon-size(4rem)
 }
 .mat-h1 {
-    font-size: 2rem;
-    font-weight: 500 ;
+    margin: 0;
 }
