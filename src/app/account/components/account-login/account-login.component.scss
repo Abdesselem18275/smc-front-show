@@ -2,3 +2,8 @@
 mat-form-field ,.google-login,mat-divider,button{
   width: 100%;
 }
+button {
+  span {
+    color: white;
+  };
+}
