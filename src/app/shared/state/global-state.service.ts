@@ -37,8 +37,10 @@ export class GlobalStateService {
 
   initUserLocales(countryCode: string): void {
     sessionStorage.setItem(SessionStorageKey.shippingCountry,countryCode);
-    const relatedCurrency = this.countriesSubject.getValue().find((country: Country) =>
+    let relatedCurrency = this.countriesSubject.getValue().find((country: Country) =>
     country.alpha2Code ===  countryCode)?.currency ?? 'USD';
+    relatedCurrency = this.currenciesSubject.getValue().find(currency => currency.alphaCode == relatedCurrency) ?
+      relatedCurrency : 'USD'
     sessionStorage.setItem(SessionStorageKey.paymentCurrency,relatedCurrency);
     this.currenciesSubject.next(this.currenciesSubject.getValue());
     this.countriesSubject.next(this.countriesSubject.getValue());
