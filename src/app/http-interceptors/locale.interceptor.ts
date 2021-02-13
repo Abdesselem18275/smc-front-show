@@ -5,22 +5,34 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { mergeMap} from 'rxjs/operators';
+import { mergeMap, tap, withLatestFrom} from 'rxjs/operators';
 import { GlobalStoreSelectors } from '../root-store/global-store';
+import { GlobalStateService } from '../shared/state/global-state.service';
+import { Country, Currency } from '../models/shared.models';
+import { UserLanguage } from '../root-store/global-store/state';
 
 @Injectable()
 export class LocaleInterceptor implements HttpInterceptor {
 
-  constructor(private store: Store<any>) {}
+  constructor(private gss:GlobalStateService,private store: Store<any>) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return   this.store.select(GlobalStoreSelectors.selectLanguage).pipe(
-      mergeMap(lang => next.handle(request.clone(
+    const SHIPPING_COUNTRY_HEADER = 'user-shipping-country'
+    const USER_PAYMENT_CURRENCY_HEADER = 'user-payment-currency'
+    return !request.url.includes('initData') && request.url.includes('/api/') ?
+      this.store.select(GlobalStoreSelectors.selectLanguage).pipe(
+        withLatestFrom(combineLatest([this.gss.userPaimentCurrency,
+          this.gss.userShippingCountry])),
+      mergeMap((locales:[UserLanguage,[Currency,Country]]) => next.handle(request.clone(
       {
-        headers:request.headers.set('Accept-Language',lang.id)
+        setHeaders :{
+          'Accept-Language':locales[0].id,
+          [USER_PAYMENT_CURRENCY_HEADER.toLowerCase()]:locales[1][0].alphaCode.toUpperCase(),
+          [SHIPPING_COUNTRY_HEADER.toLowerCase()]:locales[1][1].alpha2Code.toUpperCase(),
+        }
       }
 
-      ))));
+      )))): next.handle(request);
 }}
