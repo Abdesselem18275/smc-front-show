@@ -23,14 +23,7 @@ export class ProductEffects {
       tap(() => this.store$.dispatch(ProductStoreActions.LoadRequestAction())),
       map(() => this.route.snapshot.queryParamMap),
       switchMap((param: ParamMap)  => this.ads.get<PaginatedProductsType>('/product/products/',param).pipe(
-        map(results => {
-          const page_number = param.has(this.queryParamKeys.PAGE) ? param.get(this.queryParamKeys.PAGE) : 1;
-          return page_number !== 1 ?
-            ProductStoreActions.AddOrUpdateManyAction({results}):
-            ProductStoreActions.SetManyProductsAction({payload:results});
-
-        }
-          )))));
+        map(results => ProductStoreActions.SetManyProductsAction({payload:results}))))));
 
 constructor(private actions$: Actions ,
             private store$: Store<RootStoreState.State>,

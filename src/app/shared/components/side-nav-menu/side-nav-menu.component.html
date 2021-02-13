@@ -22,7 +22,8 @@
   <mat-list-item 
     mat-dialog-close
     [routerLink]="['/product/list']" 
-    [queryParams]="{categories__designation__in: rootCat.designation}" 
+    queryParamsHandling="merge"
+    [queryParams]="{categories__designation__in: rootCat.designation,page:1}" 
     *ngFor="let rootCat of rootCategories$ |async">
     <mat-icon [svgIcon]="rootCat.svgIcon" mat-list-icon></mat-icon>
     <span mat-line class="mat-body-2">{{rootCat.designation | titlecase}}</span>

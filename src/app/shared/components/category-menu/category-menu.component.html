@@ -6,7 +6,10 @@
   </button>
   <mat-menu #menu>
     <ng-template matMenuContent  let-category="category">
-      <button *ngFor="let item of category.children" mat-menu-item [routerLink]="['/product/list']" [queryParams]="{categories__designation__in: item.designation}">
+      <button *ngFor="let item of category.children" mat-menu-item 
+      [routerLink]="['/product/list']" 
+      queryParamsHandling="merge"
+      [queryParams]="{categories__designation__in: item.designation,page:1}">
         {{item.designation | titlecase}}
       </button>
     </ng-template>

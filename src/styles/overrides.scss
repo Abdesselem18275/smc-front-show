@@ -24,3 +24,7 @@ body { margin: 0;
         }
       }
 
+.mat-paginator-container {
+        justify-content: center!important;
+        flex-wrap: wrap!important;
+    }

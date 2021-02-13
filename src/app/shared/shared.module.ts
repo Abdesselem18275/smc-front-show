@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { ScrollPaginatorDirective } from './directives/scroll-paginator.directive';
 import { ControlValidatorMessageDirective } from './directives/control-validator-message.directive';
 import { ImageZoomDirective } from './directives/image-zoom.directive';
 import { CommonModule } from '@angular/common';
@@ -26,7 +25,7 @@ import { CurrencySelectorDialogComponent } from './components/currency-selector-
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
-    LoadingComponent,ScrollPaginatorDirective,InitialsIconComponent,
+    LoadingComponent,InitialsIconComponent,
     ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent,
     ImageZoomDirective, CountryFlagPipe, ShippingCountrySelectorDialogComponent, CurrencySelectorDialogComponent],
@@ -44,7 +43,6 @@ import { CurrencySelectorDialogComponent } from './components/currency-selector-
     MaterialModule,
     ControlValidatorMessageDirective,
     InitialsIconComponent,
-    ScrollPaginatorDirective,
     LoadingComponent,
     MergeSizeQsPipe,
     ControlErrorMessageComponent,

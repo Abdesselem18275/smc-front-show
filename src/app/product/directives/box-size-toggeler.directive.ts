@@ -49,7 +49,7 @@ export class BoxSizeToggelerDirective implements AfterViewInit ,OnDestroy{
 
   updateButtonContent(payload) {
     const innerWidth = payload[1];
-    const isBig = payload[0];
+    const isBig = true;
     let iconName = !isBig ? 'view_module':'view_comfy';
 
     if ( innerWidth < 850) {

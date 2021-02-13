@@ -46,6 +46,9 @@ $extreme-light-grey-color : rgba(0,0,0,.03);
 .bg--light-grey {
   background-color:$light-grey-color;
 }
+.bg--white {
+  background-color:white;
+}
 
 .alert {
     @extend .font--red

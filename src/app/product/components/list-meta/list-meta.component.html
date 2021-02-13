@@ -11,7 +11,10 @@
           <ng-container *ngFor="let item of category.children">
             <button
             class="m2"
-            [routerLink]="['/product/list']" color="accent"  [queryParams]="{categories__designation__in: item.designation}"
+            color="accent" 
+            queryParamsHandling="merge"
+            [routerLink]="['/product/list']" 
+            [queryParams]="{categories__designation__in: item.designation,page:1}"
              mat-flat-button>
                 <span>{{item.designation | uppercase}}</span>
             </button>
@@ -30,19 +33,22 @@
 
 
 
-<main class="inline--centred--spaced global--gutters mat-subheading-2">
-  <button mat-stroked-button>
-    <span  i18n > {{objCount$ | async}} selected products</span>
-  </button>
+<main class="global--gutters mt4  mat-subheading-2">
+
+  <mat-paginator 
+  class="paginator"
+  #paginator
+  [length]="objCount$ | async"
+  [pageSize]="10"
+  (page)="updatePage($event)"
+  [pageSizeOptions]="[10,20,30]">
+</mat-paginator>
 
 
-
-<section class="action-container inline--centred">
-<button  class="mr4" appBoxSizeToggeler mat-stroked-button>
+<button appBoxSizeToggeler mat-stroked-button>
   <mat-icon #boxSizeIcon>view_module</mat-icon>
   <span #boxSizeText class="ml2" i18n>SMALL</span>
 </button>
-</section>
 </main>
 
 <ng-template #others>

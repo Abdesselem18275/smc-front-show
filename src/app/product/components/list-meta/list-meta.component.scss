@@ -40,3 +40,21 @@ header {
 .mat-h1 {
     margin: 0;
 }
+main {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    @media only screen and (max-width:600px) {
+        flex-direction: column;
+        button {
+            margin-top: 1rem;
+        }
+      }
+}
+.mat-paginator-container {
+    justify-content: center!important;
+}
