@@ -10,6 +10,9 @@
 .hero-image {
 
   background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/login_image_2.jpg');
+  @media only screen and (max-width:1024px) {
+    background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/login_image_2.jpg?d=1200x1200');
+  }
 }
 .wide-image {
   display: flex;
@@ -22,6 +25,9 @@
     background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
   }
   background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/home_page_2.jpg');
+  @media only screen and (max-width:1024px) {
+    background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/home_page_2.jpg?d=1200x1200');
+  }
 
 }
 .hero-text-container {
