@@ -27,7 +27,7 @@
             <mat-icon>search</mat-icon>
         </button> -->
 
-        <button  mat-button   (click)="openCardDialog()" id="account-icon">
+        <button  mat-button   (click)="openCardDialog()" class="account-icon">
           <div class="inline--centred">
             <mat-icon class="material-icons-outlined mr2">person</mat-icon>
             <div *ngIf="(profile$ | async) as profile ; else anonymous">
@@ -40,7 +40,7 @@
         </app-language-box>
         <button class="shipping-settings inline--centred" [matMenuTriggerFor]="shopMenu" mat-button>
           <mat-icon class="material-icons-outlined mr2">shopping_cart</mat-icon>
-          <span>{{(shippingCountry$|async)?.designation}} | {{(paimentCurrency$|async)?.symbol}}</span>
+          <span>{{(shippingCountry$|async)?.alpha2Code | uppercase}} | {{(paimentCurrency$|async)?.symbol}}</span>
           </button>
 
     </div>

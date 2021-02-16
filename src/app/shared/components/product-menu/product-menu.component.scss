@@ -22,7 +22,7 @@ p {
 
 .nav-bar__logo {
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
+  font-size: 32px;
 }
 
 .nav-bar__tools
@@ -50,7 +50,7 @@ p {
   .space-divider {
     display: none;
   }
-  .nav-bar__tools > :not(.shipping-settings) {
+  .nav-bar__tools > .account-icon {
     display: none;
   } 
   .nav-bar__tools  {

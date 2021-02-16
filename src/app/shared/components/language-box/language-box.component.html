@@ -1,7 +1,7 @@
 
   <button class="inline" [matMenuTriggerFor]="lang" mat-button>
     <mat-icon class="mr2">language</mat-icon>
-    <span>{{(language$ |async)?.languageType.substr(0,2)}}</span>
+    <span>{{(language$ |async)?.languageType.substr(0,2) | uppercase}}</span>
   </button>
 
   <mat-menu  #lang="matMenu">
