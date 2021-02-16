@@ -3,12 +3,11 @@ import { ProductStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
-import { ActivatedRoute, NavigationExtras, ParamMap, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UserStoreSelectors } from 'src/app/root-store/user-store';
 import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Category } from 'src/app/models/product.models';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-meta',
@@ -25,7 +24,6 @@ export class ListMetaComponent  {
   activeCategory$: Observable<Category>;
 
   constructor(
-    private router : Router,
     private route: ActivatedRoute,
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
     private store$: Store<any> ) {
@@ -52,17 +50,7 @@ export class ListMetaComponent  {
       this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount);
     }
 
-    updatePage(event: PageEvent): void {
-      // this.paginator.pageIndex = event.pageIndex === 0 ? 1 : event.pageIndex
-      const navExtra: NavigationExtras = {
-        queryParams : {
-          page_size : event.pageSize,
-          page : event.pageIndex + 1
-        },
-        queryParamsHandling: 'merge'
-      };
-      this.router.navigate(['/product/list'],navExtra);
-    }
+
 
 
 

@@ -8,13 +8,27 @@
 <div>
 <app-list-meta></app-list-meta>
 </div>
+
 </header>
+<div class="actions-container inline full-width">
 
+      <button (click)="toggleSize()" mat-mini-fab>
+        <mat-icon >{{sizeIconName$ | async}}</mat-icon>
+      </button>
+      </div>
 
-    <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
 
           <section   [class]="(isBigSize$ | async) ? 'box-container--large':'box-container--small'"   class="pt6 content global--gutters">
                 <app-product-box  class="product-box  mat-elevation-z4" [product]="Product" *ngFor="let Product of productShorts$ | async">
                 </app-product-box>
           </section>
 
+  <mat-paginator 
+  [hidePageSize]="isSmallScreen"
+  class="paginator"
+  #paginator
+  [length]="objCount$ | async"
+  [pageSize]="10"
+  (page)="updatePage($event)"
+  [pageSizeOptions]="[10,20,30]">
+</mat-paginator>

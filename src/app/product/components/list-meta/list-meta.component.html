@@ -33,23 +33,7 @@
 
 
 
-<main class="global--gutters mt4  mat-subheading-2">
 
-  <mat-paginator 
-  class="paginator"
-  #paginator
-  [length]="objCount$ | async"
-  [pageSize]="10"
-  (page)="updatePage($event)"
-  [pageSizeOptions]="[10,20,30]">
-</mat-paginator>
-
-
-<button appBoxSizeToggeler mat-stroked-button>
-  <mat-icon #boxSizeIcon>view_module</mat-icon>
-  <span #boxSizeText class="ml2" i18n>SMALL</span>
-</button>
-</main>
 
 <ng-template #others>
   <ng-container  *ngIf="(isSearchActive$ | async)" >

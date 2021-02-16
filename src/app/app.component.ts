@@ -7,6 +7,8 @@ import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from '.
 import { Router, NavigationEnd } from '@angular/router';
 import { map, filter, tap } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Store } from '@ngrx/store';
+import { ProductStoreSelectors } from './root-store';
 
 
 @Component({
@@ -20,8 +22,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   @ViewChild('sidenav',{static:false}) sideNav!: MatSidenav;
   isSideMenuActive = false;
+  isLoading$: Observable<boolean>;
   showMenu$: Observable<boolean>;
-  constructor(private router: Router) {
+  constructor(private store$: Store<any>,private router: Router) {
                 this.showMenu$ = this.router.events.pipe(
                   filter((event: any) => event instanceof NavigationEnd),
                   map((event: NavigationEnd) =>
@@ -30,6 +33,7 @@ export class AppComponent {
                   ))
                 );
                 this.router.events.subscribe(() => this.sideNav.close());
+                this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
 
   }
   toggleSideNav() {

@@ -16,8 +16,20 @@
     width: 4rem;
   }
 }
-
-
+.paginator {
+  position: sticky;
+  bottom: 0;
+  background-color: transparent;
+}
+.actions-container {
+  z-index: 2;
+  align-self: flex-end;
+  position: sticky;
+  top: 6.5rem;
+  button {
+    margin: 0 0.5rem 0 auto;
+  }
+}
 
 .box-container--large {
     display: flex;

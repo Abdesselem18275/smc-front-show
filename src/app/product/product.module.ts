@@ -8,7 +8,6 @@ import { QuartDialogComponent } from './components/quart-dialog/quart-dialog.com
 import { PriceComponent } from './components/price/price.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { BoxSizeToggelerDirective } from './directives/box-size-toggeler.directive';
 import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
 import { ListMetaComponent } from './components/list-meta/list-meta.component';
 import { ProductBoxComponent } from './components/product-box/product-box.component';
@@ -32,7 +31,7 @@ import { ImagePlaceholderDirective } from './directives/image-placeholder.direct
   ],
   declarations: [ProductComponent, CategoryBreadcrumbComponent,ProductListComponent,FavoriteHandlerDirective,
                   ProductDetailComponent, ListMetaComponent,ProductBoxComponent,
-                  BoxSizeToggelerDirective, AppearanceSelectorComponent, ImagePlaceholderDirective,
+                  AppearanceSelectorComponent, ImagePlaceholderDirective,
                   ProductDimensionsComponent, ProductMaterialsComponent, ImageCarouselComponent,
                   ProductFeaturesComponent, ProductComponentComponent, ProductImagesDialogComponent,
                   QuartDialogComponent, PriceComponent],})
