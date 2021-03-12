@@ -9,7 +9,7 @@
 }
 .hero-image {
 
-  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/login_image_2.jpg');
+  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/login_image_2.jpg?d=2500x2500');
   @media only screen and (max-width:1024px) {
     background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/login_image_2.jpg?d=1200x1200');
   }
@@ -24,7 +24,7 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
   }
-  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/home_page_2.jpg');
+  background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/home_page_2.jpg?d=2000x2000');
   @media only screen and (max-width:1024px) {
     background-image:url('https://d2z6sbqggbt9fg.cloudfront.net/media/home_page_2.jpg?d=1200x1200');
   }
