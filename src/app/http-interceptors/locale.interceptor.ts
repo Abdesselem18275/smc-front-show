@@ -16,16 +16,16 @@ import { UserLanguage } from '../root-store/global-store/state';
 @Injectable()
 export class LocaleInterceptor implements HttpInterceptor {
 
-  constructor(private gss:GlobalStateService,private store: Store<any>) {}
+  constructor(private gss: GlobalStateService,private store: Store<any>) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const SHIPPING_COUNTRY_HEADER = 'user-shipping-country'
-    const USER_PAYMENT_CURRENCY_HEADER = 'user-payment-currency'
-    return !request.url.includes('initData') && request.url.includes('/api/') ?
+    const SHIPPING_COUNTRY_HEADER = 'user-shipping-country';
+    const USER_PAYMENT_CURRENCY_HEADER = 'user-payment-currency';
+    return !request.url.includes('locale/init') && request.url.includes('/api/') ?
       this.store.select(GlobalStoreSelectors.selectLanguage).pipe(
         withLatestFrom(combineLatest([this.gss.userPaimentCurrency,
           this.gss.userShippingCountry])),
-      mergeMap((locales:[UserLanguage,[Currency,Country]]) => next.handle(request.clone(
+      mergeMap((locales: [UserLanguage,[Currency,Country]]) => next.handle(request.clone(
       {
         setHeaders :{
           'Accept-Language':locales[0].id,

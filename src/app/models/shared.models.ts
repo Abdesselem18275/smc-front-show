@@ -18,10 +18,7 @@ export type Currency = {
 };
 export type CarouselMode = 'vertical' | 'horizontal';
 export type RedirectDataType = {redirectUrl: string;params: Params};
-export type InitDataType = {
-    categories: Category[];
-    icons: BaseImage[];
-    navMenuTree: MenuTreeData[];
+export type LocaleInitData = {
     countries: Country[];
     currencies: Currency[];
 };

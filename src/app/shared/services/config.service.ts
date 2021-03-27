@@ -8,12 +8,12 @@ import { MenuDataBuilderService } from './menu-data-builder.service';
 import { GlobalStoreActions } from 'src/app/root-store/global-store';
 import { PROFILE_ID } from 'src/app/injectables';
 import { Profile } from 'src/app/models/account.models';
-import { EMPTY } from 'rxjs';
+import { combineLatest, EMPTY } from 'rxjs';
 import { UserStoreActions } from 'src/app/root-store/user-store';
 import { LanguageType } from 'src/app/root-store/global-store/state';
-import { Category } from 'src/app/models/product.models';
+import { BaseImage, Category } from 'src/app/models/product.models';
 import { GlobalStateService } from '../state/global-state.service';
-import { InitDataType } from 'src/app/models/shared.models';
+import { LocaleInitData } from 'src/app/models/shared.models';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -48,16 +48,11 @@ export class ConfigService {
     }
 
   init(): Promise<void> {
-    return this.ads.get<InitDataType>('/product/initData/').pipe(
+    return this.ads.get<LocaleInitData>('/locale/init/').pipe(
       take(1),
-      tap((res: InitDataType) => {
-        res.icons.forEach(jsonItem => {
-          this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
-        });
+      tap((res: LocaleInitData) => {
         this.gss.setCountries(res.countries);
         this.gss.setCurrencies(res.currencies);
-        res.navMenuTree = this.mdbs.buildMenuTree(res.categories.filter((cat: Category) => cat.isRoot));
-        this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:res}));
       }),
       exhaustMap(() =>
         this.http.get<{country: string}>('https://yhph57qw9k.execute-api.eu-central-1.amazonaws.com/dev').pipe(
@@ -72,6 +67,22 @@ export class ConfigService {
         tap((profile: Profile) =>
           this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
         )):EMPTY
-      )).toPromise().then();
+      ),
+      exhaustMap(() => combineLatest([
+        this.ads.get<Category[]>(`/api/product/categories/`),
+        this.ads.get<BaseImage[]>(`/api/product/icons/`)
+      ]).pipe(
+        take(1),
+        tap((res: [Category[],BaseImage[]]) =>{
+        res[1].forEach(jsonItem => {
+          this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
+        });
+          this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:{
+            categories : res[0],
+            navMenuTree : this.mdbs.buildMenuTree(res[0].filter((cat: Category) => cat.isRoot))
+          }}));
+      }))
+      ),
+      ).toPromise().then();
   }
 }
