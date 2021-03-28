@@ -61,13 +61,6 @@ export class ConfigService {
             this.gss.initUserLocales(country.country);
           })
         )),
-      exhaustMap(() => localStorage.getItem(this.profileId) ?
-      this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
-        take(1),
-        tap((profile: Profile) =>
-          this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
-        )):EMPTY
-      ),
       exhaustMap(() => combineLatest([
         this.ads.get<Category[]>(`/api/product/categories/`),
         this.ads.get<BaseImage[]>(`/api/product/icons/`)
@@ -82,6 +75,13 @@ export class ConfigService {
             navMenuTree : this.mdbs.buildMenuTree(res[0].filter((cat: Category) => cat.isRoot))
           }}));
       }))
+      ),
+      exhaustMap(() => localStorage.getItem(this.profileId) ?
+      this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
+        take(1),
+        tap((profile: Profile) =>
+          this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
+        )):EMPTY
       ),
       ).toPromise().then();
   }
