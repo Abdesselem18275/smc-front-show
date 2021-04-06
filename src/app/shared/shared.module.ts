@@ -22,13 +22,14 @@ import { CountryFlagPipe } from './pipes/country-flag.pipe';
 import { ShippingCountrySelectorDialogComponent } from
   './components/shipping-country-selector-dialog/shipping-country-selector-dialog.component';
 import { CurrencySelectorDialogComponent } from './components/currency-selector-dialog/currency-selector-dialog.component';
+import { CounterComponent } from './components/counter/counter.component';
 @NgModule({
   declarations: [ProductMenuComponent,
     SideNavMenuComponent,SearchBoxComponent,
     LoadingComponent,InitialsIconComponent,
     ControlValidatorMessageDirective,LanguageBoxComponent,CategoryMenuComponent,
     MenuItemComponent, CategoriesTreeComponent, MergeSizeQsPipe, ModalCloseDirective, ControlErrorMessageComponent,
-    ImageZoomDirective, CountryFlagPipe, ShippingCountrySelectorDialogComponent, CurrencySelectorDialogComponent],
+    ImageZoomDirective, CountryFlagPipe, ShippingCountrySelectorDialogComponent, CurrencySelectorDialogComponent, CounterComponent],
   imports:  [
     CommonModule,
     RouterModule,
@@ -45,6 +46,7 @@ import { CurrencySelectorDialogComponent } from './components/currency-selector-
     InitialsIconComponent,
     LoadingComponent,
     MergeSizeQsPipe,
+    CounterComponent,
     ControlErrorMessageComponent,
     ImageZoomDirective,
     ModalCloseDirective,
