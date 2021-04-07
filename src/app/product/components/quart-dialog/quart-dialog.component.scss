@@ -1,21 +1,28 @@
 .thumbNail {
-    width: auto;
-    height: 4rem;
-    border-radius: 4rem;
-    @media only screen and (max-width:360px) {
-        height: 3rem;
-        border-radius: 3rem;
-    }
+    max-width: 6rem;
 }
-.mat-h1 {
+.mat-h3 {
     margin: 0;
 }
 .quart-icon {
     font-size: 2rem;
     width: 2rem;
     height: 2rem;
+    margin-left: auto;
 }
 
 .mat-expansion-panel-header {
     height: 5rem;
+}
+app-counter {
+    margin-left: auto;
+}
+ul {
+    li {
+        border-bottom: 1px solid whitesmoke;
+    }
+    padding-inline-start: 0px;
+}
+.text {
+    text-overflow: ellipsis;
 }

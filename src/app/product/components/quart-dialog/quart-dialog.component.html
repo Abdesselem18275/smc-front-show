@@ -1,19 +1,38 @@
 <header mat-dialog-title >
-    <div class="inline--centred--spaced">
-        <div>
-            <h1 class="mat-h1">PRODUCT QUART
-            </h1>
-            <span class="mat-body-1 font--dark-grey">{{product.designation | titlecase}}</span>
+    <div  class="column" >
+        <div class="inline--centred">
+            <img class="thumbNail" [src]="selectedAppearanceVariant.thumbNail| mergeSizeQs:200">
+
+            <h3 class="mat-h3">{{product.designation | titlecase}}
+            </h3>
+
         </div>
-        <mat-icon class="quart-icon">
-            add_shopping_cart
-        </mat-icon>
+        <span class="mat-caption font--dark-grey">
+            {{selectedAppearanceVariant.look.texture| titlecase}}
+            {{selectedAppearanceVariant.look.material| titlecase}}</span>
     </div>
+    <p class="mat-body-2">Total : 365 USD</p>
 
 </header>
 <main mat-dialog-content>
-    <p class="mat-body-2">Select a Look</p>
-<mat-accordion>
+    <ul>
+        <p class="mat-body-1 font--dark-grey">Set quantity for desired dimension variation</p>
+
+        <li class="my2 py1 inline--centred" *ngFor="let variant of product.dimensionVariants">
+            <div class="column">
+                <div class="text mat-body-2">{{variant.designation}}</div>
+                <div class="text font--dark-grey mat-caption">{{getDimensionString(variant)}}</div>
+            </div>
+            <app-counter mat-list-avatar></app-counter>
+        </li>
+    </ul>
+    <!-- <app-product-dimensions
+    (variantQuantities)="updateQuart($event)"
+    mode="quart"
+    *ngIf="product.dimensionVariants.length > 0"
+    [dimensionVariants]="product.dimensionVariants">
+    </app-product-dimensions> -->
+<!-- <mat-accordion>
     <mat-expansion-panel *ngFor="let appearanceVariant of product.appearanceVariants">
         <mat-expansion-panel-header >
         <mat-panel-title class="inline--centred">
@@ -36,7 +55,7 @@
 
         </form>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
 </main>
 
 <div mat-dialog-actions class="inline--centred--spaced">

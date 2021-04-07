@@ -7,6 +7,7 @@
   grid-template-areas: 
   "title title images images images"
   "gen-desc gen-desc images images images"
+  "add-quart add-quart images images images"
   "tech-title tech-title tech-title tech-title tech-title"
   "dimension dimension dimension materials materials"
   "features features features componnents componnents";
@@ -16,6 +17,7 @@
     "title title"
     "images images"
     "gen-desc gen-desc"
+    "add-quart add-quart"
     "tech-title tech-title"
     "dimension dimension"
     "componnents materials"
@@ -26,6 +28,7 @@
     "title title"
     "images images"
     "gen-desc gen-desc"
+    "add-quart" "add-quart"
     "tech-title tech-title"
     "dimension dimension"
     "materials materials"
@@ -33,6 +36,10 @@
     "features features";
   }
 }
+.add-quart {
+  grid-area: add-quart
+}
+ 
 .product-title {
   grid-area: title;
 }

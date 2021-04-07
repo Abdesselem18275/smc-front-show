@@ -3,9 +3,6 @@
   <button  #pulsingButton [appFavoriteHandler]="(product$ |async)?.id" mat-mini-fab>
     <mat-icon #favIcon>favorite</mat-icon>
   </button>
-  <button (click)="openQuart()" #pulsingButton mat-mini-fab>
-    <mat-icon>add_shopping_cart</mat-icon>
-  </button>
 </section>
 <main class="main-container">
 
@@ -30,13 +27,17 @@
   </p>
 </section>
 </aside>
+<button color="accent" class="add-quart" (click)="openQuart()" #pulsingButton mat-flat-button>
+  <mat-icon class="mr2">add_shopping_cart</mat-icon>
+  <span class="mat-subheading-2">ADD TO QUART</span>
+</button>
   <section class="column images-container" >
     <app-image-carousel  [images]="images|async"></app-image-carousel>
     <ng-template #verticalImages>
     <img class="my2" [src]="image | mergeSizeQs:1200" *ngFor="let image of images | async">
     </ng-template>
   </section>
-  <h1 class="font--dark-grey technical-details-title mat-h1">TECHNICAL DETAILS</h1>
+  <h1 class="font--dark-grey technical-details-title mat-h1">PRICING & SPECIFICATIONS</h1>
   <section class="features">
     <app-product-features align="horizontal" [features]="(product$ |async).features"></app-product-features>
   
@@ -57,7 +58,6 @@
   *ngIf="(product$ |async).componentsSpecifications.length > 0"
   [componentsSpecs]="(product$ |async).componentsSpecifications">
   </app-product-component>
-
 </section>
 </main>
 <footer class="global--gutters related-products">

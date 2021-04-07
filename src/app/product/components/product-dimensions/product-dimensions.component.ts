@@ -41,7 +41,7 @@ export class ProductDimensionsComponent implements OnInit {
     this.displayedColumns = this.dimensionColumns.slice();
     this.displayedColumns.unshift('ref');
     if(!this.isPresentationMode) {
-      this.displayedColumns.unshift('quantity');
+      this.displayedColumns.push('quantity');
     }
   }
   variantsNumber() {

@@ -22,30 +22,31 @@
 </ng-container>
 
 <ng-template #quartMode>
-  <section class="table-container">
+  <section class="table-container quart">
     <table [style.width]="tableWidth()" mat-table [dataSource]="dataSource">
       <!-- Position Column -->
-      <ng-container sticky matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+      <ng-container stickyEnd matColumnDef="quantity">
+        <th  sticky mat-header-cell *matHeaderCellDef> Quantity </th>
         <td mat-cell *matCellDef="let element"> 
-          <mat-form-field class="quantity-field" [formGroup]="quantityForm">
+          <!-- <mat-form-field class="quantity-field" [formGroup]="quantityForm">
             <input  [formControlName]="element.designation" matInput type="number" min=0> 
 
-          </mat-form-field>
+          </mat-form-field> -->
+          <app-counter></app-counter>
             </td>
       </ng-container>
 
       <ng-container matColumnDef="ref">
-        <th mat-header-cell *matHeaderCellDef> Ref </th>
+        <th  sticky mat-header-cell *matHeaderCellDef> Ref </th>
         <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
       </ng-container>
     
       <ng-container  *ngFor="let columnName of dimensionColumns ; index as i"  [matColumnDef]="columnName">
-        <th mat-header-cell *matHeaderCellDef> {{columnName | titlecase}} </th>
+        <th sticky mat-header-cell *matHeaderCellDef> {{columnName | titlecase}} </th>
         <td mat-cell *matCellDef="let element"> {{getMeasure(element,columnName)}} </td>
       </ng-container>
     
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </section>

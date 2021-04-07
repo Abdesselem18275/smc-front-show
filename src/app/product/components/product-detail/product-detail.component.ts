@@ -36,7 +36,7 @@ export class ProductDetailComponent    {
   }
 
   openQuart() {
-    this.product$.pipe(take(1)).subscribe(x =>this.qds.openQuartDialog(x));
+    this.product$.pipe(take(1)).subscribe(x =>this.qds.openQuartDialog(x,this.selectedAppearanceVariant$.getValue()));
   }
 
 }
