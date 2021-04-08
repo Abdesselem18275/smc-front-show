@@ -1,13 +1,13 @@
 import { Component, Inject } from '@angular/core';
-import { ProductStoreSelectors } from 'src/app/root-store';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { map, withLatestFrom } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { UserStoreSelectors } from 'src/app/root-store/user-store';
-import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
+ 
+import { map } from 'rxjs/operators';
+import { ActivatedRoute, ParamMap,  } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Category } from 'src/app/models/product.models';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
+import { ProductStateService } from 'src/app/product/state/product-state.service';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
 
 @Component({
   selector: 'app-list-meta',
@@ -24,30 +24,22 @@ export class ListMetaComponent  {
   activeCategory$: Observable<Category>;
 
   constructor(
+    private pss :ProductStateService,
+    private ass : AccountStateService,
+    private gss : GlobalStateService,
     private route: ActivatedRoute,
-    @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
-    private store$: Store<any> ) {
-      this.objCount$ = this.store$.select(ProductStoreSelectors.selectProductsCount);
-      this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
+    @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any) {
+      this.objCount$ = this.pss.productsCount
+      this.isLoading$ = this.gss.isLoading
       this.isSearchActive$ = this.route.queryParamMap.pipe(
        map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)));
        this.isFavoriteActive$ =   this.route.queryParamMap.pipe(
          map((paramMap: ParamMap) => paramMap.has('profiles'))
        );
-      this.activeCategory$ = this.route.queryParamMap.pipe(
-        map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
-        withLatestFrom(this.store$.select(GlobalStoreSelectors.selectCategories)),
-        map(([value,categories]: [string,Category[]])=> value !== '' && value ?
-        categories.filter(cat => cat.designation === value).shift():
-        {
-          designation : 'All Cateogries',
-          isRoot: true,
-          children : categories.filter(cat => cat.isRoot)
-        })
-      );
+      this.activeCategory$ = this.gss.activeCategory
       this.searchTerm$ = this.route.queryParamMap.pipe(
         map(paramMap => paramMap.get(this.queryParamKeys.SEARCH)));
-      this.favoritesCount$ = this.store$.select(UserStoreSelectors.selectFavoritesCount);
+      this.favoritesCount$ = this.ass.authProfile.pipe(map(profile => profile.favorites.length))
     }
 
 

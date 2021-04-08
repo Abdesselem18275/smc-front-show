@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
+ 
 import { Observable } from 'rxjs';
-import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { first } from 'rxjs/operators';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 import { AccountFormService } from '../../service/account-form.service';
 
 
@@ -18,20 +20,21 @@ export class AccountLoginComponent implements OnInit   {
   loginForm: FormGroup;
   isChecking: Observable<boolean>;
   constructor(
-              private accountFormService: AccountFormService,
-              private store$: Store<any>) {
+              private ass : AccountStateService,
+              private gss :GlobalStateService,
+              private accountFormService: AccountFormService) {
   }
    ngOnInit() {
-    this.isChecking = this.store$.select(UserStoreSelectors.selectIsLoading);
+    this.isChecking = this.gss.isLoading
     this.loginForm = this.accountFormService.createAuthForm();
   }
 
   onSubmit() {
     this.loginForm.enable();
     if(this.loginForm.valid) {
-      const credentials = this.loginForm.value;
-      this.store$.dispatch(UserStoreActions.LoginAction({credentials}));
-      this.authNonFieldError = this.store$.select(UserStoreSelectors.selectError);
+      this.ass.login(this.loginForm.value).pipe(
+        first()
+      ).subscribe(() => alert("Authenticated"))
     }
 
   }

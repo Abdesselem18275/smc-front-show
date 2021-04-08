@@ -1,14 +1,11 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
+import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LanguageType} from './root-store/global-store/state';
 import { centerSlideInAnimation, expandAnimation, sideSlideInAnimation } from './animations';
 import { Router, NavigationEnd } from '@angular/router';
-import { map, filter, tap } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Store } from '@ngrx/store';
-import { ProductStoreSelectors } from './root-store';
+ 
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 
 
 @Component({
@@ -24,7 +21,7 @@ export class AppComponent {
   isSideMenuActive = false;
   isLoading$: Observable<boolean>;
   showMenu$: Observable<boolean>;
-  constructor(private store$: Store<any>,private router: Router) {
+  constructor(private gss:GlobalStateService,private router: Router) {
                 this.showMenu$ = this.router.events.pipe(
                   filter((event: any) => event instanceof NavigationEnd),
                   map((event: NavigationEnd) =>
@@ -33,7 +30,7 @@ export class AppComponent {
                   ))
                 );
                 this.router.events.subscribe(() => this.sideNav.close());
-                this.isLoading$ = this.store$.select(ProductStoreSelectors.selectIsLoading);
+                this.isLoading$ = this.gss.isLoading
 
   }
   toggleSideNav() {

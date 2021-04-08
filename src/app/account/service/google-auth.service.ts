@@ -1,16 +1,11 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SmcAuthService } from '../../account/service/smc-auth.service';
-import { API_URL, TOKEN_KEY, PROFILE_ID } from 'src/app/injectables';
-import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
-import { Profile } from '../../models/account.models';
+import { API_URL} from 'src/app/injectables';
+import { ApiProfile, Profile } from '../../models/account.models';
 import { Observable } from 'rxjs';
-import { take,withLatestFrom } from 'rxjs/operators';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+import { take } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
 declare const gapi: any;
 @Injectable({
   providedIn: 'root'
@@ -18,11 +13,9 @@ declare const gapi: any;
 export class GoogleAuthService {
 
   constructor(private http: HttpClient ,
-              private store$: Store<RootStoreState.State>,
+              private as : AuthService,
+              private ass : AccountStateService,
               private ngZone: NgZone,
-              private authService: SmcAuthService,
-              @Inject(TOKEN_KEY) private tokenKey: string,
-              @Inject(PROFILE_ID) private profileId: string,
               @Inject(API_URL) private apiUrl: string) {
 
     gapi.load('auth2', () => {
@@ -43,14 +36,14 @@ export class GoogleAuthService {
       onfailure: this.onFailure()
     });
   }
-  createOrSignin(id_token: string): Observable<any> {
+  createOrSignin(id_token: string): Observable<ApiProfile> {
     const endPoint = '/account/g-auth/';
     const query: string = [
       this.apiUrl,
       endPoint
          ].join('');
     const httpParams = new HttpParams().set('id_token', id_token);
-     return this.http.post(query, httpParams);
+     return this.http.post<ApiProfile>(query, httpParams);
   }
 
   isSignIn(): boolean {
@@ -65,18 +58,14 @@ export class GoogleAuthService {
   }
 
   private onSignIn(googleUser) {
-    this.ngZone.runOutsideAngular(() => {this.createOrSignin(googleUser.getAuthResponse().id_token).pipe(take(1),withLatestFrom(
-      this.store$.select(UserStoreSelectors.selectRedirectNavigation))).
-      subscribe(
-        (data: [profile: Profile ,redirect:string] ) =>
+    this.ngZone.runOutsideAngular(() => {this.createOrSignin(googleUser.getAuthResponse().id_token).pipe(
+      take(1)).
+      subscribe((value: ApiProfile) =>
         {
-
-      const profile = data[0];
-      localStorage.setItem(this.tokenKey, profile.auth_token);
-      localStorage.setItem(this.profileId, profile.id.toString());
-      this.store$.dispatch(UserStoreActions.LoadUserAction({payload: profile }));
-      this.ngZone.run(() => {this.authService.redirect(data[1]);});
-      this.signOut();
+        const profile = new Profile(value)
+        this.as.token = profile.authToken
+        this.ass.setAuthProfile(profile)
+        this.signOut();
     });});
      }
 

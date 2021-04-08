@@ -1,36 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+ 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Profile } from 'src/app/models/account.models';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-account-card',
   templateUrl: './account-card.component.html',
   styleUrls: ['./account-card.component.scss']
 })
-export class AccountCardComponent implements OnInit {
+export class AccountCardComponent {
   profile$: Observable<Profile>;
   isSideNav$: Observable<boolean>;
-  isLogged$: Observable<boolean>;
+  isLogged: boolean;
   initials$: Observable<string>;
-  constructor(private matDialog: MatDialog,private router: Router,private store$: Store<any>) {
-    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
-    this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
-    this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(
-      map(profile => profile ? profile.first_name[0].concat(profile.last_name[0]) : '?' ));
-  }
-
-  ngOnInit() {
-
+  constructor(private as : AuthService, private matDialog: MatDialog,private router: Router,private ass : AccountStateService) {
+    this.profile$ = this.ass.authProfile
+    this.isLogged = this.as.isLogged
+    this.initials$ = this.profile$.pipe(map(profile => profile.initials))
   }
 
   logOut() {
-    this.matDialog.closeAll();
-    this.store$.dispatch(UserStoreActions.LogoutAction());
+    this.as.logout()
   }
   navToProfile() {
     const redirect = '/account/profile';

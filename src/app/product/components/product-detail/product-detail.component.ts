@@ -31,7 +31,7 @@ export class ProductDetailComponent    {
   get images(): Observable<string[]> {
     return this.selectedAppearanceVariant$ && this.selectedAppearanceVariant$.asObservable().pipe(
       map((appVariance: AppearanceVariant) =>
-      appVariance.images.map((image: BaseImage) => image.content).concat(appVariance.thumbNail).reverse())
+      appVariance.images.concat(appVariance.thumbNail).reverse())
     );
   }
 

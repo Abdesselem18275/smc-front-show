@@ -1,9 +1,8 @@
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { Category } from 'src/app/models/product.models';
 import { Component, OnInit } from '@angular/core';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-menu',
@@ -12,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryMenuComponent implements OnInit {
   rootCategories$: Observable<Category[]>;
-  constructor(private store$: Store<RootStoreState.State>) { }
+  constructor(private gss: GlobalStateService) { }
 
   ngOnInit(): void {
-    this.rootCategories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
+    this.rootCategories$ = this.gss.categories.pipe(
+      map(
+        categories => categories.filter(cat => cat.isRoot)))
+
   }
 
 }

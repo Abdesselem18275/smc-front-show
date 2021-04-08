@@ -30,9 +30,9 @@ export interface ApiProduct {
     long_description: string;
     raw_materials: string[];
     root_category: number;
-    dimension_variants: ApiDimensionVariant[];
-    appearance_variants: AppearanceVariant[];
-    components_specifications: ComponentsSpecification[];
+    dimensionVariants: ApiDimensionVariant[];
+    appearanceVariants: AppearanceVariant[];
+    componentsSpecifications: ApiComponentsSpecification[];
     features: Feature[];
     min_price: number;
     max_price: number;
@@ -60,18 +60,29 @@ export class Product {
         this.longDescription = args.long_description
         this.rawMaterials = args.raw_materials
         this.rootCategory = args.root_category
-        this.dimensionVariants = args.dimension_variants ?  args.dimension_variants.map(dim => new DimensionVariant(dim)) : []
-        this.appearanceVariants = args.appearance_variants
-        this.componentsSpecifications = args.components_specifications
+        this.dimensionVariants = args.dimensionVariants ?  args.dimensionVariants.map(dim => new DimensionVariant(dim)) : []
+        this.appearanceVariants = args.appearanceVariants
+        this.componentsSpecifications = args.componentsSpecifications ? args.componentsSpecifications.map(comp => new ComponentsSpecification(comp)):[]
         this.features = args.features
         this.minPrice = args.min_price
         this.maxPrice = args.max_price     
+    }
+    get dimensionColumns():string[] {
+        return Array.from(this.dimensionVariants.reduce(
+          (acc: Set<string>,currentValue: DimensionVariant) => {
+            currentValue.dimensionVariantsSpecs.forEach(dimSpecs => {
+              acc.add(dimSpecs.measureType.designation);
+            });
+            return acc;
+          }
+    
+          ,new Set<string>()));
     }
 }
 
 export interface ApiDimensionVariantSpecification {
     value: number;
-    measure_type: MeasureType;
+    measure_type: ApiMeasureType;
     is_Master_specification: boolean;
 }
 
@@ -81,14 +92,14 @@ export class DimensionVariantSpecification {
     isMasterSpecification: boolean;
     constructor(args:ApiDimensionVariantSpecification) {
         this.value = args.value
-        this.measureType = args.measure_type
+        this.measureType = new MeasureType(args.measure_type)
         this.isMasterSpecification = args.is_Master_specification
     }
 }
 export interface ApiDimensionVariant {
     id:number;
     designation: string;
-    dimensionVariantsSpecs: DimensionVariantSpecification[];
+    dimensionVariantsSpecs: ApiDimensionVariantSpecification[];
   }
 export class DimensionVariant {
   id:number;
@@ -96,7 +107,9 @@ export class DimensionVariant {
   dimensionVariantsSpecs: DimensionVariantSpecification[];
   constructor(args:ApiDimensionVariant) {
       Object.assign(this,args)
+      this.dimensionVariantsSpecs = args.dimensionVariantsSpecs.map(dim => new DimensionVariantSpecification(dim))
   }
+
 }
 export interface ApiMeasureType {
    designation: string;
@@ -117,7 +130,7 @@ export class MeasureType {
 export interface AppearanceVariant {
     id?: number;
     thumbNail?: string;
-    images?: BaseImage[];
+    images?: string[];
     look?: Look;
 }
 export interface Look {
@@ -125,16 +138,35 @@ export interface Look {
     material: string;
     texture: string;
  }
-export interface ComponentsSpecification {
-    component: ProductComponent;
+export interface ApiComponentsSpecification {
+    component: ApiProductComponent;
     measures: number[];
     rawMaterials: string[];
 }
+export class ComponentsSpecification {
+    component: ProductComponent;
+    measures: number[];
+    rawMaterials: string[];
+    constructor(args:ApiComponentsSpecification ) {
+        Object.assign(this,args)
+        this.component = new ProductComponent(args.component)
+    }
+}
 
-export interface ProductComponent  {
+export interface ApiProductComponent  {
+    designation: string;
+    measure_type: ApiMeasureType;
+    svg_icon: BaseImage;
+}
+export class ProductComponent  {
     designation: string;
     measureType: MeasureType;
     svgIcon: BaseImage;
+    constructor(args:ApiProductComponent) {
+        this.designation = args.designation
+        this.svgIcon = args.svg_icon
+        this.measureType = new MeasureType(args.measure_type)
+    }
 }
 export interface BaseImage {
     id: number;

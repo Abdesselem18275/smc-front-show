@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductStoreSelectors } from 'src/app/root-store';
-import { Store } from '@ngrx/store';
+ 
 import {AppearanceSelectorStateService} from './appearance-selector-state.service';
 import { AppearanceVariant } from 'src/app/models/product.models';
+import { ProductStateService } from 'src/app/product/state/product-state.service';
 
 @Component({
   selector: 'app-appearance-selector',
@@ -19,8 +19,8 @@ export class AppearanceSelectorComponent implements OnInit {
   isBigSize$: Observable<boolean>;
   selectedAppearanceVariant$: Observable<AppearanceVariant>;
 
-  constructor(private apss: AppearanceSelectorStateService,private store$: Store) {
-    this.isBigSize$ = store$.select(ProductStoreSelectors.selectIsBigBoxSize);
+  constructor(private apss: AppearanceSelectorStateService,private pss: ProductStateService) {
+    this.isBigSize$ = this.pss.isBigSize
     this.selectedAppearanceVariant$ = apss.selectedAppearanceVariant;
    }
 

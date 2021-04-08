@@ -1,11 +1,9 @@
-import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
-import { take } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { Directive, AfterContentInit, OnDestroy, ContentChild, Renderer2, HostListener, Input } from '@angular/core';
-import { RootStoreState } from 'src/app/root-store';
-import { UserStoreSelectors, UserStoreActions } from 'src/app/root-store/user-store';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { DialogManagerService } from 'src/app/shared/services/dialog-manager.service';
 
 @Directive({
   selector: '[appFavoriteHandler]'
@@ -19,23 +17,22 @@ export class FavoriteHandlerDirective implements AfterContentInit,OnDestroy {
   subscription!: Subscription ;
 
   constructor(
-    private router: Router,
-    private renderer: Renderer2,
-    private store$: Store<RootStoreState.State>) {
+    private dms: DialogManagerService,
+    private as : AuthService,
+    private acc : AccountStateService,
+    private renderer: Renderer2) {
    }
 
 
    @HostListener('click')
    onClick(): void {
-     this.store$.select(UserStoreSelectors.selectIsAuthentificated).pipe(
-       take(1),
-     ).subscribe((isAuth) => {
-       if(isAuth) {
-        this.store$.dispatch(UserStoreActions.ToggleFavoriteAction({id: this.appFavoriteHandler}));
-       } else {
-        this.store$.dispatch(UserStoreActions.RedirectForAuthentification({redirectUrl:this.router.url}));
-       }
-     });  }
+    if(this.as.isLogged) {
+      this.acc.toogleFavorite(this.appFavoriteHandler)
+    } else {
+      this.dms.openCardDialog()
+
+    }
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -43,11 +40,10 @@ export class FavoriteHandlerDirective implements AfterContentInit,OnDestroy {
 
 
   ngAfterContentInit(): void {
-
     // eslint-disable-next-line no-underscore-dangle
     this.matIcon = this.matIconComp._elementRef.nativeElement;
-    this.subscription = this.store$.select(UserStoreSelectors.selectIsFavorite, {id : this.appFavoriteHandler}).subscribe(state => {
-      this.updateIconStyle(state);
+    this.subscription = this.acc.authProfile.subscribe(profile => {
+      this.updateIconStyle(profile?.favorites?.includes(this.appFavoriteHandler) ?? false);
       });
     }
 

@@ -1,20 +1,17 @@
 import { Injectable, Inject } from '@angular/core';
-import { Store } from '@ngrx/store';
 import {AppDataService} from './app-data.service';
 import { exhaustMap, take, tap } from 'rxjs/operators';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MenuDataBuilderService } from './menu-data-builder.service';
-import { GlobalStoreActions } from 'src/app/root-store/global-store';
-import { PROFILE_ID } from 'src/app/injectables';
-import { Profile } from 'src/app/models/account.models';
+import { PROFILE_ID, SUPPORTED_LANGUAGES } from 'src/app/injectables';
+import { ApiProfile, Profile } from 'src/app/models/account.models';
 import { combineLatest, EMPTY } from 'rxjs';
-import { UserStoreActions } from 'src/app/root-store/user-store';
-import { LanguageType } from 'src/app/root-store/global-store/state';
-import { BaseImage, Category } from 'src/app/models/product.models';
+import { ApiCategory, BaseImage, Category } from 'src/app/models/product.models';
 import { GlobalStateService } from '../state/global-state.service';
-import { LocaleInitData } from 'src/app/models/shared.models';
+import { LanguageType, LocaleInitData, UserLanguage } from 'src/app/models/shared.models';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
 
 
 
@@ -23,13 +20,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConfigService {
   constructor(
-    private gss: GlobalStateService,
+    @Inject(SUPPORTED_LANGUAGES) private languageList: UserLanguage[],
+    @Inject('APP_BASE_HREF') private baseUrl: string,
     @Inject(PROFILE_ID) private profileId: string,
     private iconRegistry: MatIconRegistry ,
     private sanitizer: DomSanitizer,
     private http: HttpClient ,
-    private mdbs: MenuDataBuilderService,
-    private store$: Store<any>,
+    private as : AuthService,
+    private ass : AccountStateService,
+    private gss : GlobalStateService,
     private ads: AppDataService ) {
       iconRegistry.addSvgIcon('loading', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loading_logo.svg'))
       .addSvgIcon('loading_2', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/loader_2.svg'))
@@ -43,7 +42,9 @@ export class ConfigService {
       .addSvgIcon('instagram', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/insta.svg'))
       .addSvgIcon('contact-us', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/contact_us_illustration.svg'))
       .addSvgIcon('logo_black_bg', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/logo_black_background.svg'));
-
+      const language = this.baseUrl.replace(/\//g, '');
+      const selectedLanguage = this.languageList.filter(lang => lang.id === language)[0]
+      this.gss.setSelectedLanguage(selectedLanguage)
 
     }
 
@@ -62,25 +63,23 @@ export class ConfigService {
           })
         )),
       exhaustMap(() => combineLatest([
-        this.ads.get<Category[]>(`/api/product/categories/`),
+        this.ads.get<ApiCategory[]>(`/api/product/categories/`),
         this.ads.get<BaseImage[]>(`/api/product/icons/`)
       ]).pipe(
         take(1),
-        tap((res: [Category[],BaseImage[]]) =>{
+        tap((res: [ApiCategory[],BaseImage[]]) =>{
         res[1].forEach(jsonItem => {
           this.iconRegistry.addSvgIcon(jsonItem.designation, this.sanitizer.bypassSecurityTrustResourceUrl(jsonItem.content));
         });
-          this.store$.dispatch(GlobalStoreActions.loadInitDataAction({payload:{
-            categories : res[0],
-            navMenuTree : this.mdbs.buildMenuTree(res[0].filter((cat: Category) => cat.isRoot))
-          }}));
+        const categories = res[0].map(cat => new Category(cat))
+        this.gss.setCategories(categories)
       }))
       ),
-      exhaustMap(() => localStorage.getItem(this.profileId) ?
-      this.ads.get<Profile>(`/account/profiles/${localStorage.getItem(this.profileId)}/`).pipe(
+      exhaustMap(() => this.as.isLogged ?
+      this.ads.get<ApiProfile>(`/account/profiles/auth_user/`).pipe(
         take(1),
-        tap((profile: Profile) =>
-          this.store$.dispatch(UserStoreActions.LoadUserAction({payload:profile}))
+        tap((res : ApiProfile) =>
+          this.ass.setAuthProfile(new Profile(res))
         )):EMPTY
       ),
       ).toPromise().then();

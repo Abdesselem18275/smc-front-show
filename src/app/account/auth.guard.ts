@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, Navigation } from '@angular/router';
+import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { SmcAuthService } from './service/smc-auth.service';
-import { Store } from '@ngrx/store';
-import { State } from '../root-store/state';
-import { UserStoreActions } from '../root-store/user-store';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 
 @Injectable({
@@ -12,14 +9,13 @@ import { UserStoreActions } from '../root-store/user-store';
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor(private authService: SmcAuthService,
-              private router: Router,
-              private store$: Store<State>) {}
+  constructor(private as: AuthService,
+              private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return this.checkLogin(this.router.url);
+    return this.checkLogin();
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
@@ -27,14 +23,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.canActivate(next, state);
   }
 
-  checkLogin(redirectUrl: string): boolean {
-    if (this.authService.isLogged()) { return true; }
+  checkLogin(): boolean {
+    if (this.as.isLogged) { return true; }
 
     // Store the attempted URL for redirecting
 
     // Navigate to the login page with extras
-    this.store$.dispatch(
-      UserStoreActions.RedirectForAuthentification({redirectUrl:redirectUrl}));
+    this.as.redirect();
     return false;
   }
 }

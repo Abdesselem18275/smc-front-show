@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { EMPTY, Observable, Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
-import { filter } from 'rxjs/operators';
+import {  Observable, Subscription } from 'rxjs';
+ 
+import { filter, first } from 'rxjs/operators';
 import { countries } from 'src/utils/countries-list';
 import { Profile } from 'src/app/models/account.models';
 import { AccountFormService } from '../../service/account-form.service';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 
 
 
@@ -22,11 +23,12 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
   isUpdating$: Observable<boolean>;
   serverError$!: Observable<any>;
   subscription!: Subscription ;
-  constructor(private store$: Store,
+  constructor(private ass : AccountStateService,
+              private gss : GlobalStateService,
               private accountFormService: AccountFormService)
               {
     this.accountForm = this.accountFormService.createLoadFullAccountForm();
-    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+    this.isUpdating$ = this.gss.isLoading
                }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -35,19 +37,20 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
   ngOnInit(): void {
 
 
-    this.subscription = this.store$.select(UserStoreSelectors.selectUser).pipe(
+    this.subscription = this.ass.authProfile.pipe(
+      first(),
       filter(profile => profile !== null)
     ).subscribe((profile: Profile) => {
       this.accountForm.setValue({
-        first_name: profile.first_name,
-        last_name: profile.last_name,
+        first_name: profile.firstName,
+        last_name: profile.lastName,
         civility: profile.civility,
         email : profile.email,
-        company_name : profile.company_name,
-        is_professional : profile.is_professional,
+        company_name : profile.companyName,
+        is_professional : profile.isProfessional,
         position: profile.position,
-        activity_field: profile.activity_field,
-        phone_number : profile.phone_number,
+        activity_field: profile.activityField,
+        phone_number : profile.phoneNumber,
         country : profile.country
       });
     });
@@ -62,10 +65,9 @@ export class EditProfileComponent implements OnInit, OnDestroy  {
       });
     }
     const payload = this.accountForm.value;
-    this.store$.dispatch(UserStoreActions.UpdateUserAction({
-      message:'Your profile informations was successfully updated',
-      payload}));
-    this.serverError$ = this.store$.select(UserStoreSelectors.selectError);
+    this.ass.createProfile(payload).pipe(
+      first()
+    ).subscribe(() => alert("successful"))
   }
 
 }

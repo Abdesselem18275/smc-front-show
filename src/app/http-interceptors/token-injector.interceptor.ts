@@ -8,21 +8,19 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TOKEN_KEY } from '../injectables';
-import { Store } from '@ngrx/store';
-import { GlobalStoreSelectors } from '../root-store/global-store';
-import { mergeMap } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
+ 
 
 @Injectable()
 export class TokenInjectorInterceptor implements HttpInterceptor {
 
   constructor(
-    private store: Store<any>,
-    @Inject(TOKEN_KEY) private tokenKey: string
+    private as : AuthService,
     ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token: string = localStorage.getItem(this.tokenKey);
-    request = token && request.url.includes('/api/') ? request.clone({
+    const token = this.as.token
+    request = this.as.isLogged && request.url.includes('/api/') ? request.clone({
       headers:request.headers.set('Authorization','Token ' + token)
     }):request;
     return next.handle(request);

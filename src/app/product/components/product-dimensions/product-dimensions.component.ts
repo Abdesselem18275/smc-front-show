@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { DimensionVariant, DimensionVariantSpecification } from 'src/app/models/product.models';
+import { DimensionVariant, DimensionVariantSpecification, Product } from 'src/app/models/product.models';
 
 @Component({
   selector: 'app-product-dimensions',
@@ -12,7 +12,7 @@ export class ProductDimensionsComponent implements OnInit {
   @Input()
   mode: 'quart'|'presentation' = 'presentation';
   @Input()
-  dimensionVariants: DimensionVariant[] = [];
+  product: Product
   @Output()
   variantQuantities  = new EventEmitter<{[key: string]: number}>();
   quantityForm: FormGroup;
@@ -25,19 +25,9 @@ export class ProductDimensionsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.dimensionVariants.forEach((dimVariant: DimensionVariant) => {
-      this.quantityForm.setControl(dimVariant.designation,new FormControl(0));
-    });
-    this.dataSource = new MatTableDataSource<DimensionVariant>(this.dimensionVariants);
-    this.dimensionColumns = Array.from(this.dimensionVariants.reduce(
-      (acc: Set<string>,currentValue: DimensionVariant) => {
-        currentValue.dimensionVariantsSpecs.forEach(dim => {
-          acc.add(dim.measureType.designation);
-        });
-        return acc;
-      }
-
-      ,new Set<string>()));
+    console.warn(this.product.dimensionVariants)
+    this.dataSource = new MatTableDataSource<DimensionVariant>(this.product.dimensionVariants);
+    this.dimensionColumns = this.product.dimensionColumns
     this.displayedColumns = this.dimensionColumns.slice();
     this.displayedColumns.unshift('ref');
     if(!this.isPresentationMode) {
@@ -51,7 +41,7 @@ export class ProductDimensionsComponent implements OnInit {
     return `${this.displayedColumns.length * 80}px`;
   }
   getMeasure(variant: DimensionVariant,measureType: string): string {
-      const varIndex = this.dimensionVariants.find((dimVar: DimensionVariant) => dimVar.designation === variant.designation);
+      const varIndex = this.product.dimensionVariants.find((dimVar: DimensionVariant) => dimVar.designation === variant.designation);
       if (variant) {
         const measure = varIndex.dimensionVariantsSpecs.find((dimSpecs: DimensionVariantSpecification) =>
           dimSpecs.measureType.designation === measureType );

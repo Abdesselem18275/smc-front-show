@@ -1,10 +1,10 @@
 <header class="mb4">
-  <ng-container  *ngIf="isLogged$ | async else anonumous">
+  <ng-container  *ngIf="isLogged else anonumous">
     <div class="header">
       <app-initials-icon [size]="52"  [initials]="initials$ | async"></app-initials-icon>
       <div class="ml6 column">
       <span class="mat-h2">Welcome</span>
-      <span class="mat-body">{{(profile$|async).first_name}} {{(profile$|async).last_name}}</span>
+      <span class="mat-body">{{(profile$|async).firstName}} {{(profile$|async).lastName}}</span>
     </div>
     </div>
 
@@ -45,7 +45,7 @@
     <span mat-line class="mat-body-2">Language</span>
     <span mat-line class="mat-body-2">{{(language$ |async)?.languageType}}</span>
   </mat-list-item>
-  <ng-container *ngIf="isLogged$ | async">
+  <ng-container *ngIf="isLogged">
     <div  mat-subheader>Profile</div>
     <mat-divider></mat-divider>
     <mat-list-item>

@@ -1,11 +1,9 @@
 import { Category } from 'src/app/models/product.models';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { ActivatedRoute } from '@angular/router';
-import { filter, take } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 
 
 @Component({
@@ -25,9 +23,9 @@ export class ProductHomeComponent  implements AfterViewInit  {
 
 
   constructor(
-    private route: ActivatedRoute,
-    private store$: Store<RootStoreState.State>) {
-    this.categories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
+    private gss : GlobalStateService,
+    private route: ActivatedRoute) {
+    this.categories$ = this.gss.categories.pipe(map(categories => categories.filter(cat => cat.isRoot)))
     this.isLoaded$.subscribe((x) => {
       this.bgClass = {
         'hero-image':  x,

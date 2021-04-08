@@ -1,13 +1,13 @@
-import { ProductStoreSelectors} from 'src/app/root-store';
-import { Store } from '@ngrx/store';
+ 
 import { Observable, BehaviorSubject, EMPTY } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { verticalAccordionAnimation } from 'src/app/animations';
-import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { QUERY_PARAM_KEYS } from 'src/app/injectables';
 import { Product, Category, AppearanceVariant } from 'src/app/models/product.models';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
+import { ProductStateService } from 'src/app/product/state/product-state.service';
 
 
 @Component({
@@ -30,9 +30,10 @@ export class ProductBoxComponent implements OnInit  {
 
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant | null>(null) ;
   constructor(
+    private pss : ProductStateService,
+    private gss : GlobalStateService,
     @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
-    private route: ActivatedRoute,
-    private store$: Store<any>) {
+    private route: ActivatedRoute) {
       this.isSearchActive = this.route.queryParamMap.pipe(
         map(paramMap => paramMap.has(this.queryParamKeys.SEARCH)));
       this.isFavoriteRoute  =  this.route.url.pipe(
@@ -41,10 +42,9 @@ export class ProductBoxComponent implements OnInit  {
      }
 
   ngOnInit() {
-
     this.selectedAppearanceVariant$.next(this.product.appearanceVariants[0]);
-    this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize);
-    this.rootCat$ = this.store$.select(GlobalStoreSelectors.selectCategoryById,{id:this.product.rootCategory}).pipe(take(1));
+    this.isBigSize$ = this.pss.isBigSize;
+    this.rootCat$ = this.gss.categories.pipe(map(categories => categories.find(cat => cat.id === this.product.rootCategory)))
   }
   setAppearanceVariant(appearanceVariant: AppearanceVariant ) {
     this.selectedAppearanceVariant$.next(appearanceVariant);

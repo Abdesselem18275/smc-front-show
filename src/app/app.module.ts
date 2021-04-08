@@ -6,12 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-import { RootStoreModule } from './root-store/root-store.module';
-import { EffectsModule } from '@ngrx/effects';
 import { httpInterceptorProviders } from './http-interceptors';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { RootEffects } from './root-store/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule} from '@angular/common';
 import {  providers  } from './providers'
@@ -29,10 +24,6 @@ import {  providers  } from './providers'
     SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RootStoreModule,
-    EffectsModule.forRoot([RootEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-
   ],
   providers: [
     httpInterceptorProviders,

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile } from 'src/app/models/account.models';
-import { RootStoreState } from 'src/app/root-store';
-import { UserStoreActions, UserStoreSelectors } from 'src/app/root-store/user-store';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 
 @Component({
   selector: 'app-account-profile',
@@ -19,9 +18,9 @@ export class AccountProfileComponent  {
   activeLink=this.tabs[0].label;
   isUpdating$: Observable<boolean>;
   profile$: Observable<Profile>;
-  constructor(private store$: Store<RootStoreState.State>) {
-    this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
-    this.isUpdating$ = this.store$.select(UserStoreSelectors.selectIsLoading);
+  constructor(private gss: GlobalStateService, private ass : AccountStateService) {
+    this.profile$ = this.ass.authProfile
+    this.isUpdating$ = this.gss.isLoading
   }
 
 

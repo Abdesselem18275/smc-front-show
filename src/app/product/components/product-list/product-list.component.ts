@@ -1,7 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { Store} from '@ngrx/store';
-import { ProductStoreActions, ProductStoreSelectors } from 'src/app/root-store/product-store';
-import { RootStoreState } from 'src/app/root-store';
+import { Component} from '@angular/core';
 import { Observable } from 'rxjs';
 import { sideSlideInAnimation } from 'src/app/animations';
 import { map } from 'rxjs/operators';
@@ -9,7 +6,7 @@ import { Product } from 'src/app/models/product.models';
 import { PageEvent } from '@angular/material/paginator';
 import { NavigationExtras, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
-const PRODUCTS_PER_PAGE = 10;
+import { ProductStateService } from 'src/app/product/state/product-state.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -24,14 +21,14 @@ export class ProductListComponent  {
   isBigSize$: Observable<boolean>;
   isSmallScreen: boolean;
   constructor(
+    private pss : ProductStateService,
     private router: Router,
-    breakpointObserver: BreakpointObserver,
-    private store$: Store<RootStoreState.State>) {
+    breakpointObserver: BreakpointObserver) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 500px)');
-    this.objCount$ = this.store$.select(ProductStoreSelectors.selectProductsCount);
-    this.productShorts$ =  this.store$.select(ProductStoreSelectors.selectAllProducts);
-    this.isBigSize$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize);
-    this.sizeIconName$ = this.store$.select(ProductStoreSelectors.selectIsBigBoxSize).pipe(
+    this.objCount$ = this.pss.productsCount
+    this.productShorts$ =  this.pss.products
+    this.isBigSize$ = this.pss.isBigSize;
+    this.sizeIconName$ = this.isBigSize$.pipe(
       map(x => x ? 'view_comfy':'view_stream')
     );
 
@@ -49,6 +46,6 @@ export class ProductListComponent  {
     this.router.navigate(['/product/list'],navExtra);
   }
   toggleSize(): void {
-    this.store$.dispatch(ProductStoreActions.ToggleBoxSizeAction());
+    this.pss.toggleBoxSize()
   }
 }

@@ -32,3 +32,13 @@ export enum AppQueryParamKey {
     shippingCountry = 'shippingCountry',
     paymentCurrency = 'paymentCurrency',
   }
+
+export enum LanguageType {
+    ENGLISH = 'English',
+    FRENCH = 'Francais',
+    GERMAN = 'Deutch'
+}
+export interface UserLanguage {
+    id: string;
+    languageType: string;
+}

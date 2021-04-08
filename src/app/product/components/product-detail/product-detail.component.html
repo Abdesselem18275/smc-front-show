@@ -45,7 +45,7 @@
     <section class="dimension">
       <app-product-dimensions
       *ngIf="(product$ |async).dimensionVariants.length > 0"
-      [dimensionVariants]="(product$ |async).dimensionVariants">
+      [product]="(product$ |async)">
       </app-product-dimensions>
     </section>
     <section class="materials">

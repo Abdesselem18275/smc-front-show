@@ -31,7 +31,7 @@
           <div class="inline--centred">
             <mat-icon class="material-icons-outlined mr2">person</mat-icon>
             <div *ngIf="(profile$ | async) as profile ; else anonymous">
-               <span>{{profile.first_name | titlecase}}</span>
+               <span>{{profile.firstName | titlecase}}</span>
             </div>
           </div>
 

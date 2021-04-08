@@ -3,8 +3,12 @@ import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { AppQueryParamKey, Country, Currency, SessionStorageKey } from 'src/app/models/shared.models';
+import { filter, map, withLatestFrom } from 'rxjs/operators';
+import { QUERY_PARAM_KEYS } from 'src/app/injectables';
+import { Profile } from 'src/app/models/account.models';
+import { Category, MenuTreeData } from 'src/app/models/product.models';
+import { AppQueryParamKey, Country, Currency, SessionStorageKey, UserLanguage } from 'src/app/models/shared.models';
+import { MenuDataBuilderService } from 'src/app/shared/services/menu-data-builder.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +16,14 @@ import { AppQueryParamKey, Country, Currency, SessionStorageKey } from 'src/app/
 export class GlobalStateService {
   private readonly countriesSubject = new BehaviorSubject<Country[]>([]);
   private readonly currenciesSubject = new BehaviorSubject<Currency[]>([]);
-  constructor(@Inject(DOCUMENT) private document: Document,private route: ActivatedRoute) {
+  private readonly isLoadingSubject = new BehaviorSubject<boolean>(false)
+  private readonly categoriesSubject = new BehaviorSubject<Category[]>([])
+  private readonly selectedLanguageSubject = new BehaviorSubject<UserLanguage>(null)
+
+  constructor(
+    @Inject(QUERY_PARAM_KEYS) private queryParamKeys: any,
+    private mdbs: MenuDataBuilderService,
+    private route: ActivatedRoute) {
     this.route.queryParamMap.pipe(
       filter((paramMap: ParamMap) =>
         paramMap.has(AppQueryParamKey.shippingCountry) || paramMap.has(AppQueryParamKey.paymentCurrency))
@@ -30,9 +41,66 @@ export class GlobalStateService {
         this.currenciesSubject.next(this.currenciesSubject.getValue());
 
       }
-
-
     });
+  }
+
+
+
+
+
+  get selectedLanguage():Observable<UserLanguage> {
+    return this.selectedLanguageSubject.asObservable()
+  }
+  setSelectedLanguage(payload:UserLanguage):void {
+    return this.selectedLanguageSubject.next(payload)
+  }
+
+  get categories():Observable<Category[]> {
+    return this.categoriesSubject.asObservable()
+  }
+
+  getBreadCrumb(catId?:number):Observable<Category[]> {
+    return this.route.queryParamMap.pipe(
+      map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
+      withLatestFrom(this.categories),
+      map(([value,categories]: [string,Category[]]) =>
+      catId ?
+          this.setItems(categories,this.getItem(categories, catId)):
+          value ?
+          this.setItems(categories,categories.find(cat => cat.designation.toLowerCase() === value.toLowerCase())):
+          []
+    ),
+    map(breadcrumb => breadcrumb.reverse())
+    );
+  }
+  get activeCategory():Observable<Category> {
+    return this.route.queryParamMap.pipe(
+      map(paramMap => paramMap.get(this.queryParamKeys.CAT_DESIGNATION)),
+      withLatestFrom(this.categories),
+      map(([value,categories]: [string,Category[]])=> value !== '' && value ?
+      categories.filter(cat => cat.designation === value).shift():
+      {
+        designation : 'All Cateogries',
+        isRoot: true,
+        children : categories.filter(cat => cat.isRoot)
+      })
+    );
+  }
+
+
+  setCategories(payload : Category[]):void {
+    this.categoriesSubject.next(payload)
+  }
+
+  get navMenuTree():Observable<MenuTreeData[]> {
+    return this.categories.pipe(map(categories => this.mdbs.buildMenuTree(categories)))
+  }
+
+  get isLoading():Observable<boolean> {
+    return this.isLoadingSubject.asObservable()
+  }
+  setIsLoading(payload:boolean):void {
+      this.isLoadingSubject.next(payload)
   }
 
   initUserLocales(countryCode: string): void {
@@ -75,4 +143,19 @@ export class GlobalStateService {
       map((countries: Country[]) =>
       countries.find(country => country.alpha2Code === sessionStorage.getItem(SessionStorageKey.shippingCountry))));
   }
+
+
+  private getItem = (categories: Category[],key: number | undefined): Category | undefined =>
+  categories.find(category =>  category.id === key);
+
+  private setItems = (categories: Category[],param: Category|undefined): Category[] => {
+    if ((param === undefined ) || param.designation==='All Cateogries') {
+      return [];
+    } else {
+      const cat = this.getItem(categories,param.id);
+      const parentCategory = this.getItem(categories,param.parentCategory);
+      return([param].concat(this.setItems(categories,cat?.isRoot ? undefined : parentCategory)));
+    }
+
+  };
 }

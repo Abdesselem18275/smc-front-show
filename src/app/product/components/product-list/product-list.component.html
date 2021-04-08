@@ -2,7 +2,7 @@
 
 
 <div class="global-horizontal--gutters mt4 font--dark-grey mat-body-2">
-  <app-category-breadcrumb ></app-category-breadcrumb>
+  <app-category-breadcrumb></app-category-breadcrumb>
 
 </div>
 <div>
@@ -13,7 +13,7 @@
 <div class="actions-container inline full-width">
 
       <button (click)="toggleSize()" mat-mini-fab>
-        <mat-icon >{{sizeIconName$ | async}}</mat-icon>
+        <mat-icon>{{sizeIconName$ | async}}</mat-icon>
       </button>
       </div>
 
@@ -28,7 +28,7 @@
   class="paginator"
   #paginator
   [length]="objCount$ | async"
-  [pageSize]="10"
+  [pageSize]="30"
   (page)="updatePage($event)"
   [pageSizeOptions]="[10,20,30]">
 </mat-paginator>

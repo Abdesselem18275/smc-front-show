@@ -1,19 +1,14 @@
 import { Component, Inject} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { RootStoreState } from 'src/app/root-store';
-import { LogoutAction } from 'src/app/root-store/user-store/actions';
 import { Observable } from 'rxjs';
 import { Profile } from 'src/app/models/account.models';
-import { UserStoreSelectors } from 'src/app/root-store/user-store';
-import { UserLanguage } from 'src/app/root-store/global-store/state';
-import { GlobalStoreSelectors } from 'src/app/root-store/global-store';
-import { Category, MenuTreeData } from 'src/app/models/product.models';
+import { Category } from 'src/app/models/product.models';
 import { GlobalStateService } from '../../state/global-state.service';
-import { Country, Currency } from 'src/app/models/shared.models';
-import { selectLanguage } from 'src/app/root-store/global-store/selectors';
+import { Country, Currency, UserLanguage } from 'src/app/models/shared.models';
 import { DialogManagerService } from '../../services/dialog-manager.service';
 import { map } from 'rxjs/operators';
 import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { AccountStateService } from 'src/app/shared/state/account-state.service';
 
 
 @Component({
@@ -23,7 +18,7 @@ import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
 })
 export class SideNavMenuComponent {
   profile$: Observable<Profile>;
-  isLogged$: Observable<boolean>;
+  isLogged: boolean;
   rootCategories$: Observable<Category[]>;
   paimentCurrency$: Observable<Currency>;
   shippingCountry$: Observable<Country>;
@@ -31,23 +26,24 @@ export class SideNavMenuComponent {
   initials$: Observable<string>;
   languageList: UserLanguage[];
   constructor(
+    private as : AuthService,
     private dms: DialogManagerService,
+    private ass : AccountStateService,
     private gss: GlobalStateService,
-    @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
-    private store$: Store<RootStoreState.State>) {
+    @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[]) {
       this.languageList = languageList;
-      this.profile$ = this.store$.select(UserStoreSelectors.selectUser);
-      this.isLogged$ = this.store$.select(UserStoreSelectors.selectIsAuthentificated);
+      this.profile$ = this.ass.authProfile
+      this.isLogged = this.as.isLogged
       this.paimentCurrency$ = this.gss.userPaimentCurrency;
       this.shippingCountry$ = this.gss.userShippingCountry;
-      this.language$ = this.store$.select(selectLanguage);
-      this.initials$ = this.store$.select(UserStoreSelectors.selectUser).pipe(
-        map(profile => profile ? profile.first_name[0].concat(profile.last_name[0]) : '?' ));
-      this.rootCategories$ = this.store$.select(GlobalStoreSelectors.selectRootCategories);
+      this.language$ = this.gss.selectedLanguage
+      this.initials$ = this.profile$.pipe(
+        map(profile => profile ? profile.firstName[0].concat(profile.lastName[0]) : '?' ));
+      this.rootCategories$ = this.gss.categories.pipe(map(categories => categories.filter(cat => cat.isRoot)))
   }
 
   logOut(): void {
-    this.store$.dispatch(LogoutAction());
+    this.as.logout()
   }
   openShippingCoutryDialog() {
     this.dms.openShippingCountrySelectorDialog();

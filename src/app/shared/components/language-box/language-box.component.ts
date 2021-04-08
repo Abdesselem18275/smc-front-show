@@ -1,10 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { Store } from '@ngrx/store';
+ 
 import { Observable } from 'rxjs';
-import { UserLanguage } from 'src/app/root-store/global-store/state';
-import { selectLanguage } from 'src/app/root-store/global-store/selectors';
-
 import { SUPPORTED_LANGUAGES } from 'src/app/injectables';
+import { UserLanguage } from 'src/app/models/shared.models';
+import { GlobalStateService } from 'src/app/shared/state/global-state.service';
 
 @Component({
   selector: 'app-language-box',
@@ -16,9 +15,9 @@ export class LanguageBoxComponent {
   languageList: UserLanguage[];
   constructor(
     @Inject(SUPPORTED_LANGUAGES) languageList: UserLanguage[],
-    private store$: Store<any>) {
+    private gss:GlobalStateService) {
       this.languageList = languageList;
-      this.language$ = this.store$.select(selectLanguage);
+      this.language$ = this.gss.selectedLanguage
     }
   getHref(localId: string) {
     return '/'+localId;

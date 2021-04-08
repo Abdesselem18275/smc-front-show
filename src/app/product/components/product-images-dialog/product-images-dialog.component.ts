@@ -9,7 +9,7 @@ import { AppearanceVariant, BaseImage, Product } from 'src/app/models/product.mo
   templateUrl: './product-images-dialog.component.html',
   styleUrls: ['./product-images-dialog.component.scss']
 })
-export class ProductImagesDialogComponent implements OnInit {
+export class ProductImagesDialogComponent  {
   selectedAppearanceVariant$ = new BehaviorSubject<AppearanceVariant>({}) ;
   isLoading$ = new BehaviorSubject<boolean>(false);
   selectedImage ='';
@@ -25,8 +25,6 @@ export class ProductImagesDialogComponent implements OnInit {
       });
     }
 
-  ngOnInit(): void {
-  }
   setAppearanceVariant(appearanceVariant: AppearanceVariant ): void {
     this.selectedAppearanceVariant$.next(appearanceVariant);
     this.cdRef.detectChanges();
@@ -34,7 +32,7 @@ export class ProductImagesDialogComponent implements OnInit {
   get images(): Observable<string[]> {
     return this.selectedAppearanceVariant$ && this.selectedAppearanceVariant$.asObservable().pipe(
       filter(appVariance => appVariance.images ? true :false),
-      map(appVariance => appVariance.images.map((image: BaseImage) => image.content).concat(appVariance.thumbNail).reverse())
+      map(appVariance => appVariance.images.concat(appVariance.thumbNail).reverse())
     );
   }
   close(): void {
