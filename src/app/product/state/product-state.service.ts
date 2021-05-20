@@ -23,6 +23,7 @@ export class ProductStateService {
           this.ads.get<PaginatedObjectsType<ApiProduct>>('/product/products/', paramMap)),
       ).subscribe((response:PaginatedObjectsType<ApiProduct>)=> {
         this.setProducts(response.results.map(pro => new Product(pro)))
+        this.setProductsCount(response.count)
       });
   }
 
