@@ -32,7 +32,9 @@ export class AppDataService {
           'Content-Type':  'application/json',
         })};
     }
-    return this.http.get<T>(query, options).pipe();
+    return this.http.get<T>(query, options).pipe(
+      catchError(this.handleError)
+    );
   }
   post<T>(endPoint: string, payload: any): Observable<T> {
     const httpOptions = {
@@ -61,7 +63,9 @@ export class AppDataService {
       catchError(error => this.handleError(error)));
   }
   private handleError(error: HttpErrorResponse) {
+
     if (error.error instanceof ErrorEvent) {
+
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {

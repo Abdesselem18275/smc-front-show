@@ -4,7 +4,7 @@ import { LanguageType, UserLanguage } from 'src/app/models/shared.models';
 
  const LANGUAGE_LIST = () =>([
   {
-    id: 'fr-FR',
+    id: 'fr',
     languageType: LanguageType.FRENCH
   },
   {
@@ -12,12 +12,12 @@ import { LanguageType, UserLanguage } from 'src/app/models/shared.models';
     languageType: LanguageType.ENGLISH
 
   }, {
-    id: 'de-DE',
+    id: 'de',
     languageType: LanguageType.GERMAN
   }
 ]);
 const SMC_API_URL = () => 'http://backend.smcuivre.com/api';
-const LOCAL_API_URL = () => 'http://127.0.0.1:8080/api';
+const LOCAL_API_URL = () => 'http://192.168.100.8:8080/api';
 const APP_TOKEN_KEY = () => 'smcToken';
 const APP_PROFILE_ID = () => 'smcId';
 const PARAM_KEYS_MAP = () => ({

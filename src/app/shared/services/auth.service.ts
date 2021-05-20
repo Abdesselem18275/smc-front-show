@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   get isLogged():boolean {
-    return localStorage.getItem(this.tokenKey) !== null;
+    return localStorage.getItem(this.tokenKey) !== null && localStorage.getItem(this.tokenKey) !== "";
   }
   logout():void {
     localStorage.removeItem(this.tokenKey)
