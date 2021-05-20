@@ -1,37 +1,38 @@
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$smc-show-case-primary: mat-palette($mat-orange, 600,50,800);
-$smc-show-case-accent: mat-palette($mat-blue-grey, 700, 50, 900);
+$smc-show-case-primary: mat.define-palette(mat.$orange-palette, 600,50,800);
+$smc-show-case-accent: mat.define-palette(mat.$blue-grey-palette, 700, 50, 900);
 
 // The warn palette is optional (defaults to red).
-$smc-show-case-warn: mat-palette($mat-red);
+$smc-show-case-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$smc-show-case-theme: mat-light-theme($smc-show-case-primary, $smc-show-case-accent, $smc-show-case-warn);
+$smc-show-case-theme: mat.define-light-theme($smc-show-case-primary, $smc-show-case-accent, $smc-show-case-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($smc-show-case-theme);
+@include mat.all-component-themes($smc-show-case-theme);
 
 
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: 'Roboto, monospace'
 );
 
-@include mat-base-typography($custom-typography);
+@include mat.typography-hierarchy($custom-typography);

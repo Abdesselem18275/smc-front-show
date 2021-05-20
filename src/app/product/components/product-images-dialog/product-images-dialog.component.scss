@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'colors';
 @import 'app-theme.scss';
 
@@ -34,7 +35,7 @@
         border: 2px solid $light-grey-color;
     }
     .img--selected {
-        border: 2px solid mat-color($smc-show-case-primary);
+        border: 2px solid mat.get-color-from-palette($smc-show-case-primary);
 
     }
 }

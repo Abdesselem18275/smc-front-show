@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "app-theme";
 
 .horizontal {
@@ -23,10 +24,10 @@
 .remark {
     padding: 1rem;
     border-radius: 10px;
-    background-color: mat-color($smc-show-case-accent,lighter);
+    background-color: mat.get-color-from-palette($smc-show-case-accent,lighter);
 }
 .element--active {
-    border: 2px solid mat-color($smc-show-case-primary);
+    border: 2px solid mat.get-color-from-palette($smc-show-case-primary);
 }
 header {
     button {
