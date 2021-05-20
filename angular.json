@@ -11,22 +11,26 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "fr-FR": "src/locale/messages.fr.xlf",
-          "de-DE": "src/locale/messages.de.xlf"
+          "fr": "src/locale/messages.fr.xlf",
+          "de": "src/locale/messages.de.xlf"
         }
       },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/browser",
             "aot": false,
-            "localize": true,
+            "buildOptimizer":false,
+            "localize": false,
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -44,10 +48,7 @@
                 "src/styles"
               ]
             },
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "./user-country-webpack.config.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -61,32 +62,26 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
+              "localize":true,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
             },
             "fr": {
-              "localize": [
-                "fr-FR"
-              ]
+              "localize": ["fr"]
             },
             "de": {
-              "localize": [
-                "de-DE"
-              ]
+              "localize": ["de"]
             },
             "en": {
-              "localize": [
-                "en-US"
-              ]
+              "localize": ["en-US"]
             }
           }
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-
           },
           "configurations": {
             "fr": {
@@ -97,6 +92,9 @@
             },
             "en": {
               "browserTarget": "smc-show-case:build:en"
+            },
+            "production": {
+              "browserTarget": "smc-show-case:build:production"
             }
           }
         },

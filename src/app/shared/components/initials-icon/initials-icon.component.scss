@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
 @import 'app-theme';
+
 .mat-h1 {
   fill : mat.get-color-from-palette($smc-show-case-primary);
 }

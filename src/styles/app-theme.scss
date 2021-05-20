@@ -20,7 +20,13 @@ $smc-show-case-accent: mat.define-palette(mat.$blue-grey-palette, 700, 50, 900);
 $smc-show-case-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$smc-show-case-theme: mat.define-light-theme($smc-show-case-primary, $smc-show-case-accent, $smc-show-case-warn);
+$smc-show-case-theme: mat.define-light-theme((
+  color:(
+    primary: $smc-show-case-primary, 
+    accent: $smc-show-case-accent, 
+    warn: $smc-show-case-warn
+  )
+));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -28,11 +34,5 @@ $smc-show-case-theme: mat.define-light-theme($smc-show-case-primary, $smc-show-c
 @include mat.all-component-themes($smc-show-case-theme);
 
 
-
-// Define a custom typography config that overrides the font-family as well as the
-// `headlines` and `body-1` levels
-$custom-typography: mat.define-typography-config(
-  $font-family: 'Roboto, monospace'
-);
 
 @include mat.typography-hierarchy($custom-typography);

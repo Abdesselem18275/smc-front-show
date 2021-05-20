@@ -1,6 +1,6 @@
 @use '~@angular/material' as mat;
 @import 'colors';
-@import 'app-theme.scss';
+@import 'app-theme';
 
 .mat-dialog-content {
     overflow: hidden;
