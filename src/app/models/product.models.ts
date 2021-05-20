@@ -183,7 +183,7 @@ export interface ApiCategory   {
     children?: Category[];
     thumbNail?: string;
     thumbNail_aux?: string;
-    svgIcon?: string;
+    svg_icon?: string;
 }
 export class Category   {
     id?: number;
@@ -202,7 +202,7 @@ export class Category   {
         this.parentCategory = args.parent_category
         this.isLeaf = args.is_leaf
         this.isRoot = args.is_root
-        this.svgIcon = args.svgIcon
+        this.svgIcon = args.svg_icon
     }
 }
 
